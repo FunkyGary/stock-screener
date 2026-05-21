@@ -5,8 +5,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
 from .indicators import IndicatorSnapshot
+
+TARGET_RAISE_THRESHOLD = 1.03  # 3% jump in mean target
+TRUST_BUY_STREAK = 3
+FOREIGN_PCT_OF_VOLUME = 0.05
+FOREIGN_BUY_STREAK = 3
 
 
 @dataclass
@@ -28,9 +34,11 @@ def score(
     ind: IndicatorSnapshot,
     analyst: Optional[AnalystSnapshot],
     prev_target_mean: Optional[float],
+    chip: Optional[ChipSnapshot] = None,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
+    is_tw = market.lower() == "tw"
 
     if ind.ma5 is not None:
         passed = ind.close > ind.ma5
@@ -52,13 +60,23 @@ def score(
             )
         )
 
-    if ind.vol_ratio is not None:
-        passed = ind.vol_ratio > 1.5
+    if ind.vol_ratio is not None and ind.today_return is not None:
+        passed = ind.vol_ratio > 1.5 and ind.today_return > 0
         reasons.append(
             Reason(
-                rule="volume > 1.5x MA20",
+                rule="放量上漲 (vol>1.5x & up day)",
                 passed=passed,
-                detail=f"vol_ratio={ind.vol_ratio:.2f}",
+                detail=f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%",
+            )
+        )
+
+    if ind.obv_ma5 is not None and ind.obv_ma20 is not None:
+        passed = ind.obv_ma5 > ind.obv_ma20
+        reasons.append(
+            Reason(
+                rule="OBV 5d > OBV 20d",
+                passed=passed,
+                detail=f"OBV_MA5={ind.obv_ma5:.0f} OBV_MA20={ind.obv_ma20:.0f}",
             )
         )
 
@@ -72,6 +90,26 @@ def score(
             )
         )
 
+    if (
+        ind.macd is not None
+        and ind.macd_signal is not None
+        and ind.macd_prev is not None
+        and ind.macd_signal_prev is not None
+    ):
+        passed = (
+            ind.macd > ind.macd_signal and ind.macd_prev <= ind.macd_signal_prev
+        )
+        reasons.append(
+            Reason(
+                rule="MACD 上穿 signal (golden cross)",
+                passed=passed,
+                detail=(
+                    f"macd={ind.macd:.3f} signal={ind.macd_signal:.3f} "
+                    f"(prev macd={ind.macd_prev:.3f} signal={ind.macd_signal_prev:.3f})"
+                ),
+            )
+        )
+
     if is_us:
         prev_str = f"{prev_target_mean:.2f}" if prev_target_mean is not None else "n/a"
         current_target = analyst.target_mean if analyst else None
@@ -79,13 +117,20 @@ def score(
         passed_target = (
             current_target is not None
             and prev_target_mean is not None
-            and current_target > prev_target_mean
+            and prev_target_mean > 0
+            and current_target / prev_target_mean > TARGET_RAISE_THRESHOLD
         )
+        pct = (
+            (current_target / prev_target_mean - 1.0) * 100
+            if current_target is not None and prev_target_mean
+            else None
+        )
+        pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
         reasons.append(
             Reason(
-                rule="analyst target raised",
+                rule="目標價單日跳升 > 3%",
                 passed=passed_target,
-                detail=f"target {prev_str} -> {cur_str}",
+                detail=f"target {prev_str} -> {cur_str} ({pct_str})",
             )
         )
 
@@ -96,6 +141,43 @@ def score(
                 rule="rating in {Buy, Strong Buy}",
                 passed=passed_rating,
                 detail=f"rating={rating or 'n/a'}",
+            )
+        )
+
+    if is_tw:
+        # 投信連續買超 ≥ 3 日
+        trust_streak = chip.trust_streak_days if chip else 0
+        passed_trust = chip is not None and trust_streak >= TRUST_BUY_STREAK
+        reasons.append(
+            Reason(
+                rule=f"投信連續買超 ≥ {TRUST_BUY_STREAK} 日",
+                passed=passed_trust,
+                detail=(
+                    f"streak={trust_streak} 日"
+                    if chip is not None
+                    else "chip data unavailable"
+                ),
+            )
+        )
+
+        # 外資單日買超 > 成交量 5%  或  外資連續買超 ≥ 3 日
+        foreign_streak = chip.foreign_streak_days if chip else 0
+        foreign_pct = chip.foreign_pct_of_volume if chip else None
+        passed_big_pct = foreign_pct is not None and foreign_pct > FOREIGN_PCT_OF_VOLUME
+        passed_streak = foreign_streak >= FOREIGN_BUY_STREAK
+        passed_foreign = chip is not None and (passed_big_pct or passed_streak)
+        if chip is None:
+            detail = "chip data unavailable"
+        else:
+            pct_str = (
+                f"{foreign_pct * 100:+.2f}%" if foreign_pct is not None else "n/a"
+            )
+            detail = f"streak={foreign_streak} 日, 佔量={pct_str}"
+        reasons.append(
+            Reason(
+                rule=f"外資大買 (>5% 量 或 連{FOREIGN_BUY_STREAK}日買超)",
+                passed=passed_foreign,
+                detail=detail,
             )
         )
 

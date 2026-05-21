@@ -2,8 +2,23 @@ name: US screener
 
 on:
   schedule:
-    - cron: "0 22 * * *"  # 22:00 UTC covers both EST (17:00) and EDT (18:00) post-close
+    # Intraday: every 30 min covering both EDT (13:30-20:00 UTC) and EST
+    # (14:30-21:00 UTC). The window 13:00-20:30 UTC catches both; EST will
+    # see a few empty pre-open runs which is harmless.
+    - cron: "*/30 13-20 * * 1-5"
+    # EOD: 21:00 UTC = 17:00 EDT / 16:00 EST, after close on both schedules.
+    - cron: "0 21 * * 1-5"
   workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        description: Run mode
+        options: [intraday, eod]
+        default: eod
+
+concurrency:
+  group: screener-commit
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -22,16 +37,41 @@ jobs:
         run: pip install uv
       - name: Install dependencies
         run: uv sync --frozen
+      - name: Determine mode
+        id: mode
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 21 * * 1-5" ]; then
+            MODE=eod
+          elif [ "${{ github.event.schedule }}" = "*/30 13-20 * * 1-5" ]; then
+            MODE=intraday
+          else
+            MODE="${{ inputs.mode || 'eod' }}"
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Resolved mode: $MODE"
       - name: Run US screener
-        run: uv run python -m screener.run --market us
-      - name: Commit results
+        run: uv run python -m screener.run --market us --mode "${{ steps.mode.outputs.mode }}"
+      - name: Commit results (with rebase retry)
+        env:
+          MODE: ${{ steps.mode.outputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest_signals.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "data: US screener run [skip ci]"
-            git push
-          fi
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash
+            git add data/latest_signals.json
+            if git diff --staged --quiet; then
+              echo "No changes to commit"
+              exit 0
+            fi
+            git commit -m "data: US screener ${MODE} run [skip ci]"
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push failed on attempt $attempt; backing off"
+            git reset --soft HEAD~1
+            sleep $((attempt * 3))
+          done
+          echo "Failed to push after 3 attempts" >&2
+          exit 1

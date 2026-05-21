@@ -40,6 +40,8 @@ def test_returns_none_when_not_enough_history():
     assert snap.ma5 is None
     assert snap.ma20 is None
     assert snap.high_20d is None
+    assert snap.macd is None
+    assert snap.obv_ma20 is None
 
 
 def test_pct_of_high_20d_when_close_below_high():
@@ -47,3 +49,27 @@ def test_pct_of_high_20d_when_close_below_high():
     snap = compute(_df(closes, [100] * 20))
     assert snap.high_20d == 20
     assert snap.pct_of_high_20d == pytest.approx(1.0)
+
+
+def test_today_return_uses_prev_close():
+    df = _df([10, 10, 10, 10, 10, 11], [100] * 6)
+    snap = compute(df)
+    assert snap.prev_close == 10
+    assert snap.today_return == pytest.approx(0.1)
+
+
+def test_obv_accumulates_signed_volume():
+    # Up, up, down → OBV should be +100 +100 -100 = 100
+    df = _df([10, 11, 12, 11], [100, 100, 100, 100])
+    snap = compute(df)
+    assert snap.obv == pytest.approx(100.0)
+
+
+def test_macd_available_with_enough_history():
+    # 50 bars of a clean uptrend → MACD should be defined and positive.
+    closes = [float(i) for i in range(1, 51)]
+    df = _df(closes, [100] * 50)
+    snap = compute(df)
+    assert snap.macd is not None
+    assert snap.macd_signal is not None
+    assert snap.macd > 0

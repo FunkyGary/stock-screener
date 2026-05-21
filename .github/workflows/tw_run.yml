@@ -2,8 +2,22 @@ name: TW screener
 
 on:
   schedule:
-    - cron: "30 6 * * *"  # 06:30 UTC = 14:30 Asia/Taipei
+    # Intraday: every 30 min during TW session (台北 09:00-13:30) Mon-Fri
+    - cron: "*/30 1-5 * * 1-5"
+    # EOD: chip data settles ~1h after close. 台北 17:00 = 09:00 UTC
+    - cron: "0 9 * * 1-5"
   workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        description: Run mode
+        options: [intraday, eod]
+        default: eod
+
+# Serialize across BOTH markets — they commit the same JSON file.
+concurrency:
+  group: screener-commit
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -20,16 +34,41 @@ jobs:
         run: pip install uv
       - name: Install dependencies
         run: uv sync --frozen
+      - name: Determine mode
+        id: mode
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 9 * * 1-5" ]; then
+            MODE=eod
+          elif [ "${{ github.event.schedule }}" = "*/30 1-5 * * 1-5" ]; then
+            MODE=intraday
+          else
+            MODE="${{ inputs.mode || 'eod' }}"
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Resolved mode: $MODE"
       - name: Run TW screener
-        run: uv run python -m screener.run --market tw
-      - name: Commit results
+        run: uv run python -m screener.run --market tw --mode "${{ steps.mode.outputs.mode }}"
+      - name: Commit results (with rebase retry)
+        env:
+          MODE: ${{ steps.mode.outputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest_signals.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "data: TW screener run [skip ci]"
-            git push
-          fi
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash
+            git add data/latest_signals.json
+            if git diff --staged --quiet; then
+              echo "No changes to commit"
+              exit 0
+            fi
+            git commit -m "data: TW screener ${MODE} run [skip ci]"
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push failed on attempt $attempt; backing off"
+            git reset --soft HEAD~1
+            sleep $((attempt * 3))
+          done
+          echo "Failed to push after 3 attempts" >&2
+          exit 1

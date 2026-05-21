@@ -37,7 +37,7 @@ class FetchError(RuntimeError):
     wait=wait_exponential(multiplier=1, min=2, max=10),
     reraise=True,
 )
-def fetch_ohlcv(symbol: str, period: str = "2mo") -> OHLCV:
+def fetch_ohlcv(symbol: str, period: str = "4mo") -> OHLCV:
     df = yf.download(
         symbol,
         period=period,
