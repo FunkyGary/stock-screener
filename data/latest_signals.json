@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-05-21T12:14:15.038535+00:00",
+  "generated_at": "2026-05-21T17:28:37.001349+00:00",
   "last_run": {
     "tw": "2026-05-21T09:55:08.786335+00:00",
-    "us": "2026-05-21T12:14:15.038535+00:00"
+    "us": "2026-05-21T17:28:37.001349+00:00",
+    "us_intraday": "2026-05-21T17:28:37.001349+00:00"
   },
   "signals": {
     "2330.TW": {
@@ -46,39 +47,133 @@
       "symbol": "2330.TW",
       "tradingview_symbol": "TWSE:2330"
     },
+    "AAOI": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 177.35000610351562,
+        "high_20d": 223.10000610351562,
+        "ma10": 182.63500061035157,
+        "ma20": 173.09499969482422,
+        "ma240": 55.85108345746994,
+        "ma5": 175.51199951171876,
+        "macd": 11.173777871155522,
+        "macd_hist": -3.191232115406926,
+        "macd_prev": 12.045373625745583,
+        "macd_signal": 14.365009986562448,
+        "macd_signal_prev": 15.162818015414178,
+        "obv": 204881059.0,
+        "obv_ma20": 224699552.95,
+        "obv_ma5": 211500571.8,
+        "pct_of_high_20d": 0.7949350123335606,
+        "prev_close": 165.25999450683594,
+        "today_return": 0.07315752147250376,
+        "vol_ratio": 0.5796137347628606,
+        "volume": 6826359.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Applied Optoelectronics",
+      "reasons": [
+        {
+          "detail": "close=177.35 MA5=175.51",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=175.51 MA20=173.09",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.58 return=7.32%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=211500572 OBV_MA20=224699553",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.795",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=11.174 signal=14.365 (prev macd=12.045 signal=15.163)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "AAOI",
+      "tradingview_symbol": "NASDAQ:AAOI"
+    },
     "AAPL": {
       "analyst": {
         "rating": "Buy",
         "rating_score": 2.037037037037037,
         "target_mean": 308.6465
       },
+      "chip": null,
       "indicators": {
-        "close": 302.25,
-        "high_20d": 302.25,
-        "ma20": 285.8799987792969,
-        "ma5": 299.5,
+        "close": 304.5,
+        "high_20d": 304.5,
+        "ma10": 298.1669982910156,
+        "ma20": 287.4334991455078,
+        "ma240": 251.96441599527995,
+        "ma5": 300.75800170898435,
+        "macd": 9.585189827496777,
+        "macd_hist": 0.8447138855252039,
+        "macd_prev": 9.431979425814575,
+        "macd_signal": 8.740475941971573,
+        "macd_signal_prev": 8.529297470590272,
+        "obv": 2440369569.0,
+        "obv_ma20": 2259176113.45,
+        "obv_ma5": 2394598833.8,
         "pct_of_high_20d": 1.0,
-        "vol_ratio": 0.801553202430552,
-        "volume": 38188800.0
+        "prev_close": 302.25,
+        "today_return": 0.007444168734491274,
+        "vol_ratio": 0.34356091495530966,
+        "volume": 16070769.0
       },
       "market": "us",
-      "max_score": 6,
+      "max_score": 8,
+      "mode": "intraday",
       "name": "Apple",
       "reasons": [
         {
-          "detail": "close=302.25 MA5=299.50",
+          "detail": "close=304.50 MA5=300.76",
           "passed": true,
           "rule": "close > MA5"
         },
         {
-          "detail": "MA5=299.50 MA20=285.88",
+          "detail": "MA5=300.76 MA20=287.43",
           "passed": true,
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.80",
+          "detail": "vol_ratio=0.34 return=0.74%",
           "passed": false,
-          "rule": "volume > 1.5x MA20"
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=2394598834 OBV_MA20=2259176113",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
         },
         {
           "detail": "close/high20d=1.000",
@@ -86,9 +181,14 @@
           "rule": "within 2% of 20d high"
         },
         {
-          "detail": "target 308.65 -> 308.65",
+          "detail": "macd=9.585 signal=8.740 (prev macd=9.432 signal=8.529)",
           "passed": false,
-          "rule": "analyst target raised"
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> 308.65 (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
           "detail": "rating=Buy",
@@ -96,10 +196,4060 @@
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "AAPL",
       "tradingview_symbol": "NASDAQ:AAPL"
+    },
+    "ABNB": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 132.13999938964844,
+        "high_20d": 142.82000732421875,
+        "ma10": 134.66600189208984,
+        "ma20": 137.5405014038086,
+        "ma240": 129.56518754959106,
+        "ma5": 133.20000305175782,
+        "macd": -0.7664180853882101,
+        "macd_hist": -0.9713133931361446,
+        "macd_prev": -0.5364605373370637,
+        "macd_signal": 0.20489530774793452,
+        "macd_signal_prev": 0.4477236560319707,
+        "obv": 152932062.0,
+        "obv_ma20": 146634583.1,
+        "obv_ma5": 151167712.4,
+        "pct_of_high_20d": 0.9252205056233795,
+        "prev_close": 135.5500030517578,
+        "today_return": -0.025156795170320434,
+        "vol_ratio": 0.4455856276259003,
+        "volume": 1740338.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Airbnb",
+      "reasons": [
+        {
+          "detail": "close=132.14 MA5=133.20",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=133.20 MA20=137.54",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.45 return=-2.52%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=151167712 OBV_MA20=146634583",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.925",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.766 signal=0.205 (prev macd=-0.536 signal=0.448)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "ABNB",
+      "tradingview_symbol": "NASDAQ:ABNB"
+    },
+    "ADBE": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 245.10499572753906,
+        "high_20d": 256.510009765625,
+        "ma10": 246.98049926757812,
+        "ma20": 247.7197509765625,
+        "ma240": 318.0931453704834,
+        "ma5": 251.34100036621095,
+        "macd": 0.5972679519757094,
+        "macd_hist": 0.3900366412346264,
+        "macd_prev": 0.9726892724532377,
+        "macd_signal": 0.20723131074108297,
+        "macd_signal_prev": 0.10972215043242639,
+        "obv": -123603699.0,
+        "obv_ma20": -123110659.95,
+        "obv_ma5": -117729999.8,
+        "pct_of_high_20d": 0.9555377427629168,
+        "prev_close": 253.3699951171875,
+        "today_return": -0.03262027686358737,
+        "vol_ratio": 0.4870202370956574,
+        "volume": 2224499.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Adobe",
+      "reasons": [
+        {
+          "detail": "close=245.10 MA5=251.34",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=251.34 MA20=247.72",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.49 return=-3.26%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-117730000 OBV_MA20=-123110660",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.956",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.597 signal=0.207 (prev macd=0.973 signal=0.110)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "ADBE",
+      "tradingview_symbol": "NASDAQ:ADBE"
+    },
+    "ADI": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 385.9100036621094,
+        "high_20d": 432.3900146484375,
+        "ma10": 415.24199829101565,
+        "ma20": 407.15199890136716,
+        "ma240": 283.97612539927167,
+        "ma5": 406.8679931640625,
+        "macd": 11.29886187662936,
+        "macd_hist": -5.142134381581982,
+        "macd_prev": 14.394354045162913,
+        "macd_signal": 16.440996258211342,
+        "macd_signal_prev": 17.726529853606838,
+        "obv": 63720101.0,
+        "obv_ma20": 78160610.05,
+        "obv_ma5": 73577540.2,
+        "pct_of_high_20d": 0.8925044302326928,
+        "prev_close": 398.04998779296875,
+        "today_return": -0.030498642138317433,
+        "vol_ratio": 0.6414927016555204,
+        "volume": 2525499.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Analog Devices",
+      "reasons": [
+        {
+          "detail": "close=385.91 MA5=406.87",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=406.87 MA20=407.15",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.64 return=-3.05%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=73577540 OBV_MA20=78160610",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.893",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=11.299 signal=16.441 (prev macd=14.394 signal=17.727)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "ADI",
+      "tradingview_symbol": "NASDAQ:ADI"
+    },
+    "ALAB": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 293.04998779296875,
+        "high_20d": 293.04998779296875,
+        "ma10": 233.73399810791017,
+        "ma20": 217.54499893188478,
+        "ma240": 158.8892707824707,
+        "ma5": 254.60999755859376,
+        "macd": 26.022368795294796,
+        "macd_hist": 6.19798358698473,
+        "macd_prev": 22.472928625811903,
+        "macd_signal": 19.824385208310066,
+        "macd_signal_prev": 18.274889311563882,
+        "obv": 168874626.0,
+        "obv_ma20": 142817236.3,
+        "obv_ma5": 156597345.2,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 287.4800109863281,
+        "today_return": 0.01937517946910594,
+        "vol_ratio": 0.7371517397228249,
+        "volume": 4477726.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Astera Labs",
+      "reasons": [
+        {
+          "detail": "close=293.05 MA5=254.61",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=254.61 MA20=217.54",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.74 return=1.94%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=156597345 OBV_MA20=142817236",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=26.022 signal=19.824 (prev macd=22.473 signal=18.275)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "ALAB",
+      "tradingview_symbol": "NASDAQ:ALAB"
+    },
+    "AMAT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 426.625,
+        "high_20d": 443.6199951171875,
+        "ma10": 429.8005004882813,
+        "ma20": 415.43174896240237,
+        "ma240": 269.0868958791097,
+        "ma5": 422.11500244140626,
+        "macd": 11.092946081714672,
+        "macd_hist": -1.7243697731594594,
+        "macd_prev": 11.515888137583772,
+        "macd_signal": 12.817315854874131,
+        "macd_signal_prev": 13.248408298163996,
+        "obv": 128598788.0,
+        "obv_ma20": 127311604.4,
+        "obv_ma5": 132045017.6,
+        "pct_of_high_20d": 0.9616901958787992,
+        "prev_close": 426.8500061035156,
+        "today_return": -0.0005271315457380243,
+        "vol_ratio": 0.41620251955569715,
+        "volume": 3193312.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Applied Materials",
+      "reasons": [
+        {
+          "detail": "close=426.62 MA5=422.12",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=422.12 MA20=415.43",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.42 return=-0.05%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=132045018 OBV_MA20=127311604",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.962",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=11.093 signal=12.817 (prev macd=11.516 signal=13.248)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "AMAT",
+      "tradingview_symbol": "NASDAQ:AMAT"
+    },
+    "AMD": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 443.3699951171875,
+        "high_20d": 458.7900085449219,
+        "ma10": 440.75599975585936,
+        "ma20": 399.6,
+        "ma240": 215.57041651407877,
+        "ma5": 430.0179931640625,
+        "macd": 42.43205041050868,
+        "macd_hist": -2.6849496587776187,
+        "macd_prev": 43.609254135518995,
+        "macd_signal": 45.1170000692863,
+        "macd_signal_prev": 45.7882374839807,
+        "obv": 1262689638.0,
+        "obv_ma20": 1253215886.9,
+        "obv_ma5": 1276117367.6,
+        "pct_of_high_20d": 0.9663898229243487,
+        "prev_close": 447.5799865722656,
+        "today_return": -0.00940612087533177,
+        "vol_ratio": 0.3879965474221695,
+        "volume": 17156062.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "AMD",
+      "reasons": [
+        {
+          "detail": "close=443.37 MA5=430.02",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=430.02 MA20=399.60",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.39 return=-0.94%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1276117368 OBV_MA20=1253215887",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.966",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=42.432 signal=45.117 (prev macd=43.609 signal=45.788)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "AMD",
+      "tradingview_symbol": "NASDAQ:AMD"
+    },
+    "AMKR": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 66.68000030517578,
+        "high_20d": 78.0999984741211,
+        "ma10": 71.05499954223633,
+        "ma20": 72.21199951171874,
+        "ma240": 39.34233330090841,
+        "ma5": 67.41999969482421,
+        "macd": 1.516564861187291,
+        "macd_hist": -1.7512448972053782,
+        "macd_prev": 1.9596251599198808,
+        "macd_signal": 3.2678097583926693,
+        "macd_signal_prev": 3.705620982694014,
+        "obv": 86287559.0,
+        "obv_ma20": 94281227.95,
+        "obv_ma5": 89052531.8,
+        "pct_of_high_20d": 0.8537772292949609,
+        "prev_close": 68.48999786376953,
+        "today_return": -0.026427180830023378,
+        "vol_ratio": 0.5062858709234141,
+        "volume": 2629541.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Amkor Technology",
+      "reasons": [
+        {
+          "detail": "close=66.68 MA5=67.42",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=67.42 MA20=72.21",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.51 return=-2.64%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=89052532 OBV_MA20=94281228",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.854",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=1.517 signal=3.268 (prev macd=1.960 signal=3.706)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "AMKR",
+      "tradingview_symbol": "NASDAQ:AMKR"
+    },
+    "AMZN": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 267.32000732421875,
+        "high_20d": 274.989990234375,
+        "ma10": 266.5510009765625,
+        "ma20": 266.9220001220703,
+        "ma240": 228.76554183959962,
+        "ma5": 264.1340026855469,
+        "macd": 6.032955572807111,
+        "macd_hist": -2.298992766597017,
+        "macd_prev": 6.327440926535246,
+        "macd_signal": 8.331948339404128,
+        "macd_signal_prev": 8.906696531053381,
+        "obv": 1234753677.0,
+        "obv_ma20": 1175614928.85,
+        "obv_ma5": 1207089575.4,
+        "pct_of_high_20d": 0.9721081378139652,
+        "prev_close": 265.010009765625,
+        "today_return": 0.008716642668089136,
+        "vol_ratio": 0.4550284284189584,
+        "volume": 20181277.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Amazon",
+      "reasons": [
+        {
+          "detail": "close=267.32 MA5=264.13",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=264.13 MA20=266.92",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.46 return=0.87%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1207089575 OBV_MA20=1175614929",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.972",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=6.033 signal=8.332 (prev macd=6.327 signal=8.907)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "AMZN",
+      "tradingview_symbol": "NASDAQ:AMZN"
+    },
+    "APP": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 488.489990234375,
+        "high_20d": 501.0,
+        "ma10": 481.73999938964846,
+        "ma20": 472.2799987792969,
+        "ma240": 504.3306461334229,
+        "ma5": 488.2099975585937,
+        "macd": 10.593099430144889,
+        "macd_hist": -0.045111085658831485,
+        "macd_prev": 10.617561709554707,
+        "macd_signal": 10.63821051580372,
+        "macd_signal_prev": 10.649488287218427,
+        "obv": 382385634.0,
+        "obv_ma20": 373159306.7,
+        "obv_ma5": 381495826.8,
+        "pct_of_high_20d": 0.975029920627495,
+        "prev_close": 482.2799987792969,
+        "today_return": 0.012876319712192608,
+        "vol_ratio": 0.366852690672352,
+        "volume": 1681934.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "AppLovin",
+      "reasons": [
+        {
+          "detail": "close=488.49 MA5=488.21",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=488.21 MA20=472.28",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=1.29%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=381495827 OBV_MA20=373159307",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.975",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.593 signal=10.638 (prev macd=10.618 signal=10.649)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "APP",
+      "tradingview_symbol": "NASDAQ:APP"
+    },
+    "ARM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 290.5799865722656,
+        "high_20d": 290.5799865722656,
+        "ma10": 227.8289993286133,
+        "ma20": 220.6764991760254,
+        "ma240": 146.94310439427693,
+        "ma5": 238.947998046875,
+        "macd": 20.074989353450007,
+        "macd_hist": 3.8477312221320297,
+        "macd_prev": 15.680540974294274,
+        "macd_signal": 16.227258131317978,
+        "macd_signal_prev": 15.26532532578497,
+        "obv": 230344643.0,
+        "obv_ma20": 192845452.15,
+        "obv_ma5": 201262228.6,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 256.7300109863281,
+        "today_return": 0.13185048158526413,
+        "vol_ratio": 1.2499742287068567,
+        "volume": 15020643.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Arm Holdings",
+      "reasons": [
+        {
+          "detail": "close=290.58 MA5=238.95",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=238.95 MA20=220.68",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=1.25 return=13.19%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=201262229 OBV_MA20=192845452",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=20.075 signal=16.227 (prev macd=15.681 signal=15.265)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "ARM",
+      "tradingview_symbol": "NASDAQ:ARM"
+    },
+    "ASML": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 1588.449951171875,
+        "high_20d": 1592.02001953125,
+        "ma10": 1541.7079956054688,
+        "ma20": 1492.1169921875,
+        "ma240": 1104.3806653340657,
+        "ma5": 1514.443994140625,
+        "macd": 31.778036995976436,
+        "macd_hist": 1.3638373958446692,
+        "macd_prev": 27.519215174640294,
+        "macd_signal": 30.414199600131766,
+        "macd_signal_prev": 30.0732402511706,
+        "obv": 14576090.0,
+        "obv_ma20": 14960339.5,
+        "obv_ma5": 13766898.0,
+        "pct_of_high_20d": 0.9977575229484701,
+        "prev_close": 1550.1300048828125,
+        "today_return": 0.02472047258511023,
+        "vol_ratio": 0.5014439348764089,
+        "volume": 818790.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "ASML",
+      "reasons": [
+        {
+          "detail": "close=1588.45 MA5=1514.44",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=1514.44 MA20=1492.12",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.50 return=2.47%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=13766898 OBV_MA20=14960340",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.998",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=31.778 signal=30.414 (prev macd=27.519 signal=30.073)",
+          "passed": true,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "ASML",
+      "tradingview_symbol": "NASDAQ:ASML"
+    },
+    "AVGO": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 414.1000061035156,
+        "high_20d": 439.7900085449219,
+        "ma10": 422.3140014648437,
+        "ma20": 419.49750061035155,
+        "ma240": 336.625208791097,
+        "ma5": 417.76600341796876,
+        "macd": 10.363925202586756,
+        "macd_hist": -4.102891272670536,
+        "macd_prev": 11.659648081141711,
+        "macd_signal": 14.466816475257293,
+        "macd_signal_prev": 15.492539293424926,
+        "obv": 1125377940.0,
+        "obv_ma20": 1180325307.0,
+        "obv_ma5": 1133820448.0,
+        "pct_of_high_20d": 0.9415857524221536,
+        "prev_close": 417.760009765625,
+        "today_return": -0.008761019668116932,
+        "vol_ratio": 0.4290541674592429,
+        "volume": 7975760.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Broadcom",
+      "reasons": [
+        {
+          "detail": "close=414.10 MA5=417.77",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=417.77 MA20=419.50",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.43 return=-0.88%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1133820448 OBV_MA20=1180325307",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.942",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.364 signal=14.467 (prev macd=11.660 signal=15.493)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "AVGO",
+      "tradingview_symbol": "NASDAQ:AVGO"
+    },
+    "BA": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 218.52000427246094,
+        "high_20d": 240.60000610351562,
+        "ma10": 227.9080017089844,
+        "ma20": 228.03650131225587,
+        "ma240": 219.3194169362386,
+        "ma5": 219.36600036621093,
+        "macd": -0.10779016742057479,
+        "macd_hist": -2.1749008530489786,
+        "macd_prev": 0.5242711271828853,
+        "macd_signal": 2.067110685628404,
+        "macd_signal_prev": 2.6108358988906484,
+        "obv": 201464691.0,
+        "obv_ma20": 203342954.55,
+        "obv_ma5": 200116778.2,
+        "pct_of_high_20d": 0.908229421151573,
+        "prev_close": 222.1999969482422,
+        "today_return": -0.016561623430798034,
+        "vol_ratio": 0.4651768172367699,
+        "volume": 3051809.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Boeing",
+      "reasons": [
+        {
+          "detail": "close=218.52 MA5=219.37",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=219.37 MA20=228.04",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.47 return=-1.66%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=200116778 OBV_MA20=203342955",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.908",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.108 signal=2.067 (prev macd=0.524 signal=2.611)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "BA",
+      "tradingview_symbol": "NYSE:BA"
+    },
+    "BE": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 313.55999755859375,
+        "high_20d": 313.55999755859375,
+        "ma10": 281.06800231933596,
+        "ma20": 274.63750076293945,
+        "ma240": 114.25620872974396,
+        "ma5": 278.3739990234375,
+        "macd": 21.21381524753525,
+        "macd_hist": -2.385293638253952,
+        "macd_prev": 19.411264578271698,
+        "macd_signal": 23.599108885789203,
+        "macd_signal_prev": 24.19543229535269,
+        "obv": 555125126.0,
+        "obv_ma20": 531780391.3,
+        "obv_ma5": 539527565.2,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 282.30999755859375,
+        "today_return": 0.1106939189906444,
+        "vol_ratio": 0.9719025119167878,
+        "volume": 10184626.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Bloom Energy",
+      "reasons": [
+        {
+          "detail": "close=313.56 MA5=278.37",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=278.37 MA20=274.64",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.97 return=11.07%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=539527565 OBV_MA20=531780391",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=21.214 signal=23.599 (prev macd=19.411 signal=24.195)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "BE",
+      "tradingview_symbol": "NYSE:BE"
+    },
+    "CAT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 867.1599731445312,
+        "high_20d": 926.9299926757812,
+        "ma10": 891.1029968261719,
+        "ma20": 879.0149963378906,
+        "ma240": 585.9817075093587,
+        "ma5": 870.4260009765625,
+        "macd": 22.08349797943663,
+        "macd_hist": -9.27564421789415,
+        "macd_prev": 25.060262637458663,
+        "macd_signal": 31.35914219733078,
+        "macd_signal_prev": 33.678053251804315,
+        "obv": 76939031.0,
+        "obv_ma20": 81428836.55,
+        "obv_ma5": 77877206.2,
+        "pct_of_high_20d": 0.9355183023491223,
+        "prev_close": 872.5599975585938,
+        "today_return": -0.00618871416197353,
+        "vol_ratio": 0.2697772869381373,
+        "volume": 683769.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Caterpillar",
+      "reasons": [
+        {
+          "detail": "close=867.16 MA5=870.43",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=870.43 MA20=879.01",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.27 return=-0.62%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=77877206 OBV_MA20=81428837",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.936",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=22.083 signal=31.359 (prev macd=25.060 signal=33.678)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "CAT",
+      "tradingview_symbol": "NYSE:CAT"
+    },
+    "CIEN": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 583.0850219726562,
+        "high_20d": 591.5700073242188,
+        "ma10": 563.4955078125,
+        "ma20": 543.6427536010742,
+        "ma240": 238.64181241989135,
+        "ma5": 551.7510131835937,
+        "macd": 24.71207336011139,
+        "macd_hist": -3.7757698052821524,
+        "macd_prev": 23.824428186266005,
+        "macd_signal": 28.487843165393542,
+        "macd_signal_prev": 29.43178561671408,
+        "obv": 231385112.0,
+        "obv_ma20": 226901385.6,
+        "obv_ma5": 229134442.4,
+        "pct_of_high_20d": 0.9856568364749564,
+        "prev_close": 554.760009765625,
+        "today_return": 0.05105813632636935,
+        "vol_ratio": 0.402563142882425,
+        "volume": 784312.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Ciena",
+      "reasons": [
+        {
+          "detail": "close=583.09 MA5=551.75",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=551.75 MA20=543.64",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.40 return=5.11%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=229134442 OBV_MA20=226901386",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.986",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=24.712 signal=28.488 (prev macd=23.824 signal=29.432)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "CIEN",
+      "tradingview_symbol": "NYSE:CIEN"
+    },
+    "CLS": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 346.9450988769531,
+        "high_20d": 422.2099914550781,
+        "ma10": 361.8525085449219,
+        "ma20": 382.75075378417966,
+        "ma240": 271.97510464986163,
+        "ma5": 346.75502319335936,
+        "macd": -2.9275359339942497,
+        "macd_hist": -8.958729904236897,
+        "macd_prev": -1.4578177327783237,
+        "macd_signal": 6.031193970242647,
+        "macd_signal_prev": 8.270876446301871,
+        "obv": 195487767.0,
+        "obv_ma20": 200895193.35,
+        "obv_ma5": 195287933.4,
+        "pct_of_high_20d": 0.8217358800090524,
+        "prev_close": 346.4800109863281,
+        "today_return": 0.0013423224309565551,
+        "vol_ratio": 0.2587934866166784,
+        "volume": 610967.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Celestica",
+      "reasons": [
+        {
+          "detail": "close=346.95 MA5=346.76",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=346.76 MA20=382.75",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.26 return=0.13%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=195287933 OBV_MA20=200895193",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.822",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-2.928 signal=6.031 (prev macd=-1.458 signal=8.271)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "CLS",
+      "tradingview_symbol": "NYSE:CLS"
+    },
+    "COHR": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 378.1199951171875,
+        "high_20d": 404.94000244140625,
+        "ma10": 373.3140014648437,
+        "ma20": 348.91750183105466,
+        "ma240": 179.21100025177003,
+        "ma5": 367.1059997558594,
+        "macd": 18.867122588619907,
+        "macd_hist": -1.2372771795505848,
+        "macd_prev": 18.893597124081396,
+        "macd_signal": 20.10439976817049,
+        "macd_signal_prev": 20.41371906305814,
+        "obv": 274525376.0,
+        "obv_ma20": 264162353.8,
+        "obv_ma5": 272827095.2,
+        "pct_of_high_20d": 0.9337679479366835,
+        "prev_close": 358.5,
+        "today_return": 0.05472801985268472,
+        "vol_ratio": 0.42475444913566623,
+        "volume": 2803776.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Coherent",
+      "reasons": [
+        {
+          "detail": "close=378.12 MA5=367.11",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=367.11 MA20=348.92",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.42 return=5.47%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=272827095 OBV_MA20=264162354",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.934",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=18.867 signal=20.104 (prev macd=18.894 signal=20.414)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "COHR",
+      "tradingview_symbol": "NYSE:COHR"
+    },
+    "COIN": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 193.4600067138672,
+        "high_20d": 216.60000610351562,
+        "ma10": 200.22799987792968,
+        "ma20": 197.26200103759766,
+        "ma240": 267.31025047302245,
+        "ma5": 192.61399841308594,
+        "macd": 1.0750408392860606,
+        "macd_hist": -1.5830267853578937,
+        "macd_prev": 1.4964376249841678,
+        "macd_signal": 2.6580676246439543,
+        "macd_signal_prev": 3.0538243209834275,
+        "obv": -88576785.0,
+        "obv_ma20": -85847439.25,
+        "obv_ma5": -87745757.0,
+        "pct_of_high_20d": 0.8931671341754738,
+        "prev_close": 191.2899932861328,
+        "today_return": 0.01134410321447632,
+        "vol_ratio": 0.34809032971173415,
+        "volume": 3282915.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Coinbase",
+      "reasons": [
+        {
+          "detail": "close=193.46 MA5=192.61",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=192.61 MA20=197.26",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.35 return=1.13%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-87745757 OBV_MA20=-85847439",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.893",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=1.075 signal=2.658 (prev macd=1.496 signal=3.054)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "COIN",
+      "tradingview_symbol": "NASDAQ:COIN"
+    },
+    "COST": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 1048.9100341796875,
+        "high_20d": 1094.3199462890625,
+        "ma10": 1044.7129821777344,
+        "ma20": 1025.6104919433594,
+        "ma240": 959.2584159851074,
+        "ma5": 1068.531982421875,
+        "macd": 17.712812516175063,
+        "macd_hist": 5.310061495312141,
+        "macd_prev": 18.799651301440235,
+        "macd_signal": 12.402751020862922,
+        "macd_signal_prev": 11.075235647034887,
+        "obv": -13777210.0,
+        "obv_ma20": -18779500.5,
+        "obv_ma5": -13200442.0,
+        "pct_of_high_20d": 0.9585039893832109,
+        "prev_close": 1074.010009765625,
+        "today_return": -0.023370336735888397,
+        "vol_ratio": 0.5642465555959981,
+        "volume": 1054910.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Costco",
+      "reasons": [
+        {
+          "detail": "close=1048.91 MA5=1068.53",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=1068.53 MA20=1025.61",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.56 return=-2.34%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-13200442 OBV_MA20=-18779500",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.959",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=17.713 signal=12.403 (prev macd=18.800 signal=11.075)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "COST",
+      "tradingview_symbol": "NASDAQ:COST"
+    },
+    "CRM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 175.47000122070312,
+        "high_20d": 186.99000549316406,
+        "ma10": 175.2020004272461,
+        "ma20": 178.66250076293946,
+        "ma240": 229.70937582651774,
+        "ma5": 177.59599914550782,
+        "macd": -1.8454103894976583,
+        "macd_hist": 0.2304614366268205,
+        "macd_prev": -1.8242863580950939,
+        "macd_signal": -2.075871826124479,
+        "macd_signal_prev": -2.133487185281184,
+        "obv": 24030183.0,
+        "obv_ma20": 23115914.15,
+        "obv_ma5": 24561996.6,
+        "pct_of_high_20d": 0.9383924063637611,
+        "prev_close": 180.10000610351562,
+        "today_return": -0.025707966273756377,
+        "vol_ratio": 0.44244024195348275,
+        "volume": 5084517.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Salesforce",
+      "reasons": [
+        {
+          "detail": "close=175.47 MA5=177.60",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=177.60 MA20=178.66",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.44 return=-2.57%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=24561997 OBV_MA20=23115914",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.938",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-1.845 signal=-2.076 (prev macd=-1.824 signal=-2.133)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "CRM",
+      "tradingview_symbol": "NYSE:CRM"
+    },
+    "CRWD": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 645.5,
+        "high_20d": 650.1099853515625,
+        "ma10": 588.4130065917968,
+        "ma20": 525.7595031738281,
+        "ma240": 466.74616686503094,
+        "ma5": 625.0800048828125,
+        "macd": 53.56236552633925,
+        "macd_hist": 12.681549141768485,
+        "macd_prev": 51.168926965322726,
+        "macd_signal": 40.880816384570764,
+        "macd_signal_prev": 37.71042909912864,
+        "obv": -30865195.0,
+        "obv_ma20": -48537639.75,
+        "obv_ma5": -31496359.0,
+        "pct_of_high_20d": 0.9929089147137625,
+        "prev_close": 650.1099853515625,
+        "today_return": -0.007091085286237475,
+        "vol_ratio": 0.4877327963656681,
+        "volume": 1435795.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "CrowdStrike",
+      "reasons": [
+        {
+          "detail": "close=645.50 MA5=625.08",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=625.08 MA20=525.76",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.49 return=-0.71%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-31496359 OBV_MA20=-48537640",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.993",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=53.562 signal=40.881 (prev macd=51.169 signal=37.710)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "CRWD",
+      "tradingview_symbol": "NASDAQ:CRWD"
+    },
+    "CRWV": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 107.1500015258789,
+        "high_20d": 137.97999572753906,
+        "ma10": 108.14349899291992,
+        "ma20": 113.7052490234375,
+        "ma240": 107.19593728383383,
+        "ma5": 103.86199951171875,
+        "macd": -0.22272715744760774,
+        "macd_hist": -2.807105019146051,
+        "macd_prev": -0.03544734657741344,
+        "macd_signal": 2.584377861698443,
+        "macd_signal_prev": 3.2861541164849557,
+        "obv": 495444903.0,
+        "obv_ma20": 506378280.15,
+        "obv_ma5": 484564260.6,
+        "pct_of_high_20d": 0.7765618556581323,
+        "prev_close": 101.27999877929688,
+        "today_return": 0.05795816367823603,
+        "vol_ratio": 0.7508174061615297,
+        "volume": 22063603.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "CoreWeave",
+      "reasons": [
+        {
+          "detail": "close=107.15 MA5=103.86",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=103.86 MA20=113.71",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.75 return=5.80%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=484564261 OBV_MA20=506378280",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.777",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.223 signal=2.584 (prev macd=-0.035 signal=3.286)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "CRWV",
+      "tradingview_symbol": "NASDAQ:CRWV"
+    },
+    "CSCO": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 117.51000213623047,
+        "high_20d": 118.87999725341797,
+        "ma10": 109.63099975585938,
+        "ma20": 100.20450019836426,
+        "ma240": 75.95620822906494,
+        "ma5": 116.86599884033203,
+        "macd": 8.367276837185955,
+        "macd_hist": 1.7817753109371157,
+        "macd_prev": 8.128346203970978,
+        "macd_signal": 6.585501526248839,
+        "macd_signal_prev": 6.14005769851456,
+        "obv": 1596609912.0,
+        "obv_ma20": 1449173835.6,
+        "obv_ma5": 1611897262.4,
+        "pct_of_high_20d": 0.9884758146968403,
+        "prev_close": 114.3499984741211,
+        "today_return": 0.02763448801291002,
+        "vol_ratio": 0.41689702150844493,
+        "volume": 10570912.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Cisco",
+      "reasons": [
+        {
+          "detail": "close=117.51 MA5=116.87",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=116.87 MA20=100.20",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.42 return=2.76%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1611897262 OBV_MA20=1449173836",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.988",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=8.367 signal=6.586 (prev macd=8.128 signal=6.140)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "CSCO",
+      "tradingview_symbol": "NASDAQ:CSCO"
+    },
+    "DDOG": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 216.74000549316406,
+        "high_20d": 216.74000549316406,
+        "ma10": 207.1500015258789,
+        "ma20": 174.83750076293944,
+        "ma240": 140.68479226430256,
+        "ma5": 212.18600158691407,
+        "macd": 23.25054401421079,
+        "macd_hist": 3.159206862405693,
+        "macd_prev": 23.140855073872757,
+        "macd_signal": 20.091337151805096,
+        "macd_signal_prev": 19.30153543620367,
+        "obv": -30903216.0,
+        "obv_ma20": -58490540.8,
+        "obv_ma5": -33183643.2,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 212.24000549316406,
+        "today_return": 0.021202411814604583,
+        "vol_ratio": 0.2752161391529068,
+        "volume": 1827984.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Datadog",
+      "reasons": [
+        {
+          "detail": "close=216.74 MA5=212.19",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=212.19 MA20=174.84",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.28 return=2.12%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-33183643 OBV_MA20=-58490541",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=23.251 signal=20.091 (prev macd=23.141 signal=19.302)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "DDOG",
+      "tradingview_symbol": "NASDAQ:DDOG"
+    },
+    "DELL": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 249.6300048828125,
+        "high_20d": 260.4599914550781,
+        "ma10": 244.60399780273437,
+        "ma20": 230.29199905395507,
+        "ma240": 145.14620819091797,
+        "ma5": 241.56799926757813,
+        "macd": 14.134414136895458,
+        "macd_hist": -0.9611077444416907,
+        "macd_prev": 14.113131261798287,
+        "macd_signal": 15.095521881337149,
+        "macd_signal_prev": 15.335798817447571,
+        "obv": -141525866.0,
+        "obv_ma20": -144406573.3,
+        "obv_ma5": -143428873.2,
+        "pct_of_high_20d": 0.9584197691485623,
+        "prev_close": 242.92999267578125,
+        "today_return": 0.02758001238642116,
+        "vol_ratio": 0.44008530421818115,
+        "volume": 2471434.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Dell Technologies",
+      "reasons": [
+        {
+          "detail": "close=249.63 MA5=241.57",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=241.57 MA20=230.29",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.44 return=2.76%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-143428873 OBV_MA20=-144406573",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.958",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=14.134 signal=15.096 (prev macd=14.113 signal=15.336)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "DELL",
+      "tradingview_symbol": "NYSE:DELL"
+    },
+    "EXPE": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 215.15499877929688,
+        "high_20d": 252.7899932861328,
+        "ma10": 218.8104995727539,
+        "ma20": 233.61574935913086,
+        "ma240": 228.22360388437906,
+        "ma5": 216.09299926757814,
+        "macd": -8.039582533175349,
+        "macd_hist": -2.622918317487013,
+        "macd_prev": -7.833856308332997,
+        "macd_signal": -5.416664215688336,
+        "macd_signal_prev": -4.760934636316581,
+        "obv": 52421368.0,
+        "obv_ma20": 54051628.4,
+        "obv_ma5": 51423313.6,
+        "pct_of_high_20d": 0.8511215020120004,
+        "prev_close": 217.58999633789062,
+        "today_return": -0.011190760602856509,
+        "vol_ratio": 0.32369599574652375,
+        "volume": 553532.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Expedia",
+      "reasons": [
+        {
+          "detail": "close=215.15 MA5=216.09",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=216.09 MA20=233.62",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.32 return=-1.12%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=51423314 OBV_MA20=54051628",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.851",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-8.040 signal=-5.417 (prev macd=-7.834 signal=-4.761)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "EXPE",
+      "tradingview_symbol": "NASDAQ:EXPE"
+    },
+    "GE": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 299.125,
+        "high_20d": 305.8299865722656,
+        "ma10": 293.3714996337891,
+        "ma20": 291.3872497558594,
+        "ma240": 292.55593763987224,
+        "ma5": 290.41900024414065,
+        "macd": -0.7007272990325646,
+        "macd_hist": 0.8227090538469528,
+        "macd_prev": -1.374564145511897,
+        "macd_signal": -1.5234363528795174,
+        "macd_signal_prev": -1.7291136163412555,
+        "obv": 289895059.0,
+        "obv_ma20": 297762257.95,
+        "obv_ma5": 289119671.8,
+        "pct_of_high_20d": 0.9780760982681426,
+        "prev_close": 300.1700134277344,
+        "today_return": -0.003481405140377092,
+        "vol_ratio": 0.36928591198822375,
+        "volume": 2154941.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "GE Aerospace",
+      "reasons": [
+        {
+          "detail": "close=299.12 MA5=290.42",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=290.42 MA20=291.39",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=-0.35%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=289119672 OBV_MA20=297762258",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.978",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.701 signal=-1.523 (prev macd=-1.375 signal=-1.729)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "GE",
+      "tradingview_symbol": "NYSE:GE"
+    },
+    "GEV": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 1040.344970703125,
+        "high_20d": 1149.18994140625,
+        "ma10": 1047.645489501953,
+        "ma20": 1068.9037322998047,
+        "ma240": 707.6792694091797,
+        "ma5": 1027.6289916992187,
+        "macd": 10.18349580004633,
+        "macd_hist": -12.678204888957321,
+        "macd_prev": 11.620665984120478,
+        "macd_signal": 22.86170068900365,
+        "macd_signal_prev": 26.03125191124298,
+        "obv": 115511573.0,
+        "obv_ma20": 119091528.65,
+        "obv_ma5": 114753994.6,
+        "pct_of_high_20d": 0.9052854825983486,
+        "prev_close": 1024.52001953125,
+        "today_return": 0.015446209805754174,
+        "vol_ratio": 0.36635895786597733,
+        "volume": 929073.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "GE Vernova",
+      "reasons": [
+        {
+          "detail": "close=1040.34 MA5=1027.63",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=1027.63 MA20=1068.90",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=1.54%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=114753995 OBV_MA20=119091529",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.905",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.183 signal=22.862 (prev macd=11.621 signal=26.031)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "GEV",
+      "tradingview_symbol": "NYSE:GEV"
+    },
+    "GOOG": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 386.2799987792969,
+        "high_20d": 399.0400085449219,
+        "ma10": 390.63599853515626,
+        "ma20": 380.5759994506836,
+        "ma240": 276.32799962361656,
+        "ma5": 388.5019958496094,
+        "macd": 14.93342365354431,
+        "macd_hist": -2.6924495015697687,
+        "macd_prev": 16.065116782446637,
+        "macd_signal": 17.62587315511408,
+        "macd_signal_prev": 18.29898553050652,
+        "obv": 980637169.0,
+        "obv_ma20": 1004175068.45,
+        "obv_ma5": 988232393.8,
+        "pct_of_high_20d": 0.9680232320258971,
+        "prev_close": 384.8999938964844,
+        "today_return": 0.0035853595861152776,
+        "vol_ratio": 0.41268470477975144,
+        "volume": 7933869.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Alphabet C",
+      "reasons": [
+        {
+          "detail": "close=386.28 MA5=388.50",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=388.50 MA20=380.58",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.41 return=0.36%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=988232394 OBV_MA20=1004175068",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.968",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=14.933 signal=17.626 (prev macd=16.065 signal=18.299)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "GOOG",
+      "tradingview_symbol": "NASDAQ:GOOG"
+    },
+    "HOOD": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 75.82499694824219,
+        "high_20d": 84.70999908447266,
+        "ma10": 77.35649948120117,
+        "ma20": 77.54774971008301,
+        "ma240": 102.67158308029175,
+        "ma5": 76.00700073242187,
+        "macd": -0.5860999032131105,
+        "macd_hist": -0.39543062532096007,
+        "macd_prev": -0.511124796664518,
+        "macd_signal": -0.19066927789215038,
+        "macd_signal_prev": -0.09181162156191036,
+        "obv": 1342432893.0,
+        "obv_ma20": 1296409039.65,
+        "obv_ma5": 1328398598.6,
+        "pct_of_high_20d": 0.895112711223496,
+        "prev_close": 75.76000213623047,
+        "today_return": 0.0008579040414340433,
+        "vol_ratio": 0.3950217286158043,
+        "volume": 9894593.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Robinhood",
+      "reasons": [
+        {
+          "detail": "close=75.82 MA5=76.01",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=76.01 MA20=77.55",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.40 return=0.09%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1328398599 OBV_MA20=1296409040",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.895",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.586 signal=-0.191 (prev macd=-0.511 signal=-0.092)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "HOOD",
+      "tradingview_symbol": "NASDAQ:HOOD"
+    },
+    "IBM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 245.3800048828125,
+        "high_20d": 245.3800048828125,
+        "ma10": 224.03000030517578,
+        "ma20": 226.96049957275392,
+        "ma240": 271.43366654713947,
+        "ma5": 226.952001953125,
+        "macd": -3.294182296486383,
+        "macd_hist": 1.895305912709321,
+        "macd_prev": -5.387061277494183,
+        "macd_signal": -5.189488209195704,
+        "macd_signal_prev": -5.663314687373035,
+        "obv": 180386909.0,
+        "obv_ma20": 170770390.45,
+        "obv_ma5": 166730021.8,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 225.0,
+        "today_return": 0.09057779947916678,
+        "vol_ratio": 2.278094931502414,
+        "volume": 14906009.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "IBM",
+      "reasons": [
+        {
+          "detail": "close=245.38 MA5=226.95",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=226.95 MA20=226.96",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=2.28 return=9.06%",
+          "passed": true,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=166730022 OBV_MA20=170770390",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-3.294 signal=-5.189 (prev macd=-5.387 signal=-5.663)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "IBM",
+      "tradingview_symbol": "NYSE:IBM"
+    },
+    "INTC": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 117.95999908447266,
+        "high_20d": 129.44000244140625,
+        "ma10": 117.5849998474121,
+        "ma20": 107.16550025939941,
+        "ma240": 42.53495837052663,
+        "ma5": 112.93199920654297,
+        "macd": 12.314923782061001,
+        "macd_hist": -1.3387903618643087,
+        "macd_prev": 12.693848338074204,
+        "macd_signal": 13.65371414392531,
+        "macd_signal_prev": 13.988411734391384,
+        "obv": 3499148554.0,
+        "obv_ma20": 3480314357.7,
+        "obv_ma5": 3427099830.8,
+        "pct_of_high_20d": 0.9113102353182491,
+        "prev_close": 118.95999908447266,
+        "today_return": -0.008406187018292655,
+        "vol_ratio": 0.44194495498833775,
+        "volume": 71596646.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Intel",
+      "reasons": [
+        {
+          "detail": "close=117.96 MA5=112.93",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=112.93 MA20=107.17",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.44 return=-0.84%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=3427099831 OBV_MA20=3480314358",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.911",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=12.315 signal=13.654 (prev macd=12.694 signal=13.988)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "INTC",
+      "tradingview_symbol": "NASDAQ:INTC"
+    },
+    "ISRG": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 439.7349853515625,
+        "high_20d": 482.2200012207031,
+        "ma10": 435.37049560546876,
+        "ma20": 447.586247253418,
+        "ma240": 499.21572926839195,
+        "ma5": 438.27699584960936,
+        "macd": -7.409499009592707,
+        "macd_hist": 0.7256181326883215,
+        "macd_prev": -7.854506017046788,
+        "macd_signal": -8.135117142281029,
+        "macd_signal_prev": -8.31652167545311,
+        "obv": 18627209.0,
+        "obv_ma20": 17702590.45,
+        "obv_ma5": 16712601.8,
+        "pct_of_high_20d": 0.9118970267479718,
+        "prev_close": 449.0299987792969,
+        "today_return": -0.020700205894936152,
+        "vol_ratio": 0.3888083438581698,
+        "volume": 839091.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Intuitive Surgical",
+      "reasons": [
+        {
+          "detail": "close=439.73 MA5=438.28",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=438.28 MA20=447.59",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.39 return=-2.07%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=16712602 OBV_MA20=17702590",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.912",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-7.409 signal=-8.135 (prev macd=-7.855 signal=-8.317)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "ISRG",
+      "tradingview_symbol": "NASDAQ:ISRG"
+    },
+    "JNJ": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 230.02000427246094,
+        "high_20d": 230.8000030517578,
+        "ma10": 227.32000122070312,
+        "ma20": 226.75500030517577,
+        "ma240": 201.88666667938233,
+        "ma5": 228.99400329589844,
+        "macd": -1.036901743650958,
+        "macd_hist": 1.0352207737121808,
+        "macd_prev": -1.3100006954473997,
+        "macd_signal": -2.072122517363139,
+        "macd_signal_prev": -2.3309277107911837,
+        "obv": 446170039.0,
+        "obv_ma20": 436607126.95,
+        "obv_ma5": 443662327.8,
+        "pct_of_high_20d": 0.9966204559402803,
+        "prev_close": 229.32000732421875,
+        "today_return": 0.0030524896471528784,
+        "vol_ratio": 0.17254881742248887,
+        "volume": 1274439.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Johnson & Johnson",
+      "reasons": [
+        {
+          "detail": "close=230.02 MA5=228.99",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=228.99 MA20=226.76",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.17 return=0.31%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=443662328 OBV_MA20=436607127",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.997",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-1.037 signal=-2.072 (prev macd=-1.310 signal=-2.331)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "JNJ",
+      "tradingview_symbol": "NYSE:JNJ"
+    },
+    "JPM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 301.95001220703125,
+        "high_20d": 314.8999938964844,
+        "ma10": 300.531005859375,
+        "ma20": 305.4920028686523,
+        "ma240": 302.1793337504069,
+        "ma5": 299.6340087890625,
+        "macd": -1.552090473624844,
+        "macd_hist": -0.959310165619661,
+        "macd_prev": -1.6519182809077506,
+        "macd_signal": -0.592780308005183,
+        "macd_signal_prev": -0.35295276660026775,
+        "obv": 371057979.0,
+        "obv_ma20": 388985373.95,
+        "obv_ma5": 369651295.8,
+        "pct_of_high_20d": 0.9588758909480636,
+        "prev_close": 301.9800109863281,
+        "today_return": -9.934028149372054e-05,
+        "vol_ratio": 0.3994635766948438,
+        "volume": 3085521.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "JPMorgan Chase",
+      "reasons": [
+        {
+          "detail": "close=301.95 MA5=299.63",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=299.63 MA20=305.49",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.40 return=-0.01%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=369651296 OBV_MA20=388985374",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.959",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-1.552 signal=-0.593 (prev macd=-1.652 signal=-0.353)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "JPM",
+      "tradingview_symbol": "NYSE:JPM"
+    },
+    "KO": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 81.16500091552734,
+        "high_20d": 81.91999816894531,
+        "ma10": 80.4474998474121,
+        "ma20": 79.27175064086914,
+        "ma240": 72.24939584732056,
+        "ma5": 81.33099975585938,
+        "macd": 1.226682010510217,
+        "macd_hist": 0.22582541312890725,
+        "macd_prev": 1.237654986023685,
+        "macd_signal": 1.0008565973813097,
+        "macd_signal_prev": 0.9444002440990829,
+        "obv": 79597740.0,
+        "obv_ma20": 38327977.0,
+        "obv_ma5": 84981908.0,
+        "pct_of_high_20d": 0.9907837247278629,
+        "prev_close": 81.55000305175781,
+        "today_return": -0.004721056061593454,
+        "vol_ratio": 0.364909929499773,
+        "volume": 5375960.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Coca-Cola",
+      "reasons": [
+        {
+          "detail": "close=81.17 MA5=81.33",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=81.33 MA20=79.27",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.36 return=-0.47%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=84981908 OBV_MA20=38327977",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.991",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=1.227 signal=1.001 (prev macd=1.238 signal=0.944)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "KO",
+      "tradingview_symbol": "NYSE:KO"
+    },
+    "LITE": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 964.7100219726562,
+        "high_20d": 1053.0899658203125,
+        "ma10": 955.9989990234375,
+        "ma20": 930.5425018310547,
+        "ma240": 381.30756244659426,
+        "ma5": 915.710009765625,
+        "macd": 26.108954479429485,
+        "macd_hist": -12.07897789141596,
+        "macd_prev": 25.186858371930725,
+        "macd_signal": 38.187932370845445,
+        "macd_signal_prev": 41.20767684369944,
+        "obv": 285298909.0,
+        "obv_ma20": 291298105.45,
+        "obv_ma5": 284413741.8,
+        "pct_of_high_20d": 0.9160755996959746,
+        "prev_close": 868.0700073242188,
+        "today_return": 0.11132744344701573,
+        "vol_ratio": 0.6823893251399615,
+        "volume": 4262709.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Lumentum",
+      "reasons": [
+        {
+          "detail": "close=964.71 MA5=915.71",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=915.71 MA20=930.54",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.68 return=11.13%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=284413742 OBV_MA20=291298105",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.916",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=26.109 signal=38.188 (prev macd=25.187 signal=41.208)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "LITE",
+      "tradingview_symbol": "NASDAQ:LITE"
+    },
+    "LLY": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 1042.1199951171875,
+        "high_20d": 1042.1199951171875,
+        "ma10": 1000.3169982910156,
+        "ma20": 964.8675018310547,
+        "ma240": 902.775961558024,
+        "ma5": 1015.0819946289063,
+        "macd": 24.734366685757436,
+        "macd_hist": 7.391704734748544,
+        "macd_prev": 22.205886140230064,
+        "macd_signal": 17.342661951008893,
+        "macd_signal_prev": 15.494735767321753,
+        "obv": 114504863.0,
+        "obv_ma20": 112020168.15,
+        "obv_ma5": 114014752.6,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 1018.8699951171875,
+        "today_return": 0.022819398069844787,
+        "vol_ratio": 0.4266939175727886,
+        "volume": 1466463.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Eli Lilly",
+      "reasons": [
+        {
+          "detail": "close=1042.12 MA5=1015.08",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=1015.08 MA20=964.87",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.43 return=2.28%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=114014753 OBV_MA20=112020168",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=24.734 signal=17.343 (prev macd=22.206 signal=15.495)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "LLY",
+      "tradingview_symbol": "NYSE:LLY"
+    },
+    "LMT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 527.510009765625,
+        "high_20d": 528.3099975585938,
+        "ma10": 520.1160034179687,
+        "ma20": 516.7274993896484,
+        "ma240": 517.734251276652,
+        "ma5": 524.210009765625,
+        "macd": -13.82896978439453,
+        "macd_hist": 5.358091457189854,
+        "macd_prev": -15.36631524044219,
+        "macd_signal": -19.187061241584384,
+        "macd_signal_prev": -20.52658410588185,
+        "obv": 14112853.0,
+        "obv_ma20": 15437347.65,
+        "obv_ma5": 14536710.6,
+        "pct_of_high_20d": 0.9984857606392731,
+        "prev_close": 522.5900268554688,
+        "today_return": 0.009414613095012125,
+        "vol_ratio": 0.310943477648365,
+        "volume": 441553.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Lockheed Martin",
+      "reasons": [
+        {
+          "detail": "close=527.51 MA5=524.21",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=524.21 MA20=516.73",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.31 return=0.94%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=14536711 OBV_MA20=15437348",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.998",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-13.829 signal=-19.187 (prev macd=-15.366 signal=-20.527)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "LMT",
+      "tradingview_symbol": "NYSE:LMT"
+    },
+    "LNG": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 239.8699951171875,
+        "high_20d": 274.95001220703125,
+        "ma10": 242.5460006713867,
+        "ma20": 253.73700180053712,
+        "ma240": 230.96658356984457,
+        "ma5": 243.9760009765625,
+        "macd": -5.788890720784451,
+        "macd_hist": -0.9432509358848131,
+        "macd_prev": -5.555302456712809,
+        "macd_signal": -4.845639784899638,
+        "macd_signal_prev": -4.609827050928434,
+        "obv": 59102614.0,
+        "obv_ma20": 60707360.7,
+        "obv_ma5": 61368702.8,
+        "pct_of_high_20d": 0.8724131095385103,
+        "prev_close": 243.66000366210938,
+        "today_return": -0.015554495969628213,
+        "vol_ratio": 0.36206751813194804,
+        "volume": 829386.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Cheniere Energy",
+      "reasons": [
+        {
+          "detail": "close=239.87 MA5=243.98",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=243.98 MA20=253.74",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.36 return=-1.56%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=61368703 OBV_MA20=60707361",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.872",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-5.789 signal=-4.846 (prev macd=-5.555 signal=-4.610)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "LNG",
+      "tradingview_symbol": "NYSE:LNG"
+    },
+    "LRCX": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 299.9049987792969,
+        "high_20d": 299.9049987792969,
+        "ma10": 290.19849548339846,
+        "ma20": 278.09274673461914,
+        "ma240": 172.332520198822,
+        "ma5": 285.6109985351562,
+        "macd": 10.541992401628875,
+        "macd_hist": -0.4459982375966689,
+        "macd_prev": 9.937799440919605,
+        "macd_signal": 10.987990639225544,
+        "macd_signal_prev": 11.09949019862471,
+        "obv": 467493231.0,
+        "obv_ma20": 458435951.55,
+        "obv_ma5": 464226326.2,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 292.0899963378906,
+        "today_return": 0.026755460780539142,
+        "vol_ratio": 0.4296091068738974,
+        "volume": 3961031.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Lam Research",
+      "reasons": [
+        {
+          "detail": "close=299.90 MA5=285.61",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=285.61 MA20=278.09",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.43 return=2.68%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=464226326 OBV_MA20=458435952",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.542 signal=10.988 (prev macd=9.938 signal=11.099)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "LRCX",
+      "tradingview_symbol": "NASDAQ:LRCX"
+    },
+    "MA": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 500.1099853515625,
+        "high_20d": 525.22998046875,
+        "ma10": 497.1520050048828,
+        "ma20": 500.4000015258789,
+        "ma240": 546.7314151763916,
+        "ma5": 499.56800537109376,
+        "macd": -2.172900647313668,
+        "macd_hist": 0.3860481839815959,
+        "macd_prev": -2.467295259105299,
+        "macd_signal": -2.5589488312952637,
+        "macd_signal_prev": -2.655460877290662,
+        "obv": 44145717.0,
+        "obv_ma20": 45912260.85,
+        "obv_ma5": 45998023.4,
+        "pct_of_high_20d": 0.9521733411052264,
+        "prev_close": 498.0400085449219,
+        "today_return": 0.004156246026676191,
+        "vol_ratio": 0.2803927440091764,
+        "volume": 1066017.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Mastercard",
+      "reasons": [
+        {
+          "detail": "close=500.11 MA5=499.57",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=499.57 MA20=500.40",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.28 return=0.42%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=45998023 OBV_MA20=45912261",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.952",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-2.173 signal=-2.559 (prev macd=-2.467 signal=-2.655)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "MA",
+      "tradingview_symbol": "NYSE:MA"
+    },
+    "MAR": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 368.07000732421875,
+        "high_20d": 369.75,
+        "ma10": 356.9250030517578,
+        "ma20": 356.9440002441406,
+        "ma240": 301.4385844548543,
+        "ma5": 361.7720031738281,
+        "macd": 2.9539866074613315,
+        "macd_hist": 0.8097047734519585,
+        "macd_prev": 2.289167957406221,
+        "macd_signal": 2.144281834009373,
+        "macd_signal_prev": 1.9418556406463832,
+        "obv": 9010797.0,
+        "obv_ma20": 7906024.85,
+        "obv_ma5": 8623899.4,
+        "pct_of_high_20d": 0.9954564092609026,
+        "prev_close": 369.75,
+        "today_return": -0.004543590739097381,
+        "vol_ratio": 0.26133963157218737,
+        "volume": 351903.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Marriott",
+      "reasons": [
+        {
+          "detail": "close=368.07 MA5=361.77",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=361.77 MA20=356.94",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.26 return=-0.45%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=8623899 OBV_MA20=7906025",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.995",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=2.954 signal=2.144 (prev macd=2.289 signal=1.942)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "MAR",
+      "tradingview_symbol": "NASDAQ:MAR"
+    },
+    "MCD": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 284.05999755859375,
+        "high_20d": 299.3599853515625,
+        "ma10": 277.98500061035156,
+        "ma20": 283.4595016479492,
+        "ma240": 306.2178335825602,
+        "ma5": 280.797998046875,
+        "macd": -5.991625550588424,
+        "macd_hist": 1.2379962504517454,
+        "macd_prev": -6.734015493684467,
+        "macd_signal": -7.229621801040169,
+        "macd_signal_prev": -7.539120863653104,
+        "obv": 42106109.0,
+        "obv_ma20": 50565705.45,
+        "obv_ma5": 44147461.8,
+        "pct_of_high_20d": 0.9488910056733175,
+        "prev_close": 280.2699890136719,
+        "today_return": 0.013522705582069916,
+        "vol_ratio": 0.3660943039203603,
+        "volume": 1540309.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "McDonald's",
+      "reasons": [
+        {
+          "detail": "close=284.06 MA5=280.80",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=280.80 MA20=283.46",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=1.35%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=44147462 OBV_MA20=50565705",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.949",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-5.992 signal=-7.230 (prev macd=-6.734 signal=-7.539)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "MCD",
+      "tradingview_symbol": "NYSE:MCD"
+    },
+    "MDB": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 317.9700012207031,
+        "high_20d": 334.67999267578125,
+        "ma10": 313.2880004882812,
+        "ma20": 288.5840019226074,
+        "ma240": 304.29656270345055,
+        "ma5": 324.7900024414063,
+        "macd": 17.19788366478781,
+        "macd_hist": 4.3416634905927385,
+        "macd_prev": 17.57828152157913,
+        "macd_signal": 12.856220174195071,
+        "macd_signal_prev": 11.770804301546887,
+        "obv": 10550180.0,
+        "obv_ma20": 4556604.0,
+        "obv_ma5": 11002756.0,
+        "pct_of_high_20d": 0.9500717347294022,
+        "prev_close": 329.1400146484375,
+        "today_return": -0.03393696582187167,
+        "vol_ratio": 0.6907301412448301,
+        "volume": 1113620.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "MongoDB",
+      "reasons": [
+        {
+          "detail": "close=317.97 MA5=324.79",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=324.79 MA20=288.58",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.69 return=-3.39%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=11002756 OBV_MA20=4556604",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.950",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=17.198 signal=12.856 (prev macd=17.578 signal=11.771)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "MDB",
+      "tradingview_symbol": "NASDAQ:MDB"
+    },
+    "META": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 606.4349975585938,
+        "high_20d": 678.6199951171875,
+        "ma10": 608.6094970703125,
+        "ma20": 622.2962493896484,
+        "ma240": 677.7142700195312,
+        "ma5": 607.9089965820312,
+        "macd": -7.546287642638276,
+        "macd_hist": -1.7177092670118936,
+        "macd_prev": -7.543527985356491,
+        "macd_signal": -5.828578375626383,
+        "macd_signal_prev": -5.399151058873409,
+        "obv": 120183434.0,
+        "obv_ma20": 132822146.7,
+        "obv_ma5": 115192206.8,
+        "pct_of_high_20d": 0.8936297219681414,
+        "prev_close": 605.0599975585938,
+        "today_return": 0.002272501909807545,
+        "vol_ratio": 0.4441727147877479,
+        "volume": 7079834.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Meta Platforms",
+      "reasons": [
+        {
+          "detail": "close=606.43 MA5=607.91",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=607.91 MA20=622.30",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.44 return=0.23%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=115192207 OBV_MA20=132822147",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.894",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-7.546 signal=-5.829 (prev macd=-7.544 signal=-5.399)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "META",
+      "tradingview_symbol": "NASDAQ:META"
+    },
+    "MMM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 151.22500610351562,
+        "high_20d": 152.52999877929688,
+        "ma10": 147.11750030517578,
+        "ma20": 145.82625045776368,
+        "ma240": 156.4232296625773,
+        "ma5": 149.8230010986328,
+        "macd": 0.49508649921176584,
+        "macd_hist": 0.9816532802555016,
+        "macd_prev": 0.18521897096516682,
+        "macd_signal": -0.48656678104373574,
+        "macd_signal_prev": -0.7319801011076111,
+        "obv": 77982235.0,
+        "obv_ma20": 67604306.75,
+        "obv_ma5": 75695087.0,
+        "pct_of_high_20d": 0.991444353987903,
+        "prev_close": 149.77999877929688,
+        "today_return": 0.009647531953501876,
+        "vol_ratio": 0.22244170975741828,
+        "volume": 888635.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "3M",
+      "reasons": [
+        {
+          "detail": "close=151.23 MA5=149.82",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=149.82 MA20=145.83",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.22 return=0.96%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=75695087 OBV_MA20=67604307",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.991",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.495 signal=-0.487 (prev macd=0.185 signal=-0.732)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "MMM",
+      "tradingview_symbol": "NYSE:MMM"
+    },
+    "MRVL": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 192.72000122070312,
+        "high_20d": 192.72000122070312,
+        "ma10": 176.76100006103516,
+        "ma20": 169.72999954223633,
+        "ma240": 91.7051666577657,
+        "ma5": 180.3220001220703,
+        "macd": 13.294501319543627,
+        "macd_hist": -0.08722234300157439,
+        "macd_prev": 12.643655095887482,
+        "macd_signal": 13.381723662545202,
+        "macd_signal_prev": 13.403529248295595,
+        "obv": 716053985.0,
+        "obv_ma20": 637757604.25,
+        "obv_ma5": 682137477.0,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 186.8000030517578,
+        "today_return": 0.0316916385023025,
+        "vol_ratio": 0.573206822131472,
+        "volume": 13751985.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Marvell Technology",
+      "reasons": [
+        {
+          "detail": "close=192.72 MA5=180.32",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=180.32 MA20=169.73",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.57 return=3.17%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=682137477 OBV_MA20=637757604",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=13.295 signal=13.382 (prev macd=12.644 signal=13.404)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "MRVL",
+      "tradingview_symbol": "NASDAQ:MRVL"
+    },
+    "MSFT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 417.4140930175781,
+        "high_20d": 429.25,
+        "ma10": 415.15440979003904,
+        "ma20": 416.8322036743164,
+        "ma240": 467.312516784668,
+        "ma5": 420.2708251953125,
+        "macd": 3.7810232647768203,
+        "macd_hist": -0.42404416141812273,
+        "macd_prev": 3.9871797820247252,
+        "macd_signal": 4.205067426194943,
+        "macd_signal_prev": 4.311078466549473,
+        "obv": 93480201.0,
+        "obv_ma20": 104002140.05,
+        "obv_ma5": 95912240.2,
+        "pct_of_high_20d": 0.9724265416833503,
+        "prev_close": 421.05999755859375,
+        "today_return": -0.008658871804862578,
+        "vol_ratio": 0.46182887479410034,
+        "volume": 15526599.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Microsoft",
+      "reasons": [
+        {
+          "detail": "close=417.41 MA5=420.27",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=420.27 MA20=416.83",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.46 return=-0.87%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=95912240 OBV_MA20=104002140",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.972",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=3.781 signal=4.205 (prev macd=3.987 signal=4.311)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "MSFT",
+      "tradingview_symbol": "NASDAQ:MSFT"
+    },
+    "MU": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 752.2249755859375,
+        "high_20d": 803.6300048828125,
+        "ma10": 747.7514953613281,
+        "ma20": 655.5392517089844,
+        "ma240": 285.64506273269654,
+        "ma5": 717.8309814453125,
+        "macd": 72.24284032607102,
+        "macd_hist": -2.1450973638000335,
+        "macd_prev": 73.33379666811425,
+        "macd_signal": 74.38793768987105,
+        "macd_signal_prev": 74.92421203082105,
+        "obv": 1039237641.0,
+        "obv_ma20": 925083822.05,
+        "obv_ma5": 975609188.2,
+        "pct_of_high_20d": 0.9360339596772883,
+        "prev_close": 731.989990234375,
+        "today_return": 0.027643800627770165,
+        "vol_ratio": 0.5453057198673749,
+        "volume": 27294341.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Micron Technology",
+      "reasons": [
+        {
+          "detail": "close=752.22 MA5=717.83",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=717.83 MA20=655.54",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.55 return=2.76%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=975609188 OBV_MA20=925083822",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.936",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=72.243 signal=74.388 (prev macd=73.334 signal=74.924)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "MU",
+      "tradingview_symbol": "NASDAQ:MU"
+    },
+    "NET": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 211.10000610351562,
+        "high_20d": 256.7900085449219,
+        "ma10": 199.61399993896484,
+        "ma20": 211.6245002746582,
+        "ma240": 201.6803751627604,
+        "ma5": 205.4540008544922,
+        "macd": -0.3378689791155125,
+        "macd_hist": -0.8245571991980026,
+        "macd_prev": -0.7658245336361347,
+        "macd_signal": 0.48668822008249013,
+        "macd_signal_prev": 0.6928275198819908,
+        "obv": 187929319.0,
+        "obv_ma20": 181600525.95,
+        "obv_ma5": 182706363.8,
+        "pct_of_high_20d": 0.82207250702508,
+        "prev_close": 210.1300048828125,
+        "today_return": 0.004616195679641777,
+        "vol_ratio": 0.3459620911376443,
+        "volume": 1648719.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Cloudflare",
+      "reasons": [
+        {
+          "detail": "close=211.10 MA5=205.45",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=205.45 MA20=211.62",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.35 return=0.46%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=182706364 OBV_MA20=181600526",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.822",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.338 signal=0.487 (prev macd=-0.766 signal=0.693)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "NET",
+      "tradingview_symbol": "NYSE:NET"
+    },
+    "NFLX": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 90.19999694824219,
+        "high_20d": 93.61000061035156,
+        "ma10": 87.93899917602539,
+        "ma20": 89.43449935913085,
+        "ma240": 105.59257084528605,
+        "ma5": 88.85799865722656,
+        "macd": -1.637002445797549,
+        "macd_hist": 0.3023629761902269,
+        "macd_prev": -1.889369391836368,
+        "macd_signal": -1.9393654219877758,
+        "macd_signal_prev": -2.0149561660353323,
+        "obv": 539925662.0,
+        "obv_ma20": 602896928.1,
+        "obv_ma5": 548903492.4,
+        "pct_of_high_20d": 0.963572229036688,
+        "prev_close": 88.08999633789062,
+        "today_return": 0.023952783494940233,
+        "vol_ratio": 0.44106465552718416,
+        "volume": 14663262.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Netflix",
+      "reasons": [
+        {
+          "detail": "close=90.20 MA5=88.86",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=88.86 MA20=89.43",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.44 return=2.40%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=548903492 OBV_MA20=602896928",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.964",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-1.637 signal=-1.939 (prev macd=-1.889 signal=-2.015)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "NFLX",
+      "tradingview_symbol": "NASDAQ:NFLX"
+    },
+    "NOW": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 99.90059661865234,
+        "high_20d": 103.41999816894531,
+        "ma10": 95.27406005859375,
+        "ma20": 92.9415298461914,
+        "ma240": 152.1164855003357,
+        "ma5": 100.70411987304688,
+        "macd": 0.821182404579659,
+        "macd_hist": 1.8341015056257384,
+        "macd_prev": 0.5391958173942015,
+        "macd_signal": -1.0129191010460794,
+        "macd_signal_prev": -1.471444477452514,
+        "obv": -27931328.0,
+        "obv_ma20": -68357436.4,
+        "obv_ma5": -20605405.6,
+        "pct_of_high_20d": 0.9659698161612444,
+        "prev_close": 103.30000305175781,
+        "today_return": -0.032908096153706934,
+        "vol_ratio": 0.59622021021767,
+        "volume": 16582128.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "ServiceNow",
+      "reasons": [
+        {
+          "detail": "close=99.90 MA5=100.70",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=100.70 MA20=92.94",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.60 return=-3.29%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-20605406 OBV_MA20=-68357436",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.966",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.821 signal=-1.013 (prev macd=0.539 signal=-1.471)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "NOW",
+      "tradingview_symbol": "NYSE:NOW"
     },
     "NVDA": {
       "analyst": {
@@ -107,43 +4257,67 @@
         "rating_score": 1.7464788732394365,
         "target_mean": 278.0251
       },
+      "chip": null,
       "indicators": {
-        "close": 223.47000122070312,
+        "close": 221.5050048828125,
         "high_20d": 235.74000549316406,
-        "ma20": 213.39900131225585,
-        "ma5": 225.49200439453125,
-        "pct_of_high_20d": 0.9479511156929334,
-        "vol_ratio": 1.126576650476352,
-        "volume": 180498100.0
+        "ma10": 223.02150268554686,
+        "ma20": 214.49225158691405,
+        "ma240": 182.55677127838135,
+        "ma5": 222.64500427246094,
+        "macd": 7.9486011123251785,
+        "macd_hist": -0.07762645790490019,
+        "macd_prev": 8.37822485061514,
+        "macd_signal": 8.026227570230079,
+        "macd_signal_prev": 8.045634184706303,
+        "obv": 4790368929.0,
+        "obv_ma20": 4611069166.45,
+        "obv_ma5": 4878489985.8,
+        "pct_of_high_20d": 0.9396156771076162,
+        "prev_close": 223.47000122070312,
+        "today_return": -0.008793110158664907,
+        "vol_ratio": 0.8576552005836839,
+        "volume": 138480571.0
       },
       "market": "us",
-      "max_score": 6,
+      "max_score": 8,
+      "mode": "intraday",
       "name": "NVIDIA",
       "reasons": [
         {
-          "detail": "close=223.47 MA5=225.49",
+          "detail": "close=221.51 MA5=222.65",
           "passed": false,
           "rule": "close > MA5"
         },
         {
-          "detail": "MA5=225.49 MA20=213.40",
+          "detail": "MA5=222.65 MA20=214.49",
           "passed": true,
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=1.13",
+          "detail": "vol_ratio=0.86 return=-0.88%",
           "passed": false,
-          "rule": "volume > 1.5x MA20"
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "close/high20d=0.948",
+          "detail": "OBV_MA5=4878489986 OBV_MA20=4611069166",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.940",
           "passed": false,
           "rule": "within 2% of 20d high"
         },
         {
-          "detail": "target 278.03 -> 278.03",
+          "detail": "macd=7.949 signal=8.026 (prev macd=8.378 signal=8.046)",
           "passed": false,
-          "rule": "analyst target raised"
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> 278.03 (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
           "detail": "rating=Buy",
@@ -151,10 +4325,1885 @@
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "NVDA",
       "tradingview_symbol": "NASDAQ:NVDA"
+    },
+    "NXPI": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 300.5849914550781,
+        "high_20d": 310.1499938964844,
+        "ma10": 297.5744995117187,
+        "ma20": 287.1002487182617,
+        "ma240": 224.84572931925456,
+        "ma5": 297.6389953613281,
+        "macd": 18.387304440145158,
+        "macd_hist": -1.5918757284094696,
+        "macd_prev": 19.13507673662434,
+        "macd_signal": 19.979180168554628,
+        "macd_signal_prev": 20.377149100656993,
+        "obv": 8870098.0,
+        "obv_ma20": -3514795.1,
+        "obv_ma5": 5289519.6,
+        "pct_of_high_20d": 0.9691600753518033,
+        "prev_close": 310.1499938964844,
+        "today_return": -0.030839924648196737,
+        "vol_ratio": 0.24481258211218865,
+        "volume": 1034802.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "NXP Semiconductors",
+      "reasons": [
+        {
+          "detail": "close=300.58 MA5=297.64",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=297.64 MA20=287.10",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.24 return=-3.08%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=5289520 OBV_MA20=-3514795",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.969",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=18.387 signal=19.979 (prev macd=19.135 signal=20.377)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "NXPI",
+      "tradingview_symbol": "NASDAQ:NXPI"
+    },
+    "OKLO": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 64.28500366210938,
+        "high_20d": 79.62000274658203,
+        "ma10": 66.46950073242188,
+        "ma20": 68.85125045776367,
+        "ma240": 82.1967707157135,
+        "ma5": 60.711001586914065,
+        "macd": -0.427574322493669,
+        "macd_hist": -1.6886110222322905,
+        "macd_prev": -0.35439481360178604,
+        "macd_signal": 1.2610366997386215,
+        "macd_signal_prev": 1.6831894552966942,
+        "obv": 856334509.0,
+        "obv_ma20": 888841790.45,
+        "obv_ma5": 850874541.8,
+        "pct_of_high_20d": 0.8073976569269716,
+        "prev_close": 62.58000183105469,
+        "today_return": 0.027245154700660246,
+        "vol_ratio": 0.4226892654620299,
+        "volume": 5985109.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Oklo",
+      "reasons": [
+        {
+          "detail": "close=64.29 MA5=60.71",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=60.71 MA20=68.85",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.42 return=2.72%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=850874542 OBV_MA20=888841790",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.807",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.428 signal=1.261 (prev macd=-0.354 signal=1.683)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "OKLO",
+      "tradingview_symbol": "NYSE:OKLO"
+    },
+    "OKTA": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 89.54499816894531,
+        "high_20d": 89.54499816894531,
+        "ma10": 83.79949951171875,
+        "ma20": 80.26074981689453,
+        "ma240": 87.04904165267945,
+        "ma5": 86.81899871826172,
+        "macd": 3.1051697700884944,
+        "macd_hist": 1.1110395951525809,
+        "macd_prev": 2.7545059966164587,
+        "macd_signal": 1.9941301749359135,
+        "macd_signal_prev": 1.716370276147768,
+        "obv": 62524913.0,
+        "obv_ma20": 54448580.65,
+        "obv_ma5": 60028762.6,
+        "pct_of_high_20d": 1.0,
+        "prev_close": 89.04000091552734,
+        "today_return": 0.0056715773610229725,
+        "vol_ratio": 0.5529324210053772,
+        "volume": 1475213.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Okta",
+      "reasons": [
+        {
+          "detail": "close=89.54 MA5=86.82",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=86.82 MA20=80.26",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.55 return=0.57%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=60028763 OBV_MA20=54448581",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=3.105 signal=1.994 (prev macd=2.755 signal=1.716)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "OKTA",
+      "tradingview_symbol": "NASDAQ:OKTA"
+    },
+    "ON": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 108.33999633789062,
+        "high_20d": 118.37000274658203,
+        "ma10": 109.5739990234375,
+        "ma20": 104.9634994506836,
+        "ma240": 60.69995829264323,
+        "ma5": 109.4219985961914,
+        "macd": 7.7203833994976065,
+        "macd_hist": -1.0386225677171783,
+        "macd_prev": 8.244965677971479,
+        "macd_signal": 8.759005967214785,
+        "macd_signal_prev": 9.018661609144079,
+        "obv": 127262129.0,
+        "obv_ma20": 114213706.45,
+        "obv_ma5": 130355925.8,
+        "pct_of_high_20d": 0.915265640145632,
+        "prev_close": 110.20999908447266,
+        "today_return": -0.016967632357466345,
+        "vol_ratio": 0.17510706440521825,
+        "volume": 2263171.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "onsemi",
+      "reasons": [
+        {
+          "detail": "close=108.34 MA5=109.42",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=109.42 MA20=104.96",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.18 return=-1.70%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=130355926 OBV_MA20=114213706",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.915",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=7.720 signal=8.759 (prev macd=8.245 signal=9.019)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "ON",
+      "tradingview_symbol": "NASDAQ:ON"
+    },
+    "ONDS": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 9.074999809265137,
+        "high_20d": 11.210000038146973,
+        "ma10": 9.54699993133545,
+        "ma20": 9.729499912261963,
+        "ma240": 7.582645833492279,
+        "ma5": 9.57599983215332,
+        "macd": -0.14318146389691222,
+        "macd_hist": -0.04321714332510715,
+        "macd_prev": -0.10427241091566586,
+        "macd_signal": -0.09996432057180507,
+        "macd_signal_prev": -0.08916003474052828,
+        "obv": 1446431549.0,
+        "obv_ma20": 1521194272.45,
+        "obv_ma5": 1485247689.8,
+        "pct_of_high_20d": 0.8095450292937952,
+        "prev_close": 9.359999656677246,
+        "today_return": -0.03044870276344469,
+        "vol_ratio": 0.5299835329551015,
+        "volume": 33145251.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Ondas Holdings",
+      "reasons": [
+        {
+          "detail": "close=9.07 MA5=9.58",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=9.58 MA20=9.73",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.53 return=-3.04%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1485247690 OBV_MA20=1521194272",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.810",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.143 signal=-0.100 (prev macd=-0.104 signal=-0.089)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "ONDS",
+      "tradingview_symbol": "NASDAQ:ONDS"
+    },
+    "ORCL": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 191.1199951171875,
+        "high_20d": 195.9499969482422,
+        "ma10": 190.22899932861327,
+        "ma20": 183.29000015258788,
+        "ma240": 211.40829099019368,
+        "ma5": 188.06000061035155,
+        "macd": 6.508326440344661,
+        "macd_hist": -0.9459642448780148,
+        "macd_prev": 6.645103714602271,
+        "macd_signal": 7.454290685222675,
+        "macd_signal_prev": 7.690781746442179,
+        "obv": 87220971.0,
+        "obv_ma20": 54322488.55,
+        "obv_ma5": 82096354.2,
+        "pct_of_high_20d": 0.9753508450815109,
+        "prev_close": 188.16000366210938,
+        "today_return": 0.015731246797770826,
+        "vol_ratio": 0.3219999295689472,
+        "volume": 7191971.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Oracle",
+      "reasons": [
+        {
+          "detail": "close=191.12 MA5=188.06",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=188.06 MA20=183.29",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.32 return=1.57%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=82096354 OBV_MA20=54322489",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.975",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=6.508 signal=7.454 (prev macd=6.645 signal=7.691)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "ORCL",
+      "tradingview_symbol": "NYSE:ORCL"
+    },
+    "PLTR": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 137.4550018310547,
+        "high_20d": 146.02999877929688,
+        "ma10": 135.34649963378905,
+        "ma20": 137.7382499694824,
+        "ma240": 159.94050013224285,
+        "ma5": 135.7989990234375,
+        "macd": -2.0311450442729324,
+        "macd_hist": 0.2695414017840898,
+        "macd_prev": -2.299194281326379,
+        "macd_signal": -2.300686446057022,
+        "macd_signal_prev": -2.3680717965030444,
+        "obv": 4381349641.0,
+        "obv_ma20": 4299613562.05,
+        "obv_ma5": 4332230848.2,
+        "pct_of_high_20d": 0.9412792096149911,
+        "prev_close": 137.14999389648438,
+        "today_return": 0.002223900460400552,
+        "vol_ratio": 0.3712653906237652,
+        "volume": 15123541.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Palantir",
+      "reasons": [
+        {
+          "detail": "close=137.46 MA5=135.80",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=135.80 MA20=137.74",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=0.22%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=4332230848 OBV_MA20=4299613562",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.941",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-2.031 signal=-2.301 (prev macd=-2.299 signal=-2.368)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "PLTR",
+      "tradingview_symbol": "NASDAQ:PLTR"
+    },
+    "QCOM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 209.9499969482422,
+        "high_20d": 237.52999877929688,
+        "ma10": 209.33799896240234,
+        "ma20": 190.25650024414062,
+        "ma240": 159.46899979909261,
+        "ma5": 202.63999938964844,
+        "macd": 16.14447645485751,
+        "macd_hist": -1.0269740767112694,
+        "macd_prev": 16.394537170283314,
+        "macd_signal": 17.17145053156878,
+        "macd_signal_prev": 17.428194050746598,
+        "obv": 222665198.0,
+        "obv_ma20": 96291844.9,
+        "obv_ma5": 200771399.6,
+        "pct_of_high_20d": 0.883888342639698,
+        "prev_close": 202.50999450683594,
+        "today_return": 0.0367389395250568,
+        "vol_ratio": 0.5616842404368494,
+        "volume": 17659198.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Qualcomm",
+      "reasons": [
+        {
+          "detail": "close=209.95 MA5=202.64",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=202.64 MA20=190.26",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.56 return=3.67%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=200771400 OBV_MA20=96291845",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.884",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=16.144 signal=17.171 (prev macd=16.395 signal=17.428)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "QCOM",
+      "tradingview_symbol": "NASDAQ:QCOM"
+    },
+    "RKLB": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 127.44999694824219,
+        "high_20d": 134.27999877929688,
+        "ma10": 124.20499954223632,
+        "ma20": 102.16249961853028,
+        "ma240": 61.97102092107137,
+        "ma5": 128.9939987182617,
+        "macd": 14.563042762505816,
+        "macd_hist": 2.729836596715307,
+        "macd_prev": 14.77575772431804,
+        "macd_signal": 11.833206165790509,
+        "macd_signal_prev": 11.150747016611682,
+        "obv": 1904803603.0,
+        "obv_ma20": 1801490595.15,
+        "obv_ma5": 1912782180.6,
+        "pct_of_high_20d": 0.9491361193540037,
+        "prev_close": 134.27999877929688,
+        "today_return": -0.05086388064599634,
+        "vol_ratio": 0.767345336029303,
+        "volume": 20453797.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Rocket Lab",
+      "reasons": [
+        {
+          "detail": "close=127.45 MA5=128.99",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=128.99 MA20=102.16",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.77 return=-5.09%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1912782181 OBV_MA20=1801490595",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.949",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=14.563 signal=11.833 (prev macd=14.776 signal=11.151)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "RKLB",
+      "tradingview_symbol": "NASDAQ:RKLB"
+    },
+    "RTX": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 175.66009521484375,
+        "high_20d": 178.88999938964844,
+        "ma10": 175.95100860595704,
+        "ma20": 175.2485038757324,
+        "ma240": 174.90283374786378,
+        "ma5": 174.42601928710937,
+        "macd": -3.6763642582175464,
+        "macd_hist": 0.7313582428724947,
+        "macd_prev": -3.9384572077445057,
+        "macd_signal": -4.407722501090041,
+        "macd_signal_prev": -4.590562061808164,
+        "obv": 193338204.0,
+        "obv_ma20": 195631265.2,
+        "obv_ma5": 189653240.8,
+        "pct_of_high_20d": 0.9819447471305006,
+        "prev_close": 174.85000610351562,
+        "today_return": 0.0046330516617112405,
+        "vol_ratio": 0.17194414899018728,
+        "volume": 1014204.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "RTX",
+      "reasons": [
+        {
+          "detail": "close=175.66 MA5=174.43",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=174.43 MA20=175.25",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.17 return=0.46%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=189653241 OBV_MA20=195631265",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.982",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-3.676 signal=-4.408 (prev macd=-3.938 signal=-4.591)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "RTX",
+      "tradingview_symbol": "NYSE:RTX"
+    },
+    "SHOP": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 105.22000122070312,
+        "high_20d": 127.66999816894531,
+        "ma10": 101.95200042724609,
+        "ma20": 110.70250053405762,
+        "ma240": 136.63541660308837,
+        "ma5": 102.78200073242188,
+        "macd": -5.3555547630443385,
+        "macd_hist": -0.27961003510699634,
+        "macd_prev": -5.7759815996654,
+        "macd_signal": -5.075944727937342,
+        "macd_signal_prev": -5.0060422191605936,
+        "obv": 256827238.0,
+        "obv_ma20": 281869851.9,
+        "obv_ma5": 251713607.6,
+        "pct_of_high_20d": 0.8241560486392882,
+        "prev_close": 105.01000213623047,
+        "today_return": 0.0019998007827886077,
+        "vol_ratio": 0.26918818802375055,
+        "volume": 3631438.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Shopify",
+      "reasons": [
+        {
+          "detail": "close=105.22 MA5=102.78",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=102.78 MA20=110.70",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.27 return=0.20%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=251713608 OBV_MA20=281869852",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.824",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-5.356 signal=-5.076 (prev macd=-5.776 signal=-5.006)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "SHOP",
+      "tradingview_symbol": "NYSE:SHOP"
+    },
+    "SNDK": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 1512.9998779296875,
+        "high_20d": 1562.3399658203125,
+        "ma10": 1442.1339965820312,
+        "ma20": 1312.1814880371094,
+        "ma240": 381.6605206012726,
+        "ma5": 1405.893994140625,
+        "macd": 137.15436251823917,
+        "macd_hist": -11.063127687410912,
+        "macd_prev": 134.90716554225264,
+        "macd_signal": 148.21749020565008,
+        "macd_signal_prev": 150.9832721275028,
+        "obv": 500352569.0,
+        "obv_ma20": 474288133.45,
+        "obv_ma5": 485445733.8,
+        "pct_of_high_20d": 0.9684191091759476,
+        "prev_close": 1392.56005859375,
+        "today_return": 0.08648806103024476,
+        "vol_ratio": 0.5756813913868435,
+        "volume": 8641469.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "SanDisk",
+      "reasons": [
+        {
+          "detail": "close=1513.00 MA5=1405.89",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=1405.89 MA20=1312.18",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.58 return=8.65%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=485445734 OBV_MA20=474288133",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.968",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=137.154 signal=148.217 (prev macd=134.907 signal=150.983)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "SNDK",
+      "tradingview_symbol": "NASDAQ:SNDK"
+    },
+    "SNOW": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 163.625,
+        "high_20d": 169.5500030517578,
+        "ma10": 158.09149932861328,
+        "ma20": 150.30575103759764,
+        "ma240": 204.95477116902669,
+        "ma5": 164.37100219726562,
+        "macd": 3.986337602325591,
+        "macd_hist": 2.6511789555258263,
+        "macd_prev": 3.7031451540896683,
+        "macd_signal": 1.3351586467997647,
+        "macd_signal_prev": 0.6723639079183078,
+        "obv": 250134945.0,
+        "obv_ma20": 232949752.25,
+        "obv_ma5": 248589089.0,
+        "pct_of_high_20d": 0.9650545388079461,
+        "prev_close": 166.97000122070312,
+        "today_return": -0.0200335461235438,
+        "vol_ratio": 0.3429724307257897,
+        "volume": 2482955.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Snowflake",
+      "reasons": [
+        {
+          "detail": "close=163.62 MA5=164.37",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=164.37 MA20=150.31",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.34 return=-2.00%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=248589089 OBV_MA20=232949752",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.965",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=3.986 signal=1.335 (prev macd=3.703 signal=0.672)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "SNOW",
+      "tradingview_symbol": "NYSE:SNOW"
+    },
+    "SPOT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 503.4100036621094,
+        "high_20d": 518.0,
+        "ma10": 439.3790008544922,
+        "ma20": 444.19550170898435,
+        "ma240": 596.8537485758463,
+        "ma5": 452.05400390625,
+        "macd": -8.212322818012126,
+        "macd_hist": 6.600415810367927,
+        "macd_prev": -14.425526669938108,
+        "macd_signal": -14.812738628380053,
+        "macd_signal_prev": -16.462842580972033,
+        "obv": 74097518.0,
+        "obv_ma20": 68266245.9,
+        "obv_ma5": 71297243.6,
+        "pct_of_high_20d": 0.971833983903686,
+        "prev_close": 433.32000732421875,
+        "today_return": 0.16175111961873445,
+        "vol_ratio": 1.9469107075199241,
+        "volume": 5212018.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Spotify",
+      "reasons": [
+        {
+          "detail": "close=503.41 MA5=452.05",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=452.05 MA20=444.20",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=1.95 return=16.18%",
+          "passed": true,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=71297244 OBV_MA20=68266246",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.972",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-8.212 signal=-14.813 (prev macd=-14.426 signal=-16.463)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "SPOT",
+      "tradingview_symbol": "NYSE:SPOT"
+    },
+    "TSLA": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 421.4599914550781,
+        "high_20d": 445.2699890136719,
+        "ma10": 427.0429962158203,
+        "ma20": 406.95349884033203,
+        "ma240": 394.30162480672203,
+        "ma5": 415.0119934082031,
+        "macd": 10.407322888605734,
+        "macd_hist": -0.6313661982475125,
+        "macd_prev": 10.737314351524958,
+        "macd_signal": 11.038689086853246,
+        "macd_signal_prev": 11.196530636415122,
+        "obv": 3545952234.0,
+        "obv_ma20": 3481599001.7,
+        "obv_ma5": 3525127406.8,
+        "pct_of_high_20d": 0.9465268305835391,
+        "prev_close": 417.260009765625,
+        "today_return": 0.010065622372515959,
+        "vol_ratio": 0.5196919060250886,
+        "volume": 28590334.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Tesla",
+      "reasons": [
+        {
+          "detail": "close=421.46 MA5=415.01",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=415.01 MA20=406.95",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.52 return=1.01%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=3525127407 OBV_MA20=3481599002",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.947",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.407 signal=11.039 (prev macd=10.737 signal=11.197)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "TSLA",
+      "tradingview_symbol": "NASDAQ:TSLA"
+    },
+    "TSM": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 407.80499267578125,
+        "high_20d": 419.5,
+        "ma10": 403.335498046875,
+        "ma20": 402.5182479858398,
+        "ma240": 302.2850624720256,
+        "ma5": 400.4669982910156,
+        "macd": 7.907858129304543,
+        "macd_hist": -2.085772563625511,
+        "macd_prev": 7.9235671590137144,
+        "macd_signal": 9.993630692930054,
+        "macd_signal_prev": 10.515073833836432,
+        "obv": 356027592.0,
+        "obv_ma20": 374324884.6,
+        "obv_ma5": 353869158.4,
+        "pct_of_high_20d": 0.9721215558421484,
+        "prev_close": 401.6199951171875,
+        "today_return": 0.015400123583959147,
+        "vol_ratio": 0.3669077004744034,
+        "volume": 5100692.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Taiwan Semiconductor ADR",
+      "reasons": [
+        {
+          "detail": "close=407.80 MA5=400.47",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=400.47 MA20=402.52",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.37 return=1.54%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=353869158 OBV_MA20=374324885",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.972",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=7.908 signal=9.994 (prev macd=7.924 signal=10.515)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "TSM",
+      "tradingview_symbol": "NYSE:TSM"
+    },
+    "TXN": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 297.5299987792969,
+        "high_20d": 308.1700134277344,
+        "ma10": 300.32900390625,
+        "ma20": 289.14100189208983,
+        "ma240": 200.61800079345704,
+        "ma5": 301.61000366210936,
+        "macd": 17.906351196288085,
+        "macd_hist": -1.6782271980575594,
+        "macd_prev": 19.137338888372994,
+        "macd_signal": 19.584578394345645,
+        "macd_signal_prev": 20.004135193860034,
+        "obv": 82300526.0,
+        "obv_ma20": 63895266.3,
+        "obv_ma5": 77679005.2,
+        "pct_of_high_20d": 0.9654735562033112,
+        "prev_close": 304.8800048828125,
+        "today_return": -0.024107865343090507,
+        "vol_ratio": 0.2585210945866754,
+        "volume": 1987674.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Texas Instruments",
+      "reasons": [
+        {
+          "detail": "close=297.53 MA5=301.61",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=301.61 MA20=289.14",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.26 return=-2.41%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=77679005 OBV_MA20=63895266",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.965",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=17.906 signal=19.585 (prev macd=19.137 signal=20.004)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "TXN",
+      "tradingview_symbol": "NASDAQ:TXN"
+    },
+    "U": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 25.719999313354492,
+        "high_20d": 28.15999984741211,
+        "ma10": 26.814999961853026,
+        "ma20": 26.80349998474121,
+        "ma240": 33.123416646321616,
+        "ma5": 26.421999740600587,
+        "macd": 0.5645804491744215,
+        "macd_hist": -0.3292999529193398,
+        "macd_prev": 0.6936361976694805,
+        "macd_signal": 0.8938804020937613,
+        "macd_signal_prev": 0.9762053903235961,
+        "obv": 187566134.0,
+        "obv_ma20": 221258936.7,
+        "obv_ma5": 191228406.8,
+        "pct_of_high_20d": 0.9133522532926487,
+        "prev_close": 26.229999542236328,
+        "today_return": -0.01944339450180388,
+        "vol_ratio": 0.2537809915243554,
+        "volume": 2703866.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Unity Software",
+      "reasons": [
+        {
+          "detail": "close=25.72 MA5=26.42",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=26.42 MA20=26.80",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.25 return=-1.94%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=191228407 OBV_MA20=221258937",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.913",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.565 signal=0.894 (prev macd=0.694 signal=0.976)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "U",
+      "tradingview_symbol": "NYSE:U"
+    },
+    "UBER": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 73.70999908447266,
+        "high_20d": 79.16999816894531,
+        "ma10": 74.99199905395508,
+        "ma20": 75.09599952697754,
+        "ma240": 85.1699585278829,
+        "ma5": 74.51399841308594,
+        "macd": -0.025077431788048443,
+        "macd_hist": -0.24803366674304977,
+        "macd_prev": 0.08743693709867273,
+        "macd_signal": 0.22295623495500133,
+        "macd_signal_prev": 0.28496465164076373,
+        "obv": 20987906.0,
+        "obv_ma20": 46096790.3,
+        "obv_ma5": 29505781.2,
+        "pct_of_high_20d": 0.9310344927276459,
+        "prev_close": 74.5999984741211,
+        "today_return": -0.01193028696853371,
+        "vol_ratio": 0.4157117106101928,
+        "volume": 7061094.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Uber",
+      "reasons": [
+        {
+          "detail": "close=73.71 MA5=74.51",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=74.51 MA20=75.10",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.42 return=-1.19%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=29505781 OBV_MA20=46096790",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.931",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.025 signal=0.223 (prev macd=0.087 signal=0.285)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "UBER",
+      "tradingview_symbol": "NYSE:UBER"
+    },
+    "UNH": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 384.1700134277344,
+        "high_20d": 401.1600036621094,
+        "ma10": 390.27500305175784,
+        "ma20": 378.0385009765625,
+        "ma240": 318.31862449645996,
+        "ma5": 388.33800048828124,
+        "macd": 16.993952060315394,
+        "macd_hist": -2.50279919504797,
+        "macd_prev": 18.31102433527684,
+        "macd_signal": 19.496751255363364,
+        "macd_signal_prev": 20.122451054125357,
+        "obv": -141856521.0,
+        "obv_ma20": -136380871.05,
+        "obv_ma5": -135053124.2,
+        "pct_of_high_20d": 0.957647846048268,
+        "prev_close": 383.29998779296875,
+        "today_return": 0.002269829539456092,
+        "vol_ratio": 0.2770911392092428,
+        "volume": 1939779.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "UnitedHealth",
+      "reasons": [
+        {
+          "detail": "close=384.17 MA5=388.34",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=388.34 MA20=378.04",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.28 return=0.23%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=-135053124 OBV_MA20=-136380871",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.958",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=16.994 signal=19.497 (prev macd=18.311 signal=20.122)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "UNH",
+      "tradingview_symbol": "NYSE:UNH"
+    },
+    "V": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 331.989990234375,
+        "high_20d": 334.8599853515625,
+        "ma10": 326.29400024414065,
+        "ma20": 323.6499984741211,
+        "ma240": 334.5837066650391,
+        "ma5": 330.2080017089844,
+        "macd": 4.534568097833642,
+        "macd_hist": 0.6147776360245745,
+        "macd_prev": 4.344505607452902,
+        "macd_signal": 3.9197904618090673,
+        "macd_signal_prev": 3.7660960528029235,
+        "obv": 165985092.0,
+        "obv_ma20": 158781934.6,
+        "obv_ma5": 162501638.4,
+        "pct_of_high_20d": 0.9914292682233311,
+        "prev_close": 330.75,
+        "today_return": 0.0037490256519274734,
+        "vol_ratio": 0.31085766373344315,
+        "volume": 2393192.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Visa",
+      "reasons": [
+        {
+          "detail": "close=331.99 MA5=330.21",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=330.21 MA20=323.65",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.31 return=0.37%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=162501638 OBV_MA20=158781935",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.991",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=4.535 signal=3.920 (prev macd=4.345 signal=3.766)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 4,
+      "status": "ok",
+      "symbol": "V",
+      "tradingview_symbol": "NYSE:V"
+    },
+    "VRT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 328.59991455078125,
+        "high_20d": 376.2300109863281,
+        "ma10": 349.88099670410156,
+        "ma20": 339.18149719238284,
+        "ma240": 193.38674996693928,
+        "ma5": 335.5139892578125,
+        "macd": 10.345328317536314,
+        "macd_hist": -5.954343384559859,
+        "macd_prev": 12.31574862841211,
+        "macd_signal": 16.299671702096173,
+        "macd_signal_prev": 17.78825754823614,
+        "obv": 95255975.0,
+        "obv_ma20": 109573393.75,
+        "obv_ma5": 101960275.0,
+        "pct_of_high_20d": 0.8734016557831754,
+        "prev_close": 315.6700134277344,
+        "today_return": 0.040960181750069546,
+        "vol_ratio": 0.4736570667943927,
+        "volume": 2657675.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Vertiv",
+      "reasons": [
+        {
+          "detail": "close=328.60 MA5=335.51",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=335.51 MA20=339.18",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.47 return=4.10%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=101960275 OBV_MA20=109573394",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.873",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=10.345 signal=16.300 (prev macd=12.316 signal=17.788)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "VRT",
+      "tradingview_symbol": "NYSE:VRT"
+    },
+    "WDAY": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 120.8499984741211,
+        "high_20d": 130.8800048828125,
+        "ma10": 123.38100051879883,
+        "ma20": 123.7325008392334,
+        "ma240": 196.28424984614054,
+        "ma5": 126.13800048828125,
+        "macd": -0.5008743175704922,
+        "macd_hist": 0.4365537816132621,
+        "macd_prev": -0.20014512770002568,
+        "macd_signal": -0.9374280991837542,
+        "macd_signal_prev": -1.0465665445870698,
+        "obv": 31318433.0,
+        "obv_ma20": 30629846.65,
+        "obv_ma5": 34731726.6,
+        "pct_of_high_20d": 0.9233648683183342,
+        "prev_close": 126.61000061035156,
+        "today_return": -0.04549405345915092,
+        "vol_ratio": 0.6960514773447862,
+        "volume": 3120067.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Workday",
+      "reasons": [
+        {
+          "detail": "close=120.85 MA5=126.14",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=126.14 MA20=123.73",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.70 return=-4.55%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=34731727 OBV_MA20=30629847",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.923",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=-0.501 signal=-0.937 (prev macd=-0.200 signal=-1.047)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "WDAY",
+      "tradingview_symbol": "NASDAQ:WDAY"
+    },
+    "WMT": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 121.69000244140625,
+        "high_20d": 134.1999969482422,
+        "ma10": 130.38300018310548,
+        "ma20": 130.09349899291993,
+        "ma240": 111.69583320617676,
+        "ma5": 130.30599975585938,
+        "macd": 0.5329610148903043,
+        "macd_hist": -0.6560256181979329,
+        "macd_prev": 1.4052741180616977,
+        "macd_signal": 1.1889866330882373,
+        "macd_signal_prev": 1.3529930376377206,
+        "obv": 1025470897.0,
+        "obv_ma20": 1044370484.85,
+        "obv_ma5": 1060292279.4,
+        "pct_of_high_20d": 0.9067809628068714,
+        "prev_close": 130.85000610351562,
+        "today_return": -0.07000384589101882,
+        "vol_ratio": 1.9925082545630726,
+        "volume": 34991703.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Walmart",
+      "reasons": [
+        {
+          "detail": "close=121.69 MA5=130.31",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=130.31 MA20=130.09",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=1.99 return=-7.00%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=1060292279 OBV_MA20=1044370485",
+          "passed": true,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.907",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.533 signal=1.189 (prev macd=1.405 signal=1.353)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 2,
+      "status": "ok",
+      "symbol": "WMT",
+      "tradingview_symbol": "NYSE:WMT"
+    },
+    "XYZ": {
+      "analyst": null,
+      "chip": null,
+      "indicators": {
+        "close": 69.4800033569336,
+        "high_20d": 74.8499984741211,
+        "ma10": 71.1979995727539,
+        "ma20": 71.01649971008301,
+        "ma240": 68.15270829200745,
+        "ma5": 70.10599975585937,
+        "macd": 0.9200867187076085,
+        "macd_hist": -0.5901766087667639,
+        "macd_prev": 1.1060638080064962,
+        "macd_signal": 1.5102633274743724,
+        "macd_signal_prev": 1.6578074796660631,
+        "obv": 293743501.0,
+        "obv_ma20": 304324005.05,
+        "obv_ma5": 294804020.2,
+        "pct_of_high_20d": 0.9282565767981392,
+        "prev_close": 70.88999938964844,
+        "today_return": -0.019889914583928414,
+        "vol_ratio": 0.7939789573401642,
+        "volume": 4485199.0
+      },
+      "market": "us",
+      "max_score": 8,
+      "mode": "intraday",
+      "name": "Block",
+      "reasons": [
+        {
+          "detail": "close=69.48 MA5=70.11",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=70.11 MA20=71.02",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.79 return=-1.99%",
+          "passed": false,
+          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
+        },
+        {
+          "detail": "OBV_MA5=294804020 OBV_MA20=304324005",
+          "passed": false,
+          "rule": "OBV 5d > OBV 20d"
+        },
+        {
+          "detail": "close/high20d=0.928",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "macd=0.920 signal=1.510 (prev macd=1.106 signal=1.658)",
+          "passed": false,
+          "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
+        },
+        {
+          "detail": "target n/a -> n/a (n/a)",
+          "passed": false,
+          "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 0,
+      "status": "ok",
+      "symbol": "XYZ",
+      "tradingview_symbol": "NYSE:XYZ"
     }
   }
 }
