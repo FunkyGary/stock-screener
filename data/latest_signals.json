@@ -1,0 +1,152 @@
+{
+  "generated_at": "2026-05-21T09:55:26.549078+00:00",
+  "last_run": {
+    "tw": "2026-05-21T09:55:08.786335+00:00",
+    "us": "2026-05-21T09:55:26.549078+00:00"
+  },
+  "signals": {
+    "2330.TW": {
+      "analyst": null,
+      "indicators": {
+        "close": 2230.0,
+        "high_20d": 2310.0,
+        "ma20": 2227.0,
+        "ma5": 2225.0,
+        "pct_of_high_20d": 0.9653679653679653,
+        "vol_ratio": 0.6490686295902046,
+        "volume": 24295357.0
+      },
+      "market": "tw",
+      "max_score": 4,
+      "name": "TSMC",
+      "reasons": [
+        {
+          "detail": "close=2230.00 MA5=2225.00",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=2225.00 MA20=2227.00",
+          "passed": false,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.65",
+          "passed": false,
+          "rule": "volume > 1.5x MA20"
+        },
+        {
+          "detail": "close/high20d=0.965",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "2330.TW",
+      "tradingview_symbol": "TWSE:2330"
+    },
+    "AAPL": {
+      "analyst": null,
+      "indicators": {
+        "close": 302.25,
+        "high_20d": 302.25,
+        "ma20": 285.8799987792969,
+        "ma5": 299.5,
+        "pct_of_high_20d": 1.0,
+        "vol_ratio": 0.801553202430552,
+        "volume": 38188800.0
+      },
+      "market": "us",
+      "max_score": 6,
+      "name": "Apple",
+      "reasons": [
+        {
+          "detail": "close=302.25 MA5=299.50",
+          "passed": true,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=299.50 MA20=285.88",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=0.80",
+          "passed": false,
+          "rule": "volume > 1.5x MA20"
+        },
+        {
+          "detail": "close/high20d=1.000",
+          "passed": true,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "target n/a -> n/a",
+          "passed": false,
+          "rule": "analyst target raised"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 3,
+      "status": "ok",
+      "symbol": "AAPL",
+      "tradingview_symbol": "NASDAQ:AAPL"
+    },
+    "NVDA": {
+      "analyst": null,
+      "indicators": {
+        "close": 223.47000122070312,
+        "high_20d": 235.74000549316406,
+        "ma20": 213.39900131225585,
+        "ma5": 225.49200439453125,
+        "pct_of_high_20d": 0.9479511156929334,
+        "vol_ratio": 1.126576650476352,
+        "volume": 180498100.0
+      },
+      "market": "us",
+      "max_score": 6,
+      "name": "NVIDIA",
+      "reasons": [
+        {
+          "detail": "close=223.47 MA5=225.49",
+          "passed": false,
+          "rule": "close > MA5"
+        },
+        {
+          "detail": "MA5=225.49 MA20=213.40",
+          "passed": true,
+          "rule": "MA5 > MA20"
+        },
+        {
+          "detail": "vol_ratio=1.13",
+          "passed": false,
+          "rule": "volume > 1.5x MA20"
+        },
+        {
+          "detail": "close/high20d=0.948",
+          "passed": false,
+          "rule": "within 2% of 20d high"
+        },
+        {
+          "detail": "target n/a -> n/a",
+          "passed": false,
+          "rule": "analyst target raised"
+        },
+        {
+          "detail": "rating=n/a",
+          "passed": false,
+          "rule": "rating in {Buy, Strong Buy}"
+        }
+      ],
+      "score": 1,
+      "status": "ok",
+      "symbol": "NVDA",
+      "tradingview_symbol": "NASDAQ:NVDA"
+    }
+  }
+}
