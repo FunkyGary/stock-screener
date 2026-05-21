@@ -1,4 +1,4 @@
-"""Streamlit dashboard for daily stock signals."""
+"""Streamlit dashboard for daily stock signals — mobile-first layout."""
 
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ import streamlit.components.v1 as components
 
 REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
 LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
+
+TOP_PICK_MIN_SCORE_RATIO = 0.6  # show in 今日精選 if score/max ≥ 60%
+CHART_HEIGHT = 380  # smaller than the desktop default; fits a phone viewport
 
 
 @st.cache_data(ttl=60)
@@ -29,7 +32,7 @@ def load_signals() -> dict:
     return {"signals": {}, "generated_at": None, "last_run": {}}
 
 
-def tradingview_widget(symbol: str, height: int = 600) -> str:
+def tradingview_widget(symbol: str, height: int = CHART_HEIGHT) -> str:
     container_id = "tv_" + symbol.replace(":", "_").replace(".", "_")
     return f"""
     <div id="{container_id}" style="height:{height}px"></div>
@@ -46,18 +49,16 @@ def tradingview_widget(symbol: str, height: int = 600) -> str:
         "locale": "zh_TW",
         "studies": ["MASimple@tv-basicstudies", "Volume@tv-basicstudies", "MACD@tv-basicstudies"],
         "withdateranges": true,
-        "allow_symbol_change": false
+        "allow_symbol_change": false,
+        "hide_side_toolbar": true,
+        "hide_top_toolbar": false
       }});
     </script>
     """
 
 
 def _is_above_all_mas(row: dict) -> bool:
-    """True iff close is strictly above MA5, MA10, MA20, AND MA240 (年線).
-
-    Any missing MA (e.g. newly-listed stocks without 240 days of history)
-    counts as "not qualified" so they fall into the lower bucket.
-    """
+    """True iff close > MA5, MA10, MA20, AND MA240."""
     ind = row.get("indicators") or {}
     close = ind.get("close")
     if close is None:
@@ -69,99 +70,129 @@ def _is_above_all_mas(row: dict) -> bool:
     return True
 
 
+def _score_ratio(row: dict) -> float:
+    mx = row.get("max_score", 0) or 0
+    return (row.get("score", 0) / mx) if mx else 0.0
+
+
 def _detail_panel(selected: dict) -> None:
-    st.subheader(f"{selected['name']} ({selected['symbol']})")
-    st.metric("Score", f"{selected['score']} / {selected['max_score']}")
-    st.write("**Reasons**")
+    above = _is_above_all_mas(selected)
+    tag = "▲ 站上全均線" if above else "▼ 未站上"
+
+    # Compact header row: ticker on left, score on right
+    col_a, col_b = st.columns([3, 2])
+    with col_a:
+        st.markdown(f"### {selected['symbol']}")
+        st.caption(f"{selected['name']} · {tag}")
+    with col_b:
+        st.metric("Score", f"{selected['score']} / {selected['max_score']}")
+
+    st.markdown("**訊號**")
     for reason in selected.get("reasons", []):
-        marker = "[x]" if reason["passed"] else "[ ]"
-        st.write(f"`{marker}` {reason['rule']} — {reason['detail']}")
-    with st.expander("Raw indicators"):
+        marker = "✅" if reason["passed"] else "⬜"
+        st.markdown(f"{marker} **{reason['rule']}**")
+        st.caption(f"　{reason['detail']}")
+
+    with st.expander("📊 Raw indicators"):
         st.json(selected.get("indicators", {}))
     if selected.get("analyst"):
-        with st.expander("Analyst"):
+        with st.expander("📈 Analyst"):
             st.json(selected["analyst"])
+    if selected.get("chip"):
+        with st.expander("🏦 Chip 籌碼"):
+            st.json(selected["chip"])
 
 
-def _market_tab(rows: list[dict], market_key: str) -> None:
+def _market_view(rows: list[dict], market_key: str) -> None:
     above = sorted(
         [r for r in rows if _is_above_all_mas(r)],
-        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
+        key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
     below = sorted(
         [r for r in rows if not _is_above_all_mas(r)],
-        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
+        key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
 
-    # Single radio with two visually-separated groups. Symbol-as-value so the
-    # selection survives reruns. The "header" entries are disabled placeholders.
-    HEADER_ABOVE = f"__HDR_ABOVE_{market_key}__"
-    HEADER_BELOW = f"__HDR_BELOW_{market_key}__"
+    # ⭐ Top picks: above-all-MAs AND score ratio ≥ threshold
+    top = [r for r in above if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO]
+    if top:
+        with st.expander(
+            f"⭐ 今日精選 — 站上全均線且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
+            expanded=True,
+        ):
+            for r in top[:20]:  # cap at 20 to keep list scannable
+                st.markdown(
+                    f"**{r['symbol']}**　{r['score']}/{r['max_score']}　·　{r['name']}"
+                )
 
-    options: list[str] = []
-    label_map: dict[str, str] = {}
-    row_map: dict[str, dict] = {}
-
+    # Bucket filter
+    options = []
     if above:
-        options.append(HEADER_ABOVE)
-        label_map[HEADER_ABOVE] = (
-            f"━━━ ▲ 站上全均線 5/10/20/年 ({len(above)}) ━━━"
-        )
-        for r in above:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = f"▲ {r['symbol']}  {r['score']}/{r['max_score']}"
-            row_map[r["symbol"]] = r
-
+        options.append(f"▲ 站上 ({len(above)})")
     if below:
-        options.append(HEADER_BELOW)
-        label_map[HEADER_BELOW] = f"━━━ ▼ 未站上全均線 ({len(below)}) ━━━"
-        for r in below:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = f"▼ {r['symbol']}  {r['score']}/{r['max_score']}"
-            row_map[r["symbol"]] = r
+        options.append(f"▼ 未站上 ({len(below)})")
+    options.append("全部")
 
-    if not options:
-        st.info("（此分區無資料）")
+    if not (above or below):
+        st.info("（無資料）")
         return
 
-    # Default to the first real entry, not a header.
-    default_idx = next(
-        (i for i, o in enumerate(options) if not o.startswith("__HDR_")), 0
+    filter_choice = st.radio(
+        "分組",
+        options=options,
+        index=0,
+        horizontal=True,
+        key=f"filter_{market_key}",
+        label_visibility="collapsed",
     )
 
-    col_left, col_mid, col_right = st.columns([2, 3, 5])
+    if filter_choice.startswith("▲"):
+        candidates = above
+    elif filter_choice.startswith("▼"):
+        candidates = below
+    else:
+        candidates = above + below
 
-    with col_left:
-        choice = st.radio(
-            "ticker",
-            options=options,
-            index=default_idx,
-            format_func=lambda o: label_map[o],
-            label_visibility="collapsed",
-            key=f"radio_{market_key}",
+    if not candidates:
+        st.info("此分組無資料")
+        return
+
+    # Searchable selectbox — type to filter, scroll on mobile is fine.
+    label_to_row: dict[str, dict] = {}
+    for r in candidates:
+        tag = "▲" if _is_above_all_mas(r) else "▼"
+        label = (
+            f"{tag} {r['symbol']}  {r['score']}/{r['max_score']}  ({r['name']})"
         )
+        label_to_row[label] = r
 
-    # If user lands on a header label, fall back to first real entry.
-    if choice.startswith("__HDR_"):
-        choice = next(o for o in options if not o.startswith("__HDR_"))
+    selected_label = st.selectbox(
+        "選擇個股",
+        options=list(label_to_row.keys()),
+        index=0,
+        key=f"sel_{market_key}",
+    )
+    selected = label_to_row[selected_label]
 
-    selected = row_map[choice]
+    st.divider()
+    _detail_panel(selected)
 
-    with col_mid:
-        _detail_panel(selected)
-
-    with col_right:
-        tv_symbol = selected.get("tradingview_symbol")
-        if tv_symbol:
-            components.html(tradingview_widget(tv_symbol), height=620)
-        else:
-            st.info("No TradingView symbol configured for this ticker.")
+    st.divider()
+    tv_symbol = selected.get("tradingview_symbol")
+    if tv_symbol:
+        components.html(tradingview_widget(tv_symbol), height=CHART_HEIGHT + 20)
+    else:
+        st.info("No TradingView symbol configured for this ticker.")
 
 
 def render() -> None:
-    st.set_page_config(page_title="Stock Screener", layout="wide")
+    st.set_page_config(
+        page_title="Stock Screener",
+        layout="centered",  # narrower content area, looks better on mobile + desktop
+        initial_sidebar_state="collapsed",
+    )
 
     data = load_signals()
     signals = data.get("signals", {})
@@ -177,11 +208,15 @@ def render() -> None:
     rows_failed = [s for s in signals.values() if s.get("status") != "ok"]
 
     generated = data.get("generated_at") or "n/a"
-    last_run = data.get("last_run") or {}
+    # Short generated stamp: trim to "YYYY-MM-DD HH:MM"
+    short_gen = generated[:16].replace("T", " ") if isinstance(generated, str) else "n/a"
+
+    tw_rows = [r for r in rows_ok if r.get("market") == "tw"]
+    us_rows = [r for r in rows_ok if r.get("market") == "us"]
+
     st.caption(
-        f"Last update: {generated} (UTC). "
-        f"TW run: {last_run.get('tw', 'n/a')}. US run: {last_run.get('us', 'n/a')}. "
-        f"{len(rows_ok)} ok · {len(rows_failed)} failed."
+        f"Last update: {short_gen} UTC · TW {len(tw_rows)} · US {len(us_rows)}"
+        + (f" · {len(rows_failed)} failed" if rows_failed else "")
     )
 
     if not rows_ok:
@@ -191,17 +226,14 @@ def render() -> None:
                 st.json(rows_failed)
         return
 
-    tw_rows = [r for r in rows_ok if r.get("market") == "tw"]
-    us_rows = [r for r in rows_ok if r.get("market") == "us"]
-
     tab_tw, tab_us = st.tabs([f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"])
     with tab_tw:
-        _market_tab(tw_rows, market_key="tw")
+        _market_view(tw_rows, market_key="tw")
     with tab_us:
-        _market_tab(us_rows, market_key="us")
+        _market_view(us_rows, market_key="us")
 
     if rows_failed:
-        with st.expander(f"Fetch failures ({len(rows_failed)})"):
+        with st.expander(f"⚠️ Fetch failures ({len(rows_failed)})"):
             st.json(rows_failed)
 
 
