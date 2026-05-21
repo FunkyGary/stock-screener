@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-21T09:55:26.549078+00:00",
+  "generated_at": "2026-05-21T10:40:45.297782+00:00",
   "last_run": {
     "tw": "2026-05-21T09:55:08.786335+00:00",
-    "us": "2026-05-21T09:55:26.549078+00:00"
+    "us": "2026-05-21T10:40:45.297782+00:00"
   },
   "signals": {
     "2330.TW": {
@@ -47,7 +47,11 @@
       "tradingview_symbol": "TWSE:2330"
     },
     "AAPL": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.037037037037037,
+        "target_mean": 308.6465
+      },
       "indicators": {
         "close": 302.25,
         "high_20d": 302.25,
@@ -82,23 +86,27 @@
           "rule": "within 2% of 20d high"
         },
         {
-          "detail": "target n/a -> n/a",
+          "detail": "target n/a -> 308.65",
           "passed": false,
           "rule": "analyst target raised"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "AAPL",
       "tradingview_symbol": "NASDAQ:AAPL"
     },
     "NVDA": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7464788732394365,
+        "target_mean": 278.0251
+      },
       "indicators": {
         "close": 223.47000122070312,
         "high_20d": 235.74000549316406,
@@ -133,17 +141,17 @@
           "rule": "within 2% of 20d high"
         },
         {
-          "detail": "target n/a -> n/a",
+          "detail": "target n/a -> 278.03",
           "passed": false,
           "rule": "analyst target raised"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "NVDA",
       "tradingview_symbol": "NASDAQ:NVDA"

@@ -75,37 +75,52 @@ def _rating_label(score: float) -> str:
     return "Strong Sell"
 
 
-@retry(
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
-    reraise=True,
-)
-def fetch_analyst(symbol: str) -> AnalystSnapshot:
-    client = _finnhub_client()
-    pt = client.price_target(symbol) or {}
-    target_mean = pt.get("targetMean")
+def _fetch_target_mean_yfinance(symbol: str) -> Optional[float]:
+    """yfinance exposes analyst consensus targets via Ticker.analyst_price_targets."""
+    targets = yf.Ticker(symbol).analyst_price_targets or {}
+    mean = targets.get("mean")
+    return float(mean) if mean else None
 
+
+def _fetch_rating_finnhub(symbol: str) -> tuple[Optional[str], Optional[float]]:
+    """Finnhub free tier exposes recommendation_trends but not price_target."""
+    client = _finnhub_client()
     recs = client.recommendation_trends(symbol) or []
+    if not recs:
+        return None, None
+    latest = recs[0]
+    buckets = {
+        "strongBuy": (latest.get("strongBuy") or 0, 1.0),
+        "buy": (latest.get("buy") or 0, 2.0),
+        "hold": (latest.get("hold") or 0, 3.0),
+        "sell": (latest.get("sell") or 0, 4.0),
+        "strongSell": (latest.get("strongSell") or 0, 5.0),
+    }
+    total = sum(count for count, _ in buckets.values())
+    if total == 0:
+        return None, None
+    rating_score = sum(count * weight for count, weight in buckets.values()) / total
+    return _rating_label(rating_score), rating_score
+
+
+def fetch_analyst(symbol: str) -> AnalystSnapshot:
+    """Combine yfinance target + Finnhub rating; each source fails independently."""
+    target_mean: Optional[float] = None
     rating: Optional[str] = None
     rating_score: Optional[float] = None
-    if recs:
-        latest = recs[0]
-        buckets = {
-            "strongBuy": (latest.get("strongBuy") or 0, 1.0),
-            "buy": (latest.get("buy") or 0, 2.0),
-            "hold": (latest.get("hold") or 0, 3.0),
-            "sell": (latest.get("sell") or 0, 4.0),
-            "strongSell": (latest.get("strongSell") or 0, 5.0),
-        }
-        total = sum(count for count, _ in buckets.values())
-        if total > 0:
-            rating_score = (
-                sum(count * weight for count, weight in buckets.values()) / total
-            )
-            rating = _rating_label(rating_score)
+
+    try:
+        target_mean = _fetch_target_mean_yfinance(symbol)
+    except Exception as exc:
+        logger.warning("yfinance analyst target failed for %s: %s", symbol, exc)
+
+    try:
+        rating, rating_score = _fetch_rating_finnhub(symbol)
+    except Exception as exc:
+        logger.warning("finnhub rating failed for %s: %s", symbol, exc)
 
     return AnalystSnapshot(
-        target_mean=float(target_mean) if target_mean else None,
+        target_mean=target_mean,
         rating=rating,
         rating_score=rating_score,
     )
