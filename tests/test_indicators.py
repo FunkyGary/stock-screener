@@ -38,10 +38,28 @@ def test_returns_none_when_not_enough_history():
     df = _df([1, 2, 3], [10] * 3)
     snap = compute(df)
     assert snap.ma5 is None
+    assert snap.ma10 is None
     assert snap.ma20 is None
+    assert snap.ma240 is None
     assert snap.high_20d is None
     assert snap.macd is None
     assert snap.obv_ma20 is None
+
+
+def test_ma10_and_ma240_compute_when_history_sufficient():
+    # 250 ascending closes → MA240 should equal mean(closes[-240:]).
+    closes = list(range(1, 251))
+    snap = compute(_df(closes, [100] * 250))
+    assert snap.ma10 == pytest.approx(sum(closes[-10:]) / 10)
+    assert snap.ma240 is not None
+    assert snap.ma240 == pytest.approx(sum(closes[-240:]) / 240)
+
+
+def test_ma240_none_when_under_240_bars():
+    closes = list(range(1, 100))
+    snap = compute(_df(closes, [100] * 99))
+    assert snap.ma10 is not None  # 99 ≥ 10
+    assert snap.ma240 is None  # 99 < 240
 
 
 def test_pct_of_high_20d_when_close_below_high():

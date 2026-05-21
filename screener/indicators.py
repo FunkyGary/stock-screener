@@ -15,7 +15,9 @@ class IndicatorSnapshot:
     prev_close: Optional[float]
     today_return: Optional[float]
     ma5: Optional[float]
+    ma10: Optional[float]
     ma20: Optional[float]
+    ma240: Optional[float]  # 年線 (annual MA)
     volume: float
     vol_ratio: Optional[float]
     high_20d: Optional[float]
@@ -74,7 +76,9 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     today_return = (last_close / prev_close - 1.0) if prev_close else None
 
     ma5 = _safe_last(close.rolling(5).mean()) if len(close) >= 5 else None
+    ma10 = _safe_last(close.rolling(10).mean()) if len(close) >= 10 else None
     ma20 = _safe_last(close.rolling(20).mean()) if len(close) >= 20 else None
+    ma240 = _safe_last(close.rolling(240).mean()) if len(close) >= 240 else None
 
     ma20_vol = _safe_last(vol.rolling(20).mean()) if len(vol) >= 20 else None
     vol_ratio = last_vol / ma20_vol if ma20_vol and ma20_vol > 0 else None
@@ -105,7 +109,9 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         prev_close=prev_close,
         today_return=today_return,
         ma5=ma5,
+        ma10=ma10,
         ma20=ma20,
+        ma240=ma240,
         volume=last_vol,
         vol_ratio=vol_ratio,
         high_20d=high_20d,

@@ -52,11 +52,21 @@ def tradingview_widget(symbol: str, height: int = 600) -> str:
     """
 
 
-def _is_above_ma5(row: dict) -> bool:
+def _is_above_all_mas(row: dict) -> bool:
+    """True iff close is strictly above MA5, MA10, MA20, AND MA240 (年線).
+
+    Any missing MA (e.g. newly-listed stocks without 240 days of history)
+    counts as "not qualified" so they fall into the lower bucket.
+    """
     ind = row.get("indicators") or {}
     close = ind.get("close")
-    ma5 = ind.get("ma5")
-    return close is not None and ma5 is not None and close > ma5
+    if close is None:
+        return False
+    for key in ("ma5", "ma10", "ma20", "ma240"):
+        val = ind.get(key)
+        if val is None or close <= val:
+            return False
+    return True
 
 
 def _detail_panel(selected: dict) -> None:
@@ -75,12 +85,12 @@ def _detail_panel(selected: dict) -> None:
 
 def _market_tab(rows: list[dict], market_key: str) -> None:
     above = sorted(
-        [r for r in rows if _is_above_ma5(r)],
+        [r for r in rows if _is_above_all_mas(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
     below = sorted(
-        [r for r in rows if not _is_above_ma5(r)],
+        [r for r in rows if not _is_above_all_mas(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
@@ -96,7 +106,9 @@ def _market_tab(rows: list[dict], market_key: str) -> None:
 
     if above:
         options.append(HEADER_ABOVE)
-        label_map[HEADER_ABOVE] = f"━━━ ▲ 5日線以上 ({len(above)}) ━━━"
+        label_map[HEADER_ABOVE] = (
+            f"━━━ ▲ 站上全均線 5/10/20/年 ({len(above)}) ━━━"
+        )
         for r in above:
             options.append(r["symbol"])
             label_map[r["symbol"]] = f"▲ {r['symbol']}  {r['score']}/{r['max_score']}"
@@ -104,7 +116,7 @@ def _market_tab(rows: list[dict], market_key: str) -> None:
 
     if below:
         options.append(HEADER_BELOW)
-        label_map[HEADER_BELOW] = f"━━━ ▼ 5日線以下 ({len(below)}) ━━━"
+        label_map[HEADER_BELOW] = f"━━━ ▼ 未站上全均線 ({len(below)}) ━━━"
         for r in below:
             options.append(r["symbol"])
             label_map[r["symbol"]] = f"▼ {r['symbol']}  {r['score']}/{r['max_score']}"
