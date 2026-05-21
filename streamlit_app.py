@@ -1,8 +1,11 @@
 """Streamlit dashboard — desktop (3-column) + mobile (stacked) layouts.
 
-Layout is chosen by the ?layout=desktop|mobile query param, switchable via
-the toggle in the page header. Defaults to mobile; the URL persists the
-choice so it survives reloads and can be bookmarked.
+Layout is auto-selected from the browser viewport width:
+- viewport ≥ 900 px → desktop (3-column with long radio + tall TV chart)
+- viewport < 900 px → mobile (stacked with selectbox + short chart)
+
+A `?layout=desktop|mobile` URL query parameter forces a specific layout
+and bypasses auto-detection (useful for bookmarking).
 """
 
 from __future__ import annotations
@@ -15,6 +18,7 @@ from urllib.request import urlopen
 
 import streamlit as st
 import streamlit.components.v1 as components
+from streamlit_javascript import st_javascript
 
 REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
 LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
@@ -22,6 +26,7 @@ LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
 TOP_PICK_MIN_SCORE_RATIO = 0.6
 CHART_HEIGHT_DESKTOP = 620
 CHART_HEIGHT_MOBILE = 380
+VIEWPORT_BREAKPOINT_PX = 900  # ≥ this → desktop
 
 
 @st.cache_data(ttl=60)
@@ -293,9 +298,22 @@ def render() -> None:
         initial_sidebar_state="collapsed",
     )
 
-    # Layout toggle — URL param ?layout=desktop|mobile is the source of truth
-    # so it survives page reloads and can be bookmarked.
-    current_layout = st.query_params.get("layout", "mobile")
+    # Auto-detect layout from viewport width via a tiny JS bridge.
+    # On first render, st_javascript returns None; we default to mobile to
+    # avoid showing a cramped 3-column layout on a phone. Once the JS
+    # resolves (~one rerun later) the real width is used.
+    # URL param ?layout=desktop|mobile bypasses detection (bookmarkable).
+    forced = st.query_params.get("layout")
+    if forced in ("mobile", "desktop"):
+        current_layout = forced
+    else:
+        viewport_width = st_javascript("window.innerWidth", key="vw")
+        if viewport_width is None or viewport_width == 0:
+            current_layout = "mobile"  # pre-detection fallback
+        else:
+            current_layout = (
+                "desktop" if viewport_width >= VIEWPORT_BREAKPOINT_PX else "mobile"
+            )
 
     data = load_signals()
     signals = data.get("signals", {})
@@ -318,26 +336,10 @@ def render() -> None:
     tw_rows = [r for r in rows_ok if r.get("market") == "tw"]
     us_rows = [r for r in rows_ok if r.get("market") == "us"]
 
-    # Header row: caption on the left, layout toggle on the right.
-    header_left, header_right = st.columns([3, 2])
-    with header_left:
-        st.caption(
-            f"Last update: {short_gen} UTC · TW {len(tw_rows)} · US {len(us_rows)}"
-            + (f" · {len(rows_failed)} failed" if rows_failed else "")
-        )
-    with header_right:
-        choice = st.radio(
-            "版型",
-            options=["📱 手機", "🖥️ 桌面"],
-            index=0 if current_layout == "mobile" else 1,
-            horizontal=True,
-            label_visibility="collapsed",
-            key="layout_radio",
-        )
-        new_layout = "mobile" if choice.startswith("📱") else "desktop"
-        if new_layout != current_layout:
-            st.query_params["layout"] = new_layout
-            st.rerun()
+    st.caption(
+        f"Last update: {short_gen} UTC · TW {len(tw_rows)} · US {len(us_rows)}"
+        + (f" · {len(rows_failed)} failed" if rows_failed else "")
+    )
 
     if not rows_ok:
         st.warning("All signals failed to fetch.")
