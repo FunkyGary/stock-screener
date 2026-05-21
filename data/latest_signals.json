@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-05-21T21:10:46.958792+00:00",
+  "generated_at": "2026-05-21T22:16:45.839163+00:00",
   "last_run": {
     "tw": "2026-05-21T09:55:08.786335+00:00",
-    "us": "2026-05-21T21:10:46.958792+00:00",
+    "us": "2026-05-21T22:16:45.839163+00:00",
+    "us_eod": "2026-05-21T22:16:45.839163+00:00",
     "us_intraday": "2026-05-21T21:10:46.958792+00:00"
   },
   "signals": {
@@ -48,7 +49,12 @@
       "tradingview_symbol": "TWSE:2330"
     },
     "AAOI": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.1538461538461537,
+        "target_mean": 151.3,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 176.80999755859375,
@@ -73,7 +79,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Optoelectronics",
       "reasons": [
         {
@@ -107,17 +113,17 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 151.30 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "AAOI",
       "tradingview_symbol": "NASDAQ:AAOI"
@@ -126,7 +132,8 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 2.037037037037037,
-        "target_mean": 308.6465
+        "target_mean": 308.6465,
+        "target_mean_prev_eod": 308.6465
       },
       "chip": null,
       "indicators": {
@@ -152,7 +159,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Apple",
       "reasons": [
         {
@@ -186,7 +193,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 308.65 (n/a)",
+          "detail": "target 308.65 -> 308.65 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -202,7 +209,12 @@
       "tradingview_symbol": "NASDAQ:AAPL"
     },
     "ABNB": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.3469387755102042,
+        "target_mean": 156.7857,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 134.25,
@@ -227,7 +239,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Airbnb",
       "reasons": [
         {
@@ -261,23 +273,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 156.79 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "ABNB",
       "tradingview_symbol": "NASDAQ:ABNB"
     },
     "ADBE": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.4130434782608696,
+        "target_mean": 327.2847,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 244.10000610351562,
@@ -302,7 +319,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Adobe",
       "reasons": [
         {
@@ -336,23 +353,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 327.28 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "ADBE",
       "tradingview_symbol": "NASDAQ:ADBE"
     },
     "ADI": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8780487804878048,
+        "target_mean": 426.9355,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 384.2099914550781,
@@ -377,7 +399,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Analog Devices",
       "reasons": [
         {
@@ -411,23 +433,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 426.94 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 0,
+      "score": 1,
       "status": "ok",
       "symbol": "ADI",
       "tradingview_symbol": "NASDAQ:ADI"
     },
     "ALAB": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0,
+        "target_mean": 244.09956,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 297.8399963378906,
@@ -452,7 +479,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Astera Labs",
       "reasons": [
         {
@@ -486,23 +513,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 244.10 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "ALAB",
       "tradingview_symbol": "NASDAQ:ALAB"
     },
     "AMAT": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9069767441860466,
+        "target_mean": 509.62857,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 427.3599853515625,
@@ -527,7 +559,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Materials",
       "reasons": [
         {
@@ -561,23 +593,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 509.63 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "AMAT",
       "tradingview_symbol": "NASDAQ:AMAT"
     },
     "AMD": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.016949152542373,
+        "target_mean": 472.16666,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 449.5899963378906,
@@ -602,7 +639,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AMD",
       "reasons": [
         {
@@ -636,23 +673,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 472.17 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "AMD",
       "tradingview_symbol": "NASDAQ:AMD"
     },
     "AMKR": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.4444444444444446,
+        "target_mean": 75.5,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 65.9000015258789,
@@ -677,7 +719,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amkor Technology",
       "reasons": [
         {
@@ -711,23 +753,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 75.50 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 0,
+      "score": 1,
       "status": "ok",
       "symbol": "AMKR",
       "tradingview_symbol": "NASDAQ:AMKR"
     },
     "AMZN": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.794871794871795,
+        "target_mean": 312.6321,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 268.4599914550781,
@@ -752,7 +799,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amazon",
       "reasons": [
         {
@@ -786,23 +833,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 312.63 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "AMZN",
       "tradingview_symbol": "NASDAQ:AMZN"
     },
     "APP": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8333333333333333,
+        "target_mean": 644.4667,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 485.8900146484375,
@@ -827,7 +879,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AppLovin",
       "reasons": [
         {
@@ -861,23 +913,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 644.47 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "APP",
       "tradingview_symbol": "NASDAQ:APP"
     },
     "ARM": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.2888888888888888,
+        "target_mean": 232.13568,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 298.2300109863281,
@@ -902,7 +959,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Arm Holdings",
       "reasons": [
         {
@@ -936,23 +993,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 232.14 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 5,
+      "score": 6,
       "status": "ok",
       "symbol": "ARM",
       "tradingview_symbol": "NASDAQ:ARM"
     },
     "ASML": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0714285714285716,
+        "target_mean": 1660.3262,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 1592.0,
@@ -977,7 +1039,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ASML",
       "reasons": [
         {
@@ -1011,23 +1073,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1660.33 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "ASML",
       "tradingview_symbol": "NASDAQ:ASML"
     },
     "AVGO": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7719298245614035,
+        "target_mean": 480.49054,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 414.57000732421875,
@@ -1052,7 +1119,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Broadcom",
       "reasons": [
         {
@@ -1086,23 +1153,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 480.49 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 0,
+      "score": 1,
       "status": "ok",
       "symbol": "AVGO",
       "tradingview_symbol": "NASDAQ:AVGO"
     },
     "BA": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8108108108108107,
+        "target_mean": 270.0,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 219.61000061035156,
@@ -1127,7 +1199,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Boeing",
       "reasons": [
         {
@@ -1161,23 +1233,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 270.00 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "BA",
       "tradingview_symbol": "NYSE:BA"
     },
     "BE": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.3055555555555554,
+        "target_mean": 245.13333,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 307.8800048828125,
@@ -1202,7 +1279,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Bloom Energy",
       "reasons": [
         {
@@ -1236,23 +1313,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 245.13 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "BE",
       "tradingview_symbol": "NYSE:BE"
     },
     "CAT": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.323529411764706,
+        "target_mean": 920.1404,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 865.9500122070312,
@@ -1277,7 +1359,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Caterpillar",
       "reasons": [
         {
@@ -1311,23 +1393,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 920.14 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 0,
+      "score": 1,
       "status": "ok",
       "symbol": "CAT",
       "tradingview_symbol": "NYSE:CAT"
     },
     "CIEN": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0,
+        "target_mean": 440.53745,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 587.22998046875,
@@ -1352,7 +1439,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ciena",
       "reasons": [
         {
@@ -1386,23 +1473,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 440.54 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "CIEN",
       "tradingview_symbol": "NYSE:CIEN"
     },
     "CLS": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8823529411764706,
+        "target_mean": 441.33444,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 354.7699890136719,
@@ -1427,7 +1519,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Celestica",
       "reasons": [
         {
@@ -1461,23 +1553,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 441.33 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "CLS",
       "tradingview_symbol": "NYSE:CLS"
     },
     "COHR": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9655172413793103,
+        "target_mean": 380.61707,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 378.0,
@@ -1502,7 +1599,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coherent",
       "reasons": [
         {
@@ -1536,23 +1633,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 380.62 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "COHR",
       "tradingview_symbol": "NYSE:COHR"
     },
     "COIN": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.2093023255813953,
+        "target_mean": 231.7168,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 193.55999755859375,
@@ -1577,7 +1679,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coinbase",
       "reasons": [
         {
@@ -1611,23 +1713,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 231.72 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "COIN",
       "tradingview_symbol": "NASDAQ:COIN"
     },
     "COST": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0454545454545454,
+        "target_mean": 1076.9688,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 1050.449951171875,
@@ -1652,7 +1759,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Costco",
       "reasons": [
         {
@@ -1686,23 +1793,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1076.97 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "COST",
       "tradingview_symbol": "NASDAQ:COST"
     },
     "CRM": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0517241379310347,
+        "target_mean": 265.00793,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 176.30999755859375,
@@ -1727,7 +1839,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Salesforce",
       "reasons": [
         {
@@ -1761,23 +1873,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 265.01 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "CRM",
       "tradingview_symbol": "NYSE:CRM"
     },
     "CRWD": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0161290322580645,
+        "target_mean": 527.62585,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 648.22998046875,
@@ -1802,7 +1919,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CrowdStrike",
       "reasons": [
         {
@@ -1836,23 +1953,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 527.63 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "CRWD",
       "tradingview_symbol": "NASDAQ:CRWD"
     },
     "CRWV": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.1666666666666665,
+        "target_mean": 138.90323,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 107.58000183105469,
@@ -1877,7 +1999,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CoreWeave",
       "reasons": [
         {
@@ -1911,23 +2033,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 138.90 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "CRWV",
       "tradingview_symbol": "NASDAQ:CRWV"
     },
     "CSCO": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0625,
+        "target_mean": 124.45364,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 118.19999694824219,
@@ -1952,7 +2079,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cisco",
       "reasons": [
         {
@@ -1986,23 +2113,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 124.45 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "CSCO",
       "tradingview_symbol": "NASDAQ:CSCO"
     },
     "DDOG": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7857142857142858,
+        "target_mean": 223.01941,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 218.0399932861328,
@@ -2027,7 +2159,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Datadog",
       "reasons": [
         {
@@ -2061,23 +2193,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 223.02 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "DDOG",
       "tradingview_symbol": "NASDAQ:DDOG"
     },
     "DELL": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0588235294117645,
+        "target_mean": 205.69565,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 252.8000030517578,
@@ -2102,7 +2239,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Dell Technologies",
       "reasons": [
         {
@@ -2136,23 +2273,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 205.70 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "DELL",
       "tradingview_symbol": "NYSE:DELL"
     },
     "EXPE": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.340909090909091,
+        "target_mean": 286.32352,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 218.1199951171875,
@@ -2177,7 +2319,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Expedia",
       "reasons": [
         {
@@ -2211,23 +2353,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 286.32 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "EXPE",
       "tradingview_symbol": "NASDAQ:EXPE"
     },
     "GE": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8709677419354838,
+        "target_mean": 349.1,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 301.760009765625,
@@ -2252,7 +2399,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Aerospace",
       "reasons": [
         {
@@ -2286,23 +2433,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 349.10 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "GE",
       "tradingview_symbol": "NYSE:GE"
     },
     "GEV": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.951219512195122,
+        "target_mean": 1217.1665,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 1043.8199462890625,
@@ -2327,7 +2479,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Vernova",
       "reasons": [
         {
@@ -2361,23 +2513,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1217.17 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "GEV",
       "tradingview_symbol": "NYSE:GEV"
     },
     "GOOG": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8142857142857143,
+        "target_mean": 421.69,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 383.4700012207031,
@@ -2402,7 +2559,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Alphabet C",
       "reasons": [
         {
@@ -2436,23 +2593,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 421.69 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "GOOG",
       "tradingview_symbol": "NASDAQ:GOOG"
     },
     "HOOD": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9411764705882353,
+        "target_mean": 98.39625,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 75.91999816894531,
@@ -2477,7 +2639,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Robinhood",
       "reasons": [
         {
@@ -2511,23 +2673,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 98.40 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "HOOD",
       "tradingview_symbol": "NASDAQ:HOOD"
     },
     "IBM": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.142857142857143,
+        "target_mean": 277.68,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 252.97000122070312,
@@ -2552,7 +2719,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "IBM",
       "reasons": [
         {
@@ -2586,23 +2753,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 277.68 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "IBM",
       "tradingview_symbol": "NYSE:IBM"
     },
     "INTC": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Hold",
+        "rating_score": 2.6481481481481484,
+        "target_mean": 87.8619,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 118.5,
@@ -2627,7 +2799,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intel",
       "reasons": [
         {
@@ -2661,12 +2833,12 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 87.86 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
+          "detail": "rating=Hold",
           "passed": false,
           "rule": "rating in {Buy, Strong Buy}"
         }
@@ -2677,7 +2849,12 @@
       "tradingview_symbol": "NASDAQ:INTC"
     },
     "ISRG": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.048780487804878,
+        "target_mean": 572.676,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 439.79998779296875,
@@ -2702,7 +2879,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intuitive Surgical",
       "reasons": [
         {
@@ -2736,23 +2913,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 572.68 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "ISRG",
       "tradingview_symbol": "NASDAQ:ISRG"
     },
     "JNJ": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.1875,
+        "target_mean": 252.95833,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 231.72999572753906,
@@ -2777,7 +2959,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Johnson & Johnson",
       "reasons": [
         {
@@ -2811,23 +2993,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 252.96 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "JNJ",
       "tradingview_symbol": "NYSE:JNJ"
     },
     "JPM": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.3225806451612905,
+        "target_mean": 342.31818,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 303.0,
@@ -2852,7 +3039,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "JPMorgan Chase",
       "reasons": [
         {
@@ -2886,23 +3073,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 342.32 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "JPM",
       "tradingview_symbol": "NYSE:JPM"
     },
     "KO": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9142857142857144,
+        "target_mean": 85.88609,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 81.16999816894531,
@@ -2927,7 +3119,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coca-Cola",
       "reasons": [
         {
@@ -2961,23 +3153,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 85.89 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "KO",
       "tradingview_symbol": "NYSE:KO"
     },
     "LITE": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9333333333333333,
+        "target_mean": 1104.678,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 964.5,
@@ -3002,7 +3199,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lumentum",
       "reasons": [
         {
@@ -3036,23 +3233,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1104.68 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "LITE",
       "tradingview_symbol": "NASDAQ:LITE"
     },
     "LLY": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9743589743589745,
+        "target_mean": 1210.0,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 1041.6500244140625,
@@ -3077,7 +3279,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Eli Lilly",
       "reasons": [
         {
@@ -3111,23 +3313,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1210.00 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "LLY",
       "tradingview_symbol": "NYSE:LLY"
     },
     "LMT": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Hold",
+        "rating_score": 2.5172413793103448,
+        "target_mean": 630.05,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 522.7899780273438,
@@ -3152,7 +3359,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lockheed Martin",
       "reasons": [
         {
@@ -3186,12 +3393,12 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 630.05 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
+          "detail": "rating=Hold",
           "passed": false,
           "rule": "rating in {Buy, Strong Buy}"
         }
@@ -3202,7 +3409,12 @@
       "tradingview_symbol": "NYSE:LMT"
     },
     "LNG": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.6785714285714286,
+        "target_mean": 303.22726,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 240.4499969482422,
@@ -3227,7 +3439,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cheniere Energy",
       "reasons": [
         {
@@ -3261,23 +3473,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 303.23 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "LNG",
       "tradingview_symbol": "NYSE:LNG"
     },
     "LRCX": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.975609756097561,
+        "target_mean": 312.125,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 302.239990234375,
@@ -3302,7 +3519,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lam Research",
       "reasons": [
         {
@@ -3336,23 +3553,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 312.12 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "LRCX",
       "tradingview_symbol": "NASDAQ:LRCX"
     },
     "MA": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.84,
+        "target_mean": 646.9722,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 499.6199951171875,
@@ -3377,7 +3599,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Mastercard",
       "reasons": [
         {
@@ -3411,23 +3633,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 646.97 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "MA",
       "tradingview_symbol": "NYSE:MA"
     },
     "MAR": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.3870967741935485,
+        "target_mean": 377.41666,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 370.55999755859375,
@@ -3452,7 +3679,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marriott",
       "reasons": [
         {
@@ -3486,23 +3713,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 377.42 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "MAR",
       "tradingview_symbol": "NASDAQ:MAR"
     },
     "MCD": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.261904761904762,
+        "target_mean": 330.0,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 284.17999267578125,
@@ -3527,7 +3759,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "McDonald's",
       "reasons": [
         {
@@ -3561,23 +3793,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 330.00 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "MCD",
       "tradingview_symbol": "NYSE:MCD"
     },
     "MDB": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9130434782608696,
+        "target_mean": 358.82333,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 317.5,
@@ -3602,7 +3839,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "MongoDB",
       "reasons": [
         {
@@ -3636,23 +3873,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 358.82 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "MDB",
       "tradingview_symbol": "NASDAQ:MDB"
     },
     "META": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7945205479452055,
+        "target_mean": 826.69104,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 607.3800048828125,
@@ -3677,7 +3919,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Meta Platforms",
       "reasons": [
         {
@@ -3711,23 +3953,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 826.69 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 0,
+      "score": 1,
       "status": "ok",
       "symbol": "META",
       "tradingview_symbol": "NASDAQ:META"
     },
     "MMM": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.2916666666666665,
+        "target_mean": 173.43471,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 151.60000610351562,
@@ -3752,7 +3999,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "3M",
       "reasons": [
         {
@@ -3786,23 +4033,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 173.43 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "MMM",
       "tradingview_symbol": "NYSE:MMM"
     },
     "MRVL": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9,
+        "target_mean": 148.17664,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 190.69000244140625,
@@ -3827,7 +4079,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marvell Technology",
       "reasons": [
         {
@@ -3861,23 +4113,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 148.18 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "MRVL",
       "tradingview_symbol": "NASDAQ:MRVL"
     },
     "MSFT": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7272727272727273,
+        "target_mean": 560.6302,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 419.0899963378906,
@@ -3902,7 +4159,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Microsoft",
       "reasons": [
         {
@@ -3936,23 +4193,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 560.63 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "MSFT",
       "tradingview_symbol": "NASDAQ:MSFT"
     },
     "MU": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.7735849056603774,
+        "target_mean": 613.225,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 762.0999755859375,
@@ -3977,7 +4239,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Micron Technology",
       "reasons": [
         {
@@ -4011,23 +4273,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 613.23 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "MU",
       "tradingview_symbol": "NASDAQ:MU"
     },
     "NET": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.125,
+        "target_mean": 234.17741,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 212.64999389648438,
@@ -4052,7 +4319,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cloudflare",
       "reasons": [
         {
@@ -4086,23 +4353,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 234.18 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "NET",
       "tradingview_symbol": "NYSE:NET"
     },
     "NFLX": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.9322033898305084,
+        "target_mean": 114.555,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 89.30000305175781,
@@ -4127,7 +4399,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Netflix",
       "reasons": [
         {
@@ -4161,23 +4433,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 114.56 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "NFLX",
       "tradingview_symbol": "NASDAQ:NFLX"
     },
     "NOW": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 1.8518518518518519,
+        "target_mean": 142.76773,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 99.69000244140625,
@@ -4202,7 +4479,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ServiceNow",
       "reasons": [
         {
@@ -4236,17 +4513,17 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 142.77 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 2,
+      "score": 3,
       "status": "ok",
       "symbol": "NOW",
       "tradingview_symbol": "NYSE:NOW"
@@ -4255,7 +4532,8 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 1.7464788732394365,
-        "target_mean": 278.0251
+        "target_mean": 278.0251,
+        "target_mean_prev_eod": 278.0251
       },
       "chip": null,
       "indicators": {
@@ -4281,7 +4559,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NVIDIA",
       "reasons": [
         {
@@ -4315,7 +4593,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 278.03 (n/a)",
+          "detail": "target 278.03 -> 278.03 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4331,7 +4609,12 @@
       "tradingview_symbol": "NASDAQ:NVDA"
     },
     "NXPI": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0256410256410255,
+        "target_mean": 300.12903,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 299.3800048828125,
@@ -4356,7 +4639,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NXP Semiconductors",
       "reasons": [
         {
@@ -4390,23 +4673,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 300.13 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 3,
+      "score": 4,
       "status": "ok",
       "symbol": "NXPI",
       "tradingview_symbol": "NASDAQ:NXPI"
     },
     "OKLO": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.107142857142857,
+        "target_mean": 91.21053,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 65.08999633789062,
@@ -4431,7 +4719,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oklo",
       "reasons": [
         {
@@ -4465,23 +4753,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 91.21 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 1,
+      "score": 2,
       "status": "ok",
       "symbol": "OKLO",
       "tradingview_symbol": "NYSE:OKLO"
     },
     "OKTA": {
-      "analyst": null,
+      "analyst": {
+        "rating": "Buy",
+        "rating_score": 2.0754716981132075,
+        "target_mean": 100.44,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 89.44000244140625,
@@ -4506,7 +4799,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Okta",
       "reasons": [
         {
@@ -4540,23 +4833,28 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 100.44 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
         {
-          "detail": "rating=n/a",
-          "passed": false,
+          "detail": "rating=Buy",
+          "passed": true,
           "rule": "rating in {Buy, Strong Buy}"
         }
       ],
-      "score": 4,
+      "score": 5,
       "status": "ok",
       "symbol": "OKTA",
       "tradingview_symbol": "NASDAQ:OKTA"
     },
     "ON": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 103.96552,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 109.61000061035156,
@@ -4581,7 +4879,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "onsemi",
       "reasons": [
         {
@@ -4615,7 +4913,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 103.97 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4631,7 +4929,12 @@
       "tradingview_symbol": "NASDAQ:ON"
     },
     "ONDS": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 20.125,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 9.180000305175781,
@@ -4656,7 +4959,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ondas Holdings",
       "reasons": [
         {
@@ -4690,7 +4993,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 20.12 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4706,7 +5009,12 @@
       "tradingview_symbol": "NASDAQ:ONDS"
     },
     "ORCL": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 244.02513,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 189.77000427246094,
@@ -4731,7 +5039,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oracle",
       "reasons": [
         {
@@ -4765,7 +5073,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 244.03 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4781,7 +5089,12 @@
       "tradingview_symbol": "NYSE:ORCL"
     },
     "PLTR": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 183.7289,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 137.4149932861328,
@@ -4806,7 +5119,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Palantir",
       "reasons": [
         {
@@ -4840,7 +5153,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 183.73 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4856,7 +5169,12 @@
       "tradingview_symbol": "NASDAQ:PLTR"
     },
     "QCOM": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 177.58064,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 213.41000366210938,
@@ -4881,7 +5199,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Qualcomm",
       "reasons": [
         {
@@ -4915,7 +5233,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 177.58 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -4931,7 +5249,12 @@
       "tradingview_symbol": "NASDAQ:QCOM"
     },
     "RKLB": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 100.83667,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 125.44999694824219,
@@ -4956,7 +5279,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Rocket Lab",
       "reasons": [
         {
@@ -4990,7 +5313,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 100.84 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5006,7 +5329,12 @@
       "tradingview_symbol": "NASDAQ:RKLB"
     },
     "RTX": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 215.27182,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 175.97999572753906,
@@ -5031,7 +5359,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "RTX",
       "reasons": [
         {
@@ -5065,7 +5393,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 215.27 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5081,7 +5409,12 @@
       "tradingview_symbol": "NYSE:RTX"
     },
     "SHOP": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 151.55556,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 104.86000061035156,
@@ -5106,7 +5439,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Shopify",
       "reasons": [
         {
@@ -5140,7 +5473,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 151.56 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5156,7 +5489,12 @@
       "tradingview_symbol": "NYSE:SHOP"
     },
     "SNDK": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 1493.3636,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 1542.239990234375,
@@ -5181,7 +5519,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "SanDisk",
       "reasons": [
         {
@@ -5215,7 +5553,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 1493.36 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5231,7 +5569,12 @@
       "tradingview_symbol": "NASDAQ:SNDK"
     },
     "SNOW": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 229.65916,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 165.5399932861328,
@@ -5256,7 +5599,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Snowflake",
       "reasons": [
         {
@@ -5290,7 +5633,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 229.66 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5306,7 +5649,12 @@
       "tradingview_symbol": "NYSE:SNOW"
     },
     "SPOT": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 589.0149,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 489.92999267578125,
@@ -5331,7 +5679,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Spotify",
       "reasons": [
         {
@@ -5365,7 +5713,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 589.01 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5381,7 +5729,12 @@
       "tradingview_symbol": "NYSE:SPOT"
     },
     "TSLA": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 411.8878,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 417.8500061035156,
@@ -5406,7 +5759,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Tesla",
       "reasons": [
         {
@@ -5440,7 +5793,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 411.89 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5456,7 +5809,12 @@
       "tradingview_symbol": "NASDAQ:TSLA"
     },
     "TSM": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 467.84027,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 407.1499938964844,
@@ -5481,7 +5839,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Taiwan Semiconductor ADR",
       "reasons": [
         {
@@ -5515,7 +5873,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 467.84 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5531,7 +5889,12 @@
       "tradingview_symbol": "NYSE:TSM"
     },
     "TXN": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 285.34375,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 298.3900146484375,
@@ -5556,7 +5919,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Texas Instruments",
       "reasons": [
         {
@@ -5590,7 +5953,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 285.34 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5606,7 +5969,12 @@
       "tradingview_symbol": "NASDAQ:TXN"
     },
     "U": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 34.39192,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 25.540000915527344,
@@ -5631,7 +5999,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Unity Software",
       "reasons": [
         {
@@ -5665,7 +6033,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 34.39 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5681,7 +6049,12 @@
       "tradingview_symbol": "NYSE:U"
     },
     "UBER": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 104.4512,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 73.61000061035156,
@@ -5706,7 +6079,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Uber",
       "reasons": [
         {
@@ -5740,7 +6113,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 104.45 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5756,7 +6129,12 @@
       "tradingview_symbol": "NYSE:UBER"
     },
     "UNH": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 390.34616,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 382.4800109863281,
@@ -5781,7 +6159,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "UnitedHealth",
       "reasons": [
         {
@@ -5815,7 +6193,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 390.35 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5831,7 +6209,12 @@
       "tradingview_symbol": "NYSE:UNH"
     },
     "V": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 398.74313,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 331.1199951171875,
@@ -5856,7 +6239,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Visa",
       "reasons": [
         {
@@ -5890,7 +6273,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 398.74 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5906,7 +6289,12 @@
       "tradingview_symbol": "NYSE:V"
     },
     "VRT": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 364.73077,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 323.3999938964844,
@@ -5931,7 +6319,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Vertiv",
       "reasons": [
         {
@@ -5965,7 +6353,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 364.73 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -5981,7 +6369,12 @@
       "tradingview_symbol": "NYSE:VRT"
     },
     "WDAY": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 178.16447,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 121.8499984741211,
@@ -6006,7 +6399,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Workday",
       "reasons": [
         {
@@ -6040,7 +6433,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 178.16 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -6056,7 +6449,12 @@
       "tradingview_symbol": "NASDAQ:WDAY"
     },
     "WMT": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 137.78049,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 121.33999633789062,
@@ -6081,7 +6479,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Walmart",
       "reasons": [
         {
@@ -6115,7 +6513,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 137.78 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -6131,7 +6529,12 @@
       "tradingview_symbol": "NYSE:WMT"
     },
     "XYZ": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "target_mean": 90.19902,
+        "target_mean_prev_eod": null
+      },
       "chip": null,
       "indicators": {
         "close": 68.6500015258789,
@@ -6156,7 +6559,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Block",
       "reasons": [
         {
@@ -6190,7 +6593,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> n/a (n/a)",
+          "detail": "target n/a -> 90.20 (n/a)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
