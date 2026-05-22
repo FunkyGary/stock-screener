@@ -16,8 +16,10 @@ on:
         options: [intraday, eod]
         default: eod
 
+# Per-market concurrency. JSON commit conflicts (rare, since TW and US
+# session windows don't overlap) are handled by pull-rebase-retry below.
 concurrency:
-  group: screener-commit
+  group: us-screener
   cancel-in-progress: false
 
 permissions:

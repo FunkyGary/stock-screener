@@ -14,9 +14,11 @@ on:
         options: [intraday, eod]
         default: eod
 
-# Serialize across BOTH markets — they commit the same JSON file.
+# Per-market concurrency so a long-running US run never blocks a scheduled
+# TW trigger. Cross-market JSON commit conflicts are handled by the
+# pull-rebase-retry loop in the commit step below.
 concurrency:
-  group: screener-commit
+  group: tw-screener
   cancel-in-progress: false
 
 permissions:
