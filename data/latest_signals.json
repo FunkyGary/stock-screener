@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-22T20:54:28.722684+00:00",
+  "generated_at": "2026-05-22T22:03:52.090915+00:00",
   "last_run": {
     "tw": "2026-05-22T11:50:28.940587+00:00",
     "tw_eod": "2026-05-22T11:50:28.940587+00:00",
     "tw_intraday": "2026-05-22T08:22:43.686995+00:00",
-    "us": "2026-05-22T20:54:28.722684+00:00",
-    "us_eod": "2026-05-21T22:16:45.839163+00:00",
+    "us": "2026-05-22T22:03:52.090915+00:00",
+    "us_eod": "2026-05-22T22:03:52.090915+00:00",
     "us_intraday": "2026-05-22T20:54:28.722684+00:00"
   },
   "signals": {
@@ -17360,7 +17360,7 @@
         "rating": "Buy",
         "rating_score": 2.1538461538461537,
         "target_mean": 151.3,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 151.3
       },
       "chip": null,
       "indicators": {
@@ -17386,7 +17386,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Optoelectronics",
       "reasons": [
         {
@@ -17420,7 +17420,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 151.30 (n/a)",
+          "detail": "target 151.30 -> 151.30 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17455,18 +17455,18 @@
         "macd_prev": 9.624277367560865,
         "macd_signal": 8.992792400465854,
         "macd_signal_prev": 8.748293449984391,
-        "obv": 2594913082.0,
-        "obv_ma20": 2366946729.1,
-        "obv_ma5": 2511830356.4,
+        "obv": 2596564363.0,
+        "obv_ma20": 2367029293.15,
+        "obv_ma5": 2512160612.6,
         "pct_of_high_20d": 1.0,
         "prev_close": 304.989990234375,
         "today_return": 0.012557845216167651,
-        "vol_ratio": 0.8683627525119495,
-        "volume": 41953782.0
+        "vol_ratio": 0.9010013625412421,
+        "volume": 43605063.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Apple",
       "reasons": [
         {
@@ -17480,12 +17480,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.87 return=1.26%",
+          "detail": "vol_ratio=0.90 return=1.26%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=2511830356 OBV_MA20=2366946729",
+          "detail": "OBV_MA5=2512160613 OBV_MA20=2367029293",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17520,7 +17520,7 @@
         "rating": "Buy",
         "rating_score": 2.3469387755102042,
         "target_mean": 156.7857,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 156.7857
       },
       "chip": null,
       "indicators": {
@@ -17535,18 +17535,18 @@
         "macd_prev": -0.5980989483801125,
         "macd_signal": 0.03261897351776771,
         "macd_signal_prev": 0.23855913514955407,
-        "obv": 154572093.0,
-        "obv_ma20": 154002079.65,
-        "obv_ma5": 157633518.6,
+        "obv": 154506016.0,
+        "obv_ma20": 153998775.8,
+        "obv_ma5": 157620303.2,
         "pct_of_high_20d": 0.9342792791337196,
         "prev_close": 134.25,
         "today_return": -0.014152654722416225,
-        "vol_ratio": 0.7473695929456823,
-        "volume": 3021907.0
+        "vol_ratio": 0.7630880534536066,
+        "volume": 3087984.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Airbnb",
       "reasons": [
         {
@@ -17560,12 +17560,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.75 return=-1.42%",
+          "detail": "vol_ratio=0.76 return=-1.42%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=157633519 OBV_MA20=154002080",
+          "detail": "OBV_MA5=157620303 OBV_MA20=153998776",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17580,7 +17580,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 156.79 (n/a)",
+          "detail": "target 156.79 -> 156.79 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17600,7 +17600,7 @@
         "rating": "Buy",
         "rating_score": 2.4130434782608696,
         "target_mean": 327.2847,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 327.2847
       },
       "chip": null,
       "indicators": {
@@ -17615,18 +17615,18 @@
         "macd_prev": 0.5170978395180157,
         "macd_signal": 0.19433958646774002,
         "macd_signal_prev": 0.19119728824954424,
-        "obv": -121399569.0,
-        "obv_ma20": -122164538.45,
-        "obv_ma5": -118851553.8,
+        "obv": -121393151.0,
+        "obv_ma20": -122164217.55,
+        "obv_ma5": -118850270.2,
         "pct_of_high_20d": 0.9541927612512076,
         "prev_close": 244.10000610351562,
         "today_return": 0.002703762338459148,
-        "vol_ratio": 0.8331254457682061,
-        "volume": 3771631.0
+        "vol_ratio": 0.8344839826598774,
+        "volume": 3778049.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Adobe",
       "reasons": [
         {
@@ -17645,7 +17645,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=-118851554 OBV_MA20=-122164538",
+          "detail": "OBV_MA5=-118850270 OBV_MA20=-122164218",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17660,7 +17660,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 327.28 (n/a)",
+          "detail": "target 327.28 -> 327.28 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17680,7 +17680,7 @@
         "rating": "Buy",
         "rating_score": 1.8780487804878048,
         "target_mean": 426.9355,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 426.9355
       },
       "chip": null,
       "indicators": {
@@ -17695,18 +17695,18 @@
         "macd_prev": 11.163248367236577,
         "macd_signal": 15.037180649246999,
         "macd_signal_prev": 16.413873556332785,
-        "obv": 60909600.0,
-        "obv_ma20": 73429650.0,
-        "obv_ma5": 66396100.0,
+        "obv": 61953698.0,
+        "obv_ma20": 73481854.9,
+        "obv_ma5": 66604919.6,
         "pct_of_high_20d": 0.9183144704372133,
         "prev_close": 384.2099914550781,
         "today_return": 0.03347132077548842,
-        "vol_ratio": 0.9507248671097578,
-        "volume": 3843600.0
+        "vol_ratio": 1.1935727022629392,
+        "volume": 4887698.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Analog Devices",
       "reasons": [
         {
@@ -17720,12 +17720,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.95 return=3.35%",
+          "detail": "vol_ratio=1.19 return=3.35%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=66396100 OBV_MA20=73429650",
+          "detail": "OBV_MA5=66604920 OBV_MA20=73481855",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17740,7 +17740,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 426.94 (n/a)",
+          "detail": "target 426.94 -> 426.94 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17760,7 +17760,7 @@
         "rating": "Buy",
         "rating_score": 2.0,
         "target_mean": 244.09956,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 244.09956
       },
       "chip": null,
       "indicators": {
@@ -17775,18 +17775,18 @@
         "macd_prev": 26.40447773904924,
         "macd_signal": 21.901642760525217,
         "macd_signal_prev": 19.900806997060954,
-        "obv": 181359824.0,
-        "obv_ma20": 148021201.2,
-        "obv_ma5": 166002564.8,
+        "obv": 181433610.0,
+        "obv_ma20": 148024890.5,
+        "obv_ma5": 166017322.0,
         "pct_of_high_20d": 1.0,
         "prev_close": 297.8399963378906,
         "today_return": 0.030351895836938647,
-        "vol_ratio": 1.0399119980336329,
-        "volume": 6438424.0
+        "vol_ratio": 1.0512032636613478,
+        "volume": 6512210.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Astera Labs",
       "reasons": [
         {
@@ -17800,12 +17800,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=1.04 return=3.04%",
+          "detail": "vol_ratio=1.05 return=3.04%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=166002565 OBV_MA20=148021201",
+          "detail": "OBV_MA5=166017322 OBV_MA20=148024890",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17820,7 +17820,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 244.10 (n/a)",
+          "detail": "target 244.10 -> 244.10 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17840,7 +17840,7 @@
         "rating": "Buy",
         "rating_score": 1.9069767441860466,
         "target_mean": 509.62857,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 509.62857
       },
       "chip": null,
       "indicators": {
@@ -17855,18 +17855,18 @@
         "macd_prev": 11.151577391810804,
         "macd_signal": 12.487628230589392,
         "macd_signal_prev": 12.829042116893358,
-        "obv": 152813067.0,
-        "obv_ma20": 139606953.35,
-        "obv_ma5": 144749653.4,
+        "obv": 153133275.0,
+        "obv_ma20": 139622963.75,
+        "obv_ma5": 144813695.0,
         "pct_of_high_20d": 0.9741670989107449,
         "prev_close": 427.3599853515625,
         "today_return": 0.01123179163954302,
-        "vol_ratio": 0.5805056717991136,
-        "volume": 4477567.0
+        "vol_ratio": 0.6207314022113785,
+        "volume": 4797775.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Materials",
       "reasons": [
         {
@@ -17880,12 +17880,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.58 return=1.12%",
+          "detail": "vol_ratio=0.62 return=1.12%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=144749653 OBV_MA20=139606953",
+          "detail": "OBV_MA5=144813695 OBV_MA20=139622964",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17900,7 +17900,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 509.63 (n/a)",
+          "detail": "target 509.63 -> 509.63 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -17920,7 +17920,7 @@
         "rating": "Buy",
         "rating_score": 2.016949152542373,
         "target_mean": 472.16666,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 472.16666
       },
       "chip": null,
       "indicators": {
@@ -17935,18 +17935,18 @@
         "macd_prev": 42.92823284406899,
         "macd_signal": 44.83998429763045,
         "macd_signal_prev": 45.216236555998364,
-        "obv": 1386405123.0,
-        "obv_ma20": 1307678606.15,
-        "obv_ma5": 1335735644.6,
+        "obv": 1386497933.0,
+        "obv_ma20": 1307683246.65,
+        "obv_ma5": 1335754206.6,
         "pct_of_high_20d": 1.0,
         "prev_close": 449.5899963378906,
         "today_return": 0.039858567970152414,
-        "vol_ratio": 0.8144326285168496,
-        "volume": 34518323.0
+        "vol_ratio": 0.8165330059928766,
+        "volume": 34611133.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AMD",
       "reasons": [
         {
@@ -17960,12 +17960,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.81 return=3.99%",
+          "detail": "vol_ratio=0.82 return=3.99%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=1335735645 OBV_MA20=1307678606",
+          "detail": "OBV_MA5=1335754207 OBV_MA20=1307683247",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -17980,7 +17980,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 472.17 (n/a)",
+          "detail": "target 472.17 -> 472.17 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18000,7 +18000,7 @@
         "rating": "Buy",
         "rating_score": 2.4444444444444446,
         "target_mean": 75.5,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 75.5
       },
       "chip": null,
       "indicators": {
@@ -18015,18 +18015,18 @@
         "macd_prev": 1.4543427363430936,
         "macd_signal": 2.810277577452926,
         "macd_signal_prev": 3.2553653334238297,
-        "obv": 78060873.0,
-        "obv_ma20": 92543783.65,
-        "obv_ma5": 85305394.6,
+        "obv": 77913485.0,
+        "obv_ma20": 92536414.25,
+        "obv_ma5": 85275917.0,
         "pct_of_high_20d": 0.8514633380033158,
         "prev_close": 65.9000015258789,
         "today_return": -0.002276199126034939,
-        "vol_ratio": 1.0746294716068336,
-        "volume": 5735127.0
+        "vol_ratio": 1.1007266133731721,
+        "volume": 5882515.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amkor Technology",
       "reasons": [
         {
@@ -18040,12 +18040,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=1.07 return=-0.23%",
+          "detail": "vol_ratio=1.10 return=-0.23%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=85305395 OBV_MA20=92543784",
+          "detail": "OBV_MA5=85275917 OBV_MA20=92536414",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18060,7 +18060,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 75.50 (n/a)",
+          "detail": "target 75.50 -> 75.50 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18080,7 +18080,7 @@
         "rating": "Buy",
         "rating_score": 1.794871794871795,
         "target_mean": 312.6321,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 312.6321
       },
       "chip": null,
       "indicators": {
@@ -18106,7 +18106,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amazon",
       "reasons": [
         {
@@ -18140,7 +18140,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 312.63 (n/a)",
+          "detail": "target 312.63 -> 312.63 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18160,7 +18160,7 @@
         "rating": "Buy",
         "rating_score": 1.8333333333333333,
         "target_mean": 644.4667,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 644.4667
       },
       "chip": null,
       "indicators": {
@@ -18186,7 +18186,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AppLovin",
       "reasons": [
         {
@@ -18220,7 +18220,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 644.47 (n/a)",
+          "detail": "target 644.47 -> 644.47 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18240,7 +18240,7 @@
         "rating": "Buy",
         "rating_score": 2.2888888888888888,
         "target_mean": 232.13568,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 232.13568
       },
       "chip": null,
       "indicators": {
@@ -18266,7 +18266,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Arm Holdings",
       "reasons": [
         {
@@ -18300,7 +18300,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 232.14 (n/a)",
+          "detail": "target 232.14 -> 232.14 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18319,8 +18319,8 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 2.0714285714285716,
-        "target_mean": 1660.3262,
-        "target_mean_prev_eod": null
+        "target_mean": 1658.2067,
+        "target_mean_prev_eod": 1660.3262
       },
       "chip": null,
       "indicators": {
@@ -18346,7 +18346,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ASML",
       "reasons": [
         {
@@ -18380,7 +18380,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1660.33 (n/a)",
+          "detail": "target 1660.33 -> 1658.21 (-0.13%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18400,7 +18400,7 @@
         "rating": "Buy",
         "rating_score": 1.7719298245614035,
         "target_mean": 480.49054,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 480.49054
       },
       "chip": null,
       "indicators": {
@@ -18415,18 +18415,18 @@
         "macd_prev": 10.401418177457685,
         "macd_signal": 13.432009941736656,
         "macd_signal_prev": 14.47431507023148,
-        "obv": 1092907823.0,
-        "obv_ma20": 1164202531.15,
-        "obv_ma5": 1111488524.6,
+        "obv": 1092460464.0,
+        "obv_ma20": 1164180163.2,
+        "obv_ma5": 1111399052.8,
         "pct_of_high_20d": 0.941676724349993,
         "prev_close": 414.57000732421875,
         "today_return": -0.0010372016021047425,
-        "vol_ratio": 0.7300139297698156,
-        "volume": 13570177.0
+        "vol_ratio": 0.7531735241576503,
+        "volume": 14017536.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Broadcom",
       "reasons": [
         {
@@ -18440,12 +18440,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.73 return=-0.10%",
+          "detail": "vol_ratio=0.75 return=-0.10%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=1111488525 OBV_MA20=1164202531",
+          "detail": "OBV_MA5=1111399053 OBV_MA20=1164180163",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18460,7 +18460,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 480.49 (n/a)",
+          "detail": "target 480.49 -> 480.49 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18480,7 +18480,7 @@
         "rating": "Buy",
         "rating_score": 1.8108108108108107,
         "target_mean": 270.0,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 270.0
       },
       "chip": null,
       "indicators": {
@@ -18506,7 +18506,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Boeing",
       "reasons": [
         {
@@ -18540,7 +18540,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 270.00 (n/a)",
+          "detail": "target 270.00 -> 270.00 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18560,7 +18560,7 @@
         "rating": "Buy",
         "rating_score": 2.3055555555555554,
         "target_mean": 245.13333,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 245.13333
       },
       "chip": null,
       "indicators": {
@@ -18575,18 +18575,18 @@
         "macd_prev": 20.760710418697954,
         "macd_signal": 23.037071652968493,
         "macd_signal_prev": 23.508487920021743,
-        "obv": 536184076.0,
-        "obv_ma20": 519110403.8,
-        "obv_ma5": 528861495.2,
+        "obv": 535507252.0,
+        "obv_ma20": 519076562.6,
+        "obv_ma5": 528726130.4,
         "pct_of_high_20d": 0.9824931318599625,
         "prev_close": 307.8800048828125,
         "today_return": -0.017506868140037546,
-        "vol_ratio": 0.8021425413316479,
-        "volume": 8640524.0
+        "vol_ratio": 0.8622665218559695,
+        "volume": 9317348.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Bloom Energy",
       "reasons": [
         {
@@ -18600,12 +18600,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.80 return=-1.75%",
+          "detail": "vol_ratio=0.86 return=-1.75%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=528861495 OBV_MA20=519110404",
+          "detail": "OBV_MA5=528726130 OBV_MA20=519076563",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18620,7 +18620,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 245.13 (n/a)",
+          "detail": "target 245.13 -> 245.13 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18640,7 +18640,7 @@
         "rating": "Buy",
         "rating_score": 2.323529411764706,
         "target_mean": 920.1404,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 920.1404
       },
       "chip": null,
       "indicators": {
@@ -18655,18 +18655,18 @@
         "macd_prev": 21.986976879009262,
         "macd_signal": 29.159988593649242,
         "macd_signal_prev": 31.339837977245306,
-        "obv": 82591118.0,
-        "obv_ma20": 85856270.9,
-        "obv_ma5": 81809463.6,
+        "obv": 82603594.0,
+        "obv_ma20": 85856894.7,
+        "obv_ma5": 81811958.8,
         "pct_of_high_20d": 0.9492518546178953,
         "prev_close": 865.9500122070312,
         "today_return": 0.016097929724462556,
-        "vol_ratio": 0.7655426675757314,
-        "volume": 1974718.0
+        "vol_ratio": 0.7701930065628223,
+        "volume": 1987194.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Caterpillar",
       "reasons": [
         {
@@ -18685,7 +18685,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=81809464 OBV_MA20=85856271",
+          "detail": "OBV_MA5=81811959 OBV_MA20=85856895",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18700,7 +18700,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 920.14 (n/a)",
+          "detail": "target 920.14 -> 920.14 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18720,7 +18720,7 @@
         "rating": "Buy",
         "rating_score": 2.0,
         "target_mean": 440.53745,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 440.53745
       },
       "chip": null,
       "indicators": {
@@ -18746,7 +18746,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ciena",
       "reasons": [
         {
@@ -18780,7 +18780,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 440.54 (n/a)",
+          "detail": "target 440.54 -> 440.54 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18800,7 +18800,7 @@
         "rating": "Buy",
         "rating_score": 1.8823529411764706,
         "target_mean": 441.33444,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 441.33444
       },
       "chip": null,
       "indicators": {
@@ -18815,18 +18815,18 @@
         "macd_prev": -2.303328173800196,
         "macd_signal": 4.5379508812489595,
         "macd_signal_prev": 6.156035522281458,
-        "obv": 191203216.0,
-        "obv_ma20": 194001425.8,
-        "obv_ma5": 188755383.2,
+        "obv": 191224750.0,
+        "obv_ma20": 194002502.5,
+        "obv_ma5": 188759690.0,
         "pct_of_high_20d": 0.8701120356036732,
         "prev_close": 354.7699890136719,
         "today_return": 0.03551598639599152,
-        "vol_ratio": 0.7094794635822301,
-        "volume": 1691616.0
+        "vol_ratio": 0.7181867059056566,
+        "volume": 1713150.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Celestica",
       "reasons": [
         {
@@ -18840,12 +18840,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.71 return=3.55%",
+          "detail": "vol_ratio=0.72 return=3.55%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=188755383 OBV_MA20=194001426",
+          "detail": "OBV_MA5=188759690 OBV_MA20=194002502",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18860,7 +18860,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 441.33 (n/a)",
+          "detail": "target 441.33 -> 441.33 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18880,7 +18880,7 @@
         "rating": "Buy",
         "rating_score": 1.9655172413793103,
         "target_mean": 380.61707,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 380.61707
       },
       "chip": null,
       "indicators": {
@@ -18895,18 +18895,18 @@
         "macd_prev": 18.85755032855934,
         "macd_signal": 19.7980095066701,
         "macd_signal_prev": 20.10248531615838,
-        "obv": 271304290.0,
-        "obv_ma20": 264639714.5,
-        "obv_ma5": 270994418.0,
+        "obv": 271302050.0,
+        "obv_ma20": 264639602.5,
+        "obv_ma5": 270993970.0,
         "pct_of_high_20d": 0.9324097521801445,
         "prev_close": 378.0,
         "today_return": -0.001137546761326047,
-        "vol_ratio": 0.6011258436512735,
-        "volume": 3975510.0
+        "vol_ratio": 0.6014543620845226,
+        "volume": 3977750.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coherent",
       "reasons": [
         {
@@ -18925,7 +18925,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=270994418 OBV_MA20=264639714",
+          "detail": "OBV_MA5=270993970 OBV_MA20=264639602",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -18940,7 +18940,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 380.62 (n/a)",
+          "detail": "target 380.62 -> 380.62 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -18960,7 +18960,7 @@
         "rating": "Buy",
         "rating_score": 2.2093023255813953,
         "target_mean": 231.7168,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 231.7168
       },
       "chip": null,
       "indicators": {
@@ -18986,7 +18986,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coinbase",
       "reasons": [
         {
@@ -19020,7 +19020,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 231.72 (n/a)",
+          "detail": "target 231.72 -> 231.72 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19040,7 +19040,7 @@
         "rating": "Buy",
         "rating_score": 2.0454545454545454,
         "target_mean": 1076.9688,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 1076.9688
       },
       "chip": null,
       "indicators": {
@@ -19066,7 +19066,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Costco",
       "reasons": [
         {
@@ -19100,7 +19100,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1076.97 (n/a)",
+          "detail": "target 1076.97 -> 1076.97 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19120,7 +19120,7 @@
         "rating": "Buy",
         "rating_score": 2.0517241379310347,
         "target_mean": 265.00793,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 265.00793
       },
       "chip": null,
       "indicators": {
@@ -19146,7 +19146,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Salesforce",
       "reasons": [
         {
@@ -19180,7 +19180,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 265.01 (n/a)",
+          "detail": "target 265.01 -> 265.01 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19200,7 +19200,7 @@
         "rating": "Buy",
         "rating_score": 2.0161290322580645,
         "target_mean": 527.62585,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 527.62585
       },
       "chip": null,
       "indicators": {
@@ -19226,7 +19226,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CrowdStrike",
       "reasons": [
         {
@@ -19260,7 +19260,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 527.63 (n/a)",
+          "detail": "target 527.63 -> 527.63 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19280,7 +19280,7 @@
         "rating": "Buy",
         "rating_score": 2.1666666666666665,
         "target_mean": 138.90323,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 138.90323
       },
       "chip": null,
       "indicators": {
@@ -19306,7 +19306,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CoreWeave",
       "reasons": [
         {
@@ -19340,7 +19340,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 138.90 (n/a)",
+          "detail": "target 138.90 -> 138.90 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19360,7 +19360,7 @@
         "rating": "Buy",
         "rating_score": 2.0625,
         "target_mean": 124.45364,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 124.45364
       },
       "chip": null,
       "indicators": {
@@ -19386,7 +19386,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cisco",
       "reasons": [
         {
@@ -19420,7 +19420,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 124.45 (n/a)",
+          "detail": "target 124.45 -> 124.45 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19440,7 +19440,7 @@
         "rating": "Buy",
         "rating_score": 1.7857142857142858,
         "target_mean": 223.01941,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 223.01941
       },
       "chip": null,
       "indicators": {
@@ -19466,7 +19466,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Datadog",
       "reasons": [
         {
@@ -19500,7 +19500,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 223.02 (n/a)",
+          "detail": "target 223.02 -> 223.02 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19520,7 +19520,7 @@
         "rating": "Buy",
         "rating_score": 2.0588235294117645,
         "target_mean": 205.69565,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 205.69565
       },
       "chip": null,
       "indicators": {
@@ -19535,18 +19535,18 @@
         "macd_prev": 14.387291483705894,
         "macd_signal": 15.680811891260635,
         "macd_signal_prev": 15.146097350699236,
-        "obv": -145383669.0,
-        "obv_ma20": -164701983.45,
-        "obv_ma5": -161398353.8,
+        "obv": -145212517.0,
+        "obv_ma20": -164693425.85,
+        "obv_ma5": -161364123.4,
         "pct_of_high_20d": 1.0,
         "prev_close": 252.8000030517578,
         "today_return": 0.16768195758672344,
-        "vol_ratio": 2.403145310909904,
-        "volume": 15066331.0
+        "vol_ratio": 2.427131826329815,
+        "volume": 15237483.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Dell Technologies",
       "reasons": [
         {
@@ -19560,12 +19560,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=2.40 return=16.77%",
+          "detail": "vol_ratio=2.43 return=16.77%",
           "passed": true,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=-161398354 OBV_MA20=-164701983",
+          "detail": "OBV_MA5=-161364123 OBV_MA20=-164693426",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -19580,7 +19580,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 205.70 (n/a)",
+          "detail": "target 205.70 -> 205.70 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19600,7 +19600,7 @@
         "rating": "Buy",
         "rating_score": 2.340909090909091,
         "target_mean": 286.32352,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 286.32352
       },
       "chip": null,
       "indicators": {
@@ -19615,18 +19615,18 @@
         "macd_prev": -7.803058608785221,
         "macd_signal": -5.88885050992034,
         "macd_signal_prev": -5.369359430810309,
-        "obv": 53045122.0,
-        "obv_ma20": 54210196.1,
-        "obv_ma5": 52461824.4,
+        "obv": 53044684.0,
+        "obv_ma20": 54210174.2,
+        "obv_ma5": 52461736.8,
         "pct_of_high_20d": 0.8491237770378126,
         "prev_close": 218.1199951171875,
         "today_return": -0.01590868007694035,
-        "vol_ratio": 0.8684762022954189,
-        "volume": 1545878.0
+        "vol_ratio": 0.8687115830982598,
+        "volume": 1546316.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Expedia",
       "reasons": [
         {
@@ -19645,7 +19645,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=52461824 OBV_MA20=54210196",
+          "detail": "OBV_MA5=52461737 OBV_MA20=54210174",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -19660,7 +19660,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 286.32 (n/a)",
+          "detail": "target 286.32 -> 286.32 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19680,7 +19680,7 @@
         "rating": "Buy",
         "rating_score": 1.8709677419354838,
         "target_mean": 349.1,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 349.1
       },
       "chip": null,
       "indicators": {
@@ -19706,7 +19706,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Aerospace",
       "reasons": [
         {
@@ -19740,7 +19740,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 349.10 (n/a)",
+          "detail": "target 349.10 -> 349.10 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19760,7 +19760,7 @@
         "rating": "Buy",
         "rating_score": 1.951219512195122,
         "target_mean": 1217.1665,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 1217.1665
       },
       "chip": null,
       "indicators": {
@@ -19775,18 +19775,18 @@
         "macd_prev": 10.460701829693562,
         "macd_signal": 20.139203329567557,
         "macd_signal_prev": 22.917141894933096,
-        "obv": 120112823.0,
-        "obv_ma20": 123653461.15,
-        "obv_ma5": 119568404.6,
+        "obv": 119906850.0,
+        "obv_ma20": 123643162.5,
+        "obv_ma5": 119527210.0,
         "pct_of_high_20d": 0.9272560173757568,
         "prev_close": 1043.8199462890625,
         "today_return": -0.004866697626106364,
-        "vol_ratio": 0.5158532043600783,
-        "volume": 1265377.0
+        "vol_ratio": 0.5973139445312191,
+        "volume": 1471350.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Vernova",
       "reasons": [
         {
@@ -19800,12 +19800,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.52 return=-0.49%",
+          "detail": "vol_ratio=0.60 return=-0.49%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=119568405 OBV_MA20=123653461",
+          "detail": "OBV_MA5=119527210 OBV_MA20=123643162",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -19820,7 +19820,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1217.17 (n/a)",
+          "detail": "target 1217.17 -> 1217.17 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19840,7 +19840,7 @@
         "rating": "Buy",
         "rating_score": 1.8142857142857143,
         "target_mean": 421.69,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 421.69
       },
       "chip": null,
       "indicators": {
@@ -19855,18 +19855,18 @@
         "macd_prev": 14.709264304140788,
         "macd_signal": 16.695451480917082,
         "macd_signal_prev": 17.581041285233376,
-        "obv": 973921566.0,
-        "obv_ma20": 1033033298.3,
-        "obv_ma5": 999585553.2,
+        "obv": 973865156.0,
+        "obv_ma20": 1033030477.8,
+        "obv_ma5": 999574271.2,
         "pct_of_high_20d": 0.9507317480926323,
         "prev_close": 383.4700012207031,
         "today_return": -0.010665753057268912,
-        "vol_ratio": 0.6728744412575559,
-        "volume": 13061934.0
+        "vol_ratio": 0.6756821808285571,
+        "volume": 13118344.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Alphabet C",
       "reasons": [
         {
@@ -19880,12 +19880,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.67 return=-1.07%",
+          "detail": "vol_ratio=0.68 return=-1.07%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=999585553 OBV_MA20=1033033298",
+          "detail": "OBV_MA5=999574271 OBV_MA20=1033030478",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -19900,7 +19900,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 421.69 (n/a)",
+          "detail": "target 421.69 -> 421.69 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -19920,7 +19920,7 @@
         "rating": "Buy",
         "rating_score": 1.9411764705882353,
         "target_mean": 98.39625,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 98.39625
       },
       "chip": null,
       "indicators": {
@@ -19946,7 +19946,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Robinhood",
       "reasons": [
         {
@@ -19980,7 +19980,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 98.40 (n/a)",
+          "detail": "target 98.40 -> 98.40 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20000,7 +20000,7 @@
         "rating": "Buy",
         "rating_score": 2.142857142857143,
         "target_mean": 277.68,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 277.68
       },
       "chip": null,
       "indicators": {
@@ -20026,7 +20026,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "IBM",
       "reasons": [
         {
@@ -20060,7 +20060,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 277.68 (n/a)",
+          "detail": "target 277.68 -> 277.68 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20080,7 +20080,7 @@
         "rating": "Hold",
         "rating_score": 2.6481481481481484,
         "target_mean": 87.8619,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 87.8619
       },
       "chip": null,
       "indicators": {
@@ -20106,7 +20106,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intel",
       "reasons": [
         {
@@ -20140,7 +20140,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 87.86 (n/a)",
+          "detail": "target 87.86 -> 87.86 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20160,7 +20160,7 @@
         "rating": "Buy",
         "rating_score": 2.048780487804878,
         "target_mean": 572.676,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 572.676
       },
       "chip": null,
       "indicators": {
@@ -20186,7 +20186,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intuitive Surgical",
       "reasons": [
         {
@@ -20220,7 +20220,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 572.68 (n/a)",
+          "detail": "target 572.68 -> 572.68 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20240,7 +20240,7 @@
         "rating": "Buy",
         "rating_score": 2.1875,
         "target_mean": 252.95833,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 252.95833
       },
       "chip": null,
       "indicators": {
@@ -20255,18 +20255,18 @@
         "macd_prev": -0.9004921688868706,
         "macd_signal": -1.708109473785672,
         "macd_signal_prev": -2.0448406024103214,
-        "obv": 455748399.0,
-        "obv_ma20": 438650819.95,
-        "obv_ma5": 450231099.8,
+        "obv": 456984321.0,
+        "obv_ma20": 438712616.05,
+        "obv_ma5": 450478284.2,
         "pct_of_high_20d": 1.0,
         "prev_close": 231.72999572753906,
         "today_return": 0.011263110768880757,
-        "vol_ratio": 0.5638978780007159,
-        "volume": 4224799.0
+        "vol_ratio": 0.7228979141926375,
+        "volume": 5460721.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Johnson & Johnson",
       "reasons": [
         {
@@ -20280,12 +20280,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.56 return=1.13%",
+          "detail": "vol_ratio=0.72 return=1.13%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=450231100 OBV_MA20=438650820",
+          "detail": "OBV_MA5=450478284 OBV_MA20=438712616",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -20300,7 +20300,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 252.96 (n/a)",
+          "detail": "target 252.96 -> 252.96 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20320,7 +20320,7 @@
         "rating": "Buy",
         "rating_score": 2.3225806451612905,
         "target_mean": 342.31818,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 342.31818
       },
       "chip": null,
       "indicators": {
@@ -20346,7 +20346,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "JPMorgan Chase",
       "reasons": [
         {
@@ -20380,7 +20380,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 342.32 (n/a)",
+          "detail": "target 342.32 -> 342.32 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20400,7 +20400,7 @@
         "rating": "Buy",
         "rating_score": 1.9142857142857144,
         "target_mean": 85.88609,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 85.88609
       },
       "chip": null,
       "indicators": {
@@ -20415,18 +20415,18 @@
         "macd_prev": 1.2270806518085209,
         "macd_signal": 1.0466574306165106,
         "macd_signal_prev": 1.0009363256409705,
-        "obv": 79620515.0,
-        "obv_ma20": 43479360.75,
-        "obv_ma5": 86169823.0,
+        "obv": 79740609.0,
+        "obv_ma20": 43485365.45,
+        "obv_ma5": 86193841.8,
         "pct_of_high_20d": 0.9946289694598832,
         "prev_close": 81.16999816894531,
         "today_return": 0.0038192090055619854,
-        "vol_ratio": 0.5280935877079782,
-        "volume": 7945715.0
+        "vol_ratio": 0.5358615017540695,
+        "volume": 8065809.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coca-Cola",
       "reasons": [
         {
@@ -20440,12 +20440,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.53 return=0.38%",
+          "detail": "vol_ratio=0.54 return=0.38%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=86169823 OBV_MA20=43479361",
+          "detail": "OBV_MA5=86193842 OBV_MA20=43485365",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -20460,7 +20460,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 85.89 (n/a)",
+          "detail": "target 85.89 -> 85.89 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20480,7 +20480,7 @@
         "rating": "Buy",
         "rating_score": 1.9333333333333333,
         "target_mean": 1104.678,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 1104.678
       },
       "chip": null,
       "indicators": {
@@ -20506,7 +20506,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lumentum",
       "reasons": [
         {
@@ -20540,7 +20540,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1104.68 (n/a)",
+          "detail": "target 1104.68 -> 1104.68 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20560,7 +20560,7 @@
         "rating": "Buy",
         "rating_score": 1.9743589743589745,
         "target_mean": 1210.0,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 1210.0
       },
       "chip": null,
       "indicators": {
@@ -20586,7 +20586,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Eli Lilly",
       "reasons": [
         {
@@ -20620,7 +20620,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1210.00 (n/a)",
+          "detail": "target 1210.00 -> 1210.00 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20640,7 +20640,7 @@
         "rating": "Hold",
         "rating_score": 2.5172413793103448,
         "target_mean": 630.05,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 630.05
       },
       "chip": null,
       "indicators": {
@@ -20666,7 +20666,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lockheed Martin",
       "reasons": [
         {
@@ -20700,7 +20700,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 630.05 (n/a)",
+          "detail": "target 630.05 -> 630.05 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20720,7 +20720,7 @@
         "rating": "Buy",
         "rating_score": 1.6785714285714286,
         "target_mean": 303.22726,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 303.22726
       },
       "chip": null,
       "indicators": {
@@ -20746,7 +20746,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cheniere Energy",
       "reasons": [
         {
@@ -20780,7 +20780,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 303.23 (n/a)",
+          "detail": "target 303.23 -> 303.23 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20800,7 +20800,7 @@
         "rating": "Buy",
         "rating_score": 1.975609756097561,
         "target_mean": 312.125,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 312.125
       },
       "chip": null,
       "indicators": {
@@ -20815,18 +20815,18 @@
         "macd_prev": 10.728259526250497,
         "macd_signal": 11.114875036739189,
         "macd_signal_prev": 11.025244064149868,
-        "obv": 482120673.0,
-        "obv_ma20": 461306173.65,
-        "obv_ma5": 468638894.6,
+        "obv": 482191043.0,
+        "obv_ma20": 461309692.15,
+        "obv_ma5": 468652968.6,
         "pct_of_high_20d": 1.0,
         "prev_close": 302.239990234375,
         "today_return": 0.010289888729578589,
-        "vol_ratio": 0.8396976768800449,
-        "volume": 7770473.0
+        "vol_ratio": 0.8469800061780764,
+        "volume": 7840843.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lam Research",
       "reasons": [
         {
@@ -20840,12 +20840,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.84 return=1.03%",
+          "detail": "vol_ratio=0.85 return=1.03%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=468638895 OBV_MA20=461306174",
+          "detail": "OBV_MA5=468652969 OBV_MA20=461309692",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -20860,7 +20860,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 312.12 (n/a)",
+          "detail": "target 312.12 -> 312.12 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20880,7 +20880,7 @@
         "rating": "Buy",
         "rating_score": 1.84,
         "target_mean": 646.9722,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 646.9722
       },
       "chip": null,
       "indicators": {
@@ -20895,18 +20895,18 @@
         "macd_prev": -2.211988187377756,
         "macd_signal": -2.46799431379315,
         "macd_signal_prev": -2.566766339308081,
-        "obv": 47996292.0,
-        "obv_ma20": 49851929.6,
-        "obv_ma5": 49718118.4,
+        "obv": 47393286.0,
+        "obv_ma20": 49821779.3,
+        "obv_ma5": 49597517.2,
         "pct_of_high_20d": 0.9491842185017538,
         "prev_close": 499.6199951171875,
         "today_return": -0.002161615993796051,
-        "vol_ratio": 0.3549448940700729,
-        "volume": 1355808.0
+        "vol_ratio": 0.5087933369640575,
+        "volume": 1958814.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Mastercard",
       "reasons": [
         {
@@ -20920,12 +20920,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.35 return=-0.22%",
+          "detail": "vol_ratio=0.51 return=-0.22%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=49718118 OBV_MA20=49851930",
+          "detail": "OBV_MA5=49597517 OBV_MA20=49821779",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -20940,7 +20940,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 646.97 (n/a)",
+          "detail": "target 646.97 -> 646.97 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -20960,7 +20960,7 @@
         "rating": "Buy",
         "rating_score": 2.3870967741935485,
         "target_mean": 377.41666,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 377.41666
       },
       "chip": null,
       "indicators": {
@@ -20975,18 +20975,18 @@
         "macd_prev": 3.1526183070696447,
         "macd_signal": 2.4833474486442713,
         "macd_signal_prev": 2.1840081739310357,
-        "obv": 12204693.0,
-        "obv_ma20": 10738799.65,
-        "obv_ma5": 11938378.6,
+        "obv": 12193083.0,
+        "obv_ma20": 10738219.15,
+        "obv_ma5": 11936056.6,
         "pct_of_high_20d": 0.9961949382788238,
         "prev_close": 370.55999755859375,
         "today_return": -0.0038050617211762283,
-        "vol_ratio": 0.5955772582959145,
-        "volume": 808407.0
+        "vol_ratio": 0.6038724284082654,
+        "volume": 820017.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marriott",
       "reasons": [
         {
@@ -21005,7 +21005,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=11938379 OBV_MA20=10738800",
+          "detail": "OBV_MA5=11936057 OBV_MA20=10738219",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21020,7 +21020,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 377.42 (n/a)",
+          "detail": "target 377.42 -> 377.42 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21040,7 +21040,7 @@
         "rating": "Buy",
         "rating_score": 2.261904761904762,
         "target_mean": 330.0,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 330.0
       },
       "chip": null,
       "indicators": {
@@ -21066,7 +21066,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "McDonald's",
       "reasons": [
         {
@@ -21100,7 +21100,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 330.00 (n/a)",
+          "detail": "target 330.00 -> 330.00 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21120,7 +21120,7 @@
         "rating": "Buy",
         "rating_score": 1.9130434782608696,
         "target_mean": 358.82333,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 358.82333
       },
       "chip": null,
       "indicators": {
@@ -21146,7 +21146,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "MongoDB",
       "reasons": [
         {
@@ -21180,7 +21180,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 358.82 (n/a)",
+          "detail": "target 358.82 -> 358.82 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21200,7 +21200,7 @@
         "rating": "Buy",
         "rating_score": 1.7945205479452055,
         "target_mean": 826.69104,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 826.69104
       },
       "chip": null,
       "indicators": {
@@ -21215,18 +21215,18 @@
         "macd_prev": -7.470902442985448,
         "macd_signal": -6.070624992684941,
         "macd_signal_prev": -5.813501335695817,
-        "obv": 138544338.0,
-        "obv_ma20": 132001756.9,
-        "obv_ma5": 120061867.6,
+        "obv": 139378730.0,
+        "obv_ma20": 132043476.5,
+        "obv_ma5": 120228746.0,
         "pct_of_high_20d": 0.8992661786516358,
         "prev_close": 607.3800048828125,
         "today_return": 0.004741685369389348,
-        "vol_ratio": 0.6375447474372967,
-        "volume": 10268638.0
+        "vol_ratio": 0.6875683452266194,
+        "volume": 11103030.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Meta Platforms",
       "reasons": [
         {
@@ -21240,12 +21240,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.64 return=0.47%",
+          "detail": "vol_ratio=0.69 return=0.47%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=120061868 OBV_MA20=132001757",
+          "detail": "OBV_MA5=120228746 OBV_MA20=132043476",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21260,7 +21260,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 826.69 (n/a)",
+          "detail": "target 826.69 -> 826.69 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21280,7 +21280,7 @@
         "rating": "Buy",
         "rating_score": 2.2916666666666665,
         "target_mean": 173.43471,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 173.43471
       },
       "chip": null,
       "indicators": {
@@ -21295,18 +21295,18 @@
         "macd_prev": 0.5250010291263152,
         "macd_signal": -0.2140196239449119,
         "macd_signal_prev": -0.4805838750608259,
-        "obv": 90789058.0,
-        "obv_ma20": 76268602.9,
-        "obv_ma5": 85898831.6,
+        "obv": 90790237.0,
+        "obv_ma20": 76268661.85,
+        "obv_ma5": 85899067.4,
         "pct_of_high_20d": 0.9994099761449494,
         "prev_close": 151.60000610351562,
         "today_return": 0.005540872718151846,
-        "vol_ratio": 0.8108511801669038,
-        "volume": 3207758.0
+        "vol_ratio": 0.8111371186476387,
+        "volume": 3208937.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "3M",
       "reasons": [
         {
@@ -21325,7 +21325,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=85898832 OBV_MA20=76268603",
+          "detail": "OBV_MA5=85899067 OBV_MA20=76268662",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21340,7 +21340,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 173.43 (n/a)",
+          "detail": "target 173.43 -> 173.43 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21360,7 +21360,7 @@
         "rating": "Buy",
         "rating_score": 1.9,
         "target_mean": 148.17664,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 148.17664
       },
       "chip": null,
       "indicators": {
@@ -21375,18 +21375,18 @@
         "macd_prev": 13.13256409498436,
         "macd_signal": 13.44264259155475,
         "macd_signal_prev": 13.349336217633349,
-        "obv": 719512965.0,
-        "obv_ma20": 620370388.25,
-        "obv_ma5": 674583993.0,
+        "obv": 720338356.0,
+        "obv_ma20": 620411657.8,
+        "obv_ma5": 674749071.2,
         "pct_of_high_20d": 1.0,
         "prev_close": 190.69000244140625,
         "today_return": 0.029576796462527977,
-        "vol_ratio": 0.8049841836463979,
-        "volume": 18876765.0
+        "vol_ratio": 0.8387062625405324,
+        "volume": 19702156.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marvell Technology",
       "reasons": [
         {
@@ -21400,12 +21400,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.80 return=2.96%",
+          "detail": "vol_ratio=0.84 return=2.96%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=674583993 OBV_MA20=620370388",
+          "detail": "OBV_MA5=674749071 OBV_MA20=620411658",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21420,7 +21420,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 148.18 (n/a)",
+          "detail": "target 148.18 -> 148.18 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21440,7 +21440,7 @@
         "rating": "Buy",
         "rating_score": 1.7272727272727273,
         "target_mean": 560.6302,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 560.6302
       },
       "chip": null,
       "indicators": {
@@ -21466,7 +21466,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Microsoft",
       "reasons": [
         {
@@ -21500,7 +21500,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 560.63 (n/a)",
+          "detail": "target 560.63 -> 560.63 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21520,7 +21520,7 @@
         "rating": "Buy",
         "rating_score": 1.7735849056603774,
         "target_mean": 613.225,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 613.225
       },
       "chip": null,
       "indicators": {
@@ -21535,18 +21535,18 @@
         "macd_prev": 73.03058961382044,
         "macd_signal": 73.85145176993593,
         "macd_signal_prev": 74.54548754742093,
-        "obv": 1052857919.0,
-        "obv_ma20": 969848850.95,
-        "obv_ma5": 1022561543.8,
+        "obv": 1051243018.0,
+        "obv_ma20": 969768105.9,
+        "obv_ma5": 1022238563.6,
         "pct_of_high_20d": 0.9345096567287988,
         "prev_close": 762.0999755859375,
         "today_return": -0.01456498614555568,
-        "vol_ratio": 0.6667177968194058,
-        "volume": 33837381.0
+        "vol_ratio": 0.6974275556184264,
+        "volume": 35452282.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Micron Technology",
       "reasons": [
         {
@@ -21560,12 +21560,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.67 return=-1.46%",
+          "detail": "vol_ratio=0.70 return=-1.46%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=1022561544 OBV_MA20=969848851",
+          "detail": "OBV_MA5=1022238564 OBV_MA20=969768106",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21580,7 +21580,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 613.23 (n/a)",
+          "detail": "target 613.23 -> 613.23 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21600,7 +21600,7 @@
         "rating": "Buy",
         "rating_score": 2.125,
         "target_mean": 234.17741,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 234.17741
       },
       "chip": null,
       "indicators": {
@@ -21615,18 +21615,18 @@
         "macd_prev": -0.214223229249086,
         "macd_signal": 0.5093703734155053,
         "macd_signal_prev": 0.5114173700557755,
-        "obv": 191424272.0,
-        "obv_ma20": 182645418.6,
-        "obv_ma5": 186150514.4,
+        "obv": 191429026.0,
+        "obv_ma20": 182645656.3,
+        "obv_ma5": 186151465.2,
         "pct_of_high_20d": 0.8418162349612187,
         "prev_close": 212.64999389648438,
         "today_return": 0.016553041963285553,
-        "vol_ratio": 0.4361106676688026,
-        "volume": 2104072.0
+        "vol_ratio": 0.43707449468599785,
+        "volume": 2108826.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cloudflare",
       "reasons": [
         {
@@ -21645,7 +21645,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=186150514 OBV_MA20=182645419",
+          "detail": "OBV_MA5=186151465 OBV_MA20=182645656",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21660,7 +21660,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 234.18 (n/a)",
+          "detail": "target 234.18 -> 234.18 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21680,7 +21680,7 @@
         "rating": "Buy",
         "rating_score": 1.9322033898305084,
         "target_mean": 114.555,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 114.555
       },
       "chip": null,
       "indicators": {
@@ -21695,18 +21695,18 @@
         "macd_prev": -1.7087968307022834,
         "macd_signal": -1.8837174301240622,
         "macd_signal_prev": -1.9537242989687227,
-        "obv": 576565605.0,
-        "obv_ma20": 640723240.25,
-        "obv_ma5": 593424081.0,
+        "obv": 575021909.0,
+        "obv_ma20": 640646055.45,
+        "obv_ma5": 593115341.8,
         "pct_of_high_20d": 0.9464800544432808,
         "prev_close": 89.30000305175781,
         "today_return": -0.007838796794116587,
-        "vol_ratio": 0.6631261229273462,
-        "volume": 22165395.0
+        "vol_ratio": 0.7076750258733268,
+        "volume": 23709091.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Netflix",
       "reasons": [
         {
@@ -21720,12 +21720,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.66 return=-0.78%",
+          "detail": "vol_ratio=0.71 return=-0.78%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=593424081 OBV_MA20=640723240",
+          "detail": "OBV_MA5=593115342 OBV_MA20=640646055",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21740,7 +21740,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 114.56 (n/a)",
+          "detail": "target 114.56 -> 114.56 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21760,7 +21760,7 @@
         "rating": "Buy",
         "rating_score": 1.8518518518518519,
         "target_mean": 142.76773,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 142.76773
       },
       "chip": null,
       "indicators": {
@@ -21786,7 +21786,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ServiceNow",
       "reasons": [
         {
@@ -21820,7 +21820,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 142.77 (n/a)",
+          "detail": "target 142.77 -> 142.77 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -21855,18 +21855,18 @@
         "macd_prev": 7.789454985466648,
         "macd_signal": 7.77670920131075,
         "macd_signal_prev": 7.994398344858373,
-        "obv": 4283917436.0,
-        "obv_ma20": 4323736436.8,
-        "obv_ma5": 4487524927.2,
+        "obv": 4275813040.0,
+        "obv_ma20": 4323331217.0,
+        "obv_ma5": 4485904048.0,
         "pct_of_high_20d": 0.9134215526150854,
         "prev_close": 219.50999450683594,
         "today_return": -0.01904237975665879,
-        "vol_ratio": 0.9796906544863004,
-        "volume": 158836764.0
+        "vol_ratio": 1.0271107107645328,
+        "volume": 166941160.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NVIDIA",
       "reasons": [
         {
@@ -21880,12 +21880,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.98 return=-1.90%",
+          "detail": "vol_ratio=1.03 return=-1.90%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=4487524927 OBV_MA20=4323736437",
+          "detail": "OBV_MA5=4485904048 OBV_MA20=4323331217",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -21920,7 +21920,7 @@
         "rating": "Buy",
         "rating_score": 2.0256410256410255,
         "target_mean": 300.12903,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 300.12903
       },
       "chip": null,
       "indicators": {
@@ -21946,7 +21946,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NXP Semiconductors",
       "reasons": [
         {
@@ -21980,7 +21980,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 300.13 (n/a)",
+          "detail": "target 300.13 -> 300.13 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22000,7 +22000,7 @@
         "rating": "Buy",
         "rating_score": 2.107142857142857,
         "target_mean": 91.21053,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 91.21053
       },
       "chip": null,
       "indicators": {
@@ -22026,7 +22026,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oklo",
       "reasons": [
         {
@@ -22060,7 +22060,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 91.21 (n/a)",
+          "detail": "target 91.21 -> 91.21 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22080,7 +22080,7 @@
         "rating": "Buy",
         "rating_score": 2.0754716981132075,
         "target_mean": 100.44,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 100.44
       },
       "chip": null,
       "indicators": {
@@ -22106,7 +22106,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Okta",
       "reasons": [
         {
@@ -22140,7 +22140,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 100.44 (n/a)",
+          "detail": "target 100.44 -> 100.44 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22160,7 +22160,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 103.96552,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 103.96552
       },
       "chip": null,
       "indicators": {
@@ -22175,18 +22175,18 @@
         "macd_prev": 7.8216942816312525,
         "macd_signal": 8.60874111274422,
         "macd_signal_prev": 8.779268143641515,
-        "obv": 132557110.0,
-        "obv_ma20": 117352570.5,
-        "obv_ma5": 128309822.0,
+        "obv": 132561840.0,
+        "obv_ma20": 117352807.0,
+        "obv_ma5": 128310768.0,
         "pct_of_high_20d": 0.9816676037172559,
         "prev_close": 109.61000061035156,
         "today_return": 0.06012221787423533,
-        "vol_ratio": 0.6533729218296388,
-        "volume": 8431510.0
+        "vol_ratio": 0.6537274773230203,
+        "volume": 8436240.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "onsemi",
       "reasons": [
         {
@@ -22205,7 +22205,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=128309822 OBV_MA20=117352570",
+          "detail": "OBV_MA5=128310768 OBV_MA20=117352807",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -22220,7 +22220,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 103.97 (n/a)",
+          "detail": "target 103.97 -> 103.97 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22240,7 +22240,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 20.125,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 20.125
       },
       "chip": null,
       "indicators": {
@@ -22255,18 +22255,18 @@
         "macd_prev": -0.13480535596101895,
         "macd_signal": -0.11198399440228808,
         "macd_signal_prev": -0.09828909898462643,
-        "obv": 1365525939.0,
-        "obv_ma20": 1511854126.95,
-        "obv_ma5": 1439638047.8,
+        "obv": 1364990780.0,
+        "obv_ma20": 1511827369.0,
+        "obv_ma5": 1439531016.0,
         "pct_of_high_20d": 0.8082069927552229,
         "prev_close": 9.180000305175781,
         "today_return": -0.013071882523949863,
-        "vol_ratio": 0.9026986193712019,
-        "volume": 58080661.0
+        "vol_ratio": 0.9106374309145174,
+        "volume": 58615820.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ondas Holdings",
       "reasons": [
         {
@@ -22280,12 +22280,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.90 return=-1.31%",
+          "detail": "vol_ratio=0.91 return=-1.31%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=1439638048 OBV_MA20=1511854127",
+          "detail": "OBV_MA5=1439531016 OBV_MA20=1511827369",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -22300,7 +22300,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 20.12 (n/a)",
+          "detail": "target 20.12 -> 20.12 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22320,7 +22320,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 244.02513,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 244.02513
       },
       "chip": null,
       "indicators": {
@@ -22346,7 +22346,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oracle",
       "reasons": [
         {
@@ -22380,7 +22380,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 244.03 (n/a)",
+          "detail": "target 244.03 -> 244.03 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22400,7 +22400,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 183.7289,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 183.7289
       },
       "chip": null,
       "indicators": {
@@ -22426,7 +22426,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Palantir",
       "reasons": [
         {
@@ -22460,7 +22460,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 183.73 (n/a)",
+          "detail": "target 183.73 -> 183.73 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22480,7 +22480,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 177.58064,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 177.58064
       },
       "chip": null,
       "indicators": {
@@ -22506,7 +22506,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Qualcomm",
       "reasons": [
         {
@@ -22540,7 +22540,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 177.58 (n/a)",
+          "detail": "target 177.58 -> 177.58 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22560,7 +22560,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 100.83667,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 100.83667
       },
       "chip": null,
       "indicators": {
@@ -22586,7 +22586,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Rocket Lab",
       "reasons": [
         {
@@ -22620,7 +22620,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 100.84 (n/a)",
+          "detail": "target 100.84 -> 100.84 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22640,7 +22640,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 215.27182,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 215.27182
       },
       "chip": null,
       "indicators": {
@@ -22666,7 +22666,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "RTX",
       "reasons": [
         {
@@ -22700,7 +22700,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 215.27 (n/a)",
+          "detail": "target 215.27 -> 215.27 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22720,7 +22720,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 151.55556,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 151.55556
       },
       "chip": null,
       "indicators": {
@@ -22746,7 +22746,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Shopify",
       "reasons": [
         {
@@ -22780,7 +22780,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 151.56 (n/a)",
+          "detail": "target 151.56 -> 151.56 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22800,7 +22800,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 1493.3636,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 1493.3636
       },
       "chip": null,
       "indicators": {
@@ -22826,7 +22826,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "SanDisk",
       "reasons": [
         {
@@ -22860,7 +22860,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 1493.36 (n/a)",
+          "detail": "target 1493.36 -> 1493.36 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22880,7 +22880,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 229.65916,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 229.65916
       },
       "chip": null,
       "indicators": {
@@ -22906,7 +22906,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Snowflake",
       "reasons": [
         {
@@ -22940,7 +22940,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 229.66 (n/a)",
+          "detail": "target 229.66 -> 229.66 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -22959,8 +22959,8 @@
       "analyst": {
         "rating": null,
         "rating_score": null,
-        "target_mean": 589.0149,
-        "target_mean_prev_eod": null
+        "target_mean": 588.19464,
+        "target_mean_prev_eod": 589.0149
       },
       "chip": null,
       "indicators": {
@@ -22986,7 +22986,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Spotify",
       "reasons": [
         {
@@ -23020,7 +23020,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 589.01 (n/a)",
+          "detail": "target 589.01 -> 588.19 (-0.14%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23040,7 +23040,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 411.8878,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 411.8878
       },
       "chip": null,
       "indicators": {
@@ -23066,7 +23066,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Tesla",
       "reasons": [
         {
@@ -23100,7 +23100,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 411.89 (n/a)",
+          "detail": "target 411.89 -> 411.89 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23120,7 +23120,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 467.84027,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 467.84027
       },
       "chip": null,
       "indicators": {
@@ -23135,18 +23135,18 @@
         "macd_prev": 7.855607514431824,
         "macd_signal": 9.487152301280119,
         "macd_signal_prev": 9.983180569955511,
-        "obv": 319503488.0,
-        "obv_ma20": 339693439.4,
-        "obv_ma5": 317706197.6,
+        "obv": 318481323.0,
+        "obv_ma20": 339642331.15,
+        "obv_ma5": 317501764.6,
         "pct_of_high_20d": 0.9642907962185265,
         "prev_close": 407.1499938964844,
         "today_return": -0.006459547887114003,
-        "vol_ratio": 0.4552581096331921,
-        "volume": 6063212.0
+        "vol_ratio": 0.529973914815254,
+        "volume": 7085377.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Taiwan Semiconductor ADR",
       "reasons": [
         {
@@ -23160,12 +23160,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.46 return=-0.65%",
+          "detail": "vol_ratio=0.53 return=-0.65%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=317706198 OBV_MA20=339693439",
+          "detail": "OBV_MA5=317501765 OBV_MA20=339642331",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -23180,7 +23180,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 467.84 (n/a)",
+          "detail": "target 467.84 -> 467.84 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23200,7 +23200,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 285.34375,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 285.34375
       },
       "chip": null,
       "indicators": {
@@ -23226,7 +23226,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Texas Instruments",
       "reasons": [
         {
@@ -23260,7 +23260,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 285.34 (n/a)",
+          "detail": "target 285.34 -> 285.34 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23280,7 +23280,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 34.39192,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 34.39192
       },
       "chip": null,
       "indicators": {
@@ -23306,7 +23306,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Unity Software",
       "reasons": [
         {
@@ -23340,7 +23340,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 34.39 (n/a)",
+          "detail": "target 34.39 -> 34.39 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23360,7 +23360,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 104.4512,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 104.4512
       },
       "chip": null,
       "indicators": {
@@ -23375,18 +23375,18 @@
         "macd_prev": -0.03305451804271797,
         "macd_signal": 0.12311424187865366,
         "macd_signal_prev": 0.2213608177040674,
-        "obv": -7025623.0,
-        "obv_ma20": 41180843.85,
-        "obv_ma5": 14812955.4,
+        "obv": -7084535.0,
+        "obv_ma20": 41177898.25,
+        "obv_ma5": 14801173.0,
         "pct_of_high_20d": 0.907161820839802,
         "prev_close": 73.61000061035156,
         "today_return": -0.02431736042229593,
-        "vol_ratio": 1.1011863792241283,
-        "volume": 19396623.0
+        "vol_ratio": 1.1043462578357364,
+        "volume": 19455535.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Uber",
       "reasons": [
         {
@@ -23405,7 +23405,7 @@
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=14812955 OBV_MA20=41180844",
+          "detail": "OBV_MA5=14801173 OBV_MA20=41177898",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -23420,7 +23420,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 104.45 (n/a)",
+          "detail": "target 104.45 -> 104.45 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23440,7 +23440,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 390.34616,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 390.34616
       },
       "chip": null,
       "indicators": {
@@ -23466,7 +23466,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "UnitedHealth",
       "reasons": [
         {
@@ -23500,7 +23500,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 390.35 (n/a)",
+          "detail": "target 390.35 -> 390.35 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23520,7 +23520,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 398.74313,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 398.74313
       },
       "chip": null,
       "indicators": {
@@ -23535,18 +23535,18 @@
         "macd_prev": 4.4651667779440345,
         "macd_signal": 3.990753780640488,
         "macd_signal_prev": 3.9059101978311457,
-        "obv": 176101598.0,
-        "obv_ma20": 169342574.9,
-        "obv_ma5": 174561439.6,
+        "obv": 173487936.0,
+        "obv_ma20": 169211891.8,
+        "obv_ma5": 174038707.2,
         "pct_of_high_20d": 0.9821418481444663,
         "prev_close": 331.1199951171875,
         "today_return": -0.006764889669626406,
-        "vol_ratio": 0.6141802081833619,
-        "volume": 4847402.0
+        "vol_ratio": 0.9299410299550119,
+        "volume": 7461064.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Visa",
       "reasons": [
         {
@@ -23560,12 +23560,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.61 return=-0.68%",
+          "detail": "vol_ratio=0.93 return=-0.68%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=174561440 OBV_MA20=169342575",
+          "detail": "OBV_MA5=174038707 OBV_MA20=169211892",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -23580,7 +23580,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 398.74 (n/a)",
+          "detail": "target 398.74 -> 398.74 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23600,7 +23600,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 364.73077,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 364.73077
       },
       "chip": null,
       "indicators": {
@@ -23615,18 +23615,18 @@
         "macd_prev": 9.930519832293271,
         "macd_signal": 14.627859396923345,
         "macd_signal_prev": 16.216710005047567,
-        "obv": 85817224.0,
-        "obv_ma20": 92445731.2,
-        "obv_ma5": 83084404.8,
+        "obv": 85832924.0,
+        "obv_ma20": 92446516.2,
+        "obv_ma5": 83087544.8,
         "pct_of_high_20d": 0.8703717988807058,
         "prev_close": 323.3999938964844,
         "today_return": 0.01255410524186118,
-        "vol_ratio": 0.8342028699626214,
-        "volume": 4766924.0
+        "vol_ratio": 0.8368353818369034,
+        "volume": 4782624.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Vertiv",
       "reasons": [
         {
@@ -23640,12 +23640,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=0.83 return=1.26%",
+          "detail": "vol_ratio=0.84 return=1.26%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=83084405 OBV_MA20=92445731",
+          "detail": "OBV_MA5=83087545 OBV_MA20=92446516",
           "passed": false,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -23660,7 +23660,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 364.73 (n/a)",
+          "detail": "target 364.73 -> 364.73 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23680,7 +23680,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 178.16447,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 178.16447
       },
       "chip": null,
       "indicators": {
@@ -23706,7 +23706,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Workday",
       "reasons": [
         {
@@ -23740,7 +23740,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 178.16 (n/a)",
+          "detail": "target 178.16 -> 178.16 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23760,7 +23760,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 137.78049,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 137.78049
       },
       "chip": null,
       "indicators": {
@@ -23775,18 +23775,18 @@
         "macd_prev": 0.505040300079969,
         "macd_signal": 0.8884454637406409,
         "macd_signal_prev": 1.1834024901261702,
-        "obv": 978542133.0,
-        "obv_ma20": 1042172546.65,
-        "obv_ma5": 1042501926.6,
+        "obv": 978463857.0,
+        "obv_ma20": 1042168632.85,
+        "obv_ma5": 1042486271.4,
         "pct_of_high_20d": 0.8961996973029124,
         "prev_close": 121.33999633789062,
         "today_return": -0.008818194553464775,
-        "vol_ratio": 1.574923568732215,
-        "volume": 30198267.0
+        "vol_ratio": 1.5786836458427547,
+        "volume": 30276543.0
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Walmart",
       "reasons": [
         {
@@ -23800,12 +23800,12 @@
           "rule": "MA5 > MA20"
         },
         {
-          "detail": "vol_ratio=1.57 return=-0.88%",
+          "detail": "vol_ratio=1.58 return=-0.88%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.5x & up day)"
         },
         {
-          "detail": "OBV_MA5=1042501927 OBV_MA20=1042172547",
+          "detail": "OBV_MA5=1042486271 OBV_MA20=1042168633",
           "passed": true,
           "rule": "OBV 5d > OBV 20d"
         },
@@ -23820,7 +23820,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 137.78 (n/a)",
+          "detail": "target 137.78 -> 137.78 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
@@ -23840,7 +23840,7 @@
         "rating": null,
         "rating_score": null,
         "target_mean": 90.19902,
-        "target_mean_prev_eod": null
+        "target_mean_prev_eod": 90.19902
       },
       "chip": null,
       "indicators": {
@@ -23866,7 +23866,7 @@
       },
       "market": "us",
       "max_score": 8,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Block",
       "reasons": [
         {
@@ -23900,7 +23900,7 @@
           "rule": "MACD \u4e0a\u7a7f signal (golden cross)"
         },
         {
-          "detail": "target n/a -> 90.20 (n/a)",
+          "detail": "target 90.20 -> 90.20 (+0.00%)",
           "passed": false,
           "rule": "\u76ee\u6a19\u50f9\u55ae\u65e5\u8df3\u5347 > 3%"
         },
