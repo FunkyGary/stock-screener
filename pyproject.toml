@@ -5,6 +5,7 @@ requires-python = ">=3.12"
 dependencies = [
     "finnhub-python>=2.4.28",
     "pandas>=3.0.3",
+    "plotly>=6.7.0",
     "requests>=2.32.0",
     "streamlit>=1.57.0",
     "streamlit-javascript>=0.1.5",

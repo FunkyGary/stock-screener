@@ -16,8 +16,11 @@ from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
 
+import plotly.graph_objects as go
 import streamlit as st
 import streamlit.components.v1 as components
+import yfinance as yf
+from plotly.subplots import make_subplots
 from streamlit_javascript import st_javascript
 
 REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
@@ -64,6 +67,132 @@ def tradingview_widget(symbol: str, height: int) -> str:
       }});
     </script>
     """
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def load_chart_ohlcv(symbol: str) -> dict:
+    df = yf.download(
+        symbol,
+        period="6mo",
+        interval="1d",
+        auto_adjust=False,
+        progress=False,
+        threads=False,
+    )
+    if df is None or df.empty:
+        return {"error": f"No chart data for {symbol}", "rows": []}
+    if hasattr(df.columns, "nlevels") and df.columns.nlevels > 1:
+        df.columns = df.columns.get_level_values(0)
+    needed = {"Open", "High", "Low", "Close", "Volume"}
+    if not needed.issubset(set(df.columns)):
+        return {"error": f"Missing chart columns for {symbol}", "rows": []}
+
+    chart_df = df[["Open", "High", "Low", "Close", "Volume"]].copy()
+    for window in (5, 10, 20, 240):
+        chart_df[f"MA{window}"] = chart_df["Close"].rolling(window).mean()
+    chart_df = chart_df.tail(130).reset_index()
+    chart_df = chart_df.rename(columns={chart_df.columns[0]: "Date"})
+    chart_df["Date"] = chart_df["Date"].astype(str)
+    return {"error": None, "rows": chart_df.to_dict("records")}
+
+
+def local_price_chart(symbol: str, name: str, height: int) -> None:
+    payload = load_chart_ohlcv(symbol)
+    if payload.get("error"):
+        st.info(payload["error"])
+        return
+
+    rows = payload["rows"]
+    fig = make_subplots(
+        rows=2,
+        cols=1,
+        shared_xaxes=True,
+        vertical_spacing=0.03,
+        row_heights=[0.74, 0.26],
+    )
+    dates = [r["Date"] for r in rows]
+
+    fig.add_trace(
+        go.Candlestick(
+            x=dates,
+            open=[r["Open"] for r in rows],
+            high=[r["High"] for r in rows],
+            low=[r["Low"] for r in rows],
+            close=[r["Close"] for r in rows],
+            name=symbol,
+            increasing_line_color="#ef5350",
+            decreasing_line_color="#26a69a",
+            increasing_fillcolor="#ef5350",
+            decreasing_fillcolor="#26a69a",
+        ),
+        row=1,
+        col=1,
+    )
+
+    ma_colors = {
+        "MA5": "#f9c74f",
+        "MA10": "#4cc9f0",
+        "MA20": "#b5179e",
+        "MA240": "#adb5bd",
+    }
+    for ma, color in ma_colors.items():
+        fig.add_trace(
+            go.Scatter(
+                x=dates,
+                y=[r.get(ma) for r in rows],
+                mode="lines",
+                line={"width": 1.4, "color": color},
+                name=ma,
+                connectgaps=False,
+            ),
+            row=1,
+            col=1,
+        )
+
+    volume_colors = [
+        "#ef5350" if r["Close"] >= r["Open"] else "#26a69a" for r in rows
+    ]
+    fig.add_trace(
+        go.Bar(
+            x=dates,
+            y=[r["Volume"] for r in rows],
+            marker_color=volume_colors,
+            name="Volume",
+        ),
+        row=2,
+        col=1,
+    )
+
+    fig.update_layout(
+        height=height,
+        template="plotly_dark",
+        title={"text": f"{name} ({symbol})", "font": {"size": 16}},
+        margin={"l": 10, "r": 10, "t": 42, "b": 10},
+        hovermode="x unified",
+        legend={
+            "orientation": "h",
+            "yanchor": "bottom",
+            "y": 1.01,
+            "xanchor": "right",
+            "x": 1,
+        },
+        xaxis_rangeslider_visible=False,
+    )
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=True, gridcolor="rgba(255,255,255,0.08)")
+    st.plotly_chart(fig, width="stretch", config={"displaylogo": False})
+
+
+def render_chart(selected: dict, height: int) -> None:
+    if selected.get("market") == "tw":
+        local_price_chart(selected["symbol"], selected["name"], height)
+        return
+
+    tv_symbol = selected.get("tradingview_symbol")
+    if tv_symbol:
+        components.html(tradingview_widget(tv_symbol, height), height=height + 20)
+    else:
+        st.info("No TradingView symbol configured for this ticker.")
 
 
 def _is_above_all_mas(row: dict) -> bool:
@@ -195,14 +324,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     _detail_panel(selected, mobile=True)
 
     st.divider()
-    tv_symbol = selected.get("tradingview_symbol")
-    if tv_symbol:
-        components.html(
-            tradingview_widget(tv_symbol, CHART_HEIGHT_MOBILE),
-            height=CHART_HEIGHT_MOBILE + 20,
-        )
-    else:
-        st.info("No TradingView symbol configured for this ticker.")
+    render_chart(selected, CHART_HEIGHT_MOBILE)
 
 
 # ---------------- desktop layout (original 3-column) ----------------
@@ -278,14 +400,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         _detail_panel(selected, mobile=False)
 
     with col_right:
-        tv_symbol = selected.get("tradingview_symbol")
-        if tv_symbol:
-            components.html(
-                tradingview_widget(tv_symbol, CHART_HEIGHT_DESKTOP),
-                height=CHART_HEIGHT_DESKTOP + 20,
-            )
-        else:
-            st.info("No TradingView symbol configured for this ticker.")
+        render_chart(selected, CHART_HEIGHT_DESKTOP)
 
 
 # ---------------- entry point ----------------
