@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-25T14:26:44.499574+00:00",
+  "generated_at": "2026-05-25T15:46:31.455293+00:00",
   "last_run": {
     "tw": "2026-05-25T14:26:36.749231+00:00",
     "tw_eod": "2026-05-25T14:26:36.749231+00:00",
     "tw_intraday": "2026-05-25T09:11:17.316086+00:00",
-    "us": "2026-05-25T14:26:44.499574+00:00",
+    "us": "2026-05-25T15:46:31.455293+00:00",
     "us_eod": "2026-05-25T14:26:44.499574+00:00",
-    "us_intraday": "2026-05-22T20:54:28.722684+00:00"
+    "us_intraday": "2026-05-25T15:46:31.455293+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-05-25T14:28:04.123577+00:00",
+    "generated_at": "2026-05-25T15:46:50.193994+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -22347,7 +22347,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Applied Optoelectronics",
       "reasons": [
         {
@@ -22436,7 +22436,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Apple",
       "reasons": [
         {
@@ -22525,7 +22525,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Airbnb",
       "reasons": [
         {
@@ -22614,7 +22614,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Adobe",
       "reasons": [
         {
@@ -22812,7 +22812,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Analog Devices",
       "reasons": [
         {
@@ -22914,7 +22914,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Astera Labs",
       "reasons": [
         {
@@ -23016,7 +23016,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Applied Materials",
       "reasons": [
         {
@@ -23118,7 +23118,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "AMD",
       "reasons": [
         {
@@ -23207,7 +23207,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Amkor Technology",
       "reasons": [
         {
@@ -23296,7 +23296,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Amazon",
       "reasons": [
         {
@@ -23385,7 +23385,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "AppLovin",
       "reasons": [
         {
@@ -23474,7 +23474,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Arm Holdings",
       "reasons": [
         {
@@ -23563,7 +23563,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "ASML",
       "reasons": [
         {
@@ -23665,7 +23665,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Broadcom",
       "reasons": [
         {
@@ -23705,13 +23705,13 @@
           "weight": 1.0
         },
         {
-          "detail": "2026-05-18 Benzinga target 490.00, upside=+18.32%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 2.0,
+      "score": 0,
       "status": "ok",
       "symbol": "AVGO",
       "tradingview_symbol": "NASDAQ:AVGO"
@@ -23779,7 +23779,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Boeing",
       "reasons": [
         {
@@ -23819,13 +23819,13 @@
           "weight": 1.0
         },
         {
-          "detail": "2026-05-18 Yahoo target 260.00, upside=+18.71%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 2.0,
+      "score": 0,
       "status": "ok",
       "symbol": "BA",
       "tradingview_symbol": "NYSE:BA"
@@ -23868,7 +23868,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Bloom Energy",
       "reasons": [
         {
@@ -23957,7 +23957,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Caterpillar",
       "reasons": [
         {
@@ -24059,7 +24059,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Ciena",
       "reasons": [
         {
@@ -24148,7 +24148,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Celestica",
       "reasons": [
         {
@@ -24237,7 +24237,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Coherent",
       "reasons": [
         {
@@ -24326,7 +24326,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Coinbase",
       "reasons": [
         {
@@ -24440,7 +24440,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Costco",
       "reasons": [
         {
@@ -24529,7 +24529,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Salesforce",
       "reasons": [
         {
@@ -24715,7 +24715,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "CrowdStrike",
       "reasons": [
         {
@@ -24804,7 +24804,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "CoreWeave",
       "reasons": [
         {
@@ -24893,7 +24893,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Cisco",
       "reasons": [
         {
@@ -24982,7 +24982,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Datadog",
       "reasons": [
         {
@@ -25108,7 +25108,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Dell Technologies",
       "reasons": [
         {
@@ -25197,7 +25197,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Expedia",
       "reasons": [
         {
@@ -25286,7 +25286,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "GE Aerospace",
       "reasons": [
         {
@@ -25375,7 +25375,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "GE Vernova",
       "reasons": [
         {
@@ -25464,7 +25464,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Alphabet C",
       "reasons": [
         {
@@ -25553,7 +25553,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Robinhood",
       "reasons": [
         {
@@ -25642,7 +25642,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "IBM",
       "reasons": [
         {
@@ -25731,7 +25731,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Intel",
       "reasons": [
         {
@@ -25820,7 +25820,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Intuitive Surgical",
       "reasons": [
         {
@@ -25909,7 +25909,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Johnson & Johnson",
       "reasons": [
         {
@@ -25998,7 +25998,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "JPMorgan Chase",
       "reasons": [
         {
@@ -26136,7 +26136,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Coca-Cola",
       "reasons": [
         {
@@ -26176,13 +26176,13 @@
           "weight": 1.0
         },
         {
-          "detail": "2026-05-18 Citi target 91.00, upside=+11.68%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 9.5,
+      "score": 7.5,
       "status": "ok",
       "symbol": "KO",
       "tradingview_symbol": "NYSE:KO"
@@ -26225,7 +26225,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Lumentum",
       "reasons": [
         {
@@ -26314,7 +26314,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Eli Lilly",
       "reasons": [
         {
@@ -26403,7 +26403,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Lockheed Martin",
       "reasons": [
         {
@@ -26492,7 +26492,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Cheniere Energy",
       "reasons": [
         {
@@ -26594,7 +26594,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Lam Research",
       "reasons": [
         {
@@ -26683,7 +26683,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Mastercard",
       "reasons": [
         {
@@ -26772,7 +26772,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Marriott",
       "reasons": [
         {
@@ -26861,7 +26861,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "McDonald's",
       "reasons": [
         {
@@ -26963,7 +26963,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "MongoDB",
       "reasons": [
         {
@@ -27052,7 +27052,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Meta Platforms",
       "reasons": [
         {
@@ -27141,7 +27141,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "3M",
       "reasons": [
         {
@@ -27291,7 +27291,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Marvell Technology",
       "reasons": [
         {
@@ -27380,7 +27380,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Microsoft",
       "reasons": [
         {
@@ -27506,7 +27506,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Micron Technology",
       "reasons": [
         {
@@ -27595,7 +27595,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Cloudflare",
       "reasons": [
         {
@@ -27684,7 +27684,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Netflix",
       "reasons": [
         {
@@ -27773,7 +27773,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "ServiceNow",
       "reasons": [
         {
@@ -27862,7 +27862,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "NVIDIA",
       "reasons": [
         {
@@ -27951,7 +27951,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "NXP Semiconductors",
       "reasons": [
         {
@@ -28040,7 +28040,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Oklo",
       "reasons": [
         {
@@ -28166,7 +28166,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Okta",
       "reasons": [
         {
@@ -28255,7 +28255,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "onsemi",
       "reasons": [
         {
@@ -28344,7 +28344,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Ondas Holdings",
       "reasons": [
         {
@@ -28433,7 +28433,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Oracle",
       "reasons": [
         {
@@ -28522,7 +28522,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Palantir",
       "reasons": [
         {
@@ -28611,7 +28611,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Qualcomm",
       "reasons": [
         {
@@ -28700,7 +28700,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Rocket Lab",
       "reasons": [
         {
@@ -28789,7 +28789,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "RTX",
       "reasons": [
         {
@@ -28878,7 +28878,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Shopify",
       "reasons": [
         {
@@ -28967,7 +28967,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "SanDisk",
       "reasons": [
         {
@@ -29056,7 +29056,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Snowflake",
       "reasons": [
         {
@@ -29145,7 +29145,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Spotify",
       "reasons": [
         {
@@ -29234,7 +29234,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Tesla",
       "reasons": [
         {
@@ -29323,7 +29323,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Taiwan Semiconductor ADR",
       "reasons": [
         {
@@ -29412,7 +29412,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Texas Instruments",
       "reasons": [
         {
@@ -29501,7 +29501,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Unity Software",
       "reasons": [
         {
@@ -29590,7 +29590,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Uber",
       "reasons": [
         {
@@ -29679,7 +29679,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "UnitedHealth",
       "reasons": [
         {
@@ -29768,7 +29768,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Visa",
       "reasons": [
         {
@@ -29857,7 +29857,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Vertiv",
       "reasons": [
         {
@@ -29946,7 +29946,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Workday",
       "reasons": [
         {
@@ -30035,7 +30035,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Walmart",
       "reasons": [
         {
@@ -30124,7 +30124,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "eod",
+      "mode": "intraday",
       "name": "Block",
       "reasons": [
         {
