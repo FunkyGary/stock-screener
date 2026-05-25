@@ -650,19 +650,21 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
 
     row_map: dict[str, dict] = {}
     sections = [
-        (f"上漲加碼 ({len(scale_up)})", scale_up),
+        ("scale_up", f"上漲加碼 ({len(scale_up)})", scale_up),
         (
+            "special",
             f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})",
             special,
         ),
         (
+            "downside",
             f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})",
             downside,
         ),
-        (f"全均線之上 5/10/20/年 ({len(above)})", above),
-        (f"其他 ({len(below)})", below),
+        ("above", f"全均線之上 5/10/20/年 ({len(above)})", above),
+        ("below", f"其他 ({len(below)})", below),
     ]
-    for _, section_rows in sections:
+    for _, _, section_rows in sections:
         for r in section_rows:
             row_map[r["symbol"]] = r
 
@@ -675,26 +677,33 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if st.session_state.get(selected_key) not in row_map:
         st.session_state[selected_key] = next(iter(row_map))
 
+    def _set_selected_symbol(radio_key: str) -> None:
+        st.session_state[selected_key] = st.session_state[radio_key]
+
     with col_left:
-        for title, section_rows in sections:
+        for section_id, title, section_rows in sections:
             st.markdown(f"**{title}**")
             if not section_rows:
                 st.caption("無")
                 continue
-            for r in section_rows:
-                symbol = r["symbol"]
-                label = _list_row_label(r, market_key)
-                if st.button(
-                    label,
-                    key=f"pick_{market_key}_{symbol}",
-                    type=(
-                        "primary"
-                        if st.session_state[selected_key] == symbol
-                        else "secondary"
-                    ),
-                    use_container_width=True,
-                ):
-                    st.session_state[selected_key] = symbol
+            symbols = [r["symbol"] for r in section_rows]
+            current_symbol = st.session_state[selected_key]
+            index = symbols.index(current_symbol) if current_symbol in symbols else 0
+            radio_key = f"radio_{market_key}_{section_id}"
+            if current_symbol in symbols:
+                st.session_state[radio_key] = current_symbol
+            elif st.session_state.get(radio_key) not in symbols:
+                st.session_state[radio_key] = symbols[index]
+            st.radio(
+                title,
+                options=symbols,
+                index=index,
+                format_func=lambda symbol: _list_row_label(row_map[symbol], market_key),
+                label_visibility="collapsed",
+                key=radio_key,
+                on_change=_set_selected_symbol,
+                args=(radio_key,),
+            )
 
     selected = row_map[st.session_state[selected_key]]
 
