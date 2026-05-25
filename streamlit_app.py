@@ -40,13 +40,17 @@ VIEWPORT_BREAKPOINT_PX = 900  # ≥ this → desktop
 @st.cache_data(ttl=60)
 def load_signals() -> dict:
     if LOCAL_FALLBACK.exists():
-        with LOCAL_FALLBACK.open() as f:
-            return json.load(f)
+        try:
+            with LOCAL_FALLBACK.open() as f:
+                return json.load(f)
+        except json.JSONDecodeError as exc:
+            st.error(f"Failed to parse local signals JSON: {exc}")
+            return {"signals": {}, "generated_at": None, "last_run": {}}
     if REPO_RAW_URL:
         try:
             with urlopen(REPO_RAW_URL, timeout=10) as response:
                 return json.load(response)
-        except URLError as exc:
+        except (URLError, json.JSONDecodeError) as exc:
             st.error(f"Failed to load signals: {exc}")
     return {"signals": {}, "generated_at": None, "last_run": {}}
 
