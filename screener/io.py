@@ -155,7 +155,7 @@ def _merge_target_events_into(
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w") as f:
         for event in ordered:
-            json.dump(event, f, default=str, sort_keys=True)
+            json.dump(event, f, default=str, ensure_ascii=False, sort_keys=True)
             f.write("\n")
 
     return len(set(merged) - before)
