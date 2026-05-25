@@ -36,6 +36,11 @@ Rules use weighted points. Missing data skips the affected rule.
 Rules removed from scoring: close within 2% of 20-day high, and latest rating
 is Buy or Strong Buy.
 
+The dashboard also separates an `上漲加碼` section before `特別注意`.
+It contains stocks that are newly above all moving averages, score at least
+80%, close at a 5-day high, beat the benchmark on 20-day relative strength,
+and have OBV 5d above OBV 20d.
+
 ## Local development
 
 ```bash

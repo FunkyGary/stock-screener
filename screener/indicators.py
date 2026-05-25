@@ -25,6 +25,7 @@ class IndicatorSnapshot:
     prev_ma240: Optional[float]
     volume: float
     vol_ratio: Optional[float]
+    high_5d: Optional[float]
     high_20d: Optional[float]
     pct_of_high_20d: Optional[float]
     obv: Optional[float]
@@ -100,6 +101,7 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     ma20_vol = _safe_last(vol.rolling(20).mean()) if len(vol) >= 20 else None
     vol_ratio = last_vol / ma20_vol if ma20_vol and ma20_vol > 0 else None
 
+    high_5d = _safe_last(close.rolling(5).max()) if len(close) >= 5 else None
     high_20d = _safe_last(close.rolling(20).max()) if len(close) >= 20 else None
     pct_of_high_20d = last_close / high_20d if high_20d and high_20d > 0 else None
 
@@ -136,6 +138,7 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         prev_ma240=prev_ma240,
         volume=last_vol,
         vol_ratio=vol_ratio,
+        high_5d=high_5d,
         high_20d=high_20d,
         pct_of_high_20d=pct_of_high_20d,
         obv=obv,

@@ -22,6 +22,7 @@ def _ind(**overrides) -> IndicatorSnapshot:
         prev_ma240=79.0,
         volume=2000.0,
         vol_ratio=2.0,
+        high_5d=104.0,
         high_20d=105.0,
         pct_of_high_20d=0.99,
         obv=50000.0,
