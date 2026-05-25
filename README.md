@@ -41,9 +41,11 @@ The dashboard also separates an `上漲加碼` section before `特別注意`.
 It contains stocks that are newly above all moving averages, score at least
 80%, close at a 5-day high, beat the benchmark on 20-day relative strength,
 and have OBV 5d above OBV 20d.
-The regular `特別注意` section requires at least a 50% score. A separate
-`下跌特別注意` section flags stocks that were above all moving averages on the
-previous trading day but closed below MA5 today.
+The regular `特別注意` section requires a newly-above-all-moving-averages signal
+and at least a 50% score. Target-price raises remain visible in each stock's
+signal list and score, but do not by themselves place a stock in `特別注意`.
+A separate `下跌特別注意` section flags stocks that were above all moving
+averages on the previous trading day but closed below MA5 today.
 
 ## Local development
 

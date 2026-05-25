@@ -297,13 +297,9 @@ def _is_scale_up_candidate(row: dict) -> bool:
     )
 
 
-def _is_upside_attention_signal(row: dict) -> bool:
-    return _is_newly_above_all_mas(row) or _has_active_target_raise(row)
-
-
 def _is_special_attention(row: dict) -> bool:
     return (
-        _is_upside_attention_signal(row)
+        _is_newly_above_all_mas(row)
         and _score_ratio(row) >= SPECIAL_ATTENTION_MIN_SCORE_RATIO
     )
 
@@ -673,7 +669,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
 
     options.append(HEADER_SPECIAL)
     label_map[HEADER_SPECIAL] = (
-        f"━━━ 特別注意：今日站上 / 目標價上調，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
+        f"━━━ 特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
     )
     for r in special:
         options.append(r["symbol"])
