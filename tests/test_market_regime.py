@@ -1,75 +1,38 @@
 from screener import market_regime
 
 
-def _index(above: bool = False, below: bool = False) -> dict:
-    return {"status": "ok", "above_all_mas": above, "below_all_mas": below}
+def test_build_market_regime_only_returns_index_trends(monkeypatch):
+    def fake_snapshot(index):
+        return {
+            "symbol": index.symbol,
+            "name": index.name,
+            "above_all_mas": index.symbol in {"^TWII", "^GSPC"},
+        }
+
+    monkeypatch.setattr(market_regime, "build_index_snapshot", fake_snapshot)
+
+    result = market_regime.build_market_regime()
+
+    tw = result["markets"]["tw"]
+    us = result["markets"]["us"]
+    assert [row["name"] for row in tw["indexes"]] == ["加權指數", "櫃買指數"]
+    assert [row["above_all_mas"] for row in tw["indexes"]] == [True, False]
+    assert [row["name"] for row in us["indexes"]] == ["S&P 500", "NASDAQ", "費半"]
+    assert [row["above_all_mas"] for row in us["indexes"]] == [True, False, False]
+    assert "exposure" not in tw
+    assert "sentiment" not in tw
 
 
-def test_tw_recommends_full_exposure_when_indexes_above_and_retail_short():
-    result = market_regime.recommend_exposure(
-        "tw",
-        [_index(above=True), _index(above=True)],
-        {"retail_mtx_bias": "short"},
-    )
+def test_build_market_regime_keeps_failed_index_as_x_source(monkeypatch):
+    def fake_snapshot(index):
+        if index.symbol == "^TWOII":
+            raise RuntimeError("no data")
+        return {"symbol": index.symbol, "name": index.name, "above_all_mas": True}
 
-    assert result["exposure_pct"] == 100
-    assert result["trend_state"] == "all_above"
-    assert result["sentiment_signal"] == "retail_short"
+    monkeypatch.setattr(market_regime, "build_index_snapshot", fake_snapshot)
 
+    result = market_regime.build_market_regime()
 
-def test_tw_recommends_80_when_indexes_below_and_retail_long():
-    result = market_regime.recommend_exposure(
-        "tw",
-        [_index(below=True), _index(below=True)],
-        {"retail_mtx_bias": "long"},
-    )
-
-    assert result["exposure_pct"] == 80
-    assert result["trend_state"] == "all_below"
-    assert result["sentiment_signal"] == "retail_long"
-
-
-def test_us_recommends_full_exposure_on_extreme_fear_with_indexes_above():
-    result = market_regime.recommend_exposure(
-        "us",
-        [_index(above=True), _index(above=True), _index(above=True)],
-        {"fear_greed": "extreme_fear"},
-    )
-
-    assert result["exposure_pct"] == 100
-    assert result["trend_state"] == "all_above"
-    assert result["sentiment_signal"] == "extreme_fear"
-
-
-def test_us_recommends_80_on_extreme_greed_with_indexes_below():
-    result = market_regime.recommend_exposure(
-        "us",
-        [_index(below=True), _index(below=True), _index(below=True)],
-        {"fear_greed": "extreme_greed"},
-    )
-
-    assert result["exposure_pct"] == 80
-    assert result["trend_state"] == "all_below"
-    assert result["sentiment_signal"] == "extreme_greed"
-
-
-def test_exposure_waits_when_rule_is_not_defined():
-    result = market_regime.recommend_exposure(
-        "tw",
-        [_index(above=True), _index(above=True)],
-        {"retail_mtx_bias": "neutral"},
-    )
-
-    assert result["exposure_pct"] is None
-    assert result["reason"] == "未命中已定義的部位規則"
-
-
-def test_exposure_waits_when_any_index_fetch_fails():
-    result = market_regime.recommend_exposure(
-        "us",
-        [_index(above=True), {"status": "fetch_failed"}],
-        {"fear_greed": "extreme_fear"},
-    )
-
-    assert result["exposure_pct"] is None
-    assert result["reason"] == "部分指數資料抓取失敗"
+    failed = result["markets"]["tw"]["indexes"][1]
+    assert failed["name"] == "櫃買指數"
+    assert failed["status"] == "fetch_failed"
