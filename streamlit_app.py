@@ -275,6 +275,14 @@ def _score_ratio(row: dict) -> float:
     return (row.get("score", 0) / mx) if mx else 0.0
 
 
+def _score_value(value: float | int | None) -> str:
+    return f"{float(value or 0):g}"
+
+
+def _score_label(row: dict) -> str:
+    return f"{_score_value(row.get('score'))}/{_score_value(row.get('max_score'))}"
+
+
 def _today_return_label(row: dict) -> str:
     value = (row.get("indicators") or {}).get("today_return")
     return f"{value * 100:+.2f}%" if value is not None else "n/a"
@@ -296,16 +304,18 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
             st.markdown(f"### {selected['symbol']}")
             st.caption(f"{_name_with_return(selected)} · {tag}")
         with col_b:
-            st.metric("Score", f"{selected['score']} / {selected['max_score']}")
+            st.metric("Score", _score_label(selected))
     else:
         st.subheader(f"{_name_with_return(selected)} ({selected['symbol']})")
         st.caption(tag)
-        st.metric("Score", f"{selected['score']} / {selected['max_score']}")
+        st.metric("Score", _score_label(selected))
 
     st.markdown("**訊號**")
     for reason in selected.get("reasons", []):
         marker = "✅" if reason["passed"] else "⬜"
-        st.markdown(f"{marker} **{reason['rule']}**")
+        weight = reason.get("weight")
+        suffix = f" · {weight:g}分" if isinstance(weight, (int, float)) else ""
+        st.markdown(f"{marker} **{reason['rule']}**{suffix}")
         st.caption(f"　{reason['detail']}")
 
     with st.expander("📊 Raw indicators"):
@@ -355,7 +365,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         ):
             for r in top[:20]:
                 st.markdown(
-                    f"**{r['symbol']}**　{r['score']}/{r['max_score']}　·　{_name_with_return(r)}"
+                    f"**{r['symbol']}**　{_score_label(r)}　·　{_name_with_return(r)}"
                 )
 
     options = []
@@ -401,7 +411,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         else:
             sym_tag = "▼"
         label = (
-            f"{sym_tag} {r['symbol']}  {r['score']}/{r['max_score']}  ({_name_with_return(r)})"
+            f"{sym_tag} {r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
         )
         label_to_row[label] = r
 
@@ -461,7 +471,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"{tag} {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
+                f"{tag} {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
@@ -473,7 +483,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         for r in above:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▲ {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
+                f"▲ {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
@@ -483,7 +493,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         for r in below:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▼ {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
+                f"▼ {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 

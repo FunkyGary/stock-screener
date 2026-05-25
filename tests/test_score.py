@@ -64,11 +64,11 @@ def test_full_bullish_us_with_target_raise_scores_max():
     result = score(
         "us", _ind(), analyst, prev_target_mean=110.0, benchmark_return_20d=0.05
     )
-    assert result.max_score == 8
-    assert result.score == 8
+    assert result.max_score == 12
+    assert result.score == 12
 
 
-def test_tw_max_score_is_seven_with_chip():
+def test_tw_max_score_is_thirteen_point_five_with_chip():
     result = score(
         "tw",
         _ind(),
@@ -77,14 +77,14 @@ def test_tw_max_score_is_seven_with_chip():
         chip=_chip(),
         benchmark_return_20d=0.05,
     )
-    assert result.max_score == 8
-    assert result.score == 8
+    assert result.max_score == 13.5
+    assert result.score == 13.5
 
 
 def test_tw_without_chip_still_emits_rules_but_zeroed():
-    # chip data unavailable: rules emit, both fail -> max_score still 7, score lower.
+    # chip data unavailable: rules emit, both fail -> max_score includes chip weights.
     result = score("tw", _ind(), analyst=None, prev_target_mean=None, chip=None)
-    assert result.max_score == 7
+    assert result.max_score == 11.5
     trust = next(r for r in result.reasons if r.rule.startswith("投信"))
     foreign = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert trust.passed is False
@@ -109,8 +109,8 @@ def test_short_trend_requires_close_above_ma5():
     result = score(
         "tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip()
     )
-    assert result.score == 6
-    assert result.max_score == 7
+    assert result.score == 7
+    assert result.max_score == 11.5
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
 
@@ -119,8 +119,8 @@ def test_short_trend_requires_ma5_above_ma20():
     result = score(
         "tw", _ind(ma5=94.0, ma20=95.0), None, None, chip=_chip()
     )
-    assert result.score == 6
-    assert result.max_score == 7
+    assert result.score == 10
+    assert result.max_score == 11.5
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
 
@@ -182,11 +182,10 @@ def test_no_prior_target_does_not_score_target_raise():
     assert rule.passed is False
 
 
-def test_hold_rating_does_not_score():
+def test_rating_is_not_scored():
     analyst = AnalystSnapshot(target_mean=120.0, rating="Hold", rating_score=3.0)
     result = score("us", _ind(), analyst, prev_target_mean=110.0)
-    rule = next(r for r in result.reasons if r.rule == "rating in {Buy, Strong Buy}")
-    assert rule.passed is False
+    assert not any(r.rule == "rating in {Buy, Strong Buy}" for r in result.reasons)
 
 
 def test_trust_streak_below_threshold_fails():

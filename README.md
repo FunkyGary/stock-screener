@@ -16,20 +16,24 @@ streamlit_app.py     Dashboard
 tests/               Unit tests for indicators + scoring
 ```
 
-## Scoring (v1)
+## Scoring
 
-Each rule that triggers adds one point.
+Rules use weighted points. Missing data skips the affected rule.
 
-| Rule | TW | US |
-|---|:-:|:-:|
-| close > MA5 | yes | yes |
-| MA5 > MA20 | yes | yes |
-| volume > 1.5x MA20 volume | yes | yes |
-| close within 2% of 20-day high | yes | yes |
-| consensus target raised vs last snapshot | — | yes |
-| latest rating is Buy or Strong Buy | — | yes |
+| Rule | Weight | TW | US |
+|---|---:|:-:|:-:|
+| 今日站上全均線 | 3.0 | yes | yes |
+| 相對強度 20日 > 大盤 | 2.0 | yes | yes |
+| 放量上漲 (vol > 1.5x and up day) | 1.5 | yes | yes |
+| 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | yes | yes |
+| OBV 5d > OBV 20d | 1.0 | yes | yes |
+| MACD golden cross | 1.0 | yes | yes |
+| consensus target raised > 3% within 3 days | 2.0 | — | yes |
+| 投信連續買超 ≥ 3 日 | 2.0 | yes | — |
+| 外資大買 (>5% volume or 3-day streak) | 1.5 | yes | — |
 
-TW max = 4. US max = 6.
+Rules removed from scoring: close within 2% of 20-day high, and latest rating
+is Buy or Strong Buy.
 
 ## Local development
 

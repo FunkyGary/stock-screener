@@ -21,12 +21,13 @@ class Reason:
     rule: str
     passed: bool
     detail: str
+    weight: float
 
 
 @dataclass
 class ScoreResult:
-    score: int
-    max_score: int
+    score: float
+    max_score: float
     reasons: list[Reason]
 
 
@@ -48,6 +49,25 @@ def _target_raise_is_active(analyst: AnalystSnapshot | None) -> bool:
     return valid_until is not None and datetime.now(timezone.utc) <= valid_until
 
 
+def _above_all_mas(ind: IndicatorSnapshot) -> bool:
+    vals = (ind.ma5, ind.ma10, ind.ma20, ind.ma240)
+    return all(v is not None and ind.close > v for v in vals)
+
+
+def _was_above_all_mas_prev_day(ind: IndicatorSnapshot) -> bool:
+    vals = (ind.prev_ma5, ind.prev_ma10, ind.prev_ma20, ind.prev_ma240)
+    return (
+        ind.prev_close is not None
+        and all(v is not None and ind.prev_close > v for v in vals)
+    )
+
+
+def _has_prev_all_ma_data(ind: IndicatorSnapshot) -> bool:
+    return ind.prev_close is not None and all(
+        v is not None for v in (ind.prev_ma5, ind.prev_ma10, ind.prev_ma20, ind.prev_ma240)
+    )
+
+
 def score(
     market: str,
     ind: IndicatorSnapshot,
@@ -60,6 +80,22 @@ def score(
     is_us = market.lower() == "us"
     is_tw = market.lower() == "tw"
 
+    if _has_prev_all_ma_data(ind) and all(
+        v is not None for v in (ind.ma5, ind.ma10, ind.ma20, ind.ma240)
+    ):
+        passed = _above_all_mas(ind) and not _was_above_all_mas_prev_day(ind)
+        reasons.append(
+            Reason(
+                rule="今日站上全均線",
+                passed=passed,
+                detail=(
+                    f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
+                    f"MA10={ind.ma10:.2f} MA20={ind.ma20:.2f} MA240={ind.ma240:.2f}"
+                ),
+                weight=3.0,
+            )
+        )
+
     if ind.ma5 is not None and ind.ma20 is not None:
         passed = ind.close > ind.ma5 and ind.ma5 > ind.ma20
         reasons.append(
@@ -70,6 +106,7 @@ def score(
                     f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
                     f"MA20={ind.ma20:.2f}"
                 ),
+                weight=1.5,
             )
         )
 
@@ -80,6 +117,7 @@ def score(
                 rule="放量上漲 (vol>1.5x & up day)",
                 passed=passed,
                 detail=f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%",
+                weight=1.5,
             )
         )
 
@@ -90,16 +128,7 @@ def score(
                 rule="OBV 5d > OBV 20d",
                 passed=passed,
                 detail=f"OBV_MA5={ind.obv_ma5:.0f} OBV_MA20={ind.obv_ma20:.0f}",
-            )
-        )
-
-    if ind.pct_of_high_20d is not None:
-        passed = ind.pct_of_high_20d >= 0.98
-        reasons.append(
-            Reason(
-                rule="within 2% of 20d high",
-                passed=passed,
-                detail=f"close/high20d={ind.pct_of_high_20d:.3f}",
+                weight=1.0,
             )
         )
 
@@ -113,6 +142,7 @@ def score(
                     f"stock_20d={ind.return_20d * 100:+.2f}% "
                     f"benchmark_20d={benchmark_return_20d * 100:+.2f}%"
                 ),
+                weight=2.0,
             )
         )
 
@@ -133,6 +163,7 @@ def score(
                     f"macd={ind.macd:.3f} signal={ind.macd_signal:.3f} "
                     f"(prev macd={ind.macd_prev:.3f} signal={ind.macd_signal_prev:.3f})"
                 ),
+                weight=1.0,
             )
         )
 
@@ -160,16 +191,7 @@ def score(
                 rule="目標價單日跳升 > 3%（3日內有效）",
                 passed=passed_target,
                 detail=f"target {prev_str} -> {cur_str} ({pct_str}), valid_until={valid_str}",
-            )
-        )
-
-        rating = analyst.rating if analyst else None
-        passed_rating = rating in ("Buy", "Strong Buy")
-        reasons.append(
-            Reason(
-                rule="rating in {Buy, Strong Buy}",
-                passed=passed_rating,
-                detail=f"rating={rating or 'n/a'}",
+                weight=2.0,
             )
         )
 
@@ -186,6 +208,7 @@ def score(
                     if chip is not None
                     else "chip data unavailable"
                 ),
+                weight=2.0,
             )
         )
 
@@ -207,9 +230,10 @@ def score(
                 rule=f"外資大買 (>5% 量 或 連{FOREIGN_BUY_STREAK}日買超)",
                 passed=passed_foreign,
                 detail=detail,
+                weight=1.5,
             )
         )
 
-    max_score = len(reasons)
-    total = sum(1 for r in reasons if r.passed)
+    max_score = sum(r.weight for r in reasons)
+    total = sum(r.weight for r in reasons if r.passed)
     return ScoreResult(score=total, max_score=max_score, reasons=reasons)
