@@ -396,6 +396,87 @@ def _target_event_line(event: dict) -> str:
     return f"{date}　{firm}　目標價 {target_text}　距現價 {upside}　上調 {raise_pct}"
 
 
+def _trend_state_label(value: str | None) -> str:
+    labels = {
+        "all_above": "全部指數站上全均線",
+        "all_below": "全部指數跌破全均線",
+        "mixed": "指數趨勢分歧",
+        "unknown": "指數資料不足",
+    }
+    return labels.get(value or "", "尚未判定")
+
+
+def _sentiment_label(market_key: str, sentiment: dict) -> str:
+    if market_key == "tw":
+        bias = sentiment.get("retail_mtx_bias")
+        labels = {
+            "short": "散戶小台偏空（反向偏多）",
+            "long": "散戶小台偏多（反向偏空）",
+            "neutral": "散戶小台中性",
+        }
+        value = labels.get(bias or "", "散戶小台未設定")
+        ratio = sentiment.get("retail_mtx_long_short_ratio")
+        return f"{value} · 多空比 {ratio}" if ratio is not None else value
+
+    fear_greed = sentiment.get("fear_greed")
+    labels = {
+        "extreme_fear": "非常恐懼（反向偏多）",
+        "fear": "恐懼",
+        "neutral": "中性",
+        "greed": "貪婪",
+        "extreme_greed": "非常貪婪（反向偏空）",
+    }
+    value = labels.get(fear_greed or "", "Fear & Greed 未設定")
+    index_value = sentiment.get("fear_greed_value")
+    return f"{value} · 指數 {index_value}" if index_value is not None else value
+
+
+def _index_line(row: dict) -> str:
+    if row.get("status") != "ok":
+        return f"- {row.get('name')}：抓取失敗"
+    state = "站上全均線" if row.get("above_all_mas") else "未站上全均線"
+    close = _fmt_price(row.get("close"))
+    today_return = _fmt_pct(row.get("today_return"))
+    as_of = row.get("as_of") or "n/a"
+    return (
+        f"- {row.get('name')}：{state}，收盤 {close}，日漲跌 {today_return}（{as_of}）"
+    )
+
+
+def render_market_regime(market_regime: dict | None, market_key: str) -> None:
+    market = ((market_regime or {}).get("markets") or {}).get(market_key)
+    if not market:
+        st.info("大盤指標尚未產生，下一次資料更新後會顯示。")
+        return
+
+    exposure = market.get("exposure") or {}
+    sentiment = market.get("sentiment") or {}
+    exposure_pct = exposure.get("exposure_pct")
+    exposure_text = f"{exposure_pct}%" if exposure_pct is not None else "待判定"
+
+    st.markdown("#### 大盤指標")
+    col_a, col_b, col_c = st.columns([1, 2, 2])
+    with col_a:
+        st.metric("建議部位", exposure_text)
+    with col_b:
+        st.caption("趨勢")
+        st.write(_trend_state_label(exposure.get("trend_state")))
+    with col_c:
+        st.caption("情緒")
+        st.write(_sentiment_label(market_key, sentiment))
+
+    reason = exposure.get("reason")
+    if reason:
+        st.caption(reason)
+
+    with st.expander("查看大盤細節"):
+        st.markdown("\n".join(_index_line(row) for row in market.get("indexes", [])))
+        source = sentiment.get("source")
+        updated_at = sentiment.get("updated_at")
+        if source or updated_at:
+            st.caption(f"情緒來源：{source or 'n/a'} · 更新：{updated_at or 'n/a'}")
+
+
 def _special_symbol_prefix(row: dict) -> str:
     return "🎯 " if _has_active_target_raise(row) else ""
 
@@ -795,8 +876,10 @@ def render() -> None:
 
     tab_tw, tab_us = st.tabs([f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"])
     with tab_tw:
+        render_market_regime(data.get("market_regime"), "tw")
         market_view(tw_rows, market_key="tw")
     with tab_us:
+        render_market_regime(data.get("market_regime"), "us")
         market_view(us_rows, market_key="us")
 
     if rows_failed:

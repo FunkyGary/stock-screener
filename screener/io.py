@@ -48,6 +48,10 @@ def target_events_path() -> Path:
     return repo_root() / "data" / "analyst_target_events.jsonl"
 
 
+def market_sentiment_overrides_path() -> Path:
+    return repo_root() / "data" / "market_sentiment_overrides.json"
+
+
 def load_latest_signals() -> dict:
     path = signals_path()
     if not path.exists():
@@ -62,6 +66,14 @@ def write_latest_signals(data: dict) -> None:
     with path.open("w") as f:
         json.dump(data, f, indent=2, default=str, sort_keys=True)
         f.write("\n")
+
+
+def load_market_sentiment_overrides() -> dict:
+    path = market_sentiment_overrides_path()
+    if not path.exists():
+        return {}
+    with path.open() as f:
+        return json.load(f)
 
 
 def load_target_events() -> list[dict]:

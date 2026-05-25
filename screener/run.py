@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 
 from . import chip as chip_mod
 from . import fetch, indicators, io, score
+from . import market_regime as market_regime_mod
 from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
 
@@ -286,10 +287,17 @@ def main() -> None:
     last_run[args.market] = now
     last_run[f"{args.market}_{args.mode}"] = now
 
+    try:
+        market_regime = market_regime_mod.build_market_regime()
+    except Exception as exc:
+        logger.warning("market regime build failed, keeping previous data: %s", exc)
+        market_regime = existing.get("market_regime")
+
     io.write_latest_signals(
         {
             "generated_at": now,
             "last_run": last_run,
+            "market_regime": market_regime,
             "signals": signals,
         }
     )

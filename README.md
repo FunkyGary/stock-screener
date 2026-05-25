@@ -13,6 +13,7 @@ data/
   watchlist.csv      Hand-edited list of symbols to screen
   latest_signals.json  Output written by Actions, read by Streamlit
   analyst_target_events.jsonl  US analyst target raise history event log
+  market_sentiment_overrides.json  Manual macro sentiment inputs
 streamlit_app.py     Dashboard
 tests/               Unit tests for indicators + scoring
 ```
@@ -81,6 +82,30 @@ previous target when available, and upside versus the current screen price.
 EOD US runs also merge these parsed events into `data/analyst_target_events.jsonl`
 with stable event IDs, so the dashboard can show the selected stock's recent
 target-price history without turning the project into a database-backed app.
+
+## Market Regime
+
+Each data run also refreshes market-level trend indicators:
+
+- TW: `^TWII` 加權指數 and `^TWOII` 櫃買指數.
+- US: `^GSPC` S&P 500, `^IXIC` NASDAQ, and `^SOX` 費半.
+
+The dashboard shows whether each index is above all tracked moving averages
+(MA5/10/20/240). Sentiment inputs that do not have a stable public API are kept
+in `data/market_sentiment_overrides.json`:
+
+- TW `retail_mtx_bias`: `short`, `long`, `neutral`, or `null`.
+- US `fear_greed`: `extreme_fear`, `fear`, `neutral`, `greed`,
+  `extreme_greed`, or `null`.
+
+Exposure rules currently implemented:
+
+- All TW indexes above all moving averages + retail mini-TAIEX traders short:
+  recommend 100%.
+- All TW indexes below all moving averages + retail mini-TAIEX traders long:
+  recommend 80%.
+- All US indexes above all moving averages + extreme fear: recommend 100%.
+- All US indexes below all moving averages + extreme greed: recommend 80%.
 
 ## Deploy the dashboard
 
