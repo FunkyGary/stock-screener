@@ -309,6 +309,23 @@ def _name_with_return(row: dict) -> str:
     return f"{row['name']} {_today_return_label(row)}"
 
 
+def _list_primary_label(row: dict, market_key: str) -> str:
+    return row["name"] if market_key == "tw" else row["symbol"]
+
+
+def _list_row_label(row: dict, market_key: str, prefix: str = "") -> str:
+    primary = _list_primary_label(row, market_key)
+    if market_key == "tw":
+        return f"{prefix}{primary}  {_score_label(row)}  {_today_return_label(row)}"
+    return f"{prefix}{primary}  {_score_label(row)}  ({_name_with_return(row)})"
+
+
+def _top_pick_label(row: dict, market_key: str) -> str:
+    primary = _list_primary_label(row, market_key)
+    detail = _today_return_label(row) if market_key == "tw" else _name_with_return(row)
+    return f"**{primary}**　{_score_label(row)}　·　{detail}"
+
+
 def _fmt_pct(value: float | int | None) -> str:
     return f"{float(value) * 100:+.2f}%" if value is not None else "n/a"
 
@@ -441,9 +458,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             expanded=True,
         ):
             for r in top[:20]:
-                st.markdown(
-                    f"**{r['symbol']}**　{_score_label(r)}　·　{_name_with_return(r)}"
-                )
+                st.markdown(_top_pick_label(r, market_key))
 
     options = []
     if special:
@@ -485,7 +500,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             sym_tag = _special_symbol_prefix(r)
         else:
             sym_tag = ""
-        label = f"{sym_tag}{r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
+        label = _list_row_label(r, market_key, prefix=sym_tag)
         label_to_row[label] = r
 
     selected_label = st.selectbox(
@@ -538,8 +553,8 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         )
         for r in special:
             options.append(r["symbol"])
-            label_map[r["symbol"]] = (
-                f"{_special_symbol_prefix(r)}{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
+            label_map[r["symbol"]] = _list_row_label(
+                r, market_key, prefix=_special_symbol_prefix(r)
             )
             row_map[r["symbol"]] = r
 
@@ -548,9 +563,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         label_map[HEADER_ABOVE] = f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
         for r in above:
             options.append(r["symbol"])
-            label_map[r["symbol"]] = (
-                f"{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
-            )
+            label_map[r["symbol"]] = _list_row_label(r, market_key)
             row_map[r["symbol"]] = r
 
     if below:
@@ -558,9 +571,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         label_map[HEADER_BELOW] = f"━━━ ▼ 其他 ({len(below)}) ━━━"
         for r in below:
             options.append(r["symbol"])
-            label_map[r["symbol"]] = (
-                f"{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
-            )
+            label_map[r["symbol"]] = _list_row_label(r, market_key)
             row_map[r["symbol"]] = r
 
     if not options:
