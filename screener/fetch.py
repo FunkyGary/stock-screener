@@ -26,6 +26,11 @@ class AnalystSnapshot:
     target_mean: Optional[float]
     rating: Optional[str]
     rating_score: Optional[float]
+    target_raise_detected_at: Optional[str] = None
+    target_raise_valid_until: Optional[str] = None
+    target_raise_from: Optional[float] = None
+    target_raise_to: Optional[float] = None
+    target_raise_pct: Optional[float] = None
 
 
 class FetchError(RuntimeError):

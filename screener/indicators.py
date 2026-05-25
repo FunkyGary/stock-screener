@@ -14,10 +14,15 @@ class IndicatorSnapshot:
     close: float
     prev_close: Optional[float]
     today_return: Optional[float]
+    return_20d: Optional[float]
     ma5: Optional[float]
     ma10: Optional[float]
     ma20: Optional[float]
     ma240: Optional[float]  # 年線 (annual MA)
+    prev_ma5: Optional[float]
+    prev_ma10: Optional[float]
+    prev_ma20: Optional[float]
+    prev_ma240: Optional[float]
     volume: float
     vol_ratio: Optional[float]
     high_20d: Optional[float]
@@ -42,7 +47,9 @@ def _safe_last(series: pd.Series) -> Optional[float]:
 
 
 def _safe_at(series: pd.Series, idx: int) -> Optional[float]:
-    if len(series) <= abs(idx):
+    if idx < 0 and len(series) < abs(idx):
+        return None
+    if idx >= 0 and len(series) <= idx:
         return None
     value = series.iloc[idx]
     if pd.isna(value):
@@ -74,11 +81,21 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     last_vol = float(vol.iloc[-1])
     prev_close = _safe_at(close, -2)
     today_return = (last_close / prev_close - 1.0) if prev_close else None
+    close_20d_ago = _safe_at(close, -21)
+    return_20d = (last_close / close_20d_ago - 1.0) if close_20d_ago else None
 
-    ma5 = _safe_last(close.rolling(5).mean()) if len(close) >= 5 else None
-    ma10 = _safe_last(close.rolling(10).mean()) if len(close) >= 10 else None
-    ma20 = _safe_last(close.rolling(20).mean()) if len(close) >= 20 else None
-    ma240 = _safe_last(close.rolling(240).mean()) if len(close) >= 240 else None
+    ma5_series = close.rolling(5).mean()
+    ma10_series = close.rolling(10).mean()
+    ma20_series = close.rolling(20).mean()
+    ma240_series = close.rolling(240).mean()
+    ma5 = _safe_last(ma5_series) if len(close) >= 5 else None
+    ma10 = _safe_last(ma10_series) if len(close) >= 10 else None
+    ma20 = _safe_last(ma20_series) if len(close) >= 20 else None
+    ma240 = _safe_last(ma240_series) if len(close) >= 240 else None
+    prev_ma5 = _safe_at(ma5_series, -2) if len(close) >= 6 else None
+    prev_ma10 = _safe_at(ma10_series, -2) if len(close) >= 11 else None
+    prev_ma20 = _safe_at(ma20_series, -2) if len(close) >= 21 else None
+    prev_ma240 = _safe_at(ma240_series, -2) if len(close) >= 241 else None
 
     ma20_vol = _safe_last(vol.rolling(20).mean()) if len(vol) >= 20 else None
     vol_ratio = last_vol / ma20_vol if ma20_vol and ma20_vol > 0 else None
@@ -108,10 +125,15 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         close=last_close,
         prev_close=prev_close,
         today_return=today_return,
+        return_20d=return_20d,
         ma5=ma5,
         ma10=ma10,
         ma20=ma20,
         ma240=ma240,
+        prev_ma5=prev_ma5,
+        prev_ma10=prev_ma10,
+        prev_ma20=prev_ma20,
+        prev_ma240=prev_ma240,
         volume=last_vol,
         vol_ratio=vol_ratio,
         high_20d=high_20d,

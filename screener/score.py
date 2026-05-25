@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Optional
 
 from .chip import ChipSnapshot
@@ -29,34 +30,46 @@ class ScoreResult:
     reasons: list[Reason]
 
 
+def _parse_iso_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(
+            timezone.utc
+        )
+    except ValueError:
+        return None
+
+
+def _target_raise_is_active(analyst: AnalystSnapshot | None) -> bool:
+    if analyst is None:
+        return False
+    valid_until = _parse_iso_datetime(analyst.target_raise_valid_until)
+    return valid_until is not None and datetime.now(timezone.utc) <= valid_until
+
+
 def score(
     market: str,
     ind: IndicatorSnapshot,
     analyst: Optional[AnalystSnapshot],
     prev_target_mean: Optional[float],
     chip: Optional[ChipSnapshot] = None,
+    benchmark_return_20d: Optional[float] = None,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
     is_tw = market.lower() == "tw"
 
-    if ind.ma5 is not None:
-        passed = ind.close > ind.ma5
-        reasons.append(
-            Reason(
-                rule="close > MA5",
-                passed=passed,
-                detail=f"close={ind.close:.2f} MA5={ind.ma5:.2f}",
-            )
-        )
-
     if ind.ma5 is not None and ind.ma20 is not None:
-        passed = ind.ma5 > ind.ma20
+        passed = ind.close > ind.ma5 and ind.ma5 > ind.ma20
         reasons.append(
             Reason(
-                rule="MA5 > MA20",
+                rule="短線趨勢確認 (close > MA5 且 MA5 > MA20)",
                 passed=passed,
-                detail=f"MA5={ind.ma5:.2f} MA20={ind.ma20:.2f}",
+                detail=(
+                    f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
+                    f"MA20={ind.ma20:.2f}"
+                ),
             )
         )
 
@@ -90,6 +103,19 @@ def score(
             )
         )
 
+    if ind.return_20d is not None and benchmark_return_20d is not None:
+        passed = ind.return_20d > benchmark_return_20d
+        reasons.append(
+            Reason(
+                rule="相對強度 20日 > 大盤",
+                passed=passed,
+                detail=(
+                    f"stock_20d={ind.return_20d * 100:+.2f}% "
+                    f"benchmark_20d={benchmark_return_20d * 100:+.2f}%"
+                ),
+            )
+        )
+
     if (
         ind.macd is not None
         and ind.macd_signal is not None
@@ -114,23 +140,26 @@ def score(
         prev_str = f"{prev_target_mean:.2f}" if prev_target_mean is not None else "n/a"
         current_target = analyst.target_mean if analyst else None
         cur_str = f"{current_target:.2f}" if current_target is not None else "n/a"
-        passed_target = (
-            current_target is not None
-            and prev_target_mean is not None
-            and prev_target_mean > 0
-            and current_target / prev_target_mean > TARGET_RAISE_THRESHOLD
-        )
+        passed_target = _target_raise_is_active(analyst)
         pct = (
-            (current_target / prev_target_mean - 1.0) * 100
+            analyst.target_raise_pct * 100
+            if analyst and analyst.target_raise_pct is not None
+            else (current_target / prev_target_mean - 1.0) * 100
             if current_target is not None and prev_target_mean
             else None
         )
         pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
+        if analyst and analyst.target_raise_from is not None:
+            prev_str = f"{analyst.target_raise_from:.2f}"
+        if analyst and analyst.target_raise_to is not None:
+            cur_str = f"{analyst.target_raise_to:.2f}"
+        valid_until = analyst.target_raise_valid_until if analyst else None
+        valid_str = valid_until[:10] if isinstance(valid_until, str) else "n/a"
         reasons.append(
             Reason(
-                rule="目標價單日跳升 > 3%",
+                rule="目標價單日跳升 > 3%（3日內有效）",
                 passed=passed_target,
-                detail=f"target {prev_str} -> {cur_str} ({pct_str})",
+                detail=f"target {prev_str} -> {cur_str} ({pct_str}), valid_until={valid_str}",
             )
         )
 

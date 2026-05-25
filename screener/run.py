@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import logging
 from dataclasses import asdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from . import chip as chip_mod
 from . import fetch, indicators, io, score
@@ -22,9 +22,79 @@ from .fetch import AnalystSnapshot
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
+BENCHMARK_SYMBOLS = {
+    "tw": "0050.TW",
+    "us": "SPY",
+}
+
+
+def _iso_or_none(dt: datetime | None) -> str | None:
+    return dt.astimezone(timezone.utc).isoformat() if dt else None
+
+
+def _parse_iso_datetime(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(
+            timezone.utc
+        )
+    except ValueError:
+        return None
+
+
+def _build_target_raise_event(
+    current_target: float | None,
+    prev_target: float | None,
+    prev_blob: dict,
+    now: datetime,
+) -> dict:
+    detected_at: datetime | None = None
+    valid_until: datetime | None = None
+    raise_from: float | None = None
+    raise_to: float | None = None
+    raise_pct: float | None = None
+
+    if (
+        current_target is not None
+        and prev_target is not None
+        and prev_target > 0
+        and current_target / prev_target > score.TARGET_RAISE_THRESHOLD
+    ):
+        detected_at = now
+        valid_until = now + timedelta(days=3)
+        raise_from = prev_target
+        raise_to = current_target
+        raise_pct = current_target / prev_target - 1.0
+    else:
+        prev_valid_until = _parse_iso_datetime(
+            prev_blob.get("target_raise_valid_until")
+        )
+        prev_raise_to = prev_blob.get("target_raise_to")
+        if (
+            prev_valid_until is not None
+            and now <= prev_valid_until
+            and current_target is not None
+            and prev_raise_to is not None
+            and current_target >= float(prev_raise_to) * 0.99
+        ):
+            detected_at = _parse_iso_datetime(prev_blob.get("target_raise_detected_at"))
+            valid_until = prev_valid_until
+            raise_from = prev_blob.get("target_raise_from")
+            raise_to = prev_raise_to
+            raise_pct = prev_blob.get("target_raise_pct")
+
+    return {
+        "target_raise_detected_at": _iso_or_none(detected_at),
+        "target_raise_valid_until": _iso_or_none(valid_until),
+        "target_raise_from": raise_from,
+        "target_raise_to": raise_to,
+        "target_raise_pct": raise_pct,
+    }
+
 
 def _build_analyst_blob_eod(
-    new_snap: AnalystSnapshot, prev_blob: dict | None
+    new_snap: AnalystSnapshot, prev_blob: dict | None, now: datetime | None = None
 ) -> dict:
     """At EOD: shift the previous run's target_mean into target_mean_prev_eod.
 
@@ -33,11 +103,19 @@ def _build_analyst_blob_eod(
     EOD' should mean once today's EOD fires.
     """
     prev = prev_blob or {}
+    now_dt = now or datetime.now(timezone.utc)
+    prev_target = prev.get("target_mean")
     return {
         "target_mean": new_snap.target_mean,
         "rating": new_snap.rating,
         "rating_score": new_snap.rating_score,
-        "target_mean_prev_eod": prev.get("target_mean"),
+        "target_mean_prev_eod": prev_target,
+        **_build_target_raise_event(
+            current_target=new_snap.target_mean,
+            prev_target=prev_target,
+            prev_blob=prev,
+            now=now_dt,
+        ),
     }
 
 
@@ -49,6 +127,15 @@ def run_market(market: str, mode: str = "eod") -> dict:
     prev_data = io.load_latest_signals()
     prev_signals = prev_data.get("signals", {})
     out: dict[str, dict] = {}
+    benchmark_return_20d = None
+    benchmark_symbol = BENCHMARK_SYMBOLS.get(market)
+    if benchmark_symbol:
+        try:
+            benchmark_return_20d = indicators.compute(
+                fetch.fetch_ohlcv(benchmark_symbol).df
+            ).return_20d
+        except Exception as exc:
+            logger.warning("benchmark fetch failed for %s: %s", benchmark_symbol, exc)
 
     # Chip data (TWSE T86) is end-of-day only — fetch only at EOD.
     chip_by_symbol: dict[str, list[chip_mod.ChipDay]] = {}
@@ -115,6 +202,15 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 target_mean=analyst_blob.get("target_mean"),
                 rating=analyst_blob.get("rating"),
                 rating_score=analyst_blob.get("rating_score"),
+                target_raise_detected_at=analyst_blob.get(
+                    "target_raise_detected_at"
+                ),
+                target_raise_valid_until=analyst_blob.get(
+                    "target_raise_valid_until"
+                ),
+                target_raise_from=analyst_blob.get("target_raise_from"),
+                target_raise_to=analyst_blob.get("target_raise_to"),
+                target_raise_pct=analyst_blob.get("target_raise_pct"),
             )
             prev_target_mean = analyst_blob.get("target_mean_prev_eod")
 
@@ -134,6 +230,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
             analyst=analyst_for_score,
             prev_target_mean=prev_target_mean,
             chip=chip_for_score,
+            benchmark_return_20d=benchmark_return_20d,
         )
 
         record.update(

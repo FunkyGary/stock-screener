@@ -55,11 +55,21 @@ def test_ma10_and_ma240_compute_when_history_sufficient():
     assert snap.ma240 == pytest.approx(sum(closes[-240:]) / 240)
 
 
+def test_prev_mas_use_previous_bar():
+    closes = list(range(1, 251))
+    snap = compute(_df(closes, [100] * 250))
+    assert snap.prev_ma5 == pytest.approx(sum(closes[-6:-1]) / 5)
+    assert snap.prev_ma10 == pytest.approx(sum(closes[-11:-1]) / 10)
+    assert snap.prev_ma20 == pytest.approx(sum(closes[-21:-1]) / 20)
+    assert snap.prev_ma240 == pytest.approx(sum(closes[-241:-1]) / 240)
+
+
 def test_ma240_none_when_under_240_bars():
     closes = list(range(1, 100))
     snap = compute(_df(closes, [100] * 99))
     assert snap.ma10 is not None  # 99 ≥ 10
     assert snap.ma240 is None  # 99 < 240
+    assert snap.prev_ma240 is None
 
 
 def test_pct_of_high_20d_when_close_below_high():
@@ -74,6 +84,12 @@ def test_today_return_uses_prev_close():
     snap = compute(df)
     assert snap.prev_close == 10
     assert snap.today_return == pytest.approx(0.1)
+
+
+def test_return_20d_uses_close_20_trading_days_ago():
+    closes = list(range(100, 121))
+    snap = compute(_df(closes, [100] * 21))
+    assert snap.return_20d == pytest.approx(120 / 100 - 1.0)
 
 
 def test_obv_accumulates_signed_volume():

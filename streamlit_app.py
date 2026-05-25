@@ -177,10 +177,20 @@ def local_price_chart(symbol: str, name: str, height: int) -> None:
             "x": 1,
         },
         xaxis_rangeslider_visible=False,
+        dragmode=False,
     )
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=True, gridcolor="rgba(255,255,255,0.08)")
-    st.plotly_chart(fig, width="stretch", config={"displaylogo": False})
+    st.plotly_chart(
+        fig,
+        width="stretch",
+        config={
+            "displayModeBar": False,
+            "displaylogo": False,
+            "scrollZoom": False,
+            "staticPlot": False,
+        },
+    )
 
 
 def render_chart(selected: dict, height: int) -> None:
@@ -207,27 +217,88 @@ def _is_above_all_mas(row: dict) -> bool:
     return True
 
 
+def _was_above_all_mas_prev_day(row: dict) -> bool:
+    ind = row.get("indicators") or {}
+    prev_close = ind.get("prev_close")
+    if prev_close is None:
+        return False
+    for key in ("prev_ma5", "prev_ma10", "prev_ma20", "prev_ma240"):
+        val = ind.get(key)
+        if val is None or prev_close <= val:
+            return False
+    return True
+
+
+def _has_prev_all_ma_data(row: dict) -> bool:
+    ind = row.get("indicators") or {}
+    return ind.get("prev_close") is not None and all(
+        ind.get(key) is not None
+        for key in ("prev_ma5", "prev_ma10", "prev_ma20", "prev_ma240")
+    )
+
+
+def _is_newly_above_all_mas(row: dict) -> bool:
+    return (
+        _is_above_all_mas(row)
+        and _has_prev_all_ma_data(row)
+        and not _was_above_all_mas_prev_day(row)
+    )
+
+
+def _has_active_target_raise(row: dict) -> bool:
+    return any(
+        reason.get("rule", "").startswith("目標價") and reason.get("passed") is True
+        for reason in row.get("reasons", [])
+    )
+
+
+def _is_special_attention(row: dict) -> bool:
+    return _is_newly_above_all_mas(row) or _has_active_target_raise(row)
+
+
+def _trend_tag(row: dict) -> str:
+    newly_above = _is_newly_above_all_mas(row)
+    target_raise = _has_active_target_raise(row)
+    if newly_above and target_raise:
+        return "🚀 今日站上全均線 · 🎯 目標價跳升"
+    if newly_above:
+        return "🚀 今日站上全均線"
+    if target_raise:
+        return "🎯 目標價跳升"
+    if _is_above_all_mas(row):
+        return "▲ 全均線之上"
+    return "▼ 其他"
+
+
 def _score_ratio(row: dict) -> float:
     mx = row.get("max_score", 0) or 0
     return (row.get("score", 0) / mx) if mx else 0.0
+
+
+def _today_return_label(row: dict) -> str:
+    value = (row.get("indicators") or {}).get("today_return")
+    return f"{value * 100:+.2f}%" if value is not None else "n/a"
+
+
+def _name_with_return(row: dict) -> str:
+    return f"{row['name']} {_today_return_label(row)}"
 
 
 # ---------------- shared detail panel ----------------
 
 
 def _detail_panel(selected: dict, *, mobile: bool) -> None:
-    above = _is_above_all_mas(selected)
-    tag = "▲ 站上全均線" if above else "▼ 未站上"
+    tag = _trend_tag(selected)
 
     if mobile:
         col_a, col_b = st.columns([3, 2])
         with col_a:
             st.markdown(f"### {selected['symbol']}")
-            st.caption(f"{selected['name']} · {tag}")
+            st.caption(f"{_name_with_return(selected)} · {tag}")
         with col_b:
             st.metric("Score", f"{selected['score']} / {selected['max_score']}")
     else:
-        st.subheader(f"{selected['name']} ({selected['symbol']})")
+        st.subheader(f"{_name_with_return(selected)} ({selected['symbol']})")
         st.caption(tag)
         st.metric("Score", f"{selected['score']} / {selected['max_score']}")
 
@@ -251,37 +322,52 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
 
 
 def _market_view_mobile(rows: list[dict], market_key: str) -> None:
+    special = sorted(
+        [r for r in rows if _is_special_attention(r)],
+        key=lambda r: (_score_ratio(r), r.get("score", 0)),
+        reverse=True,
+    )
     above = sorted(
-        [r for r in rows if _is_above_all_mas(r)],
+        [
+            r
+            for r in rows
+            if _is_above_all_mas(r) and not _is_special_attention(r)
+        ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
     below = sorted(
-        [r for r in rows if not _is_above_all_mas(r)],
+        [r for r in rows if not _is_above_all_mas(r) and not _is_special_attention(r)],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
 
     # ⭐ Top picks
-    top = [r for r in above if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO]
+    top = [
+        r
+        for r in special + above
+        if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO
+    ]
     if top:
         with st.expander(
-            f"⭐ 今日精選 — 站上全均線且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
+            f"⭐ 今日精選 — 特別注意/全均線之上且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
             expanded=True,
         ):
             for r in top[:20]:
                 st.markdown(
-                    f"**{r['symbol']}**　{r['score']}/{r['max_score']}　·　{r['name']}"
+                    f"**{r['symbol']}**　{r['score']}/{r['max_score']}　·　{_name_with_return(r)}"
                 )
 
     options = []
+    if special:
+        options.append(f"🚀 特別注意 ({len(special)})")
     if above:
-        options.append(f"▲ 站上 ({len(above)})")
+        options.append(f"▲ 全均線之上 ({len(above)})")
     if below:
-        options.append(f"▼ 未站上 ({len(below)})")
+        options.append(f"▼ 其他 ({len(below)})")
     options.append("全部")
 
-    if not (above or below):
+    if not (special or above or below):
         st.info("（無資料）")
         return
 
@@ -293,12 +379,14 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         key=f"filter_{market_key}",
         label_visibility="collapsed",
     )
-    if filter_choice.startswith("▲"):
+    if filter_choice.startswith("🚀"):
+        candidates = special
+    elif filter_choice.startswith("▲"):
         candidates = above
     elif filter_choice.startswith("▼"):
         candidates = below
     else:
-        candidates = above + below
+        candidates = special + above + below
 
     if not candidates:
         st.info("此分組無資料")
@@ -306,9 +394,14 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
 
     label_to_row: dict[str, dict] = {}
     for r in candidates:
-        sym_tag = "▲" if _is_above_all_mas(r) else "▼"
+        if _is_special_attention(r):
+            sym_tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
+        elif _is_above_all_mas(r):
+            sym_tag = "▲"
+        else:
+            sym_tag = "▼"
         label = (
-            f"{sym_tag} {r['symbol']}  {r['score']}/{r['max_score']}  ({r['name']})"
+            f"{sym_tag} {r['symbol']}  {r['score']}/{r['max_score']}  ({_name_with_return(r)})"
         )
         label_to_row[label] = r
 
@@ -331,43 +424,66 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
 
 
 def _market_view_desktop(rows: list[dict], market_key: str) -> None:
+    special = sorted(
+        [r for r in rows if _is_special_attention(r)],
+        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
+        reverse=True,
+    )
     above = sorted(
-        [r for r in rows if _is_above_all_mas(r)],
+        [
+            r
+            for r in rows
+            if _is_above_all_mas(r) and not _is_special_attention(r)
+        ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
     below = sorted(
-        [r for r in rows if not _is_above_all_mas(r)],
+        [r for r in rows if not _is_above_all_mas(r) and not _is_special_attention(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
 
     HEADER_ABOVE = f"__HDR_ABOVE_{market_key}__"
+    HEADER_SPECIAL = f"__HDR_SPECIAL_{market_key}__"
     HEADER_BELOW = f"__HDR_BELOW_{market_key}__"
 
     options: list[str] = []
     label_map: dict[str, str] = {}
     row_map: dict[str, dict] = {}
 
+    if special:
+        options.append(HEADER_SPECIAL)
+        label_map[HEADER_SPECIAL] = (
+            f"━━━ 🚀 特別注意：今日站上 / 目標價跳升 ({len(special)}) ━━━"
+        )
+        for r in special:
+            tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
+            options.append(r["symbol"])
+            label_map[r["symbol"]] = (
+                f"{tag} {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
+            )
+            row_map[r["symbol"]] = r
+
     if above:
         options.append(HEADER_ABOVE)
         label_map[HEADER_ABOVE] = (
-            f"━━━ ▲ 站上全均線 5/10/20/年 ({len(above)}) ━━━"
+            f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
         )
         for r in above:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▲ {r['symbol']}  {r['score']}/{r['max_score']}"
+                f"▲ {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
     if below:
         options.append(HEADER_BELOW)
-        label_map[HEADER_BELOW] = f"━━━ ▼ 未站上全均線 ({len(below)}) ━━━"
+        label_map[HEADER_BELOW] = f"━━━ ▼ 其他 ({len(below)}) ━━━"
         for r in below:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▼ {r['symbol']}  {r['score']}/{r['max_score']}"
+                f"▼ {r['symbol']}  {r['score']}/{r['max_score']}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
