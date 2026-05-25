@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import logging
 from dataclasses import asdict
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from . import chip as chip_mod
 from . import fetch, indicators, io, score
@@ -28,73 +28,33 @@ BENCHMARK_SYMBOLS = {
 }
 
 
-def _iso_or_none(dt: datetime | None) -> str | None:
-    return dt.astimezone(timezone.utc).isoformat() if dt else None
+def _enrich_target_price_events(events: list[dict] | None, close: float) -> list[dict]:
+    enriched: list[dict] = []
+    for event in events or []:
+        item = dict(event)
+        target_price = item.get("target_price")
+        if target_price is not None and close > 0:
+            item["upside_pct"] = float(target_price) / close - 1.0
+        enriched.append(item)
+    return enriched
 
 
-def _parse_iso_datetime(value: str | None) -> datetime | None:
-    if not value:
-        return None
-    try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(
-            timezone.utc
-        )
-    except ValueError:
-        return None
-
-
-def _build_target_raise_event(
-    current_target: float | None,
-    prev_target: float | None,
-    prev_blob: dict,
-    now: datetime,
-) -> dict:
-    detected_at: datetime | None = None
-    valid_until: datetime | None = None
-    raise_from: float | None = None
-    raise_to: float | None = None
-    raise_pct: float | None = None
-
-    if (
-        current_target is not None
-        and prev_target is not None
-        and prev_target > 0
-        and current_target / prev_target > score.TARGET_RAISE_THRESHOLD
+def _remove_legacy_target_raise_fields(blob: dict) -> dict:
+    for key in (
+        "target_raise_detected_at",
+        "target_raise_valid_until",
+        "target_raise_from",
+        "target_raise_to",
+        "target_raise_pct",
     ):
-        detected_at = now
-        valid_until = now + timedelta(days=3)
-        raise_from = prev_target
-        raise_to = current_target
-        raise_pct = current_target / prev_target - 1.0
-    else:
-        prev_valid_until = _parse_iso_datetime(
-            prev_blob.get("target_raise_valid_until")
-        )
-        prev_raise_to = prev_blob.get("target_raise_to")
-        if (
-            prev_valid_until is not None
-            and now <= prev_valid_until
-            and current_target is not None
-            and prev_raise_to is not None
-            and current_target >= float(prev_raise_to) * 0.99
-        ):
-            detected_at = _parse_iso_datetime(prev_blob.get("target_raise_detected_at"))
-            valid_until = prev_valid_until
-            raise_from = prev_blob.get("target_raise_from")
-            raise_to = prev_raise_to
-            raise_pct = prev_blob.get("target_raise_pct")
-
-    return {
-        "target_raise_detected_at": _iso_or_none(detected_at),
-        "target_raise_valid_until": _iso_or_none(valid_until),
-        "target_raise_from": raise_from,
-        "target_raise_to": raise_to,
-        "target_raise_pct": raise_pct,
-    }
+        blob.pop(key, None)
+    return blob
 
 
 def _build_analyst_blob_eod(
-    new_snap: AnalystSnapshot, prev_blob: dict | None, now: datetime | None = None
+    new_snap: AnalystSnapshot,
+    prev_blob: dict | None,
+    close: float | None = None,
 ) -> dict:
     """At EOD: shift the previous run's target_mean into target_mean_prev_eod.
 
@@ -103,19 +63,16 @@ def _build_analyst_blob_eod(
     EOD' should mean once today's EOD fires.
     """
     prev = prev_blob or {}
-    now_dt = now or datetime.now(timezone.utc)
     prev_target = prev.get("target_mean")
+    events = new_snap.target_price_events
+    if close is not None:
+        events = _enrich_target_price_events(events, close)
     return {
         "target_mean": new_snap.target_mean,
         "rating": new_snap.rating,
         "rating_score": new_snap.rating_score,
+        "target_price_events": events or [],
         "target_mean_prev_eod": prev_target,
-        **_build_target_raise_event(
-            current_target=new_snap.target_mean,
-            prev_target=prev_target,
-            prev_blob=prev,
-            now=now_dt,
-        ),
     }
 
 
@@ -173,15 +130,18 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 try:
                     new_snap = fetch.fetch_analyst(entry.symbol)
                     analyst_blob = _build_analyst_blob_eod(
-                        new_snap, prev_record.get("analyst")
+                        new_snap, prev_record.get("analyst"), close=ind.close
                     )
                 except Exception as exc:
-                    logger.warning(
-                        "fetch analyst failed for %s: %s", entry.symbol, exc
-                    )
+                    logger.warning("fetch analyst failed for %s: %s", entry.symbol, exc)
                     analyst_blob = prev_record.get("analyst")  # keep last good
             else:
                 analyst_blob = prev_record.get("analyst")
+            if analyst_blob is not None:
+                analyst_blob = _remove_legacy_target_raise_fields(dict(analyst_blob))
+                analyst_blob["target_price_events"] = _enrich_target_price_events(
+                    analyst_blob.get("target_price_events"), ind.close
+                )
 
         # Chip: EOD-only. Intraday inherits the previous chip block.
         chip_blob: dict | None = None
@@ -202,12 +162,9 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 target_mean=analyst_blob.get("target_mean"),
                 rating=analyst_blob.get("rating"),
                 rating_score=analyst_blob.get("rating_score"),
-                target_raise_detected_at=analyst_blob.get(
-                    "target_raise_detected_at"
-                ),
-                target_raise_valid_until=analyst_blob.get(
-                    "target_raise_valid_until"
-                ),
+                target_price_events=analyst_blob.get("target_price_events"),
+                target_raise_detected_at=analyst_blob.get("target_raise_detected_at"),
+                target_raise_valid_until=analyst_blob.get("target_raise_valid_until"),
                 target_raise_from=analyst_blob.get("target_raise_from"),
                 target_raise_to=analyst_blob.get("target_raise_to"),
                 target_raise_pct=analyst_blob.get("target_raise_pct"),

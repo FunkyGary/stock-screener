@@ -149,9 +149,7 @@ def local_price_chart(symbol: str, name: str, height: int) -> None:
             col=1,
         )
 
-    volume_colors = [
-        "#ef5350" if r["Close"] >= r["Open"] else "#26a69a" for r in rows
-    ]
+    volume_colors = ["#ef5350" if r["Close"] >= r["Open"] else "#26a69a" for r in rows]
     fig.add_trace(
         go.Bar(
             x=dates,
@@ -247,7 +245,7 @@ def _is_newly_above_all_mas(row: dict) -> bool:
 
 def _has_active_target_raise(row: dict) -> bool:
     return any(
-        reason.get("rule", "").startswith("目標價") and reason.get("passed") is True
+        "目標價" in reason.get("rule", "") and reason.get("passed") is True
         for reason in row.get("reasons", [])
     )
 
@@ -260,11 +258,11 @@ def _trend_tag(row: dict) -> str:
     newly_above = _is_newly_above_all_mas(row)
     target_raise = _has_active_target_raise(row)
     if newly_above and target_raise:
-        return "🚀 今日站上全均線 · 🎯 目標價跳升"
+        return "🚀 今日站上全均線 · 🎯 目標價上調"
     if newly_above:
         return "🚀 今日站上全均線"
     if target_raise:
-        return "🎯 目標價跳升"
+        return "🎯 目標價上調"
     if _is_above_all_mas(row):
         return "▲ 全均線之上"
     return "▼ 其他"
@@ -290,6 +288,27 @@ def _today_return_label(row: dict) -> str:
 
 def _name_with_return(row: dict) -> str:
     return f"{row['name']} {_today_return_label(row)}"
+
+
+def _fmt_pct(value: float | int | None) -> str:
+    return f"{float(value) * 100:+.2f}%" if value is not None else "n/a"
+
+
+def _fmt_price(value: float | int | None) -> str:
+    return f"{float(value):.2f}" if value is not None else "n/a"
+
+
+def _target_event_line(event: dict) -> str:
+    date = event.get("date") or "n/a"
+    firm = event.get("firm") or event.get("source") or "Unknown"
+    previous = event.get("previous_target")
+    target = event.get("target_price")
+    target_text = _fmt_price(target)
+    if previous is not None:
+        target_text = f"{_fmt_price(previous)} → {target_text}"
+    upside = _fmt_pct(event.get("upside_pct"))
+    raise_pct = _fmt_pct(event.get("raise_pct"))
+    return f"{date}　{firm}　目標價 {target_text}　距現價 {upside}　上調 {raise_pct}"
 
 
 # ---------------- shared detail panel ----------------
@@ -322,6 +341,16 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
         st.json(selected.get("indicators", {}))
     if selected.get("analyst"):
         with st.expander("📈 Analyst"):
+            events = (selected.get("analyst") or {}).get("target_price_events") or []
+            if events:
+                st.markdown("**近期目標價上調**")
+                for event in events:
+                    url = event.get("url")
+                    line = _target_event_line(event)
+                    if url:
+                        st.markdown(f"- [{line}]({url})")
+                    else:
+                        st.markdown(f"- {line}")
             st.json(selected["analyst"])
     if selected.get("chip"):
         with st.expander("🏦 Chip 籌碼"):
@@ -338,11 +367,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         reverse=True,
     )
     above = sorted(
-        [
-            r
-            for r in rows
-            if _is_above_all_mas(r) and not _is_special_attention(r)
-        ],
+        [r for r in rows if _is_above_all_mas(r) and not _is_special_attention(r)],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
@@ -353,11 +378,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     )
 
     # ⭐ Top picks
-    top = [
-        r
-        for r in special + above
-        if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO
-    ]
+    top = [r for r in special + above if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO]
     if top:
         with st.expander(
             f"⭐ 今日精選 — 特別注意/全均線之上且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
@@ -410,9 +431,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             sym_tag = "▲"
         else:
             sym_tag = "▼"
-        label = (
-            f"{sym_tag} {r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
-        )
+        label = f"{sym_tag} {r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
         label_to_row[label] = r
 
     selected_label = st.selectbox(
@@ -440,11 +459,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         reverse=True,
     )
     above = sorted(
-        [
-            r
-            for r in rows
-            if _is_above_all_mas(r) and not _is_special_attention(r)
-        ],
+        [r for r in rows if _is_above_all_mas(r) and not _is_special_attention(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
@@ -465,7 +480,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if special:
         options.append(HEADER_SPECIAL)
         label_map[HEADER_SPECIAL] = (
-            f"━━━ 🚀 特別注意：今日站上 / 目標價跳升 ({len(special)}) ━━━"
+            f"━━━ 🚀 特別注意：今日站上 / 目標價上調 ({len(special)}) ━━━"
         )
         for r in special:
             tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
@@ -477,9 +492,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
 
     if above:
         options.append(HEADER_ABOVE)
-        label_map[HEADER_ABOVE] = (
-            f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
-        )
+        label_map[HEADER_ABOVE] = f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
         for r in above:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
@@ -593,9 +606,7 @@ def render() -> None:
         _market_view_desktop if current_layout == "desktop" else _market_view_mobile
     )
 
-    tab_tw, tab_us = st.tabs(
-        [f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"]
-    )
+    tab_tw, tab_us = st.tabs([f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"])
     with tab_tw:
         market_view(tw_rows, market_key="tw")
     with tab_us:

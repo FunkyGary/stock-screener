@@ -28,7 +28,7 @@ Rules use weighted points. Missing data skips the affected rule.
 | 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | yes | yes |
 | OBV 5d > OBV 20d | 1.0 | yes | yes |
 | MACD golden cross | 1.0 | yes | yes |
-| consensus target raised > 3% within 3 days | 2.0 | — | yes |
+| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | — | yes |
 | 投信連續買超 ≥ 3 日 | 2.0 | yes | — |
 | 外資大買 (>5% volume or 3-day streak) | 1.5 | yes | — |
 
@@ -64,6 +64,11 @@ Both jobs commit `data/latest_signals.json` with `[skip ci]`. Manual triggers vi
 the Actions tab work as well.
 
 Required repo secret: `FINNHUB_API_KEY`.
+
+US analyst target detail is parsed from recent Finnhub company news headlines when
+the headline clearly says an analyst/firm raised a price target. Parsed events
+are shown in the dashboard's Analyst section with date, firm/source, target,
+previous target when available, and upside versus the current screen price.
 
 ## Deploy the dashboard
 

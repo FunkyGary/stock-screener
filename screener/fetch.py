@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 import finnhub
@@ -26,6 +28,7 @@ class AnalystSnapshot:
     target_mean: Optional[float]
     rating: Optional[str]
     rating_score: Optional[float]
+    target_price_events: list[dict] | None = None
     target_raise_detected_at: Optional[str] = None
     target_raise_valid_until: Optional[str] = None
     target_raise_from: Optional[float] = None
@@ -108,11 +111,113 @@ def _fetch_rating_finnhub(symbol: str) -> tuple[Optional[str], Optional[float]]:
     return _rating_label(rating_score), rating_score
 
 
+_RAISE_WORDS = re.compile(
+    r"\b(raise[sd]?|raised|boost[sed]?|lift[sed]?|increase[sd]?|hike[sd]?|"
+    r"ups|up[s]?|raises)\b",
+    flags=re.IGNORECASE,
+)
+_TARGET_WORDS = re.compile(r"\b(price target|pt|target price)\b", flags=re.IGNORECASE)
+_TARGET_TO = re.compile(
+    r"\b(?:price target|pt|target price)\b[^$]{0,60}?\b(?:to|at|of)\s*\$?([0-9][0-9,]*(?:\.[0-9]+)?)",
+    flags=re.IGNORECASE,
+)
+_TARGET_FROM = re.compile(
+    r"\bfrom\s*\$?([0-9][0-9,]*(?:\.[0-9]+)?)", flags=re.IGNORECASE
+)
+_FIRM_PREFIX = re.compile(
+    r"^\s*(?:([A-Z][A-Za-z&.\- ]{1,40}?)\s+)?"
+    r"(?:raise[sd]?|raised|boost[sed]?|lift[sed]?|increase[sd]?|hike[sd]?|ups)\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _parse_money(value: str) -> float:
+    return float(value.replace(",", ""))
+
+
+def _extract_firm(headline: str, source: str | None) -> str | None:
+    match = _FIRM_PREFIX.search(headline)
+    if match and match.group(1):
+        firm = match.group(1).strip(" -:")
+        if firm:
+            return firm
+    return source
+
+
+def _parse_target_event(item: dict) -> dict | None:
+    headline = item.get("headline") or ""
+    if (
+        not headline
+        or not _TARGET_WORDS.search(headline)
+        or not _RAISE_WORDS.search(headline)
+    ):
+        return None
+
+    target_match = _TARGET_TO.search(headline)
+    if not target_match:
+        return None
+
+    previous_match = _TARGET_FROM.search(headline)
+    target_price = _parse_money(target_match.group(1))
+    previous_target = (
+        _parse_money(previous_match.group(1)) if previous_match is not None else None
+    )
+
+    published_at: str | None = None
+    timestamp = item.get("datetime")
+    if timestamp:
+        try:
+            published_at = datetime.fromtimestamp(
+                int(timestamp), tz=timezone.utc
+            ).isoformat()
+        except (TypeError, ValueError, OSError):
+            published_at = None
+
+    return {
+        "date": published_at[:10] if published_at else None,
+        "published_at": published_at,
+        "firm": _extract_firm(headline, item.get("source")),
+        "target_price": target_price,
+        "previous_target": previous_target,
+        "raise_pct": (
+            target_price / previous_target - 1.0
+            if previous_target and previous_target > 0
+            else None
+        ),
+        "headline": headline,
+        "source": item.get("source"),
+        "url": item.get("url"),
+    }
+
+
+def _fetch_target_price_events_finnhub(symbol: str, days: int = 7) -> list[dict]:
+    client = _finnhub_client()
+    end = datetime.now(timezone.utc).date()
+    start = end - timedelta(days=days)
+    news = (
+        client.company_news(symbol, _from=start.isoformat(), to=end.isoformat()) or []
+    )
+    events: list[dict] = []
+    seen: set[tuple[str | None, float, str | None]] = set()
+    for item in news:
+        event = _parse_target_event(item)
+        if event is None:
+            continue
+        key = (event.get("date"), event["target_price"], event.get("firm"))
+        if key in seen:
+            continue
+        seen.add(key)
+        events.append(event)
+    events.sort(key=lambda e: e.get("published_at") or "", reverse=True)
+    return events
+
+
 def fetch_analyst(symbol: str) -> AnalystSnapshot:
     """Combine yfinance target + Finnhub rating; each source fails independently."""
     target_mean: Optional[float] = None
     rating: Optional[str] = None
     rating_score: Optional[float] = None
+    target_price_events: list[dict] = []
 
     try:
         target_mean = _fetch_target_mean_yfinance(symbol)
@@ -124,8 +229,14 @@ def fetch_analyst(symbol: str) -> AnalystSnapshot:
     except Exception as exc:
         logger.warning("finnhub rating failed for %s: %s", symbol, exc)
 
+    try:
+        target_price_events = _fetch_target_price_events_finnhub(symbol)
+    except Exception as exc:
+        logger.warning("finnhub target price news failed for %s: %s", symbol, exc)
+
     return AnalystSnapshot(
         target_mean=target_mean,
         rating=rating,
         rating_score=rating_score,
+        target_price_events=target_price_events,
     )

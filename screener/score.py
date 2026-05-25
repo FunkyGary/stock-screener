@@ -10,7 +10,8 @@ from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
 from .indicators import IndicatorSnapshot
 
-TARGET_RAISE_THRESHOLD = 1.03  # 3% jump in mean target
+TARGET_UPSIDE_THRESHOLD = 0.10
+TARGET_EVENT_DAYS = 7
 TRUST_BUY_STREAK = 3
 FOREIGN_PCT_OF_VOLUME = 0.05
 FOREIGN_BUY_STREAK = 3
@@ -42,11 +43,49 @@ def _parse_iso_datetime(value: str | None) -> datetime | None:
         return None
 
 
-def _target_raise_is_active(analyst: AnalystSnapshot | None) -> bool:
-    if analyst is None:
+def _target_event_is_recent(event: dict) -> bool:
+    published_at = _parse_iso_datetime(event.get("published_at"))
+    if published_at is None:
         return False
-    valid_until = _parse_iso_datetime(analyst.target_raise_valid_until)
-    return valid_until is not None and datetime.now(timezone.utc) <= valid_until
+    age = datetime.now(timezone.utc) - published_at
+    return age.total_seconds() >= 0 and age.days < TARGET_EVENT_DAYS
+
+
+def _target_event_upside(event: dict, close: float) -> float | None:
+    target_price = event.get("target_price")
+    if target_price is None or close <= 0:
+        return None
+    return float(target_price) / close - 1.0
+
+
+def _qualifying_target_events(
+    analyst: AnalystSnapshot | None, close: float
+) -> list[dict]:
+    if analyst is None or not analyst.target_price_events:
+        return []
+    passed: list[dict] = []
+    for event in analyst.target_price_events:
+        upside = _target_event_upside(event, close)
+        if (
+            _target_event_is_recent(event)
+            and upside is not None
+            and upside >= TARGET_UPSIDE_THRESHOLD
+        ):
+            passed.append(event)
+    return passed
+
+
+def _format_target_event(event: dict, close: float) -> str:
+    date = event.get("date") or "n/a"
+    firm = event.get("firm") or event.get("source") or "unknown"
+    target = event.get("target_price")
+    previous = event.get("previous_target")
+    upside = _target_event_upside(event, close)
+    target_str = f"{float(target):.2f}" if target is not None else "n/a"
+    if previous:
+        target_str = f"{float(previous):.2f}->{target_str}"
+    upside_str = f"+{upside * 100:.2f}%" if upside is not None else "n/a"
+    return f"{date} {firm} target {target_str}, upside={upside_str}"
 
 
 def _above_all_mas(ind: IndicatorSnapshot) -> bool:
@@ -56,15 +95,15 @@ def _above_all_mas(ind: IndicatorSnapshot) -> bool:
 
 def _was_above_all_mas_prev_day(ind: IndicatorSnapshot) -> bool:
     vals = (ind.prev_ma5, ind.prev_ma10, ind.prev_ma20, ind.prev_ma240)
-    return (
-        ind.prev_close is not None
-        and all(v is not None and ind.prev_close > v for v in vals)
+    return ind.prev_close is not None and all(
+        v is not None and ind.prev_close > v for v in vals
     )
 
 
 def _has_prev_all_ma_data(ind: IndicatorSnapshot) -> bool:
     return ind.prev_close is not None and all(
-        v is not None for v in (ind.prev_ma5, ind.prev_ma10, ind.prev_ma20, ind.prev_ma240)
+        v is not None
+        for v in (ind.prev_ma5, ind.prev_ma10, ind.prev_ma20, ind.prev_ma240)
     )
 
 
@@ -102,10 +141,7 @@ def score(
             Reason(
                 rule="短線趨勢確認 (close > MA5 且 MA5 > MA20)",
                 passed=passed,
-                detail=(
-                    f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
-                    f"MA20={ind.ma20:.2f}"
-                ),
+                detail=(f"close={ind.close:.2f} MA5={ind.ma5:.2f} MA20={ind.ma20:.2f}"),
                 weight=1.5,
             )
         )
@@ -152,9 +188,7 @@ def score(
         and ind.macd_prev is not None
         and ind.macd_signal_prev is not None
     ):
-        passed = (
-            ind.macd > ind.macd_signal and ind.macd_prev <= ind.macd_signal_prev
-        )
+        passed = ind.macd > ind.macd_signal and ind.macd_prev <= ind.macd_signal_prev
         reasons.append(
             Reason(
                 rule="MACD 上穿 signal (golden cross)",
@@ -168,29 +202,20 @@ def score(
         )
 
     if is_us:
-        prev_str = f"{prev_target_mean:.2f}" if prev_target_mean is not None else "n/a"
-        current_target = analyst.target_mean if analyst else None
-        cur_str = f"{current_target:.2f}" if current_target is not None else "n/a"
-        passed_target = _target_raise_is_active(analyst)
-        pct = (
-            analyst.target_raise_pct * 100
-            if analyst and analyst.target_raise_pct is not None
-            else (current_target / prev_target_mean - 1.0) * 100
-            if current_target is not None and prev_target_mean
-            else None
+        target_events = _qualifying_target_events(analyst, ind.close)
+        passed_target = bool(target_events)
+        detail = (
+            "； ".join(
+                _format_target_event(event, ind.close) for event in target_events[:3]
+            )
+            if target_events
+            else f"no 7d target raise with target >= close * {1 + TARGET_UPSIDE_THRESHOLD:.2f}"
         )
-        pct_str = f"{pct:+.2f}%" if pct is not None else "n/a"
-        if analyst and analyst.target_raise_from is not None:
-            prev_str = f"{analyst.target_raise_from:.2f}"
-        if analyst and analyst.target_raise_to is not None:
-            cur_str = f"{analyst.target_raise_to:.2f}"
-        valid_until = analyst.target_raise_valid_until if analyst else None
-        valid_str = valid_until[:10] if isinstance(valid_until, str) else "n/a"
         reasons.append(
             Reason(
-                rule="目標價單日跳升 > 3%（3日內有效）",
+                rule="法人目標價上調且高於現價10%（7日內）",
                 passed=passed_target,
-                detail=f"target {prev_str} -> {cur_str} ({pct_str}), valid_until={valid_str}",
+                detail=detail,
                 weight=2.0,
             )
         )
@@ -221,9 +246,7 @@ def score(
         if chip is None:
             detail = "chip data unavailable"
         else:
-            pct_str = (
-                f"{foreign_pct * 100:+.2f}%" if foreign_pct is not None else "n/a"
-            )
+            pct_str = f"{foreign_pct * 100:+.2f}%" if foreign_pct is not None else "n/a"
             detail = f"streak={foreign_streak} 日, 佔量={pct_str}"
         reasons.append(
             Reason(

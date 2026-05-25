@@ -54,12 +54,16 @@ def test_full_bullish_us_with_target_raise_scores_max():
         target_mean=120.0,
         rating="Buy",
         rating_score=2.0,
-        target_raise_valid_until=(
-            datetime.now(timezone.utc) + timedelta(days=1)
-        ).isoformat(),
-        target_raise_from=110.0,
-        target_raise_to=120.0,
-        target_raise_pct=120.0 / 110.0 - 1.0,
+        target_price_events=[
+            {
+                "date": datetime.now(timezone.utc).date().isoformat(),
+                "published_at": datetime.now(timezone.utc).isoformat(),
+                "firm": "JPMorgan",
+                "target_price": 120.0,
+                "previous_target": 105.0,
+                "raise_pct": 120.0 / 105.0 - 1.0,
+            }
+        ],
     )
     result = score(
         "us", _ind(), analyst, prev_target_mean=110.0, benchmark_return_20d=0.05
@@ -106,9 +110,7 @@ def test_relative_strength_requires_stock_to_beat_benchmark():
 
 
 def test_short_trend_requires_close_above_ma5():
-    result = score(
-        "tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip()
-    )
+    result = score("tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip())
     assert result.score == 7
     assert result.max_score == 11.5
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
@@ -116,9 +118,7 @@ def test_short_trend_requires_close_above_ma5():
 
 
 def test_short_trend_requires_ma5_above_ma20():
-    result = score(
-        "tw", _ind(ma5=94.0, ma20=95.0), None, None, chip=_chip()
-    )
+    result = score("tw", _ind(ma5=94.0, ma20=95.0), None, None, chip=_chip())
     assert result.score == 10
     assert result.max_score == 11.5
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
@@ -151,34 +151,48 @@ def test_macd_golden_cross_requires_prev_below():
     assert rule.passed is False
 
 
-def test_target_raise_under_three_percent_does_not_pass():
-    analyst = AnalystSnapshot(target_mean=112.0, rating="Buy", rating_score=2.0)
-    result = score("us", _ind(), analyst, prev_target_mean=110.0)
-    rule = next(r for r in result.reasons if r.rule.startswith("目標價"))
-    assert rule.passed is False
-
-
-def test_target_raise_expires_after_valid_until():
+def test_target_raise_requires_ten_percent_upside():
     analyst = AnalystSnapshot(
         target_mean=120.0,
         rating="Buy",
         rating_score=2.0,
-        target_raise_valid_until=(
-            datetime.now(timezone.utc) - timedelta(days=1)
-        ).isoformat(),
-        target_raise_from=110.0,
-        target_raise_to=120.0,
-        target_raise_pct=120.0 / 110.0 - 1.0,
+        target_price_events=[
+            {
+                "published_at": datetime.now(timezone.utc).isoformat(),
+                "firm": "JPMorgan",
+                "target_price": 109.0,
+            }
+        ],
     )
     result = score("us", _ind(), analyst, prev_target_mean=110.0)
-    rule = next(r for r in result.reasons if r.rule.startswith("目標價"))
+    rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
-def test_no_prior_target_does_not_score_target_raise():
+def test_target_raise_expires_after_seven_days():
+    analyst = AnalystSnapshot(
+        target_mean=120.0,
+        rating="Buy",
+        rating_score=2.0,
+        target_price_events=[
+            {
+                "published_at": (
+                    datetime.now(timezone.utc) - timedelta(days=8)
+                ).isoformat(),
+                "firm": "JPMorgan",
+                "target_price": 120.0,
+            }
+        ],
+    )
+    result = score("us", _ind(), analyst, prev_target_mean=110.0)
+    rule = next(r for r in result.reasons if "目標價" in r.rule)
+    assert rule.passed is False
+
+
+def test_no_target_price_events_does_not_score_target_raise():
     analyst = AnalystSnapshot(target_mean=120.0, rating="Buy", rating_score=2.0)
     result = score("us", _ind(), analyst, prev_target_mean=None)
-    rule = next(r for r in result.reasons if r.rule.startswith("目標價"))
+    rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
