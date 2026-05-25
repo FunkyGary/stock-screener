@@ -483,10 +483,8 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     for r in candidates:
         if _is_special_attention(r):
             sym_tag = _special_symbol_prefix(r)
-        elif _is_above_all_mas(r):
-            sym_tag = "▲ "
         else:
-            sym_tag = "▼ "
+            sym_tag = ""
         label = f"{sym_tag}{r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
         label_to_row[label] = r
 
@@ -551,7 +549,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         for r in above:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▲ {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
+                f"{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
@@ -561,7 +559,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         for r in below:
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"▼ {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
+                f"{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
