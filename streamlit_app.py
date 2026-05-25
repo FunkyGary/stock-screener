@@ -29,6 +29,7 @@ LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
 LOCAL_TARGET_EVENTS = Path(__file__).parent / "data" / "analyst_target_events.jsonl"
 
 TOP_PICK_MIN_SCORE_RATIO = 0.6
+SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.5
 SCALE_UP_MIN_SCORE_RATIO = 0.8
 CHART_HEIGHT_DESKTOP = 620
 CHART_HEIGHT_MOBILE = 380
@@ -294,13 +295,34 @@ def _is_scale_up_candidate(row: dict) -> bool:
     )
 
 
-def _is_special_attention(row: dict) -> bool:
+def _is_upside_attention_signal(row: dict) -> bool:
     return _is_newly_above_all_mas(row) or _has_active_target_raise(row)
+
+
+def _is_special_attention(row: dict) -> bool:
+    return (
+        _is_upside_attention_signal(row)
+        and _score_ratio(row) >= SPECIAL_ATTENTION_MIN_SCORE_RATIO
+    )
+
+
+def _is_downside_attention(row: dict) -> bool:
+    ind = row.get("indicators") or {}
+    close = ind.get("close")
+    ma5 = ind.get("ma5")
+    return (
+        _was_above_all_mas_prev_day(row)
+        and close is not None
+        and ma5 is not None
+        and close < ma5
+    )
 
 
 def _trend_tag(row: dict) -> str:
     if _is_scale_up_candidate(row):
         return "上漲加碼"
+    if _is_downside_attention(row):
+        return "下跌特別注意"
     newly_above = _is_newly_above_all_mas(row)
     target_raise = _has_active_target_raise(row)
     if newly_above and target_raise:
@@ -471,13 +493,29 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
+    downside = sorted(
+        [r for r in rows if _is_downside_attention(r)],
+        key=lambda r: r.get("indicators", {}).get("today_return") or 0,
+    )
     above = sorted(
-        [r for r in rows if _is_above_all_mas(r) and not _is_special_attention(r)],
+        [
+            r
+            for r in rows
+            if _is_above_all_mas(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
     below = sorted(
-        [r for r in rows if not _is_above_all_mas(r) and not _is_special_attention(r)],
+        [
+            r
+            for r in rows
+            if not _is_above_all_mas(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
@@ -501,13 +539,15 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         options.append(f"上漲加碼 ({len(scale_up)})")
     if special:
         options.append(f"特別注意 ({len(special)})")
+    if downside:
+        options.append(f"下跌特別注意 ({len(downside)})")
     if above:
         options.append(f"▲ 全均線之上 ({len(above)})")
     if below:
         options.append(f"▼ 其他 ({len(below)})")
     options.append("全部")
 
-    if not (scale_up or special or above or below):
+    if not (scale_up or special or downside or above or below):
         st.info("（無資料）")
         return
 
@@ -523,12 +563,14 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         candidates = scale_up
     elif filter_choice.startswith("特別注意"):
         candidates = special
+    elif filter_choice.startswith("下跌特別注意"):
+        candidates = downside
     elif filter_choice.startswith("▲"):
         candidates = above
     elif filter_choice.startswith("▼"):
         candidates = below
     else:
-        candidates = scale_up + special + above + below
+        candidates = scale_up + special + downside + above + below
 
     if not candidates:
         st.info("此分組無資料")
@@ -572,13 +614,29 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
+    downside = sorted(
+        [r for r in rows if _is_downside_attention(r)],
+        key=lambda r: r.get("indicators", {}).get("today_return") or 0,
+    )
     above = sorted(
-        [r for r in rows if _is_above_all_mas(r) and not _is_special_attention(r)],
+        [
+            r
+            for r in rows
+            if _is_above_all_mas(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
     below = sorted(
-        [r for r in rows if not _is_above_all_mas(r) and not _is_special_attention(r)],
+        [
+            r
+            for r in rows
+            if not _is_above_all_mas(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
@@ -586,6 +644,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     HEADER_ABOVE = f"__HDR_ABOVE_{market_key}__"
     HEADER_SCALE_UP = f"__HDR_SCALE_UP_{market_key}__"
     HEADER_SPECIAL = f"__HDR_SPECIAL_{market_key}__"
+    HEADER_DOWNSIDE = f"__HDR_DOWNSIDE_{market_key}__"
     HEADER_BELOW = f"__HDR_BELOW_{market_key}__"
 
     options: list[str] = []
@@ -603,13 +662,23 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if special:
         options.append(HEADER_SPECIAL)
         label_map[HEADER_SPECIAL] = (
-            f"━━━ 特別注意：今日站上 / 目標價上調 ({len(special)}) ━━━"
+            f"━━━ 特別注意：今日站上 / 目標價上調，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
         )
         for r in special:
             options.append(r["symbol"])
             label_map[r["symbol"]] = _list_row_label(
                 r, market_key, prefix=_special_symbol_prefix(r)
             )
+            row_map[r["symbol"]] = r
+
+    if downside:
+        options.append(HEADER_DOWNSIDE)
+        label_map[HEADER_DOWNSIDE] = (
+            f"━━━ 下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)}) ━━━"
+        )
+        for r in downside:
+            options.append(r["symbol"])
+            label_map[r["symbol"]] = _list_row_label(r, market_key)
             row_map[r["symbol"]] = r
 
     if above:
