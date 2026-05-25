@@ -648,81 +648,55 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         reverse=True,
     )
 
-    HEADER_ABOVE = f"__HDR_ABOVE_{market_key}__"
-    HEADER_SCALE_UP = f"__HDR_SCALE_UP_{market_key}__"
-    HEADER_SPECIAL = f"__HDR_SPECIAL_{market_key}__"
-    HEADER_DOWNSIDE = f"__HDR_DOWNSIDE_{market_key}__"
-    HEADER_BELOW = f"__HDR_BELOW_{market_key}__"
-
-    options: list[str] = []
-    label_map: dict[str, str] = {}
     row_map: dict[str, dict] = {}
-
-    options.append(HEADER_SCALE_UP)
-    label_map[HEADER_SCALE_UP] = f"上漲加碼 ({len(scale_up)})"
-    for r in scale_up:
-        options.append(r["symbol"])
-        label_map[r["symbol"]] = _list_row_label(r, market_key)
-        row_map[r["symbol"]] = r
-
-    options.append(HEADER_SPECIAL)
-    label_map[HEADER_SPECIAL] = (
-        f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})"
-    )
-    for r in special:
-        options.append(r["symbol"])
-        label_map[r["symbol"]] = _list_row_label(
-            r, market_key, prefix=_special_symbol_prefix(r)
-        )
-        row_map[r["symbol"]] = r
-
-    options.append(HEADER_DOWNSIDE)
-    label_map[HEADER_DOWNSIDE] = (
-        f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})"
-    )
-    for r in downside:
-        options.append(r["symbol"])
-        label_map[r["symbol"]] = _list_row_label(r, market_key)
-        row_map[r["symbol"]] = r
-
-    options.append(HEADER_ABOVE)
-    label_map[HEADER_ABOVE] = f"全均線之上 5/10/20/年 ({len(above)})"
-    for r in above:
-        options.append(r["symbol"])
-        label_map[r["symbol"]] = _list_row_label(r, market_key)
-        row_map[r["symbol"]] = r
-
-    options.append(HEADER_BELOW)
-    label_map[HEADER_BELOW] = f"其他 ({len(below)})"
-    for r in below:
-        options.append(r["symbol"])
-        label_map[r["symbol"]] = _list_row_label(r, market_key)
-        row_map[r["symbol"]] = r
+    sections = [
+        (f"上漲加碼 ({len(scale_up)})", scale_up),
+        (
+            f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})",
+            special,
+        ),
+        (
+            f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})",
+            downside,
+        ),
+        (f"全均線之上 5/10/20/年 ({len(above)})", above),
+        (f"其他 ({len(below)})", below),
+    ]
+    for _, section_rows in sections:
+        for r in section_rows:
+            row_map[r["symbol"]] = r
 
     if not row_map:
         st.info("（此分區無資料）")
         return
 
-    default_idx = next(
-        (i for i, o in enumerate(options) if not o.startswith("__HDR_")), 0
-    )
-
     col_left, col_mid, col_right = st.columns([2, 3, 5])
+    selected_key = f"selected_{market_key}"
+    if st.session_state.get(selected_key) not in row_map:
+        st.session_state[selected_key] = next(iter(row_map))
 
     with col_left:
-        choice = st.radio(
-            "ticker",
-            options=options,
-            index=default_idx,
-            format_func=lambda o: label_map[o],
-            label_visibility="collapsed",
-            key=f"radio_{market_key}",
-        )
+        for title, section_rows in sections:
+            st.markdown(f"**{title}**")
+            if not section_rows:
+                st.caption("無")
+                continue
+            for r in section_rows:
+                symbol = r["symbol"]
+                label = _list_row_label(r, market_key)
+                if st.button(
+                    label,
+                    key=f"pick_{market_key}_{symbol}",
+                    type=(
+                        "primary"
+                        if st.session_state[selected_key] == symbol
+                        else "secondary"
+                    ),
+                    use_container_width=True,
+                ):
+                    st.session_state[selected_key] = symbol
 
-    if choice.startswith("__HDR_"):
-        choice = next(o for o in options if not o.startswith("__HDR_"))
-
-    selected = row_map[choice]
+    selected = row_map[st.session_state[selected_key]]
 
     with col_mid:
         _detail_panel(selected, mobile=False)
