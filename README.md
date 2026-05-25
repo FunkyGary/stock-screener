@@ -13,6 +13,7 @@ data/
   watchlist.csv      Hand-edited list of symbols to screen
   latest_signals.json  Output written by Actions, read by Streamlit
   analyst_target_events.jsonl  US analyst target raise history event log
+  tw_target_events.jsonl  Manual TW analyst target history event log
 streamlit_app.py     Dashboard
 tests/               Unit tests for indicators + scoring
 ```
@@ -29,7 +30,7 @@ Rules use weighted points. Missing data skips the affected rule.
 | 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | yes | yes |
 | OBV 5d > OBV 20d | 1.0 | yes | yes |
 | MACD golden cross | 1.0 | yes | yes |
-| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | — | yes |
+| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | yes | yes |
 | 投信連續買超 ≥ 3 日 | 2.0 | yes | — |
 | 外資大買 (>5% volume or 3-day streak) | 1.5 | yes | — |
 
@@ -81,6 +82,13 @@ previous target when available, and upside versus the current screen price.
 EOD US runs also merge these parsed events into `data/analyst_target_events.jsonl`
 with stable event IDs, so the dashboard can show the selected stock's recent
 target-price history without turning the project into a database-backed app.
+
+TW target updates are stored manually in `data/tw_target_events.jsonl`, using the
+same event-log shape. A typical entry is:
+
+```json
+{"symbol":"2330.TW","market":"tw","event_date":"2026-05-25","published_at":"2026-05-25T00:00:00+00:00","firm":"凱基投顧","action":"raise","previous_target":1200,"target_price":1300,"source":"manual"}
+```
 
 ## Market Regime
 

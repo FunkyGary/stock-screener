@@ -44,7 +44,9 @@ def _parse_iso_datetime(value: str | None) -> datetime | None:
 
 
 def _target_event_is_recent(event: dict) -> bool:
-    published_at = _parse_iso_datetime(event.get("published_at"))
+    published_at = _parse_iso_datetime(
+        event.get("published_at") or event.get("event_date") or event.get("date")
+    )
     if published_at is None:
         return False
     age = datetime.now(timezone.utc) - published_at
@@ -76,7 +78,7 @@ def _qualifying_target_events(
 
 
 def _format_target_event(event: dict, close: float) -> str:
-    date = event.get("date") or "n/a"
+    date = event.get("date") or event.get("event_date") or "n/a"
     firm = event.get("firm") or event.get("source") or "unknown"
     target = event.get("target_price")
     previous = event.get("previous_target")
@@ -201,7 +203,7 @@ def score(
             )
         )
 
-    if is_us:
+    if is_us or is_tw:
         target_events = _qualifying_target_events(analyst, ind.close)
         passed_target = bool(target_events)
         detail = (

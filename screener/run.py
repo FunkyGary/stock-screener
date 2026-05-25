@@ -92,6 +92,17 @@ def _remove_legacy_target_raise_fields(blob: dict) -> dict:
     return blob
 
 
+def _manual_target_events_for_symbol(
+    events: list[dict], symbol: str, close: float
+) -> list[dict]:
+    symbol_events = [
+        event
+        for event in events
+        if event.get("symbol") == symbol and (event.get("market") or "tw") == "tw"
+    ]
+    return _enrich_target_price_events(symbol_events, close)
+
+
 def _build_analyst_blob_eod(
     new_snap: AnalystSnapshot,
     prev_blob: dict | None,
@@ -145,6 +156,8 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "TWSE chip fetch failed, scoring without chip rules: %s", exc
             )
 
+    manual_target_events = io.load_tw_target_events() if market == "tw" else []
+
     for entry in entries:
         record: dict = {
             "symbol": entry.symbol,
@@ -183,6 +196,18 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 analyst_blob["target_price_events"] = _enrich_target_price_events(
                     analyst_blob.get("target_price_events"), ind.close
                 )
+        elif entry.market == "tw":
+            target_events = _manual_target_events_for_symbol(
+                manual_target_events, entry.symbol, ind.close
+            )
+            if target_events:
+                analyst_blob = {
+                    "target_mean": None,
+                    "rating": None,
+                    "rating_score": None,
+                    "target_price_events": target_events,
+                    "source": "manual_jsonl",
+                }
 
         # Chip: EOD-only. Intraday inherits the previous chip block.
         chip_blob: dict | None = None

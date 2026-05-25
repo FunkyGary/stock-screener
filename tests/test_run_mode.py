@@ -6,6 +6,7 @@ from screener.fetch import AnalystSnapshot
 from screener.run import (
     _build_analyst_blob_eod,
     _enrich_target_price_events,
+    _manual_target_events_for_symbol,
     _target_events_for_history,
 )
 
@@ -53,6 +54,25 @@ def test_target_price_event_upside_refreshes_against_current_close():
     assert enriched[0]["upside_pct"] == pytest.approx(0.1)
     assert enriched[1]["upside_pct"] == pytest.approx(-0.1)
     assert "upside_pct" not in events[0]
+
+
+def test_manual_tw_target_events_filter_by_symbol_and_add_upside():
+    events = [
+        {
+            "symbol": "2330.TW",
+            "market": "tw",
+            "event_date": "2026-05-25",
+            "firm": "凱基投顧",
+            "target_price": 1300.0,
+        },
+        {"symbol": "2317.TW", "market": "tw", "target_price": 250.0},
+    ]
+
+    rows = _manual_target_events_for_symbol(events, "2330.TW", close=1000.0)
+
+    assert len(rows) == 1
+    assert rows[0]["firm"] == "凱基投顧"
+    assert rows[0]["upside_pct"] == pytest.approx(0.3)
 
 
 def test_target_events_for_history_adds_symbol_close_and_event_id():

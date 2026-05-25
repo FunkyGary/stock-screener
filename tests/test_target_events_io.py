@@ -44,3 +44,27 @@ def test_normalize_target_event_uses_published_at_date():
 
     assert event["event_date"] == "2026-05-25"
     assert event["event_id"]
+
+
+def test_merge_tw_target_events_writes_separate_jsonl(tmp_path, monkeypatch):
+    path = tmp_path / "tw_target_events.jsonl"
+    monkeypatch.setattr(io, "tw_target_events_path", lambda: path)
+
+    event = {
+        "symbol": "2330.TW",
+        "market": "tw",
+        "event_date": "2026-05-25",
+        "firm": "凱基投顧",
+        "action": "raise",
+        "previous_target": 1200.0,
+        "target_price": 1300.0,
+        "source": "manual",
+    }
+
+    assert io.merge_tw_target_events([event]) == 1
+    assert io.merge_tw_target_events([event]) == 0
+
+    saved = json.loads(path.read_text().splitlines()[0])
+    assert saved["symbol"] == "2330.TW"
+    assert saved["market"] == "tw"
+    assert saved["event_id"]

@@ -48,6 +48,10 @@ def target_events_path() -> Path:
     return repo_root() / "data" / "analyst_target_events.jsonl"
 
 
+def tw_target_events_path() -> Path:
+    return repo_root() / "data" / "tw_target_events.jsonl"
+
+
 def load_latest_signals() -> dict:
     path = signals_path()
     if not path.exists():
@@ -64,8 +68,7 @@ def write_latest_signals(data: dict) -> None:
         f.write("\n")
 
 
-def load_target_events() -> list[dict]:
-    path = target_events_path()
+def _load_jsonl_events(path: Path) -> list[dict]:
     if not path.exists():
         return []
 
@@ -77,6 +80,14 @@ def load_target_events() -> list[dict]:
                 continue
             events.append(json.loads(line))
     return events
+
+
+def load_target_events() -> list[dict]:
+    return _load_jsonl_events(target_events_path())
+
+
+def load_tw_target_events() -> list[dict]:
+    return _load_jsonl_events(tw_target_events_path())
 
 
 def _target_event_identity(event: dict) -> str:
@@ -104,14 +115,16 @@ def normalize_target_event(event: dict) -> dict:
     return out
 
 
-def merge_target_events(new_events: list[dict], keep_days: int = 370) -> int:
+def _merge_target_events_into(
+    path: Path, existing_events: list[dict], new_events: list[dict], keep_days: int
+) -> int:
     if not new_events:
         return 0
 
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=keep_days)).date()
     merged: dict[str, dict] = {}
-    for event in load_target_events():
+    for event in existing_events:
         normalized = normalize_target_event(event)
         event_date = normalized.get("event_date")
         if isinstance(event_date, str):
@@ -139,7 +152,6 @@ def merge_target_events(new_events: list[dict], keep_days: int = 370) -> int:
         ),
     )
 
-    path = target_events_path()
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w") as f:
         for event in ordered:
@@ -147,3 +159,15 @@ def merge_target_events(new_events: list[dict], keep_days: int = 370) -> int:
             f.write("\n")
 
     return len(set(merged) - before)
+
+
+def merge_target_events(new_events: list[dict], keep_days: int = 370) -> int:
+    return _merge_target_events_into(
+        target_events_path(), load_target_events(), new_events, keep_days
+    )
+
+
+def merge_tw_target_events(new_events: list[dict], keep_days: int = 370) -> int:
+    return _merge_target_events_into(
+        tw_target_events_path(), load_tw_target_events(), new_events, keep_days
+    )

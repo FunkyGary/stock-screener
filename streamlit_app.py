@@ -27,6 +27,7 @@ from streamlit_javascript import st_javascript
 REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
 LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
 LOCAL_TARGET_EVENTS = Path(__file__).parent / "data" / "analyst_target_events.jsonl"
+LOCAL_TW_TARGET_EVENTS = Path(__file__).parent / "data" / "tw_target_events.jsonl"
 
 TOP_PICK_MIN_SCORE_RATIO = 0.6
 SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.5
@@ -52,18 +53,19 @@ def load_signals() -> dict:
 
 @st.cache_data(ttl=300)
 def load_target_event_history() -> list[dict]:
-    if not LOCAL_TARGET_EVENTS.exists():
-        return []
     events: list[dict] = []
-    with LOCAL_TARGET_EVENTS.open() as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                events.append(json.loads(line))
-            except json.JSONDecodeError:
-                continue
+    for path in (LOCAL_TARGET_EVENTS, LOCAL_TW_TARGET_EVENTS):
+        if not path.exists():
+            continue
+        with path.open() as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    events.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
     return events
 
 
