@@ -467,8 +467,6 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
         st.markdown(f"{marker} **{reason['rule']}**{suffix}")
         st.caption(f"　{reason['detail']}")
 
-    with st.expander("📊 Raw indicators"):
-        st.json(selected.get("indicators", {}))
     if selected.get("analyst"):
         with st.expander("📈 Analyst"):
             events = (selected.get("analyst") or {}).get("target_price_events") or []
@@ -491,10 +489,6 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
                         st.markdown(f"- [{line}]({url})")
                     else:
                         st.markdown(f"- {line}")
-            st.json(selected["analyst"])
-    if selected.get("chip"):
-        with st.expander("🏦 Chip 籌碼"):
-            st.json(selected["chip"])
 
 
 # ---------------- mobile layout ----------------
@@ -665,7 +659,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     row_map: dict[str, dict] = {}
 
     options.append(HEADER_SCALE_UP)
-    label_map[HEADER_SCALE_UP] = f"━━━ 上漲加碼 ({len(scale_up)}) ━━━"
+    label_map[HEADER_SCALE_UP] = f"上漲加碼 ({len(scale_up)})"
     for r in scale_up:
         options.append(r["symbol"])
         label_map[r["symbol"]] = _list_row_label(r, market_key)
@@ -673,7 +667,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
 
     options.append(HEADER_SPECIAL)
     label_map[HEADER_SPECIAL] = (
-        f"━━━ 特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
+        f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})"
     )
     for r in special:
         options.append(r["symbol"])
@@ -684,7 +678,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
 
     options.append(HEADER_DOWNSIDE)
     label_map[HEADER_DOWNSIDE] = (
-        f"━━━ 下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)}) ━━━"
+        f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})"
     )
     for r in downside:
         options.append(r["symbol"])
@@ -692,14 +686,14 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         row_map[r["symbol"]] = r
 
     options.append(HEADER_ABOVE)
-    label_map[HEADER_ABOVE] = f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
+    label_map[HEADER_ABOVE] = f"全均線之上 5/10/20/年 ({len(above)})"
     for r in above:
         options.append(r["symbol"])
         label_map[r["symbol"]] = _list_row_label(r, market_key)
         row_map[r["symbol"]] = r
 
     options.append(HEADER_BELOW)
-    label_map[HEADER_BELOW] = f"━━━ ▼ 其他 ({len(below)}) ━━━"
+    label_map[HEADER_BELOW] = f"其他 ({len(below)})"
     for r in below:
         options.append(r["symbol"])
         label_map[r["symbol"]] = _list_row_label(r, market_key)
