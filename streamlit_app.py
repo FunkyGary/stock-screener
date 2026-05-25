@@ -553,16 +553,11 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
                 st.markdown(_top_pick_label(r, market_key))
 
     options = []
-    if scale_up:
-        options.append(f"上漲加碼 ({len(scale_up)})")
-    if special:
-        options.append(f"特別注意 ({len(special)})")
-    if downside:
-        options.append(f"下跌特別注意 ({len(downside)})")
-    if above:
-        options.append(f"▲ 全均線之上 ({len(above)})")
-    if below:
-        options.append(f"▼ 其他 ({len(below)})")
+    options.append(f"上漲加碼 ({len(scale_up)})")
+    options.append(f"特別注意 ({len(special)})")
+    options.append(f"下跌特別注意 ({len(downside)})")
+    options.append(f"▲ 全均線之上 ({len(above)})")
+    options.append(f"▼ 其他 ({len(below)})")
     options.append("全部")
 
     if not (scale_up or special or downside or above or below):
@@ -669,53 +664,48 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     label_map: dict[str, str] = {}
     row_map: dict[str, dict] = {}
 
-    if scale_up:
-        options.append(HEADER_SCALE_UP)
-        label_map[HEADER_SCALE_UP] = f"━━━ 上漲加碼 ({len(scale_up)}) ━━━"
-        for r in scale_up:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = _list_row_label(r, market_key)
-            row_map[r["symbol"]] = r
+    options.append(HEADER_SCALE_UP)
+    label_map[HEADER_SCALE_UP] = f"━━━ 上漲加碼 ({len(scale_up)}) ━━━"
+    for r in scale_up:
+        options.append(r["symbol"])
+        label_map[r["symbol"]] = _list_row_label(r, market_key)
+        row_map[r["symbol"]] = r
 
-    if special:
-        options.append(HEADER_SPECIAL)
-        label_map[HEADER_SPECIAL] = (
-            f"━━━ 特別注意：今日站上 / 目標價上調，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
+    options.append(HEADER_SPECIAL)
+    label_map[HEADER_SPECIAL] = (
+        f"━━━ 特別注意：今日站上 / 目標價上調，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)}) ━━━"
+    )
+    for r in special:
+        options.append(r["symbol"])
+        label_map[r["symbol"]] = _list_row_label(
+            r, market_key, prefix=_special_symbol_prefix(r)
         )
-        for r in special:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = _list_row_label(
-                r, market_key, prefix=_special_symbol_prefix(r)
-            )
-            row_map[r["symbol"]] = r
+        row_map[r["symbol"]] = r
 
-    if downside:
-        options.append(HEADER_DOWNSIDE)
-        label_map[HEADER_DOWNSIDE] = (
-            f"━━━ 下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)}) ━━━"
-        )
-        for r in downside:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = _list_row_label(r, market_key)
-            row_map[r["symbol"]] = r
+    options.append(HEADER_DOWNSIDE)
+    label_map[HEADER_DOWNSIDE] = (
+        f"━━━ 下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)}) ━━━"
+    )
+    for r in downside:
+        options.append(r["symbol"])
+        label_map[r["symbol"]] = _list_row_label(r, market_key)
+        row_map[r["symbol"]] = r
 
-    if above:
-        options.append(HEADER_ABOVE)
-        label_map[HEADER_ABOVE] = f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
-        for r in above:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = _list_row_label(r, market_key)
-            row_map[r["symbol"]] = r
+    options.append(HEADER_ABOVE)
+    label_map[HEADER_ABOVE] = f"━━━ ▲ 全均線之上 5/10/20/年 ({len(above)}) ━━━"
+    for r in above:
+        options.append(r["symbol"])
+        label_map[r["symbol"]] = _list_row_label(r, market_key)
+        row_map[r["symbol"]] = r
 
-    if below:
-        options.append(HEADER_BELOW)
-        label_map[HEADER_BELOW] = f"━━━ ▼ 其他 ({len(below)}) ━━━"
-        for r in below:
-            options.append(r["symbol"])
-            label_map[r["symbol"]] = _list_row_label(r, market_key)
-            row_map[r["symbol"]] = r
+    options.append(HEADER_BELOW)
+    label_map[HEADER_BELOW] = f"━━━ ▼ 其他 ({len(below)}) ━━━"
+    for r in below:
+        options.append(r["symbol"])
+        label_map[r["symbol"]] = _list_row_label(r, market_key)
+        row_map[r["symbol"]] = r
 
-    if not options:
+    if not row_map:
         st.info("（此分區無資料）")
         return
 
