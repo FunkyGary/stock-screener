@@ -12,6 +12,7 @@ screener/            Python module: fetch / indicators / score / io / run
 data/
   watchlist.csv      Hand-edited list of symbols to screen
   latest_signals.json  Output written by Actions, read by Streamlit
+  analyst_target_events.jsonl  US analyst target raise history event log
 streamlit_app.py     Dashboard
 tests/               Unit tests for indicators + scoring
 ```
@@ -69,6 +70,9 @@ US analyst target detail is parsed from recent Finnhub company news headlines wh
 the headline clearly says an analyst/firm raised a price target. Parsed events
 are shown in the dashboard's Analyst section with date, firm/source, target,
 previous target when available, and upside versus the current screen price.
+EOD US runs also merge these parsed events into `data/analyst_target_events.jsonl`
+with stable event IDs, so the dashboard can show the selected stock's recent
+target-price history without turning the project into a database-backed app.
 
 ## Deploy the dashboard
 

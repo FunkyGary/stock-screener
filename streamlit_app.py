@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
@@ -25,6 +26,7 @@ from streamlit_javascript import st_javascript
 
 REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
 LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
+LOCAL_TARGET_EVENTS = Path(__file__).parent / "data" / "analyst_target_events.jsonl"
 
 TOP_PICK_MIN_SCORE_RATIO = 0.6
 CHART_HEIGHT_DESKTOP = 620
@@ -44,6 +46,23 @@ def load_signals() -> dict:
         except URLError as exc:
             st.error(f"Failed to load signals: {exc}")
     return {"signals": {}, "generated_at": None, "last_run": {}}
+
+
+@st.cache_data(ttl=300)
+def load_target_event_history() -> list[dict]:
+    if not LOCAL_TARGET_EVENTS.exists():
+        return []
+    events: list[dict] = []
+    with LOCAL_TARGET_EVENTS.open() as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                events.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    return events
 
 
 def tradingview_widget(symbol: str, height: int) -> str:
@@ -299,7 +318,7 @@ def _fmt_price(value: float | int | None) -> str:
 
 
 def _target_event_line(event: dict) -> str:
-    date = event.get("date") or "n/a"
+    date = event.get("date") or event.get("event_date") or "n/a"
     firm = event.get("firm") or event.get("source") or "Unknown"
     previous = event.get("previous_target")
     target = event.get("target_price")
@@ -309,6 +328,29 @@ def _target_event_line(event: dict) -> str:
     upside = _fmt_pct(event.get("upside_pct"))
     raise_pct = _fmt_pct(event.get("raise_pct"))
     return f"{date}　{firm}　目標價 {target_text}　距現價 {upside}　上調 {raise_pct}"
+
+
+def _target_event_sort_key(event: dict) -> str:
+    return (
+        event.get("published_at") or event.get("event_date") or event.get("date") or ""
+    )
+
+
+def _recent_target_history(symbol: str, days: int = 180) -> list[dict]:
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).date()
+    rows: list[dict] = []
+    for event in load_target_event_history():
+        if event.get("symbol") != symbol:
+            continue
+        event_date = event.get("event_date") or event.get("date")
+        if isinstance(event_date, str):
+            try:
+                if datetime.fromisoformat(event_date).date() < cutoff:
+                    continue
+            except ValueError:
+                pass
+        rows.append(event)
+    return sorted(rows, key=_target_event_sort_key, reverse=True)
 
 
 # ---------------- shared detail panel ----------------
@@ -345,6 +387,16 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
             if events:
                 st.markdown("**近期目標價上調**")
                 for event in events:
+                    url = event.get("url")
+                    line = _target_event_line(event)
+                    if url:
+                        st.markdown(f"- [{line}]({url})")
+                    else:
+                        st.markdown(f"- {line}")
+            history = _recent_target_history(selected["symbol"])
+            if history:
+                st.markdown("**近 180 天目標價歷史**")
+                for event in history[:30]:
                     url = event.get("url")
                     line = _target_event_line(event)
                     if url:

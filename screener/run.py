@@ -39,6 +39,46 @@ def _enrich_target_price_events(events: list[dict] | None, close: float) -> list
     return enriched
 
 
+def _target_events_for_history(
+    symbol: str,
+    market: str,
+    events: list[dict] | None,
+    close: float,
+    fetched_at: str,
+) -> list[dict]:
+    rows: list[dict] = []
+    for event in events or []:
+        target_price = event.get("target_price")
+        row = {
+            "symbol": symbol,
+            "market": market,
+            "event_date": event.get("date")
+            or (
+                event.get("published_at")[:10]
+                if isinstance(event.get("published_at"), str)
+                else None
+            ),
+            "published_at": event.get("published_at"),
+            "fetched_at": fetched_at,
+            "firm": event.get("firm"),
+            "action": "raise",
+            "previous_target": event.get("previous_target"),
+            "target_price": target_price,
+            "raise_pct": event.get("raise_pct"),
+            "close_at_fetch": close,
+            "upside_pct": (
+                float(target_price) / close - 1.0
+                if target_price is not None and close > 0
+                else None
+            ),
+            "source": event.get("source"),
+            "headline": event.get("headline"),
+            "url": event.get("url"),
+        }
+        rows.append(io.normalize_target_event(row))
+    return rows
+
+
 def _remove_legacy_target_raise_fields(blob: dict) -> dict:
     for key in (
         "target_raise_detected_at",
@@ -213,13 +253,35 @@ def main() -> None:
     parser.add_argument("--mode", choices=["intraday", "eod"], default="eod")
     args = parser.parse_args()
 
+    now = datetime.now(timezone.utc).isoformat()
     new_signals = run_market(args.market, mode=args.mode)
+
+    if args.market == "us" and args.mode == "eod":
+        new_target_events: list[dict] = []
+        for signal in new_signals.values():
+            if signal.get("status") != "ok":
+                continue
+            analyst = signal.get("analyst") or {}
+            indicators_blob = signal.get("indicators") or {}
+            close = indicators_blob.get("close")
+            if close is None:
+                continue
+            new_target_events.extend(
+                _target_events_for_history(
+                    symbol=signal["symbol"],
+                    market=signal["market"],
+                    events=analyst.get("target_price_events"),
+                    close=float(close),
+                    fetched_at=now,
+                )
+            )
+        added = io.merge_target_events(new_target_events)
+        logger.info("US target event history merged: added=%d", added)
 
     existing = io.load_latest_signals()
     signals = existing.get("signals", {})
     signals.update(new_signals)
 
-    now = datetime.now(timezone.utc).isoformat()
     last_run = existing.get("last_run", {}) or {}
     last_run[args.market] = now
     last_run[f"{args.market}_{args.mode}"] = now

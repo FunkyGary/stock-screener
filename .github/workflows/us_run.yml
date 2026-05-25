@@ -62,6 +62,9 @@ jobs:
           for attempt in 1 2 3; do
             git pull --rebase --autostash
             git add data/latest_signals.json
+            if [ -f data/analyst_target_events.jsonl ]; then
+              git add data/analyst_target_events.jsonl
+            fi
             if git diff --staged --quiet; then
               echo "No changes to commit"
               exit 0

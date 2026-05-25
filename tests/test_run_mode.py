@@ -3,7 +3,11 @@
 import pytest
 
 from screener.fetch import AnalystSnapshot
-from screener.run import _build_analyst_blob_eod, _enrich_target_price_events
+from screener.run import (
+    _build_analyst_blob_eod,
+    _enrich_target_price_events,
+    _target_events_for_history,
+)
 
 
 def test_eod_shift_moves_current_target_into_prev_eod_slot():
@@ -49,3 +53,30 @@ def test_target_price_event_upside_refreshes_against_current_close():
     assert enriched[0]["upside_pct"] == pytest.approx(0.1)
     assert enriched[1]["upside_pct"] == pytest.approx(-0.1)
     assert "upside_pct" not in events[0]
+
+
+def test_target_events_for_history_adds_symbol_close_and_event_id():
+    rows = _target_events_for_history(
+        symbol="AAPL",
+        market="us",
+        close=400.0,
+        fetched_at="2026-05-25T22:00:00+00:00",
+        events=[
+            {
+                "date": "2026-05-25",
+                "published_at": "2026-05-25T13:20:00+00:00",
+                "firm": "JPMorgan",
+                "target_price": 500.0,
+                "previous_target": 450.0,
+                "raise_pct": 500.0 / 450.0 - 1.0,
+                "headline": "JPMorgan Raises Apple Price Target to $500 From $450",
+                "source": "Dow Jones",
+                "url": "https://example.com/aapl",
+            }
+        ],
+    )
+
+    assert rows[0]["event_id"]
+    assert rows[0]["symbol"] == "AAPL"
+    assert rows[0]["close_at_fetch"] == 400.0
+    assert rows[0]["upside_pct"] == pytest.approx(0.25)
