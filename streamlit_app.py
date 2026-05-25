@@ -277,9 +277,9 @@ def _trend_tag(row: dict) -> str:
     newly_above = _is_newly_above_all_mas(row)
     target_raise = _has_active_target_raise(row)
     if newly_above and target_raise:
-        return "🚀 今日站上全均線 · 🎯 目標價上調"
+        return "今日站上全均線 · 🎯 目標價上調"
     if newly_above:
-        return "🚀 今日站上全均線"
+        return "今日站上全均線"
     if target_raise:
         return "🎯 目標價上調"
     if _is_above_all_mas(row):
@@ -328,6 +328,10 @@ def _target_event_line(event: dict) -> str:
     upside = _fmt_pct(event.get("upside_pct"))
     raise_pct = _fmt_pct(event.get("raise_pct"))
     return f"{date}　{firm}　目標價 {target_text}　距現價 {upside}　上調 {raise_pct}"
+
+
+def _special_symbol_prefix(row: dict) -> str:
+    return "🎯 " if _has_active_target_raise(row) else ""
 
 
 def _target_event_sort_key(event: dict) -> str:
@@ -443,7 +447,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
 
     options = []
     if special:
-        options.append(f"🚀 特別注意 ({len(special)})")
+        options.append(f"特別注意 ({len(special)})")
     if above:
         options.append(f"▲ 全均線之上 ({len(above)})")
     if below:
@@ -462,7 +466,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         key=f"filter_{market_key}",
         label_visibility="collapsed",
     )
-    if filter_choice.startswith("🚀"):
+    if filter_choice.startswith("特別注意"):
         candidates = special
     elif filter_choice.startswith("▲"):
         candidates = above
@@ -478,12 +482,12 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     label_to_row: dict[str, dict] = {}
     for r in candidates:
         if _is_special_attention(r):
-            sym_tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
+            sym_tag = _special_symbol_prefix(r)
         elif _is_above_all_mas(r):
-            sym_tag = "▲"
+            sym_tag = "▲ "
         else:
-            sym_tag = "▼"
-        label = f"{sym_tag} {r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
+            sym_tag = "▼ "
+        label = f"{sym_tag}{r['symbol']}  {_score_label(r)}  ({_name_with_return(r)})"
         label_to_row[label] = r
 
     selected_label = st.selectbox(
@@ -532,13 +536,12 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if special:
         options.append(HEADER_SPECIAL)
         label_map[HEADER_SPECIAL] = (
-            f"━━━ 🚀 特別注意：今日站上 / 目標價上調 ({len(special)}) ━━━"
+            f"━━━ 特別注意：今日站上 / 目標價上調 ({len(special)}) ━━━"
         )
         for r in special:
-            tag = "🚀" if _is_newly_above_all_mas(r) else "🎯"
             options.append(r["symbol"])
             label_map[r["symbol"]] = (
-                f"{tag} {r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
+                f"{_special_symbol_prefix(r)}{r['symbol']}  {_score_label(r)}  {_today_return_label(r)}"
             )
             row_map[r["symbol"]] = r
 
