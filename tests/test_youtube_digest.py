@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 import pytest
 
 from screener.youtube_digest import (
+    DEFAULT_MAX_NEW,
     DEFAULT_SINCE_HOURS,
     GITHUB_MODELS_URL,
     LATEST_JSON_PATH,
@@ -51,7 +52,7 @@ def test_parse_feed_extracts_video_entries():
     ]
 
 
-def test_select_new_videos_filters_processed_and_old_entries():
+def test_select_new_videos_filters_old_entries_but_allows_processed_entries():
     now = datetime(2026, 5, 26, 12, tzinfo=timezone.utc)
     videos = [
         VideoEntry("old", "old", "url", "2026-05-20T12:00:00+00:00", None),
@@ -67,11 +68,15 @@ def test_select_new_videos_filters_processed_and_old_entries():
         now=now,
     )
 
-    assert [video.video_id for video in selected] == ["new"]
+    assert [video.video_id for video in selected] == ["done", "new"]
 
 
 def test_default_since_hours_is_seven_days():
     assert DEFAULT_SINCE_HOURS == 168
+
+
+def test_default_max_new_is_three_videos():
+    assert DEFAULT_MAX_NEW == 3
 
 
 def test_select_new_videos_caps_to_latest_items():

@@ -125,8 +125,8 @@ OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
 `YOUTUBE_WHISPER_MODEL` (defaults to `base`).
 
 For a manual run, use `workflow_dispatch`. The defaults scan the last 7 days and
-process up to 20 unprocessed videos; lower `max_new` if you want to keep audio
-transcription time bounded.
+process up to 3 videos. Videos can be reprocessed on later runs so the latest
+report stays populated even when the channel has no brand-new upload.
 
 ## Deploy the dashboard
 

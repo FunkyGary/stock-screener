@@ -30,7 +30,7 @@ DEFAULT_CHANNEL_TITLE = "视野环球财经"
 DEFAULT_MODEL = "openai/gpt-4.1"
 DEFAULT_WHISPER_MODEL = "base"
 DEFAULT_SINCE_HOURS = 168
-DEFAULT_MAX_NEW = 20
+DEFAULT_MAX_NEW = 3
 DEFAULT_RETENTION_DAYS = 7
 TRANSCRIPT_CHAR_LIMIT = 60000
 GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
@@ -174,7 +174,6 @@ def select_new_videos(
     now: datetime | None = None,
 ) -> list[VideoEntry]:
     current_time = now or _utc_now()
-    processed = set(state.get("processed_video_ids", []))
     cutoff = (
         current_time - timedelta(hours=since_hours)
         if since_hours is not None
@@ -183,8 +182,6 @@ def select_new_videos(
 
     eligible: list[VideoEntry] = []
     for video in videos:
-        if video.video_id in processed:
-            continue
         published = _parse_datetime(video.published_at)
         if cutoff is not None and published is not None and published < cutoff:
             continue

@@ -11,7 +11,7 @@ on:
         default: "168"
       max_new:
         description: Maximum new videos to summarize
-        default: "20"
+        default: "3"
 
 concurrency:
   group: youtube-digest
@@ -49,7 +49,7 @@ jobs:
         run: >
           uv run python -m screener.youtube_digest
           --since-hours "${{ inputs.since_hours || '168' }}"
-          --max-new "${{ inputs.max_new || '20' }}"
+          --max-new "${{ inputs.max_new || '3' }}"
           --retention-days "${YOUTUBE_DIGEST_RETENTION_DAYS}"
           --audio-fallback
           --whisper-model "${YOUTUBE_WHISPER_MODEL}"
