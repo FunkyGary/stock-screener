@@ -16,6 +16,7 @@ from screener.youtube_digest import (
     _extract_balanced_json,
     _write_failure_report,
     choose_caption_track,
+    download_video_audio,
     parse_feed,
     parse_json3_transcript,
     prune_old_reports,
@@ -224,9 +225,17 @@ def test_run_digest_uses_audio_fallback_when_public_captions_are_missing(
         "screener.youtube_digest.fetch_public_transcript", missing_caption
     )
 
-    def fake_transcribe(video_id, *, whisper_model):
+    def fake_transcribe(
+        video_id,
+        *,
+        whisper_model,
+        cookies_from_browser=None,
+        cookies_path=None,
+    ):
         captured["video_id"] = video_id
         captured["whisper_model"] = whisper_model
+        captured["cookies_from_browser"] = cookies_from_browser
+        captured["cookies_path"] = cookies_path
         return Transcript(
             text="Apple 目標買入價 180 美元。",
             language_code=None,
@@ -255,11 +264,46 @@ def test_run_digest_uses_audio_fallback_when_public_captions_are_missing(
         model="openai/gpt-4.1",
         audio_fallback=True,
         whisper_model="tiny",
+        cookies_from_browser="chrome",
     )
 
     assert len(digests) == 1
     assert digests[0].markdown == "# summary"
-    assert captured == {"video_id": "abc123", "whisper_model": "tiny"}
+    assert captured == {
+        "video_id": "abc123",
+        "whisper_model": "tiny",
+        "cookies_from_browser": "chrome",
+        "cookies_path": None,
+    }
+
+
+def test_download_video_audio_passes_browser_cookies(monkeypatch, tmp_path):
+    captured = {}
+    audio_path = tmp_path / "audio.m4a"
+
+    def fake_run(command, **kwargs):
+        captured["command"] = command
+        captured["kwargs"] = kwargs
+        audio_path.write_text("audio", encoding="utf-8")
+
+        class Result:
+            returncode = 0
+            stdout = ""
+            stderr = ""
+
+        return Result()
+
+    monkeypatch.setattr("screener.youtube_digest.subprocess.run", fake_run)
+
+    path = download_video_audio(
+        "abc123",
+        tmp_path,
+        cookies_from_browser="chrome",
+    )
+
+    assert path == audio_path
+    assert "--cookies-from-browser" in captured["command"]
+    assert "chrome" in captured["command"]
 
 
 def test_prune_old_reports_removes_only_expired_per_video_markdown(

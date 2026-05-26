@@ -345,23 +345,35 @@ def _short_process_error(result: subprocess.CompletedProcess[str]) -> str:
     return text[-500:]
 
 
-def download_video_audio(video_id: str, output_dir: Path) -> Path:
+def download_video_audio(
+    video_id: str,
+    output_dir: Path,
+    *,
+    cookies_from_browser: str | None = None,
+    cookies_path: Path | None = None,
+) -> Path:
     output_template = str(output_dir / "audio.%(ext)s")
+    command = [
+        sys.executable,
+        "-m",
+        "yt_dlp",
+        "--no-playlist",
+        "--quiet",
+        "--no-warnings",
+        "--extract-audio",
+        "--audio-format",
+        "m4a",
+        "--output",
+        output_template,
+    ]
+    if cookies_from_browser:
+        command.extend(["--cookies-from-browser", cookies_from_browser])
+    if cookies_path:
+        command.extend(["--cookies", str(cookies_path)])
+    command.append(f"https://www.youtube.com/watch?v={video_id}")
+
     result = subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "yt_dlp",
-            "--no-playlist",
-            "--quiet",
-            "--no-warnings",
-            "--extract-audio",
-            "--audio-format",
-            "m4a",
-            "--output",
-            output_template,
-            f"https://www.youtube.com/watch?v={video_id}",
-        ],
+        command,
         check=False,
         capture_output=True,
         text=True,
@@ -393,9 +405,20 @@ def transcribe_audio_file(audio_path: Path, *, whisper_model: str) -> str:
     return text
 
 
-def transcribe_video_audio(video_id: str, *, whisper_model: str) -> Transcript:
+def transcribe_video_audio(
+    video_id: str,
+    *,
+    whisper_model: str,
+    cookies_from_browser: str | None = None,
+    cookies_path: Path | None = None,
+) -> Transcript:
     with tempfile.TemporaryDirectory(prefix="youtube-digest-") as tmp:
-        audio_path = download_video_audio(video_id, Path(tmp))
+        audio_path = download_video_audio(
+            video_id,
+            Path(tmp),
+            cookies_from_browser=cookies_from_browser,
+            cookies_path=cookies_path,
+        )
         text = transcribe_audio_file(audio_path, whisper_model=whisper_model)
     return Transcript(
         text=text,
@@ -654,6 +677,8 @@ def run_digest(
     model: str,
     audio_fallback: bool = False,
     whisper_model: str = DEFAULT_WHISPER_MODEL,
+    cookies_from_browser: str | None = None,
+    cookies_path: Path | None = None,
     retention_days: int = DEFAULT_RETENTION_DAYS,
     now: datetime | None = None,
 ) -> list[VideoDigest]:
@@ -695,7 +720,10 @@ def run_digest(
             )
             try:
                 transcript = transcribe_video_audio(
-                    video.video_id, whisper_model=whisper_model
+                    video.video_id,
+                    whisper_model=whisper_model,
+                    cookies_from_browser=cookies_from_browser,
+                    cookies_path=cookies_path,
                 )
             except PublicTranscriptUnavailable as audio_exc:
                 reason = f"{exc}; audio fallback failed: {audio_exc}"
@@ -786,6 +814,19 @@ def main() -> None:
         default=os.environ.get("YOUTUBE_WHISPER_MODEL", DEFAULT_WHISPER_MODEL),
     )
     parser.add_argument(
+        "--cookies-from-browser",
+        default=os.environ.get("YOUTUBE_COOKIES_FROM_BROWSER"),
+        help="Browser name for yt-dlp cookies, e.g. chrome, safari, firefox, brave.",
+    )
+    parser.add_argument(
+        "--cookies",
+        type=Path,
+        default=Path(os.environ["YOUTUBE_COOKIES_FILE"])
+        if os.environ.get("YOUTUBE_COOKIES_FILE")
+        else None,
+        help="Path to a Netscape-format cookies.txt file for yt-dlp.",
+    )
+    parser.add_argument(
         "--model",
         default=os.environ.get("GITHUB_MODEL", DEFAULT_MODEL),
     )
@@ -802,6 +843,8 @@ def main() -> None:
         model=args.model,
         audio_fallback=args.audio_fallback,
         whisper_model=args.whisper_model,
+        cookies_from_browser=args.cookies_from_browser,
+        cookies_path=args.cookies,
         retention_days=args.retention_days,
     )
 

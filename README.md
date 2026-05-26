@@ -128,6 +128,26 @@ For a manual run, use `workflow_dispatch`. The defaults scan the last 7 days and
 process up to 3 videos. Videos can be reprocessed on later runs so the latest
 report stays populated even when the channel has no brand-new upload.
 
+To run transcription locally with your browser's YouTube login, first make sure
+that browser is signed in to YouTube, then run:
+
+```bash
+uv pip install yt-dlp openai-whisper
+export GITHUB_TOKEN="$(gh auth token)"
+uv run python -m screener.youtube_digest \
+  --since-hours 168 \
+  --max-new 3 \
+  --audio-fallback \
+  --cookies-from-browser chrome
+git add data/youtube_digest
+git commit -m "data: YouTube digest run [skip ci]"
+git push origin main
+```
+
+Use `--cookies-from-browser safari`, `firefox`, or `brave` if that is where
+YouTube is signed in. Keep browser cookies private; they act like login
+credentials.
+
 ## Deploy the dashboard
 
 1. Push this repo to GitHub (public).
