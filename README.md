@@ -102,6 +102,20 @@ Each data run also refreshes market-level trend indicators:
 The dashboard shows whether each index is above all tracked moving averages
 (MA5/10/20/240), using `V` when the condition is true and `X` when it is not.
 
+### YouTube digest
+
+`youtube_digest.yml` runs daily at 23:30 UTC and checks Rhino Finance's
+YouTube RSS feed for new uploads. For each new video inside the lookback window,
+it reads the public caption track, summarizes stock-specific ideas into
+Markdown, and commits the report under `data/youtube_digest/`.
+
+The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab. The
+summary prompt is constrained to individual stocks/ETFs and only fills buy,
+sell, take-profit, or stop-loss prices when the video explicitly states them.
+
+Required repo secret: `OPENAI_API_KEY`.
+Optional repo variable: `OPENAI_MODEL` (defaults to `gpt-5-mini`).
+
 ## Deploy the dashboard
 
 1. Push this repo to GitHub (public).

@@ -1,0 +1,66 @@
+name: YouTube digest
+
+on:
+  schedule:
+    # Daily after the US close window; the script only processes new uploads.
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+    inputs:
+      since_hours:
+        description: Look back window in hours
+        default: "36"
+      max_new:
+        description: Maximum new videos to summarize
+        default: "3"
+
+concurrency:
+  group: youtube-digest
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
+      YOUTUBE_CHANNEL_ID: UCFQsi7WaF5X41tcuOryDk8w
+      YOUTUBE_CHANNEL_TITLE: 视野环球财经
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install uv
+        run: pip install uv
+      - name: Install dependencies
+        run: uv sync --frozen
+      - name: Run YouTube digest
+        run: >
+          uv run python -m screener.youtube_digest
+          --since-hours "${{ inputs.since_hours || '36' }}"
+          --max-new "${{ inputs.max_new || '3' }}"
+      - name: Commit digest results (with rebase retry)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash
+            git add data/youtube_digest
+            if git diff --staged --quiet; then
+              echo "No digest changes to commit"
+              exit 0
+            fi
+            git commit -m "data: YouTube digest run [skip ci]"
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push failed on attempt $attempt; backing off"
+            git reset --soft HEAD~1
+            sleep $((attempt * 3))
+          done
+          echo "Failed to push after 3 attempts" >&2
+          exit 1
