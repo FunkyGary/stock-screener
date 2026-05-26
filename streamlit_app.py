@@ -277,6 +277,29 @@ def _has_active_target_raise(row: dict) -> bool:
     )
 
 
+def _parse_event_date(event: dict) -> datetime | None:
+    raw = event.get("published_at") or event.get("event_date") or event.get("date")
+    if not isinstance(raw, str) or not raw:
+        return None
+    try:
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
+def _has_recent_research_report(row: dict, days: int = 7) -> bool:
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=days)).date()
+    events = (row.get("analyst") or {}).get("target_price_events") or []
+    return any(
+        event_date is not None and event_date.date() >= cutoff
+        for event in events
+        for event_date in (_parse_event_date(event),)
+    )
+
+
 def _reason_passed(row: dict, prefix: str) -> bool:
     return any(
         reason.get("rule", "").startswith(prefix) and reason.get("passed") is True
@@ -333,6 +356,8 @@ def _trend_tag(row: dict) -> str:
         return "今日站上全均線"
     if target_raise:
         return "🎯 目標價上調"
+    if _has_recent_research_report(row):
+        return "研究報告 7日內"
     if _is_above_all_mas(row):
         return "▲ 全均線之上"
     return "▼ 其他"
@@ -509,6 +534,18 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         [r for r in rows if _is_downside_attention(r)],
         key=lambda r: r.get("indicators", {}).get("today_return") or 0,
     )
+    research = sorted(
+        [
+            r
+            for r in rows
+            if _has_recent_research_report(r)
+            and not _is_scale_up_candidate(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
+        key=lambda r: (_score_ratio(r), r.get("score", 0)),
+        reverse=True,
+    )
     above = sorted(
         [
             r
@@ -516,6 +553,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             if _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
+            and not _has_recent_research_report(r)
         ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
@@ -527,6 +565,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             if not _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
+            and not _has_recent_research_report(r)
         ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
@@ -535,9 +574,15 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     # ⭐ Top picks
     top = [
         r
-        for r in scale_up + special + above
-        if _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO
+        for r in rows
+        if (
+            _is_scale_up_candidate(r)
+            or _is_special_attention(r)
+            or _is_above_all_mas(r)
+        )
+        and _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO
     ]
+    top = sorted(top, key=lambda r: (_score_ratio(r), r.get("score", 0)), reverse=True)
     if top:
         with st.expander(
             f"⭐ 今日精選 — 加碼/特別注意/全均線之上且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
@@ -549,12 +594,13 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     options = []
     options.append(f"上漲加碼 ({len(scale_up)})")
     options.append(f"特別注意 ({len(special)})")
+    options.append(f"研究報告 7日內 ({len(research)})")
     options.append(f"下跌特別注意 ({len(downside)})")
     options.append(f"▲ 全均線之上 ({len(above)})")
     options.append(f"▼ 其他 ({len(below)})")
     options.append("全部")
 
-    if not (scale_up or special or downside or above or below):
+    if not (scale_up or special or research or downside or above or below):
         st.info("（無資料）")
         return
 
@@ -570,6 +616,8 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         candidates = scale_up
     elif filter_choice.startswith("特別注意"):
         candidates = special
+    elif filter_choice.startswith("研究報告"):
+        candidates = research
     elif filter_choice.startswith("下跌特別注意"):
         candidates = downside
     elif filter_choice.startswith("▲"):
@@ -577,7 +625,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     elif filter_choice.startswith("▼"):
         candidates = below
     else:
-        candidates = scale_up + special + downside + above + below
+        candidates = scale_up + special + research + downside + above + below
 
     if not candidates:
         st.info("此分組無資料")
@@ -625,6 +673,18 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         [r for r in rows if _is_downside_attention(r)],
         key=lambda r: r.get("indicators", {}).get("today_return") or 0,
     )
+    research = sorted(
+        [
+            r
+            for r in rows
+            if _has_recent_research_report(r)
+            and not _is_scale_up_candidate(r)
+            and not _is_special_attention(r)
+            and not _is_downside_attention(r)
+        ],
+        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
+        reverse=True,
+    )
     above = sorted(
         [
             r
@@ -632,6 +692,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             if _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
+            and not _has_recent_research_report(r)
         ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
@@ -643,6 +704,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             if not _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
+            and not _has_recent_research_report(r)
         ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
@@ -656,6 +718,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})",
             special,
         ),
+        ("research", f"研究報告 7日內 ({len(research)})", research),
         (
             "downside",
             f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})",
