@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-26T21:09:30.992104+00:00",
+  "generated_at": "2026-05-26T22:16:48.735125+00:00",
   "last_run": {
     "tw": "2026-05-26T08:34:51.842834+00:00",
     "tw_eod": "2026-05-25T14:26:36.749231+00:00",
     "tw_intraday": "2026-05-26T08:34:51.842834+00:00",
-    "us": "2026-05-26T21:09:30.992104+00:00",
-    "us_eod": "2026-05-25T22:04:18.588691+00:00",
+    "us": "2026-05-26T22:16:48.735125+00:00",
+    "us_eod": "2026-05-26T22:16:48.735125+00:00",
     "us_intraday": "2026-05-26T21:09:30.992104+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-05-26T21:09:47.915445+00:00",
+    "generated_at": "2026-05-26T22:17:29.934532+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -154,9 +154,9 @@
               "macd_prev": 649.9693888290858,
               "macd_signal": 704.6261613328811,
               "macd_signal_prev": 718.2072832597587,
-              "obv": 732300095000.0,
-              "obv_ma20": 703881959750.0,
-              "obv_ma5": 714480363000.0,
+              "obv": 732333962000.0,
+              "obv_ma20": 703883653100.0,
+              "obv_ma5": 714487136400.0,
               "pct_of_high_20d": 1.0,
               "prev_close": 26343.970703125,
               "prev_ma10": 26249.390234375,
@@ -165,8 +165,8 @@
               "prev_ma5": 26173.77421875,
               "return_20d": 0.07108422057581132,
               "today_return": 0.011851250059960128,
-              "vol_ratio": 0.9573580120094417,
-              "volume": 8694865000.0
+              "vol_ratio": 0.9609078170484108,
+              "volume": 8728732000.0
             },
             "ma10": 26287.5951171875,
             "ma20": 25839.001171875,
@@ -22347,7 +22347,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Optoelectronics",
       "reasons": [
         {
@@ -22436,7 +22436,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Apple",
       "reasons": [
         {
@@ -22525,7 +22525,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Airbnb",
       "reasons": [
         {
@@ -22614,7 +22614,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Adobe",
       "reasons": [
         {
@@ -22767,18 +22767,6 @@
             "target_price": 440.0,
             "upside_pct": 0.04776872277461286,
             "url": "https://finnhub.io/api/news?id=67090711ac2bb65a21dfba052e2cb79e3ff71b855e89e035c8ec79682e64c14c"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Stifel Maintains Buy on Analog Devices, Raises Price Target to $450",
-            "previous_target": null,
-            "published_at": "2026-05-18T12:33:46+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 450.0,
-            "upside_pct": 0.07158164829221758,
-            "url": "https://finnhub.io/api/news?id=7bf2f0839e2128b7f981eb5d97f47dfd10e7b1b57a18deec38d9660c3d35ad91"
           }
         ]
       },
@@ -22812,7 +22800,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Analog Devices",
       "reasons": [
         {
@@ -22914,7 +22902,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Astera Labs",
       "reasons": [
         {
@@ -23016,7 +23004,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Applied Materials",
       "reasons": [
         {
@@ -23073,20 +23061,7 @@
         "rating_score": 2.016949152542373,
         "target_mean": 472.16666,
         "target_mean_prev_eod": 472.16666,
-        "target_price_events": [
-          {
-            "date": "2026-05-19",
-            "firm": "Citi",
-            "headline": "Citi raises AMD stock price target to $460 on AI demand boom",
-            "previous_target": null,
-            "published_at": "2026-05-19T11:46:38+00:00",
-            "raise_pct": null,
-            "source": "Yahoo",
-            "target_price": 460.0,
-            "upside_pct": -0.08710237030408197,
-            "url": "https://finnhub.io/api/news?id=981b1460bca89eabfd0be510130afcd2b099e66437749735944d2635e22e7542"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "indicators": {
@@ -23118,7 +23093,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AMD",
       "reasons": [
         {
@@ -23207,7 +23182,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amkor Technology",
       "reasons": [
         {
@@ -23296,7 +23271,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Amazon",
       "reasons": [
         {
@@ -23385,7 +23360,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "AppLovin",
       "reasons": [
         {
@@ -23474,7 +23449,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Arm Holdings",
       "reasons": [
         {
@@ -23529,8 +23504,8 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 2.0714285714285716,
-        "target_mean": 1665.1183,
-        "target_mean_prev_eod": 1665.5061,
+        "target_mean": 1664.1495,
+        "target_mean_prev_eod": 1665.1183,
         "target_price_events": []
       },
       "chip": null,
@@ -23563,7 +23538,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ASML",
       "reasons": [
         {
@@ -23620,20 +23595,7 @@
         "rating_score": 1.7719298245614035,
         "target_mean": 480.49054,
         "target_mean_prev_eod": 480.49054,
-        "target_price_events": [
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "UBS Maintains Buy on Broadcom, Raises Price Target to $490",
-            "previous_target": null,
-            "published_at": "2026-05-18T15:12:04+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 490.0,
-            "upside_pct": 0.16110989943611798,
-            "url": "https://finnhub.io/api/news?id=7f207d4aaf2a59e02d272495a6335e46a5626024e653d0350dcb14f34e85f1d1"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "indicators": {
@@ -23665,7 +23627,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Broadcom",
       "reasons": [
         {
@@ -23722,32 +23684,7 @@
         "rating_score": 1.8108108108108107,
         "target_mean": 270.0,
         "target_mean_prev_eod": 270.0,
-        "target_price_events": [
-          {
-            "date": "2026-05-18",
-            "firm": "Yahoo",
-            "headline": "Citi Calls the Aerospace Selloff a Gift, Raises Boeing Price Target to $260",
-            "previous_target": null,
-            "published_at": "2026-05-18T15:12:55+00:00",
-            "raise_pct": null,
-            "source": "Yahoo",
-            "target_price": 260.0,
-            "upside_pct": 0.18775699976927096,
-            "url": "https://finnhub.io/api/news?id=396ac39f01011f8c5718647fb8cf7de84f44cb797e445d0bbca051e40d5f31e5"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Citigroup Maintains Buy on Boeing, Raises Price Target to $260",
-            "previous_target": null,
-            "published_at": "2026-05-18T11:39:47+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 260.0,
-            "upside_pct": 0.18775699976927096,
-            "url": "https://finnhub.io/api/news?id=078475ee9864e70cd355de49dc08936e5e0abe2933be5d9ff565da1a036c9a84"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "indicators": {
@@ -23779,7 +23716,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Boeing",
       "reasons": [
         {
@@ -23868,7 +23805,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Bloom Energy",
       "reasons": [
         {
@@ -23957,7 +23894,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Caterpillar",
       "reasons": [
         {
@@ -24016,16 +23953,16 @@
         "target_mean_prev_eod": 452.1164,
         "target_price_events": [
           {
-            "date": "2026-05-18",
+            "date": "2026-05-26",
             "firm": "Benzinga",
-            "headline": "Citigroup Maintains Buy on Ciena, Raises Price Target to $658",
+            "headline": "B of A Securities Maintains Buy on Ciena, Raises Price Target to $660",
             "previous_target": null,
-            "published_at": "2026-05-18T13:54:19+00:00",
+            "published_at": "2026-05-26T13:36:33+00:00",
             "raise_pct": null,
             "source": "Benzinga",
-            "target_price": 658.0,
-            "upside_pct": 0.09231558292681386,
-            "url": "https://finnhub.io/api/news?id=ed5dd7c22c04559278874375c1ad78d109a1372fb1e14a58a2d5210627692abb"
+            "target_price": 660.0,
+            "upside_pct": 0.09563569108160674,
+            "url": "https://finnhub.io/api/news?id=05be90dfeb3116c9ab040a3af97e82315eb1a371e3568f2770bb91f99cc79984"
           }
         ]
       },
@@ -24059,7 +23996,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ciena",
       "reasons": [
         {
@@ -24148,7 +24085,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Celestica",
       "reasons": [
         {
@@ -24237,7 +24174,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coherent",
       "reasons": [
         {
@@ -24326,7 +24263,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coinbase",
       "reasons": [
         {
@@ -24440,7 +24377,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Costco",
       "reasons": [
         {
@@ -24529,7 +24466,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Salesforce",
       "reasons": [
         {
@@ -24587,6 +24524,18 @@
         "target_mean": 535.3318,
         "target_mean_prev_eod": 535.3318,
         "target_price_events": [
+          {
+            "date": "2026-05-26",
+            "firm": "Benzinga",
+            "headline": "BTIG Maintains Buy on CrowdStrike Holdings, Raises Price Target to $764",
+            "previous_target": null,
+            "published_at": "2026-05-26T06:32:21+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 764.0,
+            "upside_pct": 0.13766661289186488,
+            "url": "https://finnhub.io/api/news?id=75dbbe37713f32f75472198b454af2e86d61d56237f6522a673bd62bd9a1c5d8"
+          },
           {
             "date": "2026-05-21",
             "firm": "Benzinga",
@@ -24658,30 +24607,6 @@
             "target_price": 625.0,
             "upside_pct": -0.06931723421804248,
             "url": "https://finnhub.io/api/news?id=2d760b121b325296ea8499e96399b643454452373a297de776bc966be11bd247"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "KeyBanc Just",
-            "headline": "KeyBanc Just Hiked CrowdStrike Price Target to $700. Is Mythos the Real Catalyst?",
-            "previous_target": null,
-            "published_at": "2026-05-18T15:22:19+00:00",
-            "raise_pct": null,
-            "source": "Yahoo",
-            "target_price": 700.0,
-            "upside_pct": 0.04236469767579254,
-            "url": "https://finnhub.io/api/news?id=99ad4ca0741b86c0a5c32a685771b10a9e6a2789eeaec7ce2e61674e338d3331"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Keybanc Maintains Overweight on CrowdStrike Holdings, Raises Price Target to $700",
-            "previous_target": null,
-            "published_at": "2026-05-18T08:10:45+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 700.0,
-            "upside_pct": 0.04236469767579254,
-            "url": "https://finnhub.io/api/news?id=8bd94c006df428411001624bf5a3e372ccc4b1354735cdbb02d050b1bbadad9a"
           }
         ]
       },
@@ -24715,7 +24640,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CrowdStrike",
       "reasons": [
         {
@@ -24755,13 +24680,13 @@
           "weight": 1.0
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-05-26 Benzinga target 764.00, upside=+13.77%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 4.5,
+      "score": 6.5,
       "status": "ok",
       "symbol": "CRWD",
       "tradingview_symbol": "NASDAQ:CRWD"
@@ -24804,7 +24729,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "CoreWeave",
       "reasons": [
         {
@@ -24893,7 +24818,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cisco",
       "reasons": [
         {
@@ -24982,7 +24907,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Datadog",
       "reasons": [
         {
@@ -25063,18 +24988,6 @@
             "target_price": 170.0,
             "upside_pct": -0.44276908521584923,
             "url": "https://finnhub.io/api/news?id=3ea9839abd0f52d37d99edea47e0ba4236f2a6cd4c643fb048930c567c0af0b4"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "B of A Securities Maintains Buy on Dell Technologies, Raises Price Target to $280",
-            "previous_target": null,
-            "published_at": "2026-05-18T13:24:50+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 280.0,
-            "upside_pct": -0.08220790506139874,
-            "url": "https://finnhub.io/api/news?id=0038da1f664e55e4642e215b1e5c37f1d2cab54ee43898680623b7a73551e1a0"
           }
         ]
       },
@@ -25108,7 +25021,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Dell Technologies",
       "reasons": [
         {
@@ -25197,7 +25110,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Expedia",
       "reasons": [
         {
@@ -25286,7 +25199,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Aerospace",
       "reasons": [
         {
@@ -25375,7 +25288,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "GE Vernova",
       "reasons": [
         {
@@ -25464,7 +25377,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Alphabet C",
       "reasons": [
         {
@@ -25553,7 +25466,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Robinhood",
       "reasons": [
         {
@@ -25642,7 +25555,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "IBM",
       "reasons": [
         {
@@ -25731,7 +25644,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intel",
       "reasons": [
         {
@@ -25820,7 +25733,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Intuitive Surgical",
       "reasons": [
         {
@@ -25909,7 +25822,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Johnson & Johnson",
       "reasons": [
         {
@@ -25998,7 +25911,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "JPMorgan Chase",
       "reasons": [
         {
@@ -26067,42 +25980,6 @@
             "target_price": 89.0,
             "upside_pct": 0.10613970933011618,
             "url": "https://finnhub.io/api/news?id=63baed0101b7d06608346c0bcb882cb82ac01e32b6edd12d878fbc2ddc747f88"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Citi",
-            "headline": "Citi Raises Coca-Cola Price Target to $91: World Cup Could Pour Volumes Higher",
-            "previous_target": null,
-            "published_at": "2026-05-18T15:17:48+00:00",
-            "raise_pct": null,
-            "source": "Yahoo",
-            "target_price": 91.0,
-            "upside_pct": 0.13099678144989402,
-            "url": "https://finnhub.io/api/news?id=a771e081dfb1b923d34f6aa75b0d2c2b7c3488a1d402a74aadbafcff1523792a"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Citigroup Maintains Buy on Coca-Cola, Raises Price Target to $91",
-            "previous_target": null,
-            "published_at": "2026-05-18T11:33:47+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 91.0,
-            "upside_pct": 0.13099678144989402,
-            "url": "https://finnhub.io/api/news?id=7e98f25481542aa349212ed5359f4e08f6d618a626c5555481c309a8148ef735"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Wells Fargo Maintains Overweight on Coca-Cola, Raises Price Target to $90",
-            "previous_target": null,
-            "published_at": "2026-05-18T09:47:46+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 90.0,
-            "upside_pct": 0.11856824539000521,
-            "url": "https://finnhub.io/api/news?id=d6b279e258edf03b5c90835236a949d337ff9f09aae040494e997ac8873da05a"
           }
         ]
       },
@@ -26136,7 +26013,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Coca-Cola",
       "reasons": [
         {
@@ -26225,7 +26102,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lumentum",
       "reasons": [
         {
@@ -26314,7 +26191,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Eli Lilly",
       "reasons": [
         {
@@ -26403,7 +26280,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lockheed Martin",
       "reasons": [
         {
@@ -26492,7 +26369,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cheniere Energy",
       "reasons": [
         {
@@ -26549,20 +26426,7 @@
         "rating_score": 1.975609756097561,
         "target_mean": 312.125,
         "target_mean_prev_eod": 312.125,
-        "target_price_events": [
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Morgan Stanley Upgrades Lam Research to Overweight, Raises Price Target to $331",
-            "previous_target": null,
-            "published_at": "2026-05-18T06:59:28+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 331.0,
-            "upside_pct": 0.025784081793315483,
-            "url": "https://finnhub.io/api/news?id=069e7891c0468c49c8a8753bf243646dd419715628f9488c0f2bc4e9feff8d75"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "indicators": {
@@ -26594,7 +26458,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Lam Research",
       "reasons": [
         {
@@ -26683,7 +26547,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Mastercard",
       "reasons": [
         {
@@ -26772,7 +26636,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marriott",
       "reasons": [
         {
@@ -26861,7 +26725,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "McDonald's",
       "reasons": [
         {
@@ -26963,7 +26827,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "MongoDB",
       "reasons": [
         {
@@ -27052,7 +26916,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Meta Platforms",
       "reasons": [
         {
@@ -27141,7 +27005,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "3M",
       "reasons": [
         {
@@ -27199,6 +27063,54 @@
         "target_mean": 151.67664,
         "target_mean_prev_eod": 151.67664,
         "target_price_events": [
+          {
+            "date": "2026-05-26",
+            "firm": "Benzinga",
+            "headline": "HSBC Upgrades Marvell Technology to Buy, Raises Price Target to $300",
+            "previous_target": null,
+            "published_at": "2026-05-26T12:58:45+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 300.0,
+            "upside_pct": 0.4405070964800817,
+            "url": "https://finnhub.io/api/news?id=61be57a636cc5d983baee0a4422e9a1517ec363f3b13af8206dadb2cbbc32ae4"
+          },
+          {
+            "date": "2026-05-26",
+            "firm": "Benzinga",
+            "headline": "Morgan Stanley Maintains Equal-Weight on Marvell Technology, Raises Price Target to $172",
+            "previous_target": null,
+            "published_at": "2026-05-26T10:31:51+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 172.0,
+            "upside_pct": -0.17410926468475318,
+            "url": "https://finnhub.io/api/news?id=48ad3f15f345db4b4d07506a836a8e2010b82c0afd766f37aacff7a84ca172f5"
+          },
+          {
+            "date": "2026-05-26",
+            "firm": "Benzinga",
+            "headline": "Susquehanna Maintains Positive on Marvell Technology, Raises Price Target to $230",
+            "previous_target": null,
+            "published_at": "2026-05-26T09:16:06+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 230.0,
+            "upside_pct": 0.10438877396806268,
+            "url": "https://finnhub.io/api/news?id=d87dfd670fa5d83d1260828f5391e58fbe687fe503ec561f3f2313aeeff261ff"
+          },
+          {
+            "date": "2026-05-26",
+            "firm": "Benzinga",
+            "headline": "Cantor Fitzgerald Maintains Neutral on Marvell Technology, Raises Price Target to $190",
+            "previous_target": null,
+            "published_at": "2026-05-26T08:31:57+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 190.0,
+            "upside_pct": -0.0876788388959483,
+            "url": "https://finnhub.io/api/news?id=9a8bffff07e9c1f7016d6d9857c978777f1cc4a847483c32b425b140e0ddef58"
+          },
           {
             "date": "2026-05-22",
             "firm": "Benzinga",
@@ -27291,7 +27203,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Marvell Technology",
       "reasons": [
         {
@@ -27331,13 +27243,13 @@
           "weight": 1.0
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-05-26 Benzinga target 300.00, upside=+44.05%\uff1b 2026-05-26 Benzinga target 230.00, upside=+10.44%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 6.0,
+      "score": 8.0,
       "status": "ok",
       "symbol": "MRVL",
       "tradingview_symbol": "NASDAQ:MRVL"
@@ -27380,7 +27292,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Microsoft",
       "reasons": [
         {
@@ -27439,16 +27351,16 @@
         "target_mean_prev_eod": 613.225,
         "target_price_events": [
           {
-            "date": "2026-05-19",
-            "firm": "Benzinga",
-            "headline": "Citigroup Maintains Buy on Micron Technology, Raises Price Target to $840",
+            "date": "2026-05-26",
+            "firm": "Micron stock surges after UBS",
+            "headline": "Micron stock surges after UBS raises price target to $1,625",
             "previous_target": null,
-            "published_at": "2026-05-19T08:39:49+00:00",
+            "published_at": "2026-05-26T14:10:54+00:00",
             "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 840.0,
-            "upside_pct": -0.062374430256563196,
-            "url": "https://finnhub.io/api/news?id=e3af9c381ee35a60930c8431b58cc156e0b69d30df855be1f32e4b6ec7ad4fd9"
+            "source": "Yahoo",
+            "target_price": 1625.0,
+            "upside_pct": 0.8138589890870056,
+            "url": "https://finnhub.io/api/news?id=554609988241d1e45fe88ace1e60c3d317638db818620cf53299e7aab6884866"
           }
         ]
       },
@@ -27482,7 +27394,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Micron Technology",
       "reasons": [
         {
@@ -27522,13 +27434,13 @@
           "weight": 1.0
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-05-26 Micron stock surges after UBS target 1625.00, upside=+81.39%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         }
       ],
-      "score": 5.5,
+      "score": 7.5,
       "status": "ok",
       "symbol": "MU",
       "tradingview_symbol": "NASDAQ:MU"
@@ -27571,7 +27483,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Cloudflare",
       "reasons": [
         {
@@ -27660,7 +27572,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Netflix",
       "reasons": [
         {
@@ -27749,7 +27661,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "ServiceNow",
       "reasons": [
         {
@@ -27838,7 +27750,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NVIDIA",
       "reasons": [
         {
@@ -27927,7 +27839,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "NXP Semiconductors",
       "reasons": [
         {
@@ -28016,7 +27928,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oklo",
       "reasons": [
         {
@@ -28097,18 +28009,6 @@
             "target_price": 105.0,
             "upside_pct": 0.11928368758795638,
             "url": "https://finnhub.io/api/news?id=f81e6b855729df5c3067e320e0e7558db8b0b11774194e762437d4bf4b8db94d"
-          },
-          {
-            "date": "2026-05-18",
-            "firm": "Benzinga",
-            "headline": "Keybanc Maintains Overweight on Okta, Raises Price Target to $103",
-            "previous_target": null,
-            "published_at": "2026-05-18T08:12:58+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 103.0,
-            "upside_pct": 0.09796399830056668,
-            "url": "https://finnhub.io/api/news?id=7c57096b65683dda97af064dd6748fba256ae4d18ec8a144f1de56493718067f"
           }
         ]
       },
@@ -28142,7 +28042,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Okta",
       "reasons": [
         {
@@ -28231,7 +28131,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "onsemi",
       "reasons": [
         {
@@ -28320,7 +28220,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Ondas Holdings",
       "reasons": [
         {
@@ -28409,7 +28309,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Oracle",
       "reasons": [
         {
@@ -28498,7 +28398,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Palantir",
       "reasons": [
         {
@@ -28587,7 +28487,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Qualcomm",
       "reasons": [
         {
@@ -28676,7 +28576,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Rocket Lab",
       "reasons": [
         {
@@ -28765,7 +28665,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "RTX",
       "reasons": [
         {
@@ -28854,7 +28754,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Shopify",
       "reasons": [
         {
@@ -28943,7 +28843,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "SanDisk",
       "reasons": [
         {
@@ -29032,7 +28932,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Snowflake",
       "reasons": [
         {
@@ -29087,8 +28987,8 @@
       "analyst": {
         "rating": null,
         "rating_score": null,
-        "target_mean": 606.14246,
-        "target_mean_prev_eod": 606.2836,
+        "target_mean": 605.7898,
+        "target_mean_prev_eod": 606.14246,
         "target_price_events": []
       },
       "chip": null,
@@ -29121,7 +29021,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Spotify",
       "reasons": [
         {
@@ -29210,7 +29110,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Tesla",
       "reasons": [
         {
@@ -29299,7 +29199,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Taiwan Semiconductor ADR",
       "reasons": [
         {
@@ -29388,7 +29288,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Texas Instruments",
       "reasons": [
         {
@@ -29477,7 +29377,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Unity Software",
       "reasons": [
         {
@@ -29566,7 +29466,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Uber",
       "reasons": [
         {
@@ -29655,7 +29555,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "UnitedHealth",
       "reasons": [
         {
@@ -29744,7 +29644,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Visa",
       "reasons": [
         {
@@ -29833,7 +29733,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Vertiv",
       "reasons": [
         {
@@ -29922,7 +29822,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Workday",
       "reasons": [
         {
@@ -30011,7 +29911,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Walmart",
       "reasons": [
         {
@@ -30100,7 +30000,7 @@
       },
       "market": "us",
       "max_score": 12.0,
-      "mode": "intraday",
+      "mode": "eod",
       "name": "Block",
       "reasons": [
         {
