@@ -107,7 +107,9 @@ The dashboard shows whether each index is above all tracked moving averages
 `youtube_digest.yml` runs daily at 23:30 UTC and checks Rhino Finance's
 YouTube RSS feed for new uploads. For each new video inside the lookback window,
 it reads the public caption track, summarizes stock-specific ideas into
-Markdown, and commits the report under `data/youtube_digest/`.
+Markdown, and commits the report under `data/youtube_digest/`. When no public
+caption track is available, the workflow downloads the video's audio and uses a
+local Whisper model to transcribe it before summarizing.
 
 The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab. The
 summary prompt is constrained to individual stocks/ETFs and only fills buy,
@@ -115,7 +117,8 @@ sell, take-profit, or stop-loss prices when the video explicitly states them.
 
 The workflow uses GitHub Models through the built-in `GITHUB_TOKEN`, so no
 OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
-(defaults to `openai/gpt-4.1`).
+(defaults to `openai/gpt-4.1`). Optional repo variable:
+`YOUTUBE_WHISPER_MODEL` (defaults to `base`).
 
 ## Deploy the dashboard
 

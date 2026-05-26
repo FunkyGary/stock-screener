@@ -8,6 +8,9 @@ import json
 import logging
 import os
 import re
+import subprocess
+import sys
+import tempfile
 import textwrap
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass
@@ -25,6 +28,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_CHANNEL_ID = "UCFQsi7WaF5X41tcuOryDk8w"
 DEFAULT_CHANNEL_TITLE = "视野环球财经"
 DEFAULT_MODEL = "openai/gpt-4.1"
+DEFAULT_WHISPER_MODEL = "base"
 DEFAULT_SINCE_HOURS = 36
 DEFAULT_MAX_NEW = 3
 TRANSCRIPT_CHAR_LIMIT = 60000
@@ -336,6 +340,73 @@ def fetch_public_transcript(video_id: str) -> Transcript:
     )
 
 
+def _short_process_error(result: subprocess.CompletedProcess[str]) -> str:
+    text = (result.stderr or result.stdout or "").strip()
+    if not text:
+        return f"exit code {result.returncode}"
+    return text[-500:]
+
+
+def download_video_audio(video_id: str, output_dir: Path) -> Path:
+    output_template = str(output_dir / "audio.%(ext)s")
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "yt_dlp",
+            "--no-playlist",
+            "--quiet",
+            "--no-warnings",
+            "--extract-audio",
+            "--audio-format",
+            "m4a",
+            "--output",
+            output_template,
+            f"https://www.youtube.com/watch?v={video_id}",
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=900,
+    )
+    if result.returncode != 0:
+        raise PublicTranscriptUnavailable(
+            f"audio download failed: {_short_process_error(result)}"
+        )
+    audio_files = sorted(output_dir.glob("audio.*"))
+    if not audio_files:
+        raise PublicTranscriptUnavailable("audio download did not create a file")
+    return audio_files[0]
+
+
+def transcribe_audio_file(audio_path: Path, *, whisper_model: str) -> str:
+    try:
+        import whisper
+    except ModuleNotFoundError as exc:
+        raise PublicTranscriptUnavailable(
+            "audio transcription tools are not installed"
+        ) from exc
+
+    model = whisper.load_model(whisper_model)
+    result = model.transcribe(str(audio_path), fp16=False)
+    text = str(result.get("text") or "").strip()
+    if not text:
+        raise PublicTranscriptUnavailable("audio transcription was empty")
+    return text
+
+
+def transcribe_video_audio(video_id: str, *, whisper_model: str) -> Transcript:
+    with tempfile.TemporaryDirectory(prefix="youtube-digest-") as tmp:
+        audio_path = download_video_audio(video_id, Path(tmp))
+        text = transcribe_audio_file(audio_path, whisper_model=whisper_model)
+    return Transcript(
+        text=text,
+        language_code=None,
+        language_name=f"Whisper audio transcript ({whisper_model})",
+        is_auto_generated=True,
+    )
+
+
 def _truncate_transcript(text: str, limit: int = TRANSCRIPT_CHAR_LIMIT) -> str:
     if len(text) <= limit:
         return text
@@ -518,6 +589,8 @@ def run_digest(
     max_new: int,
     github_token: str | None,
     model: str,
+    audio_fallback: bool = False,
+    whisper_model: str = DEFAULT_WHISPER_MODEL,
     now: datetime | None = None,
 ) -> list[VideoDigest]:
     current_time = now or _utc_now()
@@ -544,9 +617,24 @@ def run_digest(
         try:
             transcript = fetch_public_transcript(video.video_id)
         except PublicTranscriptUnavailable as exc:
-            logger.warning("Skipping %s: %s", video.video_id, exc)
-            skipped.append({"video_id": video.video_id, "reason": str(exc)})
-            continue
+            if not audio_fallback:
+                logger.warning("Skipping %s: %s", video.video_id, exc)
+                skipped.append({"video_id": video.video_id, "reason": str(exc)})
+                continue
+            logger.info(
+                "No public captions for %s; transcribing audio with Whisper %s",
+                video.video_id,
+                whisper_model,
+            )
+            try:
+                transcript = transcribe_video_audio(
+                    video.video_id, whisper_model=whisper_model
+                )
+            except PublicTranscriptUnavailable as audio_exc:
+                reason = f"{exc}; audio fallback failed: {audio_exc}"
+                logger.warning("Skipping %s: %s", video.video_id, reason)
+                skipped.append({"video_id": video.video_id, "reason": reason})
+                continue
 
         markdown = summarize_with_github_models(
             video,
@@ -603,6 +691,17 @@ def main() -> None:
     parser.add_argument("--since-hours", type=int, default=DEFAULT_SINCE_HOURS)
     parser.add_argument("--max-new", type=int, default=DEFAULT_MAX_NEW)
     parser.add_argument(
+        "--audio-fallback",
+        action="store_true",
+        default=os.environ.get("YOUTUBE_AUDIO_FALLBACK", "").lower()
+        in {"1", "true", "yes"},
+        help="Download and transcribe video audio when public captions are unavailable.",
+    )
+    parser.add_argument(
+        "--whisper-model",
+        default=os.environ.get("YOUTUBE_WHISPER_MODEL", DEFAULT_WHISPER_MODEL),
+    )
+    parser.add_argument(
         "--model",
         default=os.environ.get("GITHUB_MODEL", DEFAULT_MODEL),
     )
@@ -617,6 +716,8 @@ def main() -> None:
         max_new=args.max_new,
         github_token=github_token,
         model=args.model,
+        audio_fallback=args.audio_fallback,
+        whisper_model=args.whisper_model,
     )
 
 

@@ -13,6 +13,7 @@ from screener.youtube_digest import (
     choose_caption_track,
     parse_feed,
     parse_json3_transcript,
+    run_digest,
     select_new_videos,
     summarize_with_github_models,
 )
@@ -181,3 +182,67 @@ def test_summarize_with_github_models_posts_chat_completion(monkeypatch):
     assert captured["json"]["model"] == "openai/gpt-4.1"
     assert captured["json"]["messages"][0]["role"] == "system"
     assert "Apple 目標買入價 180 美元" in captured["json"]["messages"][1]["content"]
+
+
+def test_run_digest_uses_audio_fallback_when_public_captions_are_missing(
+    monkeypatch,
+):
+    video = VideoEntry(
+        video_id="abc123",
+        title="Apple target prices",
+        url="https://www.youtube.com/watch?v=abc123",
+        published_at="2026-05-26T10:00:00+00:00",
+        updated_at=None,
+    )
+    captured = {}
+
+    monkeypatch.setattr(
+        "screener.youtube_digest.load_state",
+        lambda: {"processed_video_ids": []},
+    )
+    monkeypatch.setattr("screener.youtube_digest.write_state", lambda state: None)
+    monkeypatch.setattr("screener.youtube_digest.fetch_feed", lambda channel_id: [video])
+
+    def missing_caption(video_id):
+        raise PublicTranscriptUnavailable("no public caption tracks found")
+
+    monkeypatch.setattr(
+        "screener.youtube_digest.fetch_public_transcript", missing_caption
+    )
+
+    def fake_transcribe(video_id, *, whisper_model):
+        captured["video_id"] = video_id
+        captured["whisper_model"] = whisper_model
+        return Transcript(
+            text="Apple 目標買入價 180 美元。",
+            language_code=None,
+            language_name="Whisper audio transcript (tiny)",
+            is_auto_generated=True,
+        )
+
+    monkeypatch.setattr(
+        "screener.youtube_digest.transcribe_video_audio", fake_transcribe
+    )
+    monkeypatch.setattr(
+        "screener.youtube_digest.summarize_with_github_models",
+        lambda video, transcript, token, model: "# summary",
+    )
+    monkeypatch.setattr(
+        "screener.youtube_digest._write_digest_files",
+        lambda digests, channel_id, channel_title, generated_at: None,
+    )
+
+    digests = run_digest(
+        channel_id="channel",
+        channel_title="Channel",
+        since_hours=36,
+        max_new=1,
+        github_token="ghs_test",
+        model="openai/gpt-4.1",
+        audio_fallback=True,
+        whisper_model="tiny",
+    )
+
+    assert len(digests) == 1
+    assert digests[0].markdown == "# summary"
+    assert captured == {"video_id": "abc123", "whisper_model": "tiny"}
