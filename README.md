@@ -102,52 +102,6 @@ Each data run also refreshes market-level trend indicators:
 The dashboard shows whether each index is above all tracked moving averages
 (MA5/10/20/240), using `V` when the condition is true and `X` when it is not.
 
-### YouTube digest
-
-`youtube_digest.yml` runs daily at 23:30 UTC and checks Rhino Finance's
-YouTube RSS feed for uploads from the last 7 days. For each new video inside the
-lookback window, it reads the public caption track, summarizes stock-specific
-ideas into Markdown, and commits the report under `data/youtube_digest/`. When
-no public caption track is available, the workflow downloads the video's audio
-and uses a local Whisper model to transcribe it before summarizing. Per-video
-Markdown reports older than 7 days are pruned on each run.
-
-The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab.
-Per-video summaries are stored as `data/youtube_digest/YYYY-MM-DD_<video-id>.md`.
-`data/youtube_digest/latest.json` is metadata for the latest batch, and
-`data/youtube_digest/state.json` stores de-duplication state. The summary prompt
-is constrained to individual stocks/ETFs and only fills buy, sell, take-profit,
-or stop-loss prices when the video explicitly states them.
-
-The workflow uses GitHub Models through the built-in `GITHUB_TOKEN`, so no
-OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
-(defaults to `openai/gpt-4.1`). Optional repo variable:
-`YOUTUBE_WHISPER_MODEL` (defaults to `base`).
-
-For a manual run, use `workflow_dispatch`. The defaults scan the last 7 days and
-process up to 3 videos. Videos can be reprocessed on later runs so the latest
-report stays populated even when the channel has no brand-new upload.
-
-To run transcription locally with your browser's YouTube login, first make sure
-that browser is signed in to YouTube, then run:
-
-```bash
-uv pip install yt-dlp openai-whisper
-export GITHUB_TOKEN="$(gh auth token)"
-uv run python -m screener.youtube_digest \
-  --since-hours 168 \
-  --max-new 3 \
-  --audio-fallback \
-  --cookies-from-browser chrome
-git add data/youtube_digest
-git commit -m "data: YouTube digest run [skip ci]"
-git push origin main
-```
-
-Use `--cookies-from-browser safari`, `firefox`, or `brave` if that is where
-YouTube is signed in. Keep browser cookies private; they act like login
-credentials.
-
 ## Deploy the dashboard
 
 1. Push this repo to GitHub (public).

@@ -28,7 +28,6 @@ REPO_RAW_URL = os.environ.get("SIGNALS_URL", "")
 LOCAL_FALLBACK = Path(__file__).parent / "data" / "latest_signals.json"
 LOCAL_TARGET_EVENTS = Path(__file__).parent / "data" / "analyst_target_events.jsonl"
 LOCAL_TW_TARGET_EVENTS = Path(__file__).parent / "data" / "tw_target_events.jsonl"
-YOUTUBE_DIGEST_PATH = Path(__file__).parent / "data" / "youtube_digest" / "latest.md"
 
 TOP_PICK_MIN_SCORE_RATIO = 0.6
 SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.5
@@ -72,13 +71,6 @@ def load_target_event_history() -> list[dict]:
                 except json.JSONDecodeError:
                     continue
     return events
-
-
-@st.cache_data(ttl=60)
-def load_youtube_digest() -> str | None:
-    if not YOUTUBE_DIGEST_PATH.exists():
-        return None
-    return YOUTUBE_DIGEST_PATH.read_text(encoding="utf-8")
 
 
 def tradingview_widget(symbol: str, height: int) -> str:
@@ -785,17 +777,6 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         render_chart(selected, CHART_HEIGHT_DESKTOP)
 
 
-# ---------------- entry point ----------------
-
-
-def _render_youtube_digest() -> None:
-    report = load_youtube_digest()
-    if not report:
-        st.info("尚無影片精華。每日排程產生 data/youtube_digest/latest.md 後會顯示在這裡。")
-        return
-    st.markdown(report)
-
-
 def render() -> None:
     st.set_page_config(
         page_title="Stock Screener",
@@ -824,14 +805,10 @@ def render() -> None:
     signals = data.get("signals", {})
 
     if not signals:
-        tab_screener, tab_digest = st.tabs(["Screener", "影片精華"])
-        with tab_screener:
-            st.warning(
-                "No signals yet. Run `uv run python -m screener.run --market us` locally, "
-                "or wait for the GitHub Actions schedule."
-            )
-        with tab_digest:
-            _render_youtube_digest()
+        st.warning(
+            "No signals yet. Run `uv run python -m screener.run --market us` locally, "
+            "or wait for the GitHub Actions schedule."
+        )
         return
 
     rows_ok = [s for s in signals.values() if s.get("status") == "ok"]
@@ -851,31 +828,23 @@ def render() -> None:
     )
 
     if not rows_ok:
-        tab_screener, tab_digest = st.tabs(["Screener", "影片精華"])
-        with tab_screener:
-            st.warning("All signals failed to fetch.")
-            if rows_failed:
-                with st.expander(f"Fetch failures ({len(rows_failed)})"):
-                    st.json(rows_failed)
-        with tab_digest:
-            _render_youtube_digest()
+        st.warning("All signals failed to fetch.")
+        if rows_failed:
+            with st.expander(f"Fetch failures ({len(rows_failed)})"):
+                st.json(rows_failed)
         return
 
     market_view = (
         _market_view_desktop if current_layout == "desktop" else _market_view_mobile
     )
 
-    tab_tw, tab_us, tab_digest = st.tabs(
-        [f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})", "影片精華"]
-    )
+    tab_tw, tab_us = st.tabs([f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"])
     with tab_tw:
         render_market_regime(data.get("market_regime"), "tw")
         market_view(tw_rows, market_key="tw")
     with tab_us:
         render_market_regime(data.get("market_regime"), "us")
         market_view(us_rows, market_key="us")
-    with tab_digest:
-        _render_youtube_digest()
 
     if rows_failed:
         with st.expander(f"⚠️ Fetch failures ({len(rows_failed)})"):
