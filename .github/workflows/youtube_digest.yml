@@ -57,6 +57,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for attempt in 1 2 3; do
             git pull --rebase --autostash
+            if [ ! -d data/youtube_digest ]; then
+              echo "No digest directory created"
+              exit 0
+            fi
             git add data/youtube_digest
             if git diff --staged --quiet; then
               echo "No digest changes to commit"

@@ -120,6 +120,10 @@ OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
 (defaults to `openai/gpt-4.1`). Optional repo variable:
 `YOUTUBE_WHISPER_MODEL` (defaults to `base`).
 
+For a manual first run, use `workflow_dispatch` with `since_hours=720` and
+`max_new=1` so the workflow can pick up an older recent upload and keep audio
+transcription time bounded.
+
 ## Deploy the dashboard
 
 1. Push this repo to GitHub (public).
