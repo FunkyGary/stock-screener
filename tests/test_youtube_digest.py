@@ -14,6 +14,7 @@ from screener.youtube_digest import (
     VideoEntry,
     _chat_completion_output_text,
     _extract_balanced_json,
+    _write_failure_report,
     choose_caption_track,
     parse_feed,
     parse_json3_transcript,
@@ -294,3 +295,32 @@ def test_prune_old_reports_removes_only_expired_per_video_markdown(
     assert latest.exists()
     assert latest_json.exists()
     assert state.exists()
+
+
+def test_write_failure_report_creates_latest_markdown_and_json(monkeypatch, tmp_path):
+    monkeypatch.setattr("screener.youtube_digest.REPORT_DIR", tmp_path)
+    monkeypatch.setattr(
+        "screener.youtube_digest.LATEST_MARKDOWN_PATH", tmp_path / "latest.md"
+    )
+    monkeypatch.setattr(
+        "screener.youtube_digest.LATEST_JSON_PATH", tmp_path / "latest.json"
+    )
+
+    _write_failure_report(
+        channel_id="channel",
+        channel_title="Channel",
+        generated_at="2026-05-26T15:00:00+00:00",
+        skipped=[
+            {
+                "video_id": "abc123",
+                "reason": "audio download failed: Sign in to confirm you’re not a bot.",
+            }
+        ],
+    )
+
+    markdown = (tmp_path / "latest.md").read_text(encoding="utf-8")
+    metadata = json.loads((tmp_path / "latest.json").read_text(encoding="utf-8"))
+    assert "目前沒有成功產生影片摘要" in markdown
+    assert "abc123" in markdown
+    assert metadata["reports"] == []
+    assert metadata["skipped"][0]["video_id"] == "abc123"

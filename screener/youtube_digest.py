@@ -574,6 +574,49 @@ def _write_digest_files(
         f.write("\n")
 
 
+def _write_failure_report(
+    *,
+    channel_id: str,
+    channel_title: str,
+    generated_at: str,
+    skipped: list[dict[str, str]],
+) -> None:
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    lines = [
+        f"# {channel_title} 每日影片精華",
+        "",
+        f"產生時間：{generated_at} UTC",
+        "",
+        "目前沒有成功產生影片摘要。",
+        "",
+        "## 失敗原因",
+    ]
+    for item in skipped:
+        lines.append(
+            f"- `{item.get('video_id', 'unknown')}`: "
+            f"{item.get('reason', 'unknown')}"
+        )
+    lines.extend(
+        [
+            "",
+            "## 注意",
+            "- 若 YouTube 要求登入確認不是 bot，GitHub Actions 需要可用的 YouTube cookies 才能下載音訊轉錄。",
+            "- 僅摘要原影片內容，非投資建議。",
+        ]
+    )
+    LATEST_MARKDOWN_PATH.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    latest = {
+        "channel_id": channel_id,
+        "channel_title": channel_title,
+        "generated_at": generated_at,
+        "reports": [],
+        "skipped": skipped,
+    }
+    with LATEST_JSON_PATH.open("w") as f:
+        json.dump(latest, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.write("\n")
+
+
 def _report_path(video: VideoEntry, now: datetime) -> Path:
     date_part = _format_date_for_filename(video.published_at, now)
     return REPORT_DIR / f"{date_part}_{video.video_id}.md"
@@ -683,6 +726,13 @@ def run_digest(
         state["last_checked_at"] = generated_at
         state["last_skipped"] = skipped
         write_state(state)
+        if skipped:
+            _write_failure_report(
+                channel_id=channel_id,
+                channel_title=channel_title,
+                generated_at=generated_at,
+                skipped=skipped,
+            )
         return []
 
     processed_ids = list(dict.fromkeys(state.get("processed_video_ids", [])))
