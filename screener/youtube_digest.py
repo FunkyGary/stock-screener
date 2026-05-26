@@ -24,10 +24,11 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_CHANNEL_ID = "UCFQsi7WaF5X41tcuOryDk8w"
 DEFAULT_CHANNEL_TITLE = "视野环球财经"
-DEFAULT_MODEL = "gpt-5-mini"
+DEFAULT_MODEL = "openai/gpt-4.1"
 DEFAULT_SINCE_HOURS = 36
 DEFAULT_MAX_NEW = 3
 TRANSCRIPT_CHAR_LIMIT = 60000
+GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -344,90 +345,108 @@ def _truncate_transcript(text: str, limit: int = TRANSCRIPT_CHAR_LIMIT) -> str:
     return text[:head_len].rstrip() + marker + text[-tail_len:].lstrip()
 
 
-def _openai_output_text(response_json: dict[str, Any]) -> str:
-    direct = response_json.get("output_text")
-    if isinstance(direct, str) and direct.strip():
-        return direct.strip()
-
-    chunks: list[str] = []
-    for item in response_json.get("output", []):
-        for content in item.get("content", []):
-            if content.get("type") in {"output_text", "text"}:
-                text = content.get("text")
-                if isinstance(text, str):
-                    chunks.append(text)
-    output = "\n".join(chunks).strip()
+def _chat_completion_output_text(response_json: dict[str, Any]) -> str:
+    choices = response_json.get("choices") or []
+    if not choices:
+        raise DigestError("GitHub Models response did not include choices")
+    message = choices[0].get("message") or {}
+    content = message.get("content")
+    if isinstance(content, str):
+        output = content.strip()
+    elif isinstance(content, list):
+        chunks = [
+            part.get("text", "")
+            for part in content
+            if isinstance(part, dict) and part.get("type") in {"text", "output_text"}
+        ]
+        output = "\n".join(chunks).strip()
+    else:
+        output = ""
     if not output:
-        raise DigestError("OpenAI response did not include text output")
+        raise DigestError("GitHub Models response did not include text output")
     return output
 
 
-def summarize_with_openai(
+def _summary_prompt(video: VideoEntry, transcript: Transcript) -> str:
+    return textwrap.dedent(
+        f"""
+        你會收到一支財經 YouTube 影片的公開字幕。請產出繁體中文 Markdown
+        報告，重點放在單一個股或 ETF 的分析，不要把大盤雜訊寫成個股建議。
+
+        嚴格規則：
+        - 只能使用逐字稿明確提到的內容；不能自行補目標價、支撐壓力或買賣價。
+        - 如果沒有明確講到目標買入價、目標賣出價、停利或停損，填「未提及」。
+        - 價格請保留原影片幣別與單位，例如 USD、美元、台幣。
+        - 區分「主持人觀點」和「明確價格」；不要把你的推論當成影片觀點。
+        - 這是影片內容摘要，不是投資建議。
+
+        請使用這個格式：
+        # 影片精華：{{影片標題}}
+
+        影片：{{URL}}
+        發布時間：{{發布時間 UTC}}
+        字幕：{{語言}}，自動字幕：{{是/否}}
+
+        ## 個股重點
+        | 個股/代號 | 方向 | 走勢觀點 | 目標買入價 | 目標賣出價/停利 | 停損/風險 | 依據 |
+        |---|---|---|---|---|---|---|
+
+        ## 觀察清單
+        - 用 3-8 點列出後續值得追蹤的個股事件、財報、技術位、風險。
+
+        ## 未明確給價的內容
+        - 列出有討論但沒有給具體買入/賣出價的個股。
+
+        ## 注意
+        - 僅摘要原影片內容，非投資建議。
+
+        影片標題：{video.title}
+        URL：{video.url}
+        發布時間：{video.published_at or "unknown"}
+        字幕語言：{transcript.language_name or transcript.language_code or "unknown"}
+        自動字幕：{"是" if transcript.is_auto_generated else "否"}
+
+        逐字稿：
+        {_truncate_transcript(transcript.text)}
+        """
+    ).strip()
+
+
+def summarize_with_github_models(
     video: VideoEntry,
     transcript: Transcript,
     *,
-    api_key: str,
+    token: str,
     model: str = DEFAULT_MODEL,
 ) -> str:
-    prompt = f"""
-    你會收到一支財經 YouTube 影片的公開字幕。請產出繁體中文 Markdown
-    報告，重點放在單一個股或 ETF 的分析，不要把大盤雜訊寫成個股建議。
-
-    嚴格規則：
-    - 只能使用逐字稿明確提到的內容；不能自行補目標價、支撐壓力或買賣價。
-    - 如果沒有明確講到目標買入價、目標賣出價、停利或停損，填「未提及」。
-    - 價格請保留原影片幣別與單位，例如 USD、美元、台幣。
-    - 區分「主持人觀點」和「明確價格」；不要把你的推論當成影片觀點。
-    - 這是影片內容摘要，不是投資建議。
-
-    請使用這個格式：
-    # 影片精華：{{影片標題}}
-
-    影片：{{URL}}
-    發布時間：{{發布時間 UTC}}
-    字幕：{{語言}}，自動字幕：{{是/否}}
-
-    ## 個股重點
-    | 個股/代號 | 方向 | 走勢觀點 | 目標買入價 | 目標賣出價/停利 | 停損/風險 | 依據 |
-    |---|---|---|---|---|---|---|
-
-    ## 觀察清單
-    - 用 3-8 點列出後續值得追蹤的個股事件、財報、技術位、風險。
-
-    ## 未明確給價的內容
-    - 列出有討論但沒有給具體買入/賣出價的個股。
-
-    ## 注意
-    - 僅摘要原影片內容，非投資建議。
-
-    影片標題：{video.title}
-    URL：{video.url}
-    發布時間：{video.published_at or "unknown"}
-    字幕語言：{transcript.language_name or transcript.language_code or "unknown"}
-    自動字幕：{"是" if transcript.is_auto_generated else "否"}
-
-    逐字稿：
-    {_truncate_transcript(transcript.text)}
-    """
-
     payload = {
         "model": model,
-        "input": textwrap.dedent(prompt).strip(),
-        "text": {"verbosity": "low"},
-        "max_output_tokens": 3500,
+        "messages": [
+            {
+                "role": "system",
+                "content": "你是謹慎的財經影片摘要助手，只能根據使用者提供的逐字稿輸出。",
+            },
+            {"role": "user", "content": _summary_prompt(video, transcript)},
+        ],
+        "temperature": 0.2,
+        "max_tokens": 3500,
     }
     response = requests.post(
-        "https://api.openai.com/v1/responses",
+        GITHUB_MODELS_URL,
         headers={
-            "Authorization": f"Bearer {api_key}",
+            "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
         },
         json=payload,
         timeout=90,
     )
     if not response.ok:
-        raise DigestError(f"OpenAI request failed: {response.status_code} {response.text}")
-    return _openai_output_text(response.json())
+        raise DigestError(
+            f"GitHub Models request failed: {response.status_code} {response.text}"
+        )
+    return _chat_completion_output_text(response.json())
 
 
 def _daily_report_markdown(
@@ -497,7 +516,7 @@ def run_digest(
     channel_title: str,
     since_hours: int | None,
     max_new: int,
-    api_key: str | None,
+    github_token: str | None,
     model: str,
     now: datetime | None = None,
 ) -> list[VideoDigest]:
@@ -515,8 +534,8 @@ def run_digest(
     if not new_videos:
         logger.info("No new YouTube videos found for %s", channel_id)
         return []
-    if not api_key:
-        raise DigestError("OPENAI_API_KEY is required to summarize new videos")
+    if not github_token:
+        raise DigestError("GITHUB_TOKEN is required to summarize new videos")
 
     digests: list[VideoDigest] = []
     skipped: list[dict[str, str]] = []
@@ -529,10 +548,10 @@ def run_digest(
             skipped.append({"video_id": video.video_id, "reason": str(exc)})
             continue
 
-        markdown = summarize_with_openai(
+        markdown = summarize_with_github_models(
             video,
             transcript,
-            api_key=api_key,
+            token=github_token,
             model=model,
         )
         path = _report_path(video, current_time)
@@ -585,18 +604,18 @@ def main() -> None:
     parser.add_argument("--max-new", type=int, default=DEFAULT_MAX_NEW)
     parser.add_argument(
         "--model",
-        default=os.environ.get("OPENAI_MODEL", DEFAULT_MODEL),
+        default=os.environ.get("GITHUB_MODEL", DEFAULT_MODEL),
     )
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    api_key = os.environ.get("OPENAI_API_KEY")
+    github_token = os.environ.get("GITHUB_TOKEN")
     run_digest(
         channel_id=args.channel_id,
         channel_title=args.channel_title,
         since_hours=args.since_hours,
         max_new=args.max_new,
-        api_key=api_key,
+        github_token=github_token,
         model=args.model,
     )
 

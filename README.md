@@ -113,8 +113,9 @@ The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab. T
 summary prompt is constrained to individual stocks/ETFs and only fills buy,
 sell, take-profit, or stop-loss prices when the video explicitly states them.
 
-Required repo secret: `OPENAI_API_KEY`.
-Optional repo variable: `OPENAI_MODEL` (defaults to `gpt-5-mini`).
+The workflow uses GitHub Models through the built-in `GITHUB_TOKEN`, so no
+OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
+(defaults to `openai/gpt-4.1`).
 
 ## Deploy the dashboard
 

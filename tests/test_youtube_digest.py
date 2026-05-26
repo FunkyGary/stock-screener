@@ -4,13 +4,17 @@ from datetime import datetime, timezone
 import pytest
 
 from screener.youtube_digest import (
+    GITHUB_MODELS_URL,
     PublicTranscriptUnavailable,
+    Transcript,
     VideoEntry,
+    _chat_completion_output_text,
     _extract_balanced_json,
     choose_caption_track,
     parse_feed,
     parse_json3_transcript,
     select_new_videos,
+    summarize_with_github_models,
 )
 
 
@@ -125,3 +129,55 @@ def test_parse_json3_transcript_compacts_segments():
     transcript = parse_json3_transcript(json.dumps(payload))
 
     assert transcript == "Apple 突破 200 美元\nMicrosoft 回測支撐"
+
+
+def test_chat_completion_output_text_extracts_message_content():
+    payload = {"choices": [{"message": {"content": "# 影片精華\n\nApple 重點"}}]}
+
+    output = _chat_completion_output_text(payload)
+
+    assert output == "# 影片精華\n\nApple 重點"
+
+
+def test_summarize_with_github_models_posts_chat_completion(monkeypatch):
+    captured = {}
+
+    class FakeResponse:
+        ok = True
+
+        def json(self):
+            return {"choices": [{"message": {"content": "# summary"}}]}
+
+    def fake_post(url, **kwargs):
+        captured["url"] = url
+        captured.update(kwargs)
+        return FakeResponse()
+
+    monkeypatch.setattr("screener.youtube_digest.requests.post", fake_post)
+    video = VideoEntry(
+        video_id="abc123",
+        title="Apple target prices",
+        url="https://www.youtube.com/watch?v=abc123",
+        published_at="2026-05-26T10:00:00+00:00",
+        updated_at=None,
+    )
+    transcript = Transcript(
+        text="Apple 目標買入價 180 美元，目標賣出價 220 美元。",
+        language_code="zh-Hant",
+        language_name="Chinese",
+        is_auto_generated=False,
+    )
+
+    output = summarize_with_github_models(
+        video,
+        transcript,
+        token="ghs_test",
+        model="openai/gpt-4.1",
+    )
+
+    assert output == "# summary"
+    assert captured["url"] == GITHUB_MODELS_URL
+    assert captured["headers"]["Authorization"] == "Bearer ghs_test"
+    assert captured["json"]["model"] == "openai/gpt-4.1"
+    assert captured["json"]["messages"][0]["role"] == "system"
+    assert "Apple 目標買入價 180 美元" in captured["json"]["messages"][1]["content"]

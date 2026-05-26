@@ -19,13 +19,14 @@ concurrency:
 
 permissions:
   contents: write
+  models: read
 
 jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5-mini' }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_MODEL: ${{ vars.GITHUB_MODEL || 'openai/gpt-4.1' }}
       YOUTUBE_CHANNEL_ID: UCFQsi7WaF5X41tcuOryDk8w
       YOUTUBE_CHANNEL_TITLE: 视野环球财经
     steps:
