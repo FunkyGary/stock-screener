@@ -596,8 +596,8 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     options.append(f"特別注意 ({len(special)})")
     options.append(f"研究報告 7日內 ({len(research)})")
     options.append(f"下跌特別注意 ({len(downside)})")
-    options.append(f"▲ 全均線之上 ({len(above)})")
-    options.append(f"▼ 其他 ({len(below)})")
+    options.append(f"全均線之上 ({len(above)})")
+    options.append(f"其他 ({len(below)})")
     options.append("全部")
 
     if not (scale_up or special or research or downside or above or below):
@@ -620,9 +620,9 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         candidates = research
     elif filter_choice.startswith("下跌特別注意"):
         candidates = downside
-    elif filter_choice.startswith("▲"):
+    elif filter_choice.startswith("全均線之上"):
         candidates = above
-    elif filter_choice.startswith("▼"):
+    elif filter_choice.startswith("其他"):
         candidates = below
     else:
         candidates = scale_up + special + research + downside + above + below
