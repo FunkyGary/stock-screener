@@ -105,23 +105,27 @@ The dashboard shows whether each index is above all tracked moving averages
 ### YouTube digest
 
 `youtube_digest.yml` runs daily at 23:30 UTC and checks Rhino Finance's
-YouTube RSS feed for new uploads. For each new video inside the lookback window,
-it reads the public caption track, summarizes stock-specific ideas into
-Markdown, and commits the report under `data/youtube_digest/`. When no public
-caption track is available, the workflow downloads the video's audio and uses a
-local Whisper model to transcribe it before summarizing.
+YouTube RSS feed for uploads from the last 7 days. For each new video inside the
+lookback window, it reads the public caption track, summarizes stock-specific
+ideas into Markdown, and commits the report under `data/youtube_digest/`. When
+no public caption track is available, the workflow downloads the video's audio
+and uses a local Whisper model to transcribe it before summarizing. Per-video
+Markdown reports older than 7 days are pruned on each run.
 
-The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab. The
-summary prompt is constrained to individual stocks/ETFs and only fills buy,
-sell, take-profit, or stop-loss prices when the video explicitly states them.
+The dashboard shows `data/youtube_digest/latest.md` in the `影片精華` tab.
+Per-video summaries are stored as `data/youtube_digest/YYYY-MM-DD_<video-id>.md`.
+`data/youtube_digest/latest.json` is metadata for the latest batch, and
+`data/youtube_digest/state.json` stores de-duplication state. The summary prompt
+is constrained to individual stocks/ETFs and only fills buy, sell, take-profit,
+or stop-loss prices when the video explicitly states them.
 
 The workflow uses GitHub Models through the built-in `GITHUB_TOKEN`, so no
 OpenAI or Claude API key is required. Optional repo variable: `GITHUB_MODEL`
 (defaults to `openai/gpt-4.1`). Optional repo variable:
 `YOUTUBE_WHISPER_MODEL` (defaults to `base`).
 
-For a manual first run, use `workflow_dispatch` with `since_hours=720` and
-`max_new=1` so the workflow can pick up an older recent upload and keep audio
+For a manual run, use `workflow_dispatch`. The defaults scan the last 7 days and
+process up to 20 unprocessed videos; lower `max_new` if you want to keep audio
 transcription time bounded.
 
 ## Deploy the dashboard

@@ -8,10 +8,10 @@ on:
     inputs:
       since_hours:
         description: Look back window in hours
-        default: "36"
+        default: "168"
       max_new:
         description: Maximum new videos to summarize
-        default: "3"
+        default: "20"
 
 concurrency:
   group: youtube-digest
@@ -28,6 +28,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_MODEL: ${{ vars.GITHUB_MODEL || 'openai/gpt-4.1' }}
       YOUTUBE_WHISPER_MODEL: ${{ vars.YOUTUBE_WHISPER_MODEL || 'base' }}
+      YOUTUBE_DIGEST_RETENTION_DAYS: "7"
       YOUTUBE_CHANNEL_ID: UCFQsi7WaF5X41tcuOryDk8w
       YOUTUBE_CHANNEL_TITLE: 视野环球财经
     steps:
@@ -47,8 +48,9 @@ jobs:
       - name: Run YouTube digest
         run: >
           uv run python -m screener.youtube_digest
-          --since-hours "${{ inputs.since_hours || '36' }}"
-          --max-new "${{ inputs.max_new || '3' }}"
+          --since-hours "${{ inputs.since_hours || '168' }}"
+          --max-new "${{ inputs.max_new || '20' }}"
+          --retention-days "${YOUTUBE_DIGEST_RETENTION_DAYS}"
           --audio-fallback
           --whisper-model "${YOUTUBE_WHISPER_MODEL}"
       - name: Commit digest results (with rebase retry)

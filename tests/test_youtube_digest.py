@@ -4,7 +4,10 @@ from datetime import datetime, timezone
 import pytest
 
 from screener.youtube_digest import (
+    DEFAULT_SINCE_HOURS,
     GITHUB_MODELS_URL,
+    LATEST_JSON_PATH,
+    LATEST_MARKDOWN_PATH,
     PublicTranscriptUnavailable,
     Transcript,
     VideoEntry,
@@ -13,6 +16,7 @@ from screener.youtube_digest import (
     choose_caption_track,
     parse_feed,
     parse_json3_transcript,
+    prune_old_reports,
     run_digest,
     select_new_videos,
     summarize_with_github_models,
@@ -64,6 +68,10 @@ def test_select_new_videos_filters_processed_and_old_entries():
     )
 
     assert [video.video_id for video in selected] == ["new"]
+
+
+def test_default_since_hours_is_seven_days():
+    assert DEFAULT_SINCE_HOURS == 168
 
 
 def test_select_new_videos_caps_to_latest_items():
@@ -246,3 +254,38 @@ def test_run_digest_uses_audio_fallback_when_public_captions_are_missing(
     assert len(digests) == 1
     assert digests[0].markdown == "# summary"
     assert captured == {"video_id": "abc123", "whisper_model": "tiny"}
+
+
+def test_prune_old_reports_removes_only_expired_per_video_markdown(
+    monkeypatch,
+    tmp_path,
+):
+    monkeypatch.setattr("screener.youtube_digest.REPORT_DIR", tmp_path)
+    monkeypatch.setattr(
+        "screener.youtube_digest.LATEST_MARKDOWN_PATH", tmp_path / "latest.md"
+    )
+    monkeypatch.setattr(
+        "screener.youtube_digest.LATEST_JSON_PATH", tmp_path / "latest.json"
+    )
+    monkeypatch.setattr("screener.youtube_digest.STATE_PATH", tmp_path / "state.json")
+    monkeypatch.setattr("screener.youtube_digest.repo_root", lambda: tmp_path.parent)
+
+    old_report = tmp_path / "2026-05-18_oldvideo.md"
+    fresh_report = tmp_path / "2026-05-24_newvideo.md"
+    latest = tmp_path / LATEST_MARKDOWN_PATH.name
+    latest_json = tmp_path / LATEST_JSON_PATH.name
+    state = tmp_path / "state.json"
+    for path in (old_report, fresh_report, latest, latest_json, state):
+        path.write_text("content", encoding="utf-8")
+
+    removed = prune_old_reports(
+        now=datetime(2026, 5, 26, tzinfo=timezone.utc),
+        retention_days=7,
+    )
+
+    assert removed == [str(old_report.relative_to(tmp_path.parent))]
+    assert not old_report.exists()
+    assert fresh_report.exists()
+    assert latest.exists()
+    assert latest_json.exists()
+    assert state.exists()

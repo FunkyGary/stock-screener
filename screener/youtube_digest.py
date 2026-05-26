@@ -29,8 +29,9 @@ DEFAULT_CHANNEL_ID = "UCFQsi7WaF5X41tcuOryDk8w"
 DEFAULT_CHANNEL_TITLE = "视野环球财经"
 DEFAULT_MODEL = "openai/gpt-4.1"
 DEFAULT_WHISPER_MODEL = "base"
-DEFAULT_SINCE_HOURS = 36
-DEFAULT_MAX_NEW = 3
+DEFAULT_SINCE_HOURS = 168
+DEFAULT_MAX_NEW = 20
+DEFAULT_RETENTION_DAYS = 7
 TRANSCRIPT_CHAR_LIMIT = 60000
 GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
 USER_AGENT = (
@@ -581,6 +582,28 @@ def _report_path(video: VideoEntry, now: datetime) -> Path:
     return REPORT_DIR / f"{date_part}_{video.video_id}.md"
 
 
+def prune_old_reports(*, now: datetime, retention_days: int) -> list[str]:
+    if retention_days <= 0 or not REPORT_DIR.exists():
+        return []
+    cutoff = now - timedelta(days=retention_days)
+    removed: list[str] = []
+    protected = {LATEST_MARKDOWN_PATH.name, LATEST_JSON_PATH.name, STATE_PATH.name}
+    for path in REPORT_DIR.glob("*.md"):
+        if path.name in protected:
+            continue
+        date_text = path.name.split("_", 1)[0]
+        try:
+            report_date = datetime.strptime(date_text, "%Y-%m-%d").replace(
+                tzinfo=timezone.utc
+            )
+        except ValueError:
+            continue
+        if report_date < cutoff:
+            path.unlink()
+            removed.append(str(path.relative_to(repo_root())))
+    return removed
+
+
 def run_digest(
     *,
     channel_id: str,
@@ -591,6 +614,7 @@ def run_digest(
     model: str,
     audio_fallback: bool = False,
     whisper_model: str = DEFAULT_WHISPER_MODEL,
+    retention_days: int = DEFAULT_RETENTION_DAYS,
     now: datetime | None = None,
 ) -> list[VideoDigest]:
     current_time = now or _utc_now()
@@ -606,6 +630,9 @@ def run_digest(
     )
     if not new_videos:
         logger.info("No new YouTube videos found for %s", channel_id)
+        removed = prune_old_reports(now=current_time, retention_days=retention_days)
+        if removed:
+            logger.info("Pruned %d old YouTube digest reports", len(removed))
         return []
     if not github_token:
         raise DigestError("GITHUB_TOKEN is required to summarize new videos")
@@ -669,6 +696,9 @@ def run_digest(
     state["last_generated_at"] = generated_at
     state["last_skipped"] = skipped
     write_state(state)
+    removed = prune_old_reports(now=current_time, retention_days=retention_days)
+    if removed:
+        logger.info("Pruned %d old YouTube digest reports", len(removed))
     _write_digest_files(
         digests,
         channel_id=channel_id,
@@ -690,6 +720,13 @@ def main() -> None:
     )
     parser.add_argument("--since-hours", type=int, default=DEFAULT_SINCE_HOURS)
     parser.add_argument("--max-new", type=int, default=DEFAULT_MAX_NEW)
+    parser.add_argument(
+        "--retention-days",
+        type=int,
+        default=int(
+            os.environ.get("YOUTUBE_DIGEST_RETENTION_DAYS", DEFAULT_RETENTION_DAYS)
+        ),
+    )
     parser.add_argument(
         "--audio-fallback",
         action="store_true",
@@ -718,6 +755,7 @@ def main() -> None:
         model=args.model,
         audio_fallback=args.audio_fallback,
         whisper_model=args.whisper_model,
+        retention_days=args.retention_days,
     )
 
 
