@@ -20,14 +20,12 @@ INITIAL_CAPITAL = 1_000_000.0
 ACTIVE_SLOT = 50_000.0
 BENCHMARK = "0050.TW"
 SPECIAL_MIN_SCORE_RATIO = 0.50
-SCALE_UP_MIN_SCORE_RATIO = 0.80
 
 
 @dataclass
 class Holding:
     shares: float
     cost: float
-    added: bool = False
 
 
 def _load_tw_symbols(path: Path) -> dict[str, str]:
@@ -189,28 +187,13 @@ def _build_signals(
             result = _score_day(snapshot, bench_return)
             ratio = result.score / result.max_score if result.max_score else 0.0
             newly_above = _above_all(snapshot) and not _was_above_all(snapshot)
-            reasons = {reason.rule: reason.passed for reason in result.reasons}
             special = newly_above and ratio >= SPECIAL_MIN_SCORE_RATIO
-            scale_up = (
-                newly_above
-                and ratio >= SCALE_UP_MIN_SCORE_RATIO
-                and snapshot.high_5d is not None
-                and snapshot.close >= snapshot.high_5d
-                and any(
-                    rule.startswith("相對強度") and passed
-                    for rule, passed in reasons.items()
-                )
-                and any(
-                    rule.startswith("OBV") and passed for rule, passed in reasons.items()
-                )
-            )
             sell = snapshot.ma5 is not None and snapshot.close < snapshot.ma5
             signals.setdefault(date, {})[symbol] = {
                 "score": result.score,
                 "max_score": result.max_score,
                 "ratio": ratio,
                 "special": special,
-                "scale_up": scale_up,
                 "sell": sell,
             }
     return signals
@@ -327,23 +310,21 @@ def run_backtest(
             price = _open_price(data, symbol, date)
             if price is None or price <= 0:
                 continue
-            amount = ACTIVE_SLOT * (2 if row["scale_up"] else 1)
+            amount = ACTIVE_SLOT
             benchmark_shares, cash = _raise_cash_from_benchmark(
                 data, benchmark_shares, cash, amount, date
             )
             spend = min(amount, cash)
             if spend <= 0:
                 continue
-            holdings[symbol] = Holding(
-                shares=spend / price, cost=spend, added=row["scale_up"]
-            )
+            holdings[symbol] = Holding(shares=spend / price, cost=spend)
             cash -= spend
             trades.append(
                 {
                     "date": date,
                     "symbol": symbol,
                     "name": names.get(symbol, ""),
-                    "action": "buy_scale" if row["scale_up"] else "buy",
+                    "action": "buy",
                     "amount": spend,
                     "score": row["score"],
                     "max_score": row["max_score"],
@@ -387,8 +368,7 @@ def main() -> None:
     bench_end = _close_price(data, BENCHMARK, end_date)
     benchmark_final = INITIAL_CAPITAL / bench_start * bench_end
     active_final = active_curve[-1][1]
-    buy_trades = [trade for trade in trades if trade["action"] in {"buy", "buy_scale"}]
-    scale_buys = [trade for trade in trades if trade["action"] == "buy_scale"]
+    buy_trades = [trade for trade in trades if trade["action"] == "buy"]
     sells = [trade for trade in trades if trade["action"] == "sell"]
     print(f"period={start_date.date()}..{end_date.date()} trading_days={len(backtest_dates) - 1}")
     print(f"symbols_loaded={len(names)} missing={len(missing)}")
@@ -404,8 +384,8 @@ def main() -> None:
     )
     print(f"excess={(active_final / benchmark_final - 1) * 100:.2f}%")
     print(
-        f"buys={len(buy_trades)} scale_entry_buys={len(scale_buys)} "
-        f"sells={len(sells)} open_positions={len(holdings)}"
+        f"buys={len(buy_trades)} sells={len(sells)} "
+        f"open_positions={len(holdings)}"
     )
     print("first_buys:")
     for trade in buy_trades[:20]:
