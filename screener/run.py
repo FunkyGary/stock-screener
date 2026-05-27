@@ -15,7 +15,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 
 from . import chip as chip_mod
-from . import fetch, indicators, io, score
+from . import fetch, indicators, io, score, sectors
 from . import market_regime as market_regime_mod
 from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
@@ -137,12 +137,14 @@ def run_market(market: str, mode: str = "eod") -> dict:
     prev_signals = prev_data.get("signals", {})
     out: dict[str, dict] = {}
     benchmark_return_20d = None
+    benchmark_ohlcv = None
     benchmark_symbol = BENCHMARK_SYMBOLS.get(market)
     if benchmark_symbol:
         try:
-            benchmark_return_20d = indicators.compute(
-                fetch.fetch_ohlcv(benchmark_symbol, intraday=mode == "intraday").df
-            ).return_20d
+            benchmark_ohlcv = fetch.fetch_ohlcv(
+                benchmark_symbol, intraday=mode == "intraday"
+            )
+            benchmark_return_20d = indicators.compute(benchmark_ohlcv.df).return_20d
         except Exception as exc:
             logger.warning("benchmark fetch failed for %s: %s", benchmark_symbol, exc)
 
@@ -157,6 +159,9 @@ def run_market(market: str, mode: str = "eod") -> dict:
             )
 
     manual_target_events = io.load_tw_target_events() if market == "tw" else []
+    sector_map = io.load_sector_map()
+    ohlcv_by_symbol = {}
+    indicator_by_symbol = {}
 
     for entry in entries:
         record: dict = {
@@ -165,7 +170,6 @@ def run_market(market: str, mode: str = "eod") -> dict:
             "name": entry.name,
             "tradingview_symbol": entry.tradingview_symbol,
         }
-        prev_record = prev_signals.get(entry.symbol, {}) or {}
 
         try:
             ohlcv = fetch.fetch_ohlcv(entry.symbol, intraday=mode == "intraday")
@@ -175,7 +179,30 @@ def run_market(market: str, mode: str = "eod") -> dict:
             out[entry.symbol] = record
             continue
 
-        ind = indicators.compute(ohlcv.df)
+        ohlcv_by_symbol[entry.symbol] = ohlcv.df
+        indicator_by_symbol[entry.symbol] = indicators.compute(ohlcv.df)
+
+    sector_by_symbol = sectors.build_sector_snapshots(
+        market=market,
+        sector_map=sector_map,
+        ohlcv_by_symbol=ohlcv_by_symbol,
+        benchmark_df=benchmark_ohlcv.df if benchmark_ohlcv is not None else None,
+    )
+
+    for entry in entries:
+        if entry.symbol in out:
+            continue
+
+        record: dict = {
+            "symbol": entry.symbol,
+            "market": entry.market,
+            "name": entry.name,
+            "tradingview_symbol": entry.tradingview_symbol,
+        }
+        prev_record = prev_signals.get(entry.symbol, {}) or {}
+        ind = indicator_by_symbol[entry.symbol]
+        sector_snap = sector_by_symbol.get(entry.symbol)
+        sector_blob = asdict(sector_snap) if sector_snap is not None else None
 
         # Analyst: EOD-only fetch. Intraday inherits the previous blob unchanged.
         analyst_blob: dict | None = None
@@ -255,6 +282,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
             prev_target_mean=prev_target_mean,
             chip=chip_for_score,
             benchmark_return_20d=benchmark_return_20d,
+            sector=sector_snap,
         )
 
         record.update(
@@ -266,6 +294,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "indicators": asdict(ind),
                 "analyst": analyst_blob,
                 "chip": chip_blob,
+                "sector": sector_blob,
                 "mode": mode,
             }
         )

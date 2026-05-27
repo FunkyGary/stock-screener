@@ -11,6 +11,7 @@ Trading is still manual.
 screener/            Python module: fetch / indicators / score / io / run
 data/
   watchlist.csv      Hand-edited list of symbols to screen
+  sector_map.csv     Objective TWSE/TPEx/yfinance sector classifications
   latest_signals.json  Output written by Actions, read by Streamlit
   analyst_target_events.jsonl  US analyst target raise history event log
   tw_target_events.jsonl  Manual TW analyst target history event log
@@ -25,14 +26,16 @@ Rules use weighted points. Missing data skips the affected rule.
 | Rule | Weight | TW | US |
 |---|---:|:-:|:-:|
 | 今日站上全均線 | 3.0 | yes | yes |
-| 相對強度 20日 > 大盤 | 2.0 | yes | yes |
-| 放量上漲 (vol > 1.5x and up day) | 1.5 | yes | yes |
+| 20日收盤新高 | 1.5 | yes | yes |
 | 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | yes | yes |
+| 放量上漲 (vol > 1.2x and up day) | 1.5 | yes | yes |
 | OBV 5d > OBV 20d | 1.0 | yes | yes |
-| MACD golden cross | 1.0 | yes | yes |
+| 相對強度 20日 > 大盤 | 2.0 | yes | yes |
+| MACD 今日上穿 / 位於 signal 上方 | 1.5 / 1.0 | yes | yes |
 | analyst target raised within 7 days and target ≥ current price +10% | 2.0 | yes | yes |
-| 投信連續買超 ≥ 3 日 | 2.0 | yes | — |
-| 外資大買 (>5% volume or 3-day streak) | 1.5 | yes | — |
+| 強勢板塊延續 | 1.5 | yes | yes |
+| 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | yes | — |
+| 外資大買 (>5% volume or 3-day streak) | 1.0 | yes | — |
 
 Rules removed from scoring: close within 2% of 20-day high, and latest rating
 is Buy or Strong Buy.
@@ -43,6 +46,13 @@ list and score, but do not by themselves place a stock in `特別注意`.
 A separate `下跌特別注意` section flags stocks that were above all moving
 averages on the previous trading day but closed below MA5 today.
 
+Sector strength uses objective classifications only. TW symbols come from TWSE
+and TPEx OpenAPI industry codes; US symbols use yfinance sector/industry data.
+Groups need at least 3 watchlist members. A sector is strong when its equal-
+weighted 1-day and 5-day returns beat the benchmark, its 1-day return is
+positive, and at least 50% of members close above MA5. Continuation scores:
+day 1 = 0.5, day 2 = 1.0, days 3-5 = 1.5, day 6+ = 1.0.
+
 ## Local development
 
 ```bash
@@ -51,6 +61,7 @@ uv sync
 export FINNHUB_API_KEY="..."
 uv run python -m screener.run --market us
 uv run python -m screener.run --market tw
+uv run python scripts/build_sector_map.py
 uv run streamlit run streamlit_app.py
 uv run pytest
 ```

@@ -4,6 +4,7 @@ from screener.chip import ChipSnapshot
 from screener.fetch import AnalystSnapshot
 from screener.indicators import IndicatorSnapshot
 from screener.score import score
+from screener.sectors import SectorSnapshot
 
 
 def _ind(**overrides) -> IndicatorSnapshot:
@@ -313,3 +314,28 @@ def test_foreign_fails_when_both_conditions_fail():
     result = score("tw", _ind(), None, None, chip=chip)
     rule = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert rule.passed is False
+
+
+def test_strong_sector_continuation_scores_partial_weight():
+    sector = SectorSnapshot(
+        sector_official="半導體業",
+        industry_group="半導體業",
+        industry="半導體業",
+        source="test",
+        group_name="半導體業",
+        member_count=5,
+        strong_days=2,
+        return_1d=0.03,
+        return_5d=0.08,
+        benchmark_return_1d=0.01,
+        benchmark_return_5d=0.02,
+        breadth_above_ma5=0.8,
+        breadth_up_day=0.8,
+    )
+
+    result = score("tw", _ind(), None, None, chip=_chip(), sector=sector)
+
+    rule = next(r for r in result.reasons if r.rule == "強勢板塊延續")
+    assert rule.passed is True
+    assert rule.weight == 1.5
+    assert rule.score == 1.0

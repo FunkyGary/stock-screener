@@ -412,6 +412,43 @@ def render_market_regime(market_regime: dict | None, market_key: str) -> None:
     st.markdown("　　".join(_market_regime_item(row) for row in indexes))
 
 
+def render_sector_strength(rows: list[dict]) -> None:
+    by_group: dict[str, dict] = {}
+    for row in rows:
+        sector = row.get("sector") or {}
+        group = sector.get("group_name")
+        if not group or (sector.get("strong_days") or 0) <= 0:
+            continue
+        current = by_group.get(group)
+        if current is None or sector.get("strong_days", 0) > current.get(
+            "strong_days", 0
+        ):
+            by_group[group] = sector
+
+    if not by_group:
+        st.caption("強勢板塊：無")
+        return
+
+    sectors = sorted(
+        by_group.values(),
+        key=lambda s: (
+            s.get("strong_days", 0),
+            s.get("return_5d", 0),
+            s.get("breadth_above_ma5", 0),
+        ),
+        reverse=True,
+    )
+    labels = [
+        (
+            f"{s['group_name']} {s['strong_days']}日 "
+            f"5d {s.get('return_5d', 0) * 100:+.1f}% "
+            f"MA5 {s.get('breadth_above_ma5', 0) * 100:.0f}%"
+        )
+        for s in sectors[:6]
+    ]
+    st.caption("強勢板塊：" + "　".join(labels))
+
+
 def _special_symbol_prefix(row: dict) -> str:
     return "🎯 " if _has_active_target_raise(row) else ""
 
@@ -822,9 +859,11 @@ def render() -> None:
     tab_tw, tab_us = st.tabs([f"台股 ({len(tw_rows)})", f"美股 ({len(us_rows)})"])
     with tab_tw:
         render_market_regime(data.get("market_regime"), "tw")
+        render_sector_strength(tw_rows)
         market_view(tw_rows, market_key="tw")
     with tab_us:
         render_market_regime(data.get("market_regime"), "us")
+        render_sector_strength(us_rows)
         market_view(us_rows, market_key="us")
 
     if rows_failed:

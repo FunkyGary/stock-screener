@@ -10,6 +10,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 
+from .sectors import SectorMapEntry
+
 
 @dataclass
 class WatchlistEntry:
@@ -50,6 +52,35 @@ def target_events_path() -> Path:
 
 def tw_target_events_path() -> Path:
     return repo_root() / "data" / "tw_target_events.jsonl"
+
+
+def sector_map_path() -> Path:
+    return repo_root() / "data" / "sector_map.csv"
+
+
+def load_sector_map() -> dict[str, SectorMapEntry]:
+    path = sector_map_path()
+    if not path.exists():
+        return {}
+
+    out: dict[str, SectorMapEntry] = {}
+    with path.open() as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            symbol = (row.get("symbol") or "").strip()
+            market = (row.get("market") or "").strip().lower()
+            industry_group = (row.get("industry_group") or "").strip()
+            if not symbol or not market or not industry_group:
+                continue
+            out[symbol] = SectorMapEntry(
+                symbol=symbol,
+                market=market,
+                sector_official=(row.get("sector_official") or "").strip(),
+                industry_group=industry_group,
+                industry=(row.get("industry") or "").strip(),
+                source=(row.get("source") or "").strip(),
+            )
+    return out
 
 
 def load_latest_signals() -> dict:

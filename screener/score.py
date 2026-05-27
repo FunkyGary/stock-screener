@@ -9,6 +9,7 @@ from typing import Optional
 from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
 from .indicators import IndicatorSnapshot
+from .sectors import SECTOR_MAX_SCORE, SectorSnapshot, sector_score
 
 TARGET_UPSIDE_THRESHOLD = 0.10
 TARGET_EVENT_DAYS = 7
@@ -118,6 +119,7 @@ def score(
     prev_target_mean: Optional[float],
     chip: Optional[ChipSnapshot] = None,
     benchmark_return_20d: Optional[float] = None,
+    sector: Optional[SectorSnapshot] = None,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
@@ -243,6 +245,28 @@ def score(
                 passed=passed_target,
                 detail=detail,
                 weight=2.0,
+            )
+        )
+
+    if sector is not None:
+        earned_sector = sector_score(sector.strong_days)
+        passed_sector = earned_sector > 0
+        detail = (
+            f"{sector.group_name}: 連續強勢 {sector.strong_days} 日, "
+            f"members={sector.member_count}, "
+            f"1d={sector.return_1d * 100:+.2f}% vs "
+            f"benchmark={sector.benchmark_return_1d * 100:+.2f}%, "
+            f"5d={sector.return_5d * 100:+.2f}% vs "
+            f"benchmark={sector.benchmark_return_5d * 100:+.2f}%, "
+            f"MA5上方={sector.breadth_above_ma5 * 100:.0f}%"
+        )
+        reasons.append(
+            Reason(
+                rule="強勢板塊延續",
+                passed=passed_sector,
+                detail=detail,
+                weight=SECTOR_MAX_SCORE,
+                score=earned_sector,
             )
         )
 
