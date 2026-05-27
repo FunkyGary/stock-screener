@@ -141,7 +141,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
     if benchmark_symbol:
         try:
             benchmark_return_20d = indicators.compute(
-                fetch.fetch_ohlcv(benchmark_symbol).df
+                fetch.fetch_ohlcv(benchmark_symbol, intraday=mode == "intraday").df
             ).return_20d
         except Exception as exc:
             logger.warning("benchmark fetch failed for %s: %s", benchmark_symbol, exc)
@@ -168,7 +168,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
         prev_record = prev_signals.get(entry.symbol, {}) or {}
 
         try:
-            ohlcv = fetch.fetch_ohlcv(entry.symbol)
+            ohlcv = fetch.fetch_ohlcv(entry.symbol, intraday=mode == "intraday")
         except Exception as exc:
             logger.warning("fetch OHLCV failed for %s: %s", entry.symbol, exc)
             record.update({"status": "fetch_failed", "error": str(exc)})

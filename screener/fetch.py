@@ -40,12 +40,59 @@ class FetchError(RuntimeError):
     pass
 
 
+def _normalize_yfinance_columns(df: pd.DataFrame) -> pd.DataFrame:
+    if isinstance(df.columns, pd.MultiIndex):
+        df = df.copy()
+        df.columns = df.columns.get_level_values(0)
+    return df
+
+
+def _validate_ohlcv(df: pd.DataFrame, symbol: str) -> None:
+    needed = {"Open", "High", "Low", "Close", "Volume"}
+    if not needed.issubset(set(df.columns)):
+        raise FetchError(f"missing OHLCV columns for {symbol}: {list(df.columns)}")
+
+
+def _merge_intraday_latest(daily: pd.DataFrame, intraday: pd.DataFrame) -> pd.DataFrame:
+    """Overlay the latest intraday bar onto the daily frame's current session."""
+    if intraday.empty:
+        return daily
+
+    intraday = intraday.dropna(subset=["Close"])
+    if intraday.empty:
+        return daily
+
+    session_date = pd.Timestamp(intraday.index[-1]).date()
+    day_index = pd.Timestamp(session_date)
+    day = intraday.loc[[idx.date() == session_date for idx in intraday.index]]
+    if day.empty:
+        return daily
+
+    latest = day.iloc[-1]
+    merged = daily.copy()
+    merged.loc[day_index, "Open"] = float(day["Open"].dropna().iloc[0])
+    merged.loc[day_index, "High"] = float(day["High"].max())
+    merged.loc[day_index, "Low"] = float(day["Low"].min())
+    merged.loc[day_index, "Close"] = float(latest["Close"])
+    merged.loc[day_index, "Volume"] = float(day["Volume"].fillna(0).sum())
+    if "Adj Close" in merged.columns:
+        merged.loc[day_index, "Adj Close"] = float(
+            latest.get("Adj Close", latest["Close"])
+        )
+    return merged.sort_index()
+
+
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=2, max=10),
     reraise=True,
 )
-def fetch_ohlcv(symbol: str, period: str = "2y") -> OHLCV:
+def fetch_ohlcv(
+    symbol: str,
+    period: str = "2y",
+    intraday: bool = False,
+    intraday_interval: str = "5m",
+) -> OHLCV:
     df = yf.download(
         symbol,
         period=period,
@@ -56,11 +103,21 @@ def fetch_ohlcv(symbol: str, period: str = "2y") -> OHLCV:
     )
     if df is None or df.empty:
         raise FetchError(f"no OHLCV data for {symbol}")
-    if isinstance(df.columns, pd.MultiIndex):
-        df.columns = df.columns.get_level_values(0)
-    needed = {"Open", "High", "Low", "Close", "Volume"}
-    if not needed.issubset(set(df.columns)):
-        raise FetchError(f"missing OHLCV columns for {symbol}: {list(df.columns)}")
+    df = _normalize_yfinance_columns(df)
+    _validate_ohlcv(df, symbol)
+    if intraday:
+        intraday_df = yf.download(
+            symbol,
+            period="1d",
+            interval=intraday_interval,
+            auto_adjust=False,
+            progress=False,
+            threads=False,
+        )
+        if intraday_df is not None and not intraday_df.empty:
+            intraday_df = _normalize_yfinance_columns(intraday_df)
+            _validate_ohlcv(intraday_df, symbol)
+            df = _merge_intraday_latest(df, intraday_df)
     return OHLCV(symbol=symbol, df=df)
 
 
