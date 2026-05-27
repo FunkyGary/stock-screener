@@ -134,7 +134,18 @@ def score(
                     f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
                     f"MA10={ind.ma10:.2f} MA20={ind.ma20:.2f} MA240={ind.ma240:.2f}"
                 ),
-                weight=3.0,
+                weight=2.5,
+            )
+        )
+
+    if ind.prev_high_20d is not None:
+        passed = ind.close > ind.prev_high_20d
+        reasons.append(
+            Reason(
+                rule="20日收盤新高",
+                passed=passed,
+                detail=f"close={ind.close:.2f} prev_20d_high={ind.prev_high_20d:.2f}",
+                weight=1.5,
             )
         )
 
@@ -235,19 +246,30 @@ def score(
         )
 
     if is_tw:
-        # 投信連續買超 ≥ 3 日
+        # 投信買進第一天與連續買超 ≥ 3 日互斥。
         trust_streak = chip.trust_streak_days if chip else 0
-        passed_trust = chip is not None and trust_streak >= TRUST_BUY_STREAK
+        trust_first_day = bool(chip and chip.trust_buy_first_day)
+        passed_trust_streak = (
+            chip is not None and not trust_first_day and trust_streak >= TRUST_BUY_STREAK
+        )
+        passed_trust = trust_first_day or passed_trust_streak
+        earned_trust = 2.0 if trust_first_day else 1.5 if passed_trust_streak else 0.0
+        trust_rule = (
+            "投信買進第一天"
+            if trust_first_day
+            else f"投信連續買超 ≥ {TRUST_BUY_STREAK} 日"
+        )
         reasons.append(
             Reason(
-                rule=f"投信連續買超 ≥ {TRUST_BUY_STREAK} 日",
+                rule=trust_rule,
                 passed=passed_trust,
                 detail=(
-                    f"streak={trust_streak} 日"
+                    f"streak={trust_streak} 日, first_day={trust_first_day}"
                     if chip is not None
                     else "chip data unavailable"
                 ),
                 weight=2.0,
+                score=earned_trust,
             )
         )
 

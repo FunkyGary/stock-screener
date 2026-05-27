@@ -43,6 +43,7 @@ def test_returns_none_when_not_enough_history():
     assert snap.ma240 is None
     assert snap.high_5d is None
     assert snap.high_20d is None
+    assert snap.prev_high_20d is None
     assert snap.macd is None
     assert snap.obv_ma20 is None
 
@@ -79,6 +80,13 @@ def test_pct_of_high_20d_when_close_below_high():
     assert snap.high_5d == 20
     assert snap.high_20d == 20
     assert snap.pct_of_high_20d == pytest.approx(1.0)
+
+
+def test_prev_high_20d_excludes_current_close():
+    closes = list(range(1, 22))
+    snap = compute(_df(closes, [100] * 21))
+    assert snap.high_20d == 21
+    assert snap.prev_high_20d == 20
 
 
 def test_high_5d_uses_last_five_closes():

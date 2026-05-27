@@ -241,6 +241,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
         if chip_blob:
             chip_for_score = ChipSnapshot(
                 trust_streak_days=chip_blob.get("trust_streak_days", 0),
+                trust_buy_first_day=chip_blob.get("trust_buy_first_day", False),
                 foreign_streak_days=chip_blob.get("foreign_streak_days", 0),
                 foreign_net_today=chip_blob.get("foreign_net_today"),
                 daily_volume_today=chip_blob.get("daily_volume_today"),

@@ -1,5 +1,6 @@
 from screener.chip import (
     ChipDay,
+    _first_buy_day_after_two_non_buy,
     _index_fields,
     _parse_int,
     _streak,
@@ -64,6 +65,24 @@ def test_streak_zero_when_today_is_sell():
     assert _streak(days, "trust_net") == 0
 
 
+def test_first_buy_day_after_two_non_buy():
+    days = [
+        ChipDay(date="20260520", foreign_net=0, trust_net=50, total_volume=0),
+        ChipDay(date="20260519", foreign_net=0, trust_net=0, total_volume=0),
+        ChipDay(date="20260516", foreign_net=0, trust_net=-5, total_volume=0),
+    ]
+    assert _first_buy_day_after_two_non_buy(days, "trust_net") is True
+
+
+def test_first_buy_day_false_when_prior_day_also_bought():
+    days = [
+        ChipDay(date="20260520", foreign_net=0, trust_net=50, total_volume=0),
+        ChipDay(date="20260519", foreign_net=0, trust_net=10, total_volume=0),
+        ChipDay(date="20260516", foreign_net=0, trust_net=-5, total_volume=0),
+    ]
+    assert _first_buy_day_after_two_non_buy(days, "trust_net") is False
+
+
 def test_compute_chip_snapshot_for_us_symbol_returns_none():
     chip_by_symbol = {"2330": [ChipDay("20260520", 100, 50, 0)]}
     assert compute_chip_snapshot("AAPL", chip_by_symbol, today_volume=1000) is None
@@ -79,6 +98,7 @@ def test_compute_chip_snapshot_computes_pct_of_volume():
     snap = compute_chip_snapshot("2330.TW", chip_by_symbol, today_volume=10000)
     assert snap is not None
     assert snap.trust_streak_days == 2
+    assert snap.trust_buy_first_day is False
     assert snap.foreign_streak_days == 2
     assert snap.foreign_net_today == 500
     assert snap.foreign_pct_of_volume == 0.05

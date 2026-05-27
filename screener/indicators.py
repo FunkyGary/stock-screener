@@ -27,6 +27,7 @@ class IndicatorSnapshot:
     vol_ratio: Optional[float]
     high_5d: Optional[float]
     high_20d: Optional[float]
+    prev_high_20d: Optional[float]
     pct_of_high_20d: Optional[float]
     obv: Optional[float]
     obv_ma5: Optional[float]
@@ -103,6 +104,9 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
 
     high_5d = _safe_last(close.rolling(5).max()) if len(close) >= 5 else None
     high_20d = _safe_last(close.rolling(20).max()) if len(close) >= 20 else None
+    prev_high_20d = (
+        _safe_last(close.shift(1).rolling(20).max()) if len(close) >= 21 else None
+    )
     pct_of_high_20d = last_close / high_20d if high_20d and high_20d > 0 else None
 
     obv_series = _obv(close, vol)
@@ -140,6 +144,7 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         vol_ratio=vol_ratio,
         high_5d=high_5d,
         high_20d=high_20d,
+        prev_high_20d=prev_high_20d,
         pct_of_high_20d=pct_of_high_20d,
         obv=obv,
         obv_ma5=obv_ma5,

@@ -45,6 +45,7 @@ class ChipSnapshot:
     """Per-symbol summary used by the scoring rules."""
 
     trust_streak_days: int  # consecutive days with 投信買賣超 > 0 (most recent)
+    trust_buy_first_day: bool  # latest day is buy after two non-buy days
     foreign_streak_days: int  # consecutive days with 外資買賣超 > 0 (most recent)
     foreign_net_today: Optional[int]  # shares
     daily_volume_today: Optional[int]  # shares; from yfinance
@@ -169,6 +170,16 @@ def _streak(days: list[ChipDay], pick: str) -> int:
     return n
 
 
+def _first_buy_day_after_two_non_buy(days: list[ChipDay], pick: str) -> bool:
+    if len(days) < 3:
+        return False
+    return (
+        getattr(days[0], pick) > 0
+        and getattr(days[1], pick) <= 0
+        and getattr(days[2], pick) <= 0
+    )
+
+
 def compute_chip_snapshot(
     symbol: str,
     chip_by_symbol: dict[str, list[ChipDay]],
@@ -186,6 +197,7 @@ def compute_chip_snapshot(
         return None
 
     trust_streak = _streak(days, "trust_net")
+    trust_buy_first_day = _first_buy_day_after_two_non_buy(days, "trust_net")
     foreign_streak = _streak(days, "foreign_net")
     foreign_today = days[0].foreign_net
     vol = int(today_volume) if today_volume else None
@@ -193,6 +205,7 @@ def compute_chip_snapshot(
 
     return ChipSnapshot(
         trust_streak_days=trust_streak,
+        trust_buy_first_day=trust_buy_first_day,
         foreign_streak_days=foreign_streak,
         foreign_net_today=foreign_today,
         daily_volume_today=vol,
