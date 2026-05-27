@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-27T10:40:26.303007+00:00",
+  "generated_at": "2026-05-27T10:47:03.261476+00:00",
   "last_run": {
-    "tw": "2026-05-27T10:39:39.560766+00:00",
+    "tw": "2026-05-27T10:47:03.261476+00:00",
     "tw_eod": "2026-05-27T03:48:31.265771+00:00",
-    "tw_intraday": "2026-05-27T10:39:39.560766+00:00",
+    "tw_intraday": "2026-05-27T10:47:03.261476+00:00",
     "us": "2026-05-27T10:40:26.303007+00:00",
     "us_eod": "2026-05-26T22:16:48.735125+00:00",
     "us_intraday": "2026-05-27T10:40:26.303007+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-05-27T10:40:42.163760+00:00",
+    "generated_at": "2026-05-27T10:47:37.178935+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -227,117 +227,6 @@
     }
   },
   "signals": {
-    "0050.TW": {
-      "analyst": null,
-      "chip": {
-        "daily_volume_today": 59377894,
-        "foreign_net_today": -14392651,
-        "foreign_pct_of_volume": -0.24239072877862594,
-        "foreign_streak_days": 0,
-        "trust_streak_days": 7
-      },
-      "indicators": {
-        "close": 102.75,
-        "high_20d": 102.75,
-        "high_5d": 102.75,
-        "ma10": 96.87500076293945,
-        "ma20": 95.94500007629395,
-        "ma240": 65.5152603149414,
-        "ma5": 99.36000061035156,
-        "macd": 3.586194424205928,
-        "macd_hist": 0.12599859580411543,
-        "macd_prev": 3.3249930847877778,
-        "macd_signal": 3.4601958284018126,
-        "macd_signal_prev": 3.4286961794507835,
-        "obv": -1465969623.0,
-        "obv_ma20": -1333369839.8,
-        "obv_ma5": -1546033168.8,
-        "pct_of_high_20d": 1.0,
-        "prev_close": 100.0999984741211,
-        "prev_high_20d": 100.80000305175781,
-        "prev_ma10": 96.15000076293946,
-        "prev_ma20": 95.40750007629394,
-        "prev_ma240": 65.27036447525025,
-        "prev_ma5": 97.31000061035157,
-        "return_20d": 0.11684782608695654,
-        "today_return": 0.026473542120622584,
-        "vol_ratio": 0.9329188650506213,
-        "volume": 88564072.0
-      },
-      "market": "tw",
-      "max_score": 17.0,
-      "mode": "intraday",
-      "name": "\u5143\u5927\u53f0\u706350",
-      "reasons": [
-        {
-          "detail": "close=102.75 MA5=99.36 MA10=96.88 MA20=95.95 MA240=65.52",
-          "passed": false,
-          "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
-          "weight": 3.0
-        },
-        {
-          "detail": "close=102.75 prev_20d_high=100.80",
-          "passed": true,
-          "rule": "20\u65e5\u6536\u76e4\u65b0\u9ad8",
-          "weight": 1.5
-        },
-        {
-          "detail": "close=102.75 MA5=99.36 MA20=95.95",
-          "passed": true,
-          "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
-          "weight": 1.5
-        },
-        {
-          "detail": "vol_ratio=0.93 return=2.65%",
-          "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 1.5
-        },
-        {
-          "detail": "OBV_MA5=-1546033169 OBV_MA20=-1333369840",
-          "passed": false,
-          "rule": "OBV 5d > OBV 20d",
-          "weight": 1.0
-        },
-        {
-          "detail": "stock_20d=+11.68% benchmark_20d=+11.68%",
-          "passed": false,
-          "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
-          "weight": 2.0
-        },
-        {
-          "detail": "macd=3.586 signal=3.460 (prev macd=3.325 signal=3.429)",
-          "passed": true,
-          "rule": "MACD \u4eca\u65e5\u4e0a\u7a7f signal (golden cross)",
-          "score": 1.5,
-          "weight": 1.5
-        },
-        {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
-          "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
-          "weight": 2.0
-        },
-        {
-          "detail": "streak=7 \u65e5, first_day=False",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
-          "weight": 2.0
-        },
-        {
-          "detail": "streak=0 \u65e5, \u4f54\u91cf=-24.24%",
-          "passed": false,
-          "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
-          "weight": 1.0
-        }
-      ],
-      "score": 6.0,
-      "sector": null,
-      "status": "ok",
-      "symbol": "0050.TW",
-      "tradingview_symbol": "TWSE:0050"
-    },
     "1301.TW": {
       "analyst": null,
       "chip": {
