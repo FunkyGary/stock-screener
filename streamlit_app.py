@@ -747,25 +747,27 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         st.session_state[selected_key] = symbol
 
     with col_left:
-        st.markdown('<div class="desktop-stock-list">', unsafe_allow_html=True)
         for section_id, title, section_rows in sections:
-            st.markdown(f"**{title}**")
-            if not section_rows:
-                st.caption("無")
-                continue
-            current_symbol = st.session_state[selected_key]
-            for r in section_rows:
-                symbol = r["symbol"]
-                selected = symbol == current_symbol
-                st.button(
-                    _list_row_label(r, market_key),
-                    key=f"pick_{market_key}_{section_id}_{symbol}",
-                    type="primary" if selected else "secondary",
-                    use_container_width=False,
-                    on_click=_select_symbol,
-                    args=(symbol,),
+            with st.expander(title, expanded=True):
+                st.markdown(
+                    '<div class="desktop-stock-list">', unsafe_allow_html=True
                 )
-        st.markdown("</div>", unsafe_allow_html=True)
+                if not section_rows:
+                    st.caption("無")
+                else:
+                    current_symbol = st.session_state[selected_key]
+                    for r in section_rows:
+                        symbol = r["symbol"]
+                        selected = symbol == current_symbol
+                        st.button(
+                            _list_row_label(r, market_key),
+                            key=f"pick_{market_key}_{section_id}_{symbol}",
+                            type="primary" if selected else "secondary",
+                            use_container_width=False,
+                            on_click=_select_symbol,
+                            args=(symbol,),
+                        )
+                st.markdown("</div>", unsafe_allow_html=True)
 
     selected = row_map[st.session_state[selected_key]]
 
