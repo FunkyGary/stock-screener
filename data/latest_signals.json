@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-05-27T08:29:14.637476+00:00",
+  "generated_at": "2026-05-27T08:47:04.607541+00:00",
   "last_run": {
-    "tw": "2026-05-27T08:28:13.534645+00:00",
+    "tw": "2026-05-27T08:47:04.607541+00:00",
     "tw_eod": "2026-05-27T03:48:31.265771+00:00",
-    "tw_intraday": "2026-05-27T08:28:13.534645+00:00",
+    "tw_intraday": "2026-05-27T08:47:04.607541+00:00",
     "us": "2026-05-27T08:29:14.637476+00:00",
     "us_eod": "2026-05-26T22:16:48.735125+00:00",
     "us_intraday": "2026-05-27T08:29:14.637476+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-05-27T08:29:32.837832+00:00",
+    "generated_at": "2026-05-27T08:47:39.675914+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -2997,7 +2997,26 @@
       "tradingview_symbol": "TWSE:2313"
     },
     "2317.TW": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "source": "manual_jsonl",
+        "target_mean": null,
+        "target_price_events": [
+          {
+            "action": "raise",
+            "event_date": "2026-05-27",
+            "event_id": "3a78e276898a234fe85b9040",
+            "firm": "manual",
+            "market": "tw",
+            "published_at": "2026-05-27T00:00:00+00:00",
+            "source": "manual",
+            "symbol": "2317.TW",
+            "target_price": 245.0,
+            "upside_pct": -0.07372400756143671
+          }
+        ]
+      },
       "chip": {
         "daily_volume_today": 55376653,
         "foreign_net_today": 9279594,
@@ -8620,7 +8639,26 @@
       "tradingview_symbol": "TWSE:3016"
     },
     "3017.TW": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "source": "manual_jsonl",
+        "target_mean": null,
+        "target_price_events": [
+          {
+            "action": "raise",
+            "event_date": "2026-05-27",
+            "event_id": "d6bfb65ce694fe7d3cd437bd",
+            "firm": "manual",
+            "market": "tw",
+            "published_at": "2026-05-27T00:00:00+00:00",
+            "source": "manual",
+            "symbol": "3017.TW",
+            "target_price": 880.0,
+            "upside_pct": -0.674074074074074
+          }
+        ]
+      },
       "chip": {
         "daily_volume_today": 2957902,
         "foreign_net_today": 1123054,
@@ -12649,6 +12687,18 @@
             "symbol": "3665.TW",
             "target_price": 2800.0,
             "upside_pct": 0.31455399061032874
+          },
+          {
+            "action": "raise",
+            "event_date": "2026-05-27",
+            "event_id": "563d31e78b9c95569cb78e82",
+            "firm": "manual",
+            "market": "tw",
+            "published_at": "2026-05-27T00:00:00+00:00",
+            "source": "manual",
+            "symbol": "3665.TW",
+            "target_price": 2800.0,
+            "upside_pct": 0.31455399061032874
           }
         ]
       },
@@ -12736,7 +12786,7 @@
           "weight": 1.5
         },
         {
-          "detail": "2026-05-26 \u5143\u5927 target 2800.00, upside=+31.46%",
+          "detail": "2026-05-26 \u5143\u5927 target 2800.00, upside=+31.46%\uff1b 2026-05-27 manual target 2800.00, upside=+31.46%",
           "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
@@ -16607,6 +16657,18 @@
             "symbol": "6173.TWO",
             "target_price": 233.0,
             "upside_pct": 0.008658008658008587
+          },
+          {
+            "action": "raise",
+            "event_date": "2026-05-27",
+            "event_id": "af772ee4117dabb736f920d5",
+            "firm": "manual",
+            "market": "tw",
+            "published_at": "2026-05-27T00:00:00+00:00",
+            "source": "manual",
+            "symbol": "6173.TWO",
+            "target_price": 233.0,
+            "upside_pct": 0.008658008658008587
           }
         ]
       },
@@ -19134,7 +19196,26 @@
       "tradingview_symbol": "TPEX:6510"
     },
     "6515.TW": {
-      "analyst": null,
+      "analyst": {
+        "rating": null,
+        "rating_score": null,
+        "source": "manual_jsonl",
+        "target_mean": null,
+        "target_price_events": [
+          {
+            "action": "raise",
+            "event_date": "2026-05-27",
+            "event_id": "d43f67519750978a64b885e5",
+            "firm": "manual",
+            "market": "tw",
+            "published_at": "2026-05-27T00:00:00+00:00",
+            "source": "manual",
+            "symbol": "6515.TW",
+            "target_price": 11000.0,
+            "upside_pct": 0.12302194997447669
+          }
+        ]
+      },
       "chip": {
         "daily_volume_today": 180335,
         "foreign_net_today": 22267,
@@ -19219,8 +19300,8 @@
           "weight": 1.5
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-05-27 manual target 11000.00, upside=+12.30%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -19238,7 +19319,7 @@
           "weight": 1.0
         }
       ],
-      "score": 4.0,
+      "score": 6.0,
       "status": "ok",
       "symbol": "6515.TW",
       "tradingview_symbol": "TWSE:6515"
