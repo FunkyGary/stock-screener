@@ -788,12 +788,32 @@ def render() -> None:
         """
         <style>
         div.stButton > button {
+            min-height: 1.7rem;
+            padding: 0.12rem 0.45rem;
+            line-height: 1.15;
+        }
+        details[data-testid="stExpander"] {
+            margin-bottom: 0.35rem;
+        }
+        details[data-testid="stExpander"] summary {
             min-height: 2rem;
-            padding: 0.2rem 0.65rem;
+            padding: 0.18rem 0.55rem;
+        }
+        details[data-testid="stExpander"] summary p {
             line-height: 1.2;
         }
+        details[data-testid="stExpander"] div[data-testid="stExpanderDetails"] {
+            padding: 0.35rem 0.45rem 0.45rem;
+        }
+        .desktop-stock-list {
+            padding: 0;
+        }
         .desktop-stock-list div.stButton {
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.04rem;
+        }
+        .desktop-stock-list div.stButton > button {
+            min-height: 1.65rem;
+            padding: 0.1rem 0.4rem;
         }
         .desktop-stock-list div.stButton > button[kind="secondary"] {
             border-color: transparent;
