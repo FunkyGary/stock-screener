@@ -69,11 +69,11 @@ def test_full_bullish_us_with_target_raise_scores_max():
     result = score(
         "us", _ind(), analyst, prev_target_mean=110.0, benchmark_return_20d=0.05
     )
-    assert result.max_score == 12
-    assert result.score == 12
+    assert result.max_score == 12.5
+    assert result.score == 12.5
 
 
-def test_tw_max_score_is_fifteen_point_five_with_chip():
+def test_tw_max_score_is_sixteen_with_chip():
     result = score(
         "tw",
         _ind(),
@@ -82,14 +82,14 @@ def test_tw_max_score_is_fifteen_point_five_with_chip():
         chip=_chip(),
         benchmark_return_20d=0.05,
     )
-    assert result.max_score == 15.5
-    assert result.score == 13.5
+    assert result.max_score == 16.0
+    assert result.score == 14.0
 
 
 def test_tw_without_chip_still_emits_rules_but_zeroed():
     # chip data unavailable: rules emit, both fail -> max_score includes chip weights.
     result = score("tw", _ind(), analyst=None, prev_target_mean=None, chip=None)
-    assert result.max_score == 13.5
+    assert result.max_score == 14.0
     trust = next(r for r in result.reasons if r.rule.startswith("投信"))
     foreign = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert trust.passed is False
@@ -112,16 +112,16 @@ def test_relative_strength_requires_stock_to_beat_benchmark():
 
 def test_short_trend_requires_close_above_ma5():
     result = score("tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip())
-    assert result.score == 7
-    assert result.max_score == 13.5
+    assert result.score == 7.5
+    assert result.max_score == 14.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
 
 
 def test_short_trend_requires_ma5_above_ma20():
     result = score("tw", _ind(ma5=94.0, ma20=95.0), None, None, chip=_chip())
-    assert result.score == 10
-    assert result.max_score == 13.5
+    assert result.score == 10.5
+    assert result.max_score == 14.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
 
@@ -140,7 +140,7 @@ def test_obv_trend_down_loses_point():
     assert rule.passed is False
 
 
-def test_macd_golden_cross_requires_prev_below():
+def test_macd_above_signal_scores_one_point_without_cross():
     result = score(
         "tw",
         _ind(macd_prev=1.0, macd_signal_prev=0.5),
@@ -149,7 +149,23 @@ def test_macd_golden_cross_requires_prev_below():
         chip=_chip(),
     )
     rule = next(r for r in result.reasons if r.rule.startswith("MACD"))
+    assert rule.passed is True
+    assert rule.score == 1.0
+    assert rule.weight == 1.5
+
+
+def test_macd_below_signal_fails():
+    result = score(
+        "tw",
+        _ind(macd=0.5, macd_signal=0.8, macd_prev=0.7, macd_signal_prev=0.6),
+        None,
+        None,
+        chip=_chip(),
+    )
+    rule = next(r for r in result.reasons if r.rule.startswith("MACD"))
     assert rule.passed is False
+    assert rule.score == 0.0
+    assert rule.weight == 1.5
 
 
 def test_target_raise_requires_ten_percent_upside():
@@ -190,7 +206,7 @@ def test_tw_target_raise_scores_like_us():
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is True
     assert rule.weight == 2.0
-    assert result.score == 13.5
+    assert result.score == 14.0
 
 
 def test_target_raise_expires_after_seven_days():

@@ -261,7 +261,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "status": "ok",
                 "score": result.score,
                 "max_score": result.max_score,
-                "reasons": [asdict(r) for r in result.reasons],
+                "reasons": [_reason_to_dict(r) for r in result.reasons],
                 "indicators": asdict(ind),
                 "analyst": analyst_blob,
                 "chip": chip_blob,
@@ -283,6 +283,13 @@ def _replace_market_signals(
     }
     signals.update(new_signals)
     return signals
+
+
+def _reason_to_dict(reason: score.Reason) -> dict:
+    data = asdict(reason)
+    if data.get("score") is None:
+        data.pop("score")
+    return data
 
 
 def main() -> None:

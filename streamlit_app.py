@@ -488,7 +488,15 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
     for reason in selected.get("reasons", []):
         marker = "✅" if reason["passed"] else "⬜"
         weight = reason.get("weight")
-        suffix = f" · {weight:g}分" if isinstance(weight, (int, float)) else ""
+        earned = reason.get("score") if reason.get("passed") else None
+        if isinstance(earned, (int, float)) and isinstance(weight, (int, float)):
+            suffix = (
+                f" · {earned:g}/{weight:g}分"
+                if earned != weight
+                else f" · {weight:g}分"
+            )
+        else:
+            suffix = f" · {weight:g}分" if isinstance(weight, (int, float)) else ""
         st.markdown(f"{marker} **{reason['rule']}**{suffix}")
         st.caption(f"　{reason['detail']}")
 

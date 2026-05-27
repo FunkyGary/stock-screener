@@ -23,6 +23,7 @@ class Reason:
     passed: bool
     detail: str
     weight: float
+    score: Optional[float] = None
 
 
 @dataclass
@@ -190,16 +191,27 @@ def score(
         and ind.macd_prev is not None
         and ind.macd_signal_prev is not None
     ):
-        passed = ind.macd > ind.macd_signal and ind.macd_prev <= ind.macd_signal_prev
+        crossed_today = (
+            ind.macd > ind.macd_signal and ind.macd_prev <= ind.macd_signal_prev
+        )
+        above_signal = ind.macd > ind.macd_signal
+        earned = 1.5 if crossed_today else 1.0 if above_signal else 0.0
+        if crossed_today:
+            rule = "MACD 今日上穿 signal (golden cross)"
+        elif above_signal:
+            rule = "MACD 位於 signal 上方"
+        else:
+            rule = "MACD 位於 signal 上方或今日上穿"
         reasons.append(
             Reason(
-                rule="MACD 上穿 signal (golden cross)",
-                passed=passed,
+                rule=rule,
+                passed=above_signal,
                 detail=(
                     f"macd={ind.macd:.3f} signal={ind.macd_signal:.3f} "
                     f"(prev macd={ind.macd_prev:.3f} signal={ind.macd_signal_prev:.3f})"
                 ),
-                weight=1.0,
+                weight=1.5,
+                score=earned,
             )
         )
 
@@ -260,5 +272,7 @@ def score(
         )
 
     max_score = sum(r.weight for r in reasons)
-    total = sum(r.weight for r in reasons if r.passed)
+    total = sum(
+        (r.score if r.score is not None else r.weight) for r in reasons if r.passed
+    )
     return ScoreResult(score=total, max_score=max_score, reasons=reasons)
