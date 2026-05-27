@@ -740,6 +740,9 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if st.session_state.get(selected_key) not in row_map:
         st.session_state[selected_key] = next(iter(row_map))
 
+    def _select_symbol(symbol: str) -> None:
+        st.session_state[selected_key] = symbol
+
     with col_left:
         for section_id, title, section_rows in sections:
             st.markdown(f"**{title}**")
@@ -750,13 +753,14 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             for r in section_rows:
                 symbol = r["symbol"]
                 selected = symbol == current_symbol
-                if st.button(
+                st.button(
                     _list_row_label(r, market_key),
                     key=f"pick_{market_key}_{section_id}_{symbol}",
                     type="primary" if selected else "secondary",
-                    use_container_width=True,
-                ):
-                    st.session_state[selected_key] = symbol
+                    use_container_width=False,
+                    on_click=_select_symbol,
+                    args=(symbol,),
+                )
 
     selected = row_map[st.session_state[selected_key]]
 
@@ -772,6 +776,18 @@ def render() -> None:
         page_title="Stock Screener",
         layout="wide",
         initial_sidebar_state="collapsed",
+    )
+    st.markdown(
+        """
+        <style>
+        div.stButton > button {
+            min-height: 2rem;
+            padding: 0.2rem 0.65rem;
+            line-height: 1.2;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
     )
 
     # Auto-detect layout from viewport width via a tiny JS bridge.

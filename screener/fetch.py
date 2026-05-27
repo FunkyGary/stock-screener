@@ -91,7 +91,7 @@ def fetch_ohlcv(
     symbol: str,
     period: str = "2y",
     intraday: bool = False,
-    intraday_interval: str = "5m",
+    intraday_interval: str = "1m",
 ) -> OHLCV:
     df = yf.download(
         symbol,
@@ -106,18 +106,29 @@ def fetch_ohlcv(
     df = _normalize_yfinance_columns(df)
     _validate_ohlcv(df, symbol)
     if intraday:
-        intraday_df = yf.download(
-            symbol,
-            period="1d",
-            interval=intraday_interval,
-            auto_adjust=False,
-            progress=False,
-            threads=False,
-        )
-        if intraday_df is not None and not intraday_df.empty:
-            intraday_df = _normalize_yfinance_columns(intraday_df)
-            _validate_ohlcv(intraday_df, symbol)
-            df = _merge_intraday_latest(df, intraday_df)
+        intervals = [intraday_interval] + [
+            interval for interval in ("5m",) if interval != intraday_interval
+        ]
+        for interval in intervals:
+            try:
+                intraday_df = yf.download(
+                    symbol,
+                    period="1d",
+                    interval=interval,
+                    auto_adjust=False,
+                    progress=False,
+                    threads=False,
+                )
+                if intraday_df is None or intraday_df.empty:
+                    continue
+                intraday_df = _normalize_yfinance_columns(intraday_df)
+                _validate_ohlcv(intraday_df, symbol)
+                df = _merge_intraday_latest(df, intraday_df)
+                break
+            except Exception as exc:
+                logger.warning(
+                    "intraday %s fetch failed for %s: %s", interval, symbol, exc
+                )
     return OHLCV(symbol=symbol, df=df)
 
 
