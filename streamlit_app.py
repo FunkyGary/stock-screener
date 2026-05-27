@@ -744,6 +744,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         st.session_state[selected_key] = symbol
 
     with col_left:
+        st.markdown('<div class="desktop-stock-list">', unsafe_allow_html=True)
         for section_id, title, section_rows in sections:
             st.markdown(f"**{title}**")
             if not section_rows:
@@ -761,6 +762,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
                     on_click=_select_symbol,
                     args=(symbol,),
                 )
+        st.markdown("</div>", unsafe_allow_html=True)
 
     selected = row_map[st.session_state[selected_key]]
 
@@ -784,6 +786,18 @@ def render() -> None:
             min-height: 2rem;
             padding: 0.2rem 0.65rem;
             line-height: 1.2;
+        }
+        .desktop-stock-list div.stButton {
+            margin-bottom: 0.15rem;
+        }
+        .desktop-stock-list div.stButton > button[kind="secondary"] {
+            border-color: transparent;
+            background: transparent;
+            box-shadow: none;
+        }
+        .desktop-stock-list div.stButton > button[kind="secondary"]:hover {
+            border-color: transparent;
+            background: rgba(49, 51, 63, 0.06);
         }
         </style>
         """,
