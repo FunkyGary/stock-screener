@@ -740,33 +740,23 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     if st.session_state.get(selected_key) not in row_map:
         st.session_state[selected_key] = next(iter(row_map))
 
-    def _set_selected_symbol(radio_key: str) -> None:
-        st.session_state[selected_key] = st.session_state[radio_key]
-
     with col_left:
         for section_id, title, section_rows in sections:
             st.markdown(f"**{title}**")
             if not section_rows:
                 st.caption("無")
                 continue
-            symbols = [r["symbol"] for r in section_rows]
             current_symbol = st.session_state[selected_key]
-            index = symbols.index(current_symbol) if current_symbol in symbols else 0
-            radio_key = f"radio_{market_key}_{section_id}"
-            if current_symbol in symbols:
-                st.session_state[radio_key] = current_symbol
-            elif st.session_state.get(radio_key) not in symbols:
-                st.session_state[radio_key] = symbols[index]
-            st.radio(
-                title,
-                options=symbols,
-                index=index,
-                format_func=lambda symbol: _list_row_label(row_map[symbol], market_key),
-                label_visibility="collapsed",
-                key=radio_key,
-                on_change=_set_selected_symbol,
-                args=(radio_key,),
-            )
+            for r in section_rows:
+                symbol = r["symbol"]
+                selected = symbol == current_symbol
+                if st.button(
+                    _list_row_label(r, market_key),
+                    key=f"pick_{market_key}_{section_id}_{symbol}",
+                    type="primary" if selected else "secondary",
+                    use_container_width=True,
+                ):
+                    st.session_state[selected_key] = symbol
 
     selected = row_map[st.session_state[selected_key]]
 
