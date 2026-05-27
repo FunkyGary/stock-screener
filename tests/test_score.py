@@ -71,8 +71,8 @@ def test_full_bullish_us_with_target_raise_scores_max():
     result = score(
         "us", _ind(), analyst, prev_target_mean=110.0, benchmark_return_20d=0.05
     )
-    assert result.max_score == 13.5
-    assert result.score == 13.5
+    assert result.max_score == 14.0
+    assert result.score == 14.0
 
 
 def test_tw_max_score_is_seventeen_with_chip():
@@ -120,7 +120,7 @@ def test_relative_strength_requires_stock_to_beat_benchmark():
 
 def test_short_trend_requires_close_above_ma5():
     result = score("tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip())
-    assert result.score == 7.0
+    assert result.score == 6.5
     assert result.max_score == 15.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
@@ -138,6 +138,13 @@ def test_volume_up_requires_positive_return():
     result = score("tw", _ind(today_return=-0.01), None, None, chip=_chip())
     rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
     assert rule.passed is False
+
+
+def test_volume_up_uses_relaxed_volume_threshold():
+    result = score("tw", _ind(vol_ratio=1.3), None, None, chip=_chip())
+    rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
+    assert rule.passed is True
+    assert rule.weight == 1.5
 
 
 def test_obv_trend_down_loses_point():

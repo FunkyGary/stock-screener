@@ -15,6 +15,7 @@ TARGET_EVENT_DAYS = 7
 TRUST_BUY_STREAK = 3
 FOREIGN_PCT_OF_VOLUME = 0.05
 FOREIGN_BUY_STREAK = 3
+VOLUME_UP_RATIO = 1.2
 
 
 @dataclass
@@ -134,7 +135,7 @@ def score(
                     f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
                     f"MA10={ind.ma10:.2f} MA20={ind.ma20:.2f} MA240={ind.ma240:.2f}"
                 ),
-                weight=2.5,
+                weight=3.0,
             )
         )
 
@@ -161,10 +162,10 @@ def score(
         )
 
     if ind.vol_ratio is not None and ind.today_return is not None:
-        passed = ind.vol_ratio > 1.5 and ind.today_return > 0
+        passed = ind.vol_ratio > VOLUME_UP_RATIO and ind.today_return > 0
         reasons.append(
             Reason(
-                rule="放量上漲 (vol>1.5x & up day)",
+                rule=f"放量上漲 (vol>{VOLUME_UP_RATIO:.1f}x & up day)",
                 passed=passed,
                 detail=f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%",
                 weight=1.5,
@@ -289,7 +290,7 @@ def score(
                 rule=f"外資大買 (>5% 量 或 連{FOREIGN_BUY_STREAK}日買超)",
                 passed=passed_foreign,
                 detail=detail,
-                weight=1.5,
+                weight=1.0,
             )
         )
 
