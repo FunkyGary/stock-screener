@@ -310,10 +310,15 @@ def _is_downside_attention(row: dict) -> bool:
     ind = row.get("indicators") or {}
     close = ind.get("close")
     ma5 = ind.get("ma5")
+    prev_close = ind.get("prev_close")
+    prev_ma5 = ind.get("prev_ma5")
     return (
         _was_above_all_mas_prev_day(row)
         and close is not None
         and ma5 is not None
+        and prev_close is not None
+        and prev_ma5 is not None
+        and prev_close >= prev_ma5
         and close < ma5
     )
 
