@@ -7,6 +7,7 @@ from screener.run import (
     _build_analyst_blob_eod,
     _enrich_target_price_events,
     _manual_target_events_for_symbol,
+    _replace_market_signals,
     _target_events_for_history,
 )
 
@@ -100,3 +101,17 @@ def test_target_events_for_history_adds_symbol_close_and_event_id():
     assert rows[0]["symbol"] == "AAPL"
     assert rows[0]["close_at_fetch"] == 400.0
     assert rows[0]["upside_pct"] == pytest.approx(0.25)
+
+
+def test_replace_market_signals_removes_stale_symbols_for_same_market():
+    existing = {
+        "8104.TW": {"symbol": "8104.TW", "market": "tw"},
+        "AAPL": {"symbol": "AAPL", "market": "us"},
+    }
+    new = {"8103.TW": {"symbol": "8103.TW", "market": "tw"}}
+
+    merged = _replace_market_signals(existing, new, "tw")
+
+    assert "8104.TW" not in merged
+    assert merged["8103.TW"]["market"] == "tw"
+    assert merged["AAPL"]["market"] == "us"

@@ -273,6 +273,18 @@ def run_market(market: str, mode: str = "eod") -> dict:
     return out
 
 
+def _replace_market_signals(
+    existing_signals: dict[str, dict], new_signals: dict[str, dict], market: str
+) -> dict[str, dict]:
+    signals = {
+        symbol: signal
+        for symbol, signal in existing_signals.items()
+        if (signal.get("market") or "").lower() != market
+    }
+    signals.update(new_signals)
+    return signals
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--market", choices=["tw", "us"], required=True)
@@ -305,8 +317,9 @@ def main() -> None:
         logger.info("US target event history merged: added=%d", added)
 
     existing = io.load_latest_signals()
-    signals = existing.get("signals", {})
-    signals.update(new_signals)
+    signals = _replace_market_signals(
+        existing.get("signals", {}), new_signals, args.market
+    )
 
     last_run = existing.get("last_run", {}) or {}
     last_run[args.market] = now
