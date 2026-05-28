@@ -2,16 +2,12 @@ name: US screener
 
 on:
   schedule:
-    # Intraday: every 30 min covering both EDT (13:30-20:00 UTC) and EST
+    # Intraday: every 15 min covering both EDT (13:30-20:00 UTC) and EST
     # (14:30-21:00 UTC). The window 13:00-20:30 UTC catches both; EST will
     # see a few empty pre-open runs which is harmless.
-    # Avoid :00/:30 because GitHub scheduled workflows can be delayed or dropped
-    # during high-load boundary minutes (US open at 13:30 UTC was being missed
-    # 2-3 hours late).
-    - cron: "7,37 13-20 * * 1-5"
-    # Open guarantee: extra fire shortly after EDT open (13:30 UTC) and EST
-    # open (14:30 UTC) in case the regular 7,37 fires get dropped under load.
-    - cron: "33 13,14 * * 1-5"
+    # 4 fires/hour at offset minutes (avoiding :00/:15/:30/:45 boundaries
+    # because GitHub drops boundary-minute fires under load).
+    - cron: "7,22,37,52 13-20 * * 1-5"
     # EOD: 21:17 UTC = 17:17 EDT / 16:17 EST, after close on both schedules.
     - cron: "17 21 * * 1-5"
   workflow_dispatch:
@@ -56,7 +52,7 @@ jobs:
             MODE=intraday
           elif [ "${{ github.event.schedule }}" = "7,37 13-20 * * 1-5" ]; then
             MODE=intraday
-          elif [ "${{ github.event.schedule }}" = "33 13,14 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "7,22,37,52 13-20 * * 1-5" ]; then
             MODE=intraday
           else
             MODE="${{ inputs.mode || 'eod' }}"
