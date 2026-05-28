@@ -3,6 +3,19 @@
 This is the canonical agent guide for this repository. Keep `CLAUDE.md` as a
 thin pointer to this file so Claude Code and Codex share the same instructions.
 
+## AI Reading Path
+
+Start here, then open only the smallest doc that matches the task:
+
+- Pipeline or module ownership: `docs/ARCHITECTURE.md`.
+- Data shape, generated files, JSONL events, or watchlist edits:
+  `docs/DATA_CONTRACTS.md`.
+- Local runs, scheduled jobs, deployment, or incident triage:
+  `docs/OPERATIONS.md`.
+- Scoring rule details: read the README scoring table, then
+  `screener/score.py` only if implementation details are needed.
+- Dashboard layout details: read `streamlit_app.py` only for UI behavior changes.
+
 ## Project Shape
 
 This repo is a personal daily stock screener. GitHub Actions refreshes signal

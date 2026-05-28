@@ -1,13 +1,14 @@
 # stock-screener
 
-Personal daily stock screener. GitHub Actions runs the data pipeline twice a day,
-Streamlit Community Cloud serves the dashboard, TradingView shows the charts.
-Trading is still manual.
+Personal daily stock screener. GitHub Actions runs intraday and EOD data
+pipelines, Streamlit Community Cloud serves the dashboard, TradingView shows the
+charts. Trading is still manual.
 
 ## Layout
 
 ```
 .github/workflows/   GitHub Actions cron jobs (tw_run.yml, us_run.yml)
+docs/                AI-friendly architecture, data-contract, and operations notes
 screener/            Python module: fetch / indicators / score / io / run
 data/
   watchlist.csv      Hand-edited list of symbols to screen
@@ -76,13 +77,15 @@ uv run pytest
 
 ## GitHub Actions
 
-- `tw_run.yml` — daily at 06:30 UTC (14:30 Asia/Taipei).
-- `us_run.yml` — daily at 22:00 UTC (covers both EST and EDT post-close).
+- `tw_run.yml` — TW intraday and EOD scheduled runs.
+- `us_run.yml` — US intraday and EOD scheduled runs.
 
 Both jobs commit `data/latest_signals.json` with `[skip ci]`. Manual triggers via
 the Actions tab work as well.
 
 Required repo secret: `FINNHUB_API_KEY`.
+
+See `docs/OPERATIONS.md` for exact cron schedules and runbook details.
 
 US analyst target detail is parsed from recent Finnhub company news headlines when
 the headline clearly says an analyst/firm raised a price target. Parsed events
