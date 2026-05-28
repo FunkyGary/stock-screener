@@ -30,6 +30,7 @@ INDEXES = {
 }
 
 TW_STRATEGY_BENCHMARK = MarketIndex("0050.TW", "元大台灣50")
+US_STRATEGY_BENCHMARK = MarketIndex("SPY", "SPDR S&P 500 ETF")
 STRATEGY_LABELS = {
     "bear_crash": "空頭 / 急跌",
     "range": "區間震盪",
@@ -62,7 +63,9 @@ def _safe_last(series: pd.Series) -> float | None:
     return float(value)
 
 
-def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
+def _classify_strategy_from_ohlcv(
+    df: pd.DataFrame, benchmark: MarketIndex, market: str
+) -> dict[str, Any]:
     close = df["Close"].astype(float)
     current = _safe_last(close)
     ma20 = _safe_last(close.rolling(20).mean())
@@ -83,7 +86,7 @@ def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
 
     if drawdown_120d is not None and drawdown_120d <= -0.12:
         strategy = "bear_crash"
-        reason = "0050 距 120 日高點回撤達 12% 以上，保留現金、降低追價。"
+        reason = f"{benchmark.symbol} 距 120 日高點回撤達 12% 以上，保留現金、降低追價。"
     elif (
         current is not None
         and ma20 is not None
@@ -96,7 +99,10 @@ def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
         and return_60d > 0.03
     ):
         strategy = "bull"
-        reason = "0050 位於 MA20/MA60 上方，MA60 高於年線，且 60 日報酬大於 3%。"
+        reason = (
+            f"{benchmark.symbol} 位於 MA20/MA60 上方，"
+            "MA60 高於年線，且 60 日報酬大於 3%。"
+        )
     else:
         strategy = "range"
         reason = "未達急跌或強多頭條件，維持高持股的區間震盪權重。"
@@ -105,8 +111,9 @@ def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
         "strategy": strategy,
         "label": STRATEGY_LABELS[strategy],
         "reason": reason,
-        "benchmark": TW_STRATEGY_BENCHMARK.symbol,
-        "benchmark_name": TW_STRATEGY_BENCHMARK.name,
+        "benchmark": benchmark.symbol,
+        "benchmark_name": benchmark.name,
+        "market": market,
         "as_of": _as_of(df),
         "close": current,
         "ma20": ma20,
@@ -121,9 +128,22 @@ def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
     }
 
 
+def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
+    return _classify_strategy_from_ohlcv(df, TW_STRATEGY_BENCHMARK, "tw")
+
+
+def classify_us_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
+    return _classify_strategy_from_ohlcv(df, US_STRATEGY_BENCHMARK, "us")
+
+
 def build_tw_strategy_snapshot() -> dict[str, Any]:
     ohlcv = fetch.fetch_ohlcv(TW_STRATEGY_BENCHMARK.symbol)
     return classify_tw_strategy_from_ohlcv(ohlcv.df)
+
+
+def build_us_strategy_snapshot() -> dict[str, Any]:
+    ohlcv = fetch.fetch_ohlcv(US_STRATEGY_BENCHMARK.symbol)
+    return classify_us_strategy_from_ohlcv(ohlcv.df)
 
 
 def build_index_snapshot(index: MarketIndex) -> dict[str, Any]:
@@ -168,6 +188,16 @@ def build_market_regime() -> dict[str, Any]:
         markets["tw"]["strategy"] = build_tw_strategy_snapshot()
     except Exception as exc:
         markets["tw"]["strategy"] = {
+            "strategy": "range",
+            "label": STRATEGY_LABELS["range"],
+            "status": "fetch_failed",
+            "error": str(exc),
+        }
+
+    try:
+        markets["us"]["strategy"] = build_us_strategy_snapshot()
+    except Exception as exc:
+        markets["us"]["strategy"] = {
             "strategy": "range",
             "label": STRATEGY_LABELS["range"],
             "status": "fetch_failed",

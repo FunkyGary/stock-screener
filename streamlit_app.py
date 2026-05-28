@@ -406,12 +406,19 @@ def _market_regime_item(row: dict) -> str:
     return f"`{mark}` {row.get('name')}"
 
 
-def _strategy_weight_summary(strategy: str | None) -> str:
-    summaries = {
-        "bear_crash": "空頭/急跌權重：新高 2.25、目標價 1、板塊 0.75、投信 1、外資 0.5",
-        "range": "區間權重：站上全均線 4.5、短線趨勢 2.25、新高 0.75、相對強度 1",
-        "bull": "多頭權重：站上全均線 4.5、放量 2.25、相對強度 3、新高 0.75",
-    }
+def _strategy_weight_summary(strategy: str | None, market: str | None = None) -> str:
+    if market == "us":
+        summaries = {
+            "bear_crash": "美股空頭/急跌權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
+            "range": "美股區間權重：站上全均線 3、放量 2.25、短線趨勢 0.75、相對強度 1",
+            "bull": "美股多頭權重：站上全均線 4.5、相對強度 3、新高 0.75、放量 0.75",
+        }
+    else:
+        summaries = {
+            "bear_crash": "台股空頭/急跌權重：新高 2.25、目標價 1、板塊 0.75、投信 1、外資 0.5",
+            "range": "台股區間權重：站上全均線 4.5、短線趨勢 2.25、新高 0.75、相對強度 1",
+            "bull": "台股多頭權重：站上全均線 4.5、放量 2.25、相對強度 3、新高 0.75",
+        }
     return summaries.get(strategy or "", "權重：使用預設設定")
 
 
@@ -421,9 +428,10 @@ def _strategy_line(strategy: dict) -> str:
     drawdown = _fmt_pct(strategy.get("drawdown_120d"))
     ret_60d = _fmt_pct(strategy.get("return_60d"))
     as_of = strategy.get("as_of") or "n/a"
+    benchmark = strategy.get("benchmark") or strategy.get("benchmark_name") or "benchmark"
     return (
         f"策略：**{label}**　"
-        f"0050 {close}　120日回撤 {drawdown}　60日報酬 {ret_60d}　"
+        f"{benchmark} {close}　120日回撤 {drawdown}　60日報酬 {ret_60d}　"
         f"as of {as_of}"
     )
 
@@ -436,10 +444,11 @@ def render_market_regime(market_regime: dict | None, market_key: str) -> None:
 
     st.markdown("#### 大盤指標")
     strategy = market.get("strategy")
-    if market_key == "tw" and strategy:
+    if strategy:
         st.markdown(_strategy_line(strategy))
         st.caption(
-            f"{strategy.get('reason', '')}　{_strategy_weight_summary(strategy.get('strategy'))}"
+            f"{strategy.get('reason', '')}　"
+            f"{_strategy_weight_summary(strategy.get('strategy'), market_key)}"
         )
     indexes = market.get("indexes", [])
     st.markdown("　　".join(_market_regime_item(row) for row in indexes))
@@ -528,10 +537,11 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
         st.metric("Score", _score_label(selected))
 
     score_regime = selected.get("score_regime") or {}
-    if selected.get("market") == "tw" and score_regime:
+    if score_regime:
+        market = selected.get("market")
         st.caption(
             f"計分策略：{score_regime.get('label') or score_regime.get('strategy')} · "
-            f"{_strategy_weight_summary(score_regime.get('strategy'))}"
+            f"{_strategy_weight_summary(score_regime.get('strategy'), market)}"
         )
 
     st.markdown("**訊號**")

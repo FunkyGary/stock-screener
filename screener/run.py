@@ -150,6 +150,10 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 score_regime = market_regime_mod.classify_tw_strategy_from_ohlcv(
                     benchmark_ohlcv.df
                 )
+            elif market == "us":
+                score_regime = market_regime_mod.classify_us_strategy_from_ohlcv(
+                    benchmark_ohlcv.df
+                )
         except Exception as exc:
             logger.warning("benchmark fetch failed for %s: %s", benchmark_symbol, exc)
 

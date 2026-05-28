@@ -135,6 +135,65 @@ def test_tw_bear_crash_strategy_reduces_technical_max_score():
     assert result.max_score == 11.5
 
 
+def test_us_bull_strategy_uses_backtested_weights():
+    result = score(
+        "us",
+        _ind(),
+        analyst=None,
+        prev_target_mean=None,
+        benchmark_return_20d=0.05,
+        strategy="bull",
+    )
+
+    above = next(r for r in result.reasons if r.rule.startswith("今日站上"))
+    new_high = next(r for r in result.reasons if r.rule == "20日收盤新高")
+    volume = next(r for r in result.reasons if r.rule.startswith("放量"))
+    relative_strength = next(r for r in result.reasons if r.rule.startswith("相對強度"))
+    macd = next(r for r in result.reasons if r.rule.startswith("MACD"))
+    assert above.weight == 4.5
+    assert new_high.weight == 0.75
+    assert volume.weight == 0.75
+    assert relative_strength.weight == 3.0
+    assert macd.weight == 0.75
+    assert result.max_score == 14.25
+
+
+def test_us_range_strategy_uses_rotation_weights():
+    result = score(
+        "us",
+        _ind(),
+        analyst=None,
+        prev_target_mean=None,
+        benchmark_return_20d=0.05,
+        strategy="range",
+    )
+
+    trend = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
+    volume = next(r for r in result.reasons if r.rule.startswith("放量"))
+    obv = next(r for r in result.reasons if r.rule == "OBV 5d > OBV 20d")
+    assert trend.weight == 0.75
+    assert volume.weight == 2.25
+    assert obv.weight == 0.5
+    assert result.max_score == 11.75
+
+
+def test_us_bear_crash_strategy_does_not_use_tw_chip_weight_changes():
+    result = score(
+        "us",
+        _ind(),
+        analyst=None,
+        prev_target_mean=None,
+        benchmark_return_20d=0.05,
+        strategy="bear_crash",
+    )
+
+    target = next(r for r in result.reasons if "目標價" in r.rule)
+    trend = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
+    assert target.weight == 2.0
+    assert trend.weight == 0.75
+    assert result.max_score == 9.5
+
+
 def test_tw_without_chip_still_emits_rules_but_zeroed():
     # chip data unavailable: rules emit, both fail -> max_score includes chip weights.
     result = score("tw", _ind(), analyst=None, prev_target_mean=None, chip=None)

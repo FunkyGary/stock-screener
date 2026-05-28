@@ -32,7 +32,7 @@ DEFAULT_RULE_WEIGHTS = {
     "foreign": 1.0,
 }
 
-STRATEGY_RULE_WEIGHTS = {
+TW_STRATEGY_RULE_WEIGHTS = {
     "bear_crash": {
         "above_all": 1.5,
         "new_high": 2.25,
@@ -74,6 +74,48 @@ STRATEGY_RULE_WEIGHTS = {
     },
 }
 
+US_STRATEGY_RULE_WEIGHTS = {
+    "bear_crash": {
+        "above_all": 1.5,
+        "new_high": 2.25,
+        "trend": 0.75,
+        "volume": 0.75,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 0.75,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
+    },
+    "range": {
+        "above_all": 3.0,
+        "new_high": 1.5,
+        "trend": 0.75,
+        "volume": 2.25,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 0.75,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
+    },
+    "bull": {
+        "above_all": 4.5,
+        "new_high": 0.75,
+        "trend": 1.5,
+        "volume": 0.75,
+        "obv": 1.0,
+        "relative_strength": 3.0,
+        "macd": 0.75,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
+    },
+}
+
 
 @dataclass
 class Reason:
@@ -91,10 +133,14 @@ class ScoreResult:
     reasons: list[Reason]
 
 
-def strategy_rule_weights(strategy: str | None = None) -> dict[str, float]:
+def strategy_rule_weights(
+    strategy: str | None = None, market: str | None = None
+) -> dict[str, float]:
     if not strategy:
         return DEFAULT_RULE_WEIGHTS
-    return STRATEGY_RULE_WEIGHTS.get(strategy, DEFAULT_RULE_WEIGHTS)
+    if (market or "").lower() == "us":
+        return US_STRATEGY_RULE_WEIGHTS.get(strategy, DEFAULT_RULE_WEIGHTS)
+    return TW_STRATEGY_RULE_WEIGHTS.get(strategy, DEFAULT_RULE_WEIGHTS)
 
 
 def _parse_iso_datetime(value: str | None) -> datetime | None:
@@ -187,7 +233,7 @@ def score(
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
     is_tw = market.lower() == "tw"
-    weights = strategy_rule_weights(strategy if is_tw else None)
+    weights = strategy_rule_weights(strategy if is_us or is_tw else None, market)
 
     if _has_prev_all_ma_data(ind) and all(
         v is not None for v in (ind.ma5, ind.ma10, ind.ma20, ind.ma240)

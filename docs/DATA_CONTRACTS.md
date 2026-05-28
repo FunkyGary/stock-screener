@@ -66,7 +66,7 @@ Signal record:
 - identity: `symbol`, `market`, `name`, `tradingview_symbol`, `status`, `mode`
 - score fields: `score`, `max_score`, `reasons`
 - data blobs: `indicators`, `analyst`, `chip`, `sector`
-- TW scoring context: `score_regime`
+- regime scoring context: `score_regime`
 - failed fetch: `status: "fetch_failed"` plus `error`
 
 Reason record:
