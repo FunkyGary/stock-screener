@@ -9,6 +9,9 @@ on:
     # during high-load boundary minutes (US open at 13:30 UTC was being missed
     # 2-3 hours late).
     - cron: "7,37 13-20 * * 1-5"
+    # Open guarantee: extra fire shortly after EDT open (13:30 UTC) and EST
+    # open (14:30 UTC) in case the regular 7,37 fires get dropped under load.
+    - cron: "33 13,14 * * 1-5"
     # EOD: 21:17 UTC = 17:17 EDT / 16:17 EST, after close on both schedules.
     - cron: "17 21 * * 1-5"
   workflow_dispatch:
@@ -52,6 +55,8 @@ jobs:
           elif [ "${{ github.event.schedule }}" = "*/30 13-20 * * 1-5" ]; then
             MODE=intraday
           elif [ "${{ github.event.schedule }}" = "7,37 13-20 * * 1-5" ]; then
+            MODE=intraday
+          elif [ "${{ github.event.schedule }}" = "33 13,14 * * 1-5" ]; then
             MODE=intraday
           else
             MODE="${{ inputs.mode || 'eod' }}"
