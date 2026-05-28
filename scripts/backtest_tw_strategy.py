@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import itertools
 import sys
 from dataclasses import dataclass
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 import pandas as pd
@@ -20,6 +22,25 @@ INITIAL_CAPITAL = 1_000_000.0
 ACTIVE_SLOT = 50_000.0
 BENCHMARK = "0050.TW"
 SPECIAL_MIN_SCORE_RATIO = 0.50
+DEFAULT_WEIGHTS = {
+    "above_all": 3.0,
+    "new_high": 1.5,
+    "trend": 1.5,
+    "volume": 1.5,
+    "obv": 1.0,
+    "relative_strength": 2.0,
+    "macd": 1.5,
+    "target": 2.0,
+    "trust": 2.0,
+    "foreign": 1.0,
+}
+WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS)
+SWEEP_MULTIPLIERS = (0.5, 1.0, 1.5)
+
+_WORKER_DATA: dict[str, pd.DataFrame] = {}
+_WORKER_BASE_SIGNALS: dict[pd.Timestamp, dict[str, dict]] = {}
+_WORKER_NAMES: dict[str, str] = {}
+_WORKER_DATES: list[pd.Timestamp] = []
 
 
 @dataclass
@@ -48,6 +69,36 @@ def _download(symbols: list[str], period: str) -> dict[str, pd.DataFrame]:
         data = yf.download(
             " ".join(chunk),
             period=period,
+            interval="1d",
+            auto_adjust=True,
+            progress=False,
+            threads=True,
+            group_by="ticker",
+        )
+        for symbol in chunk:
+            try:
+                frame = data[symbol].copy() if len(chunk) > 1 else data.copy()
+            except KeyError:
+                continue
+            frame = frame.dropna(subset=["Open", "Close"])
+            if not frame.empty:
+                frame.index = pd.to_datetime(frame.index).tz_localize(None).normalize()
+                out[symbol] = frame
+    return out
+
+
+def _download_range(
+    symbols: list[str], start: str, end: str, warmup_days: int = 420
+) -> dict[str, pd.DataFrame]:
+    start_ts = pd.Timestamp(start) - pd.Timedelta(days=warmup_days)
+    end_ts = pd.Timestamp(end) + pd.Timedelta(days=5)
+    out: dict[str, pd.DataFrame] = {}
+    for idx in range(0, len(symbols), 40):
+        chunk = symbols[idx : idx + 40]
+        data = yf.download(
+            " ".join(chunk),
+            start=start_ts.date().isoformat(),
+            end=end_ts.date().isoformat(),
             interval="1d",
             auto_adjust=True,
             progress=False,
@@ -171,10 +222,49 @@ def _score_day(snapshot: IndicatorSnapshot, benchmark_return_20d: float | None):
     )
 
 
-def _build_signals(
+def _rule_key(rule: str) -> str | None:
+    if rule.startswith("今日站上全均線"):
+        return "above_all"
+    if rule.startswith("20日收盤新高"):
+        return "new_high"
+    if rule.startswith("短線趨勢確認"):
+        return "trend"
+    if rule.startswith("放量上漲"):
+        return "volume"
+    if rule.startswith("OBV"):
+        return "obv"
+    if rule.startswith("相對強度"):
+        return "relative_strength"
+    if rule.startswith("MACD"):
+        return "macd"
+    if rule.startswith("法人目標價"):
+        return "target"
+    if rule.startswith("投信"):
+        return "trust"
+    if rule.startswith("外資"):
+        return "foreign"
+    return None
+
+
+def _weighted_score(result, weights: dict[str, float]) -> tuple[float, float]:
+    total = 0.0
+    max_score = 0.0
+    for reason in result.reasons:
+        key = _rule_key(reason.rule)
+        weight = weights.get(key, reason.weight) if key else reason.weight
+        max_score += weight
+        if reason.passed:
+            if reason.score is None:
+                total += weight
+            elif reason.weight:
+                total += weight * reason.score / reason.weight
+    return total, max_score
+
+
+def _build_signal_facts(
     data: dict[str, pd.DataFrame], benchmark_ind: pd.DataFrame
 ) -> dict[pd.Timestamp, dict[str, dict]]:
-    signals: dict[pd.Timestamp, dict[str, dict]] = {}
+    facts_by_date: dict[pd.Timestamp, dict[str, dict]] = {}
     for symbol, df in data.items():
         ind = _indicators_for_frame(df)
         for date, row in ind.iterrows():
@@ -185,18 +275,58 @@ def _build_signals(
                 continue
             bench_return = _float_or_none(benchmark_ind.loc[date, "return_20d"])
             result = _score_day(snapshot, bench_return)
-            ratio = result.score / result.max_score if result.max_score else 0.0
+            facts = []
+            for reason in result.reasons:
+                key = _rule_key(reason.rule)
+                if key is None:
+                    continue
+                score_fraction = 0.0
+                if reason.passed:
+                    if reason.score is None:
+                        score_fraction = 1.0
+                    elif reason.weight:
+                        score_fraction = reason.score / reason.weight
+                facts.append((key, score_fraction))
             newly_above = _above_all(snapshot) and not _was_above_all(snapshot)
-            special = newly_above and ratio >= SPECIAL_MIN_SCORE_RATIO
             sell = snapshot.ma5 is not None and snapshot.close < snapshot.ma5
-            signals.setdefault(date, {})[symbol] = {
-                "score": result.score,
-                "max_score": result.max_score,
-                "ratio": ratio,
-                "special": special,
+            facts_by_date.setdefault(date, {})[symbol] = {
+                "facts": facts,
+                "newly_above": newly_above,
                 "sell": sell,
             }
+    return facts_by_date
+
+
+def _signals_from_facts(
+    facts_by_date: dict[pd.Timestamp, dict[str, dict]],
+    weights: dict[str, float] | None = None,
+) -> dict[pd.Timestamp, dict[str, dict]]:
+    active_weights = weights or DEFAULT_WEIGHTS
+    max_score = sum(active_weights.values())
+    signals: dict[pd.Timestamp, dict[str, dict]] = {}
+    for date, rows in facts_by_date.items():
+        for symbol, row in rows.items():
+            weighted_score = sum(
+                active_weights[key] * score_fraction
+                for key, score_fraction in row["facts"]
+            )
+            ratio = weighted_score / max_score if max_score else 0.0
+            signals.setdefault(date, {})[symbol] = {
+                "score": weighted_score,
+                "max_score": max_score,
+                "ratio": ratio,
+                "special": row["newly_above"] and ratio >= SPECIAL_MIN_SCORE_RATIO,
+                "sell": row["sell"],
+            }
     return signals
+
+
+def _build_signals(
+    data: dict[str, pd.DataFrame],
+    benchmark_ind: pd.DataFrame,
+    weights: dict[str, float] | None = None,
+) -> dict[pd.Timestamp, dict[str, dict]]:
+    return _signals_from_facts(_build_signal_facts(data, benchmark_ind), weights)
 
 
 def _open_price(
@@ -342,51 +472,162 @@ def run_backtest(
     return equity_curve, trades, holdings
 
 
+def _date_slice(
+    benchmark_dates: list[pd.Timestamp], start: str | None, end: str | None, days: int
+) -> list[pd.Timestamp]:
+    if start or end:
+        start_ts = pd.Timestamp(start) if start else benchmark_dates[0]
+        end_ts = pd.Timestamp(end) if end else benchmark_dates[-1]
+        dates = [date for date in benchmark_dates if start_ts <= date <= end_ts]
+        prev_dates = [date for date in benchmark_dates if date < dates[0]]
+        if prev_dates:
+            dates = [prev_dates[-1], *dates]
+        return dates
+    return benchmark_dates[-days - 1 :]
+
+
+def _summarize(
+    label: str,
+    dates: list[pd.Timestamp],
+    data: dict[str, pd.DataFrame],
+    trades: list[dict],
+    holdings: dict[str, Holding],
+    active_curve: list[tuple[pd.Timestamp, float]],
+) -> dict:
+    start_date = dates[1]
+    end_date = dates[-1]
+    bench_start = _open_price(data, BENCHMARK, start_date)
+    bench_end = _close_price(data, BENCHMARK, end_date)
+    if bench_start is None or bench_end is None:
+        raise RuntimeError("missing benchmark start/end prices")
+    benchmark_final = INITIAL_CAPITAL / bench_start * bench_end
+    active_final = active_curve[-1][1]
+    values = pd.Series(
+        [value for _, value in active_curve],
+        index=[date for date, _ in active_curve],
+        dtype=float,
+    )
+    drawdown = values / values.cummax() - 1.0
+    buy_trades = [trade for trade in trades if trade["action"] == "buy"]
+    sells = [trade for trade in trades if trade["action"] == "sell"]
+    return {
+        "label": label,
+        "start": start_date.date().isoformat(),
+        "end": end_date.date().isoformat(),
+        "trading_days": len(dates) - 1,
+        "benchmark_final": benchmark_final,
+        "benchmark_return_pct": (benchmark_final / INITIAL_CAPITAL - 1) * 100,
+        "active_final": active_final,
+        "active_return_pct": (active_final / INITIAL_CAPITAL - 1) * 100,
+        "excess_pct": (active_final / benchmark_final - 1) * 100,
+        "max_drawdown_pct": drawdown.min() * 100,
+        "buys": len(buy_trades),
+        "sells": len(sells),
+        "open_positions": len(holdings),
+    }
+
+
+def _run_variant(label: str, weights: dict[str, float]) -> dict:
+    signals = _signals_from_facts(_WORKER_BASE_SIGNALS, weights)
+    active_curve, trades, holdings = run_backtest(
+        _WORKER_DATA, signals, _WORKER_NAMES, _WORKER_DATES
+    )
+    summary = _summarize(
+        label, _WORKER_DATES, _WORKER_DATA, trades, holdings, active_curve
+    )
+    summary["weights"] = ",".join(f"{key}={weights[key]:g}" for key in WEIGHT_KEYS)
+    return summary
+
+
+def _init_worker(data, signal_facts, names, dates):
+    global _WORKER_DATA, _WORKER_BASE_SIGNALS, _WORKER_NAMES, _WORKER_DATES
+    _WORKER_DATA = data
+    _WORKER_BASE_SIGNALS = signal_facts
+    _WORKER_NAMES = names
+    _WORKER_DATES = dates
+
+
+def _weight_variants() -> list[tuple[str, dict[str, float]]]:
+    variants = [("baseline", DEFAULT_WEIGHTS.copy())]
+    sweep_keys = (
+        "above_all",
+        "new_high",
+        "trend",
+        "volume",
+        "obv",
+        "relative_strength",
+        "macd",
+    )
+    for multipliers in itertools.product(SWEEP_MULTIPLIERS, repeat=len(sweep_keys)):
+        weights = DEFAULT_WEIGHTS.copy()
+        for key, multiplier in zip(sweep_keys, multipliers):
+            weights[key] = DEFAULT_WEIGHTS[key] * multiplier
+        label = "grid_" + "_".join(f"{key}{multiplier:g}" for key, multiplier in zip(sweep_keys, multipliers))
+        if weights == DEFAULT_WEIGHTS:
+            continue
+        variants.append((label, weights))
+    return variants
+
+
+def _print_summary(summary: dict) -> None:
+    print(
+        f"{summary['label']} period={summary['start']}..{summary['end']} "
+        f"trading_days={summary['trading_days']}"
+    )
+    print(
+        f"benchmark={BENCHMARK} final={summary['benchmark_final']:.0f} "
+        f"return={summary['benchmark_return_pct']:.2f}%"
+    )
+    print(
+        f"active final={summary['active_final']:.0f} "
+        f"return={summary['active_return_pct']:.2f}% "
+        f"excess={summary['excess_pct']:.2f}% "
+        f"max_dd={summary['max_drawdown_pct']:.2f}%"
+    )
+    print(
+        f"buys={summary['buys']} sells={summary['sells']} "
+        f"open_positions={summary['open_positions']}"
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--period", default="3y")
     parser.add_argument("--days", type=int, default=252)
+    parser.add_argument("--start")
+    parser.add_argument("--end")
     parser.add_argument("--watchlist", default="data/watchlist.csv")
+    parser.add_argument("--sweep", action="store_true")
+    parser.add_argument("--jobs", type=int, default=1)
+    parser.add_argument("--top", type=int, default=10)
+    parser.add_argument("--output-csv")
     args = parser.parse_args()
 
     names = _load_tw_symbols(Path(args.watchlist))
     symbols = sorted(set(names) | {BENCHMARK})
-    data = _download(symbols, args.period)
+    data = (
+        _download_range(symbols, args.start, args.end)
+        if args.start or args.end
+        else _download(symbols, args.period)
+    )
     if BENCHMARK not in data:
         raise RuntimeError(f"missing benchmark data: {BENCHMARK}")
     missing = sorted(set(names) - set(data))
     names = {symbol: name for symbol, name in names.items() if symbol in data}
     benchmark_ind = _indicators_for_frame(data[BENCHMARK])
     all_dates = sorted(data[BENCHMARK].index)
-    backtest_dates = all_dates[-args.days - 1 :]
-    signals = _build_signals({symbol: data[symbol] for symbol in names}, benchmark_ind)
+    backtest_dates = _date_slice(all_dates, args.start, args.end, args.days)
+    signal_data = {symbol: data[symbol] for symbol in names}
+    signal_facts = _build_signal_facts(signal_data, benchmark_ind)
+    signals = _signals_from_facts(signal_facts)
     active_curve, trades, holdings = run_backtest(data, signals, names, backtest_dates)
 
-    start_date = backtest_dates[1]
-    end_date = backtest_dates[-1]
-    bench_start = _open_price(data, BENCHMARK, start_date)
-    bench_end = _close_price(data, BENCHMARK, end_date)
-    benchmark_final = INITIAL_CAPITAL / bench_start * bench_end
-    active_final = active_curve[-1][1]
     buy_trades = [trade for trade in trades if trade["action"] == "buy"]
-    sells = [trade for trade in trades if trade["action"] == "sell"]
-    print(f"period={start_date.date()}..{end_date.date()} trading_days={len(backtest_dates) - 1}")
+    summary = _summarize("baseline", backtest_dates, data, trades, holdings, active_curve)
+    _print_summary(summary)
     print(f"symbols_loaded={len(names)} missing={len(missing)}")
     if missing:
         print("missing_symbols=" + ",".join(missing[:30]))
-    print(
-        f"benchmark={BENCHMARK} final={benchmark_final:.0f} "
-        f"return={(benchmark_final / INITIAL_CAPITAL - 1) * 100:.2f}%"
-    )
-    print(
-        f"active final={active_final:.0f} "
-        f"return={(active_final / INITIAL_CAPITAL - 1) * 100:.2f}%"
-    )
-    print(f"excess={(active_final / benchmark_final - 1) * 100:.2f}%")
-    print(
-        f"buys={len(buy_trades)} sells={len(sells)} "
-        f"open_positions={len(holdings)}"
-    )
     print("first_buys:")
     for trade in buy_trades[:20]:
         print(
@@ -395,6 +636,40 @@ def main() -> None:
             f"score={trade.get('score', 0):.1f}/{trade.get('max_score', 0):.1f} "
             f"ratio={trade.get('ratio', 0) * 100:.1f}%"
         )
+    if args.sweep:
+        variants = _weight_variants()
+        if args.jobs > 1:
+            with ProcessPoolExecutor(
+                max_workers=args.jobs,
+                initializer=_init_worker,
+                initargs=(data, signal_facts, names, backtest_dates),
+            ) as executor:
+                rows = list(
+                    executor.map(
+                        _run_variant, [v[0] for v in variants], [v[1] for v in variants]
+                    )
+                )
+        else:
+            _init_worker(data, signal_facts, names, backtest_dates)
+            rows = [_run_variant(label, weights) for label, weights in variants]
+        frame = pd.DataFrame(rows).sort_values(
+            ["excess_pct", "active_return_pct"], ascending=False
+        )
+        print("sweep_top:")
+        columns = [
+            "label",
+            "active_return_pct",
+            "benchmark_return_pct",
+            "excess_pct",
+            "max_drawdown_pct",
+            "buys",
+            "sells",
+            "open_positions",
+            "weights",
+        ]
+        print(frame[columns].head(args.top).to_string(index=False))
+        if args.output_csv:
+            frame.to_csv(args.output_csv, index=False)
 
 
 if __name__ == "__main__":
