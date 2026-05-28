@@ -16,6 +16,42 @@ Start here, then open only the smallest doc that matches the task:
   `screener/score.py` only if implementation details are needed.
 - Dashboard layout details: read `streamlit_app.py` only for UI behavior changes.
 
+## Cost-Aware Collaboration
+
+Prefer this workflow to keep agent work focused and avoid unnecessary tool,
+token, and runtime cost:
+
+1. Discussion stage: do not read large files or run tools unless needed to
+   answer a concrete question.
+2. Before implementation: translate the user's idea into this shape and ask for
+   missing details when unclear:
+
+   ```text
+   Goal:
+   - Concrete result to achieve.
+
+   Context:
+   - Relevant repo, paths, tickets, prior PRs, or previous decisions.
+   - Known constraints.
+
+   Acceptance criteria:
+   - Required tests.
+   - Expected UI, API, data, or behavior outcome.
+   - Areas that must not change.
+
+   Validation:
+   - Commands to run.
+   - Screenshots, logs, or PR/commit summary to attach.
+   ```
+
+3. Confirm the scope before broad edits or long-running work if the goal,
+   acceptance criteria, or validation are ambiguous.
+4. Implementation stage: read only the files needed for the agreed scope.
+5. Validation stage: run targeted tests first; run full `ruff check .` and
+   `pytest` before committing or when the blast radius is broad.
+6. Start a new conversation for unrelated new topics so old context does not
+   inflate cost or steer the task incorrectly.
+
 ## Project Shape
 
 This repo is a personal daily stock screener. GitHub Actions refreshes signal
