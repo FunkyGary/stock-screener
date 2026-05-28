@@ -18,6 +18,46 @@ FOREIGN_PCT_OF_VOLUME = 0.05
 FOREIGN_BUY_STREAK = 3
 VOLUME_UP_RATIO = 1.2
 
+DEFAULT_RULE_WEIGHTS = {
+    "above_all": 3.0,
+    "new_high": 1.5,
+    "trend": 1.5,
+    "volume": 1.5,
+    "obv": 1.0,
+    "relative_strength": 2.0,
+    "macd": 1.5,
+}
+
+STRATEGY_RULE_WEIGHTS = {
+    "bear_crash": {
+        "above_all": 1.5,
+        "new_high": 2.25,
+        "trend": 1.5,
+        "volume": 1.5,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 0.75,
+    },
+    "range": {
+        "above_all": 4.5,
+        "new_high": 0.75,
+        "trend": 2.25,
+        "volume": 1.5,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 1.5,
+    },
+    "bull": {
+        "above_all": 4.5,
+        "new_high": 0.75,
+        "trend": 0.75,
+        "volume": 2.25,
+        "obv": 0.5,
+        "relative_strength": 3.0,
+        "macd": 1.5,
+    },
+}
+
 
 @dataclass
 class Reason:
@@ -33,6 +73,12 @@ class ScoreResult:
     score: float
     max_score: float
     reasons: list[Reason]
+
+
+def strategy_rule_weights(strategy: str | None = None) -> dict[str, float]:
+    if not strategy:
+        return DEFAULT_RULE_WEIGHTS
+    return STRATEGY_RULE_WEIGHTS.get(strategy, DEFAULT_RULE_WEIGHTS)
 
 
 def _parse_iso_datetime(value: str | None) -> datetime | None:
@@ -120,10 +166,12 @@ def score(
     chip: Optional[ChipSnapshot] = None,
     benchmark_return_20d: Optional[float] = None,
     sector: Optional[SectorSnapshot] = None,
+    strategy: str | None = None,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
     is_tw = market.lower() == "tw"
+    weights = strategy_rule_weights(strategy if is_tw else None)
 
     if _has_prev_all_ma_data(ind) and all(
         v is not None for v in (ind.ma5, ind.ma10, ind.ma20, ind.ma240)
@@ -137,7 +185,7 @@ def score(
                     f"close={ind.close:.2f} MA5={ind.ma5:.2f} "
                     f"MA10={ind.ma10:.2f} MA20={ind.ma20:.2f} MA240={ind.ma240:.2f}"
                 ),
-                weight=3.0,
+                weight=weights["above_all"],
             )
         )
 
@@ -148,7 +196,7 @@ def score(
                 rule="20日收盤新高",
                 passed=passed,
                 detail=f"close={ind.close:.2f} prev_20d_high={ind.prev_high_20d:.2f}",
-                weight=1.5,
+                weight=weights["new_high"],
             )
         )
 
@@ -159,7 +207,7 @@ def score(
                 rule="短線趨勢確認 (close > MA5 且 MA5 > MA20)",
                 passed=passed,
                 detail=(f"close={ind.close:.2f} MA5={ind.ma5:.2f} MA20={ind.ma20:.2f}"),
-                weight=1.5,
+                weight=weights["trend"],
             )
         )
 
@@ -170,7 +218,7 @@ def score(
                 rule=f"放量上漲 (vol>{VOLUME_UP_RATIO:.1f}x & up day)",
                 passed=passed,
                 detail=f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%",
-                weight=1.5,
+                weight=weights["volume"],
             )
         )
 
@@ -181,7 +229,7 @@ def score(
                 rule="OBV 5d > OBV 20d",
                 passed=passed,
                 detail=f"OBV_MA5={ind.obv_ma5:.0f} OBV_MA20={ind.obv_ma20:.0f}",
-                weight=1.0,
+                weight=weights["obv"],
             )
         )
 
@@ -195,7 +243,7 @@ def score(
                     f"stock_20d={ind.return_20d * 100:+.2f}% "
                     f"benchmark_20d={benchmark_return_20d * 100:+.2f}%"
                 ),
-                weight=2.0,
+                weight=weights["relative_strength"],
             )
         )
 
@@ -210,6 +258,9 @@ def score(
         )
         above_signal = ind.macd > ind.macd_signal
         earned = 1.5 if crossed_today else 1.0 if above_signal else 0.0
+        macd_base_weight = DEFAULT_RULE_WEIGHTS["macd"]
+        macd_weight = weights["macd"]
+        earned = earned / macd_base_weight * macd_weight
         if crossed_today:
             rule = "MACD 今日上穿 signal (golden cross)"
         elif above_signal:
@@ -224,7 +275,7 @@ def score(
                     f"macd={ind.macd:.3f} signal={ind.macd_signal:.3f} "
                     f"(prev macd={ind.macd_prev:.3f} signal={ind.macd_signal_prev:.3f})"
                 ),
-                weight=1.5,
+                weight=macd_weight,
                 score=earned,
             )
         )

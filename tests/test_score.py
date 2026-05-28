@@ -89,6 +89,45 @@ def test_tw_max_score_is_seventeen_with_chip():
     assert result.score == 14.5
 
 
+def test_tw_range_strategy_uses_balanced_weights():
+    result = score(
+        "tw",
+        _ind(),
+        analyst=None,
+        prev_target_mean=None,
+        chip=_chip(),
+        benchmark_return_20d=0.05,
+        strategy="range",
+    )
+
+    above = next(r for r in result.reasons if r.rule.startswith("今日站上"))
+    new_high = next(r for r in result.reasons if r.rule == "20日收盤新高")
+    trend = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
+    assert above.weight == 4.5
+    assert new_high.weight == 0.75
+    assert trend.weight == 2.25
+    assert result.max_score == 17.0
+
+
+def test_tw_bear_crash_strategy_reduces_technical_max_score():
+    result = score(
+        "tw",
+        _ind(),
+        analyst=None,
+        prev_target_mean=None,
+        chip=_chip(),
+        benchmark_return_20d=0.05,
+        strategy="bear_crash",
+    )
+
+    above = next(r for r in result.reasons if r.rule.startswith("今日站上"))
+    macd = next(r for r in result.reasons if r.rule.startswith("MACD"))
+    assert above.weight == 1.5
+    assert macd.weight == 0.75
+    assert macd.score == 0.75
+    assert result.max_score == 14.0
+
+
 def test_tw_without_chip_still_emits_rules_but_zeroed():
     # chip data unavailable: rules emit, both fail -> max_score includes chip weights.
     result = score("tw", _ind(), analyst=None, prev_target_mean=None, chip=None)

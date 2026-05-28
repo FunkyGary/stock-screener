@@ -52,11 +52,21 @@ Top level:
 - `market_regime`: index-level trend context.
 - `signals`: object keyed by symbol.
 
+`market_regime.markets.tw.strategy` records the 0050-based TW scoring regime:
+
+- `strategy`: `bear_crash`, `range`, or `bull`
+- `label`, `reason`
+- 0050 metrics: `close`, `ma20`, `ma60`, `ma240`, `return_60d`,
+  `drawdown_120d`
+- `thresholds`: currently 120-day drawdown ≤ -12% for bear/crash and
+  60-day return > 3% for bull.
+
 Signal record:
 
 - identity: `symbol`, `market`, `name`, `tradingview_symbol`, `status`, `mode`
 - score fields: `score`, `max_score`, `reasons`
 - data blobs: `indicators`, `analyst`, `chip`, `sector`
+- TW scoring context: `score_regime`
 - failed fetch: `status: "fetch_failed"` plus `error`
 
 Reason record:

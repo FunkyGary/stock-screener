@@ -22,21 +22,33 @@ tests/               Unit tests for indicators + scoring
 
 ## Scoring
 
-Rules use weighted points. Missing data skips the affected rule.
+Rules use weighted points. Missing data skips the affected rule. TW technical
+weights switch by market regime; US uses the default weights.
 
-| Rule | Weight | TW | US |
-|---|---:|:-:|:-:|
-| 今日站上全均線 | 3.0 | yes | yes |
-| 20日收盤新高 | 1.5 | yes | yes |
-| 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | yes | yes |
-| 放量上漲 (vol > 1.2x and up day) | 1.5 | yes | yes |
-| OBV 5d > OBV 20d | 1.0 | yes | yes |
-| 相對強度 20日 > 大盤 | 2.0 | yes | yes |
-| MACD 今日上穿 / 位於 signal 上方 | 1.5 / 1.0 | yes | yes |
-| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | yes | yes |
-| 強勢板塊延續 | 1.5 | yes | yes |
-| 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | yes | — |
-| 外資大買 (>5% volume or 3-day streak) | 1.0 | yes | — |
+| Rule | Default | TW bear/crash | TW range | TW bull | US |
+|---|---:|---:|---:|---:|---:|
+| 今日站上全均線 | 3.0 | 1.5 | 4.5 | 4.5 | 3.0 |
+| 20日收盤新高 | 1.5 | 2.25 | 0.75 | 0.75 | 1.5 |
+| 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | 1.5 | 2.25 | 0.75 | 1.5 |
+| 放量上漲 (vol > 1.2x and up day) | 1.5 | 1.5 | 1.5 | 2.25 | 1.5 |
+| OBV 5d > OBV 20d | 1.0 | 0.5 | 0.5 | 0.5 | 1.0 |
+| 相對強度 20日 > 大盤 | 2.0 | 1.0 | 1.0 | 3.0 | 2.0 |
+| MACD 今日上穿 / 位於 signal 上方 | 1.5 / 1.0 | 0.75 / 0.5 | 1.5 / 1.0 | 1.5 / 1.0 | 1.5 / 1.0 |
+| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | 2.0 | 2.0 | 2.0 | 2.0 |
+| 強勢板塊延續 | 1.5 | 1.5 | 1.5 | 1.5 | 1.5 |
+| 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | 2.0 / 1.5 | 2.0 / 1.5 | 2.0 / 1.5 | — |
+| 外資大買 (>5% volume or 3-day streak) | 1.0 | 1.0 | 1.0 | 1.0 | — |
+
+TW regime selection uses 0050:
+
+- bear/crash: 120-day drawdown ≤ -12%.
+- bull: close > MA20 and MA60, MA60 > MA240, and 60-day return > 3%.
+- range: fallback. This keeps high exposure unless there is a meaningful
+  drawdown.
+
+Sector, target-price, and chip weights are intentionally unchanged because the
+current historical backtests did not include reliable historical daily inputs for
+those datasets.
 
 Rules removed from scoring: close within 2% of 20-day high, and latest rating
 is Buy or Strong Buy.

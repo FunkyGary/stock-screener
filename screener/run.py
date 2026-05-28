@@ -138,6 +138,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
     out: dict[str, dict] = {}
     benchmark_return_20d = None
     benchmark_ohlcv = None
+    score_regime = None
     benchmark_symbol = BENCHMARK_SYMBOLS.get(market)
     if benchmark_symbol:
         try:
@@ -145,6 +146,10 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 benchmark_symbol, intraday=mode == "intraday"
             )
             benchmark_return_20d = indicators.compute(benchmark_ohlcv.df).return_20d
+            if market == "tw":
+                score_regime = market_regime_mod.classify_tw_strategy_from_ohlcv(
+                    benchmark_ohlcv.df
+                )
         except Exception as exc:
             logger.warning("benchmark fetch failed for %s: %s", benchmark_symbol, exc)
 
@@ -283,6 +288,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
             chip=chip_for_score,
             benchmark_return_20d=benchmark_return_20d,
             sector=sector_snap,
+            strategy=(score_regime or {}).get("strategy"),
         )
 
         record.update(
@@ -295,6 +301,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "analyst": analyst_blob,
                 "chip": chip_blob,
                 "sector": sector_blob,
+                "score_regime": score_regime,
                 "mode": mode,
             }
         )

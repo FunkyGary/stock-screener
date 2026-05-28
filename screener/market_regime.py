@@ -6,6 +6,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from typing import Any
 
+import pandas as pd
+
 from . import fetch, indicators
 
 
@@ -27,6 +29,13 @@ INDEXES = {
     ],
 }
 
+TW_STRATEGY_BENCHMARK = MarketIndex("0050.TW", "元大台灣50")
+STRATEGY_LABELS = {
+    "bear_crash": "空頭 / 急跌",
+    "range": "區間震盪",
+    "bull": "多頭",
+}
+
 
 def _as_of(df) -> str | None:
     if df.empty:
@@ -42,6 +51,79 @@ def _above_all_mas(snapshot: indicators.IndicatorSnapshot) -> bool:
         value is not None and snapshot.close > value
         for value in (snapshot.ma5, snapshot.ma10, snapshot.ma20, snapshot.ma240)
     )
+
+
+def _safe_last(series: pd.Series) -> float | None:
+    if series.empty:
+        return None
+    value = series.iloc[-1]
+    if pd.isna(value):
+        return None
+    return float(value)
+
+
+def classify_tw_strategy_from_ohlcv(df: pd.DataFrame) -> dict[str, Any]:
+    close = df["Close"].astype(float)
+    current = _safe_last(close)
+    ma20 = _safe_last(close.rolling(20).mean())
+    ma60 = _safe_last(close.rolling(60).mean())
+    ma240 = _safe_last(close.rolling(240).mean())
+    close_60d_ago = close.iloc[-61] if len(close) >= 61 else None
+    high_120d = _safe_last(close.rolling(120).max())
+    return_60d = (
+        float(current) / float(close_60d_ago) - 1.0
+        if current is not None and close_60d_ago is not None and close_60d_ago > 0
+        else None
+    )
+    drawdown_120d = (
+        float(current) / high_120d - 1.0
+        if current is not None and high_120d is not None and high_120d > 0
+        else None
+    )
+
+    if drawdown_120d is not None and drawdown_120d <= -0.12:
+        strategy = "bear_crash"
+        reason = "0050 距 120 日高點回撤達 12% 以上，保留現金、降低追價。"
+    elif (
+        current is not None
+        and ma20 is not None
+        and ma60 is not None
+        and ma240 is not None
+        and return_60d is not None
+        and current > ma20
+        and current > ma60
+        and ma60 > ma240
+        and return_60d > 0.03
+    ):
+        strategy = "bull"
+        reason = "0050 位於 MA20/MA60 上方，MA60 高於年線，且 60 日報酬大於 3%。"
+    else:
+        strategy = "range"
+        reason = "未達急跌或強多頭條件，維持高持股的區間震盪權重。"
+
+    return {
+        "strategy": strategy,
+        "label": STRATEGY_LABELS[strategy],
+        "reason": reason,
+        "benchmark": TW_STRATEGY_BENCHMARK.symbol,
+        "benchmark_name": TW_STRATEGY_BENCHMARK.name,
+        "as_of": _as_of(df),
+        "close": current,
+        "ma20": ma20,
+        "ma60": ma60,
+        "ma240": ma240,
+        "return_60d": return_60d,
+        "drawdown_120d": drawdown_120d,
+        "thresholds": {
+            "bear_drawdown_120d": -0.12,
+            "bull_return_60d": 0.03,
+        },
+    }
+
+
+def build_tw_strategy_snapshot() -> dict[str, Any]:
+    ohlcv = fetch.fetch_ohlcv(TW_STRATEGY_BENCHMARK.symbol)
+    return classify_tw_strategy_from_ohlcv(ohlcv.df)
 
 
 def build_index_snapshot(index: MarketIndex) -> dict[str, Any]:
@@ -81,6 +163,16 @@ def build_market_regime() -> dict[str, Any]:
             index_rows.append(row)
 
         markets[market] = {"indexes": index_rows}
+
+    try:
+        markets["tw"]["strategy"] = build_tw_strategy_snapshot()
+    except Exception as exc:
+        markets["tw"]["strategy"] = {
+            "strategy": "range",
+            "label": STRATEGY_LABELS["range"],
+            "status": "fetch_failed",
+            "error": str(exc),
+        }
 
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
