@@ -408,7 +408,7 @@ def _market_regime_item(row: dict) -> str:
 
 def _strategy_weight_summary(strategy: str | None) -> str:
     summaries = {
-        "bear_crash": "空頭/急跌權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
+        "bear_crash": "空頭/急跌權重：新高 2.25、目標價 1、板塊 0.75、投信 1、外資 0.5",
         "range": "區間權重：站上全均線 4.5、短線趨勢 2.25、新高 0.75、相對強度 1",
         "bull": "多頭權重：站上全均線 4.5、放量 2.25、相對強度 3、新高 0.75",
     }

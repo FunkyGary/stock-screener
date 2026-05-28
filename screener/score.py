@@ -26,6 +26,10 @@ DEFAULT_RULE_WEIGHTS = {
     "obv": 1.0,
     "relative_strength": 2.0,
     "macd": 1.5,
+    "target": 2.0,
+    "sector": SECTOR_MAX_SCORE,
+    "trust": 2.0,
+    "foreign": 1.0,
 }
 
 STRATEGY_RULE_WEIGHTS = {
@@ -37,6 +41,10 @@ STRATEGY_RULE_WEIGHTS = {
         "obv": 0.5,
         "relative_strength": 1.0,
         "macd": 0.75,
+        "target": 1.0,
+        "sector": 0.75,
+        "trust": 1.0,
+        "foreign": 0.5,
     },
     "range": {
         "above_all": 4.5,
@@ -46,6 +54,10 @@ STRATEGY_RULE_WEIGHTS = {
         "obv": 0.5,
         "relative_strength": 1.0,
         "macd": 1.5,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
     },
     "bull": {
         "above_all": 4.5,
@@ -55,6 +67,10 @@ STRATEGY_RULE_WEIGHTS = {
         "obv": 0.5,
         "relative_strength": 3.0,
         "macd": 1.5,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
     },
 }
 
@@ -295,12 +311,13 @@ def score(
                 rule="法人目標價上調且高於現價10%（7日內）",
                 passed=passed_target,
                 detail=detail,
-                weight=2.0,
+                weight=weights["target"],
             )
         )
 
     if sector is not None:
-        earned_sector = sector_score(sector.strong_days)
+        sector_weight = weights["sector"]
+        earned_sector = sector_score(sector.strong_days) / SECTOR_MAX_SCORE * sector_weight
         passed_sector = earned_sector > 0
         detail = (
             f"{sector.group_name}: 連續強勢 {sector.strong_days} 日, "
@@ -316,7 +333,7 @@ def score(
                 rule="強勢板塊延續",
                 passed=passed_sector,
                 detail=detail,
-                weight=SECTOR_MAX_SCORE,
+                weight=sector_weight,
                 score=earned_sector,
             )
         )
@@ -329,7 +346,14 @@ def score(
             chip is not None and not trust_first_day and trust_streak >= TRUST_BUY_STREAK
         )
         passed_trust = trust_first_day or passed_trust_streak
-        earned_trust = 2.0 if trust_first_day else 1.5 if passed_trust_streak else 0.0
+        trust_weight = weights["trust"]
+        earned_trust = (
+            trust_weight
+            if trust_first_day
+            else 1.5 / DEFAULT_RULE_WEIGHTS["trust"] * trust_weight
+            if passed_trust_streak
+            else 0.0
+        )
         trust_rule = (
             "投信買進第一天"
             if trust_first_day
@@ -344,7 +368,7 @@ def score(
                     if chip is not None
                     else "chip data unavailable"
                 ),
-                weight=2.0,
+                weight=trust_weight,
                 score=earned_trust,
             )
         )
@@ -365,7 +389,7 @@ def score(
                 rule=f"外資大買 (>5% 量 或 連{FOREIGN_BUY_STREAK}日買超)",
                 passed=passed_foreign,
                 detail=detail,
-                weight=1.0,
+                weight=weights["foreign"],
             )
         )
 

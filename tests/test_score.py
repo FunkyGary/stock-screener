@@ -125,7 +125,14 @@ def test_tw_bear_crash_strategy_reduces_technical_max_score():
     assert above.weight == 1.5
     assert macd.weight == 0.75
     assert macd.score == 0.75
-    assert result.max_score == 14.0
+    target = next(r for r in result.reasons if "目標價" in r.rule)
+    trust = next(r for r in result.reasons if r.rule.startswith("投信"))
+    foreign = next(r for r in result.reasons if r.rule.startswith("外資"))
+    assert target.weight == 1.0
+    assert trust.weight == 1.0
+    assert trust.score == 0.75
+    assert foreign.weight == 0.5
+    assert result.max_score == 11.5
 
 
 def test_tw_without_chip_still_emits_rules_but_zeroed():
@@ -378,3 +385,36 @@ def test_strong_sector_continuation_scores_partial_weight():
     assert rule.passed is True
     assert rule.weight == 1.5
     assert rule.score == 1.0
+
+
+def test_bear_crash_strategy_reduces_sector_score_proportionally():
+    sector = SectorSnapshot(
+        sector_official="半導體業",
+        industry_group="半導體業",
+        industry="半導體業",
+        source="test",
+        group_name="半導體業",
+        member_count=5,
+        strong_days=2,
+        return_1d=0.03,
+        return_5d=0.08,
+        benchmark_return_1d=0.01,
+        benchmark_return_5d=0.02,
+        breadth_above_ma5=0.8,
+        breadth_up_day=0.8,
+    )
+
+    result = score(
+        "tw",
+        _ind(),
+        None,
+        None,
+        chip=_chip(),
+        sector=sector,
+        strategy="bear_crash",
+    )
+
+    rule = next(r for r in result.reasons if r.rule == "強勢板塊延續")
+    assert rule.passed is True
+    assert rule.weight == 0.75
+    assert rule.score == 0.5
