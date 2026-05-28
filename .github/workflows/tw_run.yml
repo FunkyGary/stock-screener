@@ -16,11 +16,12 @@ on:
         options: [intraday, eod]
         default: eod
 
-# Per-market concurrency so a long-running US run never blocks a scheduled
-# TW trigger. Cross-market JSON commit conflicts are handled by the
-# pull-rebase-retry loop in the commit step below.
+# Shared concurrency across TW and US: both workflows write the same
+# data/latest_signals.json, so when GitHub delays one run into the other's
+# window (it happens) pull-rebase-autostash can leave conflict markers in
+# the JSON. Serialize all screener runs to eliminate that race.
 concurrency:
-  group: tw-screener
+  group: screener
   cancel-in-progress: false
 
 permissions:
@@ -56,14 +57,21 @@ jobs:
           echo "Resolved mode: $MODE"
       - name: Run TW screener
         run: uv run python -m screener.run --market tw --mode "${{ steps.mode.outputs.mode }}"
-      - name: Commit results (with rebase retry)
+      - name: Commit results (overlay-and-push retry)
         env:
           MODE: ${{ steps.mode.outputs.mode }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Stash our generated output outside the worktree so we can re-overlay
+          # it after each fetch. This replaces pull-rebase-autostash, whose
+          # stash-pop step can leave conflict markers in the JSON when remote
+          # touched the same file.
+          cp data/latest_signals.json /tmp/our_signals.json
           for attempt in 1 2 3; do
-            git pull --rebase --autostash
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/our_signals.json data/latest_signals.json
             git add data/latest_signals.json
             if git diff --staged --quiet; then
               echo "No changes to commit"
@@ -75,7 +83,6 @@ jobs:
               exit 0
             fi
             echo "Push failed on attempt $attempt; backing off"
-            git reset --soft HEAD~1
             sleep $((attempt * 3))
           done
           echo "Failed to push after 3 attempts" >&2
