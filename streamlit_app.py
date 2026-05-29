@@ -869,6 +869,27 @@ def render() -> None:
             border-color: transparent;
             background: rgba(49, 51, 63, 0.06);
         }
+        @media (min-width: 900px) {
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child {
+                position: sticky;
+                top: 0.75rem;
+                align-self: flex-start;
+                max-height: calc(100vh - 1.5rem);
+                overflow-y: auto;
+                padding-right: 0.35rem;
+                scrollbar-gutter: stable;
+            }
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar {
+                width: 0.45rem;
+            }
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar-thumb {
+                background: rgba(120, 126, 140, 0.35);
+                border-radius: 999px;
+            }
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar-thumb:hover {
+                background: rgba(120, 126, 140, 0.55);
+            }
+        }
         </style>
         """,
         unsafe_allow_html=True,
