@@ -56,6 +56,19 @@ TW_STRATEGY_RULE_WEIGHTS = {
         "trust": 1.0,
         "foreign": 0.5,
     },
+    "bear_downtrend": {
+        "above_all": 1.5,
+        "new_high": 2.25,
+        "trend": 1.5,
+        "volume": 1.5,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 0.75,
+        "target": 1.0,
+        "sector": 0.75,
+        "trust": 1.0,
+        "foreign": 0.5,
+    },
     "range": {
         "above_all": 4.5,
         "new_high": 0.75,
@@ -86,6 +99,19 @@ TW_STRATEGY_RULE_WEIGHTS = {
 
 US_STRATEGY_RULE_WEIGHTS = {
     "bear_crash": {
+        "above_all": 1.5,
+        "new_high": 2.25,
+        "trend": 0.75,
+        "volume": 0.75,
+        "obv": 0.5,
+        "relative_strength": 1.0,
+        "macd": 0.75,
+        "target": 2.0,
+        "sector": SECTOR_MAX_SCORE,
+        "trust": 2.0,
+        "foreign": 1.0,
+    },
+    "bear_downtrend": {
         "above_all": 1.5,
         "new_high": 2.25,
         "trend": 0.75,

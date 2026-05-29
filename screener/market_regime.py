@@ -33,6 +33,7 @@ TW_STRATEGY_BENCHMARK = MarketIndex("0050.TW", "元大台灣50")
 US_STRATEGY_BENCHMARK = MarketIndex("SPY", "SPDR S&P 500 ETF")
 STRATEGY_LABELS = {
     "bear_crash": "空頭 / 急跌",
+    "bear_downtrend": "空頭 / 震盪走低",
     "range": "區間震盪",
     "bull": "多頭",
 }
@@ -90,6 +91,18 @@ def _classify_strategy_from_ohlcv(
         reason = f"{benchmark.symbol} 距 120 日高點回撤達 12% 以上，保留現金、降低追價。"
     elif (
         current is not None
+        and ma60 is not None
+        and ma240 is not None
+        and current < ma240
+        and ma60 < ma240
+    ):
+        strategy = "bear_downtrend"
+        reason = (
+            f"{benchmark.symbol} 低於年線且 MA60 低於年線，"
+            "屬於開高走低後的空頭震盪，降低主動加碼。"
+        )
+    elif (
+        current is not None
         and ma20 is not None
         and ma60 is not None
         and ma240 is not None
@@ -125,6 +138,8 @@ def _classify_strategy_from_ohlcv(
         "drawdown_120d": drawdown_120d,
         "thresholds": {
             "bear_drawdown_120d": -0.12,
+            "bear_downtrend_close_below_ma240": True,
+            "bear_downtrend_ma60_below_ma240": True,
             "bull_return_60d": 0.03,
         },
     }

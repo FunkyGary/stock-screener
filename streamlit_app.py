@@ -31,6 +31,9 @@ LOCAL_TW_TARGET_EVENTS = Path(__file__).parent / "data" / "tw_target_events.json
 
 TOP_PICK_MIN_SCORE_RATIO = 0.6
 SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.5
+SPECIAL_ATTENTION_MIN_SCORE_RATIOS = {
+    "bear_downtrend": 0.7,
+}
 CHART_HEIGHT_DESKTOP = 620
 CHART_HEIGHT_MOBILE = 380
 VIEWPORT_BREAKPOINT_PX = 900  # ≥ this → desktop
@@ -300,9 +303,17 @@ def _has_recent_research_report(row: dict, days: int = 7) -> bool:
 
 
 def _is_special_attention(row: dict) -> bool:
+    min_ratio = _special_attention_min_score_ratio(row)
     return (
         _is_newly_above_all_mas(row)
-        and _score_ratio(row) >= SPECIAL_ATTENTION_MIN_SCORE_RATIO
+        and _score_ratio(row) >= min_ratio
+    )
+
+
+def _special_attention_min_score_ratio(row: dict) -> float:
+    strategy = (row.get("score_regime") or {}).get("strategy")
+    return SPECIAL_ATTENTION_MIN_SCORE_RATIOS.get(
+        strategy, SPECIAL_ATTENTION_MIN_SCORE_RATIO
     )
 
 
@@ -338,6 +349,11 @@ def _downside_attention_reason(row: dict) -> str | None:
         prev_5d_low = ind.get("prev_5d_low")
         if prev_5d_low is not None and close < prev_5d_low:
             return "空頭：跌破近 5 日低點"
+        return None
+
+    if strategy == "bear_downtrend":
+        if _score_ratio(row) < 0.20 and _sell_pressure_passed(row):
+            return "震盪走低：賣壓扣分後 < 20%"
         return None
 
     if strategy == "bull":
@@ -447,12 +463,14 @@ def _strategy_weight_summary(strategy: str | None, market: str | None = None) ->
     if market == "us":
         summaries = {
             "bear_crash": "美股空頭/急跌權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
+            "bear_downtrend": "美股空頭/震盪走低權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
             "range": "美股區間權重：站上全均線 3、放量 2.25、短線趨勢 0.75、相對強度 1",
             "bull": "美股多頭權重：站上全均線 4.5、相對強度 3、新高 0.75、放量 0.75",
         }
     else:
         summaries = {
             "bear_crash": "台股空頭/急跌權重：新高 2.25、目標價 1、板塊 0.75、投信 1、外資 0.5",
+            "bear_downtrend": "台股空頭/震盪走低權重：進場門檻 70%、新高 2.25、目標價 1、板塊 0.75、投信 1、外資 0.5",
             "range": "台股區間權重：站上全均線 4.5、短線趨勢 2.25、新高 0.75、相對強度 1",
             "bull": "台股多頭權重：站上全均線 4.5、放量 2.25、相對強度 3、新高 0.75",
         }
@@ -802,7 +820,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     sections = [
         (
             "special",
-            f"特別注意：今日站上全均線，分數 ≥ {int(SPECIAL_ATTENTION_MIN_SCORE_RATIO * 100)}% ({len(special)})",
+            f"特別注意：今日站上全均線，分數達當前策略門檻 ({len(special)})",
             special,
         ),
         ("research", f"研究報告 7日內 ({len(research)})", research),

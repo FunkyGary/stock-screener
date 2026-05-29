@@ -25,19 +25,19 @@ tests/               Unit tests for indicators + scoring
 Rules use weighted points. Missing data skips the affected rule. TW and US
 technical weights switch by market regime.
 
-| Rule | Default | TW bear/crash | TW range | TW bull | US bear/crash | US range | US bull |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| 今日站上全均線 | 3.0 | 1.5 | 4.5 | 4.5 | 1.5 | 3.0 | 4.5 |
-| 20日收盤新高 | 1.5 | 2.25 | 0.75 | 0.75 | 2.25 | 1.5 | 0.75 |
-| 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | 1.5 | 2.25 | 0.75 | 0.75 | 0.75 | 1.5 |
-| 放量上漲 (vol > 1.2x and up day) | 1.5 | 1.5 | 1.5 | 2.25 | 0.75 | 2.25 | 0.75 |
-| OBV 5d > OBV 20d | 1.0 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 1.0 |
-| 相對強度 20日 > 大盤 | 2.0 | 1.0 | 1.0 | 3.0 | 1.0 | 1.0 | 3.0 |
-| MACD 今日上穿 / 位於 signal 上方 | 1.5 / 1.0 | 0.75 / 0.5 | 1.5 / 1.0 | 1.5 / 1.0 | 0.75 / 0.5 | 0.75 / 0.5 | 0.75 / 0.5 |
-| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | 1.0 | 2.0 | 2.0 | 2.0 | 2.0 | 2.0 |
-| 強勢板塊延續 | 1.5 | 0.75 | 1.5 | 1.5 | 1.5 | 1.5 | 1.5 |
-| 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | 1.0 / 0.75 | 2.0 / 1.5 | 2.0 / 1.5 | — | — | — |
-| 外資大買 (>5% volume or 3-day streak) | 1.0 | 0.5 | 1.0 | 1.0 | — | — | — |
+| Rule | Default | TW bear/crash | TW bear/downtrend | TW range | TW bull | US bear/crash | US range | US bull |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 今日站上全均線 | 3.0 | 1.5 | 1.5 | 4.5 | 4.5 | 1.5 | 3.0 | 4.5 |
+| 20日收盤新高 | 1.5 | 2.25 | 2.25 | 0.75 | 0.75 | 2.25 | 1.5 | 0.75 |
+| 短線趨勢確認 (close > MA5 and MA5 > MA20) | 1.5 | 1.5 | 1.5 | 2.25 | 0.75 | 0.75 | 0.75 | 1.5 |
+| 放量上漲 (vol > 1.2x and up day) | 1.5 | 1.5 | 1.5 | 1.5 | 2.25 | 0.75 | 2.25 | 0.75 |
+| OBV 5d > OBV 20d | 1.0 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 1.0 |
+| 相對強度 20日 > 大盤 | 2.0 | 1.0 | 1.0 | 1.0 | 3.0 | 1.0 | 1.0 | 3.0 |
+| MACD 今日上穿 / 位於 signal 上方 | 1.5 / 1.0 | 0.75 / 0.5 | 0.75 / 0.5 | 1.5 / 1.0 | 1.5 / 1.0 | 0.75 / 0.5 | 0.75 / 0.5 | 0.75 / 0.5 |
+| analyst target raised within 7 days and target ≥ current price +10% | 2.0 | 1.0 | 1.0 | 2.0 | 2.0 | 2.0 | 2.0 | 2.0 |
+| 強勢板塊延續 | 1.5 | 0.75 | 0.75 | 1.5 | 1.5 | 1.5 | 1.5 | 1.5 |
+| 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | 1.0 / 0.75 | 1.0 / 0.75 | 2.0 / 1.5 | 2.0 / 1.5 | — | — | — |
+| 外資大買 (>5% volume or 3-day streak) | 1.0 | 0.5 | 0.5 | 1.0 | 1.0 | — | — | — |
 
 TW sell-pressure penalties reduce the earned score ratio without increasing
 `max_score`. They are intentionally limited to explicit sell signals so failed
@@ -56,12 +56,15 @@ positive rules are not double-counted as penalties:
 `下跌特別注意` uses the current TW strategy regime:
 
 - Bear/crash: close below the prior 5-day low.
+- Bear/downtrend: sell-pressure-adjusted score ratio below 20%; special
+  attention requires a 70% score ratio.
 - Bull: close below MA5 and score ratio below 20%.
 - Range: sell-pressure-adjusted score ratio below 20%.
 
 TW regime selection uses 0050. US regime selection uses SPY:
 
 - bear/crash: 120-day drawdown ≤ -12%.
+- bear/downtrend: close < MA240 and MA60 < MA240.
 - bull: close > MA20 and MA60, MA60 > MA240, and 60-day return > 3%.
 - range: fallback. This keeps high exposure unless there is a meaningful
   drawdown.

@@ -83,6 +83,16 @@ def test_classify_tw_strategy_uses_deep_drawdown_for_bear_crash():
     assert result["drawdown_120d"] <= -0.12
 
 
+def test_classify_tw_strategy_uses_bear_downtrend_for_slow_decline():
+    closes = [100.0] * 180 + [90.0] * 80
+
+    result = market_regime.classify_tw_strategy_from_ohlcv(_ohlcv(closes))
+
+    assert result["strategy"] == "bear_downtrend"
+    assert result["close"] < result["ma240"]
+    assert result["ma60"] < result["ma240"]
+
+
 def test_classify_tw_strategy_requires_clean_trend_for_bull():
     closes = [100.0] * 180 + list(range(101, 161))
 
