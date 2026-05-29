@@ -115,6 +115,23 @@ uv run streamlit run streamlit_app.py
 
 US analyst fetches require `FINNHUB_API_KEY`.
 
+## Backtest Registry
+
+Use the `stock-screener-backtests` skill for strategy backtests, regime weight
+sweeps, entry/exit experiments, and comparisons against 0050 or SPY.
+
+- Before running a backtest, check `results/backtests/backtest_registry.jsonl`
+  for an exact or near match.
+- If an exact match exists, summarize the existing result instead of rerunning.
+- If a near match exists, explain the parameter differences before rerunning.
+- After any new backtest or sweep that informs strategy decisions, append a
+  JSONL row to `results/backtests/backtest_registry.jsonl`.
+- Record both adopted rules and rejected or losing parameter sets when they
+  affect future decisions. Do not keep only the best result.
+- Include benchmark return, active return, excess return, max drawdown,
+  buy/sell counts, entry/exit rules, weights, source CSV or command, and data
+  caveats such as missing symbols.
+
 ## Change Guidelines
 
 - Keep scoring changes centralized in `screener/score.py`; update tests and the
