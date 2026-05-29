@@ -909,23 +909,26 @@ def render() -> None:
             background: rgba(49, 51, 63, 0.06);
         }
         @media (min-width: 900px) {
-            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child {
-                position: sticky;
-                top: 0.75rem;
-                align-self: flex-start;
-                max-height: calc(100vh - 1.5rem);
+            /* Split-pane: fix the 3-column block to viewport height so all columns scroll independently */
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) {
+                height: calc(100vh - 8rem);
+                overflow: hidden;
+                align-items: stretch !important;
+            }
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"] {
                 overflow-y: auto;
-                padding-right: 0.35rem;
+                overflow-x: hidden;
+                min-height: 0;
                 scrollbar-gutter: stable;
             }
-            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar {
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]::-webkit-scrollbar {
                 width: 0.45rem;
             }
-            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar-thumb {
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]::-webkit-scrollbar-thumb {
                 background: rgba(120, 126, 140, 0.35);
                 border-radius: 999px;
             }
-            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]:first-child::-webkit-scrollbar-thumb:hover {
+            div[data-testid="stHorizontalBlock"]:has(> div[data-testid="column"]:nth-child(3)) > div[data-testid="column"]::-webkit-scrollbar-thumb:hover {
                 background: rgba(120, 126, 140, 0.55);
             }
         }
