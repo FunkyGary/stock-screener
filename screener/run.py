@@ -138,6 +138,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
     out: dict[str, dict] = {}
     benchmark_return_20d = None
     benchmark_ohlcv = None
+    benchmark_ind = None
     score_regime = None
     benchmark_symbol = BENCHMARK_SYMBOLS.get(market)
     if benchmark_symbol:
@@ -145,7 +146,8 @@ def run_market(market: str, mode: str = "eod") -> dict:
             benchmark_ohlcv = fetch.fetch_ohlcv(
                 benchmark_symbol, intraday=mode == "intraday"
             )
-            benchmark_return_20d = indicators.compute(benchmark_ohlcv.df).return_20d
+            benchmark_ind = indicators.compute(benchmark_ohlcv.df)
+            benchmark_return_20d = benchmark_ind.return_20d
             if market == "tw":
                 score_regime = market_regime_mod.classify_tw_strategy_from_ohlcv(
                     benchmark_ohlcv.df
@@ -293,6 +295,11 @@ def run_market(market: str, mode: str = "eod") -> dict:
             benchmark_return_20d=benchmark_return_20d,
             sector=sector_snap,
             strategy=(score_regime or {}).get("strategy"),
+            market_below_ma10=(
+                benchmark_ind.close < benchmark_ind.ma10
+                if benchmark_ind is not None and benchmark_ind.ma10 is not None
+                else None
+            ),
         )
 
         record.update(

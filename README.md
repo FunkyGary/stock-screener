@@ -39,6 +39,26 @@ technical weights switch by market regime.
 | 投信買進第一天 / 連續買超 ≥ 3 日 | 2.0 / 1.5 | 1.0 / 0.75 | 2.0 / 1.5 | 2.0 / 1.5 | — | — | — |
 | 外資大買 (>5% volume or 3-day streak) | 1.0 | 0.5 | 1.0 | 1.0 | — | — | — |
 
+TW sell-pressure penalties reduce the earned score ratio without increasing
+`max_score`. They are intentionally limited to explicit sell signals so failed
+positive rules are not double-counted as penalties:
+
+| Sell-pressure rule | Penalty |
+|---|---:|
+| Close below MA10 | -8% |
+| Close below MA20 | -12% |
+| Close below the latest high-volume long bullish candle low | -12% |
+| Close below the low from two sessions ago | -6% |
+| Close below the prior 5-day low | -8% |
+| Volume down day (vol ≥ 1.3x 20-day average and negative return) | -10% |
+| TW benchmark below MA10 | -6% |
+
+`下跌特別注意` uses the current TW strategy regime:
+
+- Bear/crash: close below the prior 5-day low.
+- Bull: close below MA5 and score ratio below 20%.
+- Range: sell-pressure-adjusted score ratio below 20%.
+
 TW regime selection uses 0050. US regime selection uses SPY:
 
 - bear/crash: 120-day drawdown ≤ -12%.

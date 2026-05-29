@@ -28,6 +28,10 @@ class IndicatorSnapshot:
     high_5d: Optional[float]
     high_20d: Optional[float]
     prev_high_20d: Optional[float]
+    prev2_low: Optional[float]
+    prev_3d_low: Optional[float]
+    prev_5d_low: Optional[float]
+    big_bull_low: Optional[float]
     pct_of_high_20d: Optional[float]
     obv: Optional[float]
     obv_ma5: Optional[float]
@@ -78,6 +82,8 @@ def _macd(close: pd.Series) -> tuple[pd.Series, pd.Series, pd.Series]:
 def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     """Compute snapshot from daily OHLCV DataFrame sorted ascending by date."""
     close = df["Close"]
+    open_ = df["Open"]
+    low = df["Low"]
     vol = df["Volume"]
     last_close = float(close.iloc[-1])
     last_vol = float(vol.iloc[-1])
@@ -107,6 +113,16 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     prev_high_20d = (
         _safe_last(close.shift(1).rolling(20).max()) if len(close) >= 21 else None
     )
+    prev2_low = _safe_at(low, -3) if len(low) >= 3 else None
+    prev_3d_low = _safe_last(low.shift(1).rolling(3).min()) if len(low) >= 4 else None
+    prev_5d_low = _safe_last(low.shift(1).rolling(5).min()) if len(low) >= 6 else None
+    vol_ratio_series = vol / vol.rolling(20).mean()
+    big_bull = (
+        (close > open_)
+        & ((close / open_ - 1.0) >= 0.03)
+        & (vol_ratio_series >= 1.5)
+    )
+    big_bull_low = _safe_last(low.where(big_bull).ffill())
     pct_of_high_20d = last_close / high_20d if high_20d and high_20d > 0 else None
 
     obv_series = _obv(close, vol)
@@ -145,6 +161,10 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         high_5d=high_5d,
         high_20d=high_20d,
         prev_high_20d=prev_high_20d,
+        prev2_low=prev2_low,
+        prev_3d_low=prev_3d_low,
+        prev_5d_low=prev_5d_low,
+        big_bull_low=big_bull_low,
         pct_of_high_20d=pct_of_high_20d,
         obv=obv,
         obv_ma5=obv_ma5,

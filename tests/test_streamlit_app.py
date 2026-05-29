@@ -1,6 +1,10 @@
 from datetime import datetime, timedelta, timezone
 
-from streamlit_app import _has_recent_research_report, _is_downside_attention
+from streamlit_app import (
+    _downside_attention_reason,
+    _has_recent_research_report,
+    _is_downside_attention,
+)
 
 
 def test_recent_research_report_uses_target_price_event_dates():
@@ -39,33 +43,61 @@ def test_recent_research_report_expires_after_seven_days():
     assert _has_recent_research_report(row) is False
 
 
-def test_downside_attention_requires_actual_ma5_cross():
+def test_downside_attention_bull_requires_ma5_break_and_low_score():
     row = {
+        "score": 3.0,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "bull"},
         "indicators": {
             "close": 95.0,
             "ma5": 100.0,
-            "prev_close": 99.0,
-            "prev_ma5": 100.0,
-            "prev_ma10": 90.0,
-            "prev_ma20": 80.0,
-            "prev_ma240": 70.0,
         }
     }
 
     assert _is_downside_attention(row) is False
 
 
-def test_downside_attention_passes_when_crossing_below_ma5_today():
+def test_downside_attention_bull_passes_on_ma5_break_and_score_below_20pct():
     row = {
+        "score": 1.9,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "bull"},
         "indicators": {
             "close": 95.0,
             "ma5": 100.0,
-            "prev_close": 101.0,
-            "prev_ma5": 100.0,
-            "prev_ma10": 90.0,
-            "prev_ma20": 80.0,
-            "prev_ma240": 70.0,
         }
     }
 
     assert _is_downside_attention(row) is True
+    assert _downside_attention_reason(row) == "多頭：跌破 MA5 且分數 < 20%"
+
+
+def test_downside_attention_bear_uses_prev_5d_low_break():
+    row = {
+        "score_regime": {"strategy": "bear_crash"},
+        "indicators": {"close": 95.0, "prev_5d_low": 96.0},
+    }
+
+    assert _is_downside_attention(row) is True
+    assert _downside_attention_reason(row) == "空頭：跌破近 5 日低點"
+
+
+def test_downside_attention_range_uses_penalty_adjusted_score():
+    row = {
+        "score": 1.9,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "range"},
+        "indicators": {"close": 95.0},
+        "reasons": [
+            {
+                "rule": "賣壓扣分：放量下跌 (vol>1.3x)",
+                "passed": True,
+                "detail": "",
+                "weight": 0.0,
+                "score": -0.10,
+            }
+        ],
+    }
+
+    assert _is_downside_attention(row) is True
+    assert _downside_attention_reason(row) == "震盪：賣壓扣分後 < 20%"

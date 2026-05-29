@@ -306,26 +306,63 @@ def _is_special_attention(row: dict) -> bool:
     )
 
 
-def _is_downside_attention(row: dict) -> bool:
+def _sell_pressure_passed(row: dict, rule_part: str | None = None) -> bool:
+    for reason in row.get("reasons", []):
+        rule = reason.get("rule", "")
+        if not rule.startswith("賣壓扣分"):
+            continue
+        if reason.get("passed") is not True:
+            continue
+        if rule_part is None or rule_part in rule:
+            return True
+    return False
+
+
+def _market_below_ma10(row: dict) -> bool:
+    regime = row.get("score_regime") or {}
+    close = regime.get("close")
+    ma10 = regime.get("ma10")
+    if close is not None and ma10 is not None:
+        return close < ma10
+    return _sell_pressure_passed(row, "大盤跌破 10 日線")
+
+
+def _downside_attention_reason(row: dict) -> str | None:
     ind = row.get("indicators") or {}
     close = ind.get("close")
-    ma5 = ind.get("ma5")
-    prev_close = ind.get("prev_close")
-    prev_ma5 = ind.get("prev_ma5")
-    return (
-        _was_above_all_mas_prev_day(row)
-        and close is not None
-        and ma5 is not None
-        and prev_close is not None
-        and prev_ma5 is not None
-        and prev_close >= prev_ma5
-        and close < ma5
-    )
+    strategy = (row.get("score_regime") or {}).get("strategy") or "range"
+    if close is None:
+        return None
+
+    if strategy == "bear_crash":
+        prev_5d_low = ind.get("prev_5d_low")
+        if prev_5d_low is not None and close < prev_5d_low:
+            return "空頭：跌破近 5 日低點"
+        return None
+
+    if strategy == "bull":
+        ma5 = ind.get("ma5")
+        if ma5 is not None and close < ma5 and _score_ratio(row) < 0.20:
+            return "多頭：跌破 MA5 且分數 < 20%"
+        return None
+
+    if _score_ratio(row) < 0.20 and _sell_pressure_passed(row):
+        if _sell_pressure_passed(row, "跌破大量長紅 K 低點"):
+            return "震盪：跌破大量長紅 K 低點且分數 < 20%"
+        if _market_below_ma10(row):
+            return "震盪：賣壓扣分後 < 20%，且大盤跌破 MA10"
+        return "震盪：賣壓扣分後 < 20%"
+    return None
+
+
+def _is_downside_attention(row: dict) -> bool:
+    return _downside_attention_reason(row) is not None
 
 
 def _trend_tag(row: dict) -> str:
-    if _is_downside_attention(row):
-        return "下跌特別注意"
+    downside_reason = _downside_attention_reason(row)
+    if downside_reason:
+        return f"下跌特別注意 · {downside_reason}"
     newly_above = _is_newly_above_all_mas(row)
     target_raise = _has_active_target_raise(row)
     if newly_above and target_raise:
@@ -549,7 +586,9 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
         marker = "✅" if reason["passed"] else "⬜"
         weight = reason.get("weight")
         earned = reason.get("score") if reason.get("passed") else None
-        if isinstance(earned, (int, float)) and isinstance(weight, (int, float)):
+        if isinstance(earned, (int, float)) and earned < 0 and weight == 0:
+            suffix = f" · 扣{abs(earned) * 100:g}%"
+        elif isinstance(earned, (int, float)) and isinstance(weight, (int, float)):
             suffix = (
                 f" · {earned:g}/{weight:g}分"
                 if earned != weight
@@ -769,7 +808,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         ("research", f"研究報告 7日內 ({len(research)})", research),
         (
             "downside",
-            f"下跌特別注意：昨日全均線之上 / 今日跌破 MA5 ({len(downside)})",
+            f"下跌特別注意：依當前多空震盪賣出訊號 ({len(downside)})",
             downside,
         ),
         ("above", f"全均線之上 5/10/20/年 ({len(above)})", above),

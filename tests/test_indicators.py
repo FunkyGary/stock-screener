@@ -44,6 +44,9 @@ def test_returns_none_when_not_enough_history():
     assert snap.high_5d is None
     assert snap.high_20d is None
     assert snap.prev_high_20d is None
+    assert snap.prev_3d_low is None
+    assert snap.prev_5d_low is None
+    assert snap.big_bull_low is None
     assert snap.macd is None
     assert snap.obv_ma20 is None
 
@@ -92,6 +95,25 @@ def test_prev_high_20d_excludes_current_close():
 def test_high_5d_uses_last_five_closes():
     snap = compute(_df([10, 12, 11, 13, 9, 14], [100] * 6))
     assert snap.high_5d == 14
+
+
+def test_prev_lows_exclude_current_bar():
+    snap = compute(_df([10, 12, 11, 13, 9, 14], [100] * 6))
+    assert snap.prev2_low == 13
+    assert snap.prev_3d_low == 9
+    assert snap.prev_5d_low == 9
+
+
+def test_big_bull_low_tracks_last_high_volume_long_red_bar():
+    closes = [10.0] * 20 + [11.0, 10.7]
+    volumes = [100.0] * 20 + [300.0, 120.0]
+    df = _df(closes, volumes)
+    df.loc[df.index[-2], "Open"] = 10.5
+    df.loc[df.index[-2], "Low"] = 10.4
+
+    snap = compute(df)
+
+    assert snap.big_bull_low == 10.4
 
 
 def test_today_return_uses_prev_close():

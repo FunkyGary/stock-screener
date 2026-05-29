@@ -17,6 +17,16 @@ TRUST_BUY_STREAK = 3
 FOREIGN_PCT_OF_VOLUME = 0.05
 FOREIGN_BUY_STREAK = 3
 VOLUME_UP_RATIO = 1.2
+VOLUME_DOWN_RATIO = 1.3
+SELL_PRESSURE_WEIGHTS = {
+    "below_ma10": 0.08,
+    "below_ma20": 0.12,
+    "below_big_bull_low": 0.12,
+    "below_prev2_low": 0.06,
+    "below_prev5_low": 0.08,
+    "volume_down": 0.10,
+    "market_below_ma10": 0.06,
+}
 
 DEFAULT_RULE_WEIGHTS = {
     "above_all": 3.0,
@@ -220,6 +230,99 @@ def _has_prev_all_ma_data(ind: IndicatorSnapshot) -> bool:
     )
 
 
+def _append_sell_pressure_reasons(
+    reasons: list[Reason],
+    ind: IndicatorSnapshot,
+    *,
+    market_below_ma10: bool | None = None,
+) -> None:
+    checks = [
+        (
+            "賣壓扣分：跌破 10 日線",
+            ind.ma10 is not None and ind.close < ind.ma10,
+            (
+                f"close={ind.close:.2f} MA10={ind.ma10:.2f}"
+                if ind.ma10 is not None
+                else "MA10 unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_ma10"],
+        ),
+        (
+            "賣壓扣分：跌破 20 日線",
+            ind.ma20 is not None and ind.close < ind.ma20,
+            (
+                f"close={ind.close:.2f} MA20={ind.ma20:.2f}"
+                if ind.ma20 is not None
+                else "MA20 unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_ma20"],
+        ),
+        (
+            "賣壓扣分：跌破大量長紅 K 低點",
+            ind.big_bull_low is not None and ind.close < ind.big_bull_low,
+            (
+                f"close={ind.close:.2f} big_bull_low={ind.big_bull_low:.2f}"
+                if ind.big_bull_low is not None
+                else "big bull low unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_big_bull_low"],
+        ),
+        (
+            "賣壓扣分：跌破前天低點",
+            ind.prev2_low is not None and ind.close < ind.prev2_low,
+            (
+                f"close={ind.close:.2f} prev2_low={ind.prev2_low:.2f}"
+                if ind.prev2_low is not None
+                else "prev2 low unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_prev2_low"],
+        ),
+        (
+            "賣壓扣分：跌破近 5 日低點",
+            ind.prev_5d_low is not None and ind.close < ind.prev_5d_low,
+            (
+                f"close={ind.close:.2f} prev_5d_low={ind.prev_5d_low:.2f}"
+                if ind.prev_5d_low is not None
+                else "prev 5d low unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_prev5_low"],
+        ),
+        (
+            f"賣壓扣分：放量下跌 (vol>{VOLUME_DOWN_RATIO:.1f}x)",
+            (
+                ind.vol_ratio is not None
+                and ind.today_return is not None
+                and ind.vol_ratio >= VOLUME_DOWN_RATIO
+                and ind.today_return < 0
+            ),
+            (
+                f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%"
+                if ind.vol_ratio is not None and ind.today_return is not None
+                else "volume or return unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["volume_down"],
+        ),
+        (
+            "賣壓扣分：大盤跌破 10 日線",
+            market_below_ma10 is True,
+            "benchmark close < MA10"
+            if market_below_ma10 is not None
+            else "benchmark MA10 unavailable",
+            SELL_PRESSURE_WEIGHTS["market_below_ma10"],
+        ),
+    ]
+    for rule, passed, detail, penalty in checks:
+        reasons.append(
+            Reason(
+                rule=rule,
+                passed=passed,
+                detail=detail,
+                weight=0.0,
+                score=-penalty if passed else 0.0,
+            )
+        )
+
+
 def score(
     market: str,
     ind: IndicatorSnapshot,
@@ -229,6 +332,7 @@ def score(
     benchmark_return_20d: Optional[float] = None,
     sector: Optional[SectorSnapshot] = None,
     strategy: str | None = None,
+    market_below_ma10: bool | None = None,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
@@ -439,8 +543,19 @@ def score(
             )
         )
 
-    max_score = sum(r.weight for r in reasons)
-    total = sum(
-        (r.score if r.score is not None else r.weight) for r in reasons if r.passed
+    _append_sell_pressure_reasons(
+        reasons, ind, market_below_ma10=market_below_ma10 if is_tw else None
     )
+
+    max_score = sum(r.weight for r in reasons)
+    total = 0.0
+    for reason in reasons:
+        if not reason.passed:
+            continue
+        earned = reason.score if reason.score is not None else reason.weight
+        if earned < 0 and reason.weight == 0:
+            total += earned * max_score
+        else:
+            total += earned
+    total = max(0.0, total)
     return ScoreResult(score=total, max_score=max_score, reasons=reasons)

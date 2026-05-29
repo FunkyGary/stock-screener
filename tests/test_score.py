@@ -26,6 +26,10 @@ def _ind(**overrides) -> IndicatorSnapshot:
         high_5d=104.0,
         high_20d=105.0,
         prev_high_20d=99.0,
+        prev2_low=97.0,
+        prev_3d_low=96.0,
+        prev_5d_low=95.0,
+        big_bull_low=90.0,
         pct_of_high_20d=0.99,
         obv=50000.0,
         obv_ma5=48000.0,
@@ -225,7 +229,13 @@ def test_relative_strength_requires_stock_to_beat_benchmark():
 
 
 def test_short_trend_requires_close_above_ma5():
-    result = score("tw", _ind(close=90.0, ma5=99.0), None, None, chip=_chip())
+    result = score(
+        "tw",
+        _ind(close=90.0, ma5=99.0, ma10=80.0, ma20=79.0, prev2_low=80.0, prev_5d_low=80.0),
+        None,
+        None,
+        chip=_chip(),
+    )
     assert result.score == 6.5
     assert result.max_score == 15.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
@@ -259,6 +269,47 @@ def test_obv_trend_down_loses_point():
     )
     rule = next(r for r in result.reasons if r.rule == "OBV 5d > OBV 20d")
     assert rule.passed is False
+
+
+def test_tw_sell_pressure_penalties_reduce_score_by_ratio():
+    result = score(
+        "tw",
+        _ind(
+            close=94.0,
+            prev_close=96.0,
+            today_return=-0.02,
+            ma10=95.0,
+            ma20=96.0,
+            prev2_low=95.0,
+            prev_5d_low=95.0,
+            vol_ratio=1.4,
+            big_bull_low=95.0,
+        ),
+        None,
+        None,
+        chip=_chip(),
+        benchmark_return_20d=0.05,
+        market_below_ma10=True,
+    )
+
+    penalties = [r for r in result.reasons if r.rule.startswith("賣壓扣分") and r.passed]
+    assert {r.rule for r in penalties} >= {
+        "賣壓扣分：跌破 10 日線",
+        "賣壓扣分：跌破 20 日線",
+        "賣壓扣分：跌破大量長紅 K 低點",
+        "賣壓扣分：跌破前天低點",
+        "賣壓扣分：跌破近 5 日低點",
+        "賣壓扣分：放量下跌 (vol>1.3x)",
+        "賣壓扣分：大盤跌破 10 日線",
+    }
+    penalty_ratio = sum(abs(r.score or 0) for r in penalties)
+    raw_score = sum(
+        (r.score if r.score is not None else r.weight)
+        for r in result.reasons
+        if r.passed and not r.rule.startswith("賣壓扣分")
+    )
+    assert round(penalty_ratio, 2) == 0.62
+    assert result.score == max(0.0, raw_score - result.max_score * penalty_ratio)
 
 
 def test_macd_above_signal_scores_one_point_without_cross():
