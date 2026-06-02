@@ -110,7 +110,7 @@ def test_downside_attention_bear_downtrend_uses_penalty_adjusted_score():
 def test_downside_attention_us_bear_uses_big_bull_low_with_volume():
     row = {
         "market": "us",
-        "score_regime": {"strategy": "bear_crash"},
+        "score_regime": {"strategy": "bear_downtrend"},
         "indicators": {
             "close": 95.0,
             "big_bull_low": 96.0,
@@ -121,11 +121,26 @@ def test_downside_attention_us_bear_uses_big_bull_low_with_volume():
     assert _is_downside_attention(row) is True
     assert (
         _downside_attention_reason(row)
-        == "美股空頭：跌破大量長紅 K 低點且放量 > 1.3x"
+        == "美股震盪走低：跌破大量長紅 K 低點且放量 > 1.3x"
     )
 
 
-def test_us_bear_special_attention_requires_spy_above_ma10_and_55pct():
+def test_downside_attention_us_bear_crash_uses_big_bull_low_without_volume():
+    row = {
+        "market": "us",
+        "score_regime": {"strategy": "bear_crash"},
+        "indicators": {
+            "close": 95.0,
+            "big_bull_low": 96.0,
+            "vol_ratio": 1.0,
+        },
+    }
+
+    assert _is_downside_attention(row) is True
+    assert _downside_attention_reason(row) == "美股急跌修復：跌破大量長紅 K 低點"
+
+
+def test_us_bear_downtrend_special_attention_requires_spy_above_ma10_and_55pct():
     row = {
         "market": "us",
         "score": 5.5,
@@ -157,7 +172,40 @@ def test_us_bear_special_attention_requires_spy_above_ma10_and_55pct():
     assert _is_special_attention(row) is False
 
 
-def test_us_bear_top_pick_requires_spy_above_ma10():
+def test_us_bear_crash_special_attention_requires_spy_ma5_repair_and_60pct():
+    row = {
+        "market": "us",
+        "score": 5.9,
+        "max_score": 10.0,
+        "score_regime": {
+            "strategy": "bear_crash",
+            "close": 101.0,
+            "ma5": 100.0,
+            "prev_ma5": 99.0,
+            "ma10": 100.0,
+        },
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 96.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_special_attention(row) is False
+    row["score"] = 6.0
+    assert _is_special_attention(row) is True
+    row["score_regime"]["prev_ma5"] = 100.5
+    assert _is_special_attention(row) is False
+
+
+def test_us_bear_crash_top_pick_requires_spy_ma5_repair():
     row = {
         "market": "us",
         "score": 8.0,
@@ -165,7 +213,9 @@ def test_us_bear_top_pick_requires_spy_above_ma10():
         "score_regime": {
             "strategy": "bear_crash",
             "close": 99.0,
-            "ma10": 100.0,
+            "ma5": 100.0,
+            "prev_ma5": 99.0,
+            "ma10": 98.0,
         },
         "indicators": {
             "close": 101.0,

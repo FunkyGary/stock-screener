@@ -118,3 +118,5 @@ def test_classify_us_strategy_uses_spy_benchmark_metadata():
     assert result["strategy"] == "bull"
     assert result["market"] == "us"
     assert result["benchmark"] == "SPY"
+    assert result["ma5"] is not None
+    assert result["prev_ma5"] is not None

@@ -69,6 +69,9 @@ def _classify_strategy_from_ohlcv(
 ) -> dict[str, Any]:
     close = df["Close"].astype(float)
     current = _safe_last(close)
+    ma5_series = close.rolling(5).mean()
+    ma5 = _safe_last(ma5_series)
+    prev_ma5 = _safe_last(ma5_series.iloc[:-1])
     ma10 = _safe_last(close.rolling(10).mean())
     ma20 = _safe_last(close.rolling(20).mean())
     ma60 = _safe_last(close.rolling(60).mean())
@@ -130,6 +133,8 @@ def _classify_strategy_from_ohlcv(
         "market": market,
         "as_of": _as_of(df),
         "close": current,
+        "ma5": ma5,
+        "prev_ma5": prev_ma5,
         "ma10": ma10,
         "ma20": ma20,
         "ma60": ma60,
