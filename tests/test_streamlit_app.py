@@ -75,6 +75,7 @@ def test_downside_attention_bull_passes_on_ma5_break_and_score_below_20pct():
 
 def test_downside_attention_bear_uses_prev_5d_low_break():
     row = {
+        "market": "tw",
         "score_regime": {"strategy": "bear_crash"},
         "indicators": {"close": 95.0, "prev_5d_low": 96.0},
     }
@@ -85,6 +86,7 @@ def test_downside_attention_bear_uses_prev_5d_low_break():
 
 def test_downside_attention_bear_downtrend_uses_penalty_adjusted_score():
     row = {
+        "market": "tw",
         "score": 1.9,
         "max_score": 10.0,
         "score_regime": {"strategy": "bear_downtrend"},
@@ -102,6 +104,56 @@ def test_downside_attention_bear_downtrend_uses_penalty_adjusted_score():
 
     assert _is_downside_attention(row) is True
     assert _downside_attention_reason(row) == "震盪走低：賣壓扣分後 < 20%"
+
+
+def test_downside_attention_us_bear_uses_big_bull_low_with_volume():
+    row = {
+        "market": "us",
+        "score_regime": {"strategy": "bear_crash"},
+        "indicators": {
+            "close": 95.0,
+            "big_bull_low": 96.0,
+            "vol_ratio": 1.3,
+        },
+    }
+
+    assert _is_downside_attention(row) is True
+    assert (
+        _downside_attention_reason(row)
+        == "美股空頭：跌破大量長紅 K 低點且放量 > 1.3x"
+    )
+
+
+def test_us_bear_special_attention_requires_spy_above_ma10_and_55pct():
+    row = {
+        "market": "us",
+        "score": 5.5,
+        "max_score": 10.0,
+        "score_regime": {
+            "strategy": "bear_downtrend",
+            "close": 101.0,
+            "ma10": 100.0,
+        },
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 96.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_special_attention(row) is True
+    row["score"] = 5.4
+    assert _is_special_attention(row) is False
+    row["score"] = 5.5
+    row["score_regime"]["close"] = 99.0
+    assert _is_special_attention(row) is False
 
 
 def test_tw_special_attention_bear_downtrend_only_requires_higher_score():

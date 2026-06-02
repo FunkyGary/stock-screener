@@ -53,11 +53,15 @@ positive rules are not double-counted as penalties:
 | Volume down day (vol ≥ 1.3x 20-day average and negative return) | -10% |
 | TW benchmark below MA10 | -6% |
 
-`下跌特別注意` uses the current TW strategy regime:
+`特別注意` and `下跌特別注意` use the current strategy regime:
 
-- Bear/crash: close below the prior 5-day low.
-- Bear/downtrend: sell-pressure-adjusted score ratio below 20%; special
+- TW bear/crash: close below the prior 5-day low.
+- TW bear/downtrend: sell-pressure-adjusted score ratio below 20%; special
   attention requires a 70% score ratio.
+- US bear/crash and bear/downtrend: SPY must be above MA10, score ratio must be
+  at least 55%, and the recommended manual cap is 10 active positions. Downside
+  attention requires close below the latest high-volume long bullish candle low
+  with volume at least 1.3x the 20-day average.
 - Bull: close below MA5 and score ratio below 20%.
 - Range: sell-pressure-adjusted score ratio below 20%.
 

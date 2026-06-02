@@ -34,6 +34,7 @@ SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.5
 SPECIAL_ATTENTION_MIN_SCORE_RATIOS = {
     "bear_downtrend": 0.7,
 }
+US_BEAR_SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.55
 CHART_HEIGHT_DESKTOP = 620
 CHART_HEIGHT_MOBILE = 380
 VIEWPORT_BREAKPOINT_PX = 900  # ≥ this → desktop
@@ -306,6 +307,8 @@ def _is_special_attention(row: dict) -> bool:
     min_ratio = _special_attention_min_score_ratio(row)
     if _score_ratio(row) < min_ratio:
         return False
+    if _is_us_bear_strategy(row) and not _market_above_ma10(row):
+        return False
     if row.get("market") == "tw":
         return True
     return _is_newly_above_all_mas(row)
@@ -313,9 +316,23 @@ def _is_special_attention(row: dict) -> bool:
 
 def _special_attention_min_score_ratio(row: dict) -> float:
     strategy = (row.get("score_regime") or {}).get("strategy")
+    if _is_us_bear_strategy(row):
+        return US_BEAR_SPECIAL_ATTENTION_MIN_SCORE_RATIO
     return SPECIAL_ATTENTION_MIN_SCORE_RATIOS.get(
         strategy, SPECIAL_ATTENTION_MIN_SCORE_RATIO
     )
+
+
+def _is_us_bear_strategy(row: dict) -> bool:
+    strategy = (row.get("score_regime") or {}).get("strategy")
+    return row.get("market") == "us" and strategy in {"bear_crash", "bear_downtrend"}
+
+
+def _market_above_ma10(row: dict) -> bool:
+    regime = row.get("score_regime") or {}
+    close = regime.get("close")
+    ma10 = regime.get("ma10")
+    return close is not None and ma10 is not None and close > ma10
 
 
 def _sell_pressure_passed(row: dict, rule_part: str | None = None) -> bool:
@@ -344,6 +361,18 @@ def _downside_attention_reason(row: dict) -> str | None:
     close = ind.get("close")
     strategy = (row.get("score_regime") or {}).get("strategy") or "range"
     if close is None:
+        return None
+
+    if _is_us_bear_strategy(row):
+        big_bull_low = ind.get("big_bull_low")
+        vol_ratio = ind.get("vol_ratio")
+        if (
+            big_bull_low is not None
+            and vol_ratio is not None
+            and close < big_bull_low
+            and vol_ratio >= 1.3
+        ):
+            return "美股空頭：跌破大量長紅 K 低點且放量 > 1.3x"
         return None
 
     if strategy == "bear_crash":
@@ -463,8 +492,8 @@ def _market_regime_item(row: dict) -> str:
 def _strategy_weight_summary(strategy: str | None, market: str | None = None) -> str:
     if market == "us":
         summaries = {
-            "bear_crash": "美股空頭/急跌權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
-            "bear_downtrend": "美股空頭/震盪走低權重：新高 2.25、站上全均線 1.5、相對強度 1、MACD 0.75",
+            "bear_crash": "美股空頭/急跌：SPY>MA10、分數≥55%、建議最多 10 檔；跌破大量長紅低點且放量列下跌注意",
+            "bear_downtrend": "美股空頭/震盪走低：SPY>MA10、分數≥55%、建議最多 10 檔；跌破大量長紅低點且放量列下跌注意",
             "range": "美股區間權重：站上全均線 3、放量 2.25、短線趨勢 0.75、相對強度 1",
             "bull": "美股多頭權重：站上全均線 4.5、相對強度 3、新高 0.75、放量 0.75",
         }
