@@ -2,9 +2,9 @@ name: TW screener
 
 on:
   schedule:
-    # Pre-open burst: extra fires in the 30 minutes before TW open
-    # (台北 08:32/08:42/08:52) to make a same-day refresh more likely.
-    - cron: "32,42,52 0 * * 1-5"
+    # Opening burst: every 2 min during the first 30 min after TW open
+    # (台北 09:00-09:28) to make a same-day refresh more likely.
+    - cron: "0,2,4,6,8,10,12,14,16,18,20,22,24,26,28 1 * * 1-5"
     # Intraday: every 30 min during TW session (台北 09:00-13:30) Mon-Fri.
     # Avoid :00/:30 because GitHub scheduled workflows can be delayed or dropped
     # during high-load boundary minutes.
@@ -51,7 +51,7 @@ jobs:
             MODE=eod
           elif [ "${{ github.event.schedule }}" = "*/30 1-5 * * 1-5" ]; then
             MODE=intraday
-          elif [ "${{ github.event.schedule }}" = "32,42,52 0 * * 1-5" ]; then
+          elif [ "${{ github.event.schedule }}" = "0,2,4,6,8,10,12,14,16,18,20,22,24,26,28 1 * * 1-5" ]; then
             MODE=intraday
           elif [ "${{ github.event.schedule }}" = "7,37 1-5 * * 1-5" ]; then
             MODE=intraday
