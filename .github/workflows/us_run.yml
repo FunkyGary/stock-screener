@@ -2,6 +2,9 @@ name: US screener
 
 on:
   schedule:
+    # Pre-open burst: extra fires in the 30 minutes before the US open.
+    # 13:00-13:30 UTC covers EDT open; 14:00-14:30 UTC covers EST open.
+    - cron: "2,12,17,27 13,14 * * 1-5"
     # Intraday: every 15 min covering both EDT (13:30-20:00 UTC) and EST
     # (14:30-21:00 UTC). The window 13:00-20:30 UTC catches both; EST will
     # see a few empty pre-open runs which is harmless.
@@ -53,6 +56,8 @@ jobs:
           elif [ "${{ github.event.schedule }}" = "*/30 13-20 * * 1-5" ]; then
             MODE=intraday
           elif [ "${{ github.event.schedule }}" = "7,37 13-20 * * 1-5" ]; then
+            MODE=intraday
+          elif [ "${{ github.event.schedule }}" = "2,12,17,27 13,14 * * 1-5" ]; then
             MODE=intraday
           elif [ "${{ github.event.schedule }}" = "7,22,37,52 13-20 * * 1-5" ]; then
             MODE=intraday
