@@ -104,8 +104,9 @@ def test_downside_attention_bear_downtrend_uses_penalty_adjusted_score():
     assert _downside_attention_reason(row) == "震盪走低：賣壓扣分後 < 20%"
 
 
-def test_special_attention_bear_downtrend_requires_higher_score():
+def test_tw_special_attention_bear_downtrend_only_requires_higher_score():
     row = {
+        "market": "tw",
         "score": 6.9,
         "max_score": 10.0,
         "score_regime": {"strategy": "bear_downtrend"},
@@ -115,7 +116,7 @@ def test_special_attention_bear_downtrend_requires_higher_score():
             "ma10": 99.0,
             "ma20": 98.0,
             "ma240": 97.0,
-            "prev_close": 96.0,
+            "prev_close": 101.0,
             "prev_ma5": 100.0,
             "prev_ma10": 99.0,
             "prev_ma20": 98.0,
@@ -126,6 +127,29 @@ def test_special_attention_bear_downtrend_requires_higher_score():
     assert _is_special_attention(row) is False
     row["score"] = 7.0
     assert _is_special_attention(row) is True
+
+
+def test_us_special_attention_still_requires_newly_above_all_mas():
+    row = {
+        "market": "us",
+        "score": 10.0,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "bull"},
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 101.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_special_attention(row) is False
 
 
 def test_downside_attention_range_uses_penalty_adjusted_score():

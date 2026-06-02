@@ -304,10 +304,11 @@ def _has_recent_research_report(row: dict, days: int = 7) -> bool:
 
 def _is_special_attention(row: dict) -> bool:
     min_ratio = _special_attention_min_score_ratio(row)
-    return (
-        _is_newly_above_all_mas(row)
-        and _score_ratio(row) >= min_ratio
-    )
+    if _score_ratio(row) < min_ratio:
+        return False
+    if row.get("market") == "tw":
+        return True
+    return _is_newly_above_all_mas(row)
 
 
 def _special_attention_min_score_ratio(row: dict) -> float:
@@ -700,7 +701,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     top = sorted(top, key=lambda r: (_score_ratio(r), r.get("score", 0)), reverse=True)
     if top:
         with st.expander(
-            f"⭐ 今日精選 — 特別注意/全均線之上且分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
+            f"⭐ 今日精選 — 分數 ≥ {int(TOP_PICK_MIN_SCORE_RATIO * 100)}% ({len(top)})",
             expanded=True,
         ):
             for r in top[:20]:
@@ -820,7 +821,7 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     sections = [
         (
             "special",
-            f"特別注意：今日站上全均線，分數達當前策略門檻 ({len(special)})",
+            f"特別注意：分數達當前策略門檻 ({len(special)})",
             special,
         ),
         ("research", f"研究報告 7日內 ({len(research)})", research),
