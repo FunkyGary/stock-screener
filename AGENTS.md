@@ -145,6 +145,9 @@ sweeps, entry/exit experiments, and comparisons against 0050 or SPY.
 
 ## Repository Workflow
 
+- For this repository, always use the GitHub account `FunkyGary` for `gh`,
+  GitHub, commit, push, and PR operations. Do not use `yahoo_gary`/Yahoo
+  accounts for repo work.
 - Unless the user explicitly says otherwise, completed code, documentation, or
   configuration changes should be committed and pushed to `origin/main`.
 - Do not include local editor settings, caches, or generated data snapshots in
