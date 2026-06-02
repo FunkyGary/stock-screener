@@ -314,6 +314,15 @@ def _is_special_attention(row: dict) -> bool:
     return _is_newly_above_all_mas(row)
 
 
+def _is_top_pick(row: dict) -> bool:
+    if _is_us_bear_strategy(row) and not _market_above_ma10(row):
+        return False
+    return (
+        (_is_special_attention(row) or _is_above_all_mas(row))
+        and _score_ratio(row) >= TOP_PICK_MIN_SCORE_RATIO
+    )
+
+
 def _special_attention_min_score_ratio(row: dict) -> float:
     strategy = (row.get("score_regime") or {}).get("strategy")
     if _is_us_bear_strategy(row):
@@ -708,12 +717,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     )
 
     # ⭐ Top picks
-    top = [
-        r
-        for r in rows
-        if (_is_special_attention(r) or _is_above_all_mas(r))
-        and _score_ratio(r) >= TOP_PICK_MIN_SCORE_RATIO
-    ]
+    top = [r for r in rows if _is_top_pick(r)]
     top = sorted(top, key=lambda r: (_score_ratio(r), r.get("score", 0)), reverse=True)
     if top:
         with st.expander(

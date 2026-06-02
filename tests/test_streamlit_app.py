@@ -5,6 +5,7 @@ from streamlit_app import (
     _has_recent_research_report,
     _is_downside_attention,
     _is_special_attention,
+    _is_top_pick,
 )
 
 
@@ -154,6 +155,35 @@ def test_us_bear_special_attention_requires_spy_above_ma10_and_55pct():
     row["score"] = 5.5
     row["score_regime"]["close"] = 99.0
     assert _is_special_attention(row) is False
+
+
+def test_us_bear_top_pick_requires_spy_above_ma10():
+    row = {
+        "market": "us",
+        "score": 8.0,
+        "max_score": 10.0,
+        "score_regime": {
+            "strategy": "bear_crash",
+            "close": 99.0,
+            "ma10": 100.0,
+        },
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 96.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_top_pick(row) is False
+    row["score_regime"]["close"] = 101.0
+    assert _is_top_pick(row) is True
 
 
 def test_tw_special_attention_bear_downtrend_only_requires_higher_score():
