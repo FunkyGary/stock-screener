@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 from streamlit_app import (
     _downside_attention_reason,
+    _filter_rows_by_search,
     _has_recent_research_report,
     _is_downside_attention,
     _is_special_attention,
@@ -25,6 +26,35 @@ def test_recent_research_report_uses_target_price_event_dates():
     }
 
     assert _has_recent_research_report(row) is True
+
+
+def test_stock_search_matches_tw_symbol_and_name():
+    rows = [
+        {"symbol": "2330.TW", "name": "台積電", "tradingview_symbol": "TWSE:2330"},
+        {"symbol": "2454.TW", "name": "聯發科", "tradingview_symbol": "TWSE:2454"},
+    ]
+
+    assert _filter_rows_by_search(rows, "2330") == [rows[0]]
+    assert _filter_rows_by_search(rows, "台積") == [rows[0]]
+
+
+def test_stock_search_matches_us_symbol_and_name_case_insensitive():
+    rows = [
+        {"symbol": "NVDA", "name": "NVIDIA", "tradingview_symbol": "NASDAQ:NVDA"},
+        {"symbol": "MSFT", "name": "Microsoft", "tradingview_symbol": "NASDAQ:MSFT"},
+    ]
+
+    assert _filter_rows_by_search(rows, "nvda") == [rows[0]]
+    assert _filter_rows_by_search(rows, "micro") == [rows[1]]
+
+
+def test_stock_search_blank_query_returns_original_rows():
+    rows = [
+        {"symbol": "NVDA", "name": "NVIDIA"},
+        {"symbol": "MSFT", "name": "Microsoft"},
+    ]
+
+    assert _filter_rows_by_search(rows, "  ") is rows
 
 
 def test_recent_research_report_expires_after_seven_days():

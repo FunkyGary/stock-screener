@@ -490,6 +490,34 @@ def _top_pick_label(row: dict, market_key: str) -> str:
     return f"**{primary}**　{_score_label(row)}　·　{detail}"
 
 
+def _stock_search_text(row: dict) -> str:
+    fields = [
+        row.get("symbol"),
+        row.get("name"),
+        row.get("tradingview_symbol"),
+    ]
+    return " ".join(str(field).casefold() for field in fields if field)
+
+
+def _filter_rows_by_search(rows: list[dict], query: str) -> list[dict]:
+    needle = query.strip().casefold()
+    if not needle:
+        return rows
+    return [row for row in rows if needle in _stock_search_text(row)]
+
+
+def _market_search_rows(rows: list[dict], market_key: str) -> list[dict]:
+    query = st.text_input(
+        "搜尋股票代號或名稱",
+        key=f"stock_search_{market_key}",
+        placeholder="例如：2330、台積電、NVDA、NVIDIA",
+    )
+    filtered = _filter_rows_by_search(rows, query)
+    if query.strip():
+        st.caption(f"搜尋結果：{len(filtered)}/{len(rows)}")
+    return filtered
+
+
 def _fmt_pct(value: float | int | None) -> str:
     return f"{float(value) * 100:+.2f}%" if value is not None else "n/a"
 
@@ -702,6 +730,11 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
 
 
 def _market_view_mobile(rows: list[dict], market_key: str) -> None:
+    rows = _market_search_rows(rows, market_key)
+    if not rows:
+        st.info("找不到符合的股票")
+        return
+
     special = sorted(
         [r for r in rows if _is_special_attention(r)],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
@@ -807,6 +840,11 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
 
 
 def _market_view_desktop(rows: list[dict], market_key: str) -> None:
+    rows = _market_search_rows(rows, market_key)
+    if not rows:
+        st.info("找不到符合的股票")
+        return
+
     special = sorted(
         [r for r in rows if _is_special_attention(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
