@@ -655,17 +655,6 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         [r for r in rows if _is_downside_attention(r)],
         key=lambda r: r.get("indicators", {}).get("today_return") or 0,
     )
-    research = sorted(
-        [
-            r
-            for r in rows
-            if _has_recent_research_report(r)
-            and not _is_special_attention(r)
-            and not _is_downside_attention(r)
-        ],
-        key=lambda r: (_score_ratio(r), r.get("score", 0)),
-        reverse=True,
-    )
     above = sorted(
         [
             r
@@ -673,7 +662,6 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             if _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
-            and not _has_recent_research_report(r)
         ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
@@ -685,7 +673,6 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
             if not _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
-            and not _has_recent_research_report(r)
         ],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
@@ -709,13 +696,12 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
 
     options = []
     options.append(f"特別注意 ({len(special)})")
-    options.append(f"研究報告 7日內 ({len(research)})")
     options.append(f"下跌特別注意 ({len(downside)})")
     options.append(f"全均線之上 ({len(above)})")
     options.append(f"其他 ({len(below)})")
     options.append("全部")
 
-    if not (special or research or downside or above or below):
+    if not (special or downside or above or below):
         st.info("（無資料）")
         return
 
@@ -729,8 +715,6 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     )
     if filter_choice.startswith("特別注意"):
         candidates = special
-    elif filter_choice.startswith("研究報告"):
-        candidates = research
     elif filter_choice.startswith("下跌特別注意"):
         candidates = downside
     elif filter_choice.startswith("全均線之上"):
@@ -738,7 +722,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     elif filter_choice.startswith("其他"):
         candidates = below
     else:
-        candidates = special + research + downside + above + below
+        candidates = special + downside + above + below
 
     if not candidates:
         st.info("此分組無資料")
@@ -781,17 +765,6 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         [r for r in rows if _is_downside_attention(r)],
         key=lambda r: r.get("indicators", {}).get("today_return") or 0,
     )
-    research = sorted(
-        [
-            r
-            for r in rows
-            if _has_recent_research_report(r)
-            and not _is_special_attention(r)
-            and not _is_downside_attention(r)
-        ],
-        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
-        reverse=True,
-    )
     above = sorted(
         [
             r
@@ -799,7 +772,6 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             if _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
-            and not _has_recent_research_report(r)
         ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
@@ -811,7 +783,6 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             if not _is_above_all_mas(r)
             and not _is_special_attention(r)
             and not _is_downside_attention(r)
-            and not _has_recent_research_report(r)
         ],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
@@ -824,7 +795,6 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
             f"特別注意：分數達當前策略門檻 ({len(special)})",
             special,
         ),
-        ("research", f"研究報告 7日內 ({len(research)})", research),
         (
             "downside",
             f"下跌特別注意：依當前多空震盪賣出訊號 ({len(downside)})",
