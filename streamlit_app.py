@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
+from zoneinfo import ZoneInfo
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -39,6 +40,8 @@ US_BEAR_CRASH_SPECIAL_ATTENTION_MIN_SCORE_RATIO = 0.60
 CHART_HEIGHT_DESKTOP = 620
 CHART_HEIGHT_MOBILE = 380
 VIEWPORT_BREAKPOINT_PX = 900  # ≥ this → desktop
+DISPLAY_TIMEZONE = ZoneInfo("Europe/Berlin")
+DISPLAY_TIMEZONE_LABEL = "Berlin"
 
 
 @st.cache_data(ttl=60)
@@ -98,6 +101,18 @@ def tradingview_widget(symbol: str, height: int) -> str:
       }});
     </script>
     """
+
+
+def _format_generated_at_for_display(generated: object) -> str:
+    if not isinstance(generated, str) or not generated:
+        return "n/a"
+    try:
+        parsed = datetime.fromisoformat(generated.replace("Z", "+00:00"))
+    except ValueError:
+        return "n/a"
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(DISPLAY_TIMEZONE).strftime("%Y-%m-%d %H:%M")
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -1046,15 +1061,14 @@ def render() -> None:
     rows_failed = [s for s in signals.values() if s.get("status") != "ok"]
 
     generated = data.get("generated_at") or "n/a"
-    short_gen = (
-        generated[:16].replace("T", " ") if isinstance(generated, str) else "n/a"
-    )
+    short_gen = _format_generated_at_for_display(generated)
 
     tw_rows = [r for r in rows_ok if r.get("market") == "tw"]
     us_rows = [r for r in rows_ok if r.get("market") == "us"]
 
     st.caption(
-        f"Last update: {short_gen} UTC · TW {len(tw_rows)} · US {len(us_rows)}"
+        f"Last update: {short_gen} {DISPLAY_TIMEZONE_LABEL} · "
+        f"TW {len(tw_rows)} · US {len(us_rows)}"
         + (f" · {len(rows_failed)} failed" if rows_failed else "")
     )
 

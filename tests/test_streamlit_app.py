@@ -3,11 +3,22 @@ from datetime import datetime, timedelta, timezone
 from streamlit_app import (
     _downside_attention_reason,
     _filter_rows_by_search,
+    _format_generated_at_for_display,
     _has_recent_research_report,
     _is_downside_attention,
     _is_special_attention,
     _is_top_pick,
 )
+
+
+def test_generated_at_display_uses_berlin_timezone():
+    assert _format_generated_at_for_display("2026-06-03T12:30:00+00:00") == (
+        "2026-06-03 14:30"
+    )
+
+
+def test_generated_at_display_handles_missing_values():
+    assert _format_generated_at_for_display(None) == "n/a"
 
 
 def test_recent_research_report_uses_target_price_event_dates():
