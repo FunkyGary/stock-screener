@@ -41,6 +41,7 @@ _WORKER_DATA: dict[str, pd.DataFrame] = {}
 _WORKER_BASE_SIGNALS: dict[pd.Timestamp, dict[str, dict]] = {}
 _WORKER_NAMES: dict[str, str] = {}
 _WORKER_DATES: list[pd.Timestamp] = []
+_WORKER_ENTRY_RULE = "newly_above_all"
 
 
 @dataclass
@@ -292,10 +293,12 @@ def _build_signal_facts(
                         score_fraction = reason.score / reason.weight
                 facts.append((key, score_fraction))
             newly_above = _above_all(snapshot) and not _was_above_all(snapshot)
+            above_ma5 = snapshot.ma5 is not None and snapshot.close > snapshot.ma5
             sell = snapshot.ma5 is not None and snapshot.close < snapshot.ma5
             facts_by_date.setdefault(date, {})[symbol] = {
                 "facts": facts,
                 "newly_above": newly_above,
+                "above_ma5": above_ma5,
                 "sell": sell,
             }
     return facts_by_date
@@ -304,6 +307,7 @@ def _build_signal_facts(
 def _signals_from_facts(
     facts_by_date: dict[pd.Timestamp, dict[str, dict]],
     weights: dict[str, float] | None = None,
+    entry_rule: str = "newly_above_all",
 ) -> dict[pd.Timestamp, dict[str, dict]]:
     active_weights = weights or DEFAULT_WEIGHTS
     max_score = sum(active_weights.values())
@@ -315,11 +319,17 @@ def _signals_from_facts(
                 for key, score_fraction in row["facts"]
             )
             ratio = weighted_score / max_score if max_score else 0.0
+            if entry_rule == "score_only":
+                special = ratio >= SPECIAL_MIN_SCORE_RATIO
+            elif entry_rule == "score_above_ma5":
+                special = row["above_ma5"] and ratio >= SPECIAL_MIN_SCORE_RATIO
+            else:
+                special = row["newly_above"] and ratio >= SPECIAL_MIN_SCORE_RATIO
             signals.setdefault(date, {})[symbol] = {
                 "score": weighted_score,
                 "max_score": max_score,
                 "ratio": ratio,
-                "special": row["newly_above"] and ratio >= SPECIAL_MIN_SCORE_RATIO,
+                "special": special,
                 "sell": row["sell"],
             }
     return signals
@@ -329,8 +339,11 @@ def _build_signals(
     data: dict[str, pd.DataFrame],
     benchmark_ind: pd.DataFrame,
     weights: dict[str, float] | None = None,
+    entry_rule: str = "newly_above_all",
 ) -> dict[pd.Timestamp, dict[str, dict]]:
-    return _signals_from_facts(_build_signal_facts(data, benchmark_ind), weights)
+    return _signals_from_facts(
+        _build_signal_facts(data, benchmark_ind), weights, entry_rule
+    )
 
 
 def _open_price(
@@ -532,7 +545,7 @@ def _summarize(
 
 
 def _run_variant(label: str, weights: dict[str, float]) -> dict:
-    signals = _signals_from_facts(_WORKER_BASE_SIGNALS, weights)
+    signals = _signals_from_facts(_WORKER_BASE_SIGNALS, weights, _WORKER_ENTRY_RULE)
     active_curve, trades, holdings = run_backtest(
         _WORKER_DATA, signals, _WORKER_NAMES, _WORKER_DATES
     )
@@ -543,12 +556,14 @@ def _run_variant(label: str, weights: dict[str, float]) -> dict:
     return summary
 
 
-def _init_worker(data, signal_facts, names, dates):
+def _init_worker(data, signal_facts, names, dates, entry_rule):
     global _WORKER_DATA, _WORKER_BASE_SIGNALS, _WORKER_NAMES, _WORKER_DATES
+    global _WORKER_ENTRY_RULE
     _WORKER_DATA = data
     _WORKER_BASE_SIGNALS = signal_facts
     _WORKER_NAMES = names
     _WORKER_DATES = dates
+    _WORKER_ENTRY_RULE = entry_rule
 
 
 def _weight_variants() -> list[tuple[str, dict[str, float]]]:
@@ -605,6 +620,12 @@ def main() -> None:
     parser.add_argument("--jobs", type=int, default=1)
     parser.add_argument("--top", type=int, default=10)
     parser.add_argument("--output-csv")
+    parser.add_argument(
+        "--entry-rule",
+        choices=("newly_above_all", "score_only", "score_above_ma5"),
+        default="newly_above_all",
+        help="special-attention entry rule to backtest",
+    )
     args = parser.parse_args()
 
     names = _load_tw_symbols(Path(args.watchlist))
@@ -623,11 +644,13 @@ def main() -> None:
     backtest_dates = _date_slice(all_dates, args.start, args.end, args.days)
     signal_data = {symbol: data[symbol] for symbol in names}
     signal_facts = _build_signal_facts(signal_data, benchmark_ind)
-    signals = _signals_from_facts(signal_facts)
+    signals = _signals_from_facts(signal_facts, entry_rule=args.entry_rule)
     active_curve, trades, holdings = run_backtest(data, signals, names, backtest_dates)
 
     buy_trades = [trade for trade in trades if trade["action"] == "buy"]
-    summary = _summarize("baseline", backtest_dates, data, trades, holdings, active_curve)
+    summary = _summarize(
+        f"baseline_{args.entry_rule}", backtest_dates, data, trades, holdings, active_curve
+    )
     _print_summary(summary)
     print(f"symbols_loaded={len(names)} missing={len(missing)}")
     if missing:
@@ -646,7 +669,7 @@ def main() -> None:
             with ProcessPoolExecutor(
                 max_workers=args.jobs,
                 initializer=_init_worker,
-                initargs=(data, signal_facts, names, backtest_dates),
+                initargs=(data, signal_facts, names, backtest_dates, args.entry_rule),
             ) as executor:
                 rows = list(
                     executor.map(
@@ -654,7 +677,7 @@ def main() -> None:
                     )
                 )
         else:
-            _init_worker(data, signal_facts, names, backtest_dates)
+            _init_worker(data, signal_facts, names, backtest_dates, args.entry_rule)
             rows = [_run_variant(label, weights) for label, weights in variants]
         frame = pd.DataFrame(rows).sort_values(
             ["excess_pct", "active_return_pct"], ascending=False
