@@ -11,9 +11,9 @@ from streamlit_app import (
 )
 
 
-def test_generated_at_display_uses_berlin_timezone():
+def test_generated_at_display_uses_dublin_timezone():
     assert _format_generated_at_for_display("2026-06-03T12:30:00+00:00") == (
-        "2026-06-03 14:30"
+        "2026-06-03 13:30"
     )
 
 
