@@ -81,9 +81,10 @@ reliable daily history for those datasets.
 Rules removed from scoring: close within 2% of 20-day high, and latest rating
 is Buy or Strong Buy.
 
-The `特別注意` section requires a newly-above-all-moving-averages signal and
-at least a 50% score. Target-price raises remain visible in each stock's signal
-list and score, but do not by themselves place a stock in `特別注意`.
+The `特別注意` section requires the current strategy's score threshold. US bear
+regimes also require the active SPY repair gate. Target-price raises remain
+visible in each stock's signal list and score, but do not by themselves place a
+stock in `特別注意`.
 A separate `下跌特別注意` section flags stocks that were above all moving
 averages on the previous trading day but closed below MA5 today.
 

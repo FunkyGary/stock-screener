@@ -325,9 +325,7 @@ def _is_special_attention(row: dict) -> bool:
         return False
     if _is_us_bear_strategy(row) and not _us_bear_entry_gate_open(row):
         return False
-    if row.get("market") == "tw":
-        return True
-    return _is_newly_above_all_mas(row)
+    return True
 
 
 def _is_top_pick(row: dict) -> bool:

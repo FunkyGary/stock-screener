@@ -302,10 +302,10 @@ def test_tw_special_attention_bear_downtrend_only_requires_higher_score():
     assert _is_special_attention(row) is True
 
 
-def test_us_special_attention_still_requires_newly_above_all_mas():
+def test_us_bull_special_attention_only_requires_score_threshold():
     row = {
         "market": "us",
-        "score": 10.0,
+        "score": 4.9,
         "max_score": 10.0,
         "score_regime": {"strategy": "bull"},
         "indicators": {
@@ -322,6 +322,33 @@ def test_us_special_attention_still_requires_newly_above_all_mas():
         },
     }
 
+    assert _is_special_attention(row) is False
+    row["score"] = 5.0
+    assert _is_special_attention(row) is True
+
+
+def test_us_range_special_attention_does_not_require_newly_above_all_mas():
+    row = {
+        "market": "us",
+        "score": 5.0,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "range"},
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 101.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_special_attention(row) is True
+    row["score"] = 4.9
     assert _is_special_attention(row) is False
 
 
