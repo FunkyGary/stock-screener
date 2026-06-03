@@ -6,6 +6,8 @@ from streamlit_app import (
     _format_generated_at_for_display,
     _has_recent_research_report,
     _is_downside_attention,
+    _is_newly_above_all_special_attention,
+    _is_score_only_special_attention,
     _is_special_attention,
     _is_top_pick,
 )
@@ -350,6 +352,58 @@ def test_us_range_special_attention_does_not_require_newly_above_all_mas():
     assert _is_special_attention(row) is True
     row["score"] = 4.9
     assert _is_special_attention(row) is False
+
+
+def test_special_attention_newly_above_all_bucket_requires_both_conditions():
+    row = {
+        "market": "tw",
+        "score": 5.0,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "bull"},
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 96.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_newly_above_all_special_attention(row) is True
+    assert _is_score_only_special_attention(row) is False
+    row["score"] = 4.9
+    assert _is_newly_above_all_special_attention(row) is False
+
+
+def test_special_attention_score_only_bucket_excludes_newly_above_all():
+    row = {
+        "market": "us",
+        "score": 5.0,
+        "max_score": 10.0,
+        "score_regime": {"strategy": "bull"},
+        "indicators": {
+            "close": 101.0,
+            "ma5": 100.0,
+            "ma10": 99.0,
+            "ma20": 98.0,
+            "ma240": 97.0,
+            "prev_close": 101.0,
+            "prev_ma5": 100.0,
+            "prev_ma10": 99.0,
+            "prev_ma20": 98.0,
+            "prev_ma240": 97.0,
+        },
+    }
+
+    assert _is_score_only_special_attention(row) is True
+    assert _is_newly_above_all_special_attention(row) is False
+    row["score"] = 4.9
+    assert _is_score_only_special_attention(row) is False
 
 
 def test_downside_attention_range_uses_penalty_adjusted_score():

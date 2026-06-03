@@ -328,6 +328,14 @@ def _is_special_attention(row: dict) -> bool:
     return True
 
 
+def _is_newly_above_all_special_attention(row: dict) -> bool:
+    return _is_special_attention(row) and _is_newly_above_all_mas(row)
+
+
+def _is_score_only_special_attention(row: dict) -> bool:
+    return _is_special_attention(row) and not _is_newly_above_all_mas(row)
+
+
 def _is_top_pick(row: dict) -> bool:
     if _is_us_bear_strategy(row) and not _us_bear_entry_gate_open(row):
         return False
@@ -748,8 +756,13 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         st.info("找不到符合的股票")
         return
 
-    special = sorted(
-        [r for r in rows if _is_special_attention(r)],
+    newly_special = sorted(
+        [r for r in rows if _is_newly_above_all_special_attention(r)],
+        key=lambda r: (_score_ratio(r), r.get("score", 0)),
+        reverse=True,
+    )
+    score_special = sorted(
+        [r for r in rows if _is_score_only_special_attention(r)],
         key=lambda r: (_score_ratio(r), r.get("score", 0)),
         reverse=True,
     )
@@ -792,13 +805,14 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
                 st.markdown(_top_pick_label(r, market_key))
 
     options = []
-    options.append(f"特別注意 ({len(special)})")
+    options.append(f"今日站上全均線 ({len(newly_special)})")
+    options.append(f"分數達標 ({len(score_special)})")
     options.append(f"下跌特別注意 ({len(downside)})")
     options.append(f"全均線之上 ({len(above)})")
     options.append(f"其他 ({len(below)})")
     options.append("全部")
 
-    if not (special or downside or above or below):
+    if not (newly_special or score_special or downside or above or below):
         st.info("（無資料）")
         return
 
@@ -810,8 +824,10 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
         key=f"filter_{market_key}",
         label_visibility="collapsed",
     )
-    if filter_choice.startswith("特別注意"):
-        candidates = special
+    if filter_choice.startswith("今日站上全均線"):
+        candidates = newly_special
+    elif filter_choice.startswith("分數達標"):
+        candidates = score_special
     elif filter_choice.startswith("下跌特別注意"):
         candidates = downside
     elif filter_choice.startswith("全均線之上"):
@@ -819,7 +835,7 @@ def _market_view_mobile(rows: list[dict], market_key: str) -> None:
     elif filter_choice.startswith("其他"):
         candidates = below
     else:
-        candidates = special + downside + above + below
+        candidates = newly_special + score_special + downside + above + below
 
     if not candidates:
         st.info("此分組無資料")
@@ -858,8 +874,13 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
         st.info("找不到符合的股票")
         return
 
-    special = sorted(
-        [r for r in rows if _is_special_attention(r)],
+    newly_special = sorted(
+        [r for r in rows if _is_newly_above_all_special_attention(r)],
+        key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
+        reverse=True,
+    )
+    score_special = sorted(
+        [r for r in rows if _is_score_only_special_attention(r)],
         key=lambda r: (r.get("score", 0), r.get("max_score", 0)),
         reverse=True,
     )
@@ -893,9 +914,14 @@ def _market_view_desktop(rows: list[dict], market_key: str) -> None:
     row_map: dict[str, dict] = {}
     sections = [
         (
-            "special",
-            f"特別注意：分數達當前策略門檻 ({len(special)})",
-            special,
+            "newly_special",
+            f"今日站上全均線：分數達當前策略門檻 ({len(newly_special)})",
+            newly_special,
+        ),
+        (
+            "score_special",
+            f"分數達標：分數達當前策略門檻 ({len(score_special)})",
+            score_special,
         ),
         (
             "downside",
