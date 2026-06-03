@@ -80,6 +80,18 @@ Reason record:
 Indicator keys are defined by `screener.indicators.IndicatorSnapshot`. Do not
 rename them without updating scoring, dashboard, and tests.
 
+Intraday snapshots may include projected-volume keys:
+
+- `projected_volume`: estimated full-day volume from intraday curves.
+- `projected_vol_ratio`: projected volume divided by the prior 20 daily-volume
+  average, capped at 5x.
+- `same_time_vol_ratio`: current cumulative volume divided by the same-time
+  historical median.
+- `volume_projection_source`: `symbol`, `industry`, or `market`.
+- `volume_projection_reliable`: false during the first 30 regular-session
+  minutes or when no curve is available.
+- `volume_projection_capped`: true when the projected ratio hit the cap.
+
 ## Target Event JSONL
 
 Each line is one JSON object. Normalization lives in `screener.io`; use those

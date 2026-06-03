@@ -11,11 +11,11 @@ from __future__ import annotations
 
 import argparse
 import logging
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from datetime import datetime, timezone
 
 from . import chip as chip_mod
-from . import fetch, indicators, io, score, sectors
+from . import fetch, indicators, intraday_volume, io, score, sectors
 from . import market_regime as market_regime_mod
 from .chip import ChipSnapshot
 from .fetch import AnalystSnapshot
@@ -172,6 +172,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
     manual_target_events = io.load_tw_target_events() if market == "tw" else []
     sector_map = io.load_sector_map()
     ohlcv_by_symbol = {}
+    intraday_by_symbol = {}
     indicator_by_symbol = {}
 
     for entry in entries:
@@ -191,7 +192,27 @@ def run_market(market: str, mode: str = "eod") -> dict:
             continue
 
         ohlcv_by_symbol[entry.symbol] = ohlcv.df
+        intraday_by_symbol[entry.symbol] = ohlcv.intraday_df
         indicator_by_symbol[entry.symbol] = indicators.compute(ohlcv.df)
+
+    if mode == "intraday":
+        volume_projection_by_symbol = intraday_volume.project_intraday_volumes(
+            market=market,
+            daily_by_symbol=ohlcv_by_symbol,
+            intraday_by_symbol=intraday_by_symbol,
+            sector_map=sector_map,
+        )
+        for symbol, projection in volume_projection_by_symbol.items():
+            if symbol in indicator_by_symbol:
+                indicator_by_symbol[symbol] = replace(
+                    indicator_by_symbol[symbol],
+                    projected_volume=projection.projected_volume,
+                    projected_vol_ratio=projection.projected_vol_ratio,
+                    same_time_vol_ratio=projection.same_time_vol_ratio,
+                    volume_projection_source=projection.source,
+                    volume_projection_reliable=projection.reliable,
+                    volume_projection_capped=projection.capped,
+                )
 
     sector_by_symbol = sectors.build_sector_snapshots(
         market=market,

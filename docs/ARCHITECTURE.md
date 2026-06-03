@@ -45,10 +45,11 @@ the repo. Trading remains manual; this app only screens and displays signals.
 
 `intraday`:
 
-- Fetches OHLCV.
+- Fetches OHLCV plus recent 5-minute bars for intraday volume projection.
 - Carries forward analyst and chip blobs from the previous snapshot.
 - Updates price-driven indicators and scores without mutating analyst/chip
-  state.
+  state. Volume-up scoring can use a reliable projected full-day volume based
+  on historical cumulative-volume curves.
 
 ## Output Shape
 

@@ -94,6 +94,15 @@ weighted 1-day and 5-day returns beat the benchmark, its 1-day return is
 positive, and at least 50% of members close above MA5. Continuation scores:
 day 1 = 0.5, day 2 = 1.0, days 3-5 = 1.5, day 6+ = 1.0.
 
+Intraday runs project full-day volume from historical cumulative-volume curves.
+The primary curve is per-symbol; if the symbol has too little intraday history,
+the run falls back to same-industry watchlist curves, then same-market curves.
+Projected volume is marked unreliable for the first 30 minutes after the regular
+open and projected volume ratios are capped at 5x. During intraday scoring,
+`放量上漲` can use projected volume only when the projection is reliable and the
+current cumulative volume is also at least 1.2x the same-time historical median.
+EOD scoring continues to use actual full-day volume.
+
 ## Local development
 
 ```bash

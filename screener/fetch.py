@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 class OHLCV:
     symbol: str
     df: pd.DataFrame
+    intraday_df: pd.DataFrame | None = None
 
 
 @dataclass
@@ -92,6 +93,8 @@ def fetch_ohlcv(
     period: str = "2y",
     intraday: bool = False,
     intraday_interval: str = "1m",
+    intraday_history_period: str = "60d",
+    intraday_history_interval: str = "5m",
 ) -> OHLCV:
     df = yf.download(
         symbol,
@@ -105,15 +108,21 @@ def fetch_ohlcv(
         raise FetchError(f"no OHLCV data for {symbol}")
     df = _normalize_yfinance_columns(df)
     _validate_ohlcv(df, symbol)
+    intraday_history_df = None
     if intraday:
-        intervals = [intraday_interval] + [
-            interval for interval in ("5m",) if interval != intraday_interval
-        ]
-        for interval in intervals:
+        history_intervals = [intraday_history_interval]
+        if intraday_interval not in history_intervals:
+            history_intervals.append(intraday_interval)
+        for interval in history_intervals:
             try:
+                period_arg = (
+                    intraday_history_period
+                    if interval == intraday_history_interval
+                    else "1d"
+                )
                 intraday_df = yf.download(
                     symbol,
-                    period="1d",
+                    period=period_arg,
                     interval=interval,
                     auto_adjust=False,
                     progress=False,
@@ -123,13 +132,14 @@ def fetch_ohlcv(
                     continue
                 intraday_df = _normalize_yfinance_columns(intraday_df)
                 _validate_ohlcv(intraday_df, symbol)
+                intraday_history_df = intraday_df
                 df = _merge_intraday_latest(df, intraday_df)
                 break
             except Exception as exc:
                 logger.warning(
                     "intraday %s fetch failed for %s: %s", interval, symbol, exc
                 )
-    return OHLCV(symbol=symbol, df=df)
+    return OHLCV(symbol=symbol, df=df, intraday_df=intraday_history_df)
 
 
 def _finnhub_client() -> finnhub.Client:

@@ -41,6 +41,12 @@ class IndicatorSnapshot:
     macd_hist: Optional[float]
     macd_prev: Optional[float]
     macd_signal_prev: Optional[float]
+    projected_volume: Optional[float] = None
+    projected_vol_ratio: Optional[float] = None
+    same_time_vol_ratio: Optional[float] = None
+    volume_projection_source: Optional[str] = None
+    volume_projection_reliable: bool = False
+    volume_projection_capped: bool = False
 
 
 def _safe_last(series: pd.Series) -> Optional[float]:

@@ -18,6 +18,7 @@ FOREIGN_PCT_OF_VOLUME = 0.05
 FOREIGN_BUY_STREAK = 3
 VOLUME_UP_RATIO = 1.2
 VOLUME_DOWN_RATIO = 1.3
+INTRADAY_SAME_TIME_VOLUME_RATIO = 1.2
 SELL_PRESSURE_WEIGHTS = {
     "below_ma10": 0.08,
     "below_ma20": 0.12,
@@ -256,6 +257,41 @@ def _has_prev_all_ma_data(ind: IndicatorSnapshot) -> bool:
     )
 
 
+def _volume_up_signal(ind: IndicatorSnapshot) -> tuple[bool, str] | None:
+    if ind.today_return is None:
+        return None
+    ratio = ind.vol_ratio
+    detail_parts = []
+    if ratio is not None:
+        detail_parts.append(f"vol_ratio={ratio:.2f}")
+    if (
+        ind.volume_projection_reliable
+        and ind.projected_vol_ratio is not None
+        and ind.same_time_vol_ratio is not None
+    ):
+        detail_parts.append(f"projected_vol_ratio={ind.projected_vol_ratio:.2f}")
+        detail_parts.append(f"same_time_vol_ratio={ind.same_time_vol_ratio:.2f}")
+        if ind.volume_projection_source:
+            detail_parts.append(f"projection={ind.volume_projection_source}")
+        if ind.volume_projection_capped:
+            detail_parts.append("capped")
+        passed = (
+            ind.projected_vol_ratio > VOLUME_UP_RATIO
+            and ind.same_time_vol_ratio >= INTRADAY_SAME_TIME_VOLUME_RATIO
+            and ind.today_return > 0
+        )
+    elif ratio is not None:
+        passed = ratio > VOLUME_UP_RATIO and ind.today_return > 0
+        if ind.projected_vol_ratio is not None:
+            detail_parts.append(
+                f"projected_vol_ratio={ind.projected_vol_ratio:.2f} unreliable"
+            )
+    else:
+        return None
+    detail_parts.append(f"return={ind.today_return * 100:.2f}%")
+    return passed, " ".join(detail_parts)
+
+
 def _append_sell_pressure_reasons(
     reasons: list[Reason],
     ind: IndicatorSnapshot,
@@ -403,13 +439,14 @@ def score(
             )
         )
 
-    if ind.vol_ratio is not None and ind.today_return is not None:
-        passed = ind.vol_ratio > VOLUME_UP_RATIO and ind.today_return > 0
+    volume_up = _volume_up_signal(ind)
+    if volume_up is not None:
+        passed, volume_detail = volume_up
         reasons.append(
             Reason(
                 rule=f"放量上漲 (vol>{VOLUME_UP_RATIO:.1f}x & up day)",
                 passed=passed,
-                detail=f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%",
+                detail=volume_detail,
                 weight=weights["volume"],
             )
         )

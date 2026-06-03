@@ -263,6 +263,69 @@ def test_volume_up_uses_relaxed_volume_threshold():
     assert rule.weight == 1.5
 
 
+def test_intraday_projected_volume_can_pass_volume_up_rule():
+    result = score(
+        "tw",
+        _ind(
+            vol_ratio=0.5,
+            projected_vol_ratio=1.6,
+            same_time_vol_ratio=1.3,
+            volume_projection_source="symbol",
+            volume_projection_reliable=True,
+        ),
+        None,
+        None,
+        chip=_chip(),
+    )
+
+    rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
+
+    assert rule.passed is True
+    assert "projected_vol_ratio=1.60" in rule.detail
+    assert "same_time_vol_ratio=1.30" in rule.detail
+
+
+def test_intraday_projected_volume_requires_same_time_confirmation():
+    result = score(
+        "tw",
+        _ind(
+            vol_ratio=0.5,
+            projected_vol_ratio=1.6,
+            same_time_vol_ratio=1.0,
+            volume_projection_source="symbol",
+            volume_projection_reliable=True,
+        ),
+        None,
+        None,
+        chip=_chip(),
+    )
+
+    rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
+
+    assert rule.passed is False
+
+
+def test_intraday_unreliable_projection_does_not_drive_volume_up_rule():
+    result = score(
+        "tw",
+        _ind(
+            vol_ratio=0.5,
+            projected_vol_ratio=1.6,
+            same_time_vol_ratio=1.3,
+            volume_projection_source="symbol",
+            volume_projection_reliable=False,
+        ),
+        None,
+        None,
+        chip=_chip(),
+    )
+
+    rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
+
+    assert rule.passed is False
+    assert "unreliable" in rule.detail
+
+
 def test_obv_trend_down_loses_point():
     result = score(
         "tw", _ind(obv_ma5=30000.0, obv_ma20=40000.0), None, None, chip=_chip()
