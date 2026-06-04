@@ -104,28 +104,14 @@ def _manual_target_events_for_symbol(
     return _enrich_target_price_events(symbol_events, close)
 
 
-def _build_analyst_blob_eod(
-    new_snap: AnalystSnapshot,
-    prev_blob: dict | None,
-    close: float | None = None,
-) -> dict:
-    """At EOD: shift the previous run's target_mean into target_mean_prev_eod.
-
-    Intraday runs don't touch the analyst block, so prev['target_mean'] is
-    always the value set by the most recent EOD — exactly what 'yesterday's
-    EOD' should mean once today's EOD fires.
-    """
-    prev = prev_blob or {}
-    prev_target = prev.get("target_mean")
+def _build_analyst_blob_eod(new_snap: AnalystSnapshot, close: float | None = None) -> dict:
     events = new_snap.target_price_events
     if close is not None:
         events = _enrich_target_price_events(events, close)
     return {
-        "target_mean": new_snap.target_mean,
         "rating": new_snap.rating,
         "rating_score": new_snap.rating_score,
         "target_price_events": events or [],
-        "target_mean_prev_eod": prev_target,
     }
 
 
@@ -251,9 +237,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
             if mode == "eod":
                 try:
                     new_snap = fetch.fetch_analyst(entry.symbol)
-                    analyst_blob = _build_analyst_blob_eod(
-                        new_snap, prev_record.get("analyst"), close=ind.close
-                    )
+                    analyst_blob = _build_analyst_blob_eod(new_snap, close=ind.close)
                 except Exception as exc:
                     logger.warning("fetch analyst failed for %s: %s", entry.symbol, exc)
                     analyst_blob = prev_record.get("analyst")  # keep last good
@@ -270,7 +254,6 @@ def run_market(market: str, mode: str = "eod") -> dict:
             )
             if target_events:
                 analyst_blob = {
-                    "target_mean": None,
                     "rating": None,
                     "rating_score": None,
                     "target_price_events": target_events,
@@ -290,10 +273,8 @@ def run_market(market: str, mode: str = "eod") -> dict:
 
         # Reconstruct strongly-typed objects to feed score()
         analyst_for_score: AnalystSnapshot | None = None
-        prev_target_mean = None
         if analyst_blob:
             analyst_for_score = AnalystSnapshot(
-                target_mean=analyst_blob.get("target_mean"),
                 rating=analyst_blob.get("rating"),
                 rating_score=analyst_blob.get("rating_score"),
                 target_price_events=analyst_blob.get("target_price_events"),
@@ -303,7 +284,6 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 target_raise_to=analyst_blob.get("target_raise_to"),
                 target_raise_pct=analyst_blob.get("target_raise_pct"),
             )
-            prev_target_mean = analyst_blob.get("target_mean_prev_eod")
 
         chip_for_score: ChipSnapshot | None = None
         if chip_blob:
@@ -320,7 +300,6 @@ def run_market(market: str, mode: str = "eod") -> dict:
             market=entry.market,
             ind=ind,
             analyst=analyst_for_score,
-            prev_target_mean=prev_target_mean,
             chip=chip_for_score,
             benchmark_return_20d=benchmark_return_20d,
             sector=sector_snap,

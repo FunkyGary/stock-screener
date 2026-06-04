@@ -391,7 +391,6 @@ def score(
     market: str,
     ind: IndicatorSnapshot,
     analyst: Optional[AnalystSnapshot],
-    prev_target_mean: Optional[float],
     chip: Optional[ChipSnapshot] = None,
     benchmark_return_20d: Optional[float] = None,
     sector: Optional[SectorSnapshot] = None,

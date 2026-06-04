@@ -26,7 +26,6 @@ class OHLCV:
 
 @dataclass
 class AnalystSnapshot:
-    target_mean: Optional[float]
     rating: Optional[str]
     rating_score: Optional[float]
     target_price_events: list[dict] | None = None
@@ -161,13 +160,6 @@ def _rating_label(score: float) -> str:
     return "Strong Sell"
 
 
-def _fetch_target_mean_yfinance(symbol: str) -> Optional[float]:
-    """yfinance exposes analyst consensus targets via Ticker.analyst_price_targets."""
-    targets = yf.Ticker(symbol).analyst_price_targets or {}
-    mean = targets.get("mean")
-    return float(mean) if mean else None
-
-
 def _fetch_rating_finnhub(symbol: str) -> tuple[Optional[str], Optional[float]]:
     """Finnhub free tier exposes recommendation_trends but not price_target."""
     client = _finnhub_client()
@@ -291,16 +283,10 @@ def _fetch_target_price_events_finnhub(symbol: str, days: int = 7) -> list[dict]
 
 
 def fetch_analyst(symbol: str) -> AnalystSnapshot:
-    """Combine yfinance target + Finnhub rating; each source fails independently."""
-    target_mean: Optional[float] = None
+    """Fetch Finnhub analyst rating and target-price raise news."""
     rating: Optional[str] = None
     rating_score: Optional[float] = None
     target_price_events: list[dict] = []
-
-    try:
-        target_mean = _fetch_target_mean_yfinance(symbol)
-    except Exception as exc:
-        logger.warning("yfinance analyst target failed for %s: %s", symbol, exc)
 
     try:
         rating, rating_score = _fetch_rating_finnhub(symbol)
@@ -313,7 +299,6 @@ def fetch_analyst(symbol: str) -> AnalystSnapshot:
         logger.warning("finnhub target price news failed for %s: %s", symbol, exc)
 
     return AnalystSnapshot(
-        target_mean=target_mean,
         rating=rating,
         rating_score=rating_score,
         target_price_events=target_price_events,

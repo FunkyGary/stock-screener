@@ -59,7 +59,6 @@ def _chip(**overrides) -> ChipSnapshot:
 
 def test_full_bullish_us_with_target_raise_scores_max():
     analyst = AnalystSnapshot(
-        target_mean=120.0,
         rating="Buy",
         rating_score=2.0,
         target_price_events=[
@@ -74,7 +73,7 @@ def test_full_bullish_us_with_target_raise_scores_max():
         ],
     )
     result = score(
-        "us", _ind(), analyst, prev_target_mean=110.0, benchmark_return_20d=0.05
+        "us", _ind(), analyst, benchmark_return_20d=0.05
     )
     assert result.max_score == 14.0
     assert result.score == 14.0
@@ -85,7 +84,6 @@ def test_tw_max_score_is_seventeen_with_chip():
         "tw",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         chip=_chip(),
         benchmark_return_20d=0.05,
     )
@@ -98,7 +96,6 @@ def test_tw_range_strategy_uses_balanced_weights():
         "tw",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         chip=_chip(),
         benchmark_return_20d=0.05,
         strategy="range",
@@ -118,7 +115,6 @@ def test_tw_bear_crash_strategy_reduces_technical_max_score():
         "tw",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         chip=_chip(),
         benchmark_return_20d=0.05,
         strategy="bear_crash",
@@ -144,7 +140,6 @@ def test_us_bull_strategy_uses_backtested_weights():
         "us",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         benchmark_return_20d=0.05,
         strategy="bull",
     )
@@ -167,7 +162,6 @@ def test_us_range_strategy_uses_rotation_weights():
         "us",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         benchmark_return_20d=0.05,
         strategy="range",
     )
@@ -186,7 +180,6 @@ def test_us_bear_crash_strategy_does_not_use_tw_chip_weight_changes():
         "us",
         _ind(),
         analyst=None,
-        prev_target_mean=None,
         benchmark_return_20d=0.05,
         strategy="bear_crash",
     )
@@ -200,7 +193,7 @@ def test_us_bear_crash_strategy_does_not_use_tw_chip_weight_changes():
 
 def test_tw_without_chip_still_emits_rules_but_zeroed():
     # chip data unavailable: rules emit, both fail -> max_score includes chip weights.
-    result = score("tw", _ind(), analyst=None, prev_target_mean=None, chip=None)
+    result = score("tw", _ind(), analyst=None, chip=None)
     assert result.max_score == 15.0
     trust = next(r for r in result.reasons if r.rule.startswith("投信"))
     foreign = next(r for r in result.reasons if r.rule.startswith("外資"))
@@ -210,7 +203,7 @@ def test_tw_without_chip_still_emits_rules_but_zeroed():
 
 
 def test_20d_close_high_requires_breaking_prior_20d_high():
-    result = score("tw", _ind(close=98.0, prev_high_20d=99.0), None, None, chip=_chip())
+    result = score("tw", _ind(close=98.0, prev_high_20d=99.0), None, chip=_chip())
     rule = next(r for r in result.reasons if r.rule == "20日收盤新高")
     assert rule.passed is False
 
@@ -219,7 +212,6 @@ def test_relative_strength_requires_stock_to_beat_benchmark():
     result = score(
         "tw",
         _ind(return_20d=0.04),
-        None,
         None,
         chip=_chip(),
         benchmark_return_20d=0.05,
@@ -233,7 +225,6 @@ def test_short_trend_requires_close_above_ma5():
         "tw",
         _ind(close=90.0, ma5=99.0, ma10=80.0, ma20=79.0, prev2_low=80.0, prev_5d_low=80.0),
         None,
-        None,
         chip=_chip(),
     )
     assert result.score == 6.5
@@ -243,7 +234,7 @@ def test_short_trend_requires_close_above_ma5():
 
 
 def test_short_trend_requires_ma5_above_ma20():
-    result = score("tw", _ind(ma5=94.0, ma20=95.0), None, None, chip=_chip())
+    result = score("tw", _ind(ma5=94.0, ma20=95.0), None, chip=_chip())
     assert result.score == 11.0
     assert result.max_score == 15.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
@@ -251,13 +242,13 @@ def test_short_trend_requires_ma5_above_ma20():
 
 
 def test_volume_up_requires_positive_return():
-    result = score("tw", _ind(today_return=-0.01), None, None, chip=_chip())
+    result = score("tw", _ind(today_return=-0.01), None, chip=_chip())
     rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
     assert rule.passed is False
 
 
 def test_volume_up_uses_relaxed_volume_threshold():
-    result = score("tw", _ind(vol_ratio=1.3), None, None, chip=_chip())
+    result = score("tw", _ind(vol_ratio=1.3), None, chip=_chip())
     rule = next(r for r in result.reasons if r.rule.startswith("放量上漲"))
     assert rule.passed is True
     assert rule.weight == 1.5
@@ -273,7 +264,6 @@ def test_intraday_projected_volume_can_pass_volume_up_rule():
             volume_projection_source="symbol",
             volume_projection_reliable=True,
         ),
-        None,
         None,
         chip=_chip(),
     )
@@ -296,7 +286,6 @@ def test_intraday_projected_volume_requires_same_time_confirmation():
             volume_projection_reliable=True,
         ),
         None,
-        None,
         chip=_chip(),
     )
 
@@ -316,7 +305,6 @@ def test_intraday_unreliable_projection_does_not_drive_volume_up_rule():
             volume_projection_reliable=False,
         ),
         None,
-        None,
         chip=_chip(),
     )
 
@@ -328,7 +316,7 @@ def test_intraday_unreliable_projection_does_not_drive_volume_up_rule():
 
 def test_obv_trend_down_loses_point():
     result = score(
-        "tw", _ind(obv_ma5=30000.0, obv_ma20=40000.0), None, None, chip=_chip()
+        "tw", _ind(obv_ma5=30000.0, obv_ma20=40000.0), None, chip=_chip()
     )
     rule = next(r for r in result.reasons if r.rule == "OBV 5d > OBV 20d")
     assert rule.passed is False
@@ -348,7 +336,6 @@ def test_tw_sell_pressure_penalties_reduce_score_by_ratio():
             vol_ratio=1.4,
             big_bull_low=95.0,
         ),
-        None,
         None,
         chip=_chip(),
         benchmark_return_20d=0.05,
@@ -380,7 +367,6 @@ def test_macd_above_signal_scores_one_point_without_cross():
         "tw",
         _ind(macd_prev=1.0, macd_signal_prev=0.5),
         None,
-        None,
         chip=_chip(),
     )
     rule = next(r for r in result.reasons if r.rule.startswith("MACD"))
@@ -394,7 +380,6 @@ def test_macd_below_signal_fails():
         "tw",
         _ind(macd=0.5, macd_signal=0.8, macd_prev=0.7, macd_signal_prev=0.6),
         None,
-        None,
         chip=_chip(),
     )
     rule = next(r for r in result.reasons if r.rule.startswith("MACD"))
@@ -405,7 +390,6 @@ def test_macd_below_signal_fails():
 
 def test_target_raise_requires_ten_percent_upside():
     analyst = AnalystSnapshot(
-        target_mean=120.0,
         rating="Buy",
         rating_score=2.0,
         target_price_events=[
@@ -416,14 +400,13 @@ def test_target_raise_requires_ten_percent_upside():
             }
         ],
     )
-    result = score("us", _ind(), analyst, prev_target_mean=110.0)
+    result = score("us", _ind(), analyst)
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
 def test_tw_target_raise_scores_like_us():
     analyst = AnalystSnapshot(
-        target_mean=None,
         rating=None,
         rating_score=None,
         target_price_events=[
@@ -436,7 +419,7 @@ def test_tw_target_raise_scores_like_us():
         ],
     )
 
-    result = score("tw", _ind(), analyst, prev_target_mean=None, chip=_chip())
+    result = score("tw", _ind(), analyst, chip=_chip())
 
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is True
@@ -446,7 +429,6 @@ def test_tw_target_raise_scores_like_us():
 
 def test_target_raise_expires_after_seven_days():
     analyst = AnalystSnapshot(
-        target_mean=120.0,
         rating="Buy",
         rating_score=2.0,
         target_price_events=[
@@ -459,14 +441,13 @@ def test_target_raise_expires_after_seven_days():
             }
         ],
     )
-    result = score("us", _ind(), analyst, prev_target_mean=110.0)
+    result = score("us", _ind(), analyst)
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
 def test_target_update_does_not_score_as_target_raise():
     analyst = AnalystSnapshot(
-        target_mean=None,
         rating=None,
         rating_score=None,
         target_price_events=[
@@ -480,27 +461,27 @@ def test_target_update_does_not_score_as_target_raise():
         ],
     )
 
-    result = score("tw", _ind(), analyst, prev_target_mean=None, chip=_chip())
+    result = score("tw", _ind(), analyst, chip=_chip())
 
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
 def test_no_target_price_events_does_not_score_target_raise():
-    analyst = AnalystSnapshot(target_mean=120.0, rating="Buy", rating_score=2.0)
-    result = score("us", _ind(), analyst, prev_target_mean=None)
+    analyst = AnalystSnapshot(rating="Buy", rating_score=2.0)
+    result = score("us", _ind(), analyst)
     rule = next(r for r in result.reasons if "目標價" in r.rule)
     assert rule.passed is False
 
 
 def test_rating_is_not_scored():
-    analyst = AnalystSnapshot(target_mean=120.0, rating="Hold", rating_score=3.0)
-    result = score("us", _ind(), analyst, prev_target_mean=110.0)
+    analyst = AnalystSnapshot(rating="Hold", rating_score=3.0)
+    result = score("us", _ind(), analyst)
     assert not any(r.rule == "rating in {Buy, Strong Buy}" for r in result.reasons)
 
 
 def test_trust_streak_below_threshold_fails():
-    result = score("tw", _ind(), None, None, chip=_chip(trust_streak_days=2))
+    result = score("tw", _ind(), None, chip=_chip(trust_streak_days=2))
     rule = next(r for r in result.reasons if r.rule.startswith("投信"))
     assert rule.passed is False
 
@@ -509,7 +490,6 @@ def test_trust_first_buy_day_scores_two_points():
     result = score(
         "tw",
         _ind(),
-        None,
         None,
         chip=_chip(trust_streak_days=1, trust_buy_first_day=True),
     )
@@ -525,7 +505,6 @@ def test_trust_three_day_streak_scores_one_point_five():
         "tw",
         _ind(),
         None,
-        None,
         chip=_chip(trust_streak_days=3, trust_buy_first_day=False),
     )
     rule = next(r for r in result.reasons if r.rule.startswith("投信"))
@@ -538,21 +517,21 @@ def test_trust_three_day_streak_scores_one_point_five():
 def test_foreign_passes_on_streak_alone_even_with_low_pct():
     # streak ok, pct below threshold -> still passes on OR
     chip = _chip(foreign_streak_days=4, foreign_pct_of_volume=0.01)
-    result = score("tw", _ind(), None, None, chip=chip)
+    result = score("tw", _ind(), None, chip=chip)
     rule = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert rule.passed is True
 
 
 def test_foreign_passes_on_pct_alone_even_with_short_streak():
     chip = _chip(foreign_streak_days=1, foreign_pct_of_volume=0.08)
-    result = score("tw", _ind(), None, None, chip=chip)
+    result = score("tw", _ind(), None, chip=chip)
     rule = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert rule.passed is True
 
 
 def test_foreign_fails_when_both_conditions_fail():
     chip = _chip(foreign_streak_days=1, foreign_pct_of_volume=0.01)
-    result = score("tw", _ind(), None, None, chip=chip)
+    result = score("tw", _ind(), None, chip=chip)
     rule = next(r for r in result.reasons if r.rule.startswith("外資"))
     assert rule.passed is False
 
@@ -574,7 +553,7 @@ def test_strong_sector_continuation_scores_partial_weight():
         breadth_up_day=0.8,
     )
 
-    result = score("tw", _ind(), None, None, chip=_chip(), sector=sector)
+    result = score("tw", _ind(), None, chip=_chip(), sector=sector)
 
     rule = next(r for r in result.reasons if r.rule == "強勢板塊延續")
     assert rule.passed is True
@@ -602,7 +581,6 @@ def test_bear_crash_strategy_reduces_sector_score_proportionally():
     result = score(
         "tw",
         _ind(),
-        None,
         None,
         chip=_chip(),
         sector=sector,

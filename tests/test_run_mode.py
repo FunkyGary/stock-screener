@@ -12,40 +12,27 @@ from screener.run import (
 )
 
 
-def test_eod_shift_moves_current_target_into_prev_eod_slot():
-    prev = {
-        "target_mean": 200.0,
-        "rating": "Buy",
-        "rating_score": 2.0,
-        "target_mean_prev_eod": 195.0,
-    }
+def test_eod_analyst_blob_enriches_target_event_upside_without_consensus_target():
     new = AnalystSnapshot(
-        target_mean=210.0,
         rating="Buy",
         rating_score=2.0,
         target_price_events=[
             {"firm": "JPMorgan", "target_price": 240.0, "previous_target": 210.0}
         ],
     )
-    blob = _build_analyst_blob_eod(new, prev, close=200.0)
-    assert blob["target_mean"] == 210.0
-    assert blob["target_mean_prev_eod"] == 200.0  # yesterday's EOD
+    blob = _build_analyst_blob_eod(new, close=200.0)
+    assert "target_mean" not in blob
+    assert "target_mean_prev_eod" not in blob
     assert blob["target_price_events"][0]["upside_pct"] == pytest.approx(0.2)
 
 
-def test_eod_shift_falls_back_to_legacy_target_mean_on_first_upgrade():
-    # Pre-upgrade record had no target_mean_prev_eod field.
-    prev = {"target_mean": 200.0, "rating": "Buy", "rating_score": 2.0}
-    new = AnalystSnapshot(target_mean=205.0, rating="Buy", rating_score=2.0)
-    blob = _build_analyst_blob_eod(new, prev)
-    assert blob["target_mean_prev_eod"] == 200.0
-
-
-def test_eod_shift_with_no_prev_record_yields_none_baseline():
-    new = AnalystSnapshot(target_mean=205.0, rating="Buy", rating_score=2.0)
-    blob = _build_analyst_blob_eod(new, prev_blob=None)
-    assert blob["target_mean"] == 205.0
-    assert blob["target_mean_prev_eod"] is None
+def test_eod_analyst_blob_keeps_rating_without_consensus_target():
+    new = AnalystSnapshot(rating="Buy", rating_score=2.0)
+    blob = _build_analyst_blob_eod(new)
+    assert blob["rating"] == "Buy"
+    assert blob["rating_score"] == 2.0
+    assert "target_mean" not in blob
+    assert "target_mean_prev_eod" not in blob
     assert blob["target_price_events"] == []
 
 
