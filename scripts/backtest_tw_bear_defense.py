@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import itertools
 import math
 import sys
 from dataclasses import dataclass
@@ -23,6 +24,13 @@ BENCHMARK = "0050.TW"
 SPECIAL_MIN_SCORE_RATIO = 0.50
 BEAR_DOWNTREND_MIN_SCORE_RATIO = 0.70
 VOLUME_EXIT_RATIO = 1.3
+SLOPE_WEIGHT_KEYS = (
+    "ma5_up",
+    "ma20_up",
+    "ma60_up",
+    "ma120_up",
+    "ma240_up",
+)
 
 
 @dataclass(frozen=True)
@@ -174,6 +182,9 @@ def _indicators_for_frame(df: pd.DataFrame) -> pd.DataFrame:
     for window in (5, 10, 20, 240):
         out[f"ma{window}"] = close.rolling(window).mean()
         out[f"prev_ma{window}"] = out[f"ma{window}"].shift(1)
+    for window in (60, 120):
+        out[f"ma{window}"] = close.rolling(window).mean()
+        out[f"prev_ma{window}"] = out[f"ma{window}"].shift(1)
     out["volume"] = volume
     out["vol_ratio"] = volume / volume.rolling(20).mean()
     out["high_5d"] = close.rolling(5).max()
@@ -315,6 +326,24 @@ def _score_with_weights(result, weights: dict[str, float]) -> tuple[float, float
     return total, max_score, penalty_ratio
 
 
+def _apply_slope_weights(
+    total: float, max_score: float, row: pd.Series, weights: dict[str, float]
+) -> tuple[float, float]:
+    for window in (5, 20, 60, 120, 240):
+        key = f"ma{window}_up"
+        weight = weights.get(key, 0.0)
+        if weight <= 0:
+            continue
+        ma_value = row.get(f"ma{window}")
+        prev_ma_value = row.get(f"prev_ma{window}")
+        if pd.isna(ma_value) or pd.isna(prev_ma_value):
+            continue
+        max_score += weight
+        if ma_value > prev_ma_value:
+            total += weight
+    return total, max_score
+
+
 def _benchmark_state(benchmark_ind: pd.DataFrame) -> dict[pd.Timestamp, dict]:
     state: dict[pd.Timestamp, dict] = {}
     for date, row in benchmark_ind.iterrows():
@@ -417,8 +446,11 @@ def _build_signals(
     names: dict[str, str],
     benchmark_ind: pd.DataFrame,
     strategy: str,
+    weights_override: dict[str, float] | None = None,
 ) -> dict[pd.Timestamp, dict[str, dict]]:
-    weights = strategy_rule_weights(strategy, "tw")
+    weights = strategy_rule_weights(strategy, "tw").copy()
+    if weights_override:
+        weights.update(weights_override)
     analyst = AnalystSnapshot(target_mean=None, rating=None, rating_score=None)
     signals: dict[pd.Timestamp, dict[str, dict]] = {}
     for symbol in names:
@@ -444,6 +476,7 @@ def _build_signals(
                 market_below_ma10=market_below_ma10,
             )
             total, max_score, penalty_ratio = _score_with_weights(result, weights)
+            total, max_score = _apply_slope_weights(total, max_score, row, weights)
             ratio = total / max_score if max_score else 0.0
             signals.setdefault(date, {})[symbol] = {
                 "score": total,
@@ -825,7 +858,54 @@ def _focused_configs(case: Case) -> list[dict]:
     ]
 
 
-def _run_focused_case(case: Case, watchlist: Path) -> pd.DataFrame:
+def _slope_weight_variants(mode: str = "grid") -> list[tuple[str, dict[str, float]]]:
+    if mode == "focused":
+        return [
+            ("no_slope", {}),
+            ("short_ma5_0_5", {"ma5_up": 0.5}),
+            ("short_ma5_1", {"ma5_up": 1.0}),
+            ("mid_ma60_0_75", {"ma60_up": 0.75}),
+            ("mid_ma60_1_5", {"ma60_up": 1.5}),
+            ("long_ma120_1", {"ma120_up": 1.0}),
+            ("long_ma240_1", {"ma240_up": 1.0}),
+            (
+                "mid_long_60_120_240",
+                {"ma60_up": 0.75, "ma120_up": 1.0, "ma240_up": 1.0},
+            ),
+            ("short_long_5_240", {"ma5_up": 0.5, "ma240_up": 1.0}),
+            ("short_mid_long", {"ma5_up": 0.5, "ma60_up": 0.75, "ma120_up": 1.0}),
+        ]
+    variants: list[tuple[str, dict[str, float]]] = [("no_slope", {})]
+    short_weights = (0.0, 0.5, 1.0, 1.5)
+    mid_weights = (0.0, 0.75, 1.5, 2.25)
+    long_weights = (0.0, 0.5, 1.0, 1.5)
+    for ma5_weight, ma20_weight, ma60_weight, ma120_weight, ma240_weight in itertools.product(
+        short_weights, short_weights, mid_weights, long_weights, long_weights
+    ):
+        slope_weights = {
+            "ma5_up": ma5_weight,
+            "ma20_up": ma20_weight,
+            "ma60_up": ma60_weight,
+            "ma120_up": ma120_weight,
+            "ma240_up": ma240_weight,
+        }
+        weights = {key: value for key, value in slope_weights.items() if value > 0}
+        if not weights:
+            continue
+        label = "slope_" + "_".join(
+            f"{key}{value:g}" for key, value in slope_weights.items()
+        )
+        variants.append((label, weights))
+    return variants
+
+
+def _run_focused_case(
+    case: Case,
+    watchlist: Path,
+    slope_sweep: bool = False,
+    focused_label: str | None = None,
+    slope_mode: str = "grid",
+) -> pd.DataFrame:
     names = _load_tw_symbols(watchlist)
     symbols = sorted(set(names) | {BENCHMARK})
     data = _download_range(symbols, case.start, case.end)
@@ -836,56 +916,72 @@ def _run_focused_case(case: Case, watchlist: Path) -> pd.DataFrame:
     all_dates = sorted(data[BENCHMARK].index)
     dates = _date_slice(all_dates, case.start, case.end)
     signal_data = {symbol: data[symbol] for symbol in names}
-    signals = _build_signals(
-        data=signal_data,
-        names=names,
-        benchmark_ind=benchmark_ind,
-        strategy=case.strategy,
-    )
     exits = _build_exit_rows(signal_data, benchmark_ind)
     benchmark_state = _benchmark_state(benchmark_ind)
     exit_by_label = {strategy.label: strategy for strategy in _exit_strategies()}
 
     rows: list[dict] = []
-    for config in _focused_configs(case):
-        exit_strategy = exit_by_label[config["exit"]]
-        active_curve, trades, holdings = _run_backtest(
-            data=data,
-            signals=signals,
-            exits=exits,
+    slope_variants = (
+        _slope_weight_variants(slope_mode) if slope_sweep else [("no_slope", {})]
+    )
+    configs = [
+        config
+        for config in _focused_configs(case)
+        if focused_label in (None, config["label"])
+    ]
+    for slope_label, slope_weights in slope_variants:
+        signals = _build_signals(
+            data=signal_data,
             names=names,
-            dates=dates,
-            benchmark_state=benchmark_state,
-            exit_strategy=exit_strategy,
-            entry_gate=config["entry_gate"],
-            min_ratio=config["min_ratio"],
-            max_positions=config["max_positions"],
-            active_slot=config["active_slot"],
+            benchmark_ind=benchmark_ind,
+            strategy=case.strategy,
+            weights_override=slope_weights,
         )
-        summary = _summarize(
-            config["label"],
-            dates,
-            data,
-            trades,
-            holdings,
-            active_curve,
-        )
-        summary.update(
-            {
-                "case": case.label,
-                "strategy": case.strategy,
-                "exit": exit_strategy.label,
-                "entry_gate": config["entry_gate"],
-                "min_ratio": config["min_ratio"],
-                "max_positions": (
-                    config["max_positions"]
-                    if config["max_positions"] is not None
-                    else "none"
-                ),
-                "active_slot": config["active_slot"],
-            }
-        )
-        rows.append(summary)
+        for config in configs:
+            exit_strategy = exit_by_label[config["exit"]]
+            active_curve, trades, holdings = _run_backtest(
+                data=data,
+                signals=signals,
+                exits=exits,
+                names=names,
+                dates=dates,
+                benchmark_state=benchmark_state,
+                exit_strategy=exit_strategy,
+                entry_gate=config["entry_gate"],
+                min_ratio=config["min_ratio"],
+                max_positions=config["max_positions"],
+                active_slot=config["active_slot"],
+            )
+            summary = _summarize(
+                f"{config['label']}__{slope_label}",
+                dates,
+                data,
+                trades,
+                holdings,
+                active_curve,
+            )
+            summary.update(
+                {
+                    "case": case.label,
+                    "strategy": case.strategy,
+                    "exit": exit_strategy.label,
+                    "entry_gate": config["entry_gate"],
+                    "min_ratio": config["min_ratio"],
+                    "max_positions": (
+                        config["max_positions"]
+                        if config["max_positions"] is not None
+                        else "none"
+                    ),
+                    "active_slot": config["active_slot"],
+                    "slope_label": slope_label,
+                    "slope_weights": ",".join(
+                        f"{key}={slope_weights[key]:g}"
+                        for key in SLOPE_WEIGHT_KEYS
+                        if key in slope_weights
+                    ),
+                }
+            )
+            rows.append(summary)
     return pd.DataFrame(rows)
 
 
@@ -895,11 +991,36 @@ def main() -> None:
     parser.add_argument("--output-csv")
     parser.add_argument("--top", type=int, default=15)
     parser.add_argument("--focused", action="store_true")
+    parser.add_argument("--slope-sweep", action="store_true")
+    parser.add_argument("--slope-mode", choices=("grid", "focused"), default="grid")
+    parser.add_argument("--focused-label")
+    parser.add_argument(
+        "--case",
+        choices=tuple(case.label for case in CASES),
+        help="Limit the run to one case.",
+    )
     args = parser.parse_args()
 
     watchlist = Path(args.watchlist)
-    runner = _run_focused_case if args.focused else _run_case
-    frame = pd.concat((runner(case, watchlist) for case in CASES), ignore_index=True)
+    cases = [case for case in CASES if args.case in (None, case.label)]
+    if args.focused:
+        frame = pd.concat(
+            (
+                _run_focused_case(
+                    case,
+                    watchlist,
+                    args.slope_sweep,
+                    args.focused_label,
+                    args.slope_mode,
+                )
+                for case in cases
+            ),
+            ignore_index=True,
+        )
+    else:
+        frame = pd.concat(
+            (_run_case(case, watchlist) for case in cases), ignore_index=True
+        )
     frame = frame.sort_values(["case", "excess_pct"], ascending=[True, False])
     columns = [
         "case",

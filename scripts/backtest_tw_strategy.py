@@ -34,7 +34,14 @@ DEFAULT_WEIGHTS = {
     "trust": 2.0,
     "foreign": 1.0,
 }
-WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS)
+SLOPE_WEIGHT_KEYS = (
+    "ma5_up",
+    "ma20_up",
+    "ma60_up",
+    "ma120_up",
+    "ma240_up",
+)
+WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS) + SLOPE_WEIGHT_KEYS
 SWEEP_MULTIPLIERS = (0.5, 1.0, 1.5)
 
 _WORKER_DATA: dict[str, pd.DataFrame] = {}
@@ -129,6 +136,9 @@ def _indicators_for_frame(df: pd.DataFrame) -> pd.DataFrame:
     out["today_return"] = close / prev_close - 1.0
     out["return_20d"] = close / close.shift(20) - 1.0
     for window in (5, 10, 20, 240):
+        out[f"ma{window}"] = close.rolling(window).mean()
+        out[f"prev_ma{window}"] = out[f"ma{window}"].shift(1)
+    for window in (60, 120):
         out[f"ma{window}"] = close.rolling(window).mean()
         out[f"prev_ma{window}"] = out[f"ma{window}"].shift(1)
     out["volume"] = volume
@@ -295,6 +305,11 @@ def _build_signal_facts(
             newly_above = _above_all(snapshot) and not _was_above_all(snapshot)
             above_ma5 = snapshot.ma5 is not None and snapshot.close > snapshot.ma5
             sell = snapshot.ma5 is not None and snapshot.close < snapshot.ma5
+            for window in (5, 20, 60, 120, 240):
+                ma_value = row.get(f"ma{window}")
+                prev_ma_value = row.get(f"prev_ma{window}")
+                if pd.notna(ma_value) and pd.notna(prev_ma_value):
+                    facts.append((f"ma{window}_up", 1.0 if ma_value > prev_ma_value else 0.0))
             facts_by_date.setdefault(date, {})[symbol] = {
                 "facts": facts,
                 "newly_above": newly_above,
@@ -315,7 +330,7 @@ def _signals_from_facts(
     for date, rows in facts_by_date.items():
         for symbol, row in rows.items():
             weighted_score = sum(
-                active_weights[key] * score_fraction
+                active_weights.get(key, 0.0) * score_fraction
                 for key, score_fraction in row["facts"]
             )
             ratio = weighted_score / max_score if max_score else 0.0
@@ -552,7 +567,9 @@ def _run_variant(label: str, weights: dict[str, float]) -> dict:
     summary = _summarize(
         label, _WORKER_DATES, _WORKER_DATA, trades, holdings, active_curve
     )
-    summary["weights"] = ",".join(f"{key}={weights[key]:g}" for key in WEIGHT_KEYS)
+    summary["weights"] = ",".join(
+        f"{key}={weights[key]:g}" for key in WEIGHT_KEYS if key in weights
+    )
     return summary
 
 
@@ -588,6 +605,40 @@ def _weight_variants() -> list[tuple[str, dict[str, float]]]:
     return variants
 
 
+def _parse_weight_overrides(value: str | None) -> dict[str, float]:
+    weights = DEFAULT_WEIGHTS.copy()
+    if not value:
+        return weights
+    for part in value.split(","):
+        key, raw = part.split("=", 1)
+        weights[key.strip()] = float(raw)
+    return weights
+
+
+def _slope_weight_variants(base_weights: dict[str, float]) -> list[tuple[str, dict[str, float]]]:
+    variants: list[tuple[str, dict[str, float]]] = []
+    short_weights = (0.0, 0.5, 1.0, 1.5)
+    mid_weights = (0.0, 0.75, 1.5, 2.25)
+    long_weights = (0.0, 0.5, 1.0, 1.5)
+    for ma5_weight, ma20_weight, ma60_weight, ma120_weight, ma240_weight in itertools.product(
+        short_weights, short_weights, mid_weights, long_weights, long_weights
+    ):
+        weights = base_weights.copy()
+        slope_weights = {
+            "ma5_up": ma5_weight,
+            "ma20_up": ma20_weight,
+            "ma60_up": ma60_weight,
+            "ma120_up": ma120_weight,
+            "ma240_up": ma240_weight,
+        }
+        weights.update({key: value for key, value in slope_weights.items() if value > 0})
+        label = "slope_" + "_".join(
+            f"{key}{value:g}" for key, value in slope_weights.items()
+        )
+        variants.append((label, weights))
+    return variants
+
+
 def _print_summary(summary: dict) -> None:
     print(
         f"{summary['label']} period={summary['start']}..{summary['end']} "
@@ -617,6 +668,11 @@ def main() -> None:
     parser.add_argument("--end")
     parser.add_argument("--watchlist", default="data/watchlist.csv")
     parser.add_argument("--sweep", action="store_true")
+    parser.add_argument("--slope-sweep", action="store_true")
+    parser.add_argument(
+        "--base-weights",
+        help="Comma-separated key=value weights used as the base for --slope-sweep.",
+    )
     parser.add_argument("--jobs", type=int, default=1)
     parser.add_argument("--top", type=int, default=10)
     parser.add_argument("--output-csv")
@@ -664,7 +720,11 @@ def main() -> None:
             f"ratio={trade.get('ratio', 0) * 100:.1f}%"
         )
     if args.sweep:
-        variants = _weight_variants()
+        variants = (
+            _slope_weight_variants(_parse_weight_overrides(args.base_weights))
+            if args.slope_sweep
+            else _weight_variants()
+        )
         if args.jobs > 1:
             with ProcessPoolExecutor(
                 max_workers=args.jobs,
