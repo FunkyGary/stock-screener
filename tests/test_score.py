@@ -464,6 +464,28 @@ def test_target_raise_expires_after_seven_days():
     assert rule.passed is False
 
 
+def test_target_update_does_not_score_as_target_raise():
+    analyst = AnalystSnapshot(
+        target_mean=None,
+        rating=None,
+        rating_score=None,
+        target_price_events=[
+            {
+                "event_date": datetime.now(timezone.utc).date().isoformat(),
+                "published_at": datetime.now(timezone.utc).isoformat(),
+                "firm": "FactSet",
+                "action": "update",
+                "target_price": 120.0,
+            }
+        ],
+    )
+
+    result = score("tw", _ind(), analyst, prev_target_mean=None, chip=_chip())
+
+    rule = next(r for r in result.reasons if "目標價" in r.rule)
+    assert rule.passed is False
+
+
 def test_no_target_price_events_does_not_score_target_raise():
     analyst = AnalystSnapshot(target_mean=120.0, rating="Buy", rating_score=2.0)
     result = score("us", _ind(), analyst, prev_target_mean=None)

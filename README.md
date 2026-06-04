@@ -145,12 +145,19 @@ EOD US runs also merge these parsed events into `data/analyst_target_events.json
 with stable event IDs, so the dashboard can show the selected stock's recent
 target-price history without turning the project into a database-backed app.
 
-TW target updates are stored manually in `data/tw_target_events.jsonl`, using the
-same event-log shape. A typical entry is:
+TW target updates are stored in `data/tw_target_events.jsonl`, using the same
+event-log shape. EOD TW runs fetch recent Cnyes FactSet valuation articles from
+the last 2 days and merge parsed target-price events with stable event IDs.
+Manual entries can still be appended when needed. A typical entry is:
 
 ```json
 {"symbol":"2330.TW","market":"tw","event_date":"2026-05-25","published_at":"2026-05-25T00:00:00+00:00","firm":"凱基投顧","action":"raise","previous_target":1200,"target_price":1300,"source":"manual"}
 ```
+
+Cnyes articles that explicitly say the target price was raised are stored with
+`action: "raise"` and can contribute to the target-raise score. EPS-estimate
+articles that only include a target price are stored with `action: "update"` and
+shown in target history without counting as a target-price raise.
 
 ## Market Regime
 

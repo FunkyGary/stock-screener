@@ -15,6 +15,7 @@ from dataclasses import asdict, replace
 from datetime import datetime, timezone
 
 from . import chip as chip_mod
+from . import cnyes
 from . import fetch, indicators, intraday_volume, io, score, sectors
 from . import market_regime as market_regime_mod
 from .chip import ChipSnapshot
@@ -169,6 +170,14 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "TWSE chip fetch failed, scoring without chip rules: %s", exc
             )
 
+    if market == "tw" and mode == "eod":
+        try:
+            cnyes_events = cnyes.fetch_recent_tw_valuation_events(days=2)
+            added = io.merge_tw_target_events(cnyes_events)
+            logger.info("TW Cnyes target event history merged: added=%d", added)
+        except Exception as exc:
+            logger.warning("TW Cnyes target event fetch failed: %s", exc)
+
     manual_target_events = io.load_tw_target_events() if market == "tw" else []
     sector_map = io.load_sector_map()
     ohlcv_by_symbol = {}
@@ -265,7 +274,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                     "rating": None,
                     "rating_score": None,
                     "target_price_events": target_events,
-                    "source": "manual_jsonl",
+                    "source": "tw_target_events_jsonl",
                 }
 
         # Chip: EOD-only. Intraday inherits the previous chip block.

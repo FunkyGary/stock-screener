@@ -215,6 +215,8 @@ def _qualifying_target_events(
         return []
     passed: list[dict] = []
     for event in analyst.target_price_events:
+        if event.get("action") not in {None, "raise"}:
+            continue
         upside = _target_event_upside(event, close)
         if (
             _target_event_is_recent(event)

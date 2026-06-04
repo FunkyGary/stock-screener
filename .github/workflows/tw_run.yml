@@ -73,11 +73,13 @@ jobs:
           # stash-pop step can leave conflict markers in the JSON when remote
           # touched the same file.
           cp data/latest_signals.json /tmp/our_signals.json
+          cp data/tw_target_events.jsonl /tmp/our_tw_target_events.jsonl
           for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/our_signals.json data/latest_signals.json
-            git add data/latest_signals.json
+            cp /tmp/our_tw_target_events.jsonl data/tw_target_events.jsonl
+            git add data/latest_signals.json data/tw_target_events.jsonl
             if git diff --staged --quiet; then
               echo "No changes to commit"
               exit 0
