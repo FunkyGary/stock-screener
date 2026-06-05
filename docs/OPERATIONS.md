@@ -35,18 +35,24 @@ uv run python scripts/build_sector_map.py
 
 `tw_run.yml`:
 
+- Opening burst: `0,2,4,...,28 1 * * 1-5` UTC, first 30 minutes after TW open.
 - Intraday: `7,37 1-5 * * 1-5` UTC, Taiwan market session coverage.
 - EOD: `17 9 * * 1-5` UTC, after TW chip data settles.
 - Commits `data/latest_signals.json`.
 
 `us_run.yml`:
 
-- Intraday: `7,37 13-20 * * 1-5` UTC, covers EDT and EST trading windows.
+- Opening burst: `30,32,34,...,58 13,14 * * 1-5` UTC, first 30 minutes after
+  the US open in both EDT and EST.
+- Intraday: `7,22,37,52 13-20 * * 1-5` UTC, covers EDT and EST trading windows.
 - EOD: `17 21 * * 1-5` UTC, after US close in both EDT and EST.
 - Requires `FINNHUB_API_KEY`.
 - Commits `data/latest_signals.json` and, when present, US target-event history.
 
 Both workflows support manual dispatch with `mode: intraday` or `mode: eod`.
+They share the `screener` concurrency group with `queue: max` so delayed dense
+intraday schedules queue instead of replacing earlier pending runs, while still
+serializing writes to the shared snapshot file.
 
 ## Deployment
 
