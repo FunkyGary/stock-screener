@@ -52,14 +52,16 @@ Top level:
 - `market_regime`: index-level trend context.
 - `signals`: object keyed by symbol.
 
-`market_regime.markets.tw.strategy` records the 0050-based TW scoring regime:
+`market_regime.markets.<market>.strategy` records the benchmark-based scoring
+regime. TW uses 0050; US uses SPY:
 
-- `strategy`: `bear_crash`, `range`, or `bull`
+- `strategy`: `bear_crash`, `bear_downtrend`, `range`, or `bull`
 - `label`, `reason`
-- 0050 metrics: `close`, `ma20`, `ma60`, `ma240`, `return_60d`,
-  `drawdown_120d`
-- `thresholds`: currently 120-day drawdown ≤ -12% for bear/crash and
-  60-day return > 3% for bull.
+- benchmark metrics: `close`, `ma5`, `prev_ma5`, `ma10`, `ma20`, `ma60`,
+  `ma240`, `return_60d`, `drawdown_120d`
+- `thresholds`: currently 120-day drawdown <= -12% for bear/crash;
+  `close < ma240` and `ma60 < ma240` for bear/downtrend; and 60-day return
+  > 3% plus the MA conditions for bull.
 
 Signal record:
 
