@@ -21,15 +21,6 @@ on:
         options: [intraday, eod]
         default: eod
 
-# Shared concurrency across TW and US: both workflows write the same
-# data/latest_signals.json. Serialize all screener runs to avoid overwriting
-# the sibling market's latest snapshot when GitHub delays schedules. Keep the
-# full pending queue so dense intraday bursts do not replace earlier runs.
-concurrency:
-  group: screener
-  cancel-in-progress: false
-  queue: max
-
 permissions:
   contents: write
 
