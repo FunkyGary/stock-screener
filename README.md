@@ -81,6 +81,22 @@ reliable daily history for those datasets.
 Rules removed from scoring: close within 2% of 20-day high, and latest rating
 is Buy or Strong Buy.
 
+Valuation (PE/PB) and US EPS-surprise are **display-only** and never enter the
+score. They appear as a "估值/基本面" panel in the dashboard for manual judgement
+(PB near book = downside cushion; high PE = double-kill risk; EPS surprise sign),
+and EOD runs log them point-in-time to `data/valuation_snapshots.jsonl` to build
+a future fundamentals backtest dataset.
+
+The same panel shows a US **profitability trend** (近幾季 gross/operating/net
+margin direction) plus a 本業 vs 業外 divergence flag: when net margin diverges
+sharply from operating margin, the score is being moved by one-time/non-operating
+items rather than the core business. This separates a real 戴維斯雙擊 (margins
+improving, operating-driven) from a sell-the-news trap (net propped up by
+one-offs), and conversely flags possible over-selling when a one-time charge
+hides a healthy operating margin. Margins come from the yfinance quarterly income
+statement (US only; TW lacks a free margin series) and are **display-only** —
+they are decision context to read alongside the technical breakout, never scored.
+
 The `特別注意` section requires the current strategy's score threshold. US bear
 regimes also require the active SPY repair gate. Target-price raises remain
 visible in each stock's signal list and score, but do not by themselves place a

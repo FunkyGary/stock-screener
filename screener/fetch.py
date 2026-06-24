@@ -11,6 +11,7 @@ from typing import Optional
 
 import finnhub
 import pandas as pd
+import requests
 import yfinance as yf
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -34,6 +35,20 @@ class AnalystSnapshot:
     target_raise_from: Optional[float] = None
     target_raise_to: Optional[float] = None
     target_raise_pct: Optional[float] = None
+
+
+@dataclass
+class FundamentalSnapshot:
+    """Display-only valuation/fundamental context. Not fed into scoring."""
+
+    pe: Optional[float] = None
+    pb: Optional[float] = None
+    eps_surprise_pct: Optional[float] = None  # US only, latest reported quarter
+    eps_period: Optional[str] = None  # quarter end (YYYY-MM-DD) of that surprise
+    # US only, recent quarterly margins newest-first: [{period, gm, om, nm}].
+    # Display-only profitability trend (Jeff 獲利性分析); never scored.
+    margins: list[dict] | None = None
+    source: Optional[str] = None
 
 
 class FetchError(RuntimeError):
@@ -302,4 +317,189 @@ def fetch_analyst(symbol: str) -> AnalystSnapshot:
         rating=rating,
         rating_score=rating_score,
         target_price_events=target_price_events,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Fundamentals (PE / PB / US EPS surprise) — display-only, not scored.
+# ---------------------------------------------------------------------------
+
+TWSE_BWIBBU_URL = "https://openapi.twse.com.tw/v1/exchangeReport/BWIBBU_ALL"
+TPEX_PERATIO_URL = (
+    "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_peratio_analysis"
+)
+_HTTP_HEADERS = {"User-Agent": "stock-screener/1.0"}
+
+
+def _parse_float(value) -> Optional[float]:
+    """Parse a possibly-empty/dashed numeric cell to float, else None."""
+    if value is None:
+        return None
+    text = str(value).strip().replace(",", "")
+    if text in {"", "-", "--", "N/A", "n/a"}:
+        return None
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def _tw_valuation_from_rows(
+    twse_rows: list[dict], tpex_rows: list[dict]
+) -> dict[str, dict]:
+    """Build {bare_code: {pe, pb, source}} from TWSE BWIBBU + TPEx peratio rows.
+
+    Pure (no network) so it can be unit tested.
+    """
+    out: dict[str, dict] = {}
+    for row in twse_rows or []:
+        code = str(row.get("Code", "")).strip()
+        if not code:
+            continue
+        out[code] = {
+            "pe": _parse_float(row.get("PEratio")),
+            "pb": _parse_float(row.get("PBratio")),
+            "source": "twse",
+        }
+    for row in tpex_rows or []:
+        code = str(row.get("SecuritiesCompanyCode", "")).strip()
+        if not code:
+            continue
+        out[code] = {
+            "pe": _parse_float(row.get("PriceEarningRatio")),
+            "pb": _parse_float(row.get("PriceBookRatio")),
+            "source": "tpex",
+        }
+    return out
+
+
+def fetch_tw_valuation_map() -> dict[str, dict]:
+    """Fetch one-shot PE/PB for all TWSE + TPEx stocks, keyed by bare code.
+
+    Returns an empty dict if both endpoints fail; partial data is kept when only
+    one endpoint succeeds.
+    """
+    twse_rows: list[dict] = []
+    tpex_rows: list[dict] = []
+    try:
+        resp = requests.get(TWSE_BWIBBU_URL, timeout=20, headers=_HTTP_HEADERS)
+        resp.raise_for_status()
+        twse_rows = resp.json()
+    except (requests.RequestException, ValueError) as exc:
+        logger.warning("TWSE BWIBBU fetch failed: %s", exc)
+    try:
+        resp = requests.get(TPEX_PERATIO_URL, timeout=20, headers=_HTTP_HEADERS)
+        resp.raise_for_status()
+        tpex_rows = resp.json()
+    except (requests.RequestException, ValueError) as exc:
+        logger.warning("TPEx peratio fetch failed: %s", exc)
+    return _tw_valuation_from_rows(twse_rows, tpex_rows)
+
+
+def _eps_surprise_from_earnings(earnings: list[dict] | None) -> tuple[
+    Optional[float], Optional[str]
+]:
+    """Return (surprise_pct, period) for the latest reported quarter.
+
+    Finnhub `company_earnings` rows carry `period`, `surprisePercent`. Pure so it
+    can be unit tested.
+    """
+    if not earnings:
+        return None, None
+    dated = [r for r in earnings if r.get("period")]
+    if not dated:
+        return None, None
+    latest = max(dated, key=lambda r: str(r.get("period")))
+    pct = latest.get("surprisePercent")
+    try:
+        pct = float(pct) if pct is not None else None
+    except (TypeError, ValueError):
+        pct = None
+    return pct, str(latest.get("period"))
+
+
+def _finite_float(value) -> Optional[float]:
+    """`_parse_float` but rejecting NaN (pandas blank cells parse as NaN)."""
+    val = _parse_float(value)
+    if val is None or val != val:  # NaN is the only value not equal to itself
+        return None
+    return val
+
+
+def _margins_from_income_stmt(
+    income_stmt: "pd.DataFrame | None", max_quarters: int = 6
+) -> list[dict]:
+    """Quarterly gross/operating/net margins (%) newest-first.
+
+    Built from a yfinance quarterly income statement. Quarters with missing or
+    zero revenue are skipped (no meaningful margin). Pure so it can be unit
+    tested. Display-only profitability trend; never scored.
+    """
+    if income_stmt is None or getattr(income_stmt, "empty", True):
+        return []
+    if "Total Revenue" not in income_stmt.index:
+        return []
+    rows: list[dict] = []
+    for period in list(income_stmt.columns)[:max_quarters]:
+        rev = _finite_float(income_stmt.loc["Total Revenue", period])
+        if not rev:  # None or 0 → cannot form a margin
+            continue
+
+        def margin(label: str) -> Optional[float]:
+            if label not in income_stmt.index:
+                return None
+            val = _finite_float(income_stmt.loc[label, period])
+            return round(val / rev * 100, 1) if val is not None else None
+
+        date_attr = getattr(period, "date", None)
+        rows.append(
+            {
+                "period": str(date_attr() if callable(date_attr) else period),
+                "gm": margin("Gross Profit"),
+                "om": margin("Operating Income"),
+                "nm": margin("Net Income"),
+            }
+        )
+    return rows
+
+
+def fetch_us_fundamental(symbol: str) -> FundamentalSnapshot:
+    """US PE/PB via yfinance `.info`, EPS surprise via Finnhub, margin trend via
+    the yfinance quarterly income statement.
+
+    Each source is best-effort; partial data is returned rather than failing.
+    """
+    pe: Optional[float] = None
+    pb: Optional[float] = None
+    margins: list[dict] = []
+    try:
+        ticker = yf.Ticker(symbol)
+        info = ticker.info
+        pe = _parse_float(info.get("trailingPE"))
+        pb = _parse_float(info.get("priceToBook"))
+    except Exception as exc:  # yfinance raises a variety of errors
+        logger.warning("yfinance valuation failed for %s: %s", symbol, exc)
+        ticker = None
+
+    if ticker is not None:
+        try:
+            margins = _margins_from_income_stmt(ticker.quarterly_income_stmt)
+        except Exception as exc:
+            logger.warning("yfinance income stmt failed for %s: %s", symbol, exc)
+
+    eps_surprise_pct: Optional[float] = None
+    eps_period: Optional[str] = None
+    try:
+        earnings = _finnhub_client().company_earnings(symbol)
+        eps_surprise_pct, eps_period = _eps_surprise_from_earnings(earnings)
+    except Exception as exc:
+        logger.warning("finnhub earnings failed for %s: %s", symbol, exc)
+
+    return FundamentalSnapshot(
+        pe=pe,
+        pb=pb,
+        eps_surprise_pct=eps_surprise_pct,
+        eps_period=eps_period,
+        margins=margins or None,
+        source="yfinance/finnhub",
     )

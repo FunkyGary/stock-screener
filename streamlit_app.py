@@ -547,6 +547,85 @@ def _fmt_price(value: float | int | None) -> str:
     return f"{float(value):.2f}" if value is not None else "n/a"
 
 
+# Display-only thresholds for valuation badges. These are decision context for
+# manual judgement and are NOT part of the score.
+PB_FLOOR_X = 1.2  # at/under ~book value → downside cushion (Jeff: 淨值定錨)
+PE_STRETCHED_X = 40.0  # rich multiple → 戴維斯雙殺 risk if growth disappoints
+
+
+def _valuation_badges(fundamental: dict | None) -> list[str]:
+    """Build display-only PE/PB/EPS-surprise badge lines. Empty if no data."""
+    if not fundamental:
+        return []
+    lines: list[str] = []
+    pb = fundamental.get("pb")
+    if isinstance(pb, (int, float)):
+        note = "　近淨值（下檔保護）" if pb <= PB_FLOOR_X else ""
+        lines.append(f"PB {pb:.2f}x{note}")
+    pe = fundamental.get("pe")
+    if isinstance(pe, (int, float)):
+        note = "　偏高（雙殺風險）" if pe >= PE_STRETCHED_X else ""
+        lines.append(f"PE {pe:.1f}x{note}")
+    surprise = fundamental.get("eps_surprise_pct")
+    if isinstance(surprise, (int, float)):
+        verdict = "超預期" if surprise >= 0 else "不如預期"
+        period = fundamental.get("eps_period")
+        period_text = f"（{period}）" if period else ""
+        lines.append(f"EPS surprise {surprise:+.1f}%{period_text}　{verdict}")
+    return lines
+
+
+# Display-only profitability-trend thresholds (Jeff 獲利性分析). Not scored.
+MARGIN_TREND_PP = 1.0  # pp change (latest vs oldest in window) to call a direction
+MARGIN_DIVERGE_PP = 10.0  # net-vs-operating margin gap → 業外/一次性 distortion flag
+
+
+def _margin_arrow(delta: float) -> str:
+    if delta >= MARGIN_TREND_PP:
+        return "↑改善"
+    if delta <= -MARGIN_TREND_PP:
+        return "↓惡化"
+    return "→持平"
+
+
+def _margin_trend_lines(fundamental: dict | None) -> list[str]:
+    """Display-only GM/OM/NM trend + 本業 vs 業外 divergence lines. US only.
+
+    `margins` is newest-first [{period, gm, om, nm}]. Empty if <2 quarters with
+    data. The divergence flag separates a real 戴維斯雙擊 (margins improving,
+    本業-driven) from a sell-the-news trap (稅後 propped up by 一次性/業外).
+    """
+    if not fundamental:
+        return []
+    margins = fundamental.get("margins") or []
+    keys = ("gm", "om", "nm")
+    usable = [m for m in margins if any(isinstance(m.get(k), (int, float)) for k in keys)]
+    if len(usable) < 2:
+        return []
+    latest, oldest = usable[0], usable[-1]
+    lines: list[str] = []
+    for key, name in (("gm", "毛利率"), ("om", "營益率"), ("nm", "稅後淨利率")):
+        cur, old = latest.get(key), oldest.get(key)
+        if isinstance(cur, (int, float)) and isinstance(old, (int, float)):
+            lines.append(f"{name} {old:.1f}% → {cur:.1f}%　{_margin_arrow(cur - old)}")
+        elif isinstance(cur, (int, float)):
+            lines.append(f"{name} {cur:.1f}%")
+    om, nm = latest.get("om"), latest.get("nm")
+    if isinstance(om, (int, float)) and isinstance(nm, (int, float)):
+        gap = nm - om
+        if gap >= MARGIN_DIVERGE_PP:
+            lines.append(
+                f"⚠ 稅後淨利率高於營益率 {gap:.0f}pp：業外/一次性灌水，"
+                "獲利噴出留意 sell-the-news"
+            )
+        elif gap <= -MARGIN_DIVERGE_PP:
+            lines.append(
+                f"⚠ 稅後淨利率低於營益率 {abs(gap):.0f}pp：本業優於稅後，"
+                "一次性壓低，留意錯殺反轉"
+            )
+    return lines
+
+
 def _target_event_line(event: dict) -> str:
     date = event.get("date") or event.get("event_date") or "n/a"
     firm = event.get("firm") or event.get("source") or "Unknown"
@@ -722,6 +801,21 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
             suffix = f" · {weight:g}分" if isinstance(weight, (int, float)) else ""
         st.markdown(f"{marker} **{reason['rule']}**{suffix}")
         st.caption(f"　{reason['detail']}")
+
+    valuation_badges = _valuation_badges(selected.get("fundamental"))
+    margin_lines = _margin_trend_lines(selected.get("fundamental"))
+    if valuation_badges or margin_lines:
+        with st.expander("💰 估值/基本面（僅顯示，不計分）", expanded=True):
+            for badge in valuation_badges:
+                st.markdown(f"- {badge}")
+            if margin_lines:
+                st.markdown("**獲利趨勢（近幾季）**")
+                for line in margin_lines:
+                    st.markdown(f"- {line}")
+            st.caption(
+                "PE/PB、EPS surprise 與獲利趨勢僅供手動判斷，不進入分數；"
+                "請與技術面突破合看。"
+            )
 
     if selected.get("analyst"):
         with st.expander("📈 Analyst"):

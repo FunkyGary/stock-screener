@@ -425,3 +425,95 @@ def test_downside_attention_range_uses_penalty_adjusted_score():
 
     assert _is_downside_attention(row) is True
     assert _downside_attention_reason(row) == "震盪：賣壓扣分後 < 20%"
+
+
+def test_valuation_badges_flag_low_pb_and_high_pe():
+    from streamlit_app import _valuation_badges
+
+    badges = _valuation_badges(
+        {"pb": 1.05, "pe": 48.0, "eps_surprise_pct": 4.3, "eps_period": "2026-06-30"}
+    )
+    joined = " | ".join(badges)
+    assert "PB 1.05x" in joined and "下檔保護" in joined
+    assert "PE 48.0x" in joined and "雙殺風險" in joined
+    assert "EPS surprise +4.3%" in joined and "超預期" in joined
+    assert "2026-06-30" in joined
+
+
+def test_valuation_badges_no_flags_when_neutral_and_negative_surprise():
+    from streamlit_app import _valuation_badges
+
+    badges = _valuation_badges({"pb": 3.0, "pe": 15.0, "eps_surprise_pct": -2.0})
+    joined = " | ".join(badges)
+    assert "下檔保護" not in joined and "雙殺風險" not in joined
+    assert "不如預期" in joined
+
+
+def test_valuation_badges_empty_for_no_data():
+    from streamlit_app import _valuation_badges
+
+    assert _valuation_badges(None) == []
+    assert _valuation_badges({}) == []
+
+
+def test_margin_trend_lines_flag_improving_margins():
+    from streamlit_app import _margin_trend_lines
+
+    # NVDA-like structural improvement, newest first.
+    lines = _margin_trend_lines(
+        {
+            "margins": [
+                {"period": "2026-04-30", "gm": 74.9, "om": 65.6, "nm": 71.5},
+                {"period": "2025-04-30", "gm": 60.5, "om": 49.1, "nm": 42.6},
+            ]
+        }
+    )
+    joined = " | ".join(lines)
+    assert "毛利率 60.5% → 74.9%" in joined and "↑改善" in joined
+    assert "營益率 49.1% → 65.6%" in joined
+
+
+def test_margin_trend_lines_flag_one_time_inflated_net():
+    from streamlit_app import _margin_trend_lines
+
+    # BA-like: operating loss but huge positive net → 業外/一次性灌水.
+    lines = _margin_trend_lines(
+        {
+            "margins": [
+                {"period": "2025-12-31", "gm": 7.6, "om": -3.4, "nm": 34.3},
+                {"period": "2025-03-31", "gm": 12.4, "om": 2.4, "nm": -0.2},
+            ]
+        }
+    )
+    joined = " | ".join(lines)
+    assert "稅後淨利率高於營益率" in joined and "sell-the-news" in joined
+
+
+def test_margin_trend_lines_flag_one_time_depressed_net():
+    from streamlit_app import _margin_trend_lines
+
+    # INTC-like: operating profit but one-time charge pushes net deeply negative.
+    lines = _margin_trend_lines(
+        {
+            "margins": [
+                {"period": "2026-03-31", "gm": 39.4, "om": 6.9, "nm": -27.5},
+                {"period": "2025-03-31", "gm": 36.9, "om": -1.1, "nm": -6.5},
+            ]
+        }
+    )
+    joined = " | ".join(lines)
+    assert "稅後淨利率低於營益率" in joined and "錯殺" in joined
+
+
+def test_margin_trend_lines_empty_with_insufficient_quarters():
+    from streamlit_app import _margin_trend_lines
+
+    assert _margin_trend_lines(None) == []
+    assert _margin_trend_lines({}) == []
+    assert _margin_trend_lines({"margins": []}) == []
+    assert (
+        _margin_trend_lines(
+            {"margins": [{"period": "2026-03-31", "gm": 50.0, "om": 10.0, "nm": 8.0}]}
+        )
+        == []
+    )

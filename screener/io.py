@@ -54,6 +54,10 @@ def tw_target_events_path() -> Path:
     return repo_root() / "data" / "tw_target_events.jsonl"
 
 
+def valuation_snapshots_path() -> Path:
+    return repo_root() / "data" / "valuation_snapshots.jsonl"
+
+
 def sector_map_path() -> Path:
     return repo_root() / "data" / "sector_map.csv"
 
@@ -111,6 +115,39 @@ def _load_jsonl_events(path: Path) -> list[dict]:
                 continue
             events.append(json.loads(line))
     return events
+
+
+def append_valuation_snapshots(rows: list[dict]) -> int:
+    """Append point-in-time PE/PB/EPS-surprise rows, deduped by (date, symbol).
+
+    Each row should carry at least `date` and `symbol`. Rows whose (date, symbol)
+    already exist in the log are skipped, so re-running an EOD job for the same
+    day does not duplicate entries. Returns the number of rows written.
+    """
+    if not rows:
+        return 0
+
+    path = valuation_snapshots_path()
+    existing = _load_jsonl_events(path)
+    seen = {(r.get("date"), r.get("symbol")) for r in existing}
+
+    to_write = []
+    for row in rows:
+        key = (row.get("date"), row.get("symbol"))
+        if key in seen or key[0] is None or key[1] is None:
+            continue
+        seen.add(key)
+        to_write.append(row)
+
+    if not to_write:
+        return 0
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as f:
+        for row in to_write:
+            json.dump(row, f, default=str, ensure_ascii=False, sort_keys=True)
+            f.write("\n")
+    return len(to_write)
 
 
 def load_target_events() -> list[dict]:

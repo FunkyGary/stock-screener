@@ -68,3 +68,38 @@ def test_merge_tw_target_events_writes_separate_jsonl(tmp_path, monkeypatch):
     assert saved["symbol"] == "2330.TW"
     assert saved["market"] == "tw"
     assert saved["event_id"]
+
+
+def test_append_valuation_snapshots_appends_and_dedupes(tmp_path, monkeypatch):
+    path = tmp_path / "valuation_snapshots.jsonl"
+    monkeypatch.setattr(io, "valuation_snapshots_path", lambda: path)
+
+    rows = [
+        {"date": "2026-06-18", "symbol": "2330.TW", "market": "tw", "pe": 32.7,
+         "pb": 10.6, "eps_surprise_pct": None, "eps_period": None},
+        {"date": "2026-06-18", "symbol": "NVDA", "market": "us", "pe": 31.7,
+         "pb": 25.7, "eps_surprise_pct": 4.34, "eps_period": "2026-06-30"},
+    ]
+    assert io.append_valuation_snapshots(rows) == 2
+    # Same day re-run: no duplicates.
+    assert io.append_valuation_snapshots(rows) == 0
+    # Next day: new rows for the same symbols are appended.
+    rows_next = [dict(r, date="2026-06-19") for r in rows]
+    assert io.append_valuation_snapshots(rows_next) == 2
+
+    lines = path.read_text().splitlines()
+    assert len(lines) == 4
+    saved = json.loads(lines[0])
+    assert {saved["date"], saved["symbol"]} <= {"2026-06-18", "2330.TW", "NVDA"}
+
+
+def test_append_valuation_snapshots_skips_rows_missing_keys(tmp_path, monkeypatch):
+    path = tmp_path / "valuation_snapshots.jsonl"
+    monkeypatch.setattr(io, "valuation_snapshots_path", lambda: path)
+
+    rows = [
+        {"date": None, "symbol": "X", "pe": 1.0},
+        {"date": "2026-06-18", "symbol": None, "pe": 1.0},
+    ]
+    assert io.append_valuation_snapshots(rows) == 0
+    assert not path.exists()

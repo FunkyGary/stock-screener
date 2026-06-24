@@ -102,3 +102,42 @@ def test_replace_market_signals_removes_stale_symbols_for_same_market():
     assert "8104.TW" not in merged
     assert merged["8103.TW"]["market"] == "tw"
     assert merged["AAPL"]["market"] == "us"
+
+
+def test_valuation_snapshot_rows_skips_non_ok_and_missing_fundamental():
+    from screener.run import _valuation_snapshot_rows
+
+    signals = {
+        "NVDA": {
+            "status": "ok",
+            "symbol": "NVDA",
+            "market": "us",
+            "fundamental": {
+                "pe": 31.7,
+                "pb": 25.7,
+                "eps_surprise_pct": 4.3,
+                "eps_period": "2026-06-30",
+                "margins": [
+                    {"period": "2026-04-30", "gm": 74.9, "om": 65.6, "nm": 71.5},
+                    {"period": "2025-04-30", "gm": 60.5, "om": 49.1, "nm": 42.6},
+                ],
+            },
+        },
+        "AAPL": {"status": "ok", "symbol": "AAPL", "market": "us", "fundamental": None},
+        "BAD": {"status": "fetch_failed", "symbol": "BAD", "market": "us"},
+    }
+    rows = _valuation_snapshot_rows(signals, "2026-06-18")
+    assert len(rows) == 1
+    assert rows[0] == {
+        "date": "2026-06-18",
+        "symbol": "NVDA",
+        "market": "us",
+        "pe": 31.7,
+        "pb": 25.7,
+        "eps_surprise_pct": 4.3,
+        "eps_period": "2026-06-30",
+        "margin_period": "2026-04-30",
+        "gross_margin": 74.9,
+        "operating_margin": 65.6,
+        "net_margin": 71.5,
+    }

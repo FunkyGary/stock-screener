@@ -156,6 +156,15 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "TWSE chip fetch failed, scoring without chip rules: %s", exc
             )
 
+    # Valuation (PE/PB) is EOD-only and display-only (not scored). TW fetches the
+    # whole market once; US fetches per symbol in the loop below.
+    tw_valuation_map: dict[str, dict] = {}
+    if market == "tw" and mode == "eod" and entries:
+        try:
+            tw_valuation_map = fetch.fetch_tw_valuation_map()
+        except Exception as exc:
+            logger.warning("TW valuation (BWIBBU) fetch failed: %s", exc)
+
     disposition_codes: set[str] = set()
     if market == "tw":
         try:
@@ -284,6 +293,39 @@ def run_market(market: str, mode: str = "eod") -> dict:
         bare_code = entry.symbol[:-3] if entry.symbol.endswith(".TW") else None
         is_disposition = bare_code is not None and bare_code in disposition_codes
 
+        # Fundamentals (PE/PB, US EPS surprise): EOD-only, display-only.
+        # Never fed into score(); intraday inherits the previous blob unchanged.
+        fundamental_blob: dict | None = None
+        if mode == "eod":
+            if entry.market == "tw":
+                val = tw_valuation_map.get(bare_code) if bare_code else None
+                if val:
+                    fundamental_blob = {
+                        "pe": val.get("pe"),
+                        "pb": val.get("pb"),
+                        "source": val.get("source"),
+                    }
+                else:
+                    fundamental_blob = prev_record.get("fundamental")
+            elif entry.market == "us":
+                try:
+                    snap = fetch.fetch_us_fundamental(entry.symbol)
+                    fundamental_blob = {
+                        "pe": snap.pe,
+                        "pb": snap.pb,
+                        "eps_surprise_pct": snap.eps_surprise_pct,
+                        "eps_period": snap.eps_period,
+                        "margins": snap.margins,
+                        "source": snap.source,
+                    }
+                except Exception as exc:
+                    logger.warning(
+                        "fetch fundamental failed for %s: %s", entry.symbol, exc
+                    )
+                    fundamental_blob = prev_record.get("fundamental")
+        else:
+            fundamental_blob = prev_record.get("fundamental")
+
         # Reconstruct strongly-typed objects to feed score()
         analyst_for_score: AnalystSnapshot | None = None
         if analyst_blob:
@@ -335,6 +377,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "analyst": analyst_blob,
                 "chip": chip_blob,
                 "sector": sector_blob,
+                "fundamental": fundamental_blob,
                 "score_regime": score_regime,
                 "mode": mode,
                 "is_disposition": is_disposition,
@@ -362,6 +405,35 @@ def _reason_to_dict(reason: score.Reason) -> dict:
     if data.get("score") is None:
         data.pop("score")
     return data
+
+
+def _valuation_snapshot_rows(new_signals: dict[str, dict], run_date: str) -> list[dict]:
+    """Build point-in-time PE/PB/EPS-surprise rows for the daily valuation log."""
+    rows: list[dict] = []
+    for signal in new_signals.values():
+        if signal.get("status") != "ok":
+            continue
+        fundamental = signal.get("fundamental")
+        if not fundamental:
+            continue
+        margins = fundamental.get("margins") or []
+        latest = margins[0] if margins else {}
+        rows.append(
+            {
+                "date": run_date,
+                "symbol": signal["symbol"],
+                "market": signal["market"],
+                "pe": fundamental.get("pe"),
+                "pb": fundamental.get("pb"),
+                "eps_surprise_pct": fundamental.get("eps_surprise_pct"),
+                "eps_period": fundamental.get("eps_period"),
+                "margin_period": latest.get("period"),
+                "gross_margin": latest.get("gm"),
+                "operating_margin": latest.get("om"),
+                "net_margin": latest.get("nm"),
+            }
+        )
+    return rows
 
 
 def main() -> None:
@@ -394,6 +466,11 @@ def main() -> None:
             )
         added = io.merge_target_events(new_target_events)
         logger.info("US target event history merged: added=%d", added)
+
+    if args.mode == "eod":
+        snapshot_rows = _valuation_snapshot_rows(new_signals, now[:10])
+        written = io.append_valuation_snapshots(snapshot_rows)
+        logger.info("valuation snapshots appended: %d", written)
 
     existing = io.load_latest_signals()
     signals = _replace_market_signals(
