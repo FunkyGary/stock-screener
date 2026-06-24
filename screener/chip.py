@@ -23,6 +23,7 @@ TWSE_T86_URL = (
     "https://www.twse.com.tw/rwd/zh/fund/T86"
     "?date={date}&selectType=ALL&response=json"
 )
+TWSE_DISPOSITION_URL = "https://openapi.twse.com.tw/v1/announcement/punish"
 TWSE_REQ_SPACING_SEC = 2.0  # well under TWSE's 3 req / 5s limit
 LOOKBACK_CALENDAR_DAYS = 10  # cover ~5 trading days plus holidays
 
@@ -105,6 +106,25 @@ def _index_fields(fields: list[str]) -> dict[str, int]:
     if missing:
         raise ChipFetchError(f"TWSE T86 missing expected columns: {missing}")
     return idx
+
+
+def fetch_disposition_codes() -> set[str]:
+    """Return bare stock codes currently under TWSE disposition (處置), e.g. {'1409', '1568'}.
+
+    On any fetch error returns an empty set so callers degrade gracefully.
+    """
+    try:
+        resp = requests.get(
+            TWSE_DISPOSITION_URL,
+            timeout=15,
+            headers={"User-Agent": "stock-screener/1.0"},
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except (requests.RequestException, ValueError) as exc:
+        logger.warning("TWSE disposition fetch failed: %s", exc)
+        return set()
+    return {row["Code"].strip() for row in data if row.get("Code")}
 
 
 def fetch_recent_chip_data(

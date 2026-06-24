@@ -591,3 +591,30 @@ def test_bear_crash_strategy_reduces_sector_score_proportionally():
     assert rule.passed is True
     assert rule.weight == 0.75
     assert rule.score == 0.5
+
+
+def test_disposition_stock_excludes_volume_rules():
+    """處置股應排除爆量上漲規則，max_score 也相應減少，賣壓放量下跌不計入扣分。"""
+    ind_normal = _ind(vol_ratio=2.5, today_return=0.03)
+    ind_down = _ind(vol_ratio=2.5, today_return=-0.03)
+
+    result_normal = score("tw", ind_normal, None, chip=_chip(), is_disposition=False)
+    result_disp = score("tw", ind_normal, None, chip=_chip(), is_disposition=True)
+    result_disp_down = score("tw", ind_down, None, chip=_chip(), is_disposition=True)
+
+    # disposition max_score 應比一般股少掉 volume 的 weight
+    volume_weight = next(
+        r.weight for r in result_normal.reasons if "放量上漲" in r.rule
+    )
+    assert result_disp.max_score == result_normal.max_score - volume_weight
+
+    # 處置股的 reasons 裡沒有放量上漲，改為說明 reason
+    rules_disp = [r.rule for r in result_disp.reasons]
+    assert not any("放量上漲" in r for r in rules_disp)
+    assert any("處置股" in r for r in rules_disp)
+
+    # 放量下跌時，處置股不應被扣分（passed 仍為 False）
+    vol_down_reason = next(
+        r for r in result_disp_down.reasons if "放量下跌" in r.rule
+    )
+    assert vol_down_reason.passed is False

@@ -299,6 +299,7 @@ def _append_sell_pressure_reasons(
     ind: IndicatorSnapshot,
     *,
     market_below_ma10: bool | None = None,
+    is_disposition: bool = False,
 ) -> None:
     checks = [
         (
@@ -354,15 +355,20 @@ def _append_sell_pressure_reasons(
         (
             f"賣壓扣分：放量下跌 (vol>{VOLUME_DOWN_RATIO:.1f}x)",
             (
-                ind.vol_ratio is not None
+                not is_disposition
+                and ind.vol_ratio is not None
                 and ind.today_return is not None
                 and ind.vol_ratio >= VOLUME_DOWN_RATIO
                 and ind.today_return < 0
             ),
             (
-                f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%"
-                if ind.vol_ratio is not None and ind.today_return is not None
-                else "volume or return unavailable"
+                "disposition stock — excluded"
+                if is_disposition
+                else (
+                    f"vol_ratio={ind.vol_ratio:.2f} return={ind.today_return * 100:.2f}%"
+                    if ind.vol_ratio is not None and ind.today_return is not None
+                    else "volume or return unavailable"
+                )
             ),
             SELL_PRESSURE_WEIGHTS["volume_down"],
         ),
@@ -396,6 +402,7 @@ def score(
     sector: Optional[SectorSnapshot] = None,
     strategy: str | None = None,
     market_below_ma10: bool | None = None,
+    is_disposition: bool = False,
 ) -> ScoreResult:
     reasons: list[Reason] = []
     is_us = market.lower() == "us"
@@ -441,7 +448,17 @@ def score(
         )
 
     volume_up = _volume_up_signal(ind)
-    if volume_up is not None:
+    if is_disposition:
+        reasons.append(
+            Reason(
+                rule="處置股：爆量上漲指標不計入",
+                passed=False,
+                detail="disposition stock — volume surge rule excluded from score and max_score",
+                weight=0.0,
+                score=0.0,
+            )
+        )
+    elif volume_up is not None:
         passed, volume_detail = volume_up
         reasons.append(
             Reason(
@@ -608,7 +625,10 @@ def score(
         )
 
     _append_sell_pressure_reasons(
-        reasons, ind, market_below_ma10=market_below_ma10 if is_tw else None
+        reasons,
+        ind,
+        market_below_ma10=market_below_ma10 if is_tw else None,
+        is_disposition=is_disposition,
     )
 
     max_score = sum(r.weight for r in reasons)

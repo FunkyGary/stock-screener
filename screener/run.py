@@ -156,6 +156,16 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "TWSE chip fetch failed, scoring without chip rules: %s", exc
             )
 
+    disposition_codes: set[str] = set()
+    if market == "tw":
+        try:
+            disposition_codes = chip_mod.fetch_disposition_codes()
+            logger.info(
+                "TWSE disposition codes fetched: %d stocks", len(disposition_codes)
+            )
+        except Exception as exc:
+            logger.warning("TWSE disposition fetch failed: %s", exc)
+
     if market == "tw" and mode == "eod":
         try:
             cnyes_events = cnyes.fetch_recent_tw_valuation_events(days=2)
@@ -271,6 +281,9 @@ def run_market(market: str, mode: str = "eod") -> dict:
             else:
                 chip_blob = prev_record.get("chip")
 
+        bare_code = entry.symbol[:-3] if entry.symbol.endswith(".TW") else None
+        is_disposition = bare_code is not None and bare_code in disposition_codes
+
         # Reconstruct strongly-typed objects to feed score()
         analyst_for_score: AnalystSnapshot | None = None
         if analyst_blob:
@@ -309,6 +322,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 if benchmark_ind is not None and benchmark_ind.ma10 is not None
                 else None
             ),
+            is_disposition=is_disposition,
         )
 
         record.update(
@@ -323,6 +337,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
                 "sector": sector_blob,
                 "score_regime": score_regime,
                 "mode": mode,
+                "is_disposition": is_disposition,
             }
         )
         out[entry.symbol] = record
