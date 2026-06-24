@@ -626,6 +626,80 @@ def _margin_trend_lines(fundamental: dict | None) -> list[str]:
     return lines
 
 
+# Display-only 領先財報佈局 thresholds (Jeff). Not scored.
+INFLECTION_MIN_POINTS = 3  # quarters needed to call a trough-and-turn
+SELL_NEWS_BIAS = 0.20  # close vs MA20 stretch that qualifies as "已噴" for sell-the-news
+
+
+def _series_values(series: list | None, key: str) -> list[float]:
+    """Newest-first list of dicts → newest-first floats, dropping non-numeric."""
+    out: list[float] = []
+    for row in series or []:
+        val = (row or {}).get(key)
+        if isinstance(val, (int, float)):
+            out.append(float(val))
+    return out
+
+
+def _is_trough_turn(values: list[float]) -> bool:
+    """Newest-first series is bottoming and turning up (落底回升 in progress).
+
+    Latest is up vs the prior quarter, the low sits in an earlier quarter (not
+    the latest), and the latest has not yet exceeded the window high — i.e. the
+    turn is early enough to still be a 領先 entry rather than a chased peak.
+    """
+    if len(values) < INFLECTION_MIN_POINTS:
+        return False
+    latest, prev = values[0], values[1]
+    return latest > prev and latest != min(values) and latest < max(values)
+
+
+def _at_window_high(values: list[float]) -> bool:
+    return len(values) >= INFLECTION_MIN_POINTS and values[0] >= max(values)
+
+
+def _inflection_lines(fundamental: dict | None, indicators: dict | None) -> list[str]:
+    """Display-only 領先佈局 signals: 營收 YoY, 營收/EPS 落底回升, sell-the-news.
+
+    US only. Revenue/EPS come from the display-only fundamental blob; the
+    sell-the-news caution pairs an EPS/營收 multi-quarter high with an extended
+    price (乖離 vs 月線), the Jeff exit pattern. None of this enters the score.
+    """
+    if not fundamental:
+        return []
+    rev = _series_values(fundamental.get("revenues"), "revenue")
+    eps = _series_values(fundamental.get("eps_actuals"), "eps")
+    lines: list[str] = []
+
+    if len(rev) >= 5 and rev[4]:
+        yoy = rev[0] / rev[4] - 1
+        turned = ""
+        if len(rev) >= 6 and rev[5]:
+            yoy_prev = rev[1] / rev[5] - 1
+            if yoy_prev < 0 <= yoy:
+                turned = "（由負翻正）"
+        lines.append(f"營收 YoY {yoy * 100:+.1f}%{turned}")
+
+    if _is_trough_turn(rev):
+        lines.append("📈 營收落底回升：單季營收脫離谷底翻揚，股價未反映時為領先佈局點")
+    if _is_trough_turn(eps):
+        lines.append("📈 EPS 落底回升：單季 EPS 轉折向上，留意戴維斯雙擊")
+
+    bias = None
+    close = (indicators or {}).get("close")
+    ma20 = (indicators or {}).get("ma20")
+    if isinstance(close, (int, float)) and isinstance(ma20, (int, float)) and ma20:
+        bias = close / ma20 - 1
+    eps_high, rev_high = _at_window_high(eps), _at_window_high(rev)
+    if (eps_high or rev_high) and bias is not None and bias >= SELL_NEWS_BIAS:
+        which = "EPS" if eps_high else "營收"
+        lines.append(
+            f"⚠ {which}創近幾季新高且股價乖離月線 {bias * 100:+.0f}%："
+            "獲利已反映，留意 sell-the-news 出場風險"
+        )
+    return lines
+
+
 def _target_event_line(event: dict) -> str:
     date = event.get("date") or event.get("event_date") or "n/a"
     firm = event.get("firm") or event.get("source") or "Unknown"
@@ -804,7 +878,10 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
 
     valuation_badges = _valuation_badges(selected.get("fundamental"))
     margin_lines = _margin_trend_lines(selected.get("fundamental"))
-    if valuation_badges or margin_lines:
+    inflection_lines = _inflection_lines(
+        selected.get("fundamental"), selected.get("indicators")
+    )
+    if valuation_badges or margin_lines or inflection_lines:
         with st.expander("💰 估值/基本面（僅顯示，不計分）", expanded=True):
             for badge in valuation_badges:
                 st.markdown(f"- {badge}")
@@ -812,9 +889,13 @@ def _detail_panel(selected: dict, *, mobile: bool) -> None:
                 st.markdown("**獲利趨勢（近幾季）**")
                 for line in margin_lines:
                     st.markdown(f"- {line}")
+            if inflection_lines:
+                st.markdown("**領先佈局訊號（營收/EPS 轉折）**")
+                for line in inflection_lines:
+                    st.markdown(f"- {line}")
             st.caption(
-                "PE/PB、EPS surprise 與獲利趨勢僅供手動判斷，不進入分數；"
-                "請與技術面突破合看。"
+                "PE/PB、EPS surprise、獲利趨勢與營收/EPS 轉折僅供手動判斷，不進入分數；"
+                "落底回升要與技術面突破合看，創高乖離大則留意 sell-the-news。"
             )
 
     if selected.get("analyst"):

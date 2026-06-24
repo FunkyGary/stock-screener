@@ -1,11 +1,13 @@
 import pandas as pd
 
 from screener.fetch import (
+    _eps_actuals_from_earnings,
     _eps_surprise_from_earnings,
     _margins_from_income_stmt,
     _merge_intraday_latest,
     _parse_float,
     _parse_target_event,
+    _revenues_from_income_stmt,
     _tw_valuation_from_rows,
 )
 
@@ -79,6 +81,47 @@ def test_margins_from_income_stmt_handles_missing_rows_and_empty():
     )
     out = _margins_from_income_stmt(df)
     assert out[0]["gm"] == 40.0 and out[0]["om"] == 12.0 and out[0]["nm"] is None
+
+
+def test_revenues_from_income_stmt_newest_first_and_skips_nan():
+    df = pd.DataFrame(
+        {
+            pd.Timestamp("2026-03-31"): [1000.0, 500.0],
+            pd.Timestamp("2025-12-31"): [800.0, 360.0],
+            pd.Timestamp("2024-12-31"): [float("nan"), float("nan")],
+        },
+        index=["Total Revenue", "Gross Profit"],
+    )
+    out = _revenues_from_income_stmt(df)
+    assert out == [
+        {"period": "2026-03-31", "revenue": 1000.0},
+        {"period": "2025-12-31", "revenue": 800.0},
+    ]
+
+
+def test_revenues_from_income_stmt_handles_missing_and_empty():
+    assert _revenues_from_income_stmt(None) == []
+    assert _revenues_from_income_stmt(pd.DataFrame()) == []
+    df = pd.DataFrame(
+        {pd.Timestamp("2026-03-31"): [42.0]}, index=["Operating Income"]
+    )
+    assert _revenues_from_income_stmt(df) == []  # no Total Revenue row
+
+
+def test_eps_actuals_sorted_newest_first_and_drops_missing():
+    earnings = [
+        {"period": "2026-03-31", "actual": 0.9},
+        {"period": "2026-06-30", "actual": 1.1},
+        {"period": "2025-12-31", "actual": None},  # dropped
+        {"actual": 5.0},  # no period, dropped
+    ]
+    out = _eps_actuals_from_earnings(earnings)
+    assert out == [
+        {"period": "2026-06-30", "eps": 1.1},
+        {"period": "2026-03-31", "eps": 0.9},
+    ]
+    assert _eps_actuals_from_earnings(None) == []
+    assert _eps_actuals_from_earnings([]) == []
 
 
 def test_parse_target_price_raise_news_event():

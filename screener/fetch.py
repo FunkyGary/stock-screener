@@ -48,6 +48,11 @@ class FundamentalSnapshot:
     # US only, recent quarterly margins newest-first: [{period, gm, om, nm}].
     # Display-only profitability trend (Jeff 獲利性分析); never scored.
     margins: list[dict] | None = None
+    # US only, recent quarterly revenue / EPS actuals newest-first, for the
+    # display-only 領先財報佈局 inflection view (Jeff): [{period, revenue}] and
+    # [{period, eps}]. Never scored.
+    revenues: list[dict] | None = None
+    eps_actuals: list[dict] | None = None
     source: Optional[str] = None
 
 
@@ -463,6 +468,50 @@ def _margins_from_income_stmt(
     return rows
 
 
+def _revenues_from_income_stmt(
+    income_stmt: "pd.DataFrame | None", max_quarters: int = 8
+) -> list[dict]:
+    """Quarterly Total Revenue newest-first: [{period, revenue}].
+
+    Reuses the same yfinance quarterly income statement as the margin trend.
+    Pure so it can be unit tested. Display-only 領先佈局 input; never scored.
+    """
+    if income_stmt is None or getattr(income_stmt, "empty", True):
+        return []
+    if "Total Revenue" not in income_stmt.index:
+        return []
+    rows: list[dict] = []
+    for period in list(income_stmt.columns)[:max_quarters]:
+        rev = _finite_float(income_stmt.loc["Total Revenue", period])
+        if rev is None:
+            continue
+        date_attr = getattr(period, "date", None)
+        rows.append(
+            {"period": str(date_attr() if callable(date_attr) else period), "revenue": rev}
+        )
+    return rows
+
+
+def _eps_actuals_from_earnings(earnings: list[dict] | None) -> list[dict]:
+    """Reported quarterly EPS actuals newest-first: [{period, eps}].
+
+    From the same Finnhub `company_earnings` payload as the EPS surprise. Rows
+    without a period or actual are dropped. Pure; display-only, never scored.
+    """
+    if not earnings:
+        return []
+    dated = [
+        r for r in earnings if r.get("period") and r.get("actual") is not None
+    ]
+    dated.sort(key=lambda r: r["period"], reverse=True)
+    out: list[dict] = []
+    for r in dated:
+        eps = _finite_float(r.get("actual"))
+        if eps is not None:
+            out.append({"period": r["period"], "eps": eps})
+    return out
+
+
 def fetch_us_fundamental(symbol: str) -> FundamentalSnapshot:
     """US PE/PB via yfinance `.info`, EPS surprise via Finnhub, margin trend via
     the yfinance quarterly income statement.
@@ -472,6 +521,7 @@ def fetch_us_fundamental(symbol: str) -> FundamentalSnapshot:
     pe: Optional[float] = None
     pb: Optional[float] = None
     margins: list[dict] = []
+    revenues: list[dict] = []
     try:
         ticker = yf.Ticker(symbol)
         info = ticker.info
@@ -483,15 +533,19 @@ def fetch_us_fundamental(symbol: str) -> FundamentalSnapshot:
 
     if ticker is not None:
         try:
-            margins = _margins_from_income_stmt(ticker.quarterly_income_stmt)
+            income_stmt = ticker.quarterly_income_stmt
+            margins = _margins_from_income_stmt(income_stmt)
+            revenues = _revenues_from_income_stmt(income_stmt)
         except Exception as exc:
             logger.warning("yfinance income stmt failed for %s: %s", symbol, exc)
 
     eps_surprise_pct: Optional[float] = None
     eps_period: Optional[str] = None
+    eps_actuals: list[dict] = []
     try:
         earnings = _finnhub_client().company_earnings(symbol)
         eps_surprise_pct, eps_period = _eps_surprise_from_earnings(earnings)
+        eps_actuals = _eps_actuals_from_earnings(earnings)
     except Exception as exc:
         logger.warning("finnhub earnings failed for %s: %s", symbol, exc)
 
@@ -501,5 +555,7 @@ def fetch_us_fundamental(symbol: str) -> FundamentalSnapshot:
         eps_surprise_pct=eps_surprise_pct,
         eps_period=eps_period,
         margins=margins or None,
+        revenues=revenues or None,
+        eps_actuals=eps_actuals or None,
         source="yfinance/finnhub",
     )

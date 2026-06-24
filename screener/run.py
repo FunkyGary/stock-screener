@@ -316,6 +316,8 @@ def run_market(market: str, mode: str = "eod") -> dict:
                         "eps_surprise_pct": snap.eps_surprise_pct,
                         "eps_period": snap.eps_period,
                         "margins": snap.margins,
+                        "revenues": snap.revenues,
+                        "eps_actuals": snap.eps_actuals,
                         "source": snap.source,
                     }
                 except Exception as exc:

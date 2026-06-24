@@ -517,3 +517,56 @@ def test_margin_trend_lines_empty_with_insufficient_quarters():
         )
         == []
     )
+
+
+def test_is_trough_turn_detects_v_shape_only():
+    from streamlit_app import _is_trough_turn
+
+    # newest-first: turned up from a recent trough, still below window high
+    assert _is_trough_turn([8.0, 5.0, 10.0]) is True
+    # monotonic up (already at high) → not an early turn
+    assert _is_trough_turn([12.0, 8.0, 5.0]) is False
+    # still falling → no turn
+    assert _is_trough_turn([3.0, 5.0, 8.0]) is False
+    # too few points
+    assert _is_trough_turn([5.0, 3.0]) is False
+
+
+def test_inflection_lines_revenue_yoy_turn_positive_and_trough():
+    from streamlit_app import _inflection_lines
+
+    # 6 quarters newest-first; latest YoY positive, prior-year quarter negative
+    revenues = [
+        {"period": "2026-06-30", "revenue": 130.0},
+        {"period": "2026-03-31", "revenue": 90.0},
+        {"period": "2025-12-31", "revenue": 100.0},
+        {"period": "2025-09-30", "revenue": 110.0},
+        {"period": "2025-06-30", "revenue": 120.0},
+        {"period": "2025-03-31", "revenue": 100.0},
+    ]
+    lines = _inflection_lines({"revenues": revenues}, {"close": 50.0, "ma20": 49.0})
+    assert any("營收 YoY" in line for line in lines)
+
+
+def test_inflection_lines_sell_the_news_on_high_plus_extended_price():
+    from streamlit_app import _inflection_lines
+
+    eps = [
+        {"period": "2026-06-30", "eps": 2.0},  # window high
+        {"period": "2026-03-31", "eps": 1.5},
+        {"period": "2025-12-31", "eps": 1.0},
+    ]
+    # close 30% above MA20 → extended
+    lines = _inflection_lines({"eps_actuals": eps}, {"close": 130.0, "ma20": 100.0})
+    assert any("sell-the-news" in line for line in lines)
+
+    # same EPS high but price not extended → no sell-the-news line
+    calm = _inflection_lines({"eps_actuals": eps}, {"close": 101.0, "ma20": 100.0})
+    assert not any("sell-the-news" in line for line in calm)
+
+
+def test_inflection_lines_empty_without_data():
+    from streamlit_app import _inflection_lines
+
+    assert _inflection_lines(None, None) == []
+    assert _inflection_lines({}, {}) == []

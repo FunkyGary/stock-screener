@@ -97,6 +97,15 @@ hides a healthy operating margin. Margins come from the yfinance quarterly incom
 statement (US only; TW lacks a free margin series) and are **display-only** —
 they are decision context to read alongside the technical breakout, never scored.
 
+The same panel also shows a US **領先佈局** block (Jeff 領先財報佈局): recent
+quarterly 營收 YoY, a 營收/EPS 落底回升 flag when the single-quarter revenue or EPS
+series is bottoming and turning up (the early entry the deck buys, before price
+reflects it), and a **sell-the-news** caution when EPS/營收 prints a multi-quarter
+high while price is stretched far above its 月線 (the deck's exit pattern). Revenue
+comes from the same yfinance quarterly income statement and EPS actuals from the
+same Finnhub earnings payload (zero extra fetches); all of it is **display-only**,
+to be read with the technical setup, never scored.
+
 The `特別注意` section requires the current strategy's score threshold. US bear
 regimes also require the active SPY repair gate. Target-price raises remain
 visible in each stock's signal list and score, but do not by themselves place a

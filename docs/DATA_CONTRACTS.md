@@ -146,6 +146,14 @@ It is **display-only** and is never passed to `screener.score.score()`:
   Any of `gm`/`om`/`nm` may be `null`; quarters with missing/zero revenue are
   dropped. Used by the dashboard for a profitability-trend view and a 本業 vs 業外
   (operating vs net) divergence flag — display-only, never scored.
+- `revenues`: US only, recent quarterly Total Revenue newest-first, up to 8
+  quarters: `[{"period": "YYYY-MM-DD", "revenue": <float>}]`. From the same
+  yfinance quarterly income statement (`fetch._revenues_from_income_stmt`).
+- `eps_actuals`: US only, reported quarterly EPS actuals newest-first:
+  `[{"period": "YYYY-MM-DD", "eps": <float>}]`. From the same Finnhub
+  `company_earnings` payload as the EPS surprise (`fetch._eps_actuals_from_earnings`).
+  `revenues` + `eps_actuals` drive the dashboard's 領先佈局 view (營收 YoY, 營收/EPS
+  落底回升, and a sell-the-news caution) — display-only, never scored.
 - `source`: provenance string (`twse` / `tpex` / `yfinance/finnhub`).
 
 EOD runs also append a point-in-time row per ok signal to
