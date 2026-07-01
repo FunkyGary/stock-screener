@@ -2,15 +2,11 @@ name: US screener
 
 on:
   schedule:
-    # Opening burst: every 2 min during the first 30 min after the US open.
-    # 13:30-13:58 UTC covers EDT open; 14:30-14:58 UTC covers EST open.
-    - cron: "30,32,34,36,38,40,42,44,46,48,50,52,54,56,58 13,14 * * 1-5"
-    # Intraday: every 15 min covering both EDT (13:30-20:00 UTC) and EST
-    # (14:30-21:00 UTC). The window 13:00-20:30 UTC catches both; EST will
-    # see a few empty pre-open runs which is harmless.
-    # 4 fires/hour at offset minutes (avoiding :00/:15/:30/:45 boundaries
-    # because GitHub drops boundary-minute fires under load).
-    - cron: "7,22,37,52 13-20 * * 1-5"
+    # EOD only. Intraday schedules were removed: intraday bars are incomplete,
+    # so newly-above-all-MAs / MACD / new-high signals are provisional and can
+    # flip by close. The recommendation list must come from the EOD (closed-bar)
+    # run; intraday confirmation is a manual step. Use workflow_dispatch (mode:
+    # intraday) if an ad-hoc intraday run is ever needed.
     # EOD: 21:17 UTC = 17:17 EDT / 16:17 EST, after close on both schedules.
     - cron: "17 21 * * 1-5"
   workflow_dispatch:
@@ -41,18 +37,8 @@ jobs:
       - name: Determine mode
         id: mode
         run: |
-          if [ "${{ github.event.schedule }}" = "0 21 * * 1-5" ]; then
+          if [ "${{ github.event.schedule }}" = "17 21 * * 1-5" ]; then
             MODE=eod
-          elif [ "${{ github.event.schedule }}" = "17 21 * * 1-5" ]; then
-            MODE=eod
-          elif [ "${{ github.event.schedule }}" = "*/30 13-20 * * 1-5" ]; then
-            MODE=intraday
-          elif [ "${{ github.event.schedule }}" = "7,37 13-20 * * 1-5" ]; then
-            MODE=intraday
-          elif [ "${{ github.event.schedule }}" = "30,32,34,36,38,40,42,44,46,48,50,52,54,56,58 13,14 * * 1-5" ]; then
-            MODE=intraday
-          elif [ "${{ github.event.schedule }}" = "7,22,37,52 13-20 * * 1-5" ]; then
-            MODE=intraday
           else
             MODE="${{ inputs.mode || 'eod' }}"
           fi
