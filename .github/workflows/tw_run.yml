@@ -7,8 +7,13 @@ on:
     # flip by close. The recommendation list must come from the EOD (closed-bar)
     # run; intraday confirmation is a manual step. Use workflow_dispatch (mode:
     # intraday) if an ad-hoc intraday run is ever needed.
-    # EOD: chip data settles ~1h after close. 台北 17:17 = 09:17 UTC.
+    # EOD, 3 attempts 1h apart for resilience (chip data settles ~1h after
+    # close; a later fire retries if an earlier one fails or ran too early).
+    # A no-op re-run is harmless: identical signals produce "No changes to
+    # commit". 台北 17:17 / 18:17 / 19:17 = 09:17 / 10:17 / 11:17 UTC.
     - cron: "17 9 * * 1-5"
+    - cron: "17 10 * * 1-5"
+    - cron: "17 11 * * 1-5"
   workflow_dispatch:
     inputs:
       mode:
@@ -35,11 +40,10 @@ jobs:
       - name: Determine mode
         id: mode
         run: |
-          if [ "${{ github.event.schedule }}" = "17 9 * * 1-5" ]; then
-            MODE=eod
-          else
-            MODE="${{ inputs.mode || 'eod' }}"
-          fi
+          case "${{ github.event.schedule }}" in
+            "17 9 * * 1-5"|"17 10 * * 1-5"|"17 11 * * 1-5") MODE=eod ;;
+            *) MODE="${{ inputs.mode || 'eod' }}" ;;
+          esac
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "Resolved mode: $MODE"
       - name: Run TW screener
