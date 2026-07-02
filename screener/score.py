@@ -20,6 +20,7 @@ VOLUME_UP_RATIO = 1.2
 VOLUME_DOWN_RATIO = 1.3
 INTRADAY_SAME_TIME_VOLUME_RATIO = 1.2
 SELL_PRESSURE_WEIGHTS = {
+    "below_ma5": 0.03,
     "below_ma10": 0.08,
     "below_ma20": 0.12,
     "below_big_bull_low": 0.12,
@@ -302,6 +303,16 @@ def _append_sell_pressure_reasons(
     is_disposition: bool = False,
 ) -> None:
     checks = [
+        (
+            "賣壓扣分：跌破 5 日線",
+            ind.ma5 is not None and ind.close < ind.ma5,
+            (
+                f"close={ind.close:.2f} MA5={ind.ma5:.2f}"
+                if ind.ma5 is not None
+                else "MA5 unavailable"
+            ),
+            SELL_PRESSURE_WEIGHTS["below_ma5"],
+        ),
         (
             "賣壓扣分：跌破 10 日線",
             ind.ma10 is not None and ind.close < ind.ma10,

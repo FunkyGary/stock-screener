@@ -435,9 +435,14 @@ def _downside_attention_reason(row: dict) -> str | None:
         return None
 
     if strategy == "bull":
-        ma5 = ind.get("ma5")
-        if ma5 is not None and close < ma5 and _score_ratio(row) < 0.20:
-            return "多頭：跌破 MA5 且分數 < 20%"
+        # OOS-validated (bull 2019 + 2023-24, TW+US): a hard MA5 exit whipsaws
+        # out of a bull trend because MA5 breaks usually recover ("站回").
+        # Treat MA5 as a light sell-pressure deduction (below_ma5=0.03, folded
+        # into the score) and exit only when the penalty-adjusted score falls
+        # below 10% — patient enough to hold through noise, still exits on real
+        # trend decay. See results/backtests/ma5_penalty_{sweep,oos_bull}.csv.
+        if _score_ratio(row) < 0.10:
+            return "多頭：賣壓調整後 < 10%"
         return None
 
     if _score_ratio(row) < 0.20 and _sell_pressure_passed(row):

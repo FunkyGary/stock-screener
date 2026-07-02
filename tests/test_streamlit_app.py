@@ -88,9 +88,13 @@ def test_recent_research_report_expires_after_seven_days():
     assert _has_recent_research_report(row) is False
 
 
-def test_downside_attention_bull_requires_ma5_break_and_low_score():
+def test_downside_attention_bull_holds_through_ma5_break_when_score_healthy():
+    # OOS-validated change: in a bull, an MA5 break alone must NOT flag an exit
+    # (MA5 breaks usually recover). below_ma5=0.03 is folded into the score;
+    # we only flag downside once the penalty-adjusted score drops below 10%.
+    # Here close < MA5 (break) but ratio 0.19 >= 0.10 -> hold.
     row = {
-        "score": 3.0,
+        "score": 1.9,
         "max_score": 10.0,
         "score_regime": {"strategy": "bull"},
         "indicators": {
@@ -102,9 +106,9 @@ def test_downside_attention_bull_requires_ma5_break_and_low_score():
     assert _is_downside_attention(row) is False
 
 
-def test_downside_attention_bull_passes_on_ma5_break_and_score_below_20pct():
+def test_downside_attention_bull_passes_when_penalty_adjusted_score_below_10pct():
     row = {
-        "score": 1.9,
+        "score": 0.9,
         "max_score": 10.0,
         "score_regime": {"strategy": "bull"},
         "indicators": {
@@ -114,7 +118,7 @@ def test_downside_attention_bull_passes_on_ma5_break_and_score_below_20pct():
     }
 
     assert _is_downside_attention(row) is True
-    assert _downside_attention_reason(row) == "多頭：跌破 MA5 且分數 < 20%"
+    assert _downside_attention_reason(row) == "多頭：賣壓調整後 < 10%"
 
 
 def test_downside_attention_bear_uses_prev_5d_low_break():

@@ -227,7 +227,9 @@ def test_short_trend_requires_close_above_ma5():
         None,
         chip=_chip(),
     )
-    assert result.score == 6.5
+    # close < MA5 also incurs the below_ma5=0.03 sell-pressure penalty
+    # (0.03 * max_score 15.0 = 0.45), so 6.5 - 0.45 = 6.05.
+    assert result.score == 6.05
     assert result.max_score == 15.0
     rule = next(r for r in result.reasons if r.rule.startswith("短線趨勢"))
     assert rule.passed is False
@@ -344,6 +346,7 @@ def test_tw_sell_pressure_penalties_reduce_score_by_ratio():
 
     penalties = [r for r in result.reasons if r.rule.startswith("賣壓扣分") and r.passed]
     assert {r.rule for r in penalties} >= {
+        "賣壓扣分：跌破 5 日線",
         "賣壓扣分：跌破 10 日線",
         "賣壓扣分：跌破 20 日線",
         "賣壓扣分：跌破大量長紅 K 低點",
@@ -358,7 +361,7 @@ def test_tw_sell_pressure_penalties_reduce_score_by_ratio():
         for r in result.reasons
         if r.passed and not r.rule.startswith("賣壓扣分")
     )
-    assert round(penalty_ratio, 2) == 0.62
+    assert round(penalty_ratio, 2) == 0.65
     assert result.score == max(0.0, raw_score - result.max_score * penalty_ratio)
 
 
