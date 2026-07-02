@@ -216,8 +216,7 @@ def _score_day(snapshot: IndicatorSnapshot, benchmark_return_20d: float | None):
     return score(
         market="us",
         ind=snapshot,
-        analyst=AnalystSnapshot(target_mean=None, rating=None, rating_score=None),
-        prev_target_mean=None,
+        analyst=AnalystSnapshot(rating=None, rating_score=None),
         chip=None,
         benchmark_return_20d=benchmark_return_20d,
     )
