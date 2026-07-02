@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-02T12:20:50.440695+00:00",
+  "generated_at": "2026-07-02T13:06:30.844662+00:00",
   "last_run": {
-    "tw": "2026-07-02T12:20:50.440695+00:00",
-    "tw_eod": "2026-07-02T12:20:50.440695+00:00",
+    "tw": "2026-07-02T13:06:30.844662+00:00",
+    "tw_eod": "2026-07-02T13:06:30.844662+00:00",
     "tw_intraday": "2026-07-01T05:52:25.437545+00:00",
     "us": "2026-07-02T00:20:52.466980+00:00",
     "us_eod": "2026-07-02T00:20:52.466980+00:00",
     "us_intraday": "2026-07-01T14:15:32.538669+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-02T12:22:58.167410+00:00",
+    "generated_at": "2026-07-02T13:08:00.931154+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -349,7 +349,7 @@
         "daily_volume_today": 112899271,
         "foreign_net_today": 25122957,
         "foreign_pct_of_volume": 0.22252541382663135,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -466,7 +466,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+22.25%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+22.25%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -596,7 +596,7 @@
         "daily_volume_today": 51736694,
         "foreign_net_today": 5872656,
         "foreign_pct_of_volume": 0.11351046125985553,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 8
       },
@@ -707,7 +707,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+11.35%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+11.35%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -805,7 +805,7 @@
         "daily_volume_today": 3757324,
         "foreign_net_today": 786750,
         "foreign_pct_of_volume": 0.2093910453290693,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -922,7 +922,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+20.94%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+20.94%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -1260,7 +1260,7 @@
         "daily_volume_today": 64642104,
         "foreign_net_today": 2353439,
         "foreign_pct_of_volume": 0.03640721533445137,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -1377,8 +1377,8 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+3.64%",
-          "passed": false,
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+3.64%",
+          "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -1439,7 +1439,7 @@
           "weight": 0.0
         }
       ],
-      "score": 8.75,
+      "score": 9.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -1490,7 +1490,7 @@
         "foreign_net_today": 115260,
         "foreign_pct_of_volume": 0.13619460964280525,
         "foreign_streak_days": 1,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -1599,10 +1599,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -1738,7 +1738,7 @@
         "foreign_pct_of_volume": -0.42586956371023094,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 2
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 4.25,
@@ -1846,10 +1846,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=2 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=3 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -1915,7 +1915,7 @@
           "weight": 0.0
         }
       ],
-      "score": 1.5,
+      "score": 3.0,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -2216,7 +2216,7 @@
         "foreign_pct_of_volume": -0.15024246537417527,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 4.06,
@@ -2324,10 +2324,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -2393,7 +2393,7 @@
           "weight": 0.0
         }
       ],
-      "score": 1.17,
+      "score": 0.0,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -3374,7 +3374,7 @@
         "daily_volume_today": 715432,
         "foreign_net_today": 143757,
         "foreign_pct_of_volume": 0.20093733576356662,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -3491,7 +3491,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+20.09%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+20.09%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -4970,7 +4970,7 @@
         "foreign_pct_of_volume": -0.4463426513709989,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 1.23,
@@ -5071,10 +5071,10 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -5436,7 +5436,7 @@
         "foreign_net_today": -58561,
         "foreign_pct_of_volume": -0.17752966356035482,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": false,
+        "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -5545,10 +5545,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
@@ -5614,7 +5614,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.5,
+      "score": 8.5,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -5664,7 +5664,7 @@
         "daily_volume_today": 1811885,
         "foreign_net_today": 474145,
         "foreign_pct_of_volume": 0.261686034157797,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 8,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -5774,7 +5774,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+26.17%",
+          "detail": "streak=8 \u65e5, \u4f54\u91cf=+26.17%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -5890,7 +5890,7 @@
         "daily_volume_today": 14694321,
         "foreign_net_today": 3176407,
         "foreign_pct_of_volume": 0.21616561935730136,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -6007,7 +6007,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+21.62%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+21.62%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -6371,7 +6371,7 @@
         "foreign_pct_of_volume": -0.2169100301969501,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 17.26,
@@ -6479,10 +6479,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -7669,7 +7669,7 @@
         "foreign_net_today": -10799606,
         "foreign_pct_of_volume": -0.1520941773337749,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": false,
+        "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -7778,10 +7778,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
@@ -8410,7 +8410,7 @@
         "foreign_pct_of_volume": -0.7365581089870259,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 1.99,
@@ -8518,7 +8518,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -8866,7 +8866,7 @@
         "daily_volume_today": 24123113,
         "foreign_net_today": 4037506,
         "foreign_pct_of_volume": 0.16737085300723833,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -8983,7 +8983,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+16.74%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+16.74%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -9097,7 +9097,7 @@
         "foreign_pct_of_volume": -0.14144405704805474,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 3.27,
@@ -9205,7 +9205,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -9358,7 +9358,7 @@
         "foreign_pct_of_volume": 0.1867716978933116,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 2
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 1.7,
@@ -9466,10 +9466,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=2 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=3 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -10045,7 +10045,7 @@
         "foreign_pct_of_volume": -0.3860540567577768,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 8
       },
       "fundamental": {
         "pb": 3.5,
@@ -10153,7 +10153,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=8 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -10292,7 +10292,7 @@
         "foreign_pct_of_volume": -0.04164427683267054,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 2.24,
@@ -10400,10 +10400,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -10469,7 +10469,7 @@
           "weight": 0.0
         }
       ],
-      "score": 3.25,
+      "score": 1.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -10541,7 +10541,7 @@
         "foreign_pct_of_volume": -0.3203448630680738,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 9.45,
@@ -10649,10 +10649,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -10718,7 +10718,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.17,
+      "score": 3.67,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -11030,7 +11030,7 @@
         "foreign_net_today": -36476,
         "foreign_pct_of_volume": -0.037651440315200235,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -11140,10 +11140,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -11209,7 +11209,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.25,
+      "score": 4.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -11488,7 +11488,7 @@
         "daily_volume_today": 1946794,
         "foreign_net_today": 597109,
         "foreign_pct_of_volume": 0.3067140128847736,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 6,
         "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
@@ -11605,7 +11605,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+30.67%",
+          "detail": "streak=6 \u65e5, \u4f54\u91cf=+30.67%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -11982,7 +11982,7 @@
         "foreign_net_today": -46140222,
         "foreign_pct_of_volume": -0.12445892054832139,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -12091,10 +12091,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -12160,7 +12160,7 @@
           "weight": 0.0
         }
       ],
-      "score": 7.25,
+      "score": 5.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -12212,7 +12212,7 @@
         "foreign_pct_of_volume": -0.6292573920655756,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 2.77,
@@ -12320,10 +12320,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -12668,7 +12668,7 @@
         "daily_volume_today": 23812642,
         "foreign_net_today": 1814394,
         "foreign_pct_of_volume": 0.07619456925443216,
-        "foreign_streak_days": 8,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
@@ -12785,7 +12785,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=8 \u65e5, \u4f54\u91cf=+7.62%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+7.62%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -13637,7 +13637,7 @@
         "foreign_pct_of_volume": -0.1741990022365259,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 5.37,
@@ -13745,10 +13745,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -13814,7 +13814,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.75,
+      "score": 5.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -13864,7 +13864,7 @@
         "daily_volume_today": 2280412,
         "foreign_net_today": 512253,
         "foreign_pct_of_volume": 0.2246317770648462,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -13981,7 +13981,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+22.46%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+22.46%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -14093,9 +14093,9 @@
         "daily_volume_today": 624530,
         "foreign_net_today": 334441,
         "foreign_pct_of_volume": 0.5355083022432869,
-        "foreign_streak_days": 7,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 5.56,
@@ -14196,14 +14196,14 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
-          "detail": "streak=7 \u65e5, \u4f54\u91cf=+53.55%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+53.55%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -14265,7 +14265,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.25,
+      "score": 3.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -14739,7 +14739,7 @@
         "daily_volume_today": 6820109,
         "foreign_net_today": 248067,
         "foreign_pct_of_volume": 0.03637287908448384,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -14856,7 +14856,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+3.64%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+3.64%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -15464,7 +15464,7 @@
         "foreign_pct_of_volume": -0.20090105726598545,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 0.54,
@@ -15565,10 +15565,10 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -15692,7 +15692,7 @@
         "foreign_pct_of_volume": -0.24419829769052978,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 1.75,
@@ -15800,10 +15800,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -15869,7 +15869,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.4075,
+      "score": 3.9074999999999998,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -16413,7 +16413,7 @@
         "daily_volume_today": 12068429,
         "foreign_net_today": 2119397,
         "foreign_pct_of_volume": 0.17561498683880064,
-        "foreign_streak_days": 5,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -16530,7 +16530,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=5 \u65e5, \u4f54\u91cf=+17.56%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+17.56%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -17298,7 +17298,7 @@
         "daily_volume_today": 73143156,
         "foreign_net_today": 37126487,
         "foreign_pct_of_volume": 0.5075866154859383,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -17415,7 +17415,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+50.76%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+50.76%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -17547,7 +17547,7 @@
         "daily_volume_today": 65055086,
         "foreign_net_today": 25492148,
         "foreign_pct_of_volume": 0.3918548044037633,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -17657,7 +17657,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+39.19%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+39.19%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -18006,7 +18006,7 @@
         "foreign_pct_of_volume": -0.136013454018894,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 1
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 2.52,
@@ -18114,10 +18114,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=5 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -18940,7 +18940,7 @@
         "daily_volume_today": 1074693,
         "foreign_net_today": 357295,
         "foreign_pct_of_volume": 0.33246238693282637,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
@@ -19057,7 +19057,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+33.25%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+33.25%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -19456,9 +19456,9 @@
         "daily_volume_today": 5054546,
         "foreign_net_today": 115408,
         "foreign_pct_of_volume": 0.022832515521670985,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 22.77,
@@ -19566,15 +19566,15 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+2.28%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+2.28%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -19635,7 +19635,7 @@
           "weight": 0.0
         }
       ],
-      "score": 7.5,
+      "score": 5.0,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -19934,7 +19934,7 @@
         "foreign_pct_of_volume": -0.5146494489610653,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 4.57,
@@ -20042,10 +20042,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -20111,7 +20111,7 @@
           "weight": 0.0
         }
       ],
-      "score": 8.75,
+      "score": 7.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -20179,7 +20179,7 @@
         "daily_volume_today": 1380920,
         "foreign_net_today": 206271,
         "foreign_pct_of_volume": 0.14937215769197346,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -20290,7 +20290,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+14.94%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+14.94%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -20389,7 +20389,7 @@
         "foreign_net_today": -817439,
         "foreign_pct_of_volume": -0.18002532214824665,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": false,
+        "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -20498,10 +20498,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
@@ -20567,7 +20567,7 @@
           "weight": 0.0
         }
       ],
-      "score": 4.25,
+      "score": 6.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -20617,7 +20617,7 @@
         "daily_volume_today": 7753720,
         "foreign_net_today": 763250,
         "foreign_pct_of_volume": 0.09843662138947498,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -20734,7 +20734,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+9.84%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+9.84%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -20846,7 +20846,7 @@
         "daily_volume_today": 8617780,
         "foreign_net_today": 1698731,
         "foreign_pct_of_volume": 0.19711932771549054,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -20963,7 +20963,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+19.71%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+19.71%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -21140,7 +21140,7 @@
         "foreign_pct_of_volume": -0.4097309617544349,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 14.57,
@@ -21248,10 +21248,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -21385,7 +21385,7 @@
         "daily_volume_today": 74752392,
         "foreign_net_today": 2999399,
         "foreign_pct_of_volume": 0.04012445514787005,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
@@ -21495,8 +21495,8 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+4.01%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+4.01%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -21557,7 +21557,7 @@
           "weight": 0.0
         }
       ],
-      "score": 12.75,
+      "score": 11.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -21611,7 +21611,7 @@
         "daily_volume_today": 6014484,
         "foreign_net_today": 2538344,
         "foreign_pct_of_volume": 0.4220385323163217,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -21728,7 +21728,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+42.20%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+42.20%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -24604,7 +24604,7 @@
         "daily_volume_today": 329712,
         "foreign_net_today": 13250,
         "foreign_pct_of_volume": 0.040186587082059494,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -24721,8 +24721,8 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+4.02%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+4.02%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -25339,7 +25339,7 @@
         "daily_volume_today": 1328406,
         "foreign_net_today": 105230,
         "foreign_pct_of_volume": 0.0792152399191211,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -25456,7 +25456,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+7.92%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+7.92%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -25570,7 +25570,7 @@
         "foreign_pct_of_volume": 0.07648426110487921,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 7
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 46.36,
@@ -25678,10 +25678,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=7 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -25747,7 +25747,7 @@
           "weight": 0.0
         }
       ],
-      "score": 10.25,
+      "score": 8.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -26482,7 +26482,7 @@
         "foreign_pct_of_volume": 0.053606835656106015,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 2.34,
@@ -26590,10 +26590,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -27621,7 +27621,7 @@
         "daily_volume_today": 1625458,
         "foreign_net_today": 136119,
         "foreign_pct_of_volume": 0.08374193611892772,
-        "foreign_streak_days": 5,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -27738,7 +27738,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=5 \u65e5, \u4f54\u91cf=+8.37%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+8.37%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -28088,7 +28088,7 @@
         "foreign_pct_of_volume": -0.20630804122172952,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 2.71,
@@ -28196,10 +28196,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -28265,7 +28265,7 @@
           "weight": 0.0
         }
       ],
-      "score": 3.75,
+      "score": 2.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -28333,7 +28333,7 @@
         "daily_volume_today": 598349,
         "foreign_net_today": 49984,
         "foreign_pct_of_volume": 0.0835365313554464,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 6,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -28450,7 +28450,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+8.35%",
+          "detail": "streak=6 \u65e5, \u4f54\u91cf=+8.35%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -28564,7 +28564,7 @@
         "foreign_pct_of_volume": -0.07590537782596614,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 8.41,
@@ -28672,10 +28672,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -28741,7 +28741,7 @@
           "weight": 0.0
         }
       ],
-      "score": 10.25,
+      "score": 8.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -28833,7 +28833,7 @@
         "daily_volume_today": 1412780,
         "foreign_net_today": 142877,
         "foreign_pct_of_volume": 0.10113181103922762,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -28950,7 +28950,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+10.11%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+10.11%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -29282,7 +29282,7 @@
         "foreign_pct_of_volume": -0.5079823635573402,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 2.05,
@@ -29390,10 +29390,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -29749,7 +29749,7 @@
         "daily_volume_today": 24640062,
         "foreign_net_today": 284124,
         "foreign_pct_of_volume": 0.011530977478871603,
-        "foreign_streak_days": 8,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -29866,8 +29866,8 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=8 \u65e5, \u4f54\u91cf=+1.15%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+1.15%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -29928,7 +29928,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.5,
+      "score": 5.5,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -31097,7 +31097,7 @@
         "daily_volume_today": 40827,
         "foreign_net_today": 5291,
         "foreign_pct_of_volume": 0.12959561074778944,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -31214,7 +31214,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+12.96%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+12.96%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -32026,7 +32026,7 @@
         "daily_volume_today": 36978,
         "foreign_net_today": 12000,
         "foreign_pct_of_volume": 0.324517280545189,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -32143,7 +32143,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+32.45%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+32.45%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -32713,7 +32713,7 @@
         "daily_volume_today": 532076,
         "foreign_net_today": 1765,
         "foreign_pct_of_volume": 0.0033171952878912037,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -32830,7 +32830,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+0.33%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+0.33%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -33407,7 +33407,7 @@
         "daily_volume_today": 313273,
         "foreign_net_today": 127298,
         "foreign_pct_of_volume": 0.40634845645810524,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 6,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -33524,7 +33524,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+40.63%",
+          "detail": "streak=6 \u65e5, \u4f54\u91cf=+40.63%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -33899,7 +33899,7 @@
         "foreign_pct_of_volume": -0.03611613330374585,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 1.1,
@@ -34007,7 +34007,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -34792,7 +34792,7 @@
         "foreign_net_today": -41750,
         "foreign_pct_of_volume": -0.16795397859843914,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -34901,10 +34901,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -34970,7 +34970,7 @@
           "weight": 0.0
         }
       ],
-      "score": 1.38,
+      "score": 0.0,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -35269,7 +35269,7 @@
         "foreign_pct_of_volume": 0.05047815875998121,
         "foreign_streak_days": 1,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 8
       },
       "fundamental": {
         "pb": 2.95,
@@ -35377,7 +35377,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=8 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -36477,7 +36477,7 @@
         "foreign_pct_of_volume": -0.24072122274545077,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 5.37,
@@ -36585,7 +36585,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -37635,7 +37635,7 @@
         "daily_volume_today": 4762591,
         "foreign_net_today": 2300750,
         "foreign_pct_of_volume": 0.4830878822052954,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -37752,7 +37752,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+48.31%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+48.31%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -38331,8 +38331,8 @@
         "daily_volume_today": 1790711,
         "foreign_net_today": 4142,
         "foreign_pct_of_volume": 0.002313047722385131,
-        "foreign_streak_days": 4,
-        "trust_buy_first_day": false,
+        "foreign_streak_days": 2,
+        "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -38441,15 +38441,15 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+0.23%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+0.23%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -38510,7 +38510,7 @@
           "weight": 0.0
         }
       ],
-      "score": 9.5,
+      "score": 10.5,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -38796,7 +38796,7 @@
         "daily_volume_today": 22370732,
         "foreign_net_today": 485676,
         "foreign_pct_of_volume": 0.021710331159481056,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -38913,8 +38913,8 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+2.17%",
-          "passed": true,
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+2.17%",
+          "passed": false,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
         },
@@ -39719,7 +39719,7 @@
         "daily_volume_today": 99405,
         "foreign_net_today": 38250,
         "foreign_pct_of_volume": 0.3847894975101856,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -39836,7 +39836,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+38.48%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+38.48%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -40415,7 +40415,7 @@
         "foreign_pct_of_volume": -0.05660730182199337,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 9.59,
@@ -40523,7 +40523,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -40889,7 +40889,7 @@
         "daily_volume_today": 1785077,
         "foreign_net_today": 366562,
         "foreign_pct_of_volume": 0.20534800459588018,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 6,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -41007,7 +41007,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+20.53%",
+          "detail": "streak=6 \u65e5, \u4f54\u91cf=+20.53%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -41119,7 +41119,7 @@
         "daily_volume_today": 1439910,
         "foreign_net_today": 118800,
         "foreign_pct_of_volume": 0.08250515657228577,
-        "foreign_streak_days": 5,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -41236,7 +41236,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=5 \u65e5, \u4f54\u91cf=+8.25%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+8.25%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -41597,7 +41597,7 @@
         "foreign_pct_of_volume": -0.028596326357577438,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 14.68,
@@ -41705,10 +41705,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -41774,7 +41774,7 @@
           "weight": 0.0
         }
       ],
-      "score": 8.0,
+      "score": 6.5,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -41824,7 +41824,7 @@
         "daily_volume_today": 764625,
         "foreign_net_today": 174413,
         "foreign_pct_of_volume": 0.22810266470492072,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": true,
         "trust_streak_days": 1
       },
@@ -41941,7 +41941,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+22.81%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+22.81%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -42561,7 +42561,7 @@
         "foreign_net_today": 3182851,
         "foreign_pct_of_volume": 0.13155577713548622,
         "foreign_streak_days": 1,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -42663,10 +42663,10 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -42732,7 +42732,7 @@
           "weight": 0.0
         }
       ],
-      "score": 15.75,
+      "score": 13.75,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -43263,9 +43263,9 @@
         "daily_volume_today": 712992,
         "foreign_net_today": 35404,
         "foreign_pct_of_volume": 0.049655536106996995,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 6.57,
@@ -43373,14 +43373,14 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+4.97%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+4.97%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -44844,7 +44844,7 @@
         "foreign_pct_of_volume": -0.32377855415020074,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 6.68,
@@ -44952,10 +44952,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -45021,7 +45021,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.75,
+      "score": 4.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -45091,7 +45091,7 @@
         "foreign_pct_of_volume": 0.0024879227575703164,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 2.08,
@@ -45199,7 +45199,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -47134,7 +47134,7 @@
         "foreign_pct_of_volume": -0.09619943049356759,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 2
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 9.0,
@@ -47242,10 +47242,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=2 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=3 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -48302,7 +48302,7 @@
         "daily_volume_today": 53960,
         "foreign_net_today": 10250,
         "foreign_pct_of_volume": 0.18995552260934026,
-        "foreign_streak_days": 2,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -48412,7 +48412,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=2 \u65e5, \u4f54\u91cf=+19.00%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+19.00%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -48739,7 +48739,7 @@
         "daily_volume_today": 1080025,
         "foreign_net_today": 199873,
         "foreign_pct_of_volume": 0.18506330871970555,
-        "foreign_streak_days": 5,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -48856,7 +48856,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=5 \u65e5, \u4f54\u91cf=+18.51%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+18.51%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -50105,7 +50105,7 @@
         "foreign_pct_of_volume": -0.21293817801784806,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 2
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 19.96,
@@ -50213,10 +50213,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=2 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=3 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -50282,7 +50282,7 @@
           "weight": 0.0
         }
       ],
-      "score": 2.13,
+      "score": 3.63,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -50350,7 +50350,7 @@
         "daily_volume_today": 185795,
         "foreign_net_today": 66665,
         "foreign_pct_of_volume": 0.35880944051239266,
-        "foreign_streak_days": 8,
+        "foreign_streak_days": 2,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -50460,7 +50460,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=8 \u65e5, \u4f54\u91cf=+35.88%",
+          "detail": "streak=2 \u65e5, \u4f54\u91cf=+35.88%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -51019,7 +51019,7 @@
         "foreign_pct_of_volume": -0.20812814165077734,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 8
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 16.26,
@@ -51127,10 +51127,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=8 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -51196,7 +51196,7 @@
           "weight": 0.0
         }
       ],
-      "score": 8.75,
+      "score": 7.25,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
@@ -52443,7 +52443,7 @@
         "foreign_net_today": 218558,
         "foreign_pct_of_volume": 0.05989009453273187,
         "foreign_streak_days": 1,
-        "trust_buy_first_day": true,
+        "trust_buy_first_day": false,
         "trust_streak_days": 1
       },
       "fundamental": {
@@ -52552,10 +52552,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 2.0,
+          "detail": "streak=1 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -52673,7 +52673,7 @@
         "foreign_pct_of_volume": -0.16272076748653921,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 5
+        "trust_streak_days": 2
       },
       "fundamental": {
         "pb": 3.04,
@@ -52781,10 +52781,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=5 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=2 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -52850,7 +52850,7 @@
           "weight": 0.0
         }
       ],
-      "score": 7.5,
+      "score": 6.0,
       "score_regime": {
         "as_of": "2026-07-02",
         "benchmark": "0050.TW",
