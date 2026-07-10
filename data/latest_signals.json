@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-10T12:36:57.430184+00:00",
+  "generated_at": "2026-07-10T13:19:07.819493+00:00",
   "last_run": {
-    "tw": "2026-07-10T12:36:57.430184+00:00",
-    "tw_eod": "2026-07-10T12:36:57.430184+00:00",
+    "tw": "2026-07-10T13:19:07.819493+00:00",
+    "tw_eod": "2026-07-10T13:19:07.819493+00:00",
     "tw_intraday": "2026-07-09T05:03:51.582294+00:00",
     "us": "2026-07-10T00:19:02.758872+00:00",
     "us_eod": "2026-07-10T00:19:02.758872+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-10T12:39:29.316375+00:00",
+    "generated_at": "2026-07-10T13:20:44.944884+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -598,7 +598,7 @@
         "foreign_pct_of_volume": -0.09603657868830101,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 3.75,
@@ -699,7 +699,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -1737,7 +1737,7 @@
         "foreign_pct_of_volume": -0.007653179010824538,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 4.22,
@@ -1845,7 +1845,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -4048,7 +4048,7 @@
         "foreign_pct_of_volume": -0.17668602004382408,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 2.23,
@@ -4156,7 +4156,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -4741,7 +4741,7 @@
         "foreign_pct_of_volume": 0.5194909708315781,
         "foreign_streak_days": 1,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 1.58,
@@ -4842,7 +4842,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -5177,7 +5177,7 @@
         "foreign_pct_of_volume": -0.0773084813229632,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 4
       },
       "fundamental": {
         "pb": 3.12,
@@ -5285,7 +5285,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=4 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -6449,7 +6449,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -6560,7 +6560,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -6597,7 +6597,7 @@
         "foreign_pct_of_volume": -0.10396803961459625,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 16.3,
@@ -6705,7 +6705,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=3 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -7633,7 +7633,7 @@
         "foreign_pct_of_volume": -0.4698227430476795,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 10.63,
@@ -7734,14 +7734,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -7845,7 +7845,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -7997,7 +7997,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -8108,7 +8108,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -8261,7 +8261,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -8372,7 +8372,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -8407,7 +8407,7 @@
         "foreign_pct_of_volume": -0.07434457409564042,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 21.13,
@@ -8515,7 +8515,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -8654,7 +8654,7 @@
         "foreign_pct_of_volume": -0.32254407333711693,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 1.88,
@@ -8762,7 +8762,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -8984,7 +8984,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -9095,7 +9095,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -9110,7 +9110,7 @@
         "daily_volume_today": 52158200,
         "foreign_net_today": 14906395,
         "foreign_pct_of_volume": 0.28579197518319266,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -9227,7 +9227,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+28.58%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+28.58%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -9341,7 +9341,7 @@
         "foreign_pct_of_volume": 0.026203383714187314,
         "foreign_streak_days": 1,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 3.41,
@@ -9449,7 +9449,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -9600,7 +9600,7 @@
         "daily_volume_today": 4721284,
         "foreign_net_today": 2162489,
         "foreign_pct_of_volume": 0.4580298495070409,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -9717,7 +9717,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+45.80%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+45.80%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -10058,7 +10058,7 @@
         "daily_volume_today": 7633795,
         "foreign_net_today": 1926747,
         "foreign_pct_of_volume": 0.2523970056832807,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -10175,7 +10175,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+25.24%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+25.24%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -10289,7 +10289,7 @@
         "foreign_pct_of_volume": 0.05854005164400241,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 3.49,
@@ -10397,7 +10397,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -10536,7 +10536,7 @@
         "foreign_pct_of_volume": 0.26838710566280216,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 2.23,
@@ -10644,7 +10644,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -10785,7 +10785,7 @@
         "foreign_pct_of_volume": 0.09158459538857477,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 9.58,
@@ -10886,14 +10886,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -10997,7 +10997,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -11014,7 +11014,7 @@
         "foreign_pct_of_volume": -0.32721457445951707,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 6.94,
@@ -11122,7 +11122,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -11287,7 +11287,7 @@
         "foreign_pct_of_volume": -0.21933150620942343,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 39.57,
@@ -11395,7 +11395,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -11514,7 +11514,7 @@
         "daily_volume_today": 4264400,
         "foreign_net_today": 1944084,
         "foreign_pct_of_volume": 0.45588687740362066,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -11631,7 +11631,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+45.59%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+45.59%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -11743,7 +11743,7 @@
         "daily_volume_today": 6665905,
         "foreign_net_today": 1009576,
         "foreign_pct_of_volume": 0.15145370358563465,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -11860,7 +11860,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+15.15%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+15.15%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -12110,7 +12110,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -12221,7 +12221,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -12797,7 +12797,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -12908,7 +12908,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -13026,7 +13026,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -13137,7 +13137,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -13154,7 +13154,7 @@
         "foreign_pct_of_volume": -0.1730326344794077,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 4.17,
@@ -13255,14 +13255,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -13366,7 +13366,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -13516,7 +13516,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -13627,7 +13627,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -13662,7 +13662,7 @@
         "foreign_pct_of_volume": -0.08944697391828799,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 16.67,
@@ -13770,7 +13770,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -13891,7 +13891,7 @@
         "foreign_pct_of_volume": 0.10684754447872502,
         "foreign_streak_days": 1,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 5.43,
@@ -13992,14 +13992,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -14103,7 +14103,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -14347,7 +14347,7 @@
         "daily_volume_today": 243100,
         "foreign_net_today": 30947,
         "foreign_pct_of_volume": 0.12730152200740436,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -14457,7 +14457,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+12.73%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+12.73%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -14658,7 +14658,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -14769,7 +14769,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -15468,7 +15468,7 @@
         "daily_volume_today": 2698223,
         "foreign_net_today": 656163,
         "foreign_pct_of_volume": 0.24318338402719122,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 3
       },
@@ -15585,7 +15585,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+24.32%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+24.32%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -15717,7 +15717,7 @@
         "foreign_pct_of_volume": -0.25355200400211375,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 3
       },
       "fundamental": {
         "pb": 0.55,
@@ -15818,7 +15818,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=3 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -16437,7 +16437,7 @@
         "daily_volume_today": 7920154,
         "foreign_net_today": 3612205,
         "foreign_pct_of_volume": 0.45607762172301197,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -16554,7 +16554,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+45.61%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+45.61%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -18028,7 +18028,7 @@
         "foreign_pct_of_volume": -0.34522755888909545,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 0
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 2.54,
@@ -18136,10 +18136,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=0 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=6 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -18205,7 +18205,7 @@
           "weight": 0.0
         }
       ],
-      "score": 0.0,
+      "score": 1.3350000000000004,
       "score_regime": {
         "as_of": "2026-07-09",
         "benchmark": "0050.TW",
@@ -18277,7 +18277,7 @@
         "foreign_pct_of_volume": -0.1434328252402376,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 2.5,
@@ -18385,7 +18385,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -18504,7 +18504,7 @@
         "daily_volume_today": 12316089,
         "foreign_net_today": 2866400,
         "foreign_pct_of_volume": 0.23273622007765615,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -18621,7 +18621,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+23.27%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+23.27%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -18836,7 +18836,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -18947,7 +18947,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -19555,7 +19555,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -19666,7 +19666,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -20217,7 +20217,7 @@
         "foreign_pct_of_volume": -0.3256397902057753,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 4.47,
@@ -20325,7 +20325,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -20672,7 +20672,7 @@
         "foreign_pct_of_volume": -0.10145962531601807,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 6
       },
       "fundamental": {
         "pb": 4.59,
@@ -20773,14 +20773,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=6 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -20884,7 +20884,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -20899,7 +20899,7 @@
         "daily_volume_today": 7215414,
         "foreign_net_today": 76015,
         "foreign_pct_of_volume": 0.010535085027692105,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -21002,7 +21002,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -21016,7 +21016,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+1.05%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+1.05%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -21113,7 +21113,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -22470,7 +22470,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -22581,7 +22581,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -23083,7 +23083,7 @@
         "daily_volume_today": 2441150,
         "foreign_net_today": 198141,
         "foreign_pct_of_volume": 0.08116707289597117,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -23187,7 +23187,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -23201,7 +23201,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+8.12%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+8.12%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -23298,7 +23298,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -23892,7 +23892,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -24003,7 +24003,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -24110,7 +24110,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -24221,7 +24221,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -25761,7 +25761,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -25872,7 +25872,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -26008,7 +26008,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -26119,7 +26119,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -27356,7 +27356,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -27467,7 +27467,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -28079,7 +28079,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -28190,7 +28190,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -28441,9 +28441,9 @@
         "daily_volume_today": 1048187,
         "foreign_net_today": 62000,
         "foreign_pct_of_volume": 0.05914975095092765,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 2.72,
@@ -28551,14 +28551,14 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+5.91%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+5.91%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -28688,7 +28688,7 @@
         "daily_volume_today": 504968,
         "foreign_net_today": 113176,
         "foreign_pct_of_volume": 0.22412509307520476,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -28805,7 +28805,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+22.41%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+22.41%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -29020,7 +29020,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -29131,7 +29131,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -29190,7 +29190,7 @@
         "foreign_pct_of_volume": -0.12914498939286798,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 4
       },
       "fundamental": {
         "pb": 7.8,
@@ -29298,7 +29298,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=4 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -30106,7 +30106,7 @@
         "foreign_pct_of_volume": -0.02262227802765731,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 8.47,
@@ -30207,14 +30207,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -30318,7 +30318,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -33388,7 +33388,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -33499,7 +33499,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -33761,7 +33761,7 @@
         "daily_volume_today": 205027,
         "foreign_net_today": 21735,
         "foreign_pct_of_volume": 0.10601042789486263,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -33878,7 +33878,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+10.60%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+10.60%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -34251,7 +34251,7 @@
         "daily_volume_today": 623159,
         "foreign_net_today": 183122,
         "foreign_pct_of_volume": 0.2938607963617632,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 2
       },
@@ -34354,7 +34354,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -34368,7 +34368,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+29.39%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+29.39%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -34465,7 +34465,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -34583,7 +34583,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -34694,7 +34694,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -34801,7 +34801,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -34912,7 +34912,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -35019,7 +35019,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -35130,7 +35130,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -35374,7 +35374,7 @@
         "daily_volume_today": 592200,
         "foreign_net_today": 185070,
         "foreign_pct_of_volume": 0.31251266464032423,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 5,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -35491,7 +35491,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+31.25%",
+          "detail": "streak=5 \u65e5, \u4f54\u91cf=+31.25%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -35623,7 +35623,7 @@
         "foreign_pct_of_volume": -0.30842927143709703,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 2.97,
@@ -35724,14 +35724,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -35835,7 +35835,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -35852,35 +35852,35 @@
         "big_bull_low": 13422.7275390625,
         "close": 13665.0,
         "high_20d": 17522.7265625,
-        "high_5d": 16136.36328125,
-        "ma10": 14833.22705078125,
-        "ma20": 15707.522509765626,
-        "ma240": 8624.471575927735,
-        "ma5": 14777.3634765625,
-        "macd": -392.57308490727155,
-        "macd_hist": -277.84386912623467,
-        "macd_prev": -284.03863618894866,
-        "macd_signal": -114.7292157810369,
-        "macd_signal_prev": -45.26824849947823,
-        "obv": 9884483.0,
-        "obv_ma20": 10891281.85,
-        "obv_ma5": 10477475.6,
+        "high_5d": 15695.4541015625,
+        "ma10": 14728.22705078125,
+        "ma20": 15681.613427734375,
+        "ma240": 8666.876879882813,
+        "ma5": 14508.27265625,
+        "macd": -420.58531873968604,
+        "macd_hist": -266.30989045219246,
+        "macd_prev": -323.21019312809767,
+        "macd_signal": -154.27542828749358,
+        "macd_signal_prev": -87.69795567444544,
+        "obv": 9641099.0,
+        "obv_ma20": 10851104.45,
+        "obv_ma5": 10254356.2,
         "pct_of_high_20d": 0.7798443895851325,
         "prev2_low": 14270.0,
         "prev_3d_low": 13600.0,
         "prev_5d_low": 13600.0,
         "prev_close": 13975.0,
         "prev_high_20d": 17522.7265625,
-        "prev_ma10": 15132.63623046875,
-        "prev_ma20": 15835.863427734375,
-        "prev_ma240": 8587.060591634114,
-        "prev_ma5": 15161.6361328125,
+        "prev_ma10": 14945.81796875,
+        "prev_ma20": 15763.81796875,
+        "prev_ma240": 8629.162864176433,
+        "prev_ma5": 15002.5453125,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": -0.15813498540614734,
+        "return_20d": -0.10739310646266975,
         "same_time_vol_ratio": null,
         "today_return": -0.02218246869409657,
-        "vol_ratio": 1.4859763534865353,
+        "vol_ratio": 1.4743428190957555,
         "volume": 382301.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -35893,7 +35893,7 @@
       "name": "\u4fe1\u9a4a",
       "reasons": [
         {
-          "detail": "close=13665.00 MA5=14777.36 MA10=14833.23 MA20=15707.52 MA240=8624.47",
+          "detail": "close=13665.00 MA5=14508.27 MA10=14728.23 MA20=15681.61 MA240=8666.88",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -35905,31 +35905,31 @@
           "weight": 0.75
         },
         {
-          "detail": "close=13665.00 MA5=14777.36 MA20=15707.52",
+          "detail": "close=13665.00 MA5=14508.27 MA20=15681.61",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 2.25
         },
         {
-          "detail": "vol_ratio=1.49 return=-2.22%",
+          "detail": "vol_ratio=1.47 return=-2.22%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 1.5
         },
         {
-          "detail": "OBV_MA5=10477476 OBV_MA20=10891282",
+          "detail": "OBV_MA5=10254356 OBV_MA20=10851104",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
         },
         {
-          "detail": "stock_20d=-15.81% benchmark_20d=+5.54%",
+          "detail": "stock_20d=-10.74% benchmark_20d=+5.54%",
           "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 1.0
         },
         {
-          "detail": "macd=-392.573 signal=-114.729 (prev macd=-284.039 signal=-45.268)",
+          "detail": "macd=-420.585 signal=-154.275 (prev macd=-323.210 signal=-87.698)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -35942,7 +35942,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -35962,21 +35962,21 @@
           "weight": 1.0
         },
         {
-          "detail": "close=13665.00 MA5=14777.36",
+          "detail": "close=13665.00 MA5=14508.27",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 5 \u65e5\u7dda",
           "score": -0.03,
           "weight": 0.0
         },
         {
-          "detail": "close=13665.00 MA10=14833.23",
+          "detail": "close=13665.00 MA10=14728.23",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 10 \u65e5\u7dda",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "close=13665.00 MA20=15707.52",
+          "detail": "close=13665.00 MA20=15681.61",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -36004,7 +36004,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.49 return=-2.22%",
+          "detail": "vol_ratio=1.47 return=-2.22%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -36053,7 +36053,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -36189,7 +36189,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -36300,7 +36300,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -36433,7 +36433,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -36544,7 +36544,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -36831,7 +36831,7 @@
         "foreign_pct_of_volume": -0.13991858071160496,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 5.13,
@@ -36939,7 +36939,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -37989,7 +37989,7 @@
         "daily_volume_today": 3718687,
         "foreign_net_today": 1042558,
         "foreign_pct_of_volume": 0.2803564806610505,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -38106,7 +38106,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+28.04%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+28.04%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -39006,7 +39006,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -39117,7 +39117,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -39253,7 +39253,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -39364,7 +39364,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -39482,7 +39482,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -39593,7 +39593,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -39711,7 +39711,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -39822,7 +39822,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -41014,7 +41014,7 @@
         "daily_volume_today": 2024942,
         "foreign_net_today": 185689,
         "foreign_pct_of_volume": 0.09170089809979742,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 7,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -41131,7 +41131,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+9.17%",
+          "detail": "streak=7 \u65e5, \u4f54\u91cf=+9.17%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -41364,7 +41364,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -41475,7 +41475,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -42516,7 +42516,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -42627,7 +42627,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -42696,9 +42696,9 @@
         "daily_volume_today": 519169,
         "foreign_net_today": 119000,
         "foreign_pct_of_volume": 0.22921245297773943,
-        "foreign_streak_days": 3,
-        "trust_buy_first_day": false,
-        "trust_streak_days": 0
+        "foreign_streak_days": 6,
+        "trust_buy_first_day": true,
+        "trust_streak_days": 1
       },
       "fundamental": {
         "pb": 2.59,
@@ -42806,14 +42806,14 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=0 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+22.92%",
+          "detail": "streak=6 \u65e5, \u4f54\u91cf=+22.92%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -42875,7 +42875,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.640000000000001,
+      "score": 8.64,
       "score_regime": {
         "as_of": "2026-07-09",
         "benchmark": "0050.TW",
@@ -42943,7 +42943,7 @@
         "daily_volume_today": 9759071,
         "foreign_net_today": 743898,
         "foreign_pct_of_volume": 0.07622631293490949,
-        "foreign_streak_days": 3,
+        "foreign_streak_days": 4,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -43053,7 +43053,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=3 \u65e5, \u4f54\u91cf=+7.62%",
+          "detail": "streak=4 \u65e5, \u4f54\u91cf=+7.62%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -43243,7 +43243,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -43354,7 +43354,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -43490,7 +43490,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -43601,7 +43601,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -43648,7 +43648,7 @@
         "foreign_pct_of_volume": -0.09165442415818015,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 6.09,
@@ -43749,14 +43749,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -43860,7 +43860,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -43978,7 +43978,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -44089,7 +44089,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -44196,7 +44196,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -44307,7 +44307,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -45079,7 +45079,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -45190,7 +45190,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -45227,7 +45227,7 @@
         "foreign_pct_of_volume": -0.19910833704859562,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 6.68,
@@ -45335,7 +45335,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -47618,7 +47618,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -47729,7 +47729,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -48229,7 +48229,7 @@
         "foreign_pct_of_volume": -0.23602327875366416,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 19.73,
@@ -48337,7 +48337,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -49225,7 +49225,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -49336,7 +49336,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -49565,7 +49565,7 @@
         "foreign_pct_of_volume": -0.12221760842721799,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 2.02,
@@ -49673,7 +49673,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -50358,7 +50358,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -50469,7 +50469,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -50816,7 +50816,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -50927,7 +50927,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -50960,7 +50960,7 @@
         "daily_volume_today": 534060,
         "foreign_net_today": 117463,
         "foreign_pct_of_volume": 0.21994345204658652,
-        "foreign_streak_days": 4,
+        "foreign_streak_days": 3,
         "trust_buy_first_day": false,
         "trust_streak_days": 0
       },
@@ -51070,7 +51070,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, \u4f54\u91cf=+21.99%",
+          "detail": "streak=3 \u65e5, \u4f54\u91cf=+21.99%",
           "passed": true,
           "rule": "\u5916\u8cc7\u5927\u8cb7 (>5% \u91cf \u6216 \u90233\u65e5\u8cb7\u8d85)",
           "weight": 1.0
@@ -51483,7 +51483,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -51594,7 +51594,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -51629,7 +51629,7 @@
         "foreign_pct_of_volume": -0.007224620800556884,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 16.81,
@@ -51737,7 +51737,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -52221,7 +52221,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -52332,7 +52332,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -52461,7 +52461,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -52572,7 +52572,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -52697,7 +52697,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -52808,7 +52808,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -53155,7 +53155,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -53266,7 +53266,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -53384,7 +53384,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -53495,7 +53495,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -53959,7 +53959,7 @@
         "foreign_pct_of_volume": -0.24130500282046158,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 3.67,
@@ -54060,14 +54060,14 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -54171,7 +54171,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TWSE OpenAPI t187ap03_L",
         "strong_days": 0
@@ -54296,7 +54296,7 @@
           "weight": 2.0
         },
         {
-          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.83% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
+          "detail": "\u534a\u5c0e\u9ad4\u696d: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=60, 1d=+0.66% vs benchmark=-0.24%, 5d=-4.88% vs benchmark=-2.76%, MA5\u4e0a\u65b9=28%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -54407,7 +54407,7 @@
         "industry_group": "\u534a\u5c0e\u9ad4\u696d",
         "member_count": 60,
         "return_1d": 0.00662239148451186,
-        "return_5d": -0.048346362801891404,
+        "return_5d": -0.04884441013401324,
         "sector_official": "\u534a\u5c0e\u9ad4\u696d",
         "source": "TPEx OpenAPI mopsfin_t187ap03_O",
         "strong_days": 0
@@ -55115,7 +55115,7 @@
         "foreign_pct_of_volume": -0.08308719642919903,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 3
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 2.49,
@@ -55223,7 +55223,7 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=3 \u65e5, first_day=False",
+          "detail": "streak=5 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
@@ -55374,7 +55374,7 @@
         "foreign_pct_of_volume": 0.023512350648588993,
         "foreign_streak_days": 1,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 7
       },
       "fundamental": {
         "pb": 1.09,
@@ -55475,7 +55475,7 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
+          "detail": "streak=7 \u65e5, first_day=False",
           "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
           "score": 1.5,
