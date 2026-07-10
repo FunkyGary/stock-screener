@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-10T22:18:54.457488+00:00",
+  "generated_at": "2026-07-10T23:12:55.169070+00:00",
   "last_run": {
     "tw": "2026-07-10T13:19:07.819493+00:00",
     "tw_eod": "2026-07-10T13:19:07.819493+00:00",
     "tw_intraday": "2026-07-09T05:03:51.582294+00:00",
-    "us": "2026-07-10T22:18:54.457488+00:00",
-    "us_eod": "2026-07-10T22:18:54.457488+00:00",
+    "us": "2026-07-10T23:12:55.169070+00:00",
+    "us_eod": "2026-07-10T23:12:55.169070+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-10T22:20:44.781788+00:00",
+    "generated_at": "2026-07-10T23:15:04.115123+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -70084,9 +70084,26 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 25.11,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 12.2,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 4.78,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 3.03,
+            "period": "2025-09-30"
+          }
+        ],
+        "eps_period": "2026-06-30",
+        "eps_surprise_pct": 17.326,
         "margins": [
           {
             "gm": 84.6,
@@ -70348,15 +70365,57 @@
     },
     "NET": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
-        "target_price_events": []
+        "rating": "Buy",
+        "rating_score": 2.1,
+        "target_price_events": [
+          {
+            "date": "2026-07-10",
+            "firm": "Benzinga",
+            "headline": "BTIG Maintains Buy on Cloudflare, Raises Price Target to $314",
+            "previous_target": null,
+            "published_at": "2026-07-10T07:49:39+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 314.0,
+            "upside_pct": 0.16989570469626192,
+            "url": "https://finnhub.io/api/news?id=717e47efeffe566770fdd614232ec837096379e8ff14623041613d450032f75e"
+          },
+          {
+            "date": "2026-07-07",
+            "firm": "Benzinga",
+            "headline": "Scotiabank Upgrades Cloudflare to Sector Outperform, Raises Price Target to $300",
+            "previous_target": null,
+            "published_at": "2026-07-07T05:56:24+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 300.0,
+            "upside_pct": 0.11773474970980446,
+            "url": "https://finnhub.io/api/news?id=40ee7b772ad1d0f6fff277a9af101959a2a8ced177a4765aa59cac5479d5714e"
+          }
+        ]
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 0.25,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 0.28,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 0.27,
+            "period": "2025-09-30"
+          },
+          {
+            "eps": 0.21,
+            "period": "2025-06-30"
+          }
+        ],
+        "eps_period": "2026-03-31",
+        "eps_surprise_pct": 6.1571,
         "margins": [
           {
             "gm": 71.2,
@@ -70503,8 +70562,8 @@
           "weight": 0.75
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-07-10 Benzinga target 314.00, upside=+16.99%\uff1b 2026-07-07 Benzinga target 300.00, upside=+11.77%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -70572,7 +70631,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.0,
+      "score": 8.0,
       "score_regime": {
         "as_of": "2026-07-10",
         "benchmark": "SPY",
@@ -70618,8 +70677,8 @@
     },
     "NFLX": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 1.9482758620689655,
         "target_price_events": []
       },
       "chip": null,
@@ -75765,26 +75824,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.35,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.77,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.9,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.39,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 4.144,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 72.3,
@@ -76025,32 +76067,15 @@
     },
     "SPOT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8958333333333333,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.45,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 4.43,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.28,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": -0.42,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 14.3331,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 33.0,
@@ -76312,34 +76337,9 @@
     },
     "TSLA": {
       "analyst": {
-        "rating": "Hold",
-        "rating_score": 2.5,
-        "target_price_events": [
-          {
-            "date": "2026-07-09",
-            "firm": "Benzinga",
-            "headline": "UBS Maintains Neutral on Tesla, Raises Price Target to $442",
-            "previous_target": null,
-            "published_at": "2026-07-09T15:16:21+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 442.0,
-            "upside_pct": 0.0839709373512516,
-            "url": "https://finnhub.io/api/news?id=36cc49d982330bf4130e3b055f0388377255723c572ce7de75528708d9f5760e"
-          },
-          {
-            "date": "2026-07-07",
-            "firm": "Benzinga",
-            "headline": "RBC Capital Maintains Outperform on Tesla, Raises Price Target to $500",
-            "previous_target": null,
-            "published_at": "2026-07-07T07:29:19+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 500.0,
-            "upside_pct": 0.22621146759191357,
-            "url": "https://finnhub.io/api/news?id=826d65ee91c446c802815c77dcb0523be63b113a55c9ec3d55c45e5f159aebb4"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
@@ -76492,8 +76492,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-07-07 Benzinga target 500.00, upside=+22.62%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -76554,7 +76554,7 @@
           "weight": 0.0
         }
       ],
-      "score": 8.0,
+      "score": 6.0,
       "score_regime": {
         "as_of": "2026-07-10",
         "benchmark": "SPY",
@@ -76627,7 +76627,7 @@
             "period": "2025-03-31"
           }
         ],
-        "pb": 98.102806,
+        "pb": 98.348946,
         "pe": 37.781548,
         "revenues": [
           {
