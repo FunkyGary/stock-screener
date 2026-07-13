@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-13T22:13:03.218448+00:00",
+  "generated_at": "2026-07-13T23:13:20.343807+00:00",
   "last_run": {
     "tw": "2026-07-13T13:29:23.396608+00:00",
     "tw_eod": "2026-07-13T13:29:23.396608+00:00",
     "tw_intraday": "2026-07-13T03:21:06.909121+00:00",
-    "us": "2026-07-13T22:13:03.218448+00:00",
-    "us_eod": "2026-07-13T22:13:03.218448+00:00",
+    "us": "2026-07-13T23:13:20.343807+00:00",
+    "us_eod": "2026-07-13T23:13:20.343807+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-13T22:14:13.420286+00:00",
+    "generated_at": "2026-07-13T23:14:23.582522+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -57634,6 +57634,18 @@
         "rating_score": 1.894736842105263,
         "target_price_events": [
           {
+            "date": "2026-07-13",
+            "firm": "Benzinga",
+            "headline": "TD Cowen Maintains Buy on Advanced Micro Devices, Raises Price Target to $675",
+            "previous_target": null,
+            "published_at": "2026-07-13T14:03:31+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 675.0,
+            "upside_pct": 0.2631224040442943,
+            "url": "https://finnhub.io/api/news?id=59128f415671f32304d91124ed1d8dea67221307cbf073c8edf2eb9fcd1a39b7"
+          },
+          {
             "date": "2026-07-10",
             "firm": "Benzinga",
             "headline": "Stifel Maintains Buy on Advanced Micro Devices, Raises Price Target to $635",
@@ -57827,7 +57839,7 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-07-10 Benzinga target 635.00, upside=+18.83%\uff1b 2026-07-10 Goldman Sachs target 450.00->640.00, upside=+19.76%",
+          "detail": "2026-07-13 Benzinga target 675.00, upside=+26.31%\uff1b 2026-07-10 Benzinga target 635.00, upside=+18.83%\uff1b 2026-07-10 Goldman Sachs target 450.00->640.00, upside=+19.76%",
           "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
