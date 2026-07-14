@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-14T11:43:21.788596+00:00",
+  "generated_at": "2026-07-14T12:40:03.003641+00:00",
   "last_run": {
-    "tw": "2026-07-14T11:43:21.788596+00:00",
-    "tw_eod": "2026-07-14T11:43:21.788596+00:00",
+    "tw": "2026-07-14T12:40:03.003641+00:00",
+    "tw_eod": "2026-07-14T12:40:03.003641+00:00",
     "tw_intraday": "2026-07-13T03:21:06.909121+00:00",
     "us": "2026-07-14T00:06:35.520620+00:00",
     "us_eod": "2026-07-14T00:06:35.520620+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-14T11:45:04.900365+00:00",
+    "generated_at": "2026-07-14T12:42:07.847051+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -1052,8 +1052,8 @@
         "foreign_net_today": -313337,
         "foreign_pct_of_volume": -0.11710533938038296,
         "foreign_streak_days": 0,
-        "trust_buy_first_day": false,
-        "trust_streak_days": 0
+        "trust_buy_first_day": true,
+        "trust_streak_days": 1
       },
       "fundamental": {
         "pb": 1.53,
@@ -1154,10 +1154,10 @@
           "weight": 2.0
         },
         {
-          "detail": "streak=0 \u65e5, first_day=False",
-          "passed": false,
-          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "detail": "streak=1 \u65e5, first_day=True",
+          "passed": true,
+          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
+          "score": 2.0,
           "weight": 2.0
         },
         {
