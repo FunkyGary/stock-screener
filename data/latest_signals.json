@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-15T22:15:58.040348+00:00",
+  "generated_at": "2026-07-15T23:12:47.761196+00:00",
   "last_run": {
     "tw": "2026-07-15T12:42:14.748124+00:00",
     "tw_eod": "2026-07-15T12:42:14.748124+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-07-15T22:15:58.040348+00:00",
-    "us_eod": "2026-07-15T22:15:58.040348+00:00",
+    "us": "2026-07-15T23:12:47.761196+00:00",
+    "us_eod": "2026-07-15T23:12:47.761196+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-15T22:17:56.433931+00:00",
+    "generated_at": "2026-07-15T23:14:57.866651+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -71280,69 +71280,15 @@
     },
     "NOW": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8518518518518519,
-        "target_price_events": [
-          {
-            "date": "2026-07-15",
-            "firm": "Benzinga",
-            "headline": "Oppenheimer Maintains Outperform on ServiceNow, Raises Price Target to $140",
-            "previous_target": null,
-            "published_at": "2026-07-15T13:21:22+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 140.0,
-            "upside_pct": 0.3367707009696317,
-            "url": "https://finnhub.io/api/news?id=896d0ab966d7d981511c069faca183fc3449332b2f2d40d14243652db29d753f"
-          },
-          {
-            "date": "2026-07-14",
-            "firm": "Benzinga",
-            "headline": "UBS Maintains Neutral on ServiceNow, Raises Price Target to $115",
-            "previous_target": null,
-            "published_at": "2026-07-14T08:54:41+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 115.0,
-            "upside_pct": 0.09806164722505462,
-            "url": "https://finnhub.io/api/news?id=253b1c5b4bf7a6e1de6ed33c8e3fed8143e1bf5d6bb30686d33134133972f8e7"
-          },
-          {
-            "date": "2026-07-09",
-            "firm": "Benzinga",
-            "headline": "Truist Securities Maintains Buy on ServiceNow, Raises Price Target to $130",
-            "previous_target": null,
-            "published_at": "2026-07-09T09:44:45+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 130.0,
-            "upside_pct": 0.24128707947180095,
-            "url": "https://finnhub.io/api/news?id=ad3781b0f2aca36d0f8b49c345c08884c3f432bc53fbe17b070ee989bb19af6f"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.97,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.92,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.964,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.818,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": -0.3391,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 75.1,
@@ -71489,8 +71435,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-07-15 Benzinga target 140.00, upside=+33.68%\uff1b 2026-07-09 Benzinga target 130.00, upside=+24.13%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -71558,7 +71504,7 @@
           "weight": 0.0
         }
       ],
-      "score": 1.9325000000000006,
+      "score": 0.0,
       "score_regime": {
         "as_of": "2026-07-15",
         "benchmark": "SPY",
@@ -77097,15 +77043,32 @@
     },
     "TSM": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 1.744186046511628,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 22.077,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 19.51,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 17.44,
+            "period": "2025-09-30"
+          },
+          {
+            "eps": 15.36,
+            "period": "2025-06-30"
+          }
+        ],
+        "eps_period": "2026-03-31",
+        "eps_surprise_pct": 4.4427,
         "margins": [
           {
             "gm": 66.2,
