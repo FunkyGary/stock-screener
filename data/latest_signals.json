@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-17T22:08:18.719084+00:00",
+  "generated_at": "2026-07-17T23:08:35.134122+00:00",
   "last_run": {
     "tw": "2026-07-17T12:20:27.861946+00:00",
     "tw_eod": "2026-07-17T12:20:27.861946+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-07-17T22:08:18.719084+00:00",
-    "us_eod": "2026-07-17T22:08:18.719084+00:00",
+    "us": "2026-07-17T23:08:35.134122+00:00",
+    "us_eod": "2026-07-17T23:08:35.134122+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-17T22:10:30.204455+00:00",
+    "generated_at": "2026-07-17T23:10:45.868074+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -71104,9 +71104,26 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 0.25,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 0.28,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 0.27,
+            "period": "2025-09-30"
+          },
+          {
+            "eps": 0.21,
+            "period": "2025-06-30"
+          }
+        ],
+        "eps_period": "2026-03-31",
+        "eps_surprise_pct": 6.1571,
         "margins": [
           {
             "gm": 71.2,
@@ -71368,8 +71385,8 @@
     },
     "NFLX": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 1.9482758620689655,
         "target_price_events": []
       },
       "chip": null,
@@ -76855,26 +76872,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.45,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 4.43,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.28,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": -0.42,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 14.3331,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 33.0,
@@ -77136,8 +77136,8 @@
     },
     "TSLA": {
       "analyst": {
-        "rating": "Hold",
-        "rating_score": 2.5,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
