@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-23T11:19:38.816983+00:00",
+  "generated_at": "2026-07-23T12:02:03.523709+00:00",
   "last_run": {
-    "tw": "2026-07-23T11:19:38.816983+00:00",
-    "tw_eod": "2026-07-23T11:19:38.816983+00:00",
+    "tw": "2026-07-23T12:02:03.523709+00:00",
+    "tw_eod": "2026-07-23T12:02:03.523709+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
     "us": "2026-07-23T00:13:00.765901+00:00",
     "us_eod": "2026-07-23T00:13:00.765901+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-23T11:21:27.959548+00:00",
+    "generated_at": "2026-07-23T12:04:00.860475+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -13175,7 +13175,7 @@
         "foreign_pct_of_volume": -0.16681447769473706,
         "foreign_streak_days": 0,
         "trust_buy_first_day": false,
-        "trust_streak_days": 4
+        "trust_streak_days": 0
       },
       "fundamental": {
         "pb": 6.63,
@@ -13283,10 +13283,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=4 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=0 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 1.5,
+          "score": 0.0,
           "weight": 2.0
         },
         {
@@ -13695,7 +13695,7 @@
         "foreign_pct_of_volume": 0.06698355373907942,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 0
+        "trust_streak_days": 4
       },
       "fundamental": {
         "pb": 15.75,
@@ -13803,10 +13803,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=0 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=4 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
