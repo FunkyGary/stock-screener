@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-23T23:11:19.256035+00:00",
+  "generated_at": "2026-07-24T00:10:25.134965+00:00",
   "last_run": {
     "tw": "2026-07-23T12:48:27.293031+00:00",
     "tw_eod": "2026-07-23T12:48:27.293031+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-07-23T23:11:19.256035+00:00",
-    "us_eod": "2026-07-23T23:11:19.256035+00:00",
+    "us": "2026-07-24T00:10:25.134965+00:00",
+    "us_eod": "2026-07-24T00:10:25.134965+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-23T23:13:33.510987+00:00",
+    "generated_at": "2026-07-24T00:12:53.406883+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -60320,44 +60320,7 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 2.0714285714285716,
-        "target_price_events": [
-          {
-            "date": "2026-07-16",
-            "firm": "Benzinga",
-            "headline": "JP Morgan Maintains Overweight on ASML Holding, Raises Price Target to $2400",
-            "previous_target": null,
-            "published_at": "2026-07-16T14:21:21+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 2400.0,
-            "upside_pct": 0.3311148086522462,
-            "url": "https://finnhub.io/api/news?id=566f996ea07d948c591385ad478590381d6536037629e98539653631512d4ac8"
-          },
-          {
-            "date": "2026-07-16",
-            "firm": "Benzinga",
-            "headline": "Wells Fargo Maintains Overweight on ASML Holding, Raises Price Target to $2500",
-            "previous_target": null,
-            "published_at": "2026-07-16T10:58:40+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 2500.0,
-            "upside_pct": 0.3865779256794233,
-            "url": "https://finnhub.io/api/news?id=6628bf46e73a7846189692564e3ca091b33fdda45b3dbfe218aac4ac94dae6ee"
-          },
-          {
-            "date": "2026-07-16",
-            "firm": "Benzinga",
-            "headline": "RBC Capital Maintains Outperform on ASML Holding, Raises Price Target to $2100",
-            "previous_target": null,
-            "published_at": "2026-07-16T10:50:58+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 2100.0,
-            "upside_pct": 0.16472545757071555,
-            "url": "https://finnhub.io/api/news?id=c627257cda758caada3a8428d07eec707eb5070e8d8fa9b5e0ec8f04bd16f657"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
@@ -70574,13 +70537,91 @@
       "analyst": {
         "rating": null,
         "rating_score": null,
-        "target_price_events": []
+        "target_price_events": [
+          {
+            "date": "2026-07-22",
+            "firm": "Benzinga",
+            "headline": "UBS Maintains Buy on 3M, Raises Price Target to $218",
+            "previous_target": null,
+            "published_at": "2026-07-22T14:33:36+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 218.0,
+            "upside_pct": 0.2854531794767978,
+            "url": "https://finnhub.io/api/news?id=edc6b261f04e0e0a87d1e5e8e263fd10594f797634f939456394df763fd350f2"
+          },
+          {
+            "date": "2026-07-22",
+            "firm": "Benzinga",
+            "headline": "Bernstein Maintains Underperform on 3M, Raises Price Target to $145",
+            "previous_target": null,
+            "published_at": "2026-07-22T13:27:03+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 145.0,
+            "upside_pct": -0.14499673842139593,
+            "url": "https://finnhub.io/api/news?id=e2d768e972c19165271fa799b13c9b3eee97d29f4c8799a2bbf60e50f173d03c"
+          },
+          {
+            "date": "2026-07-22",
+            "firm": "Benzinga",
+            "headline": "Citigroup Maintains Neutral on 3M, Raises Price Target to $183",
+            "previous_target": null,
+            "published_at": "2026-07-22T11:21:24+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 183.0,
+            "upside_pct": 0.07907308185437611,
+            "url": "https://finnhub.io/api/news?id=45c8e514bab74ae53c5dc716f91c9b1d3d6652b65c9a0fffa9bb1dcd877c0fcd"
+          },
+          {
+            "date": "2026-07-22",
+            "firm": "Benzinga",
+            "headline": "RBC Capital Maintains Underperform on 3M, Raises Price Target to $132",
+            "previous_target": null,
+            "published_at": "2026-07-22T08:28:51+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 132.0,
+            "upside_pct": -0.22165220325258117,
+            "url": "https://finnhub.io/api/news?id=472aded6753bd1f4b4c81d03c197409d4837eeb313ae1404cd5ebedfa1b63319"
+          },
+          {
+            "date": "2026-07-17",
+            "firm": "Benzinga",
+            "headline": "JP Morgan Upgrades 3M to Overweight, Raises Price Target to $180",
+            "previous_target": null,
+            "published_at": "2026-07-17T06:53:36+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 180.0,
+            "upside_pct": 0.06138335920102578,
+            "url": "https://finnhub.io/api/news?id=6744413c29c7612d5c6d29eac1987876dc326eed273c7e3d591f576095399cfc"
+          }
+        ]
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 2.4,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 2.14,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 1.83,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 2.19,
+            "period": "2025-09-30"
+          }
+        ],
+        "eps_period": "2026-06-30",
+        "eps_surprise_pct": 5.8341,
         "margins": [
           {
             "gm": 41.3,
@@ -70727,8 +70768,8 @@
           "weight": 0.75
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-07-22 Benzinga target 218.00, upside=+28.55%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -70789,7 +70830,7 @@
           "weight": 0.0
         }
       ],
-      "score": 2.75,
+      "score": 4.75,
       "score_regime": {
         "as_of": "2026-07-23",
         "benchmark": "SPY",
@@ -70821,15 +70862,32 @@
     },
     "MRVL": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 1.88,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 0.8,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 0.8,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 0.76,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 0.67,
+            "period": "2025-09-30"
+          }
+        ],
+        "eps_period": "2026-06-30",
+        "eps_surprise_pct": -0.9411,
         "margins": [
           {
             "gm": 52.1,
@@ -76366,26 +76424,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.36,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.48,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.34,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.35,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 6.7616,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 48.8,
@@ -76647,45 +76688,15 @@
     },
     "SNDK": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8333333333333333,
-        "target_price_events": [
-          {
-            "date": "2026-07-22",
-            "firm": "Benzinga",
-            "headline": "Wells Fargo Maintains Equal-Weight on SanDisk, Raises Price Target to $1620",
-            "previous_target": null,
-            "published_at": "2026-07-22T15:08:10+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 1620.0,
-            "upside_pct": 0.0060050077991495865,
-            "url": "https://finnhub.io/api/news?id=966441627d8653e19d54fe09977a46afcdb77f69a0dd58fc4dad7d38f6599bcc"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 23.41,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 6.2,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.22,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.29,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 57.8834,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 78.4,
