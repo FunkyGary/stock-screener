@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-27T22:28:50.394060+00:00",
+  "generated_at": "2026-07-27T23:19:35.006276+00:00",
   "last_run": {
     "tw": "2026-07-27T13:44:12.296200+00:00",
     "tw_eod": "2026-07-27T13:44:12.296200+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-07-27T22:28:50.394060+00:00",
-    "us_eod": "2026-07-27T22:28:50.394060+00:00",
+    "us": "2026-07-27T23:19:35.006276+00:00",
+    "us_eod": "2026-07-27T23:19:35.006276+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-27T22:30:17.337804+00:00",
+    "generated_at": "2026-07-27T23:20:42.615105+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -152,47 +152,47 @@
               "close": 7413.18017578125,
               "high_20d": 7575.39013671875,
               "high_5d": 7509.2001953125,
-              "ma10": 7489.570947265625,
-              "ma20": 7489.950512695313,
-              "ma240": 6928.920957438151,
-              "ma5": 7454.583984375,
-              "macd": 3.7257308987218494,
-              "macd_hist": -15.165069025982728,
-              "macd_prev": 10.298044550121631,
-              "macd_signal": 18.890799924704577,
-              "macd_signal_prev": 22.682067181200257,
-              "obv": 284715487000.0,
-              "obv_ma20": 291758170350.0,
-              "obv_ma5": 286471157400.0,
+              "ma10": 7479.2349609375,
+              "ma20": 7492.8485107421875,
+              "ma240": 6933.248164876302,
+              "ma5": 7448.3240234375,
+              "macd": -1.5398966807179022,
+              "macd_hist": -16.329238552144137,
+              "macd_prev": 3.629988822510313,
+              "macd_signal": 14.789341871426235,
+              "macd_signal_prev": 18.871651509462268,
+              "obv": 289576107000.0,
+              "obv_ma20": 292196590350.0,
+              "obv_ma5": 287364091400.0,
               "pct_of_high_20d": 0.9785872465958881,
-              "prev2_low": 7485.85009765625,
+              "prev2_low": 7376.0,
               "prev_3d_low": 7376.0,
               "prev_5d_low": 7376.0,
-              "prev_close": 7408.2998046875,
+              "prev_close": 7411.97998046875,
               "prev_high_20d": 7575.39013671875,
-              "prev_ma10": 7505.791943359375,
-              "prev_ma20": 7487.166015625,
-              "prev_ma240": 6924.655415852864,
-              "prev_ma5": 7463.4859375,
+              "prev_ma10": 7489.450927734375,
+              "prev_ma20": 7489.8905029296875,
+              "prev_ma240": 6928.915956624349,
+              "prev_ma5": 7454.3439453125,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": 0.0075691492115150805,
+              "return_20d": 0.008044600924783873,
               "same_time_vol_ratio": null,
-              "today_return": 0.0006587707331529025,
-              "vol_ratio": 0.5902310418707785,
+              "today_return": 0.0001619264104413265,
+              "vol_ratio": 0.6150897490759958,
               "volume": 3099757000.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 7489.570947265625,
-            "ma20": 7489.950512695313,
-            "ma240": 6928.920957438151,
-            "ma5": 7454.583984375,
+            "ma10": 7479.2349609375,
+            "ma20": 7492.8485107421875,
+            "ma240": 6933.248164876302,
+            "ma5": 7448.3240234375,
             "name": "S&P 500",
             "status": "ok",
             "symbol": "^GSPC",
-            "today_return": 0.0006587707331529025
+            "today_return": 0.0001619264104413265
           },
           {
             "above_all_mas": false,
@@ -58790,7 +58790,7 @@
           "weight": 2.0
         },
         {
-          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-6.79% vs benchmark=+0.02%, 5d=-4.21% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
+          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-5.10% vs benchmark=+0.02%, 5d=-3.60% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -58887,8 +58887,8 @@
         "industry": "Semiconductor Equipment & Materials",
         "industry_group": "Semiconductor Equipment & Materials",
         "member_count": 4,
-        "return_1d": -0.06789011842086648,
-        "return_5d": -0.042097084604705626,
+        "return_1d": -0.05101016784933876,
+        "return_5d": -0.035970633585382494,
         "sector_official": "Technology",
         "source": "yfinance quoteSummary",
         "strong_days": 0
@@ -59413,7 +59413,7 @@
           "weight": 2.0
         },
         {
-          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-6.79% vs benchmark=+0.02%, 5d=-4.21% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
+          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-5.10% vs benchmark=+0.02%, 5d=-3.60% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
@@ -59510,8 +59510,8 @@
         "industry": "Semiconductor Equipment & Materials",
         "industry_group": "Semiconductor Equipment & Materials",
         "member_count": 4,
-        "return_1d": -0.06789011842086648,
-        "return_5d": -0.042097084604705626,
+        "return_1d": -0.05101016784933876,
+        "return_5d": -0.035970633585382494,
         "sector_official": "Technology",
         "source": "yfinance quoteSummary",
         "strong_days": 0
@@ -59610,35 +59610,35 @@
         "big_bull_low": 223.27000427246094,
         "close": 231.38999938964844,
         "high_20d": 254.9600067138672,
-        "high_5d": 249.99000549316406,
-        "ma10": 245.43200225830077,
-        "ma20": 243.8,
-        "ma240": 233.3335833867391,
-        "ma5": 241.48800354003907,
-        "macd": -1.5579071546018213,
-        "macd_hist": -1.0603028314105711,
-        "macd_prev": -0.5298312831698127,
-        "macd_signal": -0.49760432319125003,
-        "macd_signal_prev": -0.23252861533860722,
-        "obv": 1334105884.0,
-        "obv_ma20": 1408026839.2,
-        "obv_ma5": 1409695696.8,
+        "high_5d": 247.5500030517578,
+        "ma10": 243.91200256347656,
+        "ma20": 243.77099990844727,
+        "ma240": 233.37862504323323,
+        "ma5": 237.91200256347656,
+        "macd": -2.301280605971698,
+        "macd_hist": -1.4521307853945846,
+        "macd_prev": -1.5004711597879066,
+        "macd_signal": -0.8491498205771133,
+        "macd_signal_prev": -0.4861171242284671,
+        "obv": 1299140084.0,
+        "obv_ma20": 1410282289.2,
+        "obv_ma5": 1373847356.8,
         "pct_of_high_20d": 0.9075540998448806,
-        "prev2_low": 242.4499969482422,
-        "prev_3d_low": 232.0500030517578,
-        "prev_5d_low": 232.0500030517578,
-        "prev_close": 233.66000366210938,
+        "prev2_low": 232.0500030517578,
+        "prev_3d_low": 231.33999633789062,
+        "prev_5d_low": 231.33999633789062,
+        "prev_close": 232.11000061035156,
         "prev_high_20d": 254.9600067138672,
-        "prev_ma10": 246.827001953125,
-        "prev_ma20": 243.58099975585938,
-        "prev_ma240": 233.29733339945474,
-        "prev_ma5": 244.6560028076172,
+        "prev_ma10": 245.5040023803711,
+        "prev_ma20": 243.83600006103515,
+        "prev_ma240": 233.33658339182537,
+        "prev_ma5": 241.6320037841797,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": 0.019294326191795053,
+        "return_20d": -0.005586845322609668,
         "same_time_vol_ratio": null,
-        "today_return": -0.009714988602600338,
-        "vol_ratio": 0.66484597608277,
+        "today_return": -0.0031019827616639573,
+        "vol_ratio": 0.8344747620906704,
         "volume": 34898916.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -59651,7 +59651,7 @@
       "name": "Amazon",
       "reasons": [
         {
-          "detail": "close=231.39 MA5=241.49 MA10=245.43 MA20=243.80 MA240=233.33",
+          "detail": "close=231.39 MA5=237.91 MA10=243.91 MA20=243.77 MA240=233.38",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 3.0
@@ -59663,31 +59663,31 @@
           "weight": 1.5
         },
         {
-          "detail": "close=231.39 MA5=241.49 MA20=243.80",
+          "detail": "close=231.39 MA5=237.91 MA20=243.77",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.66 return=-0.97%",
+          "detail": "vol_ratio=0.83 return=-0.31%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1409695697 OBV_MA20=1408026839",
-          "passed": true,
+          "detail": "OBV_MA5=1373847357 OBV_MA20=1410282289",
+          "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
         },
         {
-          "detail": "stock_20d=+1.93% benchmark_20d=+1.39%",
-          "passed": true,
+          "detail": "stock_20d=-0.56% benchmark_20d=+1.39%",
+          "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 1.0
         },
         {
-          "detail": "macd=-1.558 signal=-0.498 (prev macd=-0.530 signal=-0.233)",
+          "detail": "macd=-2.301 signal=-0.849 (prev macd=-1.500 signal=-0.486)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -59700,21 +59700,21 @@
           "weight": 2.0
         },
         {
-          "detail": "close=231.39 MA5=241.49",
+          "detail": "close=231.39 MA5=237.91",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 5 \u65e5\u7dda",
           "score": -0.03,
           "weight": 0.0
         },
         {
-          "detail": "close=231.39 MA10=245.43",
+          "detail": "close=231.39 MA10=243.91",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 10 \u65e5\u7dda",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "close=231.39 MA20=243.80",
+          "detail": "close=231.39 MA20=243.77",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -59728,21 +59728,21 @@
           "weight": 0.0
         },
         {
-          "detail": "close=231.39 prev2_low=242.45",
+          "detail": "close=231.39 prev2_low=232.05",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u524d\u5929\u4f4e\u9ede",
           "score": -0.06,
           "weight": 0.0
         },
         {
-          "detail": "close=231.39 prev_5d_low=232.05",
-          "passed": true,
+          "detail": "close=231.39 prev_5d_low=231.34",
+          "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u8fd1 5 \u65e5\u4f4e\u9ede",
-          "score": -0.08,
+          "score": 0.0,
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.66 return=-0.97%",
+          "detail": "vol_ratio=0.83 return=-0.31%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -60443,34 +60443,34 @@
         "close": 1655.260009765625,
         "high_20d": 1989.43994140625,
         "high_5d": 1803.0,
-        "ma10": 1765.0050048828125,
-        "ma20": 1793.6074951171875,
-        "ma240": 1286.1442067464193,
-        "ma5": 1760.1300048828125,
-        "macd": -3.2693363682690233,
-        "macd_hist": -13.871749599387964,
-        "macd_prev": 7.97347000480886,
-        "macd_signal": 10.602413231118941,
-        "macd_signal_prev": 14.070350630965931,
-        "obv": 28734860.0,
-        "obv_ma20": 30025603.0,
-        "obv_ma5": 29990172.0,
+        "ma10": 1768.1099975585937,
+        "ma20": 1791.7309936523438,
+        "ma240": 1290.4599566141765,
+        "ma5": 1763.743994140625,
+        "macd": -5.768796846327859,
+        "macd_hist": -14.39667804237054,
+        "macd_prev": 4.853851009312848,
+        "macd_signal": 8.627881196042681,
+        "macd_signal_prev": 12.227050706635316,
+        "obv": 27420860.0,
+        "obv_ma20": 30078598.0,
+        "obv_ma5": 30223612.0,
         "pct_of_high_20d": 0.8320231112860801,
-        "prev2_low": 1767.0400390625,
-        "prev_3d_low": 1767.0400390625,
-        "prev_5d_low": 1703.4000244140625,
-        "prev_close": 1803.0,
+        "prev2_low": 1780.239990234375,
+        "prev_3d_low": 1739.8800048828125,
+        "prev_5d_low": 1728.5999755859375,
+        "prev_close": 1757.0899658203125,
         "prev_high_20d": 1989.43994140625,
-        "prev_ma10": 1779.2109985351562,
-        "prev_ma20": 1802.903497314453,
-        "prev_ma240": 1282.2569567362468,
-        "prev_ma5": 1778.593994140625,
+        "prev_ma10": 1775.1880004882812,
+        "prev_ma20": 1798.698992919922,
+        "prev_ma240": 1286.5684982299804,
+        "prev_ma5": 1780.49599609375,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": -0.10097874109084914,
+        "return_20d": -0.07765431441237358,
         "same_time_vol_ratio": null,
-        "today_return": -0.0819412036796312,
-        "vol_ratio": 1.5718771196742667,
+        "today_return": -0.05795375196235175,
+        "vol_ratio": 1.630731241492142,
         "volume": 3323140.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -60483,7 +60483,7 @@
       "name": "ASML",
       "reasons": [
         {
-          "detail": "close=1655.26 MA5=1760.13 MA10=1765.01 MA20=1793.61 MA240=1286.14",
+          "detail": "close=1655.26 MA5=1763.74 MA10=1768.11 MA20=1791.73 MA240=1290.46",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 3.0
@@ -60495,31 +60495,31 @@
           "weight": 1.5
         },
         {
-          "detail": "close=1655.26 MA5=1760.13 MA20=1793.61",
+          "detail": "close=1655.26 MA5=1763.74 MA20=1791.73",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.57 return=-8.19%",
+          "detail": "vol_ratio=1.63 return=-5.80%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=29990172 OBV_MA20=30025603",
-          "passed": false,
+          "detail": "OBV_MA5=30223612 OBV_MA20=30078598",
+          "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
         },
         {
-          "detail": "stock_20d=-10.10% benchmark_20d=+1.39%",
+          "detail": "stock_20d=-7.77% benchmark_20d=+1.39%",
           "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 1.0
         },
         {
-          "detail": "macd=-3.269 signal=10.602 (prev macd=7.973 signal=14.070)",
+          "detail": "macd=-5.769 signal=8.628 (prev macd=4.854 signal=12.227)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -60532,28 +60532,28 @@
           "weight": 2.0
         },
         {
-          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-6.79% vs benchmark=+0.02%, 5d=-4.21% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
+          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-5.10% vs benchmark=+0.02%, 5d=-3.60% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "close=1655.26 MA5=1760.13",
+          "detail": "close=1655.26 MA5=1763.74",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 5 \u65e5\u7dda",
           "score": -0.03,
           "weight": 0.0
         },
         {
-          "detail": "close=1655.26 MA10=1765.01",
+          "detail": "close=1655.26 MA10=1768.11",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 10 \u65e5\u7dda",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "close=1655.26 MA20=1793.61",
+          "detail": "close=1655.26 MA20=1791.73",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -60567,21 +60567,21 @@
           "weight": 0.0
         },
         {
-          "detail": "close=1655.26 prev2_low=1767.04",
+          "detail": "close=1655.26 prev2_low=1780.24",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u524d\u5929\u4f4e\u9ede",
           "score": -0.06,
           "weight": 0.0
         },
         {
-          "detail": "close=1655.26 prev_5d_low=1703.40",
+          "detail": "close=1655.26 prev_5d_low=1728.60",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u8fd1 5 \u65e5\u4f4e\u9ede",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.57 return=-8.19%",
+          "detail": "vol_ratio=1.63 return=-5.80%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -60629,8 +60629,8 @@
         "industry": "Semiconductor Equipment & Materials",
         "industry_group": "Semiconductor Equipment & Materials",
         "member_count": 4,
-        "return_1d": -0.06789011842086648,
-        "return_5d": -0.042097084604705626,
+        "return_1d": -0.05101016784933876,
+        "return_5d": -0.035970633585382494,
         "sector_official": "Technology",
         "source": "yfinance quoteSummary",
         "strong_days": 0
@@ -69086,34 +69086,34 @@
         "close": 291.6099853515625,
         "high_20d": 433.3299865722656,
         "high_5d": 322.0,
-        "ma10": 320.51499938964844,
-        "ma20": 344.2065002441406,
-        "ma240": 217.01079088846842,
-        "ma5": 311.88800048828125,
-        "macd": -11.431474019369034,
-        "macd_hist": -6.160995138355646,
-        "macd_prev": -9.046969446077355,
-        "macd_signal": -5.270478881013388,
-        "macd_signal_prev": -3.7302300964244766,
-        "obv": 503882215.0,
-        "obv_ma20": 540615405.75,
-        "obv_ma5": 510445843.0,
+        "ma10": 318.0439971923828,
+        "ma20": 340.5125,
+        "ma240": 217.8574991861979,
+        "ma5": 311.5779968261719,
+        "macd": -12.331772459319268,
+        "macd_hist": -5.822618986131175,
+        "macd_prev": -10.34657324757859,
+        "macd_signal": -6.509153473188093,
+        "macd_signal_prev": -5.053498726655299,
+        "obv": 494608315.0,
+        "obv_ma20": 537201775.75,
+        "obv_ma5": 509476023.0,
         "pct_of_high_20d": 0.6729513174434589,
-        "prev2_low": 310.54998779296875,
-        "prev_3d_low": 310.54998779296875,
-        "prev_5d_low": 298.6499938964844,
-        "prev_close": 319.7799987792969,
+        "prev2_low": 314.3500061035156,
+        "prev_3d_low": 301.67999267578125,
+        "prev_5d_low": 301.67999267578125,
+        "prev_close": 305.2099914550781,
         "prev_high_20d": 433.3299865722656,
-        "prev_ma10": 326.3869995117187,
-        "prev_ma20": 349.7170013427734,
-        "prev_ma240": 216.21970761617024,
-        "prev_ma5": 316.2260009765625,
+        "prev_ma10": 321.875,
+        "prev_ma20": 344.8865005493164,
+        "prev_ma240": 217.0674575805664,
+        "prev_ma5": 314.6080017089844,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": -0.2742770891538272,
+        "return_20d": -0.23076317452691475,
         "same_time_vol_ratio": null,
-        "today_return": -0.08809185544833442,
-        "vol_ratio": 1.1404573205146598,
+        "today_return": -0.044559504879503,
+        "vol_ratio": 1.1908440875170174,
         "volume": 14096485.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -69126,7 +69126,7 @@
       "name": "Lam Research",
       "reasons": [
         {
-          "detail": "close=291.61 MA5=311.89 MA10=320.51 MA20=344.21 MA240=217.01",
+          "detail": "close=291.61 MA5=311.58 MA10=318.04 MA20=340.51 MA240=217.86",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 3.0
@@ -69138,31 +69138,31 @@
           "weight": 1.5
         },
         {
-          "detail": "close=291.61 MA5=311.89 MA20=344.21",
+          "detail": "close=291.61 MA5=311.58 MA20=340.51",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.14 return=-8.81%",
+          "detail": "vol_ratio=1.19 return=-4.46%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=510445843 OBV_MA20=540615406",
+          "detail": "OBV_MA5=509476023 OBV_MA20=537201776",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
         },
         {
-          "detail": "stock_20d=-27.43% benchmark_20d=+1.39%",
+          "detail": "stock_20d=-23.08% benchmark_20d=+1.39%",
           "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 1.0
         },
         {
-          "detail": "macd=-11.431 signal=-5.270 (prev macd=-9.047 signal=-3.730)",
+          "detail": "macd=-12.332 signal=-6.509 (prev macd=-10.347 signal=-5.053)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -69175,28 +69175,28 @@
           "weight": 2.0
         },
         {
-          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-6.79% vs benchmark=+0.02%, 5d=-4.21% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
+          "detail": "Semiconductor Equipment & Materials: \u9023\u7e8c\u5f37\u52e2 0 \u65e5, members=4, 1d=-5.10% vs benchmark=+0.02%, 5d=-3.60% vs benchmark=-0.40%, MA5\u4e0a\u65b9=0%",
           "passed": false,
           "rule": "\u5f37\u52e2\u677f\u584a\u5ef6\u7e8c",
           "score": 0.0,
           "weight": 1.5
         },
         {
-          "detail": "close=291.61 MA5=311.89",
+          "detail": "close=291.61 MA5=311.58",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 5 \u65e5\u7dda",
           "score": -0.03,
           "weight": 0.0
         },
         {
-          "detail": "close=291.61 MA10=320.51",
+          "detail": "close=291.61 MA10=318.04",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 10 \u65e5\u7dda",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "close=291.61 MA20=344.21",
+          "detail": "close=291.61 MA20=340.51",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -69210,21 +69210,21 @@
           "weight": 0.0
         },
         {
-          "detail": "close=291.61 prev2_low=310.55",
+          "detail": "close=291.61 prev2_low=314.35",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u524d\u5929\u4f4e\u9ede",
           "score": -0.06,
           "weight": 0.0
         },
         {
-          "detail": "close=291.61 prev_5d_low=298.65",
+          "detail": "close=291.61 prev_5d_low=301.68",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834\u8fd1 5 \u65e5\u4f4e\u9ede",
           "score": -0.08,
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.14 return=-8.81%",
+          "detail": "vol_ratio=1.19 return=-4.46%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -69272,8 +69272,8 @@
         "industry": "Semiconductor Equipment & Materials",
         "industry_group": "Semiconductor Equipment & Materials",
         "member_count": 4,
-        "return_1d": -0.06789011842086648,
-        "return_5d": -0.042097084604705626,
+        "return_1d": -0.05101016784933876,
+        "return_5d": -0.035970633585382494,
         "sector_official": "Technology",
         "source": "yfinance quoteSummary",
         "strong_days": 0
@@ -78229,26 +78229,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.13,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.14,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.11,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.63,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": -81.7927,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 45.0,
@@ -78510,69 +78493,15 @@
     },
     "UNH": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.0294117647058822,
-        "target_price_events": [
-          {
-            "date": "2026-07-21",
-            "firm": "Benzinga",
-            "headline": "JP Morgan Maintains Overweight on UnitedHealth Group, Raises Price Target to $516",
-            "previous_target": null,
-            "published_at": "2026-07-21T11:37:54+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 516.0,
-            "upside_pct": 0.2355137963357279,
-            "url": "https://finnhub.io/api/news?id=b0b6fc00d279cc397bbf427a8a4145ad791c1fe8042a8612996c891531f40c77"
-          },
-          {
-            "date": "2026-07-21",
-            "firm": "Benzinga",
-            "headline": "Mizuho Maintains Outperform on UnitedHealth Group, Raises Price Target to $493",
-            "previous_target": null,
-            "published_at": "2026-07-21T09:03:53+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 493.0,
-            "upside_pct": 0.18044244494867012,
-            "url": "https://finnhub.io/api/news?id=57a7d8bf5ecfc93bc1ca98780ee0d281953568fb104504ba47fbd7f319483739"
-          },
-          {
-            "date": "2026-07-20",
-            "firm": "Benzinga",
-            "headline": "Barclays Maintains Overweight on UnitedHealth Group, Raises Price Target to $441",
-            "previous_target": null,
-            "published_at": "2026-07-20T09:32:16+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 441.0,
-            "upside_pct": 0.05593330268227903,
-            "url": "https://finnhub.io/api/news?id=2de1c81fa4feab6c85670b7eb54099a8f0ea6bfac9719e1bece79f9425ed47a1"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 6.38,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 7.23,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.11,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 2.92,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 28.803,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 22.7,
@@ -78719,8 +78648,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-07-21 Benzinga target 516.00, upside=+23.55%\uff1b 2026-07-21 Benzinga target 493.00, upside=+18.04%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -78813,45 +78742,15 @@
     },
     "V": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8571428571428572,
-        "target_price_events": [
-          {
-            "date": "2026-07-24",
-            "firm": "Benzinga",
-            "headline": "Truist Securities Maintains Buy on Visa, Raises Price Target to $394",
-            "previous_target": null,
-            "published_at": "2026-07-24T08:16:39+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 394.0,
-            "upside_pct": 0.0868066127676832,
-            "url": "https://finnhub.io/api/news?id=6c6ed5a1cdab6c6f0c4884857a0ce985e8be61d8dd49dd2568ef687681c59639"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.31,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 3.17,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 2.98,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 2.98,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 4.8165,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 81.3,
@@ -79092,32 +78991,15 @@
     },
     "VRT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8823529411764706,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.17,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.36,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.24,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.95,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 16.0024,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 37.7,
@@ -79358,32 +79240,15 @@
     },
     "WDAY": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.1666666666666665,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.66,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 2.47,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.32,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 2.21,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 3.9956,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 76.2,
@@ -79645,32 +79510,15 @@
     },
     "WMT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8125,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.66,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.74,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.62,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.68,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -0.5725,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 25.1,
@@ -79911,81 +79759,15 @@
     },
     "XYZ": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8541666666666667,
-        "target_price_events": [
-          {
-            "date": "2026-07-24",
-            "firm": "Benzinga",
-            "headline": "Truist Securities Maintains Buy on Block, Raises Price Target to $93",
-            "previous_target": null,
-            "published_at": "2026-07-24T08:17:51+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 93.0,
-            "upside_pct": 0.1447563077974312,
-            "url": "https://finnhub.io/api/news?id=69607aaea2bad76d406fa3a00a2c0f22cc74288684f3d110aefc37d7a98bab1b"
-          },
-          {
-            "date": "2026-07-23",
-            "firm": "Benzinga",
-            "headline": "Keybanc Maintains Overweight on Block, Raises Price Target to $105",
-            "previous_target": null,
-            "published_at": "2026-07-23T08:08:01+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 105.0,
-            "upside_pct": 0.2924667991261318,
-            "url": "https://finnhub.io/api/news?id=992fa352fd1f95838a2a61131a98bb63f148de2e85b37811cf0b93be134c81d3"
-          },
-          {
-            "date": "2026-07-22",
-            "firm": "Benzinga",
-            "headline": "BMO Capital Maintains Market Perform on Block, Raises Price Target to $85",
-            "previous_target": null,
-            "published_at": "2026-07-22T13:49:38+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 85.0,
-            "upside_pct": 0.04628264691163064,
-            "url": "https://finnhub.io/api/news?id=2da33cde2c00cbde86a79866c40e15b99625169a5405949e001a48088a8b6130"
-          },
-          {
-            "date": "2026-07-22",
-            "firm": "Benzinga",
-            "headline": "Cantor Fitzgerald Maintains Overweight on Block, Raises Price Target to $95",
-            "previous_target": null,
-            "published_at": "2026-07-22T09:06:10+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 95.0,
-            "upside_pct": 0.16937472301888135,
-            "url": "https://finnhub.io/api/news?id=33e7a98252d4613d71f0c052b420f2381378b850c4710d89b4fe6f0b1e5c6fc0"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.85,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.65,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.54,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": 0.62,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 24.4327,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 48.0,
@@ -80132,8 +79914,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-07-24 Benzinga target 93.00, upside=+14.48%\uff1b 2026-07-23 Benzinga target 105.00, upside=+29.25%\uff1b 2026-07-22 Benzinga target 95.00, upside=+16.94%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -80201,7 +79983,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.0,
+      "score": 4.0,
       "score_regime": {
         "as_of": "2026-07-27",
         "benchmark": "SPY",
