@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-07-30T12:03:01.121719+00:00",
+  "generated_at": "2026-07-30T12:54:37.450725+00:00",
   "last_run": {
-    "tw": "2026-07-30T12:03:01.121719+00:00",
-    "tw_eod": "2026-07-30T12:03:01.121719+00:00",
+    "tw": "2026-07-30T12:54:37.450725+00:00",
+    "tw_eod": "2026-07-30T12:54:37.450725+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
     "us": "2026-07-30T00:10:03.811799+00:00",
     "us_eod": "2026-07-30T00:10:03.811799+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-07-30T12:05:25.760735+00:00",
+    "generated_at": "2026-07-30T12:56:33.812824+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -41530,7 +41530,7 @@
         "foreign_pct_of_volume": 0.05907705297954856,
         "foreign_streak_days": 3,
         "trust_buy_first_day": false,
-        "trust_streak_days": 5
+        "trust_streak_days": 0
       },
       "fundamental": {
         "pb": 2.99,
@@ -41638,10 +41638,10 @@
           "weight": 0.75
         },
         {
-          "detail": "streak=5 \u65e5, first_day=False",
-          "passed": true,
+          "detail": "streak=0 \u65e5, first_day=False",
+          "passed": false,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.75,
+          "score": 0.0,
           "weight": 1.0
         },
         {
@@ -49570,8 +49570,8 @@
         "foreign_net_today": 230600,
         "foreign_pct_of_volume": 0.11901351933711637,
         "foreign_streak_days": 2,
-        "trust_buy_first_day": true,
-        "trust_streak_days": 1
+        "trust_buy_first_day": false,
+        "trust_streak_days": 0
       },
       "fundamental": {
         "pb": 12.89,
@@ -49679,10 +49679,10 @@
           "weight": 0.75
         },
         {
-          "detail": "streak=1 \u65e5, first_day=True",
-          "passed": true,
-          "rule": "\u6295\u4fe1\u8cb7\u9032\u7b2c\u4e00\u5929",
-          "score": 1.0,
+          "detail": "streak=0 \u65e5, first_day=False",
+          "passed": false,
+          "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
+          "score": 0.0,
           "weight": 1.0
         },
         {
