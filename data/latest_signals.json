@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-03T23:19:07.932766+00:00",
+  "generated_at": "2026-08-04T00:15:29.956511+00:00",
   "last_run": {
     "tw": "2026-08-03T13:48:20.092411+00:00",
     "tw_eod": "2026-08-03T13:48:20.092411+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-08-03T23:19:07.932766+00:00",
-    "us_eod": "2026-08-03T23:19:07.932766+00:00",
+    "us": "2026-08-04T00:15:29.956511+00:00",
+    "us_eod": "2026-08-04T00:15:29.956511+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-08-03T23:21:29.317519+00:00",
+    "generated_at": "2026-08-04T00:17:51.577761+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -57802,7 +57802,7 @@
     "ADBE": {
       "analyst": {
         "rating": "Hold",
-        "rating_score": 2.511111111111111,
+        "rating_score": 2.5652173913043477,
         "target_price_events": []
       },
       "chip": null,
@@ -58089,7 +58089,7 @@
     "ADI": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.8421052631578947,
+        "rating_score": 1.8108108108108107,
         "target_price_events": []
       },
       "chip": null,
@@ -58376,7 +58376,7 @@
     "ALAB": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.066666666666667,
+        "rating_score": 2.0689655172413794,
         "target_price_events": [
           {
             "date": "2026-07-31",
@@ -58963,7 +58963,7 @@
     "AMD": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.894736842105263,
+        "rating_score": 1.896551724137931,
         "target_price_events": [
           {
             "date": "2026-07-30",
@@ -59263,7 +59263,7 @@
     "AMKR": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.4444444444444446,
+        "rating_score": 2.388888888888889,
         "target_price_events": [
           {
             "date": "2026-07-28",
@@ -60156,7 +60156,7 @@
     "ARM": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.3181818181818183,
+        "rating_score": 2.3333333333333335,
         "target_price_events": [
           {
             "date": "2026-07-30",
@@ -60456,7 +60456,7 @@
     "ASML": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.0714285714285716,
+        "rating_score": 1.9761904761904763,
         "target_price_events": []
       },
       "chip": null,
@@ -60743,7 +60743,7 @@
     "AVGO": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.7894736842105263,
+        "rating_score": 1.7857142857142858,
         "target_price_events": []
       },
       "chip": null,
@@ -61342,7 +61342,7 @@
     "BE": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.2972972972972974,
+        "rating_score": 2.236842105263158,
         "target_price_events": [
           {
             "date": "2026-07-29",
@@ -61621,7 +61621,7 @@
     "CAT": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.235294117647059,
+        "rating_score": 2.2941176470588234,
         "target_price_events": []
       },
       "chip": null,
@@ -67884,9 +67884,26 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 0.97,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 0.86,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 0.58,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 0.82,
+            "period": "2025-09-30"
+          }
+        ],
+        "eps_period": "2026-06-30",
+        "eps_surprise_pct": 1.0101,
         "margins": [
           {
             "gm": 62.9,
@@ -68127,15 +68144,32 @@
     },
     "LITE": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 1.878787878787879,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 2.37,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 1.67,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 1.1,
+            "period": "2025-09-30"
+          },
+          {
+            "eps": 0.88,
+            "period": "2025-06-30"
+          }
+        ],
+        "eps_period": "2026-03-31",
+        "eps_surprise_pct": 1.5642,
         "margins": [
           {
             "gm": 44.2,
@@ -68664,7 +68698,7 @@
     "LMT": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.4642857142857144,
+        "rating_score": 2.357142857142857,
         "target_price_events": []
       },
       "chip": null,
@@ -69217,7 +69251,7 @@
     "LRCX": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.9268292682926829,
+        "rating_score": 1.9024390243902438,
         "target_price_events": [
           {
             "date": "2026-07-30",
@@ -69517,7 +69551,7 @@
     "MA": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.8461538461538463,
+        "rating_score": 1.8333333333333333,
         "target_price_events": [
           {
             "date": "2026-08-03",
@@ -70412,7 +70446,7 @@
     "MDB": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.9130434782608696,
+        "rating_score": 1.872340425531915,
         "target_price_events": []
       },
       "chip": null,
@@ -70699,7 +70733,7 @@
     "META": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.8169014084507042,
+        "rating_score": 1.8309859154929577,
         "target_price_events": []
       },
       "chip": null,
@@ -70986,7 +71020,7 @@
     "MMM": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.391304347826087,
+        "rating_score": 2.347826086956522,
         "target_price_events": []
       },
       "chip": null,
@@ -71252,7 +71286,7 @@
     "MRVL": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.88,
+        "rating_score": 1.8775510204081634,
         "target_price_events": []
       },
       "chip": null,
@@ -71539,7 +71573,7 @@
     "MSFT": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.7352941176470589,
+        "rating_score": 1.7391304347826086,
         "target_price_events": []
       },
       "chip": null,
@@ -72113,7 +72147,7 @@
     "NET": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.1,
+        "rating_score": 2.075,
         "target_price_events": []
       },
       "chip": null,
@@ -72400,7 +72434,7 @@
     "NFLX": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.9482758620689655,
+        "rating_score": 2.0,
         "target_price_events": []
       },
       "chip": null,
@@ -72666,7 +72700,7 @@
     "NOW": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.8518518518518519,
+        "rating_score": 1.8545454545454545,
         "target_price_events": []
       },
       "chip": null,
@@ -72953,7 +72987,7 @@
     "NVDA": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.7391304347826086,
+        "rating_score": 1.7352941176470589,
         "target_price_events": []
       },
       "chip": null,
@@ -73240,7 +73274,7 @@
     "NXPI": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.027027027027027,
+        "rating_score": 2.0,
         "target_price_events": []
       },
       "chip": null,
@@ -73527,31 +73561,14 @@
     "OKLO": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 2.2,
+        "rating_score": 2.225806451612903,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.19,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.27,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.2,
-            "period": "2025-09-30"
-          },
-          {
-            "eps": -0.18,
-            "period": "2025-06-30"
-          }
-        ],
-        "eps_period": "2026-03-31",
-        "eps_surprise_pct": 3.3571,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": null,
         "pb": 2.716131,
         "pe": null,
@@ -73761,32 +73778,15 @@
     },
     "OKTA": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.0576923076923075,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.91,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.9,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.82,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.91,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 4.6819,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 77.8,
@@ -79349,26 +79349,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.32,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.31,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 3.17,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 2.98,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 0.8414,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 76.5,
@@ -79609,32 +79592,15 @@
     },
     "VRT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8823529411764706,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.52,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.17,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.36,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.24,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 5.7024,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 37.7,
@@ -79875,8 +79841,8 @@
     },
     "WDAY": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.1666666666666665,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
@@ -80429,7 +80395,7 @@
     "XYZ": {
       "analyst": {
         "rating": "Buy",
-        "rating_score": 1.8541666666666667,
+        "rating_score": 1.9230769230769231,
         "target_price_events": []
       },
       "chip": null,
