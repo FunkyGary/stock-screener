@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-12T22:05:34.097538+00:00",
+  "generated_at": "2026-08-12T23:01:06.009572+00:00",
   "last_run": {
     "tw": "2026-08-12T11:57:49.290378+00:00",
     "tw_eod": "2026-08-12T11:57:49.290378+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
-    "us": "2026-08-12T22:05:34.097538+00:00",
-    "us_eod": "2026-08-12T22:05:34.097538+00:00",
+    "us": "2026-08-12T23:01:06.009572+00:00",
+    "us_eod": "2026-08-12T23:01:06.009572+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-08-12T22:06:36.420855+00:00",
+    "generated_at": "2026-08-12T23:02:18.625963+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -26,23 +26,23 @@
               "ma20": null,
               "ma240": null,
               "ma5": null,
-              "macd": -39.86643648433528,
-              "macd_hist": 237.68162167819827,
-              "macd_prev": -39.86643648433528,
-              "macd_signal": -277.54805816253355,
-              "macd_signal_prev": -336.96846358208313,
-              "obv": 242531400.0,
-              "obv_ma20": 243035455.0,
-              "obv_ma5": 238422280.0,
+              "macd": -95.67646518785477,
+              "macd_hist": 212.20965506039914,
+              "macd_prev": -95.67646518785477,
+              "macd_signal": -307.8861202482539,
+              "macd_signal_prev": -360.9385340133537,
+              "obv": 227518600.0,
+              "obv_ma20": 235895220.0,
+              "obv_ma5": 223409480.0,
               "pct_of_high_20d": null,
               "prev2_low": 44540.7109375,
               "prev_3d_low": 43941.55859375,
               "prev_5d_low": 43809.828125,
               "prev_close": 45120.71875,
               "prev_high_20d": 45631.58984375,
-              "prev_ma10": 43312.29921875,
-              "prev_ma20": 43615.119140625,
-              "prev_ma240": 33888.41689453125,
+              "prev_ma10": 43160.66015625,
+              "prev_ma20": 43779.8529296875,
+              "prev_ma240": 33640.439713541666,
               "prev_ma5": 44656.73828125,
               "projected_vol_ratio": null,
               "projected_volume": null,
@@ -58611,9 +58611,9 @@
         "macd_prev": -8.88123570431668,
         "macd_signal": -11.306007220151939,
         "macd_signal_prev": -12.057108765060566,
-        "obv": 208715055.0,
-        "obv_ma20": 201719267.75,
-        "obv_ma5": 207836851.0,
+        "obv": 208735193.0,
+        "obv_ma20": 201720274.65,
+        "obv_ma5": 207840878.6,
         "pct_of_high_20d": 0.8814664637843095,
         "prev2_low": 316.7799987792969,
         "prev_3d_low": 306.5,
@@ -58629,8 +58629,8 @@
         "return_20d": -0.09075354448505868,
         "same_time_vol_ratio": null,
         "today_return": 0.021827615538171363,
-        "vol_ratio": 0.8103664984777701,
-        "volume": 3923655.0,
+        "vol_ratio": 0.8143563191859131,
+        "volume": 3943793.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -58666,7 +58666,7 @@
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=207836851 OBV_MA20=201719268",
+          "detail": "OBV_MA5=207840879 OBV_MA20=201720275",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
@@ -60639,9 +60639,9 @@
         "macd_prev": -7.905308496403904,
         "macd_signal": -16.058780111060884,
         "macd_signal_prev": -20.104481407085594,
-        "obv": 28609982.0,
-        "obv_ma20": 27502499.1,
-        "obv_ma5": 26853196.4,
+        "obv": 28610800.0,
+        "obv_ma20": 27502540.0,
+        "obv_ma5": 26853360.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 1732.81005859375,
         "prev_3d_low": 1720.1099853515625,
@@ -60657,8 +60657,8 @@
         "return_20d": -0.0028646279540992525,
         "same_time_vol_ratio": null,
         "today_return": 0.00594090263159619,
-        "vol_ratio": 0.796937954245356,
-        "volume": 1373482.0,
+        "vol_ratio": 0.7973936605376301,
+        "volume": 1374300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -60694,7 +60694,7 @@
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=26853196 OBV_MA20=27502499",
+          "detail": "OBV_MA5=26853360 OBV_MA20=27502540",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
@@ -65245,34 +65245,34 @@
         "close": 325.57000732421875,
         "high_20d": 325.57000732421875,
         "high_5d": 325.57000732421875,
-        "ma10": 310.48500061035156,
-        "ma20": 290.01899871826174,
-        "ma240": 245.28249950408934,
+        "ma10": 309.53200073242186,
+        "ma20": 291.10599822998046,
+        "ma240": 246.03904101053874,
         "ma5": 315.5800048828125,
-        "macd": 16.954383910384934,
-        "macd_hist": 2.4747823234351998,
-        "macd_prev": 16.309481168887487,
-        "macd_signal": 14.479601586949734,
-        "macd_signal_prev": 13.860906006090934,
-        "obv": 58768835.0,
-        "obv_ma20": 49581861.75,
-        "obv_ma5": 56058087.0,
+        "macd": 16.2238490078297,
+        "macd_hist": 2.334289356424783,
+        "macd_prev": 15.58276765871733,
+        "macd_signal": 13.889559651404916,
+        "macd_signal_prev": 13.305987312298718,
+        "obv": 57002435.0,
+        "obv_ma20": 47758126.75,
+        "obv_ma5": 54291687.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 304.20001220703125,
         "prev_3d_low": 304.20001220703125,
         "prev_5d_low": 304.20001220703125,
         "prev_close": 321.07000732421875,
         "prev_high_20d": 321.07000732421875,
-        "prev_ma10": 307.5070007324219,
-        "prev_ma20": 287.28199768066406,
-        "prev_ma240": 244.82099946339926,
+        "prev_ma10": 307.40199890136716,
+        "prev_ma20": 288.18299713134763,
+        "prev_ma240": 245.56670767466227,
         "prev_ma5": 314.39800415039065,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": 0.20211949734505064,
+        "return_20d": 0.21886123761233733,
         "same_time_vol_ratio": null,
         "today_return": 0.014015634900010676,
-        "vol_ratio": 0.745375973275156,
+        "vol_ratio": 0.7464098800748851,
         "volume": 1243035.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -65285,7 +65285,7 @@
       "name": "Expedia",
       "reasons": [
         {
-          "detail": "close=325.57 MA5=315.58 MA10=310.49 MA20=290.02 MA240=245.28",
+          "detail": "close=325.57 MA5=315.58 MA10=309.53 MA20=291.11 MA240=246.04",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -65297,7 +65297,7 @@
           "weight": 0.75
         },
         {
-          "detail": "close=325.57 MA5=315.58 MA20=290.02",
+          "detail": "close=325.57 MA5=315.58 MA20=291.11",
           "passed": true,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 1.5
@@ -65309,19 +65309,19 @@
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=56058087 OBV_MA20=49581862",
+          "detail": "OBV_MA5=54291687 OBV_MA20=47758127",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
         },
         {
-          "detail": "stock_20d=+20.21% benchmark_20d=+2.34%",
+          "detail": "stock_20d=+21.89% benchmark_20d=+2.34%",
           "passed": true,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 3.0
         },
         {
-          "detail": "macd=16.954 signal=14.480 (prev macd=16.309 signal=13.861)",
+          "detail": "macd=16.224 signal=13.890 (prev macd=15.583 signal=13.306)",
           "passed": true,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9",
           "score": 0.5,
@@ -65341,14 +65341,14 @@
           "weight": 0.0
         },
         {
-          "detail": "close=325.57 MA10=310.49",
+          "detail": "close=325.57 MA10=309.53",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 10 \u65e5\u7dda",
           "score": 0.0,
           "weight": 0.0
         },
         {
-          "detail": "close=325.57 MA20=290.02",
+          "detail": "close=325.57 MA20=291.11",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": 0.0,
@@ -69086,17 +69086,17 @@
         "high_20d": 271.989990234375,
         "high_5d": 268.1099853515625,
         "ma10": 261.288996887207,
-        "ma20": 261.8904975891113,
-        "ma240": 234.140833791097,
+        "ma20": 261.55249786376953,
+        "ma240": 234.0533754984538,
         "ma5": 264.2259948730469,
-        "macd": 3.162148264260793,
-        "macd_hist": 0.015053623406358518,
-        "macd_prev": 2.808894422300682,
-        "macd_signal": 3.1470946408544345,
-        "macd_signal_prev": 3.1433312350028446,
-        "obv": 32916471.0,
-        "obv_ma20": 35327693.55,
-        "obv_ma5": 32456974.2,
+        "macd": 3.3547632242575673,
+        "macd_hist": 0.006522275761927432,
+        "macd_prev": 3.011253666652294,
+        "macd_signal": 3.34824094849564,
+        "macd_signal_prev": 3.346610379555158,
+        "obv": 34275371.0,
+        "obv_ma20": 36262338.55,
+        "obv_ma5": 33815874.2,
         "pct_of_high_20d": 0.9857347511962882,
         "prev2_low": 257.5299987792969,
         "prev_3d_low": 255.91000366210938,
@@ -69104,15 +69104,15 @@
         "prev_close": 265.42999267578125,
         "prev_high_20d": 271.989990234375,
         "prev_ma10": 260.33899688720703,
-        "prev_ma20": 261.27649841308596,
-        "prev_ma240": 234.03037554423014,
+        "prev_ma20": 261.39849853515625,
+        "prev_ma240": 233.94283390045166,
         "prev_ma5": 261.5559967041016,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": 0.04800056065596747,
+        "return_20d": 0.011621275276201715,
         "same_time_vol_ratio": null,
         "today_return": 0.010096796706221545,
-        "vol_ratio": 0.6940103161927446,
+        "vol_ratio": 0.670479362864773,
         "volume": 1161571.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -69125,7 +69125,7 @@
       "name": "Cheniere Energy",
       "reasons": [
         {
-          "detail": "close=268.11 MA5=264.23 MA10=261.29 MA20=261.89 MA240=234.14",
+          "detail": "close=268.11 MA5=264.23 MA10=261.29 MA20=261.55 MA240=234.05",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -69137,31 +69137,31 @@
           "weight": 0.75
         },
         {
-          "detail": "close=268.11 MA5=264.23 MA20=261.89",
+          "detail": "close=268.11 MA5=264.23 MA20=261.55",
           "passed": true,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 1.5
         },
         {
-          "detail": "vol_ratio=0.69 return=1.01%",
+          "detail": "vol_ratio=0.67 return=1.01%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=32456974 OBV_MA20=35327694",
+          "detail": "OBV_MA5=33815874 OBV_MA20=36262339",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
         },
         {
-          "detail": "stock_20d=+4.80% benchmark_20d=+2.34%",
-          "passed": true,
+          "detail": "stock_20d=+1.16% benchmark_20d=+2.34%",
+          "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 3.0
         },
         {
-          "detail": "macd=3.162 signal=3.147 (prev macd=2.809 signal=3.143)",
+          "detail": "macd=3.355 signal=3.348 (prev macd=3.011 signal=3.347)",
           "passed": true,
           "rule": "MACD \u4eca\u65e5\u4e0a\u7a7f signal (golden cross)",
           "score": 0.75,
@@ -69188,7 +69188,7 @@
           "weight": 0.0
         },
         {
-          "detail": "close=268.11 MA20=261.89",
+          "detail": "close=268.11 MA20=261.55",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": 0.0,
@@ -69216,7 +69216,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.69 return=1.01%",
+          "detail": "vol_ratio=0.67 return=1.01%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -69230,7 +69230,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.25,
+      "score": 2.25,
       "score_regime": {
         "as_of": "2026-08-12",
         "benchmark": "SPY",
@@ -69854,17 +69854,17 @@
         "high_20d": 383.5199890136719,
         "high_5d": 359.6700134277344,
         "ma10": 356.7739990234375,
-        "ma20": 364.81299743652346,
-        "ma240": 326.3412924448649,
+        "ma20": 364.77549743652344,
+        "ma240": 325.9240842183431,
         "ma5": 353.21799926757814,
-        "macd": -6.10128941677533,
-        "macd_hist": -1.5439496515024285,
-        "macd_prev": -6.198917891330723,
-        "macd_signal": -4.557339765272902,
-        "macd_signal_prev": -4.171352352397295,
-        "obv": 30062906.0,
-        "obv_ma20": 35307755.3,
-        "obv_ma5": 28690721.2,
+        "macd": -6.184884768871541,
+        "macd_hist": -1.527341810863291,
+        "macd_prev": -6.288666870172449,
+        "macd_signal": -4.65754295800825,
+        "macd_signal_prev": -4.275707505292426,
+        "obv": 29147806.0,
+        "obv_ma20": 34501170.3,
+        "obv_ma5": 27775621.2,
         "pct_of_high_20d": 0.9245410845055729,
         "prev2_low": 344.7099914550781,
         "prev_3d_low": 344.7099914550781,
@@ -69872,15 +69872,15 @@
         "prev_close": 349.489990234375,
         "prev_high_20d": 383.5199890136719,
         "prev_ma10": 359.42799987792966,
-        "prev_ma20": 365.53649749755857,
-        "prev_ma240": 325.98750089009604,
+        "prev_ma20": 365.2059982299805,
+        "prev_ma240": 325.5627092997233,
         "prev_ma5": 354.5640014648437,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": -0.03920878390279359,
+        "return_20d": -0.023706643385729476,
         "same_time_vol_ratio": null,
         "today_return": 0.014564069015187364,
-        "vol_ratio": 0.7571597507461808,
+        "vol_ratio": 0.7530262694255128,
         "volume": 1350406.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -69893,7 +69893,7 @@
       "name": "Marriott",
       "reasons": [
         {
-          "detail": "close=354.58 MA5=353.22 MA10=356.77 MA20=364.81 MA240=326.34",
+          "detail": "close=354.58 MA5=353.22 MA10=356.77 MA20=364.78 MA240=325.92",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -69905,31 +69905,31 @@
           "weight": 0.75
         },
         {
-          "detail": "close=354.58 MA5=353.22 MA20=364.81",
+          "detail": "close=354.58 MA5=353.22 MA20=364.78",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 1.5
         },
         {
-          "detail": "vol_ratio=0.76 return=1.46%",
+          "detail": "vol_ratio=0.75 return=1.46%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=28690721 OBV_MA20=35307755",
+          "detail": "OBV_MA5=27775621 OBV_MA20=34501170",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
         },
         {
-          "detail": "stock_20d=-3.92% benchmark_20d=+2.34%",
+          "detail": "stock_20d=-2.37% benchmark_20d=+2.34%",
           "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 3.0
         },
         {
-          "detail": "macd=-6.101 signal=-4.557 (prev macd=-6.199 signal=-4.171)",
+          "detail": "macd=-6.185 signal=-4.658 (prev macd=-6.289 signal=-4.276)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -69956,7 +69956,7 @@
           "weight": 0.0
         },
         {
-          "detail": "close=354.58 MA20=364.81",
+          "detail": "close=354.58 MA20=364.78",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -69984,7 +69984,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.76 return=1.46%",
+          "detail": "vol_ratio=0.75 return=1.46%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -71951,17 +71951,17 @@
         "high_20d": 311.45001220703125,
         "high_5d": 311.45001220703125,
         "ma10": 295.3109985351563,
-        "ma20": 282.075,
-        "ma240": 216.80833333333334,
+        "ma20": 282.1115005493164,
+        "ma240": 216.5288750330607,
         "ma5": 302.74199829101565,
-        "macd": 13.61871746415153,
-        "macd_hist": 2.3942090846256967,
-        "macd_prev": 12.903105321728333,
-        "macd_signal": 11.224508379525833,
-        "macd_signal_prev": 10.625956108369406,
-        "obv": 211105486.0,
-        "obv_ma20": 203319199.3,
-        "obv_ma5": 207630897.2,
+        "macd": 13.933118281971588,
+        "macd_hist": 2.3411367674407693,
+        "macd_prev": 13.237099758354418,
+        "macd_signal": 11.591981514530818,
+        "macd_signal_prev": 11.006697322670627,
+        "obv": 214820786.0,
+        "obv_ma20": 206613369.3,
+        "obv_ma5": 211346197.2,
         "pct_of_high_20d": 1.0,
         "prev2_low": 290.489990234375,
         "prev_3d_low": 290.489990234375,
@@ -71969,15 +71969,15 @@
         "prev_close": 306.9700012207031,
         "prev_high_20d": 310.5899963378906,
         "prev_ma10": 291.20399780273436,
-        "prev_ma20": 280.15449981689454,
-        "prev_ma240": 216.36579163869223,
+        "prev_ma20": 280.62649993896486,
+        "prev_ma240": 216.05845832824707,
         "prev_ma5": 299.043994140625,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": 0.14067536793161928,
+        "return_20d": 0.10541264314829202,
         "same_time_vol_ratio": null,
         "today_return": 0.014594295756956033,
-        "vol_ratio": 0.7099098987630659,
+        "vol_ratio": 0.7169923102767979,
         "volume": 2776986.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -71990,7 +71990,7 @@
       "name": "Cloudflare",
       "reasons": [
         {
-          "detail": "close=311.45 MA5=302.74 MA10=295.31 MA20=282.07 MA240=216.81",
+          "detail": "close=311.45 MA5=302.74 MA10=295.31 MA20=282.11 MA240=216.53",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -72002,31 +72002,31 @@
           "weight": 0.75
         },
         {
-          "detail": "close=311.45 MA5=302.74 MA20=282.07",
+          "detail": "close=311.45 MA5=302.74 MA20=282.11",
           "passed": true,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 1.5
         },
         {
-          "detail": "vol_ratio=0.71 return=1.46%",
+          "detail": "vol_ratio=0.72 return=1.46%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=207630897 OBV_MA20=203319199",
+          "detail": "OBV_MA5=211346197 OBV_MA20=206613369",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
         },
         {
-          "detail": "stock_20d=+14.07% benchmark_20d=+2.34%",
+          "detail": "stock_20d=+10.54% benchmark_20d=+2.34%",
           "passed": true,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 3.0
         },
         {
-          "detail": "macd=13.619 signal=11.225 (prev macd=12.903 signal=10.626)",
+          "detail": "macd=13.933 signal=11.592 (prev macd=13.237 signal=11.007)",
           "passed": true,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9",
           "score": 0.5,
@@ -72060,7 +72060,7 @@
           "weight": 0.0
         },
         {
-          "detail": "close=311.45 MA20=282.07",
+          "detail": "close=311.45 MA20=282.11",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": 0.0,
@@ -72088,7 +72088,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.71 return=1.46%",
+          "detail": "vol_ratio=0.72 return=1.46%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -75652,9 +75652,9 @@
         "macd_prev": -2.1102179148447533,
         "macd_signal": -4.367114412615064,
         "macd_signal_prev": -5.097382993028308,
-        "obv": 1737293018.0,
-        "obv_ma20": 1699204890.9,
-        "obv_ma5": 1751164643.6,
+        "obv": 1737286192.0,
+        "obv_ma20": 1699204549.6,
+        "obv_ma5": 1751163278.4,
         "pct_of_high_20d": 0.9799589083011827,
         "prev2_low": 79.7699966430664,
         "prev_3d_low": 75.45999908447266,
@@ -75670,8 +75670,8 @@
         "return_20d": 0.06522311574472806,
         "same_time_vol_ratio": null,
         "today_return": 0.014498137754574092,
-        "vol_ratio": 0.7925358240298028,
-        "volume": 16168318.0,
+        "vol_ratio": 0.7922144819163247,
+        "volume": 16161492.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -75707,7 +75707,7 @@
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=1751164644 OBV_MA20=1699204891",
+          "detail": "OBV_MA5=1751163278 OBV_MA20=1699204550",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
@@ -80087,17 +80087,17 @@
         "high_20d": 84.63999938964844,
         "high_5d": 79.06999969482422,
         "ma10": 80.91099853515625,
-        "ma20": 80.3929988861084,
-        "ma240": 69.23195816675822,
+        "ma20": 80.59099884033203,
+        "ma240": 69.23333317438761,
         "ma5": 78.86999969482422,
-        "macd": 0.6380198518949385,
-        "macd_hist": -0.6223745442546245,
-        "macd_prev": 0.8726194506060665,
-        "macd_signal": 1.260394396149563,
-        "macd_signal_prev": 1.415988032213219,
-        "obv": 356912895.0,
-        "obv_ma20": 376056359.75,
-        "obv_ma5": 360999199.0,
+        "macd": 0.7296704574911104,
+        "macd_hist": -0.6537580725515302,
+        "macd_prev": 0.9718391026910922,
+        "macd_signal": 1.3834285300426405,
+        "macd_signal_prev": 1.5468680481805228,
+        "obv": 357299895.0,
+        "obv_ma20": 376984624.75,
+        "obv_ma5": 361386199.0,
         "pct_of_high_20d": 0.9248582153093754,
         "prev2_low": 78.36499786376953,
         "prev_3d_low": 77.91999816894531,
@@ -80105,15 +80105,15 @@
         "prev_close": 79.06999969482422,
         "prev_high_20d": 84.63999938964844,
         "prev_ma10": 81.30099868774414,
-        "prev_ma20": 80.56949882507324,
-        "prev_ma240": 69.23658316930135,
+        "prev_ma20": 80.61299896240234,
+        "prev_ma240": 69.2366665204366,
         "prev_ma5": 80.05399932861329,
         "projected_vol_ratio": null,
         "projected_volume": null,
-        "return_20d": -0.04314874568684135,
+        "return_20d": -0.005589461821432606,
         "same_time_vol_ratio": null,
         "today_return": -0.009991158702117198,
-        "vol_ratio": 0.8363505023010064,
+        "vol_ratio": 0.7711742677515203,
         "volume": 4140805.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
@@ -80126,7 +80126,7 @@
       "name": "Block",
       "reasons": [
         {
-          "detail": "close=78.28 MA5=78.87 MA10=80.91 MA20=80.39 MA240=69.23",
+          "detail": "close=78.28 MA5=78.87 MA10=80.91 MA20=80.59 MA240=69.23",
           "passed": false,
           "rule": "\u4eca\u65e5\u7ad9\u4e0a\u5168\u5747\u7dda",
           "weight": 4.5
@@ -80138,31 +80138,31 @@
           "weight": 0.75
         },
         {
-          "detail": "close=78.28 MA5=78.87 MA20=80.39",
+          "detail": "close=78.28 MA5=78.87 MA20=80.59",
           "passed": false,
           "rule": "\u77ed\u7dda\u8da8\u52e2\u78ba\u8a8d (close > MA5 \u4e14 MA5 > MA20)",
           "weight": 1.5
         },
         {
-          "detail": "vol_ratio=0.84 return=-1.00%",
+          "detail": "vol_ratio=0.77 return=-1.00%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 0.75
         },
         {
-          "detail": "OBV_MA5=360999199 OBV_MA20=376056360",
+          "detail": "OBV_MA5=361386199 OBV_MA20=376984625",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 1.0
         },
         {
-          "detail": "stock_20d=-4.31% benchmark_20d=+2.34%",
+          "detail": "stock_20d=-0.56% benchmark_20d=+2.34%",
           "passed": false,
           "rule": "\u76f8\u5c0d\u5f37\u5ea6 20\u65e5 > \u5927\u76e4",
           "weight": 3.0
         },
         {
-          "detail": "macd=0.638 signal=1.260 (prev macd=0.873 signal=1.416)",
+          "detail": "macd=0.730 signal=1.383 (prev macd=0.972 signal=1.547)",
           "passed": false,
           "rule": "MACD \u4f4d\u65bc signal \u4e0a\u65b9\u6216\u4eca\u65e5\u4e0a\u7a7f",
           "score": 0.0,
@@ -80196,7 +80196,7 @@
           "weight": 0.0
         },
         {
-          "detail": "close=78.28 MA20=80.39",
+          "detail": "close=78.28 MA20=80.59",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u8dcc\u7834 20 \u65e5\u7dda",
           "score": -0.12,
@@ -80224,7 +80224,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.84 return=-1.00%",
+          "detail": "vol_ratio=0.77 return=-1.00%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
