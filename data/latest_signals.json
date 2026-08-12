@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-12T11:09:33.551970+00:00",
+  "generated_at": "2026-08-12T11:57:49.290378+00:00",
   "last_run": {
-    "tw": "2026-08-12T11:09:33.551970+00:00",
-    "tw_eod": "2026-08-12T11:09:33.551970+00:00",
+    "tw": "2026-08-12T11:57:49.290378+00:00",
+    "tw_eod": "2026-08-12T11:57:49.290378+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
     "us": "2026-08-11T23:59:04.334587+00:00",
     "us_eod": "2026-08-11T23:59:04.334587+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-08-12T11:11:24.448849+00:00",
+    "generated_at": "2026-08-12T11:59:45.020305+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -66,54 +66,54 @@
           },
           {
             "above_all_mas": false,
-            "as_of": "2024-10-12",
-            "close": 269.45001220703125,
+            "as_of": "2026-07-17",
+            "close": 378.44000244140625,
             "indicators": {
               "big_bull_low": null,
-              "close": 269.45001220703125,
-              "high_20d": null,
-              "high_5d": null,
-              "ma10": null,
-              "ma20": null,
-              "ma240": null,
-              "ma5": null,
-              "macd": null,
-              "macd_hist": null,
-              "macd_prev": null,
-              "macd_signal": null,
-              "macd_signal_prev": null,
-              "obv": 0.0,
-              "obv_ma20": null,
-              "obv_ma5": null,
-              "pct_of_high_20d": null,
-              "prev2_low": null,
-              "prev_3d_low": null,
-              "prev_5d_low": null,
-              "prev_close": null,
-              "prev_high_20d": null,
-              "prev_ma10": null,
-              "prev_ma20": null,
-              "prev_ma240": null,
-              "prev_ma5": null,
+              "close": 378.44000244140625,
+              "high_20d": 453.5,
+              "high_5d": 419.8999938964844,
+              "ma10": 418.02000122070314,
+              "ma20": 426.4700012207031,
+              "ma240": 312.6159995396932,
+              "ma5": 405.83400268554686,
+              "macd": -6.016515246711549,
+              "macd_hist": -5.298892355751823,
+              "macd_prev": -2.8269074493985045,
+              "macd_signal": -0.7176228909597262,
+              "macd_signal_prev": 0.6071001979782296,
+              "obv": 86468500.0,
+              "obv_ma20": 88199100.0,
+              "obv_ma5": 87755900.0,
+              "pct_of_high_20d": 0.834487326221403,
+              "prev2_low": 409.9100036621094,
+              "prev_3d_low": 390.989990234375,
+              "prev_5d_low": 390.989990234375,
+              "prev_close": 407.010009765625,
+              "prev_high_20d": 453.5,
+              "prev_ma10": 424.127001953125,
+              "prev_ma20": 429.21500091552736,
+              "prev_ma240": 312.0166245142619,
+              "prev_ma5": 415.1440002441406,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": null,
+              "return_20d": -0.1266903455956946,
               "same_time_vol_ratio": null,
-              "today_return": null,
-              "vol_ratio": null,
-              "volume": 0.0,
+              "today_return": -0.0701948518186829,
+              "vol_ratio": 0.8102357490736696,
+              "volume": 1001500.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": null,
-            "ma20": null,
-            "ma240": null,
-            "ma5": null,
+            "ma10": 418.02000122070314,
+            "ma20": 426.4700012207031,
+            "ma240": 312.6159995396932,
+            "ma5": 405.83400268554686,
             "name": "\u6ac3\u8cb7\u6307\u6578",
             "status": "ok",
             "symbol": "^TWOII",
-            "today_return": null
+            "today_return": -0.0701948518186829
           }
         ],
         "strategy": {
@@ -252,33 +252,33 @@
             "indicators": {
               "big_bull_low": null,
               "close": 12098.4697265625,
-              "high_20d": 12967.16015625,
+              "high_20d": 12410.669921875,
               "high_5d": 12356.7900390625,
-              "ma10": 11690.24599609375,
-              "ma20": 11914.0529296875,
-              "ma240": 8817.975413004557,
+              "ma10": 11717.78603515625,
+              "ma20": 11819.104931640624,
+              "ma240": 8896.138873291016,
               "ma5": 12101.3380859375,
-              "macd": -175.12681686645737,
-              "macd_hist": 93.6487443938313,
-              "macd_prev": -204.6612987416138,
-              "macd_signal": -268.77556126028867,
-              "macd_signal_prev": -292.1877473587465,
+              "macd": -143.14415724571336,
+              "macd_hist": 106.17717063392661,
+              "macd_prev": -172.08316286640002,
+              "macd_signal": -249.32132787963997,
+              "macd_signal_prev": -275.8656205381216,
               "obv": 0.0,
               "obv_ma20": 0.0,
               "obv_ma5": 0.0,
-              "pct_of_high_20d": 0.933008429045368,
+              "pct_of_high_20d": 0.9748442108864552,
               "prev2_low": 12082.6298828125,
               "prev_3d_low": 11707.7802734375,
               "prev_5d_low": 11707.7802734375,
               "prev_close": 11993.8603515625,
-              "prev_high_20d": 12967.16015625,
-              "prev_ma10": 11635.88701171875,
-              "prev_ma20": 11957.129443359376,
-              "prev_ma240": 8790.912038167318,
+              "prev_high_20d": 12661.9296875,
+              "prev_ma10": 11611.50703125,
+              "prev_ma20": 11847.2779296875,
+              "prev_ma240": 8869.928249104818,
               "prev_ma5": 12117.49609375,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": -0.0664761013454861,
+              "return_20d": -0.04450032300319551,
               "same_time_vol_ratio": null,
               "today_return": 0.008721910371948915,
               "vol_ratio": null,
@@ -287,9 +287,9 @@
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 11690.24599609375,
-            "ma20": 11914.0529296875,
-            "ma240": 8817.975413004557,
+            "ma10": 11717.78603515625,
+            "ma20": 11819.104931640624,
+            "ma240": 8896.138873291016,
             "ma5": 12101.3380859375,
             "name": "\u8cbb\u534a",
             "status": "ok",
@@ -5553,9 +5553,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u5ddd\u6e56",
       "reasons": [
@@ -5578,10 +5578,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.57 return=-2.19%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=63088779 OBV_MA20=62126235",
@@ -5671,7 +5672,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.57 return=-2.19%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -13942,7 +13943,7 @@
         "foreign_pct_of_volume": 0.06290027517092797,
         "foreign_streak_days": 2,
         "trust_buy_first_day": false,
-        "trust_streak_days": 0
+        "trust_streak_days": 5
       },
       "fundamental": {
         "pb": 18.61,
@@ -13987,9 +13988,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u5168\u65b0",
       "reasons": [
@@ -14012,10 +14013,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.45 return=4.63%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=404730005 OBV_MA20=431980744",
@@ -14050,10 +14052,10 @@
           "weight": 1.5
         },
         {
-          "detail": "streak=0 \u65e5, first_day=False",
-          "passed": false,
+          "detail": "streak=5 \u65e5, first_day=False",
+          "passed": true,
           "rule": "\u6295\u4fe1\u9023\u7e8c\u8cb7\u8d85 \u2265 3 \u65e5",
-          "score": 0.0,
+          "score": 1.5,
           "weight": 2.0
         },
         {
@@ -14105,7 +14107,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.45 return=4.63%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -14119,7 +14121,7 @@
           "weight": 0.0
         }
       ],
-      "score": 7.88,
+      "score": 9.65,
       "score_regime": {
         "as_of": "2026-08-12",
         "benchmark": "0050.TW",
@@ -19060,9 +19062,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u6676\u8c6a\u79d1",
       "reasons": [
@@ -19085,10 +19087,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.34 return=2.43%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=682130643 OBV_MA20=650928805",
@@ -19178,7 +19181,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.34 return=2.43%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -20825,9 +20828,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 18.25,
+      "max_score": 16.0,
       "mode": "eod",
       "name": "\u79be\u4f38\u5802",
       "reasons": [
@@ -20850,10 +20853,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=3.84 return=6.04%",
-          "passed": true,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
+          "passed": false,
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=244668980 OBV_MA20=226697723",
@@ -20936,7 +20940,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=3.84 return=6.04%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -20950,7 +20954,7 @@
           "weight": 0.0
         }
       ],
-      "score": 4.5,
+      "score": 2.25,
       "score_regime": {
         "as_of": "2026-08-12",
         "benchmark": "0050.TW",
@@ -21783,9 +21787,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u6b23\u8208",
       "reasons": [
@@ -21808,10 +21812,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.35 return=0.81%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=2431667465 OBV_MA20=2343215827",
@@ -21901,7 +21906,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.35 return=0.81%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -23470,9 +23475,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u666f\u78a9",
       "reasons": [
@@ -23495,10 +23500,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.27 return=1.90%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=1377860005 OBV_MA20=1346457165",
@@ -23588,7 +23594,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.27 return=1.90%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -29390,9 +29396,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u5065\u7b56",
       "reasons": [
@@ -29415,10 +29421,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.51 return=9.96%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=43609733 OBV_MA20=41434154",
@@ -29508,7 +29515,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.51 return=9.96%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -45025,9 +45032,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u611b\u666e*",
       "reasons": [
@@ -45050,10 +45057,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.45 return=5.66%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=127508224 OBV_MA20=130467394",
@@ -45143,7 +45151,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.45 return=5.66%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -53015,9 +53023,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 19.75,
+      "max_score": 17.5,
       "mode": "eod",
       "name": "\u5357\u96fb",
       "reasons": [
@@ -53040,10 +53048,11 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.08 return=10.00%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 2.25
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=575567468 OBV_MA20=600360277",
@@ -53133,7 +53142,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.08 return=10.00%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
