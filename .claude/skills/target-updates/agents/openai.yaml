@@ -1,0 +1,7 @@
+interface:
+  display_name: "Stock Screener Targets"
+  short_description: "Store manual target updates"
+  default_prompt: "Use $target-updates to parse manual TW or US target updates, add missing watchlist tickers, merge JSONL events, test, commit, and push."
+
+policy:
+  allow_implicit_invocation: true
