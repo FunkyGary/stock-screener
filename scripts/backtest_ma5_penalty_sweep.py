@@ -27,10 +27,10 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-import scripts.backtest_tw_exit_strategy as tw_exit
-import scripts.backtest_us_exit_strategy as us_exit
-from scripts.backtest_tw_strategy import _load_tw_symbols
-from scripts.backtest_us_strategy import _load_us_symbols
+import scripts.backtest_tw_exit_strategy as tw_exit  # noqa: E402
+import scripts.backtest_us_exit_strategy as us_exit  # noqa: E402
+from scripts.backtest_tw_strategy import _load_tw_symbols  # noqa: E402
+from scripts.backtest_us_strategy import _load_us_symbols  # noqa: E402
 
 
 # (label, ma5_weight, ma10_weight) for the graded penalty. Other sell-pressure
