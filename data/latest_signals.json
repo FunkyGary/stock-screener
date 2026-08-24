@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-24T10:52:03.079993+00:00",
+  "generated_at": "2026-08-24T11:43:01.938988+00:00",
   "last_run": {
-    "tw": "2026-08-24T10:52:03.079993+00:00",
-    "tw_eod": "2026-08-24T10:52:03.079993+00:00",
+    "tw": "2026-08-24T11:43:01.938988+00:00",
+    "tw_eod": "2026-08-24T11:43:01.938988+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
     "us": "2026-08-21T23:37:08.918915+00:00",
     "us_eod": "2026-08-21T23:37:08.918915+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-08-24T10:53:50.130294+00:00",
+    "generated_at": "2026-08-24T11:44:59.575145+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -14375,9 +14375,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 18.5,
+      "max_score": 17.0,
       "mode": "eod",
       "name": "\u5168\u65b0",
       "reasons": [
@@ -14400,10 +14400,11 @@
           "weight": 2.25
         },
         {
-          "detail": "vol_ratio=0.29 return=-6.03%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 1.5
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=442810605 OBV_MA20=427647954",
@@ -14493,7 +14494,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.29 return=-6.03%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -54301,9 +54302,9 @@
         "volume_projection_reliable": false,
         "volume_projection_source": null
       },
-      "is_disposition": false,
+      "is_disposition": true,
       "market": "tw",
-      "max_score": 17.0,
+      "max_score": 15.5,
       "mode": "eod",
       "name": "\u9577\u5ee3",
       "reasons": [
@@ -54326,10 +54327,11 @@
           "weight": 2.25
         },
         {
-          "detail": "vol_ratio=0.56 return=0.53%",
+          "detail": "disposition stock \u2014 volume surge rule excluded from score and max_score",
           "passed": false,
-          "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
-          "weight": 1.5
+          "rule": "\u8655\u7f6e\u80a1\uff1a\u7206\u91cf\u4e0a\u6f32\u6307\u6a19\u4e0d\u8a08\u5165",
+          "score": 0.0,
+          "weight": 0.0
         },
         {
           "detail": "OBV_MA5=28792826 OBV_MA20=22483365",
@@ -54412,7 +54414,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.56 return=0.53%",
+          "detail": "disposition stock \u2014 excluded",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -54426,7 +54428,7 @@
           "weight": 0.0
         }
       ],
-      "score": 4.73,
+      "score": 4.82,
       "score_regime": {
         "as_of": "2026-08-24",
         "benchmark": "0050.TW",
