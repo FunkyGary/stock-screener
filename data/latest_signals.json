@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-28T21:10:54.687985+00:00",
+  "generated_at": "2026-08-28T21:22:16.838664+00:00",
   "last_run": {
-    "tw": "2026-08-28T21:10:54.687985+00:00",
-    "tw_eod": "2026-08-28T21:10:54.687985+00:00",
+    "tw": "2026-08-28T21:22:16.838664+00:00",
+    "tw_eod": "2026-08-28T21:22:16.838664+00:00",
     "tw_intraday": "2026-07-15T01:56:20.329430+00:00",
     "us": "2026-08-28T06:55:41.539756+00:00",
     "us_eod": "2026-08-28T06:55:41.539756+00:00",
     "us_intraday": "2026-07-09T14:16:13.619937+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-08-28T21:13:09.887180+00:00",
+    "generated_at": "2026-08-28T21:23:48.991054+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -66,54 +66,54 @@
           },
           {
             "above_all_mas": false,
-            "as_of": "2024-10-12",
-            "close": 269.45001220703125,
+            "as_of": "2026-07-17",
+            "close": 378.44000244140625,
             "indicators": {
               "big_bull_low": null,
-              "close": 269.45001220703125,
-              "high_20d": null,
-              "high_5d": null,
-              "ma10": null,
-              "ma20": null,
-              "ma240": null,
-              "ma5": null,
-              "macd": null,
-              "macd_hist": null,
-              "macd_prev": null,
-              "macd_signal": null,
-              "macd_signal_prev": null,
-              "obv": 0.0,
-              "obv_ma20": null,
-              "obv_ma5": null,
-              "pct_of_high_20d": null,
-              "prev2_low": null,
-              "prev_3d_low": null,
-              "prev_5d_low": null,
-              "prev_close": null,
-              "prev_high_20d": null,
-              "prev_ma10": null,
-              "prev_ma20": null,
-              "prev_ma240": null,
-              "prev_ma5": null,
+              "close": 378.44000244140625,
+              "high_20d": 453.5,
+              "high_5d": 419.8999938964844,
+              "ma10": 418.02000122070314,
+              "ma20": 426.4700012207031,
+              "ma240": 312.6159995396932,
+              "ma5": 405.83400268554686,
+              "macd": -6.016515246711549,
+              "macd_hist": -5.298892355751823,
+              "macd_prev": -2.8269074493985045,
+              "macd_signal": -0.7176228909597262,
+              "macd_signal_prev": 0.6071001979782296,
+              "obv": 78936700.0,
+              "obv_ma20": 80667300.0,
+              "obv_ma5": 80224100.0,
+              "pct_of_high_20d": 0.834487326221403,
+              "prev2_low": 409.9100036621094,
+              "prev_3d_low": 390.989990234375,
+              "prev_5d_low": 390.989990234375,
+              "prev_close": 407.010009765625,
+              "prev_high_20d": 453.5,
+              "prev_ma10": 424.127001953125,
+              "prev_ma20": 429.21500091552736,
+              "prev_ma240": 312.0166245142619,
+              "prev_ma5": 415.1440002441406,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": null,
+              "return_20d": -0.1266903455956946,
               "same_time_vol_ratio": null,
-              "today_return": null,
-              "vol_ratio": null,
-              "volume": 0.0,
+              "today_return": -0.0701948518186829,
+              "vol_ratio": 0.8102357490736696,
+              "volume": 1001500.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": null,
-            "ma20": null,
-            "ma240": null,
-            "ma5": null,
+            "ma10": 418.02000122070314,
+            "ma20": 426.4700012207031,
+            "ma240": 312.6159995396932,
+            "ma5": 405.83400268554686,
             "name": "\u6ac3\u8cb7\u6307\u6578",
             "status": "ok",
             "symbol": "^TWOII",
-            "today_return": null
+            "today_return": -0.0701948518186829
           }
         ],
         "strategy": {
@@ -212,9 +212,9 @@
               "macd_prev": 108.02192647774791,
               "macd_signal": 130.79841031188116,
               "macd_signal_prev": 135.79357311620603,
-              "obv": 547469853000.0,
-              "obv_ma20": 558021616650.0,
-              "obv_ma5": 550324718600.0,
+              "obv": 547442736000.0,
+              "obv_ma20": 558020260800.0,
+              "obv_ma5": 550319295200.0,
               "pct_of_high_20d": 0.9850537241774866,
               "prev2_low": 26021.630859375,
               "prev_3d_low": 26021.630859375,
@@ -230,8 +230,8 @@
               "return_20d": 0.040536782340270916,
               "same_time_vol_ratio": null,
               "today_return": -0.0052343148820483965,
-              "vol_ratio": 0.9277155488679851,
-              "volume": 7493227000.0,
+              "vol_ratio": 0.9309165616679193,
+              "volume": 7520344000.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
@@ -354,7 +354,7 @@
       },
       "fundamental": {
         "pb": 0.7,
-        "pe": 38.48,
+        "pe": 38.23,
         "source": "twse"
       },
       "indicators": {
@@ -587,8 +587,8 @@
         "trust_streak_days": 7
       },
       "fundamental": {
-        "pb": 3.78,
-        "pe": 36.69,
+        "pb": 3.66,
+        "pe": 35.56,
         "source": "twse"
       },
       "indicators": {
@@ -783,7 +783,7 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.78,
+        "pb": 0.76,
         "pe": null,
         "source": "twse"
       },
@@ -1017,8 +1017,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.79,
-        "pe": 13.26,
+        "pb": 1.8,
+        "pe": 13.33,
         "source": "twse"
       },
       "indicators": {
@@ -1230,8 +1230,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.71,
-        "pe": 26.78,
+        "pb": 0.7,
+        "pe": 26.31,
         "source": "twse"
       },
       "indicators": {
@@ -1464,8 +1464,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 2.97,
-        "pe": 13.01,
+        "pb": 2.95,
+        "pe": 12.9,
         "source": "twse"
       },
       "indicators": {
@@ -1720,8 +1720,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.55,
-        "pe": 13.55,
+        "pb": 3.5,
+        "pe": 13.34,
         "source": "twse"
       },
       "indicators": {
@@ -1937,8 +1937,8 @@
         "trust_streak_days": 3
       },
       "fundamental": {
-        "pb": 2.86,
-        "pe": 29.27,
+        "pb": 2.77,
+        "pe": 28.31,
         "source": "twse"
       },
       "indicators": {
@@ -2173,8 +2173,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.05,
-        "pe": 19.18,
+        "pb": 3.99,
+        "pe": 18.9,
         "source": "twse"
       },
       "indicators": {
@@ -2607,8 +2607,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 26.42,
-        "pe": 50.39,
+        "pb": 25.91,
+        "pe": 49.41,
         "source": "twse"
       },
       "indicators": {
@@ -2852,8 +2852,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 11.39,
-        "pe": 58.67,
+        "pb": 11.47,
+        "pe": 59.1,
         "source": "twse"
       },
       "indicators": {
@@ -3086,8 +3086,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.48,
-        "pe": 23.64,
+        "pb": 1.5,
+        "pe": 23.93,
         "source": "twse"
       },
       "indicators": {
@@ -3299,8 +3299,8 @@
         "trust_streak_days": 4
       },
       "fundamental": {
-        "pb": 5.4,
-        "pe": 28.43,
+        "pb": 5.16,
+        "pe": 27.19,
         "source": "twse"
       },
       "indicators": {
@@ -3516,8 +3516,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.51,
-        "pe": 27.85,
+        "pb": 2.5,
+        "pe": 27.75,
         "source": "twse"
       },
       "indicators": {
@@ -3952,8 +3952,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.12,
-        "pe": 13.71,
+        "pb": 2.11,
+        "pe": 13.64,
         "source": "twse"
       },
       "indicators": {
@@ -4169,8 +4169,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.33,
-        "pe": 68.84,
+        "pb": 3.42,
+        "pe": 70.7,
         "source": "twse"
       },
       "indicators": {
@@ -4606,8 +4606,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.73,
-        "pe": 10.73,
+        "pb": 1.72,
+        "pe": 10.7,
         "source": "twse"
       },
       "indicators": {
@@ -4832,8 +4832,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.43,
-        "pe": 9.6,
+        "pb": 1.42,
+        "pe": 9.55,
         "source": "twse"
       },
       "indicators": {
@@ -5056,8 +5056,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.25,
-        "pe": 54.47,
+        "pb": 3.2,
+        "pe": 53.64,
         "source": "twse"
       },
       "indicators": {
@@ -5312,8 +5312,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 40.49,
-        "pe": 79.06,
+        "pb": 40.37,
+        "pe": 78.84,
         "source": "twse"
       },
       "indicators": {
@@ -5529,8 +5529,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.58,
-        "pe": 5.73,
+        "pb": 1.52,
+        "pe": 5.53,
         "source": "twse"
       },
       "indicators": {
@@ -5753,8 +5753,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.54,
-        "pe": 25.7,
+        "pb": 2.51,
+        "pe": 25.41,
         "source": "twse"
       },
       "indicators": {
@@ -5966,8 +5966,8 @@
         "trust_streak_days": 8
       },
       "fundamental": {
-        "pb": 7.13,
-        "pe": 35.2,
+        "pb": 7.52,
+        "pe": 37.13,
         "source": "twse"
       },
       "indicators": {
@@ -6183,8 +6183,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 3.35,
-        "pe": 17.82,
+        "pb": 3.67,
+        "pe": 19.55,
         "source": "twse"
       },
       "indicators": {
@@ -6430,8 +6430,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 15.65,
-        "pe": 56.33,
+        "pb": 16.18,
+        "pe": 58.24,
         "source": "twse"
       },
       "indicators": {
@@ -6679,8 +6679,8 @@
         "trust_streak_days": 7
       },
       "fundamental": {
-        "pb": 5.99,
-        "pe": 39.29,
+        "pb": 5.91,
+        "pe": 38.81,
         "source": "twse"
       },
       "indicators": {
@@ -6972,8 +6972,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.85,
-        "pe": 16.61,
+        "pb": 1.86,
+        "pe": 16.68,
         "source": "twse"
       },
       "indicators": {
@@ -7206,8 +7206,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.23,
-        "pe": 19.97,
+        "pb": 1.22,
+        "pe": 19.95,
         "source": "twse"
       },
       "indicators": {
@@ -7454,8 +7454,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 6.45,
-        "pe": 37.37,
+        "pb": 6.94,
+        "pe": 40.2,
         "source": "twse"
       },
       "indicators": {
@@ -7712,8 +7712,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 9.72,
-        "pe": 27.94,
+        "pb": 9.76,
+        "pe": 28.05,
         "source": "twse"
       },
       "indicators": {
@@ -7961,8 +7961,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.08,
-        "pe": 30.21,
+        "pb": 4.04,
+        "pe": 29.98,
         "source": "twse"
       },
       "indicators": {
@@ -8211,8 +8211,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.07,
-        "pe": 20.51,
+        "pb": 4.95,
+        "pe": 20.01,
         "source": "twse"
       },
       "indicators": {
@@ -8445,8 +8445,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 16.92,
-        "pe": 32.84,
+        "pb": 17.2,
+        "pe": 33.39,
         "source": "twse"
       },
       "indicators": {
@@ -8680,7 +8680,7 @@
       },
       "fundamental": {
         "pb": 1.67,
-        "pe": 11.87,
+        "pe": 11.83,
         "source": "twse"
       },
       "indicators": {
@@ -8896,8 +8896,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.69,
-        "pe": 61.38,
+        "pb": 5.68,
+        "pe": 61.25,
         "source": "twse"
       },
       "indicators": {
@@ -9113,8 +9113,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.22,
-        "pe": 18.57,
+        "pb": 1.2,
+        "pe": 18.36,
         "source": "twse"
       },
       "indicators": {
@@ -9330,8 +9330,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 3.03,
-        "pe": 21.16,
+        "pb": 3.0,
+        "pe": 20.94,
         "source": "twse"
       },
       "indicators": {
@@ -9577,8 +9577,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 2.39,
-        "pe": 14.15,
+        "pb": 2.38,
+        "pe": 14.11,
         "source": "twse"
       },
       "indicators": {
@@ -9794,8 +9794,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 25.55,
-        "pe": 50.77,
+        "pb": 25.81,
+        "pe": 51.28,
         "source": "twse"
       },
       "indicators": {
@@ -10011,8 +10011,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 12.64,
-        "pe": 36.97,
+        "pb": 13.87,
+        "pe": 40.56,
         "source": "twse"
       },
       "indicators": {
@@ -10228,8 +10228,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.47,
-        "pe": 12.91,
+        "pb": 3.51,
+        "pe": 13.06,
         "source": "twse"
       },
       "indicators": {
@@ -10709,8 +10709,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 7.46,
-        "pe": 26.47,
+        "pb": 7.38,
+        "pe": 26.18,
         "source": "twse"
       },
       "indicators": {
@@ -10954,8 +10954,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 5.28,
-        "pe": 14.53,
+        "pb": 5.26,
+        "pe": 14.49,
         "source": "twse"
       },
       "indicators": {
@@ -11223,8 +11223,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 33.78,
-        "pe": 86.0,
+        "pb": 33.72,
+        "pe": 85.85,
         "source": "twse"
       },
       "indicators": {
@@ -11657,8 +11657,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 10.6,
-        "pe": 42.75,
+        "pb": 10.51,
+        "pe": 42.37,
         "source": "twse"
       },
       "indicators": {
@@ -11962,8 +11962,8 @@
         "trust_streak_days": 3
       },
       "fundamental": {
-        "pb": 5.79,
-        "pe": 20.99,
+        "pb": 5.78,
+        "pe": 20.95,
         "source": "twse"
       },
       "indicators": {
@@ -12179,8 +12179,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.23,
-        "pe": 105.21,
+        "pb": 1.26,
+        "pe": 107.71,
         "source": "twse"
       },
       "indicators": {
@@ -12614,7 +12614,7 @@
       },
       "fundamental": {
         "pb": 2.83,
-        "pe": 12.39,
+        "pe": 12.41,
         "source": "twse"
       },
       "indicators": {
@@ -12847,8 +12847,8 @@
         "trust_streak_days": 4
       },
       "fundamental": {
-        "pb": 4.83,
-        "pe": 32.44,
+        "pb": 5.27,
+        "pe": 35.39,
         "source": "twse"
       },
       "indicators": {
@@ -13092,8 +13092,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.34,
-        "pe": 5.18,
+        "pb": 3.3,
+        "pe": 5.11,
         "source": "twse"
       },
       "indicators": {
@@ -13339,8 +13339,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 14.54,
-        "pe": 63.83,
+        "pb": 14.99,
+        "pe": 65.81,
         "source": "twse"
       },
       "indicators": {
@@ -13573,8 +13573,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 21.92,
-        "pe": 106.13,
+        "pb": 21.97,
+        "pe": 106.37,
         "source": "twse"
       },
       "indicators": {
@@ -13791,8 +13791,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.56,
-        "pe": 12.96,
+        "pb": 3.54,
+        "pe": 12.87,
         "source": "twse"
       },
       "indicators": {
@@ -14008,8 +14008,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.83,
-        "pe": 58.38,
+        "pb": 6.08,
+        "pe": 60.88,
         "source": "twse"
       },
       "indicators": {
@@ -14225,8 +14225,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.08,
-        "pe": 17.87,
+        "pb": 5.1,
+        "pe": 17.92,
         "source": "twse"
       },
       "indicators": {
@@ -14421,8 +14421,8 @@
         "trust_streak_days": 4
       },
       "fundamental": {
-        "pb": 3.72,
-        "pe": 38.86,
+        "pb": 3.91,
+        "pe": 40.85,
         "source": "twse"
       },
       "indicators": {
@@ -14639,7 +14639,7 @@
       },
       "fundamental": {
         "pb": 0.83,
-        "pe": 25.1,
+        "pe": 24.9,
         "source": "twse"
       },
       "indicators": {
@@ -14834,8 +14834,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 0.9,
-        "pe": 9.22,
+        "pb": 0.89,
+        "pe": 9.18,
         "source": "twse"
       },
       "indicators": {
@@ -15051,8 +15051,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.04,
-        "pe": 7.02,
+        "pb": 1.06,
+        "pe": 7.15,
         "source": "twse"
       },
       "indicators": {
@@ -15285,8 +15285,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.56,
-        "pe": 10.96,
+        "pb": 1.51,
+        "pe": 10.65,
         "source": "twse"
       },
       "indicators": {
@@ -15519,8 +15519,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.62,
-        "pe": 13.04,
+        "pb": 0.6,
+        "pe": 12.66,
         "source": "twse"
       },
       "indicators": {
@@ -15745,8 +15745,8 @@
         "trust_streak_days": 4
       },
       "fundamental": {
-        "pb": 1.66,
-        "pe": 9.0,
+        "pb": 1.62,
+        "pe": 8.8,
         "source": "twse"
       },
       "indicators": {
@@ -15979,8 +15979,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.6,
-        "pe": 33.96,
+        "pb": 3.48,
+        "pe": 32.75,
         "source": "twse"
       },
       "indicators": {
@@ -16213,8 +16213,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.42,
-        "pe": 10.52,
+        "pb": 1.39,
+        "pe": 10.24,
         "source": "twse"
       },
       "indicators": {
@@ -16447,8 +16447,8 @@
         "trust_streak_days": 2
       },
       "fundamental": {
-        "pb": 4.98,
-        "pe": 22.77,
+        "pb": 4.86,
+        "pe": 22.19,
         "source": "twse"
       },
       "indicators": {
@@ -16850,7 +16850,7 @@
       },
       "fundamental": {
         "pb": 1.39,
-        "pe": 15.24,
+        "pe": 15.26,
         "source": "twse"
       },
       "indicators": {
@@ -17045,8 +17045,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.51,
-        "pe": 16.19,
+        "pb": 3.45,
+        "pe": 15.87,
         "source": "twse"
       },
       "indicators": {
@@ -17283,8 +17283,8 @@
         "trust_streak_days": 2
       },
       "fundamental": {
-        "pb": 2.17,
-        "pe": 19.46,
+        "pb": 1.77,
+        "pe": 13.46,
         "source": "twse"
       },
       "indicators": {
@@ -17519,8 +17519,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 2.05,
-        "pe": 15.55,
+        "pb": 2.11,
+        "pe": 16.01,
         "source": "twse"
       },
       "indicators": {
@@ -17715,8 +17715,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.2,
-        "pe": 14.8,
+        "pb": 2.23,
+        "pe": 14.99,
         "source": "twse"
       },
       "indicators": {
@@ -17951,8 +17951,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.82,
-        "pe": 15.26,
+        "pb": 1.84,
+        "pe": 15.41,
         "source": "twse"
       },
       "indicators": {
@@ -18402,8 +18402,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.1,
-        "pe": 8.64,
+        "pb": 4.04,
+        "pe": 8.5,
         "source": "twse"
       },
       "indicators": {
@@ -18682,8 +18682,8 @@
         "trust_streak_days": 3
       },
       "fundamental": {
-        "pb": 4.72,
-        "pe": 36.78,
+        "pb": 4.82,
+        "pe": 37.58,
         "source": "twse"
       },
       "indicators": {
@@ -18899,8 +18899,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.28,
-        "pe": 16.84,
+        "pb": 3.34,
+        "pe": 17.15,
         "source": "twse"
       },
       "indicators": {
@@ -19116,8 +19116,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.57,
-        "pe": 83.25,
+        "pb": 5.55,
+        "pe": 83.0,
         "source": "twse"
       },
       "indicators": {
@@ -19409,8 +19409,8 @@
         "trust_streak_days": 8
       },
       "fundamental": {
-        "pb": 23.76,
-        "pe": 44.52,
+        "pb": 23.9,
+        "pe": 44.79,
         "source": "twse"
       },
       "indicators": {
@@ -19626,8 +19626,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.59,
-        "pe": 23.27,
+        "pb": 2.6,
+        "pe": 23.36,
         "source": "twse"
       },
       "indicators": {
@@ -19871,8 +19871,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.73,
-        "pe": 23.93,
+        "pb": 4.68,
+        "pe": 23.71,
         "source": "twse"
       },
       "indicators": {
@@ -20105,8 +20105,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 10.84,
-        "pe": 65.85,
+        "pb": 11.91,
+        "pe": 72.39,
         "source": "twse"
       },
       "indicators": {
@@ -20301,8 +20301,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 4.84,
-        "pe": 19.12,
+        "pb": 4.81,
+        "pe": 19.02,
         "source": "twse"
       },
       "indicators": {
@@ -20518,8 +20518,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.69,
-        "pe": 69.49,
+        "pb": 2.75,
+        "pe": 71.06,
         "source": "twse"
       },
       "indicators": {
@@ -20752,8 +20752,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.97,
-        "pe": 9.91,
+        "pb": 2.0,
+        "pe": 10.06,
         "source": "twse"
       },
       "indicators": {
@@ -21028,8 +21028,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 15.15,
-        "pe": 78.56,
+        "pb": 14.25,
+        "pe": 73.9,
         "source": "twse"
       },
       "indicators": {
@@ -21262,8 +21262,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.14,
-        "pe": 33.16,
+        "pb": 4.07,
+        "pe": 32.56,
         "source": "twse"
       },
       "indicators": {
@@ -21486,8 +21486,8 @@
         "trust_streak_days": 3
       },
       "fundamental": {
-        "pb": 4.54,
-        "pe": 20.61,
+        "pb": 4.62,
+        "pe": 20.99,
         "source": "twse"
       },
       "indicators": {
@@ -21998,8 +21998,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.61,
-        "pe": 22.32,
+        "pb": 2.69,
+        "pe": 23.05,
         "source": "twse"
       },
       "indicators": {
@@ -22890,8 +22890,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 10.83,
-        "pe": 169.57,
+        "pb": 10.65,
+        "pe": 166.79,
         "source": "twse"
       },
       "indicators": {
@@ -23332,8 +23332,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 2.94,
-        "pe": 14.26,
+        "pb": 2.92,
+        "pe": 14.14,
         "source": "twse"
       },
       "indicators": {
@@ -24661,8 +24661,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.83,
-        "pe": 54.62,
+        "pb": 2.84,
+        "pe": 54.87,
         "source": "twse"
       },
       "indicators": {
@@ -25120,8 +25120,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.49,
-        "pe": 144.83,
+        "pb": 2.57,
+        "pe": 149.66,
         "source": "twse"
       },
       "indicators": {
@@ -25600,8 +25600,8 @@
         "trust_streak_days": 7
       },
       "fundamental": {
-        "pb": 58.92,
-        "pe": 151.76,
+        "pb": 59.86,
+        "pe": 154.19,
         "source": "twse"
       },
       "indicators": {
@@ -26023,8 +26023,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.64,
-        "pe": 59.29,
+        "pb": 1.73,
+        "pe": 62.31,
         "source": "twse"
       },
       "indicators": {
@@ -26513,8 +26513,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.32,
-        "pe": 14.08,
+        "pb": 2.34,
+        "pe": 14.21,
         "source": "twse"
       },
       "indicators": {
@@ -27209,8 +27209,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.46,
-        "pe": 19.81,
+        "pb": 4.76,
+        "pe": 21.15,
         "source": "twse"
       },
       "indicators": {
@@ -27454,8 +27454,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 7.99,
-        "pe": 40.67,
+        "pb": 8.04,
+        "pe": 40.9,
         "source": "twse"
       },
       "indicators": {
@@ -27688,8 +27688,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 6.26,
-        "pe": 46.63,
+        "pb": 6.17,
+        "pe": 45.95,
         "source": "twse"
       },
       "indicators": {
@@ -28139,8 +28139,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.14,
-        "pe": 12.31,
+        "pb": 2.16,
+        "pe": 12.42,
         "source": "twse"
       },
       "indicators": {
@@ -28373,8 +28373,8 @@
         "trust_streak_days": 5
       },
       "fundamental": {
-        "pb": 2.34,
-        "pe": 31.45,
+        "pb": 2.57,
+        "pe": 34.47,
         "source": "twse"
       },
       "indicators": {
@@ -28586,8 +28586,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 35.13,
-        "pe": 127.4,
+        "pb": 36.0,
+        "pe": 130.56,
         "source": "twse"
       },
       "indicators": {
@@ -28842,8 +28842,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 5.53,
-        "pe": 56.76,
+        "pb": 5.81,
+        "pe": 59.62,
         "source": "twse"
       },
       "indicators": {
@@ -29098,8 +29098,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 8.09,
-        "pe": 37.73,
+        "pb": 8.9,
+        "pe": 41.5,
         "source": "twse"
       },
       "indicators": {
@@ -29521,8 +29521,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.82,
-        "pe": 8.69,
+        "pb": 1.79,
+        "pe": 8.56,
         "source": "twse"
       },
       "indicators": {
@@ -29738,8 +29738,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.43,
-        "pe": 2.49,
+        "pb": 0.42,
+        "pe": 2.44,
         "source": "twse"
       },
       "indicators": {
@@ -29964,8 +29964,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 6.84,
-        "pe": 43.78,
+        "pb": 7.02,
+        "pe": 44.93,
         "source": "twse"
       },
       "indicators": {
@@ -30181,7 +30181,7 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.16,
+        "pb": 3.39,
         "pe": null,
         "source": "twse"
       },
@@ -31239,8 +31239,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.77,
-        "pe": 9.89,
+        "pb": 1.75,
+        "pe": 9.75,
         "source": "twse"
       },
       "indicators": {
@@ -31456,8 +31456,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.62,
-        "pe": 12.68,
+        "pb": 1.61,
+        "pe": 12.64,
         "source": "twse"
       },
       "indicators": {
@@ -31726,8 +31726,8 @@
         "trust_streak_days": 2
       },
       "fundamental": {
-        "pb": 2.12,
-        "pe": 17.84,
+        "pb": 2.02,
+        "pe": 17.0,
         "source": "twse"
       },
       "indicators": {
@@ -31950,8 +31950,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.14,
-        "pe": 47.57,
+        "pb": 1.13,
+        "pe": 46.93,
         "source": "twse"
       },
       "indicators": {
@@ -32146,8 +32146,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.48,
-        "pe": 17.87,
+        "pb": 2.47,
+        "pe": 17.81,
         "source": "twse"
       },
       "indicators": {
@@ -32580,8 +32580,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 6.02,
-        "pe": 65.7,
+        "pb": 6.03,
+        "pe": 65.85,
         "source": "twse"
       },
       "indicators": {
@@ -32797,8 +32797,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 6.33,
-        "pe": 78.02,
+        "pb": 6.34,
+        "pe": 78.21,
         "source": "twse"
       },
       "indicators": {
@@ -33014,8 +33014,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.81,
-        "pe": 12.56,
+        "pb": 0.8,
+        "pe": 12.46,
         "source": "twse"
       },
       "indicators": {
@@ -33454,8 +33454,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.76,
-        "pe": 25.93,
+        "pb": 1.77,
+        "pe": 26.14,
         "source": "twse"
       },
       "indicators": {
@@ -33721,8 +33721,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.0,
-        "pe": 13.94,
+        "pb": 2.92,
+        "pe": 13.58,
         "source": "twse"
       },
       "indicators": {
@@ -34001,8 +34001,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 3.43,
-        "pe": 56.45,
+        "pb": 3.45,
+        "pe": 56.86,
         "source": "twse"
       },
       "indicators": {
@@ -34218,8 +34218,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.14,
-        "pe": 18.54,
+        "pb": 1.12,
+        "pe": 18.09,
         "source": "twse"
       },
       "indicators": {
@@ -34435,8 +34435,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.2,
-        "pe": 25.3,
+        "pb": 3.14,
+        "pe": 24.86,
         "source": "twse"
       },
       "indicators": {
@@ -35064,8 +35064,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 9.36,
-        "pe": 36.04,
+        "pb": 9.4,
+        "pe": 36.22,
         "source": "twse"
       },
       "indicators": {
@@ -35281,8 +35281,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.18,
-        "pe": 10.92,
+        "pb": 1.16,
+        "pe": 10.7,
         "source": "twse"
       },
       "indicators": {
@@ -35515,8 +35515,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 3.03,
-        "pe": 15.62,
+        "pb": 3.0,
+        "pe": 15.46,
         "source": "twse"
       },
       "indicators": {
@@ -35955,8 +35955,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.78,
-        "pe": 27.18,
+        "pb": 2.76,
+        "pe": 26.99,
         "source": "twse"
       },
       "indicators": {
@@ -36745,8 +36745,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.71,
-        "pe": 19.95,
+        "pb": 4.67,
+        "pe": 19.8,
         "source": "twse"
       },
       "indicators": {
@@ -37164,8 +37164,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.41,
-        "pe": 8.69,
+        "pb": 1.42,
+        "pe": 8.78,
         "source": "twse"
       },
       "indicators": {
@@ -38044,8 +38044,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.21,
-        "pe": 11.8,
+        "pb": 1.18,
+        "pe": 11.51,
         "source": "twse"
       },
       "indicators": {
@@ -38261,8 +38261,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 1.89,
-        "pe": 5.28,
+        "pb": 1.87,
+        "pe": 5.24,
         "source": "twse"
       },
       "indicators": {
@@ -38700,8 +38700,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 6.14,
-        "pe": 22.53,
+        "pb": 6.07,
+        "pe": 22.31,
         "source": "twse"
       },
       "indicators": {
@@ -38934,8 +38934,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.83,
-        "pe": 15.52,
+        "pb": 3.77,
+        "pe": 15.3,
         "source": "twse"
       },
       "indicators": {
@@ -39381,8 +39381,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.58,
-        "pe": 27.43,
+        "pb": 3.71,
+        "pe": 28.42,
         "source": "twse"
       },
       "indicators": {
@@ -39598,8 +39598,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.87,
-        "pe": 23.86,
+        "pb": 4.15,
+        "pe": 25.61,
         "source": "twse"
       },
       "indicators": {
@@ -39815,8 +39815,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.61,
-        "pe": 23.62,
+        "pb": 1.65,
+        "pe": 24.18,
         "source": "twse"
       },
       "indicators": {
@@ -40272,8 +40272,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.0,
-        "pe": 19.42,
+        "pb": 1.97,
+        "pe": 19.15,
         "source": "twse"
       },
       "indicators": {
@@ -40751,8 +40751,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.31,
-        "pe": 26.83,
+        "pb": 3.34,
+        "pe": 27.05,
         "source": "twse"
       },
       "indicators": {
@@ -40985,8 +40985,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 11.6,
-        "pe": 40.49,
+        "pb": 11.43,
+        "pe": 39.91,
         "source": "twse"
       },
       "indicators": {
@@ -41241,8 +41241,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.08,
-        "pe": 16.34,
+        "pb": 2.06,
+        "pe": 16.2,
         "source": "twse"
       },
       "indicators": {
@@ -41475,8 +41475,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.79,
-        "pe": 63.24,
+        "pb": 4.41,
+        "pe": 46.5,
         "source": "twse"
       },
       "indicators": {
@@ -41692,8 +41692,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.92,
-        "pe": 25.74,
+        "pb": 1.96,
+        "pe": 26.17,
         "source": "twse"
       },
       "indicators": {
@@ -41909,8 +41909,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 9.58,
-        "pe": 47.19,
+        "pb": 9.7,
+        "pe": 47.78,
         "source": "twse"
       },
       "indicators": {
@@ -42176,8 +42176,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 15.83,
-        "pe": 76.4,
+        "pb": 15.68,
+        "pe": 75.66,
         "source": "twse"
       },
       "indicators": {
@@ -42421,8 +42421,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.71,
-        "pe": 36.23,
+        "pb": 3.67,
+        "pe": 35.86,
         "source": "twse"
       },
       "indicators": {
@@ -42955,8 +42955,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.49,
-        "pe": 15.64,
+        "pb": 2.5,
+        "pe": 15.72,
         "source": "twse"
       },
       "indicators": {
@@ -43200,8 +43200,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.42,
-        "pe": 12.62,
+        "pb": 1.4,
+        "pe": 12.4,
         "source": "twse"
       },
       "indicators": {
@@ -43619,8 +43619,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 25.81,
-        "pe": 99.95,
+        "pb": 26.42,
+        "pe": 102.32,
         "source": "twse"
       },
       "indicators": {
@@ -43875,8 +43875,8 @@
         "trust_streak_days": 1
       },
       "fundamental": {
-        "pb": 5.42,
-        "pe": 33.83,
+        "pb": 5.51,
+        "pe": 34.39,
         "source": "twse"
       },
       "indicators": {
@@ -44109,8 +44109,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 11.9,
-        "pe": 52.88,
+        "pb": 11.62,
+        "pe": 51.61,
         "source": "twse"
       },
       "indicators": {
@@ -44961,7 +44961,7 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.93,
+        "pb": 1.91,
         "pe": null,
         "source": "twse"
       },
@@ -45442,8 +45442,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 9.28,
-        "pe": 21.85,
+        "pb": 9.8,
+        "pe": 23.08,
         "source": "twse"
       },
       "indicators": {
@@ -45676,8 +45676,8 @@
         "trust_streak_days": 2
       },
       "fundamental": {
-        "pb": 2.49,
-        "pe": 11.34,
+        "pb": 2.45,
+        "pe": 11.13,
         "source": "twse"
       },
       "indicators": {
@@ -45910,8 +45910,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.78,
-        "pe": 42.52,
+        "pb": 4.92,
+        "pe": 43.73,
         "source": "twse"
       },
       "indicators": {
@@ -46724,8 +46724,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.18,
-        "pe": 13.79,
+        "pb": 3.05,
+        "pe": 13.22,
         "source": "twse"
       },
       "indicators": {
@@ -46941,8 +46941,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.28,
-        "pe": 9.76,
+        "pb": 3.21,
+        "pe": 9.57,
         "source": "twse"
       },
       "indicators": {
@@ -47158,8 +47158,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.88,
-        "pe": 12.99,
+        "pb": 0.87,
+        "pe": 12.87,
         "source": "twse"
       },
       "indicators": {
@@ -47403,8 +47403,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.54,
-        "pe": 23.2,
+        "pb": 2.56,
+        "pe": 23.33,
         "source": "twse"
       },
       "indicators": {
@@ -47616,8 +47616,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.46,
-        "pe": 14.76,
+        "pb": 3.43,
+        "pe": 14.64,
         "source": "twse"
       },
       "indicators": {
@@ -47833,8 +47833,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 7.98,
-        "pe": 88.26,
+        "pb": 7.95,
+        "pe": 87.98,
         "source": "twse"
       },
       "indicators": {
@@ -48067,8 +48067,8 @@
         "trust_streak_days": 8
       },
       "fundamental": {
-        "pb": 18.26,
-        "pe": 47.59,
+        "pb": 19.24,
+        "pe": 50.16,
         "source": "twse"
       },
       "indicators": {
@@ -48507,8 +48507,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 14.58,
-        "pe": 107.04,
+        "pb": 15.24,
+        "pe": 111.91,
         "source": "twse"
       },
       "indicators": {
@@ -48724,8 +48724,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.86,
-        "pe": 16.68,
+        "pb": 1.81,
+        "pe": 16.25,
         "source": "twse"
       },
       "indicators": {
@@ -48941,8 +48941,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.29,
-        "pe": 12.55,
+        "pb": 2.27,
+        "pe": 12.4,
         "source": "twse"
       },
       "indicators": {
@@ -49137,7 +49137,7 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 17.4,
+        "pb": 16.82,
         "pe": null,
         "source": "twse"
       },
@@ -49354,8 +49354,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.35,
-        "pe": 62.03,
+        "pb": 5.57,
+        "pe": 64.57,
         "source": "twse"
       },
       "indicators": {
@@ -49777,8 +49777,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.78,
-        "pe": 34.29,
+        "pb": 1.79,
+        "pe": 34.52,
         "source": "twse"
       },
       "indicators": {
@@ -50235,8 +50235,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 13.07,
-        "pe": 42.11,
+        "pb": 12.27,
+        "pe": 39.53,
         "source": "twse"
       },
       "indicators": {
@@ -50658,8 +50658,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 4.79,
-        "pe": 19.66,
+        "pb": 4.76,
+        "pe": 19.53,
         "source": "twse"
       },
       "indicators": {
@@ -50875,8 +50875,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 20.1,
-        "pe": 65.51,
+        "pb": 20.56,
+        "pe": 67.0,
         "source": "twse"
       },
       "indicators": {
@@ -51109,8 +51109,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.15,
-        "pe": 11.16,
+        "pb": 2.17,
+        "pe": 11.26,
         "source": "twse"
       },
       "indicators": {
@@ -51322,8 +51322,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 15.12,
-        "pe": 241.15,
+        "pb": 15.64,
+        "pe": 249.56,
         "source": "twse"
       },
       "indicators": {
@@ -51518,7 +51518,7 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 5.44,
+        "pb": 5.37,
         "pe": null,
         "source": "twse"
       },
@@ -51958,8 +51958,8 @@
         "trust_streak_days": 3
       },
       "fundamental": {
-        "pb": 16.99,
-        "pe": 152.17,
+        "pb": 16.26,
+        "pe": 145.71,
         "source": "twse"
       },
       "indicators": {
@@ -52422,8 +52422,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.76,
-        "pe": 14.22,
+        "pb": 2.74,
+        "pe": 14.14,
         "source": "twse"
       },
       "indicators": {
@@ -53089,8 +53089,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.2,
-        "pe": 19.93,
+        "pb": 2.09,
+        "pe": 18.97,
         "source": "twse"
       },
       "indicators": {
@@ -53306,8 +53306,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.82,
-        "pe": 18.35,
+        "pb": 1.8,
+        "pe": 18.17,
         "source": "twse"
       },
       "indicators": {
@@ -53540,8 +53540,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 2.54,
-        "pe": 28.13,
+        "pb": 2.55,
+        "pe": 28.19,
         "source": "twse"
       },
       "indicators": {
@@ -53963,8 +53963,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 9.65,
-        "pe": 25.16,
+        "pb": 9.95,
+        "pe": 25.95,
         "source": "twse"
       },
       "indicators": {
@@ -54180,8 +54180,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 3.19,
-        "pe": 5.82,
+        "pb": 3.17,
+        "pe": 5.78,
         "source": "twse"
       },
       "indicators": {
@@ -54854,8 +54854,8 @@
         "trust_streak_days": 8
       },
       "fundamental": {
-        "pb": 23.79,
-        "pe": 88.22,
+        "pb": 22.97,
+        "pe": 85.19,
         "source": "twse"
       },
       "indicators": {
@@ -55067,8 +55067,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 0.39,
-        "pe": 5.25,
+        "pb": 0.38,
+        "pe": 5.16,
         "source": "twse"
       },
       "indicators": {
@@ -55285,7 +55285,7 @@
       },
       "fundamental": {
         "pb": 2.85,
-        "pe": 13.88,
+        "pe": 13.86,
         "source": "twse"
       },
       "indicators": {
@@ -55529,8 +55529,8 @@
         "trust_streak_days": 0
       },
       "fundamental": {
-        "pb": 1.29,
-        "pe": 24.46,
+        "pb": 1.27,
+        "pe": 24.09,
         "source": "twse"
       },
       "indicators": {
