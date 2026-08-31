@@ -199,6 +199,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
 
         try:
             ohlcv = fetch.fetch_ohlcv(entry.symbol, intraday=mode == "intraday")
+            snapshot = indicators.compute(ohlcv.df)
         except Exception as exc:
             logger.warning("fetch OHLCV failed for %s: %s", entry.symbol, exc)
             record.update({"status": "fetch_failed", "error": str(exc)})
@@ -207,7 +208,7 @@ def run_market(market: str, mode: str = "eod") -> dict:
 
         ohlcv_by_symbol[entry.symbol] = ohlcv.df
         intraday_by_symbol[entry.symbol] = ohlcv.intraday_df
-        indicator_by_symbol[entry.symbol] = indicators.compute(ohlcv.df)
+        indicator_by_symbol[entry.symbol] = snapshot
 
     if mode == "intraday":
         volume_projection_by_symbol = intraday_volume.project_intraday_volumes(

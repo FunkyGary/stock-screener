@@ -73,6 +73,23 @@ def _validate_ohlcv(df: pd.DataFrame, symbol: str) -> None:
         raise FetchError(f"missing OHLCV columns for {symbol}: {list(df.columns)}")
 
 
+def _drop_null_priced_bars(df: pd.DataFrame, symbol: str) -> pd.DataFrame:
+    """Drop bars whose Close is null.
+
+    Yahoo intermittently serves a daily bar with Volume populated but null
+    OHLC. A null close poisons every rolling mean in `indicators.compute`, so
+    all MAs collapse to None and the whole watchlist silently scores as "no
+    signal" instead of falling back to the last complete session.
+    """
+    cleaned = df.dropna(subset=["Close"])
+    if cleaned.empty:
+        raise FetchError(f"no priced OHLCV bars for {symbol}")
+    dropped = len(df) - len(cleaned)
+    if dropped:
+        logger.warning("dropped %d bar(s) with null Close for %s", dropped, symbol)
+    return cleaned
+
+
 def _merge_intraday_latest(daily: pd.DataFrame, intraday: pd.DataFrame) -> pd.DataFrame:
     """Overlay the latest intraday bar onto the daily frame's current session."""
     if intraday.empty:
@@ -127,6 +144,7 @@ def fetch_ohlcv(
         raise FetchError(f"no OHLCV data for {symbol}")
     df = _normalize_yfinance_columns(df)
     _validate_ohlcv(df, symbol)
+    df = _drop_null_priced_bars(df, symbol)
     intraday_history_df = None
     if intraday:
         history_intervals = [intraday_history_interval]

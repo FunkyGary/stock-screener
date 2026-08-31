@@ -87,6 +87,12 @@ def _macd(close: pd.Series) -> tuple[pd.Series, pd.Series, pd.Series]:
 
 def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     """Compute snapshot from daily OHLCV DataFrame sorted ascending by date."""
+    # Defense in depth against a null-priced bar (see
+    # `fetch._drop_null_priced_bars`): a NaN close would flow into every
+    # rolling window below and blank out all MAs instead of failing loudly.
+    df = df[df["Close"].notna()]
+    if df.empty:
+        raise ValueError("no priced OHLCV bars")
     close = df["Close"]
     open_ = df["Open"]
     low = df["Low"]

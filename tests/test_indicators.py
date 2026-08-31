@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -144,3 +145,22 @@ def test_macd_available_with_enough_history():
     assert snap.macd is not None
     assert snap.macd_signal is not None
     assert snap.macd > 0
+
+
+def test_null_priced_tail_bar_falls_back_to_last_complete_session():
+    """A null close must not NaN-poison the rolling means."""
+    df = _df([10, 11, 12, 13, 14, 15, float("nan")], [100] * 7)
+
+    snap = compute(df)
+
+    assert snap.close == 15
+    assert snap.ma5 == pytest.approx((11 + 12 + 13 + 14 + 15) / 5)
+    assert not np.isnan(snap.close)
+    assert snap.today_return == pytest.approx(15 / 14 - 1)
+
+
+def test_compute_raises_when_no_bar_is_priced():
+    df = _df([float("nan"), float("nan")], [100] * 2)
+
+    with pytest.raises(ValueError):
+        compute(df)

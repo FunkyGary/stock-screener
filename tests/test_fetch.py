@@ -1,6 +1,11 @@
+import numpy as np
 import pandas as pd
+import pytest
 
+from screener import fetch as fetch_module
 from screener.fetch import (
+    FetchError,
+    _drop_null_priced_bars,
     _eps_actuals_from_earnings,
     _eps_surprise_from_earnings,
     _margins_from_income_stmt,
@@ -183,3 +188,46 @@ def test_merge_intraday_latest_overlays_current_session_close():
     assert merged.loc[pd.Timestamp("2026-05-27"), "Low"] == 101.0
     assert merged.loc[pd.Timestamp("2026-05-27"), "Close"] == 107.0
     assert merged.loc[pd.Timestamp("2026-05-27"), "Volume"] == 700.0
+
+
+def _daily_frame(closes: list[float], volumes: list[float]) -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "Open": closes,
+            "High": closes,
+            "Low": closes,
+            "Close": closes,
+            "Volume": volumes,
+        },
+        index=pd.date_range("2026-08-24", periods=len(closes)),
+    )
+
+
+def test_drop_null_priced_bars_drops_volume_only_tail_bar():
+    """Yahoo sometimes serves the newest bar with Volume but null OHLC."""
+    df = _daily_frame([10.0, 11.0, np.nan], [100.0, 200.0, 300.0])
+
+    cleaned = _drop_null_priced_bars(df, "1301.TW")
+
+    assert len(cleaned) == 2
+    assert cleaned["Close"].iloc[-1] == 11.0
+    assert not cleaned["Close"].isna().any()
+
+
+def test_drop_null_priced_bars_raises_when_nothing_priced():
+    df = _daily_frame([np.nan, np.nan], [100.0, 200.0])
+
+    with pytest.raises(FetchError):
+        _drop_null_priced_bars(df, "1301.TW")
+
+
+def test_fetch_ohlcv_never_returns_null_priced_bars(monkeypatch):
+    df = _daily_frame([10.0, 11.0, np.nan], [100.0, 200.0, 300.0])
+    monkeypatch.setattr(
+        fetch_module.yf, "download", lambda *args, **kwargs: df.copy()
+    )
+
+    result = fetch_module.fetch_ohlcv("1301.TW")
+
+    assert not result.df["Close"].isna().any()
+    assert result.df["Close"].iloc[-1] == 11.0
