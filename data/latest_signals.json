@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-02T00:14:32.983843+00:00",
+  "generated_at": "2026-09-02T01:00:58.058936+00:00",
   "last_run": {
     "tw": "2026-09-01T15:27:46.504399+00:00",
     "tw_eod": "2026-09-01T15:27:46.504399+00:00",
     "tw_intraday": "2026-08-31T02:31:01.180559+00:00",
-    "us": "2026-09-02T00:14:32.983843+00:00",
-    "us_eod": "2026-09-02T00:14:32.983843+00:00",
+    "us": "2026-09-02T01:00:58.058936+00:00",
+    "us_eod": "2026-09-02T01:00:58.058936+00:00",
     "us_intraday": "2026-08-31T02:38:16.095797+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-09-02T00:16:08.369183+00:00",
+    "generated_at": "2026-09-02T01:02:32.947488+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -75675,26 +75675,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.14,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.07,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.08,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.06,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -68.4717,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 49.2,
@@ -75956,8 +75939,8 @@
     },
     "ORCL": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9183673469387754,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
@@ -81390,9 +81373,26 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 1.52,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 1.17,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 1.36,
+            "period": "2025-12-31"
+          },
+          {
+            "eps": 1.24,
+            "period": "2025-09-30"
+          }
+        ],
+        "eps_period": "2026-06-30",
+        "eps_surprise_pct": 5.7024,
         "margins": [
           {
             "gm": 37.7,
@@ -81633,8 +81633,8 @@
     },
     "WDAY": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
+        "rating": "Buy",
+        "rating_score": 2.306122448979592,
         "target_price_events": []
       },
       "chip": null,
