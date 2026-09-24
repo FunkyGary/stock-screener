@@ -1,68 +1,68 @@
 {
-  "generated_at": "2026-09-24T00:30:30.784694+00:00",
+  "generated_at": "2026-09-24T01:23:37.911052+00:00",
   "last_run": {
     "tw": "2026-09-23T15:26:33.694699+00:00",
     "tw_eod": "2026-09-23T15:26:33.694699+00:00",
     "tw_intraday": "2026-08-31T02:31:01.180559+00:00",
-    "us": "2026-09-24T00:30:30.784694+00:00",
-    "us_eod": "2026-09-24T00:30:30.784694+00:00",
+    "us": "2026-09-24T01:23:37.911052+00:00",
+    "us_eod": "2026-09-24T01:23:37.911052+00:00",
     "us_intraday": "2026-08-31T02:38:16.095797+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-09-24T00:32:30.056144+00:00",
+    "generated_at": "2026-09-24T01:24:42.313000+00:00",
     "markets": {
       "tw": {
         "indexes": [
           {
             "above_all_mas": true,
-            "as_of": "2026-09-21",
-            "close": 47718.83984375,
+            "as_of": "2026-09-24",
+            "close": 47920.98046875,
             "indicators": {
               "big_bull_low": null,
-              "close": 47718.83984375,
-              "high_20d": 47718.83984375,
-              "high_5d": 47718.83984375,
-              "ma10": 46582.49765625,
-              "ma20": 46405.5345703125,
-              "ma240": 36471.27040201823,
-              "ma5": 46509.5953125,
-              "macd": 443.6315443229905,
-              "macd_hist": 16.55430980061442,
-              "macd_prev": 360.6667893634949,
-              "macd_signal": 427.0772345223761,
-              "macd_signal_prev": 422.93865707222244,
-              "obv": 244862400.0,
-              "obv_ma20": 236757270.0,
-              "obv_ma5": 235467900.0,
+              "close": 47920.98046875,
+              "high_20d": 47920.98046875,
+              "high_5d": 47920.98046875,
+              "ma10": 46664.017578125,
+              "ma20": 46543.110546875,
+              "ma240": 36561.78811035156,
+              "ma5": 46991.49375,
+              "macd": 519.7019686436979,
+              "macd_hist": 74.09978729705739,
+              "macd_prev": 443.6315443229905,
+              "macd_signal": 445.6021813466405,
+              "macd_signal_prev": 427.0772345223761,
+              "obv": 241344600.0,
+              "obv_ma20": 233940500.0,
+              "obv_ma5": 235519800.0,
               "pct_of_high_20d": 1.0,
-              "prev2_low": 45936.109375,
-              "prev_3d_low": 45546.55859375,
-              "prev_5d_low": 45398.4296875,
-              "prev_close": 47180.75,
-              "prev_high_20d": 47326.26953125,
-              "prev_ma10": 46543.240625,
-              "prev_ma20": 46257.70859375,
-              "prev_ma240": 36381.80594075521,
-              "prev_ma5": 46138.33125,
+              "prev2_low": 46449.55859375,
+              "prev_3d_low": 45936.109375,
+              "prev_5d_low": 45491.96875,
+              "prev_close": 47718.83984375,
+              "prev_high_20d": 47718.83984375,
+              "prev_ma10": 46582.49765625,
+              "prev_ma20": 46405.5345703125,
+              "prev_ma240": 36471.27040201823,
+              "prev_ma5": 46509.5953125,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": 0.06604929124785297,
+              "return_20d": 0.06091548303082961,
               "same_time_vol_ratio": null,
-              "today_return": 0.011404859900489006,
-              "vol_ratio": 1.0061701125548133,
-              "volume": 4475500.0,
+              "today_return": 0.004236075848907728,
+              "vol_ratio": 0.0,
+              "volume": 0.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 46582.49765625,
-            "ma20": 46405.5345703125,
-            "ma240": 36471.27040201823,
-            "ma5": 46509.5953125,
+            "ma10": 46664.017578125,
+            "ma20": 46543.110546875,
+            "ma240": 36561.78811035156,
+            "ma5": 46991.49375,
             "name": "\u52a0\u6b0a\u6307\u6578",
             "status": "ok",
             "symbol": "^TWII",
-            "today_return": 0.011404859900489006
+            "today_return": 0.004236075848907728
           },
           {
             "error": "no OHLCV data for ^TWOII",
@@ -72,22 +72,22 @@
           }
         ],
         "strategy": {
-          "as_of": "2026-09-22",
+          "as_of": "2026-09-24",
           "benchmark": "0050.TW",
           "benchmark_name": "\u5143\u5927\u53f0\u706350",
-          "close": 111.8499984741211,
+          "close": 111.94999694824219,
           "drawdown_120d": 0.0,
-          "label": "\u591a\u982d",
-          "ma10": 108.76500015258789,
-          "ma20": 108.08500022888184,
-          "ma240": 84.23187492688497,
-          "ma5": 109.6,
-          "ma60": 105.23666687011719,
+          "label": "\u5340\u9593\u9707\u76ea",
+          "ma10": 108.99499969482422,
+          "ma20": 108.3875,
+          "ma240": 84.45979158083598,
+          "ma5": 110.60999908447266,
+          "ma60": 105.28000017801921,
           "market": "tw",
-          "prev_ma5": 108.48000030517578,
-          "reason": "0050.TW \u4f4d\u65bc MA20/MA60 \u4e0a\u65b9\uff0cMA60 \u9ad8\u65bc\u5e74\u7dda\uff0c\u4e14 60 \u65e5\u5831\u916c\u5927\u65bc 3%\u3002",
-          "return_60d": 0.03756952975612404,
-          "strategy": "bull",
+          "prev_ma5": 109.6,
+          "reason": "\u672a\u9054\u6025\u8dcc\u6216\u5f37\u591a\u982d\u689d\u4ef6\uff0c\u7dad\u6301\u9ad8\u6301\u80a1\u7684\u5340\u9593\u9707\u76ea\u6b0a\u91cd\u3002",
+          "return_60d": 0.023776849660737787,
+          "strategy": "range",
           "thresholds": {
             "bear_downtrend_close_below_ma240": true,
             "bear_downtrend_ma60_below_ma240": true,
@@ -59208,7 +59208,7 @@
           }
         ],
         "pb": 45.79076,
-        "pe": 38.604813,
+        "pe": 38.91686,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -60040,7 +60040,7 @@
           }
         ],
         "pb": 5.563772,
-        "pe": 45.69751,
+        "pe": 46.301685,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -60327,7 +60327,7 @@
           }
         ],
         "pb": 36.238064,
-        "pe": 176.69608,
+        "pe": 178.44554,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -60614,7 +60614,7 @@
           }
         ],
         "pb": 14.690781,
-        "pe": 40.965458,
+        "pe": 40.82444,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -60901,7 +60901,7 @@
           }
         ],
         "pb": 14.920977,
-        "pe": 154.03758,
+        "pe": 156.38931,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -61188,7 +61188,7 @@
           }
         ],
         "pb": 2.8432784,
-        "pe": 23.910313,
+        "pe": 24.458715,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -61741,7 +61741,7 @@
           }
         ],
         "pb": 33.416367,
-        "pe": 24.21275,
+        "pe": 25.260418,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -62868,7 +62868,7 @@
           }
         ],
         "pb": 25.911093,
-        "pe": 71.6595,
+        "pe": 70.89716,
         "revenues": [
           {
             "period": "2026-03-31",
@@ -63155,7 +63155,7 @@
           }
         ],
         "pb": 50.080074,
-        "pe": 362.0921,
+        "pe": 357.38962,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -63421,7 +63421,7 @@
           }
         ],
         "pb": 19.245373,
-        "pe": 35.015957,
+        "pe": 34.850647,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -63712,7 +63712,7 @@
           }
         ],
         "pb": 16.521679,
-        "pe": 79.800446,
+        "pe": 79.09111,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -63999,7 +63999,7 @@
           }
         ],
         "pb": 16.781374,
-        "pe": 37.652447,
+        "pe": 37.03582,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -64265,7 +64265,7 @@
           }
         ],
         "pb": 5.3967686,
-        "pe": 72.7845,
+        "pe": 75.15,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -66092,7 +66092,7 @@
           }
         ],
         "pb": 20.671543,
-        "pe": 513.2449,
+        "pe": 502.98,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -67109,7 +67109,7 @@
           }
         ],
         "pb": 18.810658,
-        "pe": 37.667843,
+        "pe": 37.579315,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -67898,7 +67898,7 @@
           }
         ],
         "pb": 11.635846,
-        "pe": 54.292034,
+        "pe": 55.02242,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -68147,7 +68147,7 @@
           }
         ],
         "pb": 3.12212,
-        "pe": 32.463543,
+        "pe": 32.128864,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -68915,7 +68915,7 @@
           }
         ],
         "pb": 7.758385,
-        "pe": 45.624287,
+        "pe": 46.099533,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -69413,7 +69413,7 @@
           }
         ],
         "pb": 2.5376859,
-        "pe": 14.473843,
+        "pe": 14.58013,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -70430,7 +70430,7 @@
           }
         ],
         "pb": 13.763181,
-        "pe": 19.353743,
+        "pe": 19.268454,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -71219,7 +71219,7 @@
           }
         ],
         "pb": 87.54221,
-        "pe": 30.832598,
+        "pe": 30.79868,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -71468,7 +71468,7 @@
           }
         ],
         "pb": -20.345985,
-        "pe": 35.810593,
+        "pe": 35.957058,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -71717,7 +71717,7 @@
           }
         ],
         "pb": -164.81328,
-        "pe": 19.344156,
+        "pe": 20.317137,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72236,7 +72236,7 @@
           }
         ],
         "pb": 7.258096,
-        "pe": 28.036924,
+        "pe": 28.058067,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72754,8 +72754,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 12.344452,
-        "pe": 84.98371,
+        "pb": 12.540856,
+        "pe": 86.96667,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -73025,7 +73025,7 @@
           }
         ],
         "pb": 8.404097,
-        "pe": 28.075714,
+        "pe": 27.779688,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -73295,7 +73295,7 @@
           }
         ],
         "pb": 12.014572,
-        "pe": 24.206865,
+        "pe": 24.754734,
         "revenues": [
           {
             "period": "2026-05-31",
@@ -74354,7 +74354,7 @@
           }
         ],
         "pb": 23.780449,
-        "pe": 28.473484,
+        "pe": 28.911537,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -74588,26 +74588,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.61,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.05,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 3.35,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.11,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 1.6071,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 57.3,
@@ -74869,32 +74852,15 @@
     },
     "OKLO": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.225806451612903,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.28,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.19,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.27,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.2,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -71.2538,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 40.4,
@@ -75111,93 +75077,15 @@
     },
     "OKTA": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9230769230769231,
-        "target_price_events": [
-          {
-            "date": "2026-09-22",
-            "firm": "Benzinga",
-            "headline": "Baird Maintains Outperform on Okta, Raises Price Target to $200",
-            "previous_target": null,
-            "published_at": "2026-09-22T09:01:06+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 200.0,
-            "upside_pct": 0.045314368295469754,
-            "url": "https://finnhub.io/api/news?id=cb9c05c47d20c049dd939596bed217ca0d0bfaa6c63d20222834676e5dcbb43b"
-          },
-          {
-            "date": "2026-09-21",
-            "firm": "Benzinga",
-            "headline": "Needham Maintains Buy on Okta, Raises Price Target to $230",
-            "previous_target": null,
-            "published_at": "2026-09-21T06:04:01+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 230.0,
-            "upside_pct": 0.20211152353979012,
-            "url": "https://finnhub.io/api/news?id=3470726f8441834913e953022fc58055a859456a4c92ea678e083d48137ba8b2"
-          },
-          {
-            "date": "2026-09-18",
-            "firm": "Benzinga",
-            "headline": "B of A Securities Maintains Neutral on Okta, Raises Price Target to $200",
-            "previous_target": null,
-            "published_at": "2026-09-18T13:56:58+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 200.0,
-            "upside_pct": 0.045314368295469754,
-            "url": "https://finnhub.io/api/news?id=b7716781384fab122294e8f67623af9846b202894ac5e341e75cabf2237c62e3"
-          },
-          {
-            "date": "2026-09-17",
-            "firm": "Benzinga",
-            "headline": "Bernstein Downgrades Okta to Market Perform, Raises Price Target to $174",
-            "previous_target": null,
-            "published_at": "2026-09-17T08:00:02+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 174.0,
-            "upside_pct": -0.09057649958294134,
-            "url": "https://finnhub.io/api/news?id=13a56b2925b751c6c0e3a92bb47bf427d596d7ddce441ecfda4e200a3076bb4b"
-          },
-          {
-            "date": "2026-09-17",
-            "firm": "Benzinga",
-            "headline": "BTIG Maintains Buy on Okta, Raises Price Target to $219",
-            "previous_target": null,
-            "published_at": "2026-09-17T06:03:32+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 219.0,
-            "upside_pct": 0.14461923328353943,
-            "url": "https://finnhub.io/api/news?id=26456f10dc68bd968f21324e49a27a143e5c39b226d42d7c7c27f4da7b98f720"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.05,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.91,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.9,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.82,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 6.4153,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 79.6,
@@ -75231,7 +75119,7 @@
           }
         ],
         "pb": 5.1485443,
-        "pe": 123.710846,
+        "pe": 120.09357,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -75344,8 +75232,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-09-21 Benzinga target 230.00, upside=+20.21%\uff1b 2026-09-17 Benzinga target 219.00, upside=+14.46%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -75413,7 +75301,7 @@
           "weight": 0.0
         }
       ],
-      "score": 14.25,
+      "score": 12.25,
       "score_regime": {
         "as_of": "2026-09-22",
         "benchmark": "SPY",
@@ -75459,32 +75347,15 @@
     },
     "ON": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.3684210526315788,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.74,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.64,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.64,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.63,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 0.5025,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 38.4,
@@ -75518,7 +75389,7 @@
           }
         ],
         "pb": 3.996117,
-        "pe": 48.431374,
+        "pe": 47.19745,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -75746,32 +75617,15 @@
     },
     "ONDS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.7333333333333334,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.14,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.07,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.08,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.06,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -68.4717,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 43.1,
@@ -76033,32 +75887,15 @@
     },
     "ORCL": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9183673469387754,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.92,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 2.03,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.79,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.26,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 8.2422,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 60.0,
@@ -76091,8 +75928,8 @@
             "period": "2025-08-31"
           }
         ],
-        "pb": 11.08589,
-        "pe": 22.622849,
+        "pb": 7.0717154,
+        "pe": 23.353796,
         "revenues": [
           {
             "period": "2026-08-31",
@@ -76320,69 +76157,15 @@
     },
     "PANW": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9841269841269842,
-        "target_price_events": [
-          {
-            "date": "2026-09-21",
-            "firm": "Benzinga",
-            "headline": "Morgan Stanley Maintains Overweight on Palo Alto Networks, Raises Price Target to $410",
-            "previous_target": null,
-            "published_at": "2026-09-21T13:55:29+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 410.0,
-            "upside_pct": 0.10286203257441073,
-            "url": "https://finnhub.io/api/news?id=e95faddfd4f6590b1cdf5633e7e3bd8d8c2e804ae2c95a86b039a3a0bce8603d"
-          },
-          {
-            "date": "2026-09-21",
-            "firm": "Morgan Stanley",
-            "headline": "Morgan Stanley Raises Palo Alto Networks Price Target to $410 on AI Security Demand",
-            "previous_target": null,
-            "published_at": "2026-09-21T10:56:29+00:00",
-            "raise_pct": null,
-            "source": "Yahoo",
-            "target_price": 410.0,
-            "upside_pct": 0.10286203257441073,
-            "url": "https://finnhub.io/api/news?id=61cca6483df03f3837b1f4980521204ec1fdcc39af69644dd7f69c5dd6d34741"
-          },
-          {
-            "date": "2026-09-17",
-            "firm": "Benzinga",
-            "headline": "Bernstein Downgrades Palo Alto Networks to Market Perform, Raises Price Target to $351",
-            "previous_target": null,
-            "published_at": "2026-09-17T07:47:33+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 351.0,
-            "upside_pct": -0.05584250382044342,
-            "url": "https://finnhub.io/api/news?id=7c24f782e532edb1db1d10677cdfbd12f10296e154f099427449c59a7af3c849"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.02,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.85,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.03,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.93,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 2.4199,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.6,
@@ -76529,8 +76312,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-09-21 Benzinga target 410.00, upside=+10.29%\uff1b 2026-09-21 Morgan Stanley target 410.00, upside=+10.29%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -76598,7 +76381,7 @@
           "weight": 0.0
         }
       ],
-      "score": 7.0275,
+      "score": 5.0275,
       "score_regime": {
         "as_of": "2026-09-22",
         "benchmark": "SPY",
@@ -76644,32 +76427,15 @@
     },
     "PINS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.3333333333333335,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.43,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.27,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.67,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.38,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 18.067,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 78.2,
@@ -76910,32 +76676,15 @@
     },
     "PLTR": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.051282051282051,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.41,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.33,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.25,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.21,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 15.6885,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 84.7,
@@ -77197,32 +76946,15 @@
     },
     "QCOM": {
       "analyst": {
-        "rating": "Hold",
-        "rating_score": 2.5510204081632653,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.21,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 2.65,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 3.5,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.0,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -2.746,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 53.1,
@@ -77484,32 +77216,15 @@
     },
     "RKLB": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9230769230769231,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.08,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.07,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.09,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.03,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -4.5752,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 36.1,
@@ -77771,32 +77486,15 @@
     },
     "RTX": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.1666666666666665,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.89,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.78,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.55,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.7,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 12.6274,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 20.8,
@@ -78058,32 +77756,15 @@
     },
     "SHOP": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.0714285714285716,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.42,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.36,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.48,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.34,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 2.464,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 47.7,
@@ -78345,32 +78026,15 @@
     },
     "SNDK": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8181818181818181,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 39.25,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 23.41,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 6.2,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.22,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 11.6977,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 84.6,
@@ -78611,32 +78275,15 @@
     },
     "SNOW": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8620689655172413,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.62,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.39,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.32,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.35,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 36.2039,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.0,
@@ -78898,32 +78545,15 @@
     },
     "SNPS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.90625,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.91,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 3.35,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.77,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.9,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 4.5622,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 72.6,
@@ -78957,7 +78587,7 @@
           }
         ],
         "pb": 2.5405474,
-        "pe": 72.08726,
+        "pe": 71.46366,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -79164,32 +78794,15 @@
     },
     "SPOT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9375,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.61,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.45,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 4.43,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.28,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -6.5655,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 33.4,
@@ -79223,7 +78836,7 @@
           }
         ],
         "pb": 10.713024,
-        "pe": 27.967123,
+        "pe": 27.470398,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -79451,32 +79064,15 @@
     },
     "TSLA": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.459016393442623,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.33,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.41,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.5,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.5,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -36.4284,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 16.8,
@@ -79510,7 +79106,7 @@
           }
         ],
         "pb": 17.282108,
-        "pe": 348.73392,
+        "pe": 345.56363,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -79717,32 +79313,15 @@
     },
     "TSM": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.7674418604651163,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 27.25,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 22.077,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 19.51,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 17.44,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 10.9248,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.7,
@@ -79775,8 +79354,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 91.34057,
-        "pe": 33.276455,
+        "pb": 91.386925,
+        "pe": 33.67798,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -80004,32 +79583,15 @@
     },
     "TXN": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.441860465116279,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.14,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.68,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.27,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.48,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 9.5021,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 61.4,
@@ -80063,7 +79625,7 @@
           }
         ],
         "pb": 13.822441,
-        "pe": 41.49467,
+        "pe": 41.30606,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -80291,8 +79853,8 @@
     },
     "U": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8529411764705883,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
@@ -80873,7 +80435,7 @@
           }
         ],
         "pb": 3.413188,
-        "pe": 23.87717,
+        "pe": 23.985144,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -81371,7 +80933,7 @@
           }
         ],
         "pb": 20.12946,
-        "pe": 56.28507,
+        "pe": 55.78027,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -81620,7 +81182,7 @@
           }
         ],
         "pb": 7.1679273,
-        "pe": 39.181267,
+        "pe": 39.91286,
         "revenues": [
           {
             "period": "2026-07-31",
