@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from screener.indicators import compute
+from screener.indicators import compute, kd
 
 
 def _df(closes: list[float], volumes: list[float]) -> pd.DataFrame:
@@ -164,3 +164,45 @@ def test_compute_raises_when_no_bar_is_priced():
 
     with pytest.raises(ValueError):
         compute(df)
+
+
+def test_kd_matches_hand_computed_recurrence():
+    highs = pd.Series([10, 11, 12, 13, 14, 15, 16, 17, 18, 19], dtype=float)
+    lows = highs - 2
+    closes = highs - 1
+    k, d = kd(highs, lows, closes, period=9)
+    assert k.iloc[:8].isna().all()
+    # bar 8: window high 18, low 8, close 17 -> RSV = 90
+    assert k.iloc[8] == pytest.approx(2 / 3 * 50 + 90 / 3)
+    assert d.iloc[8] == pytest.approx(2 / 3 * 50 + k.iloc[8] / 3)
+    # bar 9: window high 19, low 9, close 18 -> RSV = 90
+    assert k.iloc[9] == pytest.approx(2 / 3 * k.iloc[8] + 90 / 3)
+    assert d.iloc[9] == pytest.approx(2 / 3 * d.iloc[8] + k.iloc[9] / 3)
+
+
+def test_kd_flat_window_holds_previous_reading():
+    highs = pd.Series([10.0] * 12)
+    k, d = kd(highs, highs, highs, period=9)
+    assert k.iloc[8:].tolist() == pytest.approx([50.0] * 4)
+    assert d.iloc[8:].tolist() == pytest.approx([50.0] * 4)
+
+
+def test_compute_exposes_kd_and_prev_values():
+    closes = [100.0 + i for i in range(40)]
+    snap = compute(_df(closes, [1000.0] * 40))
+    assert snap.k is not None and snap.d is not None
+    assert snap.k_prev is not None and snap.d_prev is not None
+    assert snap.k > snap.d  # steady uptrend keeps K above D
+
+
+def test_compute_kd_none_when_history_short():
+    snap = compute(_df([100.0 + i for i in range(20)], [1000.0] * 20))
+    assert snap.k is None and snap.d_prev is None
+
+
+def test_kd_missing_high_stays_nan_instead_of_flat():
+    highs = pd.Series([float("nan")] * 12)
+    lows = pd.Series([10.0] * 12)
+    closes = pd.Series([10.0] * 12)
+    k, d = kd(highs, lows, closes, period=9)
+    assert k.isna().all() and d.isna().all()

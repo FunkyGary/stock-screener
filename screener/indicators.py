@@ -41,6 +41,10 @@ class IndicatorSnapshot:
     macd_hist: Optional[float]
     macd_prev: Optional[float]
     macd_signal_prev: Optional[float]
+    k: Optional[float] = None
+    d: Optional[float] = None
+    k_prev: Optional[float] = None
+    d_prev: Optional[float] = None
     projected_volume: Optional[float] = None
     projected_vol_ratio: Optional[float] = None
     same_time_vol_ratio: Optional[float] = None
@@ -83,6 +87,40 @@ def _macd(close: pd.Series) -> tuple[pd.Series, pd.Series, pd.Series]:
     signal_line = macd_line.ewm(span=9, adjust=False).mean()
     hist = macd_line - signal_line
     return macd_line, signal_line, hist
+
+
+def kd(
+    high: pd.Series, low: pd.Series, close: pd.Series, period: int = 9
+) -> tuple[pd.Series, pd.Series]:
+    """Return (K, D) stochastic series, TW convention 9/3/3.
+
+    RSV = (close - lowest low) / (highest high - lowest low) * 100 over `period`
+    bars; K = 2/3 * K_prev + 1/3 * RSV and D = 2/3 * D_prev + 1/3 * K, both
+    seeded at 50. Bars before `period` are NaN.
+    """
+    lowest = low.rolling(period).min()
+    highest = high.rolling(period).max()
+    span = (highest - lowest).replace(0.0, np.nan)
+    rsv = ((close - lowest) / span * 100.0).to_numpy(dtype=float)
+    k_out = np.full(len(rsv), np.nan)
+    d_out = np.full(len(rsv), np.nan)
+    k_prev = d_prev = 50.0
+    # A complete window with high == low is flat: hold the previous reading.
+    # Any missing high/low/close leaves the bar NaN (NaN == NaN is False).
+    flat = ((highest == lowest) & close.notna()).to_numpy()
+    for idx, value in enumerate(rsv):
+        if np.isnan(value):
+            if not flat[idx]:
+                continue
+            value = k_prev
+        k_prev = 2.0 / 3.0 * k_prev + value / 3.0
+        d_prev = 2.0 / 3.0 * d_prev + k_prev / 3.0
+        k_out[idx] = k_prev
+        d_out[idx] = d_prev
+    return (
+        pd.Series(k_out, index=close.index),
+        pd.Series(d_out, index=close.index),
+    )
 
 
 def compute(df: pd.DataFrame) -> IndicatorSnapshot:
@@ -155,6 +193,14 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
     else:
         macd = macd_signal = macd_hist = macd_prev = macd_signal_prev = None
 
+    # K/D are seeded at 50, so give the smoothing ~3x the 9-bar window to settle.
+    if len(close) >= 30:
+        k_series, d_series = kd(df["High"], low, close)
+        k, d = _safe_last(k_series), _safe_last(d_series)
+        k_prev, d_prev = _safe_at(k_series, -2), _safe_at(d_series, -2)
+    else:
+        k = d = k_prev = d_prev = None
+
     return IndicatorSnapshot(
         close=last_close,
         prev_close=prev_close,
@@ -186,4 +232,8 @@ def compute(df: pd.DataFrame) -> IndicatorSnapshot:
         macd_hist=macd_hist,
         macd_prev=macd_prev,
         macd_signal_prev=macd_signal_prev,
+        k=k,
+        d=d,
+        k_prev=k_prev,
+        d_prev=d_prev,
     )

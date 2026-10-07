@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from screener.fetch import AnalystSnapshot  # noqa: E402
-from screener.indicators import IndicatorSnapshot  # noqa: E402
+from screener.indicators import IndicatorSnapshot, kd  # noqa: E402
 from screener.score import score  # noqa: E402
 
 
@@ -41,7 +41,12 @@ SLOPE_WEIGHT_KEYS = (
     "ma120_up",
     "ma240_up",
 )
-WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS) + SLOPE_WEIGHT_KEYS
+KD_WEIGHT_KEYS = ("kd_cross", "kd_cross_low", "kd_above")
+KD_LOW_ZONE = 50.0  # golden cross counts as "low" when the prior K was <= this
+KD_HIGH_ZONE = 80.0  # dead cross counts as "from overbought" when prior K >= this
+KD_EXIT_RULES = ("ma5", "ma5_or_kd_dead80", "ma5_or_kd_dead", "ma5_and_kd_bear")
+KD_GATES = (None, 80.0, 90.0)
+WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS) + SLOPE_WEIGHT_KEYS + KD_WEIGHT_KEYS
 SWEEP_MULTIPLIERS = (0.5, 1.0, 1.5)
 
 _WORKER_DATA: dict[str, pd.DataFrame] = {}
@@ -163,6 +168,11 @@ def _indicators_for_frame(df: pd.DataFrame) -> pd.DataFrame:
     out["macd_hist"] = macd - signal
     out["macd_prev"] = macd.shift(1)
     out["macd_signal_prev"] = signal.shift(1)
+    k_series, d_series = kd(df["High"].astype(float), df["Low"].astype(float), close)
+    out["k"] = k_series
+    out["d"] = d_series
+    out["k_prev"] = k_series.shift(1)
+    out["d_prev"] = d_series.shift(1)
     return out
 
 
@@ -304,6 +314,18 @@ def _build_signal_facts(
             newly_above = _above_all(snapshot) and not _was_above_all(snapshot)
             above_ma5 = snapshot.ma5 is not None and snapshot.close > snapshot.ma5
             sell = snapshot.ma5 is not None and snapshot.close < snapshot.ma5
+            k = _float_or_none(row["k"])
+            kd_state = _kd_state(
+                k,
+                _float_or_none(row["d"]),
+                _float_or_none(row["k_prev"]),
+                _float_or_none(row["d_prev"]),
+            )
+            if kd_state["has_now"]:
+                facts.append(("kd_above", float(kd_state["above"])))
+            if kd_state["has_prev"]:
+                facts.append(("kd_cross", float(kd_state["golden"])))
+                facts.append(("kd_cross_low", float(kd_state["golden_low"])))
             for window in (5, 20, 60, 120, 240):
                 ma_value = row.get(f"ma{window}")
                 prev_ma_value = row.get(f"prev_ma{window}")
@@ -314,14 +336,52 @@ def _build_signal_facts(
                 "newly_above": newly_above,
                 "above_ma5": above_ma5,
                 "sell": sell,
+                "k": k,
+                "kd": kd_state,
             }
     return facts_by_date
+
+
+def _kd_state(
+    k: float | None, d: float | None, k_prev: float | None, d_prev: float | None
+) -> dict[str, bool]:
+    """KD booleans. Level checks need today's K/D; crosses also need yesterday's."""
+    has_now = k is not None and d is not None
+    has_prev = has_now and k_prev is not None and d_prev is not None
+    golden = has_prev and k > d and k_prev <= d_prev
+    dead = has_prev and k < d and k_prev >= d_prev
+    return {
+        "has_now": has_now,
+        "has_prev": has_prev,
+        "above": has_now and k > d,
+        "bear": has_now and k < d,
+        "golden": golden,
+        "golden_low": golden and k_prev <= KD_LOW_ZONE,
+        "dead": dead,
+        "dead_from_high": dead and k_prev >= KD_HIGH_ZONE,
+    }
+
+
+def _sell_flag(row: dict, exit_rule: str) -> bool:
+    kd_state = row["kd"]
+    if exit_rule == "ma5":
+        return row["sell"]
+    if exit_rule == "ma5_or_kd_dead80":
+        return row["sell"] or kd_state["dead_from_high"]
+    if exit_rule == "ma5_or_kd_dead":
+        return row["sell"] or kd_state["dead"]
+    if exit_rule == "ma5_and_kd_bear":
+        # KD-confirmed exit: a lone MA5 break is ignored while K still leads D.
+        return row["sell"] and (kd_state["bear"] or not kd_state["has_now"])
+    raise ValueError(f"unknown exit rule: {exit_rule}")
 
 
 def _signals_from_facts(
     facts_by_date: dict[pd.Timestamp, dict[str, dict]],
     weights: dict[str, float] | None = None,
     entry_rule: str = "newly_above_all",
+    kd_gate: float | None = None,
+    exit_rule: str = "ma5",
 ) -> dict[pd.Timestamp, dict[str, dict]]:
     active_weights = weights or DEFAULT_WEIGHTS
     max_score = sum(active_weights.values())
@@ -339,12 +399,22 @@ def _signals_from_facts(
                 special = row["above_ma5"] and ratio >= SPECIAL_MIN_SCORE_RATIO
             else:
                 special = row["newly_above"] and ratio >= SPECIAL_MIN_SCORE_RATIO
+            if kd_gate is not None:
+                # Overheat gate: skip entries when K is above the gate (or unknown).
+                special = special and row["k"] is not None and row["k"] <= kd_gate
+            sell = _sell_flag(row, exit_rule)
+            if exit_rule != "ma5":
+                # KD exits can fire on the same bar as an entry; the exit wins so
+                # run_backtest never sells and re-buys at the same open. (The
+                # plain MA5 exit is left untouched to keep older sweeps
+                # reproducible.)
+                special = special and not sell
             signals.setdefault(date, {})[symbol] = {
                 "score": weighted_score,
                 "max_score": max_score,
                 "ratio": ratio,
                 "special": special,
-                "sell": row["sell"],
+                "sell": sell,
             }
     return signals
 
@@ -558,8 +628,15 @@ def _summarize(
     }
 
 
-def _run_variant(label: str, weights: dict[str, float]) -> dict:
-    signals = _signals_from_facts(_WORKER_BASE_SIGNALS, weights, _WORKER_ENTRY_RULE)
+def _run_variant(
+    label: str,
+    weights: dict[str, float],
+    kd_gate: float | None,
+    exit_rule: str,
+) -> dict:
+    signals = _signals_from_facts(
+        _WORKER_BASE_SIGNALS, weights, _WORKER_ENTRY_RULE, kd_gate, exit_rule
+    )
     active_curve, trades, holdings = run_backtest(
         _WORKER_DATA, signals, _WORKER_NAMES, _WORKER_DATES
     )
@@ -569,6 +646,8 @@ def _run_variant(label: str, weights: dict[str, float]) -> dict:
     summary["weights"] = ",".join(
         f"{key}={weights[key]:g}" for key in WEIGHT_KEYS if key in weights
     )
+    summary["kd_gate"] = kd_gate
+    summary["exit_rule"] = exit_rule
     return summary
 
 
@@ -638,6 +717,53 @@ def _slope_weight_variants(base_weights: dict[str, float]) -> list[tuple[str, di
     return variants
 
 
+def _kd_variants(
+    base_weights: dict[str, float],
+) -> list[tuple[str, dict[str, float], float | None, str]]:
+    """KD scoring weights x overheat entry gate x exit rule.
+
+    The first variant (no KD weight, no gate, plain MA5 exit) is the comparator
+    and reproduces the base-weights baseline exactly.
+    """
+    cross_pairs = ((0.0, 0.0), (0.75, 0.0), (1.5, 0.0), (0.0, 0.75), (0.0, 1.5))
+    above_weights = (0.0, 0.5, 1.0)
+    variants: list[tuple[str, dict[str, float], float | None, str]] = []
+    for (cross, cross_low), above, gate, exit_rule in itertools.product(
+        cross_pairs, above_weights, KD_GATES, KD_EXIT_RULES
+    ):
+        weights = {k: v for k, v in base_weights.items() if k not in KD_WEIGHT_KEYS}
+        kd_weights = {"kd_cross": cross, "kd_cross_low": cross_low, "kd_above": above}
+        weights.update({key: value for key, value in kd_weights.items() if value > 0})
+        gate_label = "none" if gate is None else f"{gate:g}"
+        label = (
+            "kd_"
+            + "_".join(f"{key}{value:g}" for key, value in kd_weights.items())
+            + f"_gate{gate_label}_{exit_rule}"
+        )
+        variants.append((label, weights, gate, exit_rule))
+    return variants
+
+
+def _load_or_download(symbols: list[str], args: argparse.Namespace) -> dict[str, pd.DataFrame]:
+    """Download OHLCV, or reuse a pickle so repeated sweeps share identical data.
+
+    yfinance batch downloads are not perfectly repeatable run to run, which
+    adds noise when comparing sweeps from separate invocations.
+    """
+    cache = Path(args.data_cache) if args.data_cache else None
+    if cache and cache.exists():
+        return pd.read_pickle(cache)
+    data = (
+        _download_range(symbols, args.start, args.end)
+        if args.start or args.end
+        else _download(symbols, args.period)
+    )
+    if cache:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        pd.to_pickle(data, cache)
+    return data
+
+
 def _print_summary(summary: dict) -> None:
     print(
         f"{summary['label']} period={summary['start']}..{summary['end']} "
@@ -669,12 +795,21 @@ def main() -> None:
     parser.add_argument("--sweep", action="store_true")
     parser.add_argument("--slope-sweep", action="store_true")
     parser.add_argument(
+        "--kd-sweep",
+        action="store_true",
+        help="Sweep KD(9,3,3) scoring weights, overheat entry gate and exit rules.",
+    )
+    parser.add_argument(
         "--base-weights",
         help="Comma-separated key=value weights used as the base for --slope-sweep.",
     )
     parser.add_argument("--jobs", type=int, default=1)
     parser.add_argument("--top", type=int, default=10)
     parser.add_argument("--output-csv")
+    parser.add_argument(
+        "--data-cache",
+        help="Pickle path; reuse it if present, otherwise save the download there.",
+    )
     parser.add_argument(
         "--entry-rule",
         choices=("newly_above_all", "score_only", "score_above_ma5"),
@@ -685,11 +820,7 @@ def main() -> None:
 
     names = _load_tw_symbols(Path(args.watchlist))
     symbols = sorted(set(names) | {BENCHMARK})
-    data = (
-        _download_range(symbols, args.start, args.end)
-        if args.start or args.end
-        else _download(symbols, args.period)
-    )
+    data = _load_or_download(symbols, args)
     if BENCHMARK not in data:
         raise RuntimeError(f"missing benchmark data: {BENCHMARK}")
     missing = sorted(set(names) - set(data))
@@ -718,26 +849,23 @@ def main() -> None:
             f"score={trade.get('score', 0):.1f}/{trade.get('max_score', 0):.1f} "
             f"ratio={trade.get('ratio', 0) * 100:.1f}%"
         )
-    if args.sweep:
-        variants = (
-            _slope_weight_variants(_parse_weight_overrides(args.base_weights))
-            if args.slope_sweep
-            else _weight_variants()
-        )
+    if args.sweep or args.kd_sweep:
+        base = _parse_weight_overrides(args.base_weights)
+        if args.kd_sweep:
+            variants = _kd_variants(base)
+        else:
+            plain = _slope_weight_variants(base) if args.slope_sweep else _weight_variants()
+            variants = [(label, weights, None, "ma5") for label, weights in plain]
         if args.jobs > 1:
             with ProcessPoolExecutor(
                 max_workers=args.jobs,
                 initializer=_init_worker,
                 initargs=(data, signal_facts, names, backtest_dates, args.entry_rule),
             ) as executor:
-                rows = list(
-                    executor.map(
-                        _run_variant, [v[0] for v in variants], [v[1] for v in variants]
-                    )
-                )
+                rows = list(executor.map(_run_variant, *zip(*variants)))
         else:
             _init_worker(data, signal_facts, names, backtest_dates, args.entry_rule)
-            rows = [_run_variant(label, weights) for label, weights in variants]
+            rows = [_run_variant(*variant) for variant in variants]
         frame = pd.DataFrame(rows).sort_values(
             ["excess_pct", "active_return_pct"], ascending=False
         )
@@ -751,6 +879,8 @@ def main() -> None:
             "buys",
             "sells",
             "open_positions",
+            "kd_gate",
+            "exit_rule",
             "weights",
         ]
         print(frame[columns].head(args.top).to_string(index=False))
