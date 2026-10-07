@@ -28,6 +28,21 @@ best rows: `tw_*_kd_sweep_*_best_rejected`; CSVs: `results/backtests/tw_*_kd_swe
 - Caveats: 2022 uses the generic MA5 exit / 50% threshold, not the adopted penalty exit / 70% threshold; adding KD weight also dilutes the fixed 50% entry ratio; watchlist survivorship; bull path drawdown ~-90% in every row.
 - Code: `screener.indicators.kd`, `scripts/backtest_tw_strategy.py --kd-sweep`. KD is **not** used by production scoring.
 
+### TW Bollinger squeeze / band and RSI entry gates (rejected, 2026-10-07)
+
+12 entry gates (Bollinger(20,2) bandwidth squeeze before breakout, with/without
+close above the upper band; above/below upper band; RSI14 <= 70/80) vs the no-gate
+baseline, on the same 9 sets as the KD sweep plus a 6-year out-of-sample check
+(2016-2019, 2023, 2024). Rows: `tw_gate_sweep_in_sample_summary_rejected`,
+`tw_gate_sweep_oos_summary_rejected`, `tw_range_2021_below_upper_gate_nonreplicating_rejected`;
+CSVs: `results/backtests/tw_*_gate_sweep_*.csv`, `tw_oos_*_gate_sweep_default.csv`.
+
+- **Squeeze gates hurt overall:** they cut buys 20-50%, cost 27-54pp in the 2025-26 bull, and help only the 2022 bear (+4 to +10pp). OOS mean is about 0 with -10pp in 2023.
+- **"Not above upper band" looked great in 2021 (+23pp on all three weight sets) but did not replicate** (OOS mean -1.6pp, positive in 2/6 years) - a one-year artifact.
+- **RSI<=80 cap** is the only steady one but tiny (+0.3pp in-sample, +1.4pp OOS); not worth a rule.
+- RSI14 vs KD K: correlation 0.76 on 2021 data; RSI tracks 20d return (0.75) more than K does (0.49), so it overlaps the existing trend / relative-strength rules.
+- Code: `scripts/backtest_tw_strategy.py --gate-sweep`. Not used by production scoring.
+
 ## United States
 
 | Regime | Period | Benchmark | Strategy | Benchmark | Excess | Notes |
