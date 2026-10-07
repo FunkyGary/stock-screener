@@ -55,6 +55,23 @@ CSVs: `results/backtests/tw_*_gate_sweep_*.csv`, `tw_oos_*_gate_sweep_default.cs
 | range | 2021-01-04..2021-12-31 | SPY | +33.99% | +28.24% | +4.49% | Rotation/range-like result. |
 | bull | 2025-01-02..2026-05-28 | SPY | +134.11% | +29.85% | +80.29% | Bull weight sweep best row. |
 
+## Live performance replay (2026-05-21 .. 2026-10-07, reference)
+
+Replayed every EOD snapshot in git history through the dashboard's own 特別注意 /
+下跌特別注意 helpers; buy 50k per signal at next open, exit per product rule, idle
+capital in the benchmark, no fees. Rows: `live_replay_tw_2026_05_10_product_exit_reference`,
+`live_replay_us_2026_05_10_product_exit_reference`.
+
+| Market | Period | Strategy | Benchmark | Excess | Max DD | Notes |
+|---|---|---:|---:|---:|---:|---|
+| TW | 2026-05-28..10-07 | +20.5% | 0050 +12.3% | +7.35% | -11.2% | Not significant (t=0.6); top 10 trades = 314% of PnL; +1.1% after 0.38% round-trip cost, -2.3% after 0.585%. |
+| US | 2026-05-26..10-07 | -8.1% | SPY +3.8% | -11.47% | -18.2% | 20-day event-study excess -4.2pp (t=-3.4). Negative before costs. |
+
+- Fixed-horizon event study (buy next open): TW excess vs 0050 about 0 at 5/10/20d; the score threshold beats the "newly above all MAs but below threshold" control by ~1.3pp at 5d in TW, nothing in US.
+- Higher score ratio did NOT mean better outcomes in TW (excess by quartile +1.2 / +0.9 / +0.1 / -0.6pp).
+- Entries >11% above MA20 did worst live, but a backtest of that filter (`tw_extension_ma20_entry_gate_rejected`) was not robust (bull 2025-26 -43pp, 2023 -13pp).
+- Period had no real bear market; treat as a small-sample reference, not a verdict.
+
 ## Open Caveats
 
 - US `bear_downtrend` (2022) uses the robust defensive bear setup
