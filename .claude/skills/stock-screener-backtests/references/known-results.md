@@ -13,6 +13,21 @@ truth for machine lookup.
 | range | 2021-01-04..2021-12-30 | 0050.TW | +25.11% | +21.97% | +2.57% | Current range-style adopted weights, not best sweep. |
 | bull | 2025-01-02..2026-05-28 | 0050.TW | +233.42% | +112.74% | +56.73% | Strong bull result; drawdown caveat is large. |
 
+### TW KD(9,3,3) experiment (rejected, 2026-10-07)
+
+Tested adding KD to the TW screener across 4 regimes x 9 base-weight sets x 180
+variants (golden-cross / low-zone-cross / K>D score weights, entry K gate 80/90,
+4 exit rules). Summary row: `tw_kd_sweep_cross_regime_summary_rejected`; per-set
+best rows: `tw_*_kd_sweep_*_best_rejected`; CSVs: `results/backtests/tw_*_kd_sweep_*.csv`.
+
+- **No variant has a positive mean excess delta across the 4 regimes, and none is positive in all 4.**
+  Per-regime in-sample bests (up to +12pp) are best-of-180 picks that do not replicate.
+- KD golden-cross / K>D score weights: negative in most regimes, worst in the 2025-26 bull (-12 to -29pp).
+- Entry gate K<=90: roughly neutral (+0.1 / +1.3 / +1.1 / -3.6pp); K<=80: mixed.
+- Only lead: exit "MA5 break OR dead cross from K>=80" helped both bear periods (~+2pp) but cost ~10pp in bull. Unreplicated; treat as a hypothesis for out-of-sample / US testing.
+- Caveats: 2022 uses the generic MA5 exit / 50% threshold, not the adopted penalty exit / 70% threshold; adding KD weight also dilutes the fixed 50% entry ratio; watchlist survivorship; bull path drawdown ~-90% in every row.
+- Code: `screener.indicators.kd`, `scripts/backtest_tw_strategy.py --kd-sweep`. KD is **not** used by production scoring.
+
 ## United States
 
 | Regime | Period | Benchmark | Strategy | Benchmark | Excess | Notes |
