@@ -95,6 +95,7 @@ _WORKER_ENTRY_RULE = "newly_above_all"
 class Holding:
     shares: float
     cost: float
+    entry_idx: int = 0
 
 
 def _load_tw_symbols(path: Path) -> dict[str, str]:
@@ -383,6 +384,10 @@ def _build_signal_facts(
                 "sell": sell,
                 "k": k,
                 "kd": kd_state,
+                "ret20": snapshot.return_20d,
+                "ext": (
+                    snapshot.close / snapshot.ma20 - 1.0 if snapshot.ma20 else None
+                ),
                 "gate": {
                     "sq10": _float_or_none(row["sq10"]),
                     "sq20": _float_or_none(row["sq20"]),
@@ -474,6 +479,8 @@ def _signals_from_facts(
                 "ratio": ratio,
                 "special": special,
                 "sell": sell,
+                "ret20": row.get("ret20"),
+                "ext": row.get("ext"),
             }
     return signals
 
@@ -556,47 +563,71 @@ def _raise_cash_from_benchmark(
     return benchmark_shares, cash
 
 
+def default_rank_key(_symbol: str, row: dict) -> tuple[float, float]:
+    """Order same-day entry candidates by score ratio, then raw score."""
+    return (row["ratio"], row["score"])
+
+
 def run_backtest(
     data: dict[str, pd.DataFrame],
     signals: dict[pd.Timestamp, dict[str, dict]],
     names: dict[str, str],
     dates: list[pd.Timestamp],
+    *,
+    max_positions: int | None = None,
+    min_hold_days: int = 0,
+    round_trip_cost: float = 0.0,
+    rank_key=default_rank_key,
 ):
+    """Simulate 50k slots funded from the benchmark.
+
+    Optional turnover controls (defaults reproduce the original behaviour):
+    `max_positions` caps concurrent holdings, `min_hold_days` ignores sell
+    flags until a position is that many trading days old, `round_trip_cost` is
+    a fraction of notional charged half on each side of a stock trade, and
+    `rank_key(symbol, row)` orders same-day entry candidates (descending).
+    """
     cash = INITIAL_CAPITAL
     benchmark_shares, cash = _buy_benchmark(data, cash, dates[0])
     holdings: dict[str, Holding] = {}
     trades: list[dict] = []
     equity_curve: list[tuple[pd.Timestamp, float]] = []
     pending = signals.get(dates[0], {})
+    side_cost = round_trip_cost / 2.0
 
-    for date in dates[1:]:
+    for day_idx, date in enumerate(dates[1:], start=1):
         today = signals.get(date, {})
 
         for symbol in list(holdings):
-            if pending.get(symbol, {}).get("sell"):
-                price = _open_price(data, symbol, date)
-                if price is None:
-                    continue
-                holding = holdings.pop(symbol)
-                proceeds = holding.shares * price
-                cash += proceeds
-                trades.append(
-                    {
-                        "date": date,
-                        "symbol": symbol,
-                        "name": names.get(symbol, ""),
-                        "action": "sell",
-                        "amount": proceeds,
-                    }
-                )
+            if not pending.get(symbol, {}).get("sell"):
+                continue
+            if day_idx - holdings[symbol].entry_idx < min_hold_days:
+                continue
+            price = _open_price(data, symbol, date)
+            if price is None:
+                continue
+            holding = holdings.pop(symbol)
+            proceeds = holding.shares * price * (1.0 - side_cost)
+            cash += proceeds
+            trades.append(
+                {
+                    "date": date,
+                    "symbol": symbol,
+                    "name": names.get(symbol, ""),
+                    "action": "sell",
+                    "amount": proceeds,
+                }
+            )
 
         candidates = [
             (symbol, row)
             for symbol, row in pending.items()
             if row["special"] and symbol not in holdings
         ]
-        candidates.sort(key=lambda item: (item[1]["ratio"], item[1]["score"]), reverse=True)
+        candidates.sort(key=lambda item: rank_key(*item), reverse=True)
         for symbol, row in candidates:
+            if max_positions is not None and len(holdings) >= max_positions:
+                break
             price = _open_price(data, symbol, date)
             if price is None or price <= 0:
                 continue
@@ -607,7 +638,9 @@ def run_backtest(
             spend = min(amount, cash)
             if spend <= 0:
                 continue
-            holdings[symbol] = Holding(shares=spend / price, cost=spend)
+            holdings[symbol] = Holding(
+                shares=spend * (1.0 - side_cost) / price, cost=spend, entry_idx=day_idx
+            )
             cash -= spend
             trades.append(
                 {

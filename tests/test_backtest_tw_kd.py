@@ -1,14 +1,8 @@
-import importlib.util
-import sys
-from pathlib import Path
-
 import pandas as pd
 
-_SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "backtest_tw_strategy.py"
-_spec = importlib.util.spec_from_file_location("backtest_tw_strategy", _SCRIPT)
-bt = importlib.util.module_from_spec(_spec)
-sys.modules["backtest_tw_strategy"] = bt
-_spec.loader.exec_module(bt)
+from tests._scripts import load_script
+
+bt = load_script("backtest_tw_strategy")
 
 
 def _row(sell: bool, kd: dict) -> dict:
@@ -56,6 +50,8 @@ def test_kd_exit_never_coexists_with_entry():
                 "above_ma5": True,
                 "sell": False,
                 "k": 60.0,
+                "ret20": 0.1,
+                "ext": 0.05,
                 "kd": bt._kd_state(70.0, 75.0, 82.0, 78.0),  # dead cross from high
             }
         }
