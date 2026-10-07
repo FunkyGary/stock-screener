@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import yfinance as yf
 
@@ -47,6 +48,40 @@ KD_HIGH_ZONE = 80.0  # dead cross counts as "from overbought" when prior K >= th
 KD_EXIT_RULES = ("ma5", "ma5_or_kd_dead80", "ma5_or_kd_dead", "ma5_and_kd_bear")
 KD_GATES = (None, 80.0, 90.0)
 WEIGHT_KEYS = tuple(DEFAULT_WEIGHTS) + SLOPE_WEIGHT_KEYS + KD_WEIGHT_KEYS
+BB_PERIOD = 20
+BB_WIDTH_RANK_WINDOW = 120  # bandwidth percentile rank is taken over this many bars
+RSI_PERIOD = 14
+
+
+def _at_most(value: float | None, limit: float) -> bool:
+    return value is not None and value <= limit
+
+
+def _build_entry_gates() -> dict:
+    """Named entry filters over the raw per-bar gate inputs (None when unknown).
+
+    sq{N}_{pct}: bandwidth percentile rank was <= pct at some bar in the N bars
+    before today (a squeeze preceded the breakout). *_up also needs close above
+    the upper band today. below_upper is an anti-chase filter; rsi_le* are
+    RSI overheat filters.
+    """
+    gates = {
+        "above_upper": lambda g: g["above_upper"] is True,
+        "below_upper": lambda g: g["above_upper"] is False,
+        "rsi_le70": lambda g: _at_most(g["rsi"], 70.0),
+        "rsi_le80": lambda g: _at_most(g["rsi"], 80.0),
+    }
+    for bars in (10, 20):
+        for pct in (20, 35):
+            key = f"sq{bars}_{pct}"
+            gates[key] = lambda g, key=key, pct=pct: _at_most(g[key[:4]], pct / 100)
+            gates[key + "_up"] = lambda g, key=key, pct=pct: (
+                _at_most(g[key[:4]], pct / 100) and g["above_upper"] is True
+            )
+    return gates
+
+
+ENTRY_GATES = _build_entry_gates()
 SWEEP_MULTIPLIERS = (0.5, 1.0, 1.5)
 
 _WORKER_DATA: dict[str, pd.DataFrame] = {}
@@ -173,6 +208,16 @@ def _indicators_for_frame(df: pd.DataFrame) -> pd.DataFrame:
     out["d"] = d_series
     out["k_prev"] = k_series.shift(1)
     out["d_prev"] = d_series.shift(1)
+    std = close.rolling(BB_PERIOD).std(ddof=0)
+    out["bb_upper"] = out["ma20"] + 2.0 * std
+    width_rank = (4.0 * std / out["ma20"]).rolling(BB_WIDTH_RANK_WINDOW).rank(pct=True)
+    # Squeeze lookbacks end yesterday: today's breakout already widens the bands.
+    out["sq10"] = width_rank.shift(1).rolling(10).min()
+    out["sq20"] = width_rank.shift(1).rolling(20).min()
+    delta = close.diff()
+    gain = delta.clip(lower=0).ewm(alpha=1 / RSI_PERIOD, adjust=False).mean()
+    loss = (-delta.clip(upper=0)).ewm(alpha=1 / RSI_PERIOD, adjust=False).mean()
+    out["rsi"] = 100.0 - 100.0 / (1.0 + gain / loss.replace(0.0, np.nan))
     return out
 
 
@@ -338,6 +383,16 @@ def _build_signal_facts(
                 "sell": sell,
                 "k": k,
                 "kd": kd_state,
+                "gate": {
+                    "sq10": _float_or_none(row["sq10"]),
+                    "sq20": _float_or_none(row["sq20"]),
+                    "above_upper": (
+                        None
+                        if pd.isna(row["bb_upper"])
+                        else bool(row["close"] > row["bb_upper"])
+                    ),
+                    "rsi": _float_or_none(row["rsi"]),
+                },
             }
     return facts_by_date
 
@@ -382,8 +437,10 @@ def _signals_from_facts(
     entry_rule: str = "newly_above_all",
     kd_gate: float | None = None,
     exit_rule: str = "ma5",
+    entry_gate: str | None = None,
 ) -> dict[pd.Timestamp, dict[str, dict]]:
     active_weights = weights or DEFAULT_WEIGHTS
+    gate_ok = ENTRY_GATES[entry_gate] if entry_gate else None
     max_score = sum(active_weights.values())
     signals: dict[pd.Timestamp, dict[str, dict]] = {}
     for date, rows in facts_by_date.items():
@@ -402,6 +459,8 @@ def _signals_from_facts(
             if kd_gate is not None:
                 # Overheat gate: skip entries when K is above the gate (or unknown).
                 special = special and row["k"] is not None and row["k"] <= kd_gate
+            if gate_ok is not None:
+                special = special and gate_ok(row["gate"])
             sell = _sell_flag(row, exit_rule)
             if exit_rule != "ma5":
                 # KD exits can fire on the same bar as an entry; the exit wins so
@@ -633,9 +692,15 @@ def _run_variant(
     weights: dict[str, float],
     kd_gate: float | None,
     exit_rule: str,
+    entry_gate: str | None,
 ) -> dict:
     signals = _signals_from_facts(
-        _WORKER_BASE_SIGNALS, weights, _WORKER_ENTRY_RULE, kd_gate, exit_rule
+        _WORKER_BASE_SIGNALS,
+        weights,
+        _WORKER_ENTRY_RULE,
+        kd_gate,
+        exit_rule,
+        entry_gate,
     )
     active_curve, trades, holdings = run_backtest(
         _WORKER_DATA, signals, _WORKER_NAMES, _WORKER_DATES
@@ -648,6 +713,7 @@ def _run_variant(
     )
     summary["kd_gate"] = kd_gate
     summary["exit_rule"] = exit_rule
+    summary["entry_gate"] = entry_gate
     return summary
 
 
@@ -717,9 +783,20 @@ def _slope_weight_variants(base_weights: dict[str, float]) -> list[tuple[str, di
     return variants
 
 
+def _gate_variants(base_weights: dict[str, float]) -> list[tuple]:
+    """Baseline plus one variant per named entry gate (weights/exit unchanged)."""
+    return [
+        ("gate_none", base_weights.copy(), None, "ma5", None),
+        *(
+            (f"gate_{name}", base_weights.copy(), None, "ma5", name)
+            for name in ENTRY_GATES
+        ),
+    ]
+
+
 def _kd_variants(
     base_weights: dict[str, float],
-) -> list[tuple[str, dict[str, float], float | None, str]]:
+) -> list[tuple[str, dict[str, float], float | None, str, None]]:
     """KD scoring weights x overheat entry gate x exit rule.
 
     The first variant (no KD weight, no gate, plain MA5 exit) is the comparator
@@ -727,7 +804,7 @@ def _kd_variants(
     """
     cross_pairs = ((0.0, 0.0), (0.75, 0.0), (1.5, 0.0), (0.0, 0.75), (0.0, 1.5))
     above_weights = (0.0, 0.5, 1.0)
-    variants: list[tuple[str, dict[str, float], float | None, str]] = []
+    variants: list[tuple[str, dict[str, float], float | None, str, None]] = []
     for (cross, cross_low), above, gate, exit_rule in itertools.product(
         cross_pairs, above_weights, KD_GATES, KD_EXIT_RULES
     ):
@@ -740,7 +817,7 @@ def _kd_variants(
             + "_".join(f"{key}{value:g}" for key, value in kd_weights.items())
             + f"_gate{gate_label}_{exit_rule}"
         )
-        variants.append((label, weights, gate, exit_rule))
+        variants.append((label, weights, gate, exit_rule, None))
     return variants
 
 
@@ -794,6 +871,11 @@ def main() -> None:
     parser.add_argument("--watchlist", default="data/watchlist.csv")
     parser.add_argument("--sweep", action="store_true")
     parser.add_argument("--slope-sweep", action="store_true")
+    parser.add_argument(
+        "--gate-sweep",
+        action="store_true",
+        help="Sweep Bollinger squeeze / band and RSI entry gates (weights unchanged).",
+    )
     parser.add_argument(
         "--kd-sweep",
         action="store_true",
@@ -849,13 +931,15 @@ def main() -> None:
             f"score={trade.get('score', 0):.1f}/{trade.get('max_score', 0):.1f} "
             f"ratio={trade.get('ratio', 0) * 100:.1f}%"
         )
-    if args.sweep or args.kd_sweep:
+    if args.sweep or args.kd_sweep or args.gate_sweep:
         base = _parse_weight_overrides(args.base_weights)
-        if args.kd_sweep:
+        if args.gate_sweep:
+            variants = _gate_variants(base)
+        elif args.kd_sweep:
             variants = _kd_variants(base)
         else:
             plain = _slope_weight_variants(base) if args.slope_sweep else _weight_variants()
-            variants = [(label, weights, None, "ma5") for label, weights in plain]
+            variants = [(label, weights, None, "ma5", None) for label, weights in plain]
         if args.jobs > 1:
             with ProcessPoolExecutor(
                 max_workers=args.jobs,
@@ -881,6 +965,7 @@ def main() -> None:
             "open_positions",
             "kd_gate",
             "exit_rule",
+            "entry_gate",
             "weights",
         ]
         print(frame[columns].head(args.top).to_string(index=False))
