@@ -72,6 +72,20 @@ capital in the benchmark, no fees. Rows: `live_replay_tw_2026_05_10_product_exit
 - Entries >11% above MA20 did worst live, but a backtest of that filter (`tw_extension_ma20_entry_gate_rejected`) was not robust (bull 2025-26 -43pp, 2023 -13pp).
 - Period had no real bear market; treat as a small-sample reference, not a verdict.
 
+## Costs, turnover and the watchlist effect (2026-10-07)
+
+Rows: `tw_baseline_net_of_cost_reference`, `tw_turnover_controls_sweep_rejected`,
+`watchlist_universe_vs_strategy_reference`, `us_oos_baseline_reference`. CSVs:
+`tw_turnover_sweep.csv`, `watchlist_universe_vs_strategy.csv`,
+`us_oos_baseline_default_vs_live_weights.csv`.
+
+- **All earlier results are gross of costs.** TW baseline (default weights, ~1,090 buys per period) vs 0050 over 10 periods (2016-2024 yearly, 2025-26): mean / median excess at 0% / 0.1% / 0.2% / 0.4% round-trip cost = +9.9 / +5.2 / +0.5 / -8.8 and +2.0 / -2.4 / -6.6 / -15.1 (positive periods 5 / 5 / 4 / 2 of 10). The gross mean is carried by 2025-26.
+- **Turnover controls** (64 variants, 0.4% cost): no variant meets the adoption bar. Minimum hold is the useful lever (hold 3 / 5 / 10 days: +1.6 / +2.9 / +6.9pp, buys 1088 -> 949 / 783 / 528); position caps help the mean but lose 20-40pp in the 2025-26 bull. Best variants are still ~-1pp vs 0050 net of 0.4% cost.
+- **The score is not a better ranker than random** under a position cap (net excess cap 5: score -5.5, random -4.3, 20d momentum -4.3, closest-to-MA20 -5.9). It works only as a threshold.
+- **The backtest-vs-live gap is mostly the watchlist, not the timing.** The current watchlist is hindsight-picked: holding it equal-weight beat SPY by +26.6pp/yr on average (US) and 0050 by +10.4pp (TW). The US strategy beat SPY by +12.4pp but trailed its own universe by -14.2pp (beats it in 1/10 periods); TW beats its universe in 4/10 (median -6.0pp).
+- US baseline vs SPY on years not used for tuning (2016-2019, 2023, 2024): mean +6.7pp, 5/6 positive; live 2026-06..10: -8.0pp.
+- The US `run_backtest` copy was not updated with the TW turnover/cost options.
+
 ## Open Caveats
 
 - US `bear_downtrend` (2022) uses the robust defensive bear setup
