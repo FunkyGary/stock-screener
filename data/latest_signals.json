@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-10-09T17:26:06.703742+00:00",
+  "generated_at": "2026-10-10T00:56:34.595606+00:00",
   "last_run": {
     "tw": "2026-10-09T17:26:06.703742+00:00",
     "tw_eod": "2026-10-09T17:26:06.703742+00:00",
     "tw_intraday": "2026-10-07T02:07:48.449145+00:00",
-    "us": "2026-10-09T02:56:15.734531+00:00",
-    "us_eod": "2026-10-09T02:56:15.734531+00:00",
+    "us": "2026-10-10T00:56:34.595606+00:00",
+    "us_eod": "2026-10-10T00:56:34.595606+00:00",
     "us_intraday": "2026-08-31T02:38:16.095797+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-10-09T17:28:24.368547+00:00",
+    "generated_at": "2026-10-10T00:57:44.537935+00:00",
     "markets": {
       "tw": {
         "indexes": [
@@ -76,21 +76,21 @@
           }
         ],
         "strategy": {
-          "as_of": "2026-10-07",
+          "as_of": "2026-10-08",
           "benchmark": "0050.TW",
           "benchmark_name": "\u5143\u5927\u53f0\u706350",
-          "close": 116.05000305175781,
-          "drawdown_120d": -0.00386263474885995,
+          "close": 114.94999694824219,
+          "drawdown_120d": -0.013304747225388991,
           "label": "\u591a\u982d",
-          "ma10": 113.42500076293945,
-          "ma20": 110.98500061035156,
-          "ma240": 86.06416662534077,
-          "ma5": 114.84000091552734,
-          "ma60": 106.20000025431315,
+          "ma10": 113.73500061035156,
+          "ma20": 111.25000038146973,
+          "ma240": 86.28895827929179,
+          "ma5": 115.25,
+          "ma60": 106.37583351135254,
           "market": "tw",
-          "prev_ma5": 114.04000091552734,
+          "prev_ma5": 114.84000091552734,
           "reason": "0050.TW \u4f4d\u65bc MA20/MA60 \u4e0a\u65b9\uff0cMA60 \u9ad8\u65bc\u5e74\u7dda\uff0c\u4e14 60 \u65e5\u5831\u916c\u5927\u65bc 3%\u3002",
-          "return_60d": 0.09481134954488502,
+          "return_60d": 0.10105359452267937,
           "strategy": "bull",
           "thresholds": {
             "bear_downtrend_close_below_ma240": true,
@@ -105,29 +105,29 @@
           {
             "above_all_mas": true,
             "as_of": "2026-10-09",
-            "close": 7806.35986328125,
+            "close": 7811.5400390625,
             "indicators": {
               "big_bull_low": 4948.43017578125,
-              "close": 7806.35986328125,
-              "d": 70.08260156690457,
+              "close": 7811.5400390625,
+              "d": 70.33533472509471,
               "d_prev": 67.43905699480047,
               "high_20d": 7818.93017578125,
               "high_5d": 7818.93017578125,
-              "k": 75.3696907111128,
+              "k": 76.12789018568321,
               "k_prev": 71.43253663269238,
-              "ma10": 7736.16103515625,
-              "ma20": 7704.5150146484375,
-              "ma240": 7174.4330078125,
-              "ma5": 7793.2740234375,
-              "macd": 34.05319203372619,
-              "macd_hist": 10.802058575590632,
+              "ma10": 7736.679052734375,
+              "ma20": 7704.7740234375,
+              "ma240": 7174.454591878255,
+              "ma5": 7794.31005859375,
+              "macd": 34.46642542938116,
+              "macd_hist": 11.132645292114606,
               "macd_prev": 30.731628310644737,
-              "macd_signal": 23.25113345813556,
+              "macd_signal": 23.333780137266555,
               "macd_signal_prev": 20.5506188142379,
-              "obv": 242178585000.0,
-              "obv_ma20": 243286480750.0,
-              "obv_ma5": 245788873000.0,
-              "pct_of_high_20d": 0.998392323218471,
+              "obv": 246683770000.0,
+              "obv_ma20": 246560090500.0,
+              "obv_ma5": 249256942000.0,
+              "pct_of_high_20d": 0.9990548404254024,
               "prev2_low": 7763.33984375,
               "prev_3d_low": 7731.259765625,
               "prev_5d_low": 7700.509765625,
@@ -139,50 +139,50 @@
               "prev_ma5": 7776.54609375,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": 0.01950898176481264,
+              "return_20d": 0.020185511649239984,
               "same_time_vol_ratio": null,
-              "today_return": 0.005279858335203391,
-              "vol_ratio": 0.26130499123411033,
-              "volume": 1349355000.0,
+              "today_return": 0.0059469460004828445,
+              "vol_ratio": 0.5060026071350432,
+              "volume": 2645750000.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 7736.16103515625,
-            "ma20": 7704.5150146484375,
-            "ma240": 7174.4330078125,
-            "ma5": 7793.2740234375,
+            "ma10": 7736.679052734375,
+            "ma20": 7704.7740234375,
+            "ma240": 7174.454591878255,
+            "ma5": 7794.31005859375,
             "name": "S&P 500",
             "status": "ok",
             "symbol": "^GSPC",
-            "today_return": 0.005279858335203391
+            "today_return": 0.0059469460004828445
           },
           {
             "above_all_mas": false,
             "as_of": "2026-10-09",
-            "close": 27341.591796875,
+            "close": 27366.169921875,
             "indicators": {
               "big_bull_low": 15270.2802734375,
-              "close": 27341.591796875,
-              "d": 69.05927010762325,
+              "close": 27366.169921875,
+              "d": 69.33105560269229,
               "d_prev": 70.58505941753113,
               "high_20d": 27599.7890625,
               "high_5d": 27599.7890625,
-              "k": 66.0076914878075,
+              "k": 66.8230479730146,
               "k_prev": 67.97839166880817,
-              "ma10": 27169.216015625,
-              "ma20": 26904.49541015625,
-              "ma240": 24571.238614908852,
-              "ma5": 27430.144140625,
-              "macd": 275.01251973690887,
-              "macd_hist": 32.37844279649306,
+              "ma10": 27171.673828125,
+              "ma20": 26905.72431640625,
+              "ma240": 24571.34102376302,
+              "ma5": 27435.059765625,
+              "macd": 276.97316788505486,
+              "macd_hist": 33.946961315009844,
               "macd_prev": 278.6688760652869,
-              "macd_signal": 242.6340769404158,
+              "macd_signal": 243.02620657004502,
               "macd_signal_prev": 234.53946624129253,
-              "obv": 524111828000.0,
-              "obv_ma20": 503013742400.0,
-              "obv_ma5": 527739071600.0,
-              "pct_of_high_20d": 0.990644955110334,
+              "obv": 532436785000.0,
+              "obv_ma20": 508992610750.0,
+              "obv_ma5": 534088375000.0,
+              "pct_of_high_20d": 0.9915354736916298,
               "prev2_low": 27341.310546875,
               "prev_3d_low": 27066.759765625,
               "prev_5d_low": 27066.759765625,
@@ -194,50 +194,50 @@
               "prev_ma5": 27399.99765625,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": 0.03829989892094332,
+              "return_20d": 0.03923325587004678,
               "same_time_vol_ratio": null,
-              "today_return": 0.005451774367431161,
-              "vol_ratio": 0.4421797079460149,
-              "volume": 3625918000.0,
+              "today_return": 0.006355603214539318,
+              "vol_ratio": 0.7323154118052887,
+              "volume": 6095485000.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 27169.216015625,
-            "ma20": 26904.49541015625,
-            "ma240": 24571.238614908852,
-            "ma5": 27430.144140625,
+            "ma10": 27171.673828125,
+            "ma20": 26905.72431640625,
+            "ma240": 24571.34102376302,
+            "ma5": 27435.059765625,
             "name": "NASDAQ",
             "status": "ok",
             "symbol": "^IXIC",
-            "today_return": 0.005451774367431161
+            "today_return": 0.006355603214539318
           },
           {
             "above_all_mas": false,
             "as_of": "2026-10-09",
-            "close": 12557.447265625,
+            "close": 12572.419921875,
             "indicators": {
               "big_bull_low": null,
-              "close": 12557.447265625,
-              "d": 68.69822890834479,
+              "close": 12572.419921875,
+              "d": 68.89033164647287,
               "d_prev": 79.51272281212009,
               "high_20d": 13217.8203125,
               "high_5d": 13217.8203125,
-              "k": 47.06924110079422,
+              "k": 47.64554931517847,
               "k_prev": 66.36042969292369,
-              "ma10": 12832.655859375,
-              "ma20": 12410.97099609375,
-              "ma240": 9905.701916503906,
-              "ma5": 12927.5736328125,
-              "macd": 275.8341000055898,
-              "macd_hist": 6.140593714973079,
+              "ma10": 12834.153125,
+              "ma20": 12411.71962890625,
+              "ma240": 9905.764302571615,
+              "ma5": 12930.5681640625,
+              "macd": 277.0284999343621,
+              "macd_hist": 7.096113657990941,
               "macd_prev": 313.5360245957236,
-              "macd_signal": 269.6935062906167,
+              "macd_signal": 269.9323862763712,
               "macd_signal_prev": 268.1583578618734,
               "obv": 0.0,
               "obv_ma20": 0.0,
               "obv_ma5": 0.0,
-              "pct_of_high_20d": 0.9500391871532335,
+              "pct_of_high_20d": 0.9511719500366752,
               "prev2_low": 12864.9404296875,
               "prev_3d_low": 12483.9501953125,
               "prev_5d_low": 12483.9501953125,
@@ -249,42 +249,42 @@
               "prev_ma5": 13043.4181640625,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": 0.06203038444054476,
+              "return_20d": 0.06329667810174211,
               "same_time_vol_ratio": null,
-              "today_return": -0.005249066678301495,
+              "today_return": -0.004062992513390373,
               "vol_ratio": null,
               "volume": 0.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 12832.655859375,
-            "ma20": 12410.97099609375,
-            "ma240": 9905.701916503906,
-            "ma5": 12927.5736328125,
+            "ma10": 12834.153125,
+            "ma20": 12411.71962890625,
+            "ma240": 9905.764302571615,
+            "ma5": 12930.5681640625,
             "name": "\u8cbb\u534a",
             "status": "ok",
             "symbol": "^SOX",
-            "today_return": -0.005249066678301495
+            "today_return": -0.004062992513390373
           }
         ],
         "strategy": {
-          "as_of": "2026-10-09",
+          "as_of": "2026-10-08",
           "benchmark": "SPY",
           "benchmark_name": "SPDR S&P 500 ETF",
-          "close": 777.989990234375,
-          "drawdown_120d": -0.0014119505874483629,
-          "label": "\u591a\u982d",
-          "ma10": 770.9130004882812,
-          "ma20": 767.947998046875,
-          "ma240": 715.4020835876465,
-          "ma5": 776.6119995117188,
-          "ma60": 763.1236653645833,
+          "close": 773.9299926757812,
+          "drawdown_120d": -0.006623155221886501,
+          "label": "\u5340\u9593\u9707\u76ea",
+          "ma10": 770.2489990234375,
+          "ma20": 767.2629974365234,
+          "ma240": 714.9823336283366,
+          "ma5": 774.9420043945313,
+          "ma60": 762.6691650390625,
           "market": "us",
-          "prev_ma5": 774.9420043945313,
-          "reason": "SPY \u4f4d\u65bc MA20/MA60 \u4e0a\u65b9\uff0cMA60 \u9ad8\u65bc\u5e74\u7dda\uff0c\u4e14 60 \u65e5\u5831\u916c\u5927\u65bc 3%\u3002",
-          "return_60d": 0.03632515531151892,
-          "strategy": "bull",
+          "prev_ma5": 772.95400390625,
+          "reason": "\u672a\u9054\u6025\u8dcc\u6216\u5f37\u591a\u982d\u689d\u4ef6\uff0c\u7dad\u6301\u9ad8\u6301\u80a1\u7684\u5340\u9593\u9707\u76ea\u6b0a\u91cd\u3002",
+          "return_60d": 0.025330871582292858,
+          "strategy": "range",
           "thresholds": {
             "bear_downtrend_close_below_ma240": true,
             "bear_downtrend_ma60_below_ma240": true,
@@ -61796,7 +61796,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 5.357414,
+        "pb": 5.546618,
         "pe": null,
         "revenues": [
           {
@@ -61840,9 +61840,9 @@
         "macd_prev": 2.3597033735682658,
         "macd_signal": -0.6105194422166818,
         "macd_signal_prev": -1.1784774386830605,
-        "obv": 114667700.0,
-        "obv_ma20": 110541120.0,
-        "obv_ma5": 129637100.0,
+        "obv": 113034800.0,
+        "obv_ma20": 109079885.0,
+        "obv_ma5": 128148760.0,
         "pct_of_high_20d": 0.8136140023535298,
         "prev2_low": 124.30000305175781,
         "prev_3d_low": 112.80000305175781,
@@ -61858,8 +61858,8 @@
         "return_20d": 0.025268666736541823,
         "same_time_vol_ratio": null,
         "today_return": -0.1357923883248473,
-        "vol_ratio": 2.2392036979811363,
-        "volume": 19238600.0,
+        "vol_ratio": 2.257861233032003,
+        "volume": 19419300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -61889,13 +61889,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=2.24 return=-13.58%",
+          "detail": "vol_ratio=2.26 return=-13.58%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=129637100 OBV_MA20=110541120",
+          "detail": "OBV_MA5=128148760 OBV_MA20=109079885",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -61969,7 +61969,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=2.24 return=-13.58%",
+          "detail": "vol_ratio=2.26 return=-13.58%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -62087,8 +62087,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 46.25272,
-        "pe": 39.03899,
+        "pb": 45.739132,
+        "pe": 38.605507,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -62131,9 +62131,9 @@
         "macd_prev": 3.271762975268871,
         "macd_signal": 3.9806917810709543,
         "macd_signal_prev": 4.088139673810454,
-        "obv": 1901014500.0,
-        "obv_ma20": 1841670165.0,
-        "obv_ma5": 1847002420.0,
+        "obv": 1929250500.0,
+        "obv_ma20": 1869856290.0,
+        "obv_ma5": 1875196420.0,
         "pct_of_high_20d": 0.9980942507915493,
         "prev2_low": 330.6199951171875,
         "prev_3d_low": 330.6199951171875,
@@ -62149,8 +62149,8 @@
         "return_20d": 0.04241052697091474,
         "same_time_vol_ratio": null,
         "today_return": 0.011138503134924926,
-        "vol_ratio": 0.9184376622987821,
-        "volume": 35279900.0,
+        "vol_ratio": 0.9197415371239399,
+        "volume": 35332400.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -62186,7 +62186,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1847002420 OBV_MA20=1841670165",
+          "detail": "OBV_MA5=1875196420 OBV_MA20=1869856290",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -62357,8 +62357,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 12.348135,
-        "pe": 37.18223,
+        "pb": 12.547848,
+        "pe": 37.7836,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -62401,9 +62401,9 @@
         "macd_prev": -3.1183103053664354,
         "macd_signal": -3.3423945238484003,
         "macd_signal_prev": -3.4936081697318064,
-        "obv": 161349200.0,
-        "obv_ma20": 151124870.0,
-        "obv_ma5": 157590280.0,
+        "obv": 164409200.0,
+        "obv_ma20": 154184870.0,
+        "obv_ma5": 160650280.0,
         "pct_of_high_20d": 0.9565192005020156,
         "prev2_low": 159.07000732421875,
         "prev_3d_low": 158.656005859375,
@@ -62456,7 +62456,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=157590280 OBV_MA20=151124870",
+          "detail": "OBV_MA5=160650280 OBV_MA20=154184870",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -62627,8 +62627,8 @@
             "period": "2025-08-31"
           }
         ],
-        "pb": 8.011766,
-        "pe": 13.4589615,
+        "pb": 8.052315,
+        "pe": 13.459445,
         "revenues": [
           {
             "period": "2026-08-31",
@@ -62671,9 +62671,9 @@
         "macd_prev": -6.73737123012117,
         "macd_signal": -6.318997994809164,
         "macd_signal_prev": -6.3661295320045745,
-        "obv": -132665700.0,
-        "obv_ma20": -131083870.0,
-        "obv_ma5": -132968240.0,
+        "obv": -135440800.0,
+        "obv_ma20": -133858970.0,
+        "obv_ma5": -135743340.0,
         "pct_of_high_20d": 0.9075677617183878,
         "prev2_low": 236.77000427246094,
         "prev_3d_low": 227.0,
@@ -62726,7 +62726,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-132968240 OBV_MA20=-131083870",
+          "detail": "OBV_MA5=-135743340 OBV_MA20=-133858970",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -62918,8 +62918,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 5.862736,
-        "pe": 48.210213,
+        "pb": 5.866492,
+        "pe": 48.183865,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -62962,9 +62962,9 @@
         "macd_prev": 11.62549107503412,
         "macd_signal": 8.667762205505738,
         "macd_signal_prev": 8.065349035739068,
-        "obv": 87092700.0,
-        "obv_ma20": 79130805.0,
-        "obv_ma5": 90157960.0,
+        "obv": 88886400.0,
+        "obv_ma20": 80924505.0,
+        "obv_ma5": 91951660.0,
         "pct_of_high_20d": 0.9652360110770358,
         "prev2_low": 417.19000244140625,
         "prev_3d_low": 404.6000061035156,
@@ -63017,7 +63017,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=90157960 OBV_MA20=79130805",
+          "detail": "OBV_MA5=91951660 OBV_MA20=80924505",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -63209,8 +63209,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 34.889915,
-        "pe": 170.96059,
+        "pb": 34.40334,
+        "pe": 168.57635,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -63253,9 +63253,9 @@
         "macd_prev": 19.666709685366357,
         "macd_signal": 15.405922638078188,
         "macd_signal_prev": 14.90195268874767,
-        "obv": 163679900.0,
-        "obv_ma20": 161131720.0,
-        "obv_ma5": 168595000.0,
+        "obv": 155445200.0,
+        "obv_ma20": 152897020.0,
+        "obv_ma5": 160360300.0,
         "pct_of_high_20d": 0.8903283700903925,
         "prev2_low": 371.82501220703125,
         "prev_3d_low": 346.32000732421875,
@@ -63308,7 +63308,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=168595000 OBV_MA20=161131720",
+          "detail": "OBV_MA5=160360300 OBV_MA20=152897020",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -63500,8 +63500,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 15.780558,
-        "pe": 43.96635,
+        "pb": 15.701899,
+        "pe": 43.97485,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -63544,9 +63544,9 @@
         "macd_prev": 15.207618585561193,
         "macd_signal": 8.158522842251294,
         "macd_signal_prev": 6.654811568729667,
-        "obv": 222973600.0,
-        "obv_ma20": 210213970.0,
-        "obv_ma5": 231659360.0,
+        "obv": 226751100.0,
+        "obv_ma20": 214009805.0,
+        "obv_ma5": 235452300.0,
         "pct_of_high_20d": 0.9396805705438418,
         "prev2_low": 526.52001953125,
         "prev_3d_low": 514.010009765625,
@@ -63562,8 +63562,8 @@
         "return_20d": 0.12237615110573374,
         "same_time_vol_ratio": null,
         "today_return": -0.021281122770162475,
-        "vol_ratio": 1.0736076749902552,
-        "volume": 6748000.0,
+        "vol_ratio": 1.0765130286980529,
+        "volume": 6767300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -63593,13 +63593,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.07 return=-2.13%",
+          "detail": "vol_ratio=1.08 return=-2.13%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=231659360 OBV_MA20=210213970",
+          "detail": "OBV_MA5=235452300 OBV_MA20=214009805",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -63673,7 +63673,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.07 return=-2.13%",
+          "detail": "vol_ratio=1.08 return=-2.13%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -63783,18 +63783,6 @@
             "target_price": 705.0,
             "upside_pct": 0.13585101553009804,
             "url": "https://finnhub.io/api/news?id=92f2cba698682b6149d5f8b0371767285bc6b5ee8fa9824a25a6ec16a1b4ffe6"
-          },
-          {
-            "date": "2026-10-05",
-            "firm": "Benzinga",
-            "headline": "Stifel Maintains Buy on Advanced Micro Devices, Raises Price Target to $700",
-            "previous_target": null,
-            "published_at": "2026-10-05T07:06:02+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 700.0,
-            "upside_pct": 0.1277953345688918,
-            "url": "https://finnhub.io/api/news?id=6e636f10bc23690df47eb885e7f9123957987b6c221025098413da7da0b20cfc"
           }
         ]
       },
@@ -63852,8 +63840,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 15.068339,
-        "pe": 158.33673,
+        "pb": 14.762933,
+        "pe": 158.35938,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -63896,9 +63884,9 @@
         "macd_prev": 36.55140287031861,
         "macd_signal": 33.75556757031697,
         "macd_signal_prev": 33.65071489585095,
-        "obv": 1555929300.0,
-        "obv_ma20": 1515146675.0,
-        "obv_ma5": 1578850220.0,
+        "obv": 1630978600.0,
+        "obv_ma20": 1590257060.0,
+        "obv_ma5": 1653950960.0,
         "pct_of_high_20d": 0.9557451402933639,
         "prev2_low": 628.0,
         "prev_3d_low": 619.989990234375,
@@ -63914,8 +63902,8 @@
         "return_20d": 0.232486070598259,
         "same_time_vol_ratio": null,
         "today_return": -0.038986766864144706,
-        "vol_ratio": 1.0456594057072248,
-        "volume": 23423900.0,
+        "vol_ratio": 1.048379339764987,
+        "volume": 23488200.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -63951,7 +63939,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1578850220 OBV_MA20=1515146675",
+          "detail": "OBV_MA5=1653950960 OBV_MA20=1590257060",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -64143,8 +64131,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 2.719565,
-        "pe": 22.869955,
+        "pb": 2.6193142,
+        "pe": 22.84651,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -64187,9 +64175,9 @@
         "macd_prev": 0.5682355132079167,
         "macd_signal": 0.2815779182814294,
         "macd_signal_prev": 0.2599805011941478,
-        "obv": 65261900.0,
-        "obv_ma20": 72000860.0,
-        "obv_ma5": 71658300.0,
+        "obv": 66712200.0,
+        "obv_ma20": 73451160.0,
+        "obv_ma5": 73108600.0,
         "pct_of_high_20d": 0.9103891392941258,
         "prev2_low": 53.2599983215332,
         "prev_3d_low": 51.11000061035156,
@@ -64242,7 +64230,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=71658300 OBV_MA20=72000860",
+          "detail": "OBV_MA5=73108600 OBV_MA20=73451160",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -64378,20 +64366,7 @@
       "analyst": {
         "rating": "Buy",
         "rating_score": 1.7972972972972974,
-        "target_price_events": [
-          {
-            "date": "2026-10-06",
-            "firm": "Benzinga",
-            "headline": "Tigress Financial Maintains Buy on Amazon.com, Raises Price Target to $385",
-            "previous_target": null,
-            "published_at": "2026-10-06T14:12:06+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 385.0,
-            "upside_pct": 0.5153900799011368,
-            "url": "https://finnhub.io/api/news?id=e434971503a843ece324c99bea24e7e6bf1f9b412e63d0134c8ba1aac6f7e3fd"
-          }
-        ]
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
@@ -64447,8 +64422,8 @@
             "period": "2025-03-31"
           }
         ],
-        "pb": 4.9663773,
-        "pe": 20.439259,
+        "pb": 5.1299944,
+        "pe": 20.438473,
         "revenues": [
           {
             "period": "2026-03-31",
@@ -64491,9 +64466,9 @@
         "macd_prev": -0.5637320308401854,
         "macd_signal": -1.4175886799240394,
         "macd_signal_prev": -1.6684391831825625,
-        "obv": 1114728000.0,
-        "obv_ma20": 1068496400.0,
-        "obv_ma5": 1118034580.0,
+        "obv": 1086837600.0,
+        "obv_ma20": 1040706130.0,
+        "obv_ma5": 1090228500.0,
         "pct_of_high_20d": 0.9774545415265997,
         "prev2_low": 251.0800018310547,
         "prev_3d_low": 250.17999267578125,
@@ -64509,8 +64484,8 @@
         "return_20d": 0.00861486432253522,
         "same_time_vol_ratio": null,
         "today_return": -0.02254545847340028,
-        "vol_ratio": 1.0515310075404576,
-        "volume": 38544500.0,
+        "vol_ratio": 1.0542548499258202,
+        "volume": 38649900.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -64546,7 +64521,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1118034580 OBV_MA20=1068496400",
+          "detail": "OBV_MA5=1090228500 OBV_MA20=1040706130",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -64565,8 +64540,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-06 Benzinga target 385.00, upside=+51.54%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -64627,7 +64602,7 @@
           "weight": 0.0
         }
       ],
-      "score": 2.6475,
+      "score": 0.6475,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -64717,8 +64692,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 29.6926,
-        "pe": 21.53113,
+        "pb": 29.366123,
+        "pe": 21.52603,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -64761,9 +64736,9 @@
         "macd_prev": -14.120954259025098,
         "macd_signal": -12.269774841152554,
         "macd_signal_prev": -11.814315197975182,
-        "obv": 167271500.0,
-        "obv_ma20": 199362200.0,
-        "obv_ma5": 170420800.0,
+        "obv": 163425100.0,
+        "obv_ma20": 195515800.0,
+        "obv_ma5": 166574400.0,
         "pct_of_high_20d": 0.838080431132021,
         "prev2_low": 276.6600036621094,
         "prev_3d_low": 269.4100036621094,
@@ -64816,7 +64791,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=170420800 OBV_MA20=199362200",
+          "detail": "OBV_MA5=166574400 OBV_MA20=195515800",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -64987,8 +64962,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 34.06633,
-        "pe": 283.80414,
+        "pb": 32.951366,
+        "pe": 283.27658,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -65031,9 +65006,9 @@
         "macd_prev": 9.924040676726008,
         "macd_signal": 9.668591921313585,
         "macd_signal_prev": 10.19739345213592,
-        "obv": 212970600.0,
-        "obv_ma20": 218161330.0,
-        "obv_ma5": 221890740.0,
+        "obv": 208591500.0,
+        "obv_ma20": 213817760.0,
+        "obv_ma5": 217541560.0,
         "pct_of_high_20d": 0.826200475568628,
         "prev2_low": 301.07000732421875,
         "prev_3d_low": 290.5,
@@ -65049,8 +65024,8 @@
         "return_20d": 0.08305144573698797,
         "same_time_vol_ratio": null,
         "today_return": -0.06481634299946215,
-        "vol_ratio": 1.0381827083591404,
-        "volume": 6160000.0,
+        "vol_ratio": 1.0441568813112698,
+        "volume": 6197400.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -65086,7 +65061,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=221890740 OBV_MA20=218161330",
+          "detail": "OBV_MA5=217541560 OBV_MA20=213817760",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -65278,8 +65253,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 1537.6608,
-        "pe": 57.442066,
+        "pb": 1546.4285,
+        "pe": 57.448853,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -65322,9 +65297,9 @@
         "macd_prev": 34.02004080613756,
         "macd_signal": 23.138319740232486,
         "macd_signal_prev": 21.54664237888934,
-        "obv": 30289800.0,
-        "obv_ma20": 33455765.0,
-        "obv_ma5": 33510080.0,
+        "obv": 31166100.0,
+        "obv_ma20": 34332065.0,
+        "obv_ma5": 34386380.0,
         "pct_of_high_20d": 0.9477751329606765,
         "prev2_low": 1819.0899658203125,
         "prev_3d_low": 1785.739990234375,
@@ -65377,7 +65352,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=33510080 OBV_MA20=33455765",
+          "detail": "OBV_MA5=34386380 OBV_MA20=34332065",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -65569,8 +65544,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 17.246433,
-        "pe": 45.994892,
+        "pb": 17.313477,
+        "pe": 46.17369,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -65613,9 +65588,9 @@
         "macd_prev": -0.6478957640342173,
         "macd_signal": -3.615460778874762,
         "macd_signal_prev": -4.360070328458405,
-        "obv": 800926300.0,
-        "obv_ma20": 759124180.0,
-        "obv_ma5": 795102360.0,
+        "obv": 817141300.0,
+        "obv_ma20": 775437030.0,
+        "obv_ma5": 811399760.0,
         "pct_of_high_20d": 0.9565217532267529,
         "prev2_low": 364.010009765625,
         "prev_3d_low": 356.1400146484375,
@@ -65631,8 +65606,8 @@
         "return_20d": -0.0019121801111448011,
         "same_time_vol_ratio": null,
         "today_return": -0.043478246773247076,
-        "vol_ratio": 1.1153138194039742,
-        "volume": 27042200.0,
+        "vol_ratio": 1.119324146792229,
+        "volume": 27145200.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -65668,7 +65643,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=795102360 OBV_MA20=759124180",
+          "detail": "OBV_MA5=811399760 OBV_MA20=775437030",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -65860,8 +65835,8 @@
             "period": "2025-03-31"
           }
         ],
-        "pb": 24.332556,
-        "pe": 67.05357,
+        "pb": 24.67211,
+        "pe": 67.03169,
         "revenues": [
           {
             "period": "2026-03-31",
@@ -65904,9 +65879,9 @@
         "macd_prev": -5.915111860699227,
         "macd_signal": -5.910052399654245,
         "macd_signal_prev": -5.915101274756601,
-        "obv": 136385300.0,
-        "obv_ma20": 157627730.0,
-        "obv_ma5": 153678080.0,
+        "obv": 147661100.0,
+        "obv_ma20": 168903530.0,
+        "obv_ma5": 164953880.0,
         "pct_of_high_20d": 0.8921359122004406,
         "prev2_low": 189.3300018310547,
         "prev_3d_low": 186.1999969482422,
@@ -65959,7 +65934,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=153678080 OBV_MA20=157627730",
+          "detail": "OBV_MA5=164953880 OBV_MA20=168903530",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -66107,18 +66082,6 @@
             "target_price": 350.0,
             "upside_pct": 0.28289711386181704,
             "url": "https://finnhub.io/api/news?id=a8ff20032679b142262c25c9e72bcf5e69c5521c641b552800cc1216665d3070"
-          },
-          {
-            "date": "2026-10-02",
-            "firm": "Benzinga",
-            "headline": "Barclays Maintains Equal-Weight on Bloom Energy, Raises Price Target to $308",
-            "previous_target": null,
-            "published_at": "2026-10-02T10:46:00+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 308.0,
-            "upside_pct": 0.12894946019839892,
-            "url": "https://finnhub.io/api/news?id=ad62db964b0aa1f75c499bb243349daeae6ec3f9e7ff301e5ef5b91e90e0efe7"
           }
         ]
       },
@@ -66176,8 +66139,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 49.648773,
-        "pe": 358.9737,
+        "pb": 51.046406,
+        "pe": 369.07895,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -66220,9 +66183,9 @@
         "macd_prev": 13.07463033975938,
         "macd_signal": 12.513880050853562,
         "macd_signal_prev": 12.795606944178587,
-        "obv": 388695500.0,
-        "obv_ma20": 403330245.0,
-        "obv_ma5": 404387720.0,
+        "obv": 392169900.0,
+        "obv_ma20": 406860030.0,
+        "obv_ma5": 407908760.0,
         "pct_of_high_20d": 0.9223747665500186,
         "prev2_low": 285.6400146484375,
         "prev_3d_low": 282.3399963378906,
@@ -66238,8 +66201,8 @@
         "return_20d": 0.05543741588156115,
         "same_time_vol_ratio": null,
         "today_return": -0.06340760300350201,
-        "vol_ratio": 0.9380984028247602,
-        "volume": 15696300.0,
+        "vol_ratio": 0.9414187250578205,
+        "volume": 15754600.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -66275,7 +66238,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=404387720 OBV_MA20=403330245",
+          "detail": "OBV_MA5=407908760 OBV_MA20=406860030",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -66294,7 +66257,7 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-07 Benzinga target 350.00, upside=+28.29%\uff1b 2026-10-02 Benzinga target 308.00, upside=+12.89%",
+          "detail": "2026-10-07 Benzinga target 350.00, upside=+28.29%",
           "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
@@ -66446,8 +66409,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 18.869955,
-        "pe": 34.273785,
+        "pb": 18.97163,
+        "pe": 34.266693,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -66490,9 +66453,9 @@
         "macd_prev": 4.4698997929459665,
         "macd_signal": 0.33265373245193247,
         "macd_signal_prev": 0.0022863302815906428,
-        "obv": 73396300.0,
-        "obv_ma20": 71427655.0,
-        "obv_ma5": 76381960.0,
+        "obv": 72064600.0,
+        "obv_ma20": 70095955.0,
+        "obv_ma5": 75050260.0,
         "pct_of_high_20d": 0.9221022774304584,
         "prev2_low": 851.469970703125,
         "prev_3d_low": 806.2899780273438,
@@ -66545,7 +66508,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=76381960 OBV_MA20=71427655",
+          "detail": "OBV_MA5=75050260 OBV_MA20=70095955",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -66716,8 +66679,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 19.772074,
-        "pe": 95.286354,
+        "pb": 20.878748,
+        "pe": 100.61969,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -66760,9 +66723,9 @@
         "macd_prev": 12.277347138557047,
         "macd_signal": 3.0354411868327067,
         "macd_signal_prev": 0.21022173254870857,
-        "obv": 170071400.0,
-        "obv_ma20": 161279755.0,
-        "obv_ma5": 168944180.0,
+        "obv": 167609900.0,
+        "obv_ma20": 158818255.0,
+        "obv_ma5": 166482680.0,
         "pct_of_high_20d": 0.9540373637133326,
         "prev2_low": 392.0,
         "prev_3d_low": 382.5,
@@ -66815,7 +66778,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=168944180 OBV_MA20=161279755",
+          "detail": "OBV_MA5=166482680 OBV_MA20=158818255",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -67007,8 +66970,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 16.535109,
-        "pe": 37.022846,
+        "pb": 16.796215,
+        "pe": 37.607475,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -67051,9 +67014,9 @@
         "macd_prev": 15.273311495938572,
         "macd_signal": 12.978948927622147,
         "macd_signal_prev": 12.915093432211702,
-        "obv": 195086600.0,
-        "obv_ma20": 192071235.0,
-        "obv_ma5": 197539980.0,
+        "obv": 192475600.0,
+        "obv_ma20": 189460235.0,
+        "obv_ma5": 194928980.0,
         "pct_of_high_20d": 0.9183237372432056,
         "prev2_low": 378.20001220703125,
         "prev_3d_low": 367.1499938964844,
@@ -67106,7 +67069,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=197539980 OBV_MA20=192071235",
+          "detail": "OBV_MA5=194928980 OBV_MA20=189460235",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -67277,8 +67240,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 5.428187,
-        "pe": 73.385925,
+        "pb": 5.612567,
+        "pe": 73.38497,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -67321,9 +67284,9 @@
         "macd_prev": 8.989668579946795,
         "macd_signal": 4.51159993711828,
         "macd_signal_prev": 3.8354423838785228,
-        "obv": 223919800.0,
-        "obv_ma20": 223570325.0,
-        "obv_ma5": 233167140.0,
+        "obv": 222417700.0,
+        "obv_ma20": 222104230.0,
+        "obv_ma5": 231695360.0,
         "pct_of_high_20d": 0.8935749473725983,
         "prev2_low": 331.3900146484375,
         "prev_3d_low": 316.8500061035156,
@@ -67339,8 +67302,8 @@
         "return_20d": 0.0313128637149791,
         "same_time_vol_ratio": null,
         "today_return": -0.09627568056589597,
-        "vol_ratio": 1.312467533204838,
-        "volume": 9247200.0,
+        "vol_ratio": 1.3174923785624943,
+        "volume": 9285100.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -67370,13 +67333,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.31 return=-9.63%",
+          "detail": "vol_ratio=1.32 return=-9.63%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=233167140 OBV_MA20=223570325",
+          "detail": "OBV_MA5=231695360 OBV_MA20=222104230",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -67443,7 +67406,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.31 return=-9.63%",
+          "detail": "vol_ratio=1.32 return=-9.63%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -67530,7 +67493,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 3.468791,
+        "pb": 3.6178281,
         "pe": null,
         "revenues": [
           {
@@ -67574,9 +67537,9 @@
         "macd_prev": 2.4426649966124785,
         "macd_signal": 3.7690052472673155,
         "macd_signal_prev": 4.436514170309283,
-        "obv": 4761400.0,
-        "obv_ma20": 30002290.0,
-        "obv_ma5": 18543340.0,
+        "obv": 10096400.0,
+        "obv_ma20": 35379945.0,
+        "obv_ma5": 23914260.0,
         "pct_of_high_20d": 0.8554234531988437,
         "prev2_low": 184.8300018310547,
         "prev_3d_low": 177.0,
@@ -67592,8 +67555,8 @@
         "return_20d": -0.0016252541286325695,
         "same_time_vol_ratio": null,
         "today_return": -0.03614456182990555,
-        "vol_ratio": 1.105983022507007,
-        "volume": 11032800.0,
+        "vol_ratio": 1.1102341647286151,
+        "volume": 11077700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -67629,7 +67592,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=18543340 OBV_MA20=30002290",
+          "detail": "OBV_MA5=23914260 OBV_MA20=35379945",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -67783,8 +67746,8 @@
             "period": "2025-05-31"
           }
         ],
-        "pb": 11.735894,
-        "pe": 45.660885,
+        "pb": 11.723514,
+        "pe": 45.6567,
         "revenues": [
           {
             "period": "2026-05-31",
@@ -67827,9 +67790,9 @@
         "macd_prev": 0.8806346393149624,
         "macd_signal": -2.8009130324363367,
         "macd_signal_prev": -4.223639126345562,
-        "obv": -34592600.0,
-        "obv_ma20": -50217720.0,
-        "obv_ma5": -38623080.0,
+        "obv": -32826800.0,
+        "obv_ma20": -48451920.0,
+        "obv_ma5": -36857280.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 919.0,
         "prev_3d_low": 914.75,
@@ -67882,7 +67845,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-38623080 OBV_MA20=-50217720",
+          "detail": "OBV_MA5=-36857280 OBV_MA20=-48451920",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -68036,8 +67999,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 4.8850574,
-        "pe": 20.84172,
+        "pb": 4.913579,
+        "pe": 20.963404,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -68080,9 +68043,9 @@
         "macd_prev": -0.27426516344837637,
         "macd_signal": 1.9953831826071888,
         "macd_signal_prev": 2.6352449732085907,
-        "obv": -195839000.0,
-        "obv_ma20": -166919855.0,
-        "obv_ma5": -193481980.0,
+        "obv": -199804500.0,
+        "obv_ma20": -170885355.0,
+        "obv_ma5": -197447480.0,
         "pct_of_high_20d": 0.8780789017576986,
         "prev2_low": 222.88999938964844,
         "prev_3d_low": 221.52999877929688,
@@ -68135,7 +68098,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-193481980 OBV_MA20=-166919855",
+          "detail": "OBV_MA5=-197447480 OBV_MA20=-170885355",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -68310,8 +68273,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 52.78146,
-        "pe": 5260.2,
+        "pb": 55.195667,
+        "pe": 4584.0005,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -68354,9 +68317,9 @@
         "macd_prev": 14.706981955111274,
         "macd_signal": 13.982725583645237,
         "macd_signal_prev": 14.055288984465392,
-        "obv": 338282200.0,
-        "obv_ma20": 316712485.0,
-        "obv_ma5": 346935100.0,
+        "obv": 306842600.0,
+        "obv_ma20": 285272885.0,
+        "obv_ma5": 315495500.0,
         "pct_of_high_20d": 0.9431615275818249,
         "prev2_low": 276.0,
         "prev_3d_low": 264.5,
@@ -68409,7 +68372,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=346935100 OBV_MA20=316712485",
+          "detail": "OBV_MA5=315495500 OBV_MA20=285272885",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -68584,7 +68547,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 8.947138,
+        "pb": 9.001974,
         "pe": null,
         "revenues": [
           {
@@ -68628,9 +68591,9 @@
         "macd_prev": 0.449326739594639,
         "macd_signal": -0.052797311800180394,
         "macd_signal_prev": -0.04267827913396713,
-        "obv": 272166600.0,
-        "obv_ma20": 228198625.0,
-        "obv_ma5": 308635260.0,
+        "obv": 271967800.0,
+        "obv_ma20": 228188685.0,
+        "obv_ma5": 308595500.0,
         "pct_of_high_20d": 0.8894461485532599,
         "prev2_low": 88.5999984741211,
         "prev_3d_low": 87.08999633789062,
@@ -68646,8 +68609,8 @@
         "return_20d": -0.08460503459551927,
         "same_time_vol_ratio": null,
         "today_return": -0.07767094804093189,
-        "vol_ratio": 1.3935358924195915,
-        "volume": 42122500.0,
+        "vol_ratio": 1.3996525118807237,
+        "volume": 42321300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -68677,13 +68640,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.39 return=-7.77%",
+          "detail": "vol_ratio=1.40 return=-7.77%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=308635260 OBV_MA20=228198625",
+          "detail": "OBV_MA5=308595500 OBV_MA20=228188685",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -68757,7 +68720,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.39 return=-7.77%",
+          "detail": "vol_ratio=1.40 return=-7.77%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -68858,8 +68821,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 9.01593,
-        "pe": 34.501503,
+        "pb": 9.290591,
+        "pe": 34.516033,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -68902,9 +68865,9 @@
         "macd_prev": 0.8275486774054883,
         "macd_signal": -0.17320101299416724,
         "macd_signal_prev": -0.472047919320133,
-        "obv": 1023865600.0,
-        "obv_ma20": 984207720.0,
-        "obv_ma5": 1032471120.0,
+        "obv": 1033231700.0,
+        "obv_ma20": 993584650.0,
+        "obv_ma5": 1041846340.0,
         "pct_of_high_20d": 0.9741393675714642,
         "prev2_low": 113.30999755859375,
         "prev_3d_low": 111.54000091552734,
@@ -68920,8 +68883,8 @@
         "return_20d": 0.06934099757029633,
         "same_time_vol_ratio": null,
         "today_return": -0.021296533035167986,
-        "vol_ratio": 0.6686379655247005,
-        "volume": 12967100.0,
+        "vol_ratio": 0.6692061282234726,
+        "volume": 12978500.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -68957,7 +68920,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1032471120 OBV_MA20=984207720",
+          "detail": "OBV_MA5=1041846340 OBV_MA20=993584650",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -69132,8 +69095,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 22.50534,
-        "pe": 547.6,
+        "pb": 24.104883,
+        "pe": 586.52,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -69176,9 +69139,9 @@
         "macd_prev": 11.281583104437772,
         "macd_signal": 9.162733797988722,
         "macd_signal_prev": 8.693770431108389,
-        "obv": -39685900.0,
-        "obv_ma20": -53713550.0,
-        "obv_ma5": -41325560.0,
+        "obv": -44399000.0,
+        "obv_ma20": -58426650.0,
+        "obv_ma5": -46038660.0,
         "pct_of_high_20d": 0.9840425438569552,
         "prev2_low": 276.0,
         "prev_3d_low": 270.80999755859375,
@@ -69231,7 +69194,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-41325560 OBV_MA20=-53713550",
+          "detail": "OBV_MA5=-46038660 OBV_MA20=-58426650",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -69406,8 +69369,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": -257.64572,
-        "pe": 33.404068,
+        "pb": -262.80716,
+        "pe": 33.41277,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -69450,9 +69413,9 @@
         "macd_prev": 18.511184799013677,
         "macd_signal": 19.592048449803475,
         "macd_signal_prev": 19.831597855855932,
-        "obv": 180081100.0,
-        "obv_ma20": 177378360.0,
-        "obv_ma5": 180502820.0,
+        "obv": 174123800.0,
+        "obv_ma20": 171430655.0,
+        "obv_ma5": 174553600.0,
         "pct_of_high_20d": 0.9764615294928211,
         "prev2_low": 560.9600219726562,
         "prev_3d_low": 546.0,
@@ -69468,8 +69431,8 @@
         "return_20d": 0.13408470516460413,
         "same_time_vol_ratio": null,
         "today_return": -0.007617165283125171,
-        "vol_ratio": 0.6514007682975123,
-        "volume": 5165100.0,
+        "vol_ratio": 0.6526329727701781,
+        "volume": 5175200.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -69505,7 +69468,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=180502820 OBV_MA20=177378360",
+          "detail": "OBV_MA5=174553600 OBV_MA20=171430655",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -69659,8 +69622,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 5.0119314,
-        "pe": 17.95962,
+        "pb": 4.968845,
+        "pe": 17.805225,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -69703,9 +69666,9 @@
         "macd_prev": 0.8566663683788533,
         "macd_signal": 0.7069413447178388,
         "macd_signal_prev": 0.5890635705008154,
-        "obv": -62294300.0,
-        "obv_ma20": -62192385.0,
-        "obv_ma5": -62657320.0,
+        "obv": -62039300.0,
+        "obv_ma20": -61937385.0,
+        "obv_ma5": -62402320.0,
         "pct_of_high_20d": 0.9824584395766519,
         "prev2_low": 144.6820068359375,
         "prev_3d_low": 142.50999450683594,
@@ -69758,7 +69721,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-62657320 OBV_MA20=-62192385",
+          "detail": "OBV_MA5=-62402320 OBV_MA20=-61937385",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -69912,8 +69875,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 26.811913,
-        "pe": 16.87258,
+        "pb": 27.217867,
+        "pe": 16.864698,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -69956,9 +69919,9 @@
         "macd_prev": -10.080317828944487,
         "macd_signal": -9.623414917443792,
         "macd_signal_prev": -9.780916008045454,
-        "obv": 32554000.0,
-        "obv_ma20": 36042195.0,
-        "obv_ma5": 32707200.0,
+        "obv": 33732100.0,
+        "obv_ma20": 37220295.0,
+        "obv_ma5": 33885300.0,
         "pct_of_high_20d": 0.9216937943874435,
         "prev2_low": 253.16000366210938,
         "prev_3d_low": 253.16000366210938,
@@ -70011,7 +69974,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=32707200 OBV_MA20=36042195",
+          "detail": "OBV_MA5=33885300 OBV_MA20=37220295",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -70165,8 +70128,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 17.97659,
-        "pe": 36.040096,
+        "pb": 18.128347,
+        "pe": 36.046783,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -70209,9 +70172,9 @@
         "macd_prev": -7.922409629494894,
         "macd_signal": -7.836070032046396,
         "macd_signal_prev": -7.818135667574371,
-        "obv": 297869400.0,
-        "obv_ma20": 296726070.0,
-        "obv_ma5": 294782920.0,
+        "obv": 300170300.0,
+        "obv_ma20": 299026970.0,
+        "obv_ma5": 297083820.0,
         "pct_of_high_20d": 0.9343605690755391,
         "prev2_low": 304.0,
         "prev_3d_low": 302.9800109863281,
@@ -70264,7 +70227,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=294782920 OBV_MA20=296726070",
+          "detail": "OBV_MA5=297083820 OBV_MA20=299026970",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -70439,8 +70402,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 22.259716,
-        "pe": 28.651089,
+        "pb": 22.37955,
+        "pe": 28.80533,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -70483,9 +70446,9 @@
         "macd_prev": 11.571682274998466,
         "macd_signal": 4.326426985855894,
         "macd_signal_prev": 2.289021702231255,
-        "obv": 107738600.0,
-        "obv_ma20": 96751295.0,
-        "obv_ma5": 105727480.0,
+        "obv": 109534400.0,
+        "obv_ma20": 98547095.0,
+        "obv_ma5": 107523280.0,
         "pct_of_high_20d": 0.9709874695301596,
         "prev2_low": 995.0499877929688,
         "prev_3d_low": 973.7000122070312,
@@ -70538,7 +70501,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=105727480 OBV_MA20=96751295",
+          "detail": "OBV_MA5=107523280 OBV_MA20=98547095",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -70692,8 +70655,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 6.775778,
-        "pe": 17.303562,
+        "pb": 6.8347216,
+        "pe": 17.306467,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -70736,9 +70699,9 @@
         "macd_prev": 0.5801062168031308,
         "macd_signal": -0.037182567048557186,
         "macd_signal_prev": -0.24008974801237956,
-        "obv": 521535400.0,
-        "obv_ma20": 490713385.0,
-        "obv_ma5": 517826300.0,
+        "obv": 508604300.0,
+        "obv_ma20": 477811355.0,
+        "obv_ma5": 504919680.0,
         "pct_of_high_20d": 0.9828711207875791,
         "prev2_low": 341.70001220703125,
         "prev_3d_low": 339.1499938964844,
@@ -70754,8 +70717,8 @@
         "return_20d": 0.04379663446706239,
         "same_time_vol_ratio": null,
         "today_return": -0.007225752946158237,
-        "vol_ratio": 0.8030112634694432,
-        "volume": 13956400.0,
+        "vol_ratio": 0.8047010604886429,
+        "volume": 13987000.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -70791,7 +70754,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=517826300 OBV_MA20=490713385",
+          "detail": "OBV_MA5=504919680 OBV_MA20=477811355",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -70966,8 +70929,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 10.147938,
-        "pe": 47.140972,
+        "pb": 10.338549,
+        "pe": 47.194805,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -71010,9 +70973,9 @@
         "macd_prev": 0.9415723993109708,
         "macd_signal": 1.963709709349962,
         "macd_signal_prev": 2.371763770949009,
-        "obv": 1243712500.0,
-        "obv_ma20": 1311318480.0,
-        "obv_ma5": 1276238840.0,
+        "obv": 1256646700.0,
+        "obv_ma20": 1324305880.0,
+        "obv_ma5": 1289217840.0,
         "pct_of_high_20d": 0.8612475021024585,
         "prev2_low": 111.73999786376953,
         "prev_3d_low": 107.51000213623047,
@@ -71028,8 +70991,8 @@
         "return_20d": -0.055766342475187525,
         "same_time_vol_ratio": null,
         "today_return": -0.022828964945959873,
-        "vol_ratio": 1.022909147719655,
-        "volume": 22621600.0,
+        "vol_ratio": 1.0253115538572726,
+        "volume": 22677600.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -71059,13 +71022,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.02 return=-2.28%",
+          "detail": "vol_ratio=1.03 return=-2.28%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1276238840 OBV_MA20=1311318480",
+          "detail": "OBV_MA5=1289217840 OBV_MA20=1324305880",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -71132,7 +71095,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.02 return=-2.28%",
+          "detail": "vol_ratio=1.03 return=-2.28%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -71219,8 +71182,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 3.5564015,
-        "pe": 36.59794,
+        "pb": 3.6796231,
+        "pe": 36.547264,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -71263,9 +71226,9 @@
         "macd_prev": 3.8686738401509615,
         "macd_signal": 3.2306648702106395,
         "macd_signal_prev": 3.0410874619290196,
-        "obv": 1486280000.0,
-        "obv_ma20": 1426856965.0,
-        "obv_ma5": 1480214680.0,
+        "obv": 1504714600.0,
+        "obv_ma20": 1445319210.0,
+        "obv_ma5": 1498672560.0,
         "pct_of_high_20d": 0.9848800611282911,
         "prev2_low": 68.55999755859375,
         "prev_3d_low": 66.94999694824219,
@@ -71281,8 +71244,8 @@
         "return_20d": 0.2857659983785119,
         "same_time_vol_ratio": null,
         "today_return": -0.015119938871708927,
-        "vol_ratio": 0.7334277221762017,
-        "volume": 16105200.0,
+        "vol_ratio": 0.734704248787526,
+        "volume": 16134300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -71318,7 +71281,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1480214680 OBV_MA20=1426856965",
+          "detail": "OBV_MA5=1498672560 OBV_MA20=1445319210",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -71472,8 +71435,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 6.196948,
-        "pe": 20.14311,
+        "pb": 6.2111683,
+        "pe": 20.13564,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -71516,9 +71479,9 @@
         "macd_prev": -4.036841556553696,
         "macd_signal": -3.269223670277506,
         "macd_signal_prev": -3.1943409404908962,
-        "obv": 95096400.0,
-        "obv_ma20": 110790810.0,
-        "obv_ma5": 93129200.0,
+        "obv": 98238400.0,
+        "obv_ma20": 113932810.0,
+        "obv_ma5": 96271200.0,
         "pct_of_high_20d": 0.9097515112688631,
         "prev2_low": 221.0,
         "prev_3d_low": 218.7899932861328,
@@ -71571,7 +71534,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=93129200 OBV_MA20=110790810",
+          "detail": "OBV_MA5=96271200 OBV_MA20=113932810",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -71725,7 +71688,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 6.1685586,
+        "pb": 6.0314536,
         "pe": null,
         "revenues": [
           {
@@ -71769,9 +71732,9 @@
         "macd_prev": 4.281218609532814,
         "macd_signal": 4.855731363714672,
         "macd_signal_prev": 5.246462790483826,
-        "obv": 2271148000.0,
-        "obv_ma20": 2602518110.0,
-        "obv_ma5": 2374182580.0,
+        "obv": 2315463200.0,
+        "obv_ma20": 2647364740.0,
+        "obv_ma5": 2418945300.0,
         "pct_of_high_20d": 0.8405683518651141,
         "prev2_low": 112.0,
         "prev_3d_low": 111.13999938964844,
@@ -71787,8 +71750,8 @@
         "return_20d": 0.06738439151509712,
         "same_time_vol_ratio": null,
         "today_return": -0.05339463197378547,
-        "vol_ratio": 1.089300531086966,
-        "volume": 119637300.0,
+        "vol_ratio": 1.0941152460862005,
+        "volume": 120196700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -71824,7 +71787,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=2374182580 OBV_MA20=2602518110",
+          "detail": "OBV_MA5=2418945300 OBV_MA20=2647364740",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -71999,8 +71962,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 8.091667,
-        "pe": 47.63876,
+        "pb": 8.25821,
+        "pe": 48.619263,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72043,9 +72006,9 @@
         "macd_prev": 8.063343206276386,
         "macd_signal": 7.425370720576554,
         "macd_signal_prev": 7.153828258052359,
-        "obv": 33411900.0,
-        "obv_ma20": 27824060.0,
-        "obv_ma5": 30574760.0,
+        "obv": 34354000.0,
+        "obv_ma20": 28766160.0,
+        "obv_ma5": 31516860.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 402.0,
         "prev_3d_low": 389.1099853515625,
@@ -72098,7 +72061,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=30574760 OBV_MA20=27824060",
+          "detail": "OBV_MA5=31516860 OBV_MA20=28766160",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -72252,8 +72215,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 7.269017,
-        "pe": 29.719584,
+        "pb": 7.4095907,
+        "pe": 29.709091,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72296,9 +72259,9 @@
         "macd_prev": -2.670885423060099,
         "macd_signal": -1.304625304066495,
         "macd_signal_prev": -0.9094771202455812,
-        "obv": 363357200.0,
-        "obv_ma20": 387513090.0,
-        "obv_ma5": 364795080.0,
+        "obv": 368151100.0,
+        "obv_ma20": 392306990.0,
+        "obv_ma5": 369588980.0,
         "pct_of_high_20d": 0.9431145411792589,
         "prev2_low": 251.1699981689453,
         "prev_3d_low": 251.1699981689453,
@@ -72351,7 +72314,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=364795080 OBV_MA20=387513090",
+          "detail": "OBV_MA5=369588980 OBV_MA20=392306990",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -72505,8 +72468,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 2.4917486,
-        "pe": 14.199657,
+        "pb": 2.5035522,
+        "pe": 14.199999,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72549,9 +72512,9 @@
         "macd_prev": -5.975612918805723,
         "macd_signal": -5.084551563302316,
         "macd_signal_prev": -4.884975055329773,
-        "obv": 422358100.0,
-        "obv_ma20": 432192690.0,
-        "obv_ma5": 422625980.0,
+        "obv": 430285200.0,
+        "obv_ma20": 440119790.0,
+        "obv_ma5": 430553080.0,
         "pct_of_high_20d": 0.9303539937864866,
         "prev2_low": 330.92999267578125,
         "prev_3d_low": 325.07000732421875,
@@ -72604,7 +72567,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=422625980 OBV_MA20=432192690",
+          "detail": "OBV_MA5=430553080 OBV_MA20=440119790",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -72758,8 +72721,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 10.447565,
-        "pe": 26.357357,
+        "pb": 10.480895,
+        "pe": 26.441442,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72802,9 +72765,9 @@
         "macd_prev": -0.5492099649270301,
         "macd_signal": -0.3402801970617342,
         "macd_signal_prev": -0.31954362379669843,
-        "obv": -40972700.0,
-        "obv_ma20": -21593450.0,
-        "obv_ma5": -43736100.0,
+        "obv": -32337500.0,
+        "obv_ma20": -12958250.0,
+        "obv_ma5": -35100900.0,
         "pct_of_high_20d": 0.9823167111579492,
         "prev2_low": 86.16000366210938,
         "prev_3d_low": 85.12999725341797,
@@ -72857,7 +72820,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-43736100 OBV_MA20=-21593450",
+          "detail": "OBV_MA5=-35100900 OBV_MA20=-12958250",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -73011,7 +72974,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 20.006104,
+        "pb": 21.050673,
         "pe": null,
         "revenues": [
           {
@@ -73055,9 +73018,9 @@
         "macd_prev": 55.70620915856853,
         "macd_signal": 40.61664766190799,
         "macd_signal_prev": 37.482997112417415,
-        "obv": 316206300.0,
-        "obv_ma20": 309238420.0,
-        "obv_ma5": 319826560.0,
+        "obv": 317390000.0,
+        "obv_ma20": 310437510.0,
+        "obv_ma5": 321023220.0,
         "pct_of_high_20d": 0.9251808302439694,
         "prev2_low": 1084.041015625,
         "prev_3d_low": 1072.0450439453125,
@@ -73073,8 +73036,8 @@
         "return_20d": 0.12065828994979877,
         "same_time_vol_ratio": null,
         "today_return": -0.05622505667782007,
-        "vol_ratio": 1.034640538176525,
-        "volume": 4861600.0,
+        "vol_ratio": 1.037909286668766,
+        "volume": 4877800.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -73104,13 +73067,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.03 return=-5.62%",
+          "detail": "vol_ratio=1.04 return=-5.62%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=319826560 OBV_MA20=309238420",
+          "detail": "OBV_MA5=321023220 OBV_MA20=310437510",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -73184,7 +73147,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.03 return=-5.62%",
+          "detail": "vol_ratio=1.04 return=-5.62%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -73285,8 +73248,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 30.777328,
-        "pe": 39.261494,
+        "pb": 31.03179,
+        "pe": 39.256657,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -73329,9 +73292,9 @@
         "macd_prev": -1.1666865680710998,
         "macd_signal": -2.7566009856088405,
         "macd_signal_prev": -3.315822445775327,
-        "obv": 91980500.0,
-        "obv_ma20": 90192685.0,
-        "obv_ma5": 91823080.0,
+        "obv": 93662600.0,
+        "obv_ma20": 91874785.0,
+        "obv_ma5": 93505180.0,
         "pct_of_high_20d": 0.9839154758156556,
         "prev2_low": 1139.97998046875,
         "prev_3d_low": 1139.5,
@@ -73384,7 +73347,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=91823080 OBV_MA20=90192685",
+          "detail": "OBV_MA5=93505180 OBV_MA20=91874785",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -73538,8 +73501,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 13.322753,
-        "pe": 18.720606,
+        "pb": 13.367346,
+        "pe": 18.72116,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -73582,9 +73545,9 @@
         "macd_prev": -11.968251158489807,
         "macd_signal": -11.227927599321623,
         "macd_signal_prev": -11.165071383617338,
-        "obv": -7166400.0,
-        "obv_ma20": -4268695.0,
-        "obv_ma5": -7954020.0,
+        "obv": -6312700.0,
+        "obv_ma20": -3414995.0,
+        "obv_ma5": -7100320.0,
         "pct_of_high_20d": 0.9438755399658374,
         "prev2_low": 504.17999267578125,
         "prev_3d_low": 498.7300109863281,
@@ -73637,7 +73600,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-7954020 OBV_MA20=-4268695",
+          "detail": "OBV_MA5=-7100320 OBV_MA20=-3414995",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -73812,8 +73775,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 9.3314085,
-        "pe": 21.03558,
+        "pb": 9.341482,
+        "pe": 21.042358,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -73856,9 +73819,9 @@
         "macd_prev": -0.648876054062896,
         "macd_signal": -0.5940395271340129,
         "macd_signal_prev": -0.6993129616657014,
-        "obv": 35632800.0,
-        "obv_ma20": 32670260.0,
-        "obv_ma5": 34459100.0,
+        "obv": 34465500.0,
+        "obv_ma20": 31502960.0,
+        "obv_ma5": 33291800.0,
         "pct_of_high_20d": 0.9983473756516124,
         "prev2_low": 272.6700134277344,
         "prev_3d_low": 267.8599853515625,
@@ -73911,7 +73874,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=34459100 OBV_MA20=32670260",
+          "detail": "OBV_MA5=33291800 OBV_MA20=31502960",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -74065,8 +74028,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 32.165146,
-        "pe": 55.65798,
+        "pb": 31.989565,
+        "pe": 55.354164,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -74109,9 +74072,9 @@
         "macd_prev": 9.137917922177621,
         "macd_signal": 5.785783931599289,
         "macd_signal_prev": 5.216373304317482,
-        "obv": 520798800.0,
-        "obv_ma20": 522322100.0,
-        "obv_ma5": 536116340.0,
+        "obv": 527958300.0,
+        "obv_ma20": 529481600.0,
+        "obv_ma5": 543275840.0,
         "pct_of_high_20d": 0.9225877157545146,
         "prev2_low": 330.8500061035156,
         "prev_3d_low": 321.1099853515625,
@@ -74164,7 +74127,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=536116340 OBV_MA20=522322100",
+          "detail": "OBV_MA5=543275840 OBV_MA20=529481600",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -74339,8 +74302,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 89.86242,
-        "pe": 31.614962,
+        "pb": 92.110695,
+        "pe": 32.40594,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -74383,9 +74346,9 @@
         "macd_prev": -2.327055628531866,
         "macd_signal": -2.4308103827866816,
         "macd_signal_prev": -2.7271948978614784,
-        "obv": 41065400.0,
-        "obv_ma20": 35199775.0,
-        "obv_ma5": 35839180.0,
+        "obv": 42556400.0,
+        "obv_ma20": 36690775.0,
+        "obv_ma5": 37330180.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 562.1400146484375,
         "prev_3d_low": 551.1500244140625,
@@ -74438,7 +74401,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=35839180 OBV_MA20=35199775",
+          "detail": "OBV_MA5=37330180 OBV_MA20=36690775",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -74592,8 +74555,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": -20.890997,
-        "pe": 37.37888,
+        "pb": -21.16871,
+        "pe": 37.87578,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -74636,9 +74599,9 @@
         "macd_prev": 3.1825547129311644,
         "macd_signal": 1.8976406488522497,
         "macd_signal_prev": 1.5008526436052754,
-        "obv": 26042700.0,
-        "obv_ma20": 22710390.0,
-        "obv_ma5": 25746480.0,
+        "obv": 27080900.0,
+        "obv_ma20": 23748590.0,
+        "obv_ma5": 26784680.0,
         "pct_of_high_20d": 0.9985066961113506,
         "prev2_low": 356.760009765625,
         "prev_3d_low": 354.69000244140625,
@@ -74691,7 +74654,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=25746480 OBV_MA20=22710390",
+          "detail": "OBV_MA5=26784680 OBV_MA20=23748590",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -74845,8 +74808,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": -163.83125,
-        "pe": 19.244516,
+        "pb": -162.67635,
+        "pe": 19.24959,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -74889,9 +74852,9 @@
         "macd_prev": -7.796482557277471,
         "macd_signal": -7.488608606601774,
         "macd_signal_prev": -7.575880830661218,
-        "obv": -90733400.0,
-        "obv_ma20": -84452655.0,
-        "obv_ma5": -95884140.0,
+        "obv": -92472900.0,
+        "obv_ma20": -86192155.0,
+        "obv_ma5": -97623640.0,
         "pct_of_high_20d": 0.9200357407324883,
         "prev2_low": 231.6999969482422,
         "prev_3d_low": 229.1999969482422,
@@ -74944,7 +74907,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-95884140 OBV_MA20=-84452655",
+          "detail": "OBV_MA5=-97623640 OBV_MA20=-86192155",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -75098,8 +75061,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 10.048164,
-        "pe": 515.76385,
+        "pb": 10.442677,
+        "pe": 536.01385,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -75142,9 +75105,9 @@
         "macd_prev": -9.774925446738962,
         "macd_signal": -7.390006467224622,
         "macd_signal_prev": -7.043098672832469,
-        "obv": 59323500.0,
-        "obv_ma20": 48813985.0,
-        "obv_ma5": 55814980.0,
+        "obv": 56725100.0,
+        "obv_ma20": 46215585.0,
+        "obv_ma5": 53216580.0,
         "pct_of_high_20d": 0.8669110533252592,
         "prev2_low": 359.45001220703125,
         "prev_3d_low": 351.20098876953125,
@@ -75197,7 +75160,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=55814980 OBV_MA20=48813985",
+          "detail": "OBV_MA5=53216580 OBV_MA20=46215585",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -75372,8 +75335,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 7.0317016,
-        "pe": 27.162395,
+        "pb": 7.010047,
+        "pe": 27.078747,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -75416,9 +75379,9 @@
         "macd_prev": 29.89433484914241,
         "macd_signal": 32.255545646753305,
         "macd_signal_prev": 33.45928243432845,
-        "obv": 127468100.0,
-        "obv_ma20": 126794440.0,
-        "obv_ma5": 150195640.0,
+        "obv": 135175400.0,
+        "obv_ma20": 134533185.0,
+        "obv_ma5": 157929420.0,
         "pct_of_high_20d": 0.9270823824267359,
         "prev2_low": 736.6900024414062,
         "prev_3d_low": 720.1500244140625,
@@ -75434,8 +75397,8 @@
         "return_20d": 0.11873430147718378,
         "same_time_vol_ratio": null,
         "today_return": -0.0005822502274719366,
-        "vol_ratio": 0.7309138477765069,
-        "volume": 16008000.0,
+        "vol_ratio": 0.7323698277930357,
+        "volume": 16041100.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -75471,7 +75434,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=150195640 OBV_MA20=126794440",
+          "detail": "OBV_MA5=157929420 OBV_MA20=134533185",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -75646,8 +75609,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 28.577917,
-        "pe": 29.055061,
+        "pb": 27.945494,
+        "pe": 29.030853,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -75690,9 +75653,9 @@
         "macd_prev": -2.0753003482956274,
         "macd_signal": -1.9078502580500565,
         "macd_signal_prev": -1.880561613099933,
-        "obv": 41790100.0,
-        "obv_ma20": 46286425.0,
-        "obv_ma5": 40415500.0,
+        "obv": 44850200.0,
+        "obv_ma20": 49346525.0,
+        "obv_ma5": 43475600.0,
         "pct_of_high_20d": 0.9605402166748008,
         "prev2_low": 161.5,
         "prev_3d_low": 159.9199981689453,
@@ -75745,7 +75708,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=40415500 OBV_MA20=46286425",
+          "detail": "OBV_MA5=43475600 OBV_MA20=49346525",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -75899,8 +75862,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 12.995505,
-        "pe": 90.34869,
+        "pb": 13.23207,
+        "pe": 90.552635,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -75943,9 +75906,9 @@
         "macd_prev": 13.81225562474296,
         "macd_signal": 11.632162394293125,
         "macd_signal_prev": 11.191641743350061,
-        "obv": 1339256900.0,
-        "obv_ma20": 1300257175.0,
-        "obv_ma5": 1358912600.0,
+        "obv": 1346837300.0,
+        "obv_ma20": 1307911675.0,
+        "obv_ma5": 1366555400.0,
         "pct_of_high_20d": 0.9569701206114701,
         "prev2_low": 267.260009765625,
         "prev_3d_low": 267.260009765625,
@@ -75961,8 +75924,8 @@
         "return_20d": 0.21016917314590366,
         "same_time_vol_ratio": null,
         "today_return": -0.03519737695470415,
-        "vol_ratio": 1.4849789784736511,
-        "volume": 29121700.0,
+        "vol_ratio": 1.4886603194024906,
+        "volume": 29199700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -75992,13 +75955,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.48 return=-3.52%",
+          "detail": "vol_ratio=1.49 return=-3.52%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1358912600 OBV_MA20=1300257175",
+          "detail": "OBV_MA5=1366555400 OBV_MA20=1307911675",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -76072,7 +76035,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.48 return=-3.52%",
+          "detail": "vol_ratio=1.49 return=-3.52%",
           "passed": true,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": -0.1,
@@ -76173,8 +76136,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 8.773776,
-        "pe": 29.114761,
+        "pb": 8.98296,
+        "pe": 29.808912,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -76217,9 +76180,9 @@
         "macd_prev": 10.12347069904257,
         "macd_signal": 8.75412704497107,
         "macd_signal_prev": 8.462618096311427,
-        "obv": 654275900.0,
-        "obv_ma20": 614755760.0,
-        "obv_ma5": 646599180.0,
+        "obv": 668097300.0,
+        "obv_ma20": 628602810.0,
+        "obv_ma5": 660442180.0,
         "pct_of_high_20d": 0.986503276422798,
         "prev2_low": 528.780029296875,
         "prev_3d_low": 521.469970703125,
@@ -76235,8 +76198,8 @@
         "return_20d": 0.06126631216103551,
         "same_time_vol_ratio": null,
         "today_return": -0.013496723577201997,
-        "vol_ratio": 0.9102107591374992,
-        "volume": 20201700.0,
+        "vol_ratio": 0.9113718401793486,
+        "volume": 20228700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -76272,7 +76235,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=646599180 OBV_MA20=614755760",
+          "detail": "OBV_MA5=660442180 OBV_MA20=628602810",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -76447,8 +76410,8 @@
             "period": "2025-05-31"
           }
         ],
-        "pb": 11.610603,
-        "pe": 13.935692,
+        "pb": 11.533936,
+        "pe": 13.935537,
         "revenues": [
           {
             "period": "2026-05-31",
@@ -76491,9 +76454,9 @@
         "macd_prev": 30.605429527706974,
         "macd_signal": 30.262157646067173,
         "macd_signal_prev": 31.213603029110562,
-        "obv": 1292814400.0,
-        "obv_ma20": 1253656860.0,
-        "obv_ma5": 1310494160.0,
+        "obv": 1265086400.0,
+        "obv_ma20": 1226045140.0,
+        "obv_ma5": 1282864080.0,
         "pct_of_high_20d": 0.9439123301592612,
         "prev2_low": 1045.260009765625,
         "prev_3d_low": 1011.4199829101562,
@@ -76509,8 +76472,8 @@
         "return_20d": 0.05978043429186619,
         "same_time_vol_ratio": null,
         "today_return": -0.04794120788574219,
-        "vol_ratio": 1.1541450857502409,
-        "volume": 29788300.0,
+        "vol_ratio": 1.1586127341381067,
+        "volume": 29910700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -76540,13 +76503,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.15 return=-4.79%",
+          "detail": "vol_ratio=1.16 return=-4.79%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1310494160 OBV_MA20=1253656860",
+          "detail": "OBV_MA5=1282864080 OBV_MA20=1226045140",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -76620,7 +76583,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.15 return=-4.79%",
+          "detail": "vol_ratio=1.16 return=-4.79%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -76721,7 +76684,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 75.10765,
+        "pb": 79.29042,
         "pe": null,
         "revenues": [
           {
@@ -76765,9 +76728,9 @@
         "macd_prev": 13.058833174418282,
         "macd_signal": 13.894363673768764,
         "macd_signal_prev": 14.449051057433584,
-        "obv": 199894300.0,
-        "obv_ma20": 205561910.0,
-        "obv_ma5": 203642340.0,
+        "obv": 191654800.0,
+        "obv_ma20": 197322410.0,
+        "obv_ma5": 195402840.0,
         "pct_of_high_20d": 0.951041820178462,
         "prev2_low": 354.25,
         "prev_3d_low": 341.7799987792969,
@@ -76820,7 +76783,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=203642340 OBV_MA20=205561910",
+          "detail": "OBV_MA5=195402840 OBV_MA20=197322410",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -76995,8 +76958,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 9.883994,
-        "pe": 22.506289,
+        "pb": 9.708604,
+        "pe": 22.106918,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -77039,9 +77002,9 @@
         "macd_prev": -2.3850762429231906,
         "macd_signal": -2.11086600101765,
         "macd_signal_prev": -2.116376653681507,
-        "obv": -40831600.0,
-        "obv_ma20": -34013215.0,
-        "obv_ma5": -117264800.0,
+        "obv": -68440900.0,
+        "obv_ma20": -61688730.0,
+        "obv_ma5": -144929860.0,
         "pct_of_high_20d": 0.8910607565581969,
         "prev2_low": 67.30999755859375,
         "prev_3d_low": 66.54000091552734,
@@ -77057,8 +77020,8 @@
         "return_20d": -0.05841339714013649,
         "same_time_vol_ratio": null,
         "today_return": 0.02682930887315038,
-        "vol_ratio": 1.2321555780796867,
-        "volume": 46060600.0,
+        "vol_ratio": 1.233905072846869,
+        "volume": 46130300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -77094,7 +77057,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-117264800 OBV_MA20=-34013215",
+          "detail": "OBV_MA5=-144929860 OBV_MA20=-61688730",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -77248,8 +77211,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 11.543862,
-        "pe": 87.34375,
+        "pb": 11.635552,
+        "pe": 88.0375,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -77292,9 +77255,9 @@
         "macd_prev": 1.3174817800689027,
         "macd_signal": 1.703949327043981,
         "macd_signal_prev": 1.7545351659934065,
-        "obv": 7424000.0,
-        "obv_ma20": 9210955.0,
-        "obv_ma5": -2570660.0,
+        "obv": 1886800.0,
+        "obv_ma20": 3659220.0,
+        "obv_ma5": -8120100.0,
         "pct_of_high_20d": 0.9817351177236696,
         "prev2_low": 136.17999267578125,
         "prev_3d_low": 134.14999389648438,
@@ -77310,8 +77273,8 @@
         "return_20d": 0.06541131318766769,
         "same_time_vol_ratio": null,
         "today_return": 0.013636069844018772,
-        "vol_ratio": 1.0655171667706422,
-        "volume": 11819100.0,
+        "vol_ratio": 1.0668229196011043,
+        "volume": 11834400.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -77347,7 +77310,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-2570660 OBV_MA20=9210955",
+          "detail": "OBV_MA5=-8120100 OBV_MA20=3659220",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -77522,8 +77485,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 24.304544,
-        "pe": 29.1378,
+        "pb": 24.178003,
+        "pe": 28.986094,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -77566,9 +77529,9 @@
         "macd_prev": 4.897572380879836,
         "macd_signal": 3.790740105635601,
         "macd_signal_prev": 3.626392609747132,
-        "obv": 3535542200.0,
-        "obv_ma20": 3142607565.0,
-        "obv_ma5": 3613139940.0,
+        "obv": 3292845200.0,
+        "obv_ma20": 2900276980.0,
+        "obv_ma5": 3370751500.0,
         "pct_of_high_20d": 0.9633840095114222,
         "prev2_low": 238.92999267578125,
         "prev_3d_low": 235.14999389648438,
@@ -77584,8 +77547,8 @@
         "return_20d": 0.055504648668758705,
         "same_time_vol_ratio": null,
         "today_return": -0.029435320070881676,
-        "vol_ratio": 1.0848138286423137,
-        "volume": 118311700.0,
+        "vol_ratio": 1.0881579420218215,
+        "volume": 118697400.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -77615,13 +77578,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.08 return=-2.94%",
+          "detail": "vol_ratio=1.09 return=-2.94%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=3613139940 OBV_MA20=3142607565",
+          "detail": "OBV_MA5=3370751500 OBV_MA20=2900276980",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -77695,7 +77658,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.08 return=-2.94%",
+          "detail": "vol_ratio=1.09 return=-2.94%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -77796,8 +77759,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 5.113639,
-        "pe": 19.732708,
+        "pb": 5.0350766,
+        "pe": 19.732872,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -77840,9 +77803,9 @@
         "macd_prev": 2.3042966473490196,
         "macd_signal": 1.2663883999734709,
         "macd_signal_prev": 1.1771796639206826,
-        "obv": -24809600.0,
-        "obv_ma20": -26529240.0,
-        "obv_ma5": -20205340.0,
+        "obv": -23618100.0,
+        "obv_ma20": -25337740.0,
+        "obv_ma5": -19013840.0,
         "pct_of_high_20d": 0.9455356522929268,
         "prev2_low": 240.4499969482422,
         "prev_3d_low": 231.02000427246094,
@@ -77895,7 +77858,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-20205340 OBV_MA20=-26529240",
+          "detail": "OBV_MA5=-19013840 OBV_MA20=-25337740",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -78046,7 +78009,7 @@
             "period": "2026-06-30"
           }
         ],
-        "pb": 1.9546533,
+        "pb": 1.9620038,
         "pe": null,
         "revenues": [
           {
@@ -78090,9 +78053,9 @@
         "macd_prev": -1.1193602444712738,
         "macd_signal": -1.2264526114307313,
         "macd_signal_prev": -1.21781240665188,
-        "obv": 666007700.0,
-        "obv_ma20": 699186965.0,
-        "obv_ma5": 677666080.0,
+        "obv": 663346600.0,
+        "obv_ma20": 696577735.0,
+        "obv_ma5": 675048660.0,
         "pct_of_high_20d": 0.8546353286227245,
         "prev2_low": 37.0,
         "prev_3d_low": 35.63999938964844,
@@ -78108,8 +78071,8 @@
         "return_20d": -0.1331494792144441,
         "same_time_vol_ratio": null,
         "today_return": -0.06110809393396821,
-        "vol_ratio": 1.5194995222169134,
-        "volume": 16283200.0,
+        "vol_ratio": 1.5242063310659966,
+        "volume": 16337800.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -78145,7 +78108,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=677666080 OBV_MA20=699186965",
+          "detail": "OBV_MA5=675048660 OBV_MA20=696577735",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -78258,32 +78221,15 @@
     },
     "OKTA": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9230769230769231,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.05,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.91,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.9,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.82,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 6.4153,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 79.6,
@@ -78316,8 +78262,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 5.5208464,
-        "pe": 132.65663,
+        "pb": 5.8196907,
+        "pe": 139.83736,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -78360,9 +78306,9 @@
         "macd_prev": 14.160102071819097,
         "macd_signal": 13.585966261048664,
         "macd_signal_prev": 13.453109032240869,
-        "obv": 161742000.0,
-        "obv_ma20": 144716800.0,
-        "obv_ma5": 159241180.0,
+        "obv": 159803600.0,
+        "obv_ma20": 142778400.0,
+        "obv_ma5": 157302780.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 216.68099975585938,
         "prev_3d_low": 211.0,
@@ -78415,7 +78361,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=159241180 OBV_MA20=144716800",
+          "detail": "OBV_MA5=157302780 OBV_MA20=142778400",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -78549,57 +78495,15 @@
     },
     "ON": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.3684210526315788,
-        "target_price_events": [
-          {
-            "date": "2026-10-05",
-            "firm": "Benzinga",
-            "headline": "Stifel Maintains Hold on ON Semiconductor, Raises Price Target to $80",
-            "previous_target": null,
-            "published_at": "2026-10-05T07:18:32+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 80.0,
-            "upside_pct": 0.007429748277069326,
-            "url": "https://finnhub.io/api/news?id=f79e9f7889e45b18ea7b6f79ceef01505ce3e55c267edfaf659f9590d389dc0f"
-          },
-          {
-            "date": "2026-10-02",
-            "firm": "Benzinga",
-            "headline": "Wells Fargo Maintains Overweight on ON Semiconductor, Raises Price Target to $100",
-            "previous_target": null,
-            "published_at": "2026-10-02T10:38:47+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 100.0,
-            "upside_pct": 0.25928718534633655,
-            "url": "https://finnhub.io/api/news?id=35fec3d2c8b30cb2423fffdb1adace1e9931d0442b16fc335d3d04d9b9e5c0e8"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.74,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.64,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.64,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.63,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 0.5025,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 38.4,
@@ -78632,8 +78536,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 4.282479,
-        "pe": 51.23226,
+        "pb": 4.1810927,
+        "pe": 50.019356,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -78676,9 +78580,9 @@
         "macd_prev": 2.1938407519745766,
         "macd_signal": 0.8733118122781187,
         "macd_signal_prev": 0.5924428053861998,
-        "obv": 139159400.0,
-        "obv_ma20": 97464160.0,
-        "obv_ma5": 150485260.0,
+        "obv": 143204200.0,
+        "obv_ma20": 101508960.0,
+        "obv_ma5": 154530060.0,
         "pct_of_high_20d": 0.9200556819411316,
         "prev2_low": 85.22000122070312,
         "prev_3d_low": 82.05000305175781,
@@ -78731,7 +78635,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=150485260 OBV_MA20=97464160",
+          "detail": "OBV_MA5=154530060 OBV_MA20=101508960",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -78750,8 +78654,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-02 Benzinga target 100.00, upside=+25.93%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -78819,7 +78723,7 @@
           "weight": 0.0
         }
       ],
-      "score": 0.1575000000000002,
+      "score": 0.0,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -78865,32 +78769,15 @@
     },
     "ONDS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.7333333333333334,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.14,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.07,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.08,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.06,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -68.4717,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 43.1,
@@ -78923,7 +78810,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 2.311846,
+        "pb": 2.2713466,
         "pe": null,
         "revenues": [
           {
@@ -78967,9 +78854,9 @@
         "macd_prev": -0.15140251472277555,
         "macd_signal": -0.16961717846208801,
         "macd_signal_prev": -0.16645513862121453,
-        "obv": 1655526400.0,
-        "obv_ma20": 1739151895.0,
-        "obv_ma5": 1753482240.0,
+        "obv": 1655117300.0,
+        "obv_ma20": 1738904960.0,
+        "obv_ma5": 1753209700.0,
         "pct_of_high_20d": 0.8873057112430979,
         "prev2_low": 7.329999923706055,
         "prev_3d_low": 7.010000228881836,
@@ -78985,8 +78872,8 @@
         "return_20d": -0.0551724269472319,
         "same_time_vol_ratio": null,
         "today_return": -0.04728792070682253,
-        "vol_ratio": 0.9934363287021052,
-        "volume": 60636100.0,
+        "vol_ratio": 0.9960937180052964,
+        "volume": 60806800.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -79016,13 +78903,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=0.99 return=-4.73%",
+          "detail": "vol_ratio=1.00 return=-4.73%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1753482240 OBV_MA20=1739151895",
+          "detail": "OBV_MA5=1753209700 OBV_MA20=1738904960",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -79096,7 +78983,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=0.99 return=-4.73%",
+          "detail": "vol_ratio=1.00 return=-4.73%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -79156,32 +79043,15 @@
     },
     "ORCL": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9183673469387754,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.92,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 2.03,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.79,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.26,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 8.2422,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 60.0,
@@ -79214,8 +79084,8 @@
             "period": "2025-08-31"
           }
         ],
-        "pb": 10.405675,
-        "pe": 21.268024,
+        "pb": 6.9171314,
+        "pe": 22.163008,
         "revenues": [
           {
             "period": "2026-08-31",
@@ -79258,9 +79128,9 @@
         "macd_prev": -1.510989033806652,
         "macd_signal": -1.7301999934741232,
         "macd_signal_prev": -1.6823640432044318,
-        "obv": -592263600.0,
-        "obv_ma20": -573820920.0,
-        "obv_ma5": -560670200.0,
+        "obv": -585334900.0,
+        "obv_ma20": -566714380.0,
+        "obv_ma5": -553591740.0,
         "pct_of_high_20d": 0.9010558851263128,
         "prev2_low": 143.86000061035156,
         "prev_3d_low": 141.3699951171875,
@@ -79276,8 +79146,8 @@
         "return_20d": -0.11278932734821123,
         "same_time_vol_ratio": null,
         "today_return": -0.054820251121663444,
-        "vol_ratio": 1.254316359501932,
-        "volume": 42225400.0,
+        "vol_ratio": 1.2595269832139193,
+        "volume": 42412600.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -79307,13 +79177,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.25 return=-5.48%",
+          "detail": "vol_ratio=1.26 return=-5.48%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-560670200 OBV_MA20=-573820920",
+          "detail": "OBV_MA5=-553591740 OBV_MA20=-566714380",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -79387,7 +79257,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.25 return=-5.48%",
+          "detail": "vol_ratio=1.26 return=-5.48%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -79447,45 +79317,15 @@
     },
     "PANW": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9841269841269842,
-        "target_price_events": [
-          {
-            "date": "2026-10-02",
-            "firm": "Benzinga",
-            "headline": "TD Cowen Maintains Buy on Palo Alto Networks, Raises Price Target to $440",
-            "previous_target": null,
-            "published_at": "2026-10-02T09:57:04+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 440.0,
-            "upside_pct": 0.10414052697616061,
-            "url": "https://finnhub.io/api/news?id=46d3d437660d87854f251aa9ea3caca8091d93d11f6861cd9ae3f9d45ceb3a7c"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.02,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.85,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.03,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.93,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 2.4199,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.6,
@@ -79518,8 +79358,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 11.813357,
-        "pe": 996.25,
+        "pb": 12.414549,
+        "pe": 1046.95,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -79562,9 +79402,9 @@
         "macd_prev": 13.913718450629574,
         "macd_signal": 11.51600086307565,
         "macd_signal_prev": 11.116654747425288,
-        "obv": 82195700.0,
-        "obv_ma20": 77475150.0,
-        "obv_ma5": 84998080.0,
+        "obv": 77743300.0,
+        "obv_ma20": 73022750.0,
+        "obv_ma5": 80545680.0,
         "pct_of_high_20d": 0.9490128754366675,
         "prev2_low": 412.0,
         "prev_3d_low": 399.1700134277344,
@@ -79617,7 +79457,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=84998080 OBV_MA20=77475150",
+          "detail": "OBV_MA5=80545680 OBV_MA20=73022750",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -79636,8 +79476,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-02 Benzinga target 440.00, upside=+10.41%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -79705,7 +79545,7 @@
           "weight": 0.0
         }
       ],
-      "score": 2.8075,
+      "score": 0.8075000000000001,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -79751,32 +79591,15 @@
     },
     "PINS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.3333333333333335,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.43,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.27,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.67,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.38,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 18.067,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 78.2,
@@ -79809,8 +79632,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 4.0121164,
-        "pe": 60.382355,
+        "pb": 4.182138,
+        "pe": 61.142857,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -79853,9 +79676,9 @@
         "macd_prev": -0.3380737773925446,
         "macd_signal": -0.5814828227632329,
         "macd_signal_prev": -0.6696787221232916,
-        "obv": -10993100.0,
-        "obv_ma20": -57802280.0,
-        "obv_ma5": -26030260.0,
+        "obv": -4363900.0,
+        "obv_ma20": -51173080.0,
+        "obv_ma5": -19401060.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 19.43000030517578,
         "prev_3d_low": 19.43000030517578,
@@ -79908,7 +79731,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-26030260 OBV_MA20=-57802280",
+          "detail": "OBV_MA5=-19401060 OBV_MA20=-51173080",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -80021,32 +79844,15 @@
     },
     "PLTR": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.051282051282051,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.41,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.33,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.25,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.21,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 15.6885,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 84.7,
@@ -80079,8 +79885,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 48.864307,
-        "pe": 171.36208,
+        "pb": 51.388893,
+        "pe": 180.21553,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -80123,9 +79929,9 @@
         "macd_prev": 5.653695616931088,
         "macd_signal": 5.645626485836013,
         "macd_signal_prev": 5.53896153915991,
-        "obv": 3104077700.0,
-        "obv_ma20": 2983604480.0,
-        "obv_ma5": 3050595700.0,
+        "obv": 3041624300.0,
+        "obv_ma20": 2921091325.0,
+        "obv_ma5": 2988091980.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 190.22000122070312,
         "prev_3d_low": 187.6300048828125,
@@ -80141,8 +79947,8 @@
         "return_20d": 0.1984806345580752,
         "same_time_vol_ratio": null,
         "today_return": 0.024005789096049668,
-        "vol_ratio": 1.8201582223778117,
-        "volume": 41802500.0,
+        "vol_ratio": 1.8226474130648156,
+        "volume": 41865400.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -80178,7 +79984,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=3050595700 OBV_MA20=2983604480",
+          "detail": "OBV_MA5=2988091980 OBV_MA20=2921091325",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -80312,32 +80118,15 @@
     },
     "QCOM": {
       "analyst": {
-        "rating": "Hold",
-        "rating_score": 2.5510204081632653,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.21,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 2.65,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 3.5,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.0,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -2.746,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 53.1,
@@ -80370,8 +80159,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 6.726411,
-        "pe": 20.371527,
+        "pb": 6.706921,
+        "pe": 20.383276,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -80414,9 +80203,9 @@
         "macd_prev": 1.9245953149377328,
         "macd_signal": 3.4429788402883914,
         "macd_signal_prev": 4.011625199967755,
-        "obv": 262422800.0,
-        "obv_ma20": 302950530.0,
-        "obv_ma5": 273983420.0,
+        "obv": 267460200.0,
+        "obv_ma20": 307998000.0,
+        "obv_ma5": 279029300.0,
         "pct_of_high_20d": 0.8714660268506939,
         "prev2_low": 179.3300018310547,
         "prev_3d_low": 175.35000610351562,
@@ -80432,8 +80221,8 @@
         "return_20d": -0.004918647399139164,
         "same_time_vol_ratio": null,
         "today_return": -0.00626694128812022,
-        "vol_ratio": 0.6937481282500386,
-        "volume": 9555600.0,
+        "vol_ratio": 0.6944909780132064,
+        "volume": 9566200.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -80469,7 +80258,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=273983420 OBV_MA20=302950530",
+          "detail": "OBV_MA5=279029300 OBV_MA20=307998000",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -80603,32 +80392,15 @@
     },
     "RKLB": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9230769230769231,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.08,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.07,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.09,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.03,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -4.5752,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 36.1,
@@ -80661,7 +80433,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 11.716342,
+        "pb": 11.683796,
         "pe": null,
         "revenues": [
           {
@@ -80705,9 +80477,9 @@
         "macd_prev": 1.1254718397830317,
         "macd_signal": 0.533201105415207,
         "macd_signal_prev": 0.46789012731423363,
-        "obv": 1478232400.0,
-        "obv_ma20": 1480057950.0,
-        "obv_ma5": 1501907900.0,
+        "obv": 1485002400.0,
+        "obv_ma20": 1486929600.0,
+        "obv_ma5": 1508763500.0,
         "pct_of_high_20d": 0.9112710331822769,
         "prev2_low": 73.66000366210938,
         "prev_3d_low": 70.62999725341797,
@@ -80723,8 +80495,8 @@
         "return_20d": 0.10393806547069717,
         "same_time_vol_ratio": null,
         "today_return": -0.04894322487046898,
-        "vol_ratio": 1.0660808519916252,
-        "volume": 22956500.0,
+        "vol_ratio": 1.0707838076187288,
+        "volume": 23063500.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -80760,7 +80532,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1501907900 OBV_MA20=1480057950",
+          "detail": "OBV_MA5=1508763500 OBV_MA20=1486929600",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -80894,32 +80666,15 @@
     },
     "RTX": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.1666666666666665,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.89,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.78,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.55,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.7,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 12.6274,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 20.8,
@@ -80952,8 +80707,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 3.7425382,
-        "pe": 32.450706,
+        "pb": 3.7760406,
+        "pe": 32.455498,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -80996,9 +80751,9 @@
         "macd_prev": -5.7424150856542155,
         "macd_signal": -5.400225741863748,
         "macd_signal_prev": -5.375519311573673,
-        "obv": 211736100.0,
-        "obv_ma20": 226032975.0,
-        "obv_ma5": 213130500.0,
+        "obv": 214521400.0,
+        "obv_ma20": 228818275.0,
+        "obv_ma5": 215915800.0,
         "pct_of_high_20d": 0.9324160974981699,
         "prev2_low": 182.41000366210938,
         "prev_3d_low": 179.9499969482422,
@@ -81051,7 +80806,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=213130500 OBV_MA20=226032975",
+          "detail": "OBV_MA5=215915800 OBV_MA20=228818275",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -81185,45 +80940,15 @@
     },
     "SHOP": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.0714285714285716,
-        "target_price_events": [
-          {
-            "date": "2026-10-06",
-            "firm": "Benzinga",
-            "headline": "JP Morgan Maintains Overweight on Shopify, Raises Price Target to $200",
-            "previous_target": null,
-            "published_at": "2026-10-06T10:58:54+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 200.0,
-            "upside_pct": 0.21536219596009265,
-            "url": "https://finnhub.io/api/news?id=508002ae8d88b886f53c812f0556d7b553bab2b20d75a11099ffd521b609bb86"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.42,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.36,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.48,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.34,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 2.464,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 47.7,
@@ -81256,8 +80981,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 16.725277,
-        "pe": 111.189186,
+        "pb": 17.36457,
+        "pe": 115.43919,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -81300,9 +81025,9 @@
         "macd_prev": 5.79842790717683,
         "macd_signal": 3.613959633978701,
         "macd_signal_prev": 2.9269302425159838,
-        "obv": 191452100.0,
-        "obv_ma20": 151648300.0,
-        "obv_ma5": 187643040.0,
+        "obv": 195389300.0,
+        "obv_ma20": 155585500.0,
+        "obv_ma5": 191580240.0,
         "pct_of_high_20d": 0.9911461709840931,
         "prev2_low": 163.10000610351562,
         "prev_3d_low": 151.6999969482422,
@@ -81355,7 +81080,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=187643040 OBV_MA20=151648300",
+          "detail": "OBV_MA5=191580240 OBV_MA20=155585500",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -81374,8 +81099,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-06 Benzinga target 200.00, upside=+21.54%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -81443,7 +81168,7 @@
           "weight": 0.0
         }
       ],
-      "score": 5.25,
+      "score": 3.25,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -81489,45 +81214,15 @@
     },
     "SNDK": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8181818181818181,
-        "target_price_events": [
-          {
-            "date": "2026-10-06",
-            "firm": "Benzinga",
-            "headline": "Mizuho Maintains Outperform on SanDisk, Raises Price Target to $2050",
-            "previous_target": null,
-            "published_at": "2026-10-06T08:59:11+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 2050.0,
-            "upside_pct": 0.27371916652458284,
-            "url": "https://finnhub.io/api/news?id=6c9b662d29ffd6d29e90438a0ecc4cadfb425896c5e77ea53a953f5724d4f6ca"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 39.25,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 23.41,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 6.2,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.22,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 11.6977,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 84.6,
@@ -81560,8 +81255,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 15.239511,
-        "pe": 21.820227,
+        "pb": 14.977796,
+        "pe": 21.821217,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -81604,9 +81299,9 @@
         "macd_prev": 31.415177958224604,
         "macd_signal": 40.83947296877435,
         "macd_signal_prev": 45.85356578398073,
-        "obv": 489794600.0,
-        "obv_ma20": 494852865.0,
-        "obv_ma5": 495652760.0,
+        "obv": 489745000.0,
+        "obv_ma20": 494850385.0,
+        "obv_ma5": 495642840.0,
         "pct_of_high_20d": 0.8529018609149891,
         "prev2_low": 1650.0,
         "prev_3d_low": 1617.77001953125,
@@ -81622,8 +81317,8 @@
         "return_20d": -0.0491140834824243,
         "same_time_vol_ratio": null,
         "today_return": -0.0490186129055874,
-        "vol_ratio": 1.0711143564239645,
-        "volume": 9307400.0,
+        "vol_ratio": 1.0765151833279931,
+        "volume": 9357000.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -81653,13 +81348,13 @@
           "weight": 0.75
         },
         {
-          "detail": "vol_ratio=1.07 return=-4.90%",
+          "detail": "vol_ratio=1.08 return=-4.90%",
           "passed": false,
           "rule": "\u653e\u91cf\u4e0a\u6f32 (vol>1.2x & up day)",
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=495652760 OBV_MA20=494852865",
+          "detail": "OBV_MA5=495642840 OBV_MA20=494850385",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -81678,8 +81373,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-06 Benzinga target 2050.00, upside=+27.37%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -81726,7 +81421,7 @@
           "weight": 0.0
         },
         {
-          "detail": "vol_ratio=1.07 return=-4.90%",
+          "detail": "vol_ratio=1.08 return=-4.90%",
           "passed": false,
           "rule": "\u8ce3\u58d3\u6263\u5206\uff1a\u653e\u91cf\u4e0b\u8dcc (vol>1.3x)",
           "score": 0.0,
@@ -81772,32 +81467,15 @@
     },
     "SNOW": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8620689655172413,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.62,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 0.39,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.32,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.35,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 36.2039,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.0,
@@ -81830,7 +81508,7 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 56.30431,
+        "pb": 60.48369,
         "pe": null,
         "revenues": [
           {
@@ -81874,9 +81552,9 @@
         "macd_prev": 3.6268765327704955,
         "macd_signal": 4.415404682613874,
         "macd_signal_prev": 4.526553124732093,
-        "obv": 335549700.0,
-        "obv_ma20": 336726340.0,
-        "obv_ma5": 335915140.0,
+        "obv": 326718200.0,
+        "obv_ma20": 327894840.0,
+        "obv_ma5": 327083640.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 335.1099853515625,
         "prev_3d_low": 332.0,
@@ -81929,7 +81607,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=335915140 OBV_MA20=336726340",
+          "detail": "OBV_MA5=327083640 OBV_MA20=327894840",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -82063,32 +81741,15 @@
     },
     "SNPS": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.90625,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 3.91,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 3.35,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.77,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 2.9,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 4.5622,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 72.6,
@@ -82121,8 +81782,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 3.0614378,
-        "pe": 87.941696,
+        "pb": 3.1367204,
+        "pe": 87.929306,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -82165,9 +81826,9 @@
         "macd_prev": 23.861077987864007,
         "macd_signal": 15.209893877937837,
         "macd_signal_prev": 12.741437811640221,
-        "obv": -28762800.0,
-        "obv_ma20": -32056070.0,
-        "obv_ma5": -25577260.0,
+        "obv": -29694700.0,
+        "obv_ma20": -32987970.0,
+        "obv_ma5": -26509160.0,
         "pct_of_high_20d": 0.9853118490201204,
         "prev2_low": 486.5,
         "prev_3d_low": 482.1600036621094,
@@ -82220,7 +81881,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-25577260 OBV_MA20=-32056070",
+          "detail": "OBV_MA5=-26509160 OBV_MA20=-32987970",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -82333,32 +81994,15 @@
     },
     "SPOT": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.9375,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.61,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 3.45,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 4.43,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.28,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -6.5655,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 33.4,
@@ -82391,8 +82035,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 11.507048,
-        "pe": 30.254023,
+        "pb": 11.390316,
+        "pe": 30.25386,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -82435,9 +82079,9 @@
         "macd_prev": -9.136717371296129,
         "macd_signal": -7.221257104273554,
         "macd_signal_prev": -7.448834101725247,
-        "obv": 73326800.0,
-        "obv_ma20": 71023335.0,
-        "obv_ma5": 70101440.0,
+        "obv": 71645800.0,
+        "obv_ma20": 69342335.0,
+        "obv_ma5": 68420440.0,
         "pct_of_high_20d": 0.9429655961407012,
         "prev2_low": 478.0,
         "prev_3d_low": 470.25,
@@ -82490,7 +82134,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=70101440 OBV_MA20=71023335",
+          "detail": "OBV_MA5=68420440 OBV_MA20=69342335",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -82624,32 +82268,15 @@
     },
     "TSLA": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.459016393442623,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.33,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.41,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.5,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.5,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": -36.4284,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 16.8,
@@ -82682,8 +82309,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 17.049328,
-        "pe": 347.2222,
+        "pb": 17.399408,
+        "pe": 354.35184,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -82726,9 +82353,9 @@
         "macd_prev": 4.329551876322284,
         "macd_signal": 3.7332639724047976,
         "macd_signal_prev": 3.559300190303923,
-        "obv": 1952305400.0,
-        "obv_ma20": 1946357110.0,
-        "obv_ma5": 1970772260.0,
+        "obv": 2035311100.0,
+        "obv_ma20": 2029440140.0,
+        "obv_ma5": 2053843080.0,
         "pct_of_high_20d": 0.9850793506749413,
         "prev2_low": 378.5199890136719,
         "prev_3d_low": 364.9100036621094,
@@ -82744,8 +82371,8 @@
         "return_20d": 0.03146661491426195,
         "same_time_vol_ratio": null,
         "today_return": -0.007437594496577438,
-        "vol_ratio": 0.7998648505679228,
-        "volume": 28313500.0,
+        "vol_ratio": 0.8020722037007875,
+        "volume": 28394900.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -82781,7 +82408,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=1970772260 OBV_MA20=1946357110",
+          "detail": "OBV_MA5=2053843080 OBV_MA20=2029440140",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -82894,45 +82521,15 @@
     },
     "TSM": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.7674418604651163,
-        "target_price_events": [
-          {
-            "date": "2026-10-06",
-            "firm": "Benzinga",
-            "headline": "Barclays Maintains Overweight on Taiwan Semiconductor, Raises Price Target to $665",
-            "previous_target": null,
-            "published_at": "2026-10-06T10:36:23+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 665.0,
-            "upside_pct": 0.45199679944901905,
-            "url": "https://finnhub.io/api/news?id=4dba9ae9d0ba92dc958283b4f047e9ea986e1407c5e8e05fae767bda9b0c3fcf"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 27.25,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 22.077,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 19.51,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 17.44,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 10.9248,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 67.7,
@@ -82965,8 +82562,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 94.289314,
-        "pe": 33.284157,
+        "pb": 93.32581,
+        "pe": 33.282673,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -83009,9 +82606,9 @@
         "macd_prev": 13.83305070314259,
         "macd_signal": 11.12502151131525,
         "macd_signal_prev": 10.792979630438023,
-        "obv": 307428600.0,
-        "obv_ma20": 299361835.0,
-        "obv_ma5": 323686920.0,
+        "obv": 313851000.0,
+        "obv_ma20": 305804565.0,
+        "obv_ma5": 330126440.0,
         "pct_of_high_20d": 0.9427542234306407,
         "prev2_low": 481.4800109863281,
         "prev_3d_low": 471.29998779296875,
@@ -83027,8 +82624,8 @@
         "return_20d": 0.06999507403808458,
         "same_time_vol_ratio": null,
         "today_return": -0.030093226610138246,
-        "vol_ratio": 1.3269016352211223,
-        "volume": 13400300.0,
+        "vol_ratio": 1.328879872396166,
+        "volume": 13421700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -83064,7 +82661,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=323686920 OBV_MA20=299361835",
+          "detail": "OBV_MA5=330126440 OBV_MA20=305804565",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -83083,8 +82680,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-06 Benzinga target 665.00, upside=+45.20%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -83152,7 +82749,7 @@
           "weight": 0.0
         }
       ],
-      "score": 0.4224999999999999,
+      "score": 0.0,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -83198,32 +82795,15 @@
     },
     "TXN": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.441860465116279,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 2.14,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 1.68,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 1.27,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 1.48,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 9.5021,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 61.4,
@@ -83256,8 +82836,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 14.612383,
-        "pe": 43.86606,
+        "pb": 14.38625,
+        "pe": 43.854713,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -83300,9 +82880,9 @@
         "macd_prev": 6.618858633673824,
         "macd_signal": 4.437503363912321,
         "macd_signal_prev": 3.923597138533494,
-        "obv": 75468900.0,
-        "obv_ma20": 58891295.0,
-        "obv_ma5": 80894660.0,
+        "obv": 79118300.0,
+        "obv_ma20": 62540695.0,
+        "obv_ma5": 84544060.0,
         "pct_of_high_20d": 0.9696194918227412,
         "prev2_low": 294.2300109863281,
         "prev_3d_low": 284.80999755859375,
@@ -83355,7 +82935,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=80894660 OBV_MA20=58891295",
+          "detail": "OBV_MA5=84544060 OBV_MA20=62540695",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -83489,32 +83069,15 @@
     },
     "U": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.8529411764705883,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": -0.05,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": -0.16,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": -0.21,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": -0.3,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 42.3299,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 79.6,
@@ -83547,7 +83110,7 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 6.6555476,
+        "pb": 6.79913,
         "pe": null,
         "revenues": [
           {
@@ -83591,9 +83154,9 @@
         "macd_prev": 0.732264843023529,
         "macd_signal": 0.5133096806024946,
         "macd_signal_prev": 0.4228606110003002,
-        "obv": 269093400.0,
-        "obv_ma20": 250778920.0,
-        "obv_ma5": 250639320.0,
+        "obv": 275280500.0,
+        "obv_ma20": 256966020.0,
+        "obv_ma5": 256826420.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 44.44499969482422,
         "prev_3d_low": 43.56700134277344,
@@ -83646,7 +83209,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=250639320 OBV_MA20=250778920",
+          "detail": "OBV_MA5=256826420 OBV_MA20=256966020",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -83780,45 +83343,15 @@
     },
     "UBER": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 1.896551724137931,
-        "target_price_events": [
-          {
-            "date": "2026-10-05",
-            "firm": "Benzinga",
-            "headline": "Wells Fargo Maintains Overweight on Uber Technologies, Raises Price Target to $92",
-            "previous_target": null,
-            "published_at": "2026-10-05T10:52:34+00:00",
-            "raise_pct": null,
-            "source": "Benzinga",
-            "target_price": 92.0,
-            "upside_pct": 0.30979502844567275,
-            "url": "https://finnhub.io/api/news?id=3891aac4f37ddb40af1fbcb23036059ec9013ea8e3ca9c50201fd4cda3616adc"
-          }
-        ]
+        "rating": null,
+        "rating_score": null,
+        "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 1.17,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.13,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.14,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 3.11,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 43.0843,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 44.9,
@@ -83851,8 +83384,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 5.2457056,
-        "pe": 15.403508,
+        "pb": 5.340553,
+        "pe": 15.682018,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -83895,9 +83428,9 @@
         "macd_prev": -1.4191302584980008,
         "macd_signal": -1.41065608561855,
         "macd_signal_prev": -1.454322092942569,
-        "obv": -140277400.0,
-        "obv_ma20": -108002725.0,
-        "obv_ma5": -142069360.0,
+        "obv": -155279700.0,
+        "obv_ma20": -123034760.0,
+        "obv_ma5": -157096700.0,
         "pct_of_high_20d": 0.9670934946987628,
         "prev2_low": 68.76000213623047,
         "prev_3d_low": 68.26499938964844,
@@ -83913,8 +83446,8 @@
         "return_20d": -0.031973536009986314,
         "same_time_vol_ratio": null,
         "today_return": 0.026150489340135863,
-        "vol_ratio": 0.8426969557136597,
-        "volume": 14500000.0,
+        "vol_ratio": 0.8444392143873061,
+        "volume": 14531300.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -83950,7 +83483,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-142069360 OBV_MA20=-108002725",
+          "detail": "OBV_MA5=-157096700 OBV_MA20=-123034760",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -83969,8 +83502,8 @@
           "weight": 0.75
         },
         {
-          "detail": "2026-10-05 Benzinga target 92.00, upside=+30.98%",
-          "passed": true,
+          "detail": "no 7d target raise with target >= close * 1.10",
+          "passed": false,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -84038,7 +83571,7 @@
           "weight": 0.0
         }
       ],
-      "score": 3.0,
+      "score": 1.0,
       "score_regime": {
         "as_of": "2026-10-08",
         "benchmark": "SPY",
@@ -84125,8 +83658,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 3.4100626,
-        "pe": 23.855307,
+        "pb": 3.4868221,
+        "pe": 23.855345,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -84169,9 +83702,9 @@
         "macd_prev": -5.04752994640387,
         "macd_signal": -5.970526475463528,
         "macd_signal_prev": -6.209177624414032,
-        "obv": -181844200.0,
-        "obv_ma20": -170483540.0,
-        "obv_ma5": -171790940.0,
+        "obv": -183999900.0,
+        "obv_ma20": -172627365.0,
+        "obv_ma5": -173936640.0,
         "pct_of_high_20d": 0.9671490653449357,
         "prev2_low": 373.70001220703125,
         "prev_3d_low": 368.04998779296875,
@@ -84187,8 +83720,8 @@
         "return_20d": -0.044632704818040825,
         "same_time_vol_ratio": null,
         "today_return": -0.013378367552310588,
-        "vol_ratio": 1.4454115101773468,
-        "volume": 7282200.0,
+        "vol_ratio": 1.4477129857951585,
+        "volume": 7294700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -84224,7 +83757,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=-171790940 OBV_MA20=-170483540",
+          "detail": "OBV_MA5=-173936640 OBV_MA20=-172627365",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -84378,8 +83911,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 19.878113,
-        "pe": 31.923405,
+        "pb": 20.426603,
+        "pe": 31.934551,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -84422,9 +83955,9 @@
         "macd_prev": -0.5556321597279634,
         "macd_signal": -0.7490044179034798,
         "macd_signal_prev": -0.964478236296225,
-        "obv": 83842700.0,
-        "obv_ma20": 74422140.0,
-        "obv_ma5": 73729760.0,
+        "obv": 79778800.0,
+        "obv_ma20": 70358240.0,
+        "obv_ma5": 69665860.0,
         "pct_of_high_20d": 0.9986156514018653,
         "prev2_low": 368.1499938964844,
         "prev_3d_low": 359.04998779296875,
@@ -84477,7 +84010,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=73729760 OBV_MA20=74422140",
+          "detail": "OBV_MA5=69665860 OBV_MA20=70358240",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -84631,8 +84164,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 19.72085,
-        "pe": 55.142532,
+        "pb": 19.643984,
+        "pe": 54.9276,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -84675,9 +84208,9 @@
         "macd_prev": -3.593840070446987,
         "macd_signal": -4.6823962701421795,
         "macd_signal_prev": -4.907864773531577,
-        "obv": 42241500.0,
-        "obv_ma20": 46885035.0,
-        "obv_ma5": 51050020.0,
+        "obv": 46882900.0,
+        "obv_ma20": 51538310.0,
+        "obv_ma5": 55701420.0,
         "pct_of_high_20d": 0.9481443944695586,
         "prev2_low": 249.10000610351562,
         "prev_3d_low": 239.63999938964844,
@@ -84693,8 +84226,8 @@
         "return_20d": -0.01773267669644174,
         "same_time_vol_ratio": null,
         "today_return": -0.011197248180926933,
-        "vol_ratio": 1.1912335293316614,
-        "volume": 5861000.0,
+        "vol_ratio": 1.1936224974521084,
+        "volume": 5873500.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -84730,7 +84263,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=51050020 OBV_MA20=46885035",
+          "detail": "OBV_MA5=55701420 OBV_MA20=51538310",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -84884,8 +84417,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 7.0065284,
-        "pe": 38.25051,
+        "pb": 6.9610147,
+        "pe": 38.002037,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -84928,9 +84461,9 @@
         "macd_prev": -0.28373401620228833,
         "macd_signal": 0.6503483175546748,
         "macd_signal_prev": 0.8870093753959888,
-        "obv": 51511600.0,
-        "obv_ma20": 55158820.0,
-        "obv_ma5": 50895260.0,
+        "obv": 49706400.0,
+        "obv_ma20": 53353620.0,
+        "obv_ma5": 49090060.0,
         "pct_of_high_20d": 0.9424427875804727,
         "prev2_low": 184.0800018310547,
         "prev_3d_low": 182.61000061035156,
@@ -84983,7 +84516,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=50895260 OBV_MA20=55158820",
+          "detail": "OBV_MA5=49090060 OBV_MA20=53353620",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -85158,8 +84691,8 @@
             "period": "2025-07-31"
           }
         ],
-        "pb": 8.938475,
-        "pe": 40.057972,
+        "pb": 9.002344,
+        "pe": 40.344204,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -85202,9 +84735,9 @@
         "macd_prev": -0.5522336234664635,
         "macd_signal": -0.5453291520601747,
         "macd_signal_prev": -0.6319714002103373,
-        "obv": 428953000.0,
-        "obv_ma20": 363904840.0,
-        "obv_ma5": 387619180.0,
+        "obv": 439782200.0,
+        "obv_ma20": 374718365.0,
+        "obv_ma5": 398435180.0,
         "pct_of_high_20d": 1.0,
         "prev2_low": 104.5,
         "prev_3d_low": 103.38999938964844,
@@ -85220,8 +84753,8 @@
         "return_20d": 0.04568234227095025,
         "same_time_vol_ratio": null,
         "today_return": 0.022189291930702293,
-        "vol_ratio": 1.0509873471941604,
-        "volume": 23751200.0,
+        "vol_ratio": 1.0516790771939444,
+        "volume": 23767700.0,
         "volume_projection_capped": false,
         "volume_projection_reliable": false,
         "volume_projection_source": null
@@ -85257,7 +84790,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=387619180 OBV_MA20=363904840",
+          "detail": "OBV_MA5=398435180 OBV_MA20=374718365",
           "passed": true,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
@@ -85411,8 +84944,8 @@
             "period": "2025-06-30"
           }
         ],
-        "pb": 2.0499754,
-        "pe": 134.3393,
+        "pb": 2.1047466,
+        "pe": 137.92857,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -85455,9 +84988,9 @@
         "macd_prev": -1.2045679939476344,
         "macd_signal": -1.3267195161377192,
         "macd_signal_prev": -1.368499160853054,
-        "obv": 277890000.0,
-        "obv_ma20": 286018065.0,
-        "obv_ma5": 284487980.0,
+        "obv": 269542500.0,
+        "obv_ma20": 277670565.0,
+        "obv_ma5": 276140480.0,
         "pct_of_high_20d": 0.9464084209168461,
         "prev2_low": 75.81999969482422,
         "prev_3d_low": 74.0199966430664,
@@ -85510,7 +85043,7 @@
           "weight": 2.25
         },
         {
-          "detail": "OBV_MA5=284487980 OBV_MA20=286018065",
+          "detail": "OBV_MA5=276140480 OBV_MA20=277670565",
           "passed": false,
           "rule": "OBV 5d > OBV 20d",
           "weight": 0.5
