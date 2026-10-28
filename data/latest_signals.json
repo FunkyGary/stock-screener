@@ -1,72 +1,72 @@
 {
-  "generated_at": "2026-10-28T00:32:58.874208+00:00",
+  "generated_at": "2026-10-28T01:21:51.542844+00:00",
   "last_run": {
     "tw": "2026-10-27T16:36:41.224433+00:00",
     "tw_eod": "2026-10-27T16:36:41.224433+00:00",
     "tw_intraday": "2026-10-21T04:19:39.406345+00:00",
-    "us": "2026-10-28T00:32:58.874208+00:00",
-    "us_eod": "2026-10-28T00:32:58.874208+00:00",
+    "us": "2026-10-28T01:21:51.542844+00:00",
+    "us_eod": "2026-10-28T01:21:51.542844+00:00",
     "us_intraday": "2026-08-31T02:38:16.095797+00:00"
   },
   "market_regime": {
-    "generated_at": "2026-10-28T00:35:20.394969+00:00",
+    "generated_at": "2026-10-28T01:24:01.270759+00:00",
     "markets": {
       "tw": {
         "indexes": [
           {
             "above_all_mas": false,
-            "as_of": "2026-10-22",
-            "close": 46041.4296875,
+            "as_of": "2026-10-28",
+            "close": 46700.5703125,
             "indicators": {
               "big_bull_low": null,
-              "close": 46041.4296875,
-              "d": 22.796520432172745,
-              "d_prev": 28.071932957254305,
+              "close": 46700.5703125,
+              "d": 20.29306746912097,
+              "d_prev": 22.796520432172745,
               "high_20d": 49822.55078125,
-              "high_5d": 47111.26171875,
-              "k": 12.245695382009629,
-              "k_prev": 18.368543073014443,
-              "ma10": 47570.787890625,
-              "ma20": 48071.6109375,
-              "ma240": 38231.90585123698,
-              "ma5": 46631.09375,
-              "macd": -66.22777047577983,
-              "macd_hist": -398.626233085594,
-              "macd_prev": 62.40041299083532,
-              "macd_signal": 332.39846260981415,
-              "macd_signal_prev": 432.0550208812126,
+              "high_5d": 46887.76953125,
+              "k": 15.286161543017421,
+              "k_prev": 12.245695382009629,
+              "ma10": 47309.50078125,
+              "ma20": 48016.630859375,
+              "ma240": 38310.036938476565,
+              "ma5": 46548.95546875,
+              "macd": -113.66908634876017,
+              "macd_hist": -356.8540391668595,
+              "macd_prev": -66.22777047577983,
+              "macd_signal": 243.1849528180993,
+              "macd_signal_prev": 332.39846260981415,
               "obv": 238604100.0,
-              "obv_ma20": 245567730.0,
-              "obv_ma5": 241986740.0,
-              "pct_of_high_20d": 0.9241082394526261,
-              "prev2_low": 46163.03125,
-              "prev_3d_low": 46163.03125,
-              "prev_5d_low": 46163.03125,
-              "prev_close": 46887.76953125,
+              "obv_ma20": 245591685.0,
+              "obv_ma5": 240331040.0,
+              "pct_of_high_20d": 0.9373380041809318,
+              "prev2_low": 46454.328125,
+              "prev_3d_low": 46041.4296875,
+              "prev_5d_low": 46041.4296875,
+              "prev_close": 46041.4296875,
               "prev_high_20d": 49822.55078125,
-              "prev_ma10": 47947.28203125,
-              "prev_ma20": 48155.4814453125,
-              "prev_ma240": 38156.70668945312,
-              "prev_ma5": 46816.78203125,
+              "prev_ma10": 47570.787890625,
+              "prev_ma20": 48071.6109375,
+              "prev_ma240": 38231.90585123698,
+              "prev_ma5": 46631.09375,
               "projected_vol_ratio": null,
               "projected_volume": null,
-              "return_20d": -0.03515194756918838,
+              "return_20d": -0.023004134072478144,
               "same_time_vol_ratio": null,
-              "today_return": -0.018050332788509538,
-              "vol_ratio": 0.9267164672158225,
-              "volume": 4348200.0,
+              "today_return": 0.014316250157169863,
+              "vol_ratio": 0.0,
+              "volume": 0.0,
               "volume_projection_capped": false,
               "volume_projection_reliable": false,
               "volume_projection_source": null
             },
-            "ma10": 47570.787890625,
-            "ma20": 48071.6109375,
-            "ma240": 38231.90585123698,
-            "ma5": 46631.09375,
+            "ma10": 47309.50078125,
+            "ma20": 48016.630859375,
+            "ma240": 38310.036938476565,
+            "ma5": 46548.95546875,
             "name": "\u52a0\u6b0a\u6307\u6578",
             "status": "ok",
             "symbol": "^TWII",
-            "today_return": -0.018050332788509538
+            "today_return": 0.014316250157169863
           },
           {
             "error": "no OHLCV data for ^TWOII",
@@ -76,21 +76,21 @@
           }
         ],
         "strategy": {
-          "as_of": "2026-10-27",
+          "as_of": "2026-10-28",
           "benchmark": "0050.TW",
           "benchmark_name": "\u5143\u5927\u53f0\u706350",
-          "close": 106.5999984741211,
-          "drawdown_120d": -0.08497855387020525,
+          "close": 108.1500015258789,
+          "drawdown_120d": -0.07167380664481626,
           "label": "\u5340\u9593\u9707\u76ea",
-          "ma10": 108.72500076293946,
-          "ma20": 111.34750099182129,
-          "ma240": 88.42062500317891,
-          "ma5": 107.16000061035156,
-          "ma60": 107.80500043233236,
+          "ma10": 108.88000106811523,
+          "ma20": 111.42500114440918,
+          "ma240": 88.4270833492279,
+          "ma5": 107.47000122070312,
+          "ma60": 107.83083381652833,
           "market": "tw",
           "prev_ma5": 107.47000122070312,
           "reason": "\u672a\u9054\u6025\u8dcc\u6216\u5f37\u591a\u982d\u689d\u4ef6\uff0c\u7dad\u6301\u9ad8\u6301\u80a1\u7684\u5340\u9593\u9707\u76ea\u6b0a\u91cd\u3002",
-          "return_60d": 0.13767344659578362,
+          "return_60d": 0.1542156355204427,
           "strategy": "range",
           "thresholds": {
             "bear_downtrend_close_below_ma240": true,
@@ -64138,7 +64138,7 @@
           }
         ],
         "pb": 28.821756,
-        "pe": 141.22661,
+        "pe": 139.84879,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -67093,8 +67093,8 @@
             "period": "2025-09-30"
           }
         ],
-        "pb": 33.409786,
-        "pe": 132.42424,
+        "pb": 39.763424,
+        "pe": 287.5,
         "revenues": [
           {
             "period": "2026-09-30",
@@ -67894,6 +67894,12 @@
         "eps_surprise_pct": 9.2245,
         "margins": [
           {
+            "gm": 11.0,
+            "nm": 6.8,
+            "om": 7.9,
+            "period": "2026-09-30"
+          },
+          {
             "gm": 12.3,
             "nm": 7.8,
             "om": 9.8,
@@ -67916,17 +67922,15 @@
             "nm": 8.4,
             "om": 10.3,
             "period": "2025-09-30"
-          },
-          {
-            "gm": 12.8,
-            "nm": 7.3,
-            "om": 9.9,
-            "period": "2025-06-30"
           }
         ],
         "pb": 14.337412,
         "pe": 28.71651,
         "revenues": [
+          {
+            "period": "2026-09-30",
+            "revenue": 5829700000.0
+          },
           {
             "period": "2026-06-30",
             "revenue": 4698600000.0
@@ -67942,10 +67946,6 @@
           {
             "period": "2025-09-30",
             "revenue": 3194000000.0
-          },
-          {
-            "period": "2025-06-30",
-            "revenue": 2893400000.0
           }
         ],
         "source": "yfinance/finnhub"
@@ -70050,7 +70050,7 @@
           }
         ],
         "pb": 23.082361,
-        "pe": 561.64,
+        "pe": 540.0385,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -72137,7 +72137,7 @@
           }
         ],
         "pb": 3.0474854,
-        "pe": 31.360825,
+        "pe": 30.268658,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -72917,7 +72917,7 @@
           }
         ],
         "pb": 9.667194,
-        "pe": 53.915356,
+        "pe": 53.98063,
         "revenues": [
           {
             "period": "2026-09-30",
@@ -74983,7 +74983,7 @@
           }
         ],
         "pb": 21.631939,
-        "pe": 34.754692,
+        "pe": 35.894188,
         "revenues": [
           {
             "period": "2026-09-30",
@@ -75257,7 +75257,7 @@
           }
         ],
         "pb": 95.348656,
-        "pe": 33.5451,
+        "pe": 32.982693,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -75510,7 +75510,7 @@
           }
         ],
         "pb": -22.577528,
-        "pe": 40.39648,
+        "pe": 39.982582,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -76817,7 +76817,7 @@
           }
         ],
         "pb": 11.524486,
-        "pe": 80.12171,
+        "pe": 78.31834,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -77091,7 +77091,7 @@
           }
         ],
         "pb": 8.920172,
-        "pe": 29.600557,
+        "pe": 29.145914,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -77329,26 +77329,9 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 33.42,
-            "period": "2026-09-30"
-          },
-          {
-            "eps": 25.11,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 12.2,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 4.78,
-            "period": "2025-12-31"
-          }
-        ],
-        "eps_period": "2026-09-30",
-        "eps_surprise_pct": 2.6334,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 86.8,
@@ -77614,32 +77597,15 @@
     },
     "NET": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.2051282051282053,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": [
-          {
-            "eps": 0.29,
-            "period": "2026-06-30"
-          },
-          {
-            "eps": 0.25,
-            "period": "2026-03-31"
-          },
-          {
-            "eps": 0.28,
-            "period": "2025-12-31"
-          },
-          {
-            "eps": 0.27,
-            "period": "2025-09-30"
-          }
-        ],
-        "eps_period": "2026-06-30",
-        "eps_surprise_pct": 6.4611,
+        "eps_actuals": null,
+        "eps_period": null,
+        "eps_surprise_pct": null,
         "margins": [
           {
             "gm": 71.8,
@@ -77905,8 +77871,8 @@
     },
     "NFLX": {
       "analyst": {
-        "rating": "Buy",
-        "rating_score": 2.017543859649123,
+        "rating": null,
+        "rating_score": null,
         "target_price_events": []
       },
       "chip": null,
@@ -79681,7 +79647,7 @@
           }
         ],
         "pb": 4.2425714,
-        "pe": 50.75484,
+        "pe": 53.155403,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -81140,7 +81106,7 @@
           }
         ],
         "pb": 48.852016,
-        "pe": 169.8547,
+        "pe": 171.31897,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -83154,9 +83120,26 @@
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 3.91,
+            "period": "2026-09-30"
+          },
+          {
+            "eps": 3.35,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 3.77,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 2.9,
+            "period": "2025-12-31"
+          }
+        ],
+        "eps_period": "2026-09-30",
+        "eps_surprise_pct": 4.5622,
         "margins": [
           {
             "gm": 72.6,
@@ -83648,15 +83631,117 @@
     },
     "SPOT": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
-        "target_price_events": []
+        "rating": "Buy",
+        "rating_score": 1.9361702127659575,
+        "target_price_events": [
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Morgan Stanley Maintains Overweight on Spotify Technology, Raises Price Target to $700",
+            "previous_target": null,
+            "published_at": "2026-10-23T13:28:43+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 700.0,
+            "upside_pct": 0.2230065307064344,
+            "url": "https://finnhub.io/api/news?id=da59824180190c3cb927839b3c1e8064aa7917c5ffabf836a7d1f5ab119443a6"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Oppenheimer Maintains Outperform on Spotify Technology, Raises Price Target to $650",
+            "previous_target": null,
+            "published_at": "2026-10-23T13:10:12+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 650.0,
+            "upside_pct": 0.1356489213702603,
+            "url": "https://finnhub.io/api/news?id=8a41f58d8a00a8785789596aa4ab1c99c5b4043c8e5af9d9cc75d8633989ca7a"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Piper Sandler Reiterates Neutral on Spotify Technology, Raises Price Target to $580",
+            "previous_target": null,
+            "published_at": "2026-10-23T12:59:09+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 580.0,
+            "upside_pct": 0.013348268299616883,
+            "url": "https://finnhub.io/api/news?id=a494893b9a3da958c5f07e58b4dcd0989d95bb212177542792ce2b60ef616ec0"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Evercore ISI Group Maintains Outperform on Spotify Technology, Raises Price Target to $750",
+            "previous_target": null,
+            "published_at": "2026-10-23T12:00:35+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 750.0,
+            "upside_pct": 0.31036414004260826,
+            "url": "https://finnhub.io/api/news?id=6c0ff63729127a2dc4010a1f85abd8f9c6ce3ec45a73cf958bc8527cafccbb79"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Wells Fargo Maintains Overweight on Spotify Technology, Raises Price Target to $660",
+            "previous_target": null,
+            "published_at": "2026-10-23T10:47:19+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 660.0,
+            "upside_pct": 0.15312044323749507,
+            "url": "https://finnhub.io/api/news?id=213d410eb8b03acd6f442fb276d04a5b8496ac781056f3ba4e938a98a090b501"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Rosenblatt Maintains Neutral on Spotify Technology, Raises Price Target to $576",
+            "previous_target": null,
+            "published_at": "2026-10-23T08:09:25+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 576.0,
+            "upside_pct": 0.006359659552723107,
+            "url": "https://finnhub.io/api/news?id=1da3b86cafe37e99a5987816b8c0d2ce600dba5d521d8fc0653022ed95f20369"
+          },
+          {
+            "date": "2026-10-23",
+            "firm": "Benzinga",
+            "headline": "Cantor Fitzgerald Maintains Neutral on Spotify Technology, Raises Price Target to $550",
+            "previous_target": null,
+            "published_at": "2026-10-23T07:05:21+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 550.0,
+            "upside_pct": -0.03906629730208733,
+            "url": "https://finnhub.io/api/news?id=f1c9779389d52d4da52e369c7c82bf7450c583091f6afe39546d8b78cc99b2b2"
+          }
+        ]
       },
       "chip": null,
       "fundamental": {
-        "eps_actuals": null,
-        "eps_period": null,
-        "eps_surprise_pct": null,
+        "eps_actuals": [
+          {
+            "eps": 2.48,
+            "period": "2026-09-30"
+          },
+          {
+            "eps": 2.61,
+            "period": "2026-06-30"
+          },
+          {
+            "eps": 3.45,
+            "period": "2026-03-31"
+          },
+          {
+            "eps": 4.43,
+            "period": "2025-12-31"
+          }
+        ],
+        "eps_period": "2026-09-30",
+        "eps_surprise_pct": -13.1774,
         "margins": [
           {
             "gm": 33.0,
@@ -83807,8 +83892,8 @@
           "weight": 0.75
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-10-23 Benzinga target 700.00, upside=+22.30%\uff1b 2026-10-23 Benzinga target 650.00, upside=+13.56%\uff1b 2026-10-23 Benzinga target 750.00, upside=+31.04%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -83876,7 +83961,7 @@
           "weight": 0.0
         }
       ],
-      "score": 2.75,
+      "score": 4.75,
       "score_regime": {
         "as_of": "2026-10-26",
         "benchmark": "SPY",
@@ -84175,9 +84260,22 @@
     },
     "TSLA": {
       "analyst": {
-        "rating": null,
-        "rating_score": null,
-        "target_price_events": []
+        "rating": "Buy",
+        "rating_score": 2.4074074074074074,
+        "target_price_events": [
+          {
+            "date": "2026-10-26",
+            "firm": "Benzinga",
+            "headline": "Barclays Upgrades Tesla to Overweight, Raises Price Target to $450",
+            "previous_target": null,
+            "published_at": "2026-10-26T09:07:23+00:00",
+            "raise_pct": null,
+            "source": "Benzinga",
+            "target_price": 450.0,
+            "upside_pct": 0.1490730953748749,
+            "url": "https://finnhub.io/api/news?id=88270bacfbe6c49584dfce758f5e4bc5d4d0e0a0ad465caa488ae36c076f62eb"
+          }
+        ]
       },
       "chip": null,
       "fundamental": {
@@ -84334,8 +84432,8 @@
           "weight": 0.75
         },
         {
-          "detail": "no 7d target raise with target >= close * 1.10",
-          "passed": false,
+          "detail": "2026-10-26 Benzinga target 450.00, upside=+14.91%",
+          "passed": true,
           "rule": "\u6cd5\u4eba\u76ee\u6a19\u50f9\u4e0a\u8abf\u4e14\u9ad8\u65bc\u73fe\u50f910%\uff087\u65e5\u5167\uff09",
           "weight": 2.0
         },
@@ -84396,7 +84494,7 @@
           "weight": 0.0
         }
       ],
-      "score": 6.25,
+      "score": 8.25,
       "score_regime": {
         "as_of": "2026-10-26",
         "benchmark": "SPY",
@@ -86072,7 +86170,7 @@
           }
         ],
         "pb": 16.87515,
-        "pe": 45.938324,
+        "pe": 47.18552,
         "revenues": [
           {
             "period": "2026-06-30",
@@ -86325,7 +86423,7 @@
           }
         ],
         "pb": 7.664988,
-        "pe": 42.10246,
+        "pe": 41.845215,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -86599,7 +86697,7 @@
           }
         ],
         "pb": 9.646697,
-        "pe": 43.231884,
+        "pe": 42.014084,
         "revenues": [
           {
             "period": "2026-07-31",
@@ -86852,7 +86950,7 @@
           }
         ],
         "pb": 2.0401657,
-        "pe": 133.69643,
+        "pe": 136.12727,
         "revenues": [
           {
             "period": "2026-06-30",
