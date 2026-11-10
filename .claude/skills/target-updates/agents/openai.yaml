@@ -1,7 +1,7 @@
 interface:
   display_name: "Stock Screener Targets"
   short_description: "Store manual target updates"
-  default_prompt: "Use $target-updates to parse manual TW or US target updates, add missing watchlist tickers, merge JSONL events, test, commit, and push."
+  default_prompt: "Use $target-updates to scan logged-in Yuanta or SinoPac Taiwan stock reports, or parse manual TW/US target updates; only record targets with at least 20% upside, then merge JSONL events, test, commit, and push."
 
 policy:
   allow_implicit_invocation: true
